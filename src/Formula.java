@@ -13,7 +13,7 @@ public class Formula
     {
         int damage;
         
-        if(m.getCategory() == PHYSICAL)
+        if(m.getCategory() == Attribute.PHYSICAL)
         {
             return ( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getBase() + 2 ) * modifier(a,b,m);
         }

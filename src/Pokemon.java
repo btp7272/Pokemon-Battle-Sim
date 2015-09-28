@@ -1,3 +1,7 @@
+/*
+ * Bryan Powell 9-27-2015
+ * Pokemon constructors and operators
+ */
 
 public class Pokemon {
 	int indexNum;
@@ -13,9 +17,9 @@ public class Pokemon {
 	//Move moveTwo = null;
 	//Move moveThree = null;
 	//Move moveFour = null;
-	//Type typeOne = null;
-	//Type typeTwo = null;
-	//Gender gender = null;
+	Type typeOne = null;
+	Type typeTwo = null;
+	Gender gender = null;
 	//heldItem item = null;
 	
 	private void setIndex(int index){ indexNum = index;}
@@ -34,19 +38,52 @@ public class Pokemon {
 			case 1:
 			{
 				moveOne = newMove;
+				break;
 			}
 			case 2:
 			{
 				moveTwo = newMove;
+				break;
 			}
 			case 3:
 			{
 				moveThree = newMove;
+				break;
 			}
 			case 4:
 			{
 				moveFour = newMove;
+				break;
+			}
+			default:
+			{
+				System.err.println("Incorrect move number");
+				break;
 			}
 		}
 	}
+	private void setType(Type newType, int typeNum)
+	{
+		switch(typeNum)
+		{
+			case 1:
+			{
+				typeOne = newType;
+				break;
+			}
+			case 2:
+			{
+				typeTwo = newType;
+				break;
+			}
+			default:
+			{
+				System.err.println("Incorrect type number");
+				break;
+			}
+		}
+	}
+	
+	
+	
 }

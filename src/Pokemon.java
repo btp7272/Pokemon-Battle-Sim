@@ -4,7 +4,8 @@
  */
 
 public class Pokemon {
-	int indexNum;
+	double indexNum;
+	String name;
 	int hp;
 	int atk;
 	int def;
@@ -22,7 +23,8 @@ public class Pokemon {
 	Gender gender = null;
 	//heldItem item = null;
 	
-	private void setIndex(int index){ indexNum = index;}
+	private void setIndex(double index){ indexNum = index;}
+	private void setName(String newName){ name = newName;}
 	private void setHp(int health){	hp = health;}
 	private void setAtk(int attack){ atk = attack;}
 	private void setDef(int defense){ def = defense;}
@@ -85,17 +87,39 @@ public class Pokemon {
 		}
 	}
 	
-	public int getIndex(){return indexNum;}
-	public int getHP(){return hp;}
-	public int getAtk(){return atk;}
-	public int getDef(){return def;}
-	public int getSpAtk(){return spAtk;}
-	public int getSpDef(){return spDef;}
-	public int getSpeed(){return speed;}
-	public double getWeight(){return weight;}
-	public Type getType1(){return typeOne;}
-	public Type getType2(){return typeTwo;}
-	public Gender getGender(){return gender;}
+	public double getIndex(){return this.indexNum;}
+	public String getName(){ return this.name;}
+	public int getHP(){return this.hp;}
+	public int getAtk(){return this.atk;}
+	public int getDef(){return this.def;}
+	public int getSpAtk(){return this.spAtk;}
+	public int getSpDef(){return this.spDef;}
+	public int getSpeed(){return this.speed;}
+	public double getWeight(){return this.weight;}
+	public Type getType1(){return this.typeOne;}
+	public Type getType2(){return this.typeTwo;}
+	public Gender getGender(){return this.gender;}
 	
+	/*
+	 * Basic Constructors for Pokemon Objects
+	 */
+	public Pokemon(){
+		
+	}
+	public Pokemon(double index, String Name, int health, int attack, int defense, int spAttack, int spDefense, int Speed)
+	{
+		indexNum = index;
+		name = Name;
+		hp = health;
+		atk = attack;
+		def = defense;
+		spAtk = spAttack;
+		spDef = spDefense;
+		speed = Speed;
+	}
+	
+
+	
+
 	
 }

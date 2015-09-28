@@ -1,6 +1,6 @@
 import java.util.*;
 import java.lang.*;
-public class formula
+public class Formula
 {
     
 

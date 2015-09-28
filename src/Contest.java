@@ -1,13 +1,14 @@
-
-public enum Attribute 
+public enum Contest 
 {
-	PHYSICAL(0), 
-	SPECIAL(1),
-	STATUS(2);
+	COOL(0),
+	BEAUTIFUL(1),
+	CUTE(2),
+	CLEVER(3),
+	TOUGH(4);
 	
 	private final int mask;
 	
-	Attribute(int mask)
+	Contest(int mask)
 	{
 		this.mask = mask;
 	}

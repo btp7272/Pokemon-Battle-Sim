@@ -1,5 +1,4 @@
-
-public enum Type 
+public enum Type
 {
 	NORMAL(0), 
 	FIGHTING(1),
@@ -20,7 +19,7 @@ public enum Type
 	DARK(16),
 	FAIRY(17);
 	
-	public final int mask;
+	private final int mask;
 	Type(int mask)
 	{
 		this.mask=mask;

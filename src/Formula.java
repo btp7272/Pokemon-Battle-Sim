@@ -41,12 +41,12 @@ public class Formula
         
         if(m.getCategory() == Attribute.PHYSICAL)
         {
-            return ( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getBase() + 2 ) * modifier(a,b,m);
+            return ( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getPower() + 2 ) * modifier(a,b,m);
         }
             
         else
         {
-            return ( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getBase() + 2 ) * modifier(a,b,m);
+            return ( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getPower() + 2 ) * modifier(a,b,m);
         }
     }
 
@@ -73,8 +73,8 @@ public class Formula
         
         //Calculate type modifier
         type = 1.0;
-        type *= effectiveness[m.getType().mask][b.getType1().mask];
-        type *= effectiveness[m.getType().mask][b.getType2().mask];
+        type *= effectiveness[m.getType().getMask()][b.getType1().getMask()];
+        type *= effectiveness[m.getType().getMask()][b.getType2().getMask()];
         
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();

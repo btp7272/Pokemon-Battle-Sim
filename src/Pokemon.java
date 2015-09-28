@@ -3,7 +3,8 @@
  * Pokemon constructors and operators
  */
 
-public class Pokemon {
+public class Pokemon 
+{
 	double indexNum;
 	String name;
 	int hp;
@@ -13,15 +14,15 @@ public class Pokemon {
 	int spDef;
 	int speed;
 	double weight;
-	//Ability ability;
-	//Move moveOne = null;
-	//Move moveTwo = null;
-	//Move moveThree = null;
-	//Move moveFour = null;
+	Ability ability = null;
+	Move moveOne = null;
+	Move moveTwo = null;
+	Move moveThree = null;
+	Move moveFour = null;
 	Type typeOne = null;
 	Type typeTwo = null;
 	Gender gender = null;
-	//heldItem item = null;
+	heldItem item = null;
 	
 	private void setIndex(double index){ indexNum = index;}
 	private void setName(String newName){ name = newName;}
@@ -33,7 +34,7 @@ public class Pokemon {
 	private void setSpeed(int newSpeed){ speed = newSpeed;}
 	private void setWeight(double newWeight){ weight = newWeight;}
 	public void setGender(Gender gen){gender = gen;}
-	//private void setAbility(Ability newAbility){ ability = newAbility;}
+	private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
 	{
 		switch(moveNum)
@@ -103,23 +104,17 @@ public class Pokemon {
 	/*
 	 * Basic Constructors for Pokemon Objects
 	 */
-	public Pokemon(){
-		
-	}
-	public Pokemon(double index, String Name, int health, int attack, int defense, int spAttack, int spDefense, int Speed)
+	public Pokemon(){}
+	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed)
 	{
-		indexNum = index;
-		name = Name;
-		hp = health;
-		atk = attack;
-		def = defense;
-		spAtk = spAttack;
-		spDef = spDefense;
-		speed = Speed;
+		this.indexNum = indexNum;
+		this.name = name;
+		this.hp = hp;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
 	}
-	
-
-	
-
 	
 }

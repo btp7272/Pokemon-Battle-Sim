@@ -1,3 +1,7 @@
+/*
+ * Ben Churchill 9-27-2015
+ * Formula calculator 
+ */
 import java.util.*;
 import java.lang.*;
 public class Formula
@@ -20,7 +24,7 @@ public class Formula
             
         else
         {
-            return ( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getBase() + 2 ) * modifier(a,b,m);
+            return ( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getBase() + 2 ) * modifier(a,b,m);
         }
     }
 
@@ -47,15 +51,20 @@ public class Formula
         
         //Calculate type modifier
         type = 1.0;
-        type *= dmgTypeMult(a.getType1, m.getType());
-        type *= dmgTypeMult(a.getType2, m.getType());
-        
+        type *= dmgTypeMult(a.getType1(), m.getType());
+        type *= dmgTypeMult(a.getType2(), m.getType());
         
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();
         
         return (int)(stab * type * roll);
     }
+    
+    public static double dmgTypeMult(Type pkmnType, Type moveType)
+    {
+    	
+    }
+    
     
 } // end class
 

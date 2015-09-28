@@ -30,6 +30,7 @@ public class Pokemon {
 	private void setSpDef(int spdefense){ spDef = spdefense;}
 	private void setSpeed(int newSpeed){ speed = newSpeed;}
 	private void setWeight(double newWeight){ weight = newWeight;}
+	public void setGender(Gender gen){gender = gen;}
 	//private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
 	{
@@ -84,6 +85,17 @@ public class Pokemon {
 		}
 	}
 	
+	public int getIndex(){return indexNum;}
+	public int getHP(){return hp;}
+	public int getAtk(){return atk;}
+	public int getDef(){return def;}
+	public int getSpAtk(){return spAtk;}
+	public int getSpDef(){return spDef;}
+	public int getSpeed(){return speed;}
+	public double getWeight(){return weight;}
+	public Type getType1(){return typeOne;}
+	public Type getType2(){return typeTwo;}
+	public Gender getGender(){return gender;}
 	
 	
 }

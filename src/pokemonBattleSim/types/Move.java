@@ -2,13 +2,13 @@ package pokemonBattleSim.types;
 
 public class Move 
 {
-	public static String name;
-	public static Type type = null;
-	public static Attribute category = null;
-	public static Contest contest = null;
-	public static int pp;
-	public static int power;
-	public static double accuracy;
+	public String name;
+	public Type type = null;
+	public Attribute category = null;
+	public Contest contest = null;
+	public int pp;
+	public int power;
+	public double accuracy;
 	
 	
 	private void setName(String name){this.name = name;}

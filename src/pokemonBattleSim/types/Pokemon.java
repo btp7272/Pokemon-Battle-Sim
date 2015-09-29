@@ -116,5 +116,16 @@ public class Pokemon
 		this.spDef = spDef;
 		this.speed = speed;
 	}
+	public Pokemon(Pokemon a)
+	{
+		this.indexNum = a.getIndex();
+		this.name = a.getName();
+		this.hp = a.getHP();
+		this.atk = a.getAtk();
+		this.def = a.getDef();
+		this.spAtk = a.getSpAtk();
+		this.spDef = a.getSpDef();
+		this.speed = a.getSpeed();
+	}
 	
 }

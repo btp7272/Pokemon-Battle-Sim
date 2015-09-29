@@ -48,12 +48,20 @@ public class Formula
         
         if(m.getCategory() == Attribute.PHYSICAL)
         {
-            return (int) (( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getPower() + 2 ) * modifier(a,b,m));
+            double x = ( ( double ) 21 / 25 );
+            double y = ( ( double ) a.getAtk() / b.getDef() );
+            double z = modifier( a, b, m );
+            damage = ( int )( ( x * y * m.getPower() + 2 ) * z );
+            return damage;
         }
             
         else
         {
-            return (int) (( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getPower() + 2 ) * modifier(a,b,m));
+            double x = ( (double) 21 / 25 );
+        	double y = ( ( double ) a.getSpAtk() / b.getSpDef() );
+        	double z = modifier( a, b, m );
+        	damage = ( int )( ( x * y * m.getPower() + 2 ) * z );
+        	return damage;
         }
     }
 

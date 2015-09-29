@@ -1,3 +1,4 @@
+package pokemonBattleSim.types;
 public enum Type
 {
 	NORMAL(0), 

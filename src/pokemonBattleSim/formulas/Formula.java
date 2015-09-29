@@ -1,9 +1,16 @@
+package pokemonBattleSim.formulas;
 /*
  * Ben Churchill 9-27-2015
  * Formula calculator 
  */
 import java.util.*;
+
+import pokemonBattleSim.types.Pokemon;
+import pokemonBattleSim.types.Attribute;
+import pokemonBattleSim.types.Move;
+
 import java.lang.*;
+
 public class Formula
 {
 	/****** Keeps track of type interactions :: [attacking type][defending type] ******/
@@ -41,12 +48,12 @@ public class Formula
         
         if(m.getCategory() == Attribute.PHYSICAL)
         {
-            return ( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getPower() + 2 ) * modifier(a,b,m);
+            return (int) (( ( 21 / 25 ) * ( a.getAtk() / b.getDef() ) * m.getPower() + 2 ) * modifier(a,b,m));
         }
             
         else
         {
-            return ( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getPower() + 2 ) * modifier(a,b,m);
+            return (int) (( ( 21 / 25 ) * ( a.getSpAtk() / b.getSpDef() ) * m.getPower() + 2 ) * modifier(a,b,m));
         }
     }
 
@@ -72,10 +79,10 @@ public class Formula
             stab = 1.0;
         
         //Calculate type modifier
-        type = 1.0;
+        type = 1.0;/*
         type *= effectiveness[m.getType().getMask()][b.getType1().getMask()];
         type *= effectiveness[m.getType().getMask()][b.getType2().getMask()];
-        
+        */
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();
         

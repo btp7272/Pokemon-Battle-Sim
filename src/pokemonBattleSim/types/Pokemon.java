@@ -2,7 +2,7 @@
  * Bryan Powell 9-27-2015
  * Pokemon constructors and operators
  */
-
+package pokemonBattleSim.types;
 public class Pokemon 
 {
 	double indexNum;
@@ -14,7 +14,7 @@ public class Pokemon
 	int spDef;
 	int speed;
 	double weight;
-	Ability ability = null;
+	//Ability ability = null;
 	Move moveOne = null;
 	Move moveTwo = null;
 	Move moveThree = null;
@@ -22,7 +22,7 @@ public class Pokemon
 	Type typeOne = null;
 	Type typeTwo = null;
 	Gender gender = null;
-	heldItem item = null;
+	//heldItem item = null;
 	
 	private void setIndex(double index){ indexNum = index;}
 	private void setName(String newName){ name = newName;}
@@ -34,7 +34,7 @@ public class Pokemon
 	private void setSpeed(int newSpeed){ speed = newSpeed;}
 	private void setWeight(double newWeight){ weight = newWeight;}
 	public void setGender(Gender gen){gender = gen;}
-	private void setAbility(Ability newAbility){ ability = newAbility;}
+	/*private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
 	{
 		switch(moveNum)
@@ -65,7 +65,7 @@ public class Pokemon
 				break;
 			}
 		}
-	}
+	}*/
 	private void setType(Type newType, int typeNum)
 	{
 		switch(typeNum)
@@ -87,7 +87,7 @@ public class Pokemon
 			}
 		}
 	}
-	
+
 	public double getIndex(){return this.indexNum;}
 	public String getName(){ return this.name;}
 	public int getHP(){return this.hp;}

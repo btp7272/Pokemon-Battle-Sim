@@ -1,3 +1,4 @@
+package pokemonBattleSim.types;
 public enum Contest 
 {
 	COOL(0),

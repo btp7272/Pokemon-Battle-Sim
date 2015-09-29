@@ -1,3 +1,7 @@
+package pokemonBattleSim.models;
+
+import pokemonBattleSim.types.Pokemon;
+
 public class PokemonList
 {
 	Pokemon Bulbasaur = new Pokemon(1, "Bulbasaur", 45, 49, 49, 65, 65, 45);

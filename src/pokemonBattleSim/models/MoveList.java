@@ -1,3 +1,10 @@
+package pokemonBattleSim.models;
+
+import pokemonBattleSim.types.Attribute;
+import pokemonBattleSim.types.Contest;
+import pokemonBattleSim.types.Move;
+import pokemonBattleSim.types.Type;
+
 public class MoveList 
 {	
 	Move test = new Move("test", Type.BUG,Attribute.PHYSICAL,Contest.BEAUTIFUL,34,40,50);

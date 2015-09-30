@@ -1,0 +1,13 @@
+027	Sandshrew	Sandshrew
+028	Sandslash	Sandslash
+050	Diglett	Diglett
+051	Dugtrio	Dugtrio
+104	Cubone	Cubone
+105	Marowak	Marowak
+231	Phanpy	Phanpy
+232	Donphan	Donphan
+328	Trapinch	Trapinch
+383	Groudon	Groudon
+449	Hippopotas	Hippopotas
+450	Hippowdon	Hippowdon
+529	Drilbur	Drilbur

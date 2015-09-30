@@ -1,0 +1,15 @@
+023	Ekans	Ekans
+024	Arbok	Arbok
+029	NidoranF	NidoranF
+030	Nidorina	Nidorina
+032	NidoranM	NidoranM
+033	Nidorino	Nidorino
+088	Grimer	Grimer
+089	Muk	Muk
+109	Koffing	Koffing
+110	Weezing	Weezing
+316	Gulpin	Gulpin
+317	Swalot	Swalot
+336	Seviper	Seviper
+568	Trubbish	Trubbish
+569	Garbodor	Garbodor

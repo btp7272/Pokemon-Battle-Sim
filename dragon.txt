@@ -1,0 +1,11 @@
+147	Dratini	Dratini
+148	Dragonair	Dragonair
+371	Bagon	Bagon
+372	Shelgon	Shelgon
+610	Axew	Axew
+611	Fraxure	Fraxure
+612	Haxorus	Haxorus
+621	Druddigon	Druddigon
+704	Goomy	Goomy
+705	Sliggoo	Sliggoo
+706	Goodra	Goodra

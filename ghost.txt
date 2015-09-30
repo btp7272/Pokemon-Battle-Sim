@@ -1,0 +1,10 @@
+200	Misdreavus	Misdreavus
+353	Shuppet	Shuppet
+354	Banette	Banette
+354	Banette	Mega Banette
+355	Duskull	Duskull
+356	Dusclops	Dusclops
+429	Mismagius	Mismagius
+477	Dusknoir	Dusknoir
+562	Yamask	Yamask
+563	Cofagrigus	Cofagrigus

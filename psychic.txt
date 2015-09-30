@@ -1,0 +1,34 @@
+063	Abra	Abra
+064	Kadabra	Kadabra
+065	Alakazam	Alakazam
+065	Alakazam	Mega Alakazam
+096	Drowzee	Drowzee
+097	Hypno	Hypno
+150	Mewtwo	Mewtwo
+150	Mewtwo	Mega Mewtwo Y
+151	Mew	Mew
+196	Espeon	Espeon
+201	Unown	Unown
+202	Wobbuffet	Wobbuffet
+325	Spoink	Spoink
+326	Grumpig	Grumpig
+358	Chimecho	Chimecho
+360	Wynaut	Wynaut
+386	Deoxys	Deoxys
+433	Chingling	Chingling
+480	Uxie	Uxie
+481	Mesprit	Mesprit
+482	Azelf	Azelf
+488	Cresselia	Cresselia
+517	Munna	Munna
+518	Musharna	Musharna
+574	Gothita	Gothita
+575	Gothorita	Gothorita
+576	Gothitelle	Gothitelle
+577	Solosis	Solosis
+578	Duosion	Duosion
+579	Reuniclus	Reuniclus
+605	Elgyem	Elgyem
+606	Beheeyem	Beheeyem
+677	Espurr	Espurr
+678	Meowstic	Meowstic

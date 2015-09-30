@@ -1,0 +1,14 @@
+351	Castform	Snowy Castform
+361	Snorunt	Snorunt
+362	Glalie	Glalie
+362	Glalie	Mega Glalie
+378	Regice	Regice
+471	Glaceon	Glaceon
+582	Vanillite	Vanillite
+583	Vanillish	Vanillish
+584	Vanilluxe	Vanilluxe
+613	Cubchoo	Cubchoo
+614	Beartic	Beartic
+615	Cryogonal	Cryogonal
+712	Bergmite	Bergmite
+713	Avalugg	Avalugg

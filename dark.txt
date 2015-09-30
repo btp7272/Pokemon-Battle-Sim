@@ -1,0 +1,10 @@
+197	Umbreon	Umbreon
+261	Poochyena	Poochyena
+262	Mightyena	Mightyena
+359	Absol	Absol
+359	Absol	Mega Absol
+491	Darkrai	Darkrai
+509	Purrloin	Purrloin
+510	Liepard	Liepard
+570	Zorua	Zorua
+571	Zoroark	Zoroark

@@ -1,0 +1,15 @@
+035:Clefairy:Clefairy
+036:Clefable:Clefable
+173:Cleffa:Cleffa
+175:Togepi:Togepi
+209:Snubbull:Snubbull
+210:Granbull:Granbull
+669:Flabébé:Flabébé
+670:Floette:Floette
+671:Florges:Florges
+682:Spritzee:Spritzee
+683:Aromatisse:Aromatisse
+684:Swirlix:Swirlix
+685:Slurpuff:Slurpuff
+700:Sylveon:Sylveon
+716:Xerneas:Xerneas

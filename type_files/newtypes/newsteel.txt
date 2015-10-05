@@ -1,0 +1,5 @@
+306:Aggron:Mega Aggron
+379:Registeel:Registeel
+599:Klink:Klink
+600:Klang:Klang
+601:Klinklang:Klinklang

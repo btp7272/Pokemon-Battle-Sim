@@ -1,0 +1,17 @@
+010:Caterpie:Caterpie
+011:Metapod:Metapod
+127:Pinsir:Pinsir
+204:Pineco:Pineco
+265:Wurmple:Wurmple
+266:Silcoon:Silcoon
+268:Cascoon:Cascoon
+313:Volbeat:Volbeat
+314:Illumise:Illumise
+401:Kricketot:Kricketot
+402:Kricketune:Kricketune
+412:Burmy:Burmy
+588:Karrablast:Karrablast
+616:Shelmet:Shelmet
+617:Accelgor:Accelgor
+664:Scatterbug:Scatterbug
+665:Spewpa:Spewpa

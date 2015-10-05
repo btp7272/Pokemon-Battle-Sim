@@ -1,0 +1,27 @@
+025:Pikachu:Pikachu
+026:Raichu:Raichu
+100:Voltorb:Voltorb
+101:Electrode:Electrode
+125:Electabuzz:Electabuzz
+135:Jolteon:Jolteon
+172:Pichu:Pichu
+179:Mareep:Mareep
+180:Flaaffy:Flaaffy
+181:Ampharos:Ampharos
+239:Elekid:Elekid
+243:Raikou:Raikou
+309:Electrike:Electrike
+310:Manectric:Manectric
+310:Manectric:Mega Manectric
+311:Plusle:Plusle
+312:Minun:Minun
+403:Shinx:Shinx
+404:Luxio:Luxio
+405:Luxray:Luxray
+417:Pachirisu:Pachirisu
+466:Electivire:Electivire
+522:Blitzle:Blitzle
+523:Zebstrika:Zebstrika
+602:Tynamo:Tynamo
+603:Eelektrik:Eelektrik
+604:Eelektross:Eelektross

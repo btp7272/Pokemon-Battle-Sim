@@ -1,0 +1,9 @@
+185:Sudowoodo:Sudowoodo
+299:Nosepass:Nosepass
+377:Regirock:Regirock
+408:Cranidos:Cranidos
+409:Rampardos:Rampardos
+438:Bonsly:Bonsly
+524:Roggenrola:Roggenrola
+525:Boldore:Boldore
+526:Gigalith:Gigalith

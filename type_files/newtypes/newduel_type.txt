@@ -1,0 +1,400 @@
+016:Pidgey:Pidgey:Normal:Flying
+017:Pidgeotto:Pidgeotto:Normal:Flying
+018:Pidgeot:Pidgeot:Normal:Flying
+018:Pidgeot:Mega Pidgeot:Normal:Flying
+021:Spearow:Spearow:Normal:Flying
+022:Fearow:Fearow:Normal:Flying
+039:Jigglypuff:Jigglypuff*:Normal:Fairy
+040:Wigglytuff:Wigglytuff*:Normal:Fairy
+083:Farfetch'd:Farfetch'd:Normal:Flying
+084:Doduo:Doduo:Normal:Flying
+085:Dodrio:Dodrio:Normal:Flying
+163:Hoothoot:Hoothoot:Normal:Flying
+164:Noctowl:Noctowl:Normal:Flying
+174:Igglybuff:Igglybuff*:Normal:Fairy
+203:Girafarig:Girafarig:Normal:Psychic
+276:Taillow:Taillow:Normal:Flying
+277:Swellow:Swellow:Normal:Flying
+298:Azurill:Azurill*:Normal:Fairy
+333:Swablu:Swablu:Normal:Flying
+396:Starly:Starly:Normal:Flying
+397:Staravia:Staravia:Normal:Flying
+398:Staraptor:Staraptor:Normal:Flying
+400:Bibarel:Bibarel:Normal:Water
+428:Lopunny:Mega Lopunny:Normal:Fighting
+441:Chatot:Chatot:Normal:Flying
+519:Pidove:Pidove:Normal:Flying
+520:Tranquill:Tranquill:Normal:Flying
+521:Unfezant:Unfezant:Normal:Flying
+531:Audino:Mega Audino:Normal:Fairy
+585:Deerling:Deerling:Normal:Grass
+586:Sawsbuck:Sawsbuck:Normal:Grass
+627:Rufflet:Rufflet:Normal:Flying
+628:Braviary:Braviary:Normal:Flying
+648:Meloetta:Meloetta:Normal:Psychic
+660:Diggersby:Diggersby:Normal:Ground
+661:Fletchling:Fletchling
+006:Charizard:Charizard:Fire:Flying
+006:Charizard:Mega Charizard X:Fire:Dragon
+006:Charizard:Mega Charizard Y:Fire:Flying
+146:Moltres:Moltres:Fire:Flying
+219:Magcargo:Magcargo:Fire:Rock
+250:Ho-Oh:Ho-Oh:Fire:Flying
+256:Combusken:Combusken:Fire:Fighting
+257:Blaziken:Blaziken:Fire:Fighting
+257:Blaziken:Mega Blaziken:Fire:Fighting
+322:Numel:Numel:Fire:Ground
+323:Camerupt:Camerupt:Fire:Ground
+323:Camerupt:Mega Camerupt:Fire:Ground
+391:Monferno:Monferno:Fire:Fighting
+392:Infernape:Infernape:Fire:Fighting
+485:Heatran:Heatran:Fire:Steel
+499:Pignite:Pignite:Fire:Fighting
+500:Emboar:Emboar:Fire:Fighting
+555:Darmanitan:Darmanitan*:Fire:Psychic
+655:Delphox:Delphox:Fire:Psychic
+662:Fletchinder:Fletchinder:Fire:Flying
+663:Talonflame:Talonflame:Fire:Flying
+667:Litleo:Litleo:Fire:Normal
+668:Pyroar:Pyroar:Fire:Normal
+721:Volcanion:Volcanion:Fire:Water
+307:Meditite:Meditite:Fighting:Psychic
+308:Medicham:Medicham:Fighting:Psychic
+308:Medicham:Mega Medicham:Fighting:Psychic
+448:Lucario:Lucario:Fighting:Steel
+448:Lucario:Mega Lucario:Fighting:Steel
+675:Pangoro:Pangoro:Fighting:Dark
+701:Hawlucha:Hawlucha:Fighting:Flying
+062:Poliwrath:Poliwrath:Water:Fighting
+072:Tentacool:Tentacool:Water:Poison
+073:Tentacruel:Tentacruel:Water:Poison
+079:Slowpoke:Slowpoke:Water:Psychic
+080:Slowbro:Slowbro:Water:Psychic
+080:Slowbro:Mega Slowbro:Water:Psychic
+087:Dewgong:Dewgong:Water:Ice
+091:Cloyster:Cloyster:Water:Ice
+121:Starmie:Starmie:Water:Psychic
+130:Gyarados:Gyarados:Water:Flying
+130:Gyarados:Mega Gyarados:Water:Dark
+131:Lapras:Lapras:Water:Ice
+170:Chinchou:Chinchou:Water:Electric
+171:Lanturn:Lanturn:Water:Electric
+183:Marill:Marill*:Water:Fairy
+184:Azumarill:Azumarill*:Water:Fairy
+194:Wooper:Wooper:Water:Ground
+195:Quagsire:Quagsire:Water:Ground
+199:Slowking:Slowking:Water:Psychic
+211:Qwilfish:Qwilfish:Water:Poison
+222:Corsola:Corsola:Water:Rock
+226:Mantine:Mantine:Water:Flying
+230:Kingdra:Kingdra:Water:Dragon
+259:Marshtomp:Marshtomp:Water:Ground
+260:Swampert:Swampert:Water:Ground
+260:Swampert:Mega Swampert:Water:Ground
+270:Lotad:Lotad:Water:Grass
+271:Lombre:Lombre:Water:Grass
+272:Ludicolo:Ludicolo:Water:Grass
+278:Wingull:Wingull:Water:Flying
+279:Pelipper:Pelipper:Water:Flying
+318:Carvanha:Carvanha:Water:Dark
+319:Sharpedo:Sharpedo:Water:Dark
+319:Sharpedo:Mega Sharpedo:Water:Dark
+339:Barboach:Barboach:Water:Ground
+340:Whiscash:Whiscash:Water:Ground
+342:Crawdaunt:Crawdaunt:Water:Dark
+369:Relicanth:Relicanth:Water:Rock
+395:Empoleon:Empoleon:Water:Steel
+423:Gastrodon:Gastrodon:Water:Ground
+458:Mantyke:Mantyke:Water:Flying
+484:Palkia:Palkia:Water:Dragon
+536:Palpitoad:Palpitoad:Water:Ground
+537:Seismitoad:Seismitoad:Water:Ground
+564:Tirtouga:Tirtouga:Water:Rock
+565:Carracosta:Carracosta:Water:Rock
+580:Ducklett:Ducklett:Water:Flying
+581:Swanna:Swanna:Water:Flying
+592:Frillish:Frillish:Water:Ghost
+593:Jellicent:Jellicent:Water:Ghost
+647:Keldeo:Keldeo:Water:Fighting
+658:Greninja:Greninja:Water:Dark
+714:Noibat:Noibat:Flying:Dragon
+715:Noivern:Noivern:Flying:Dragon
+001:Bulbasaur:Bulbasaur:Grass:Poison
+002:Ivysaur:Ivysaur:Grass:Poison
+003:Venusaur:Venusaur:Grass:Poison
+003:Venusaur:Mega Venusaur:Grass:Poison
+043:Oddish:Oddish:Grass:Poison
+044:Gloom:Gloom:Grass:Poison
+045:Vileplume:Vileplume:Grass:Poison
+069:Bellsprout:Bellsprout:Grass:Poison
+070:Weepinbell:Weepinbell:Grass:Poison
+071:Victreebel:Victreebel:Grass:Poison
+102:Exeggcute:Exeggcute:Grass:Psychic
+103:Exeggutor:Exeggutor:Grass:Psychic
+187:Hoppip:Hoppip:Grass:Flying
+188:Skiploom:Skiploom:Grass:Flying
+189:Jumpluff:Jumpluff:Grass:Flying
+254:Sceptile:Mega Sceptile:Grass:Dragon
+274:Nuzleaf:Nuzleaf:Grass:Dark
+275:Shiftry:Shiftry:Grass:Dark
+286:Breloom:Breloom:Grass:Fighting
+315:Roselia:Roselia:Grass:Poison
+332:Cacturne:Cacturne:Grass:Dark
+357:Tropius:Tropius:Grass:Flying
+389:Torterra:Torterra:Grass:Ground
+406:Budew:Budew:Grass:Poison
+407:Roserade:Roserade:Grass:Poison
+459:Snover:Snover:Grass:Ice
+460:Abomasnow:Abomasnow:Grass:Ice
+460:Abomasnow:Mega Abomasnow:Grass:Ice
+492:Shaymin:Shaymin:Grass:Flying
+546:Cottonee:Cottonee*:Grass:Fairy
+547:Whimsicott:Whimsicott*:Grass:Fairy
+590:Foongus:Foongus:Grass:Poison
+591:Amoonguss:Amoonguss:Grass:Poison
+597:Ferroseed:Ferroseed:Grass:Steel
+598:Ferrothorn:Ferrothorn:Grass:Steel
+640:Virizion:Virizion:Grass:Fighting
+652:Chesnaught:Chesnaught:Grass:Fighting
+031:Nidoqueen:Nidoqueen:Poison:Ground
+034:Nidoking:Nidoking:Poison:Ground
+041:Zubat:Zubat:Poison:Flying
+042:Golbat:Golbat:Poison:Flying
+169:Crobat:Crobat:Poison:Flying
+434:Stunky:Stunky:Poison:Dark
+435:Skuntank:Skuntank:Poison:Dark
+451:Skorupi:Skorupi:Poison:Bug
+452:Drapion:Drapion:Poison:Dark
+453:Croagunk:Croagunk:Poison:Fighting
+454:Toxicroak:Toxicroak:Poison:Fighting
+690:Skrelp:Skrelp:Poison:Water
+691:Dragalge:Dragalge:Poison:Dragon
+081:Magnemite:Magnemite:Electric:Steel
+082:Magneton:Magneton:Electric:Steel
+145:Zapdos:Zapdos:Electric:Flying
+181:Ampharos:Mega Ampharos:Electric:Dragon
+462:Magnezone:Magnezone:Electric:Steel
+479:Rotom:Rotom:Electric:Ghost
+479:Rotom:Heat Rotom:Electric:Fire
+479:Rotom:Wash Rotom:Electric:Water
+479:Rotom:Frost Rotom:Electric:Ice
+479:Rotom:Fan Rotom:Electric:Flying
+479:Rotom:Mow Rotom:Electric:Grass
+587:Emolga:Emolga:Electric:Flying
+642:Thundurus:Thundurus:Electric:Flying
+694:Helioptile:Helioptile:Electric:Normal
+695:Heliolisk:Heliolisk:Electric:Normal
+702:Dedenne:Dedenne:Electric:Fairy
+111:Rhyhorn:Rhyhorn:Ground:Rock
+112:Rhydon:Rhydon:Ground:Rock
+207:Gligar:Gligar:Ground:Flying
+329:Vibrava:Vibrava:Ground:Dragon
+330:Flygon:Flygon:Ground:Dragon
+343:Baltoy:Baltoy:Ground:Psychic
+344:Claydol:Claydol:Ground:Psychic
+383:Groudon:Primal Groudon:Ground:Fire
+464:Rhyperior:Rhyperior:Ground:Rock
+472:Gliscor:Gliscor:Ground:Flying
+530:Excadrill:Excadrill:Ground:Steel
+551:Sandile:Sandile:Ground:Dark
+552:Krokorok:Krokorok:Ground:Dark
+553:Krookodile:Krookodile:Ground:Dark
+618:Stunfisk:Stunfisk:Ground:Electric
+622:Golett:Golett:Ground:Ghost
+623:Golurk:Golurk:Ground:Ghost
+645:Landorus:Landorus:Ground:Flying
+122:MrMime:MrMime:Psychic:Fairy
+150:Mewtwo:Mega Mewtwo X:Psychic:Fighting
+177:Natu:Natu:Psychic:Flying
+178:Xatu:Xatu:Psychic:Flying
+249:Lugia:Lugia:Psychic:Flying
+251:Celebi:Celebi:Psychic:Grass
+280:Ralts:Ralts:Psychic:Fairy
+281:Kirlia:Kirlia:Psychic:Fairy
+282:Gardevoir:Gardevoir:Psychic:Fairy
+282:Gardevoir:Mega Gardevoir:Psychic:Fairy
+439:MimeJr:MimeJr:Psychic:Fairy
+475:Gallade:Gallade:Psychic:Fighting
+475:Gallade:Mega Gallade:Psychic:Fighting
+494:Victini:Victini:Psychic:Fire
+527:Woobat:Woobat:Psychic:Flying
+528:Swoobat:Swoobat:Psychic:Flying
+561:Sigilyph:Sigilyph:Psychic:Flying
+720:Hoopa:Hoopa:Psychic:Ghost
+720:Hoopa:Hoopa Unbound:Psychic:Dark
+074:Geodude:Geodude:Rock:Ground
+075:Graveler:Graveler:Rock:Ground
+076:Golem:Golem:Rock:Ground
+095:Onix:Onix:Rock:Ground
+138:Omanyte:Omanyte:Rock:Water
+139:Omastar:Omastar:Rock:Water
+140:Kabuto:Kabuto:Rock:Water
+141:Kabutops:Kabutops:Rock:Water
+142:Aerodactyl:Aerodactyl:Rock:Flying
+142:Aerodactyl:Mega Aerodactyl:Rock:Flying
+246:Larvitar:Larvitar:Rock:Ground
+247:Pupitar:Pupitar:Rock:Ground
+248:Tyranitar:Tyranitar:Rock:Dark
+248:Tyranitar:Mega Tyranitar:Rock:Dark
+337:Lunatone:Lunatone:Rock:Psychic
+338:Solrock:Solrock:Rock:Psychic
+345:Lileep:Lileep:Rock:Grass
+346:Cradily:Cradily:Rock:Grass
+347:Anorith:Anorith:Rock:Bug
+348:Armaldo:Armaldo:Rock:Bug
+410:Shieldon:Shieldon:Rock:Steel
+411:Bastiodon:Bastiodon:Rock:Steel
+476:Probopass:Probopass:Rock:Steel
+566:Archen:Archen:Rock:Flying
+567:Archeops:Archeops:Rock:Flying
+639:Terrakion:Terrakion:Rock:Fighting
+688:Binacle:Binacle:Rock:Water
+689:Barbaracle:Barbaracle:Rock:Water
+696:Tyrunt:Tyrunt:Rock:Dragon
+697:Tyrantrum:Tyrantrum:Rock:Dragon
+698:Amaura:Amaura:Rock:Ice
+699:Aurorus:Aurorus:Rock:Ice
+703:Carbink:Carbink:Rock:Fairy
+719:Diancie:Diancie:Rock:Fairy
+719:Diancie:Mega Diancie:Rock:Fairy
+124:Jynx:Jynx:Ice:Psychic
+144:Articuno:Articuno:Ice:Flying
+220:Swinub:Swinub:Ice:Ground
+221:Piloswine:Piloswine:Ice:Ground
+225:Delibird:Delibird:Ice:Flying
+238:Smoochum:Smoochum:Ice:Psychic
+363:Spheal:Spheal:Ice:Water
+364:Sealeo:Sealeo:Ice:Water
+365:Walrein:Walrein:Ice:Water
+473:Mamoswine:Mamoswine:Ice:Ground
+478:Froslass:Froslass:Ice:Ghost
+012:Butterfree:Butterfree:Bug:Flying
+013:Weedle:Weedle:Bug:Poison
+014:Kakuna:Kakuna:Bug:Poison
+015:Beedrill:Beedrill:Bug:Poison
+015:Beedrill:Mega Beedrill:Bug:Poison
+046:Paras:Paras:Bug:Grass
+047:Parasect:Parasect:Bug:Grass
+048:Venonat:Venonat:Bug:Poison
+049:Venomoth:Venomoth:Bug:Poison
+123:Scyther:Scyther:Bug:Flying
+127:Pinsir:Mega Pinsir:Bug:Flying
+165:Ledyba:Ledyba:Bug:Flying
+166:Ledian:Ledian:Bug:Flying
+167:Spinarak:Spinarak:Bug:Poison
+168:Ariados:Ariados:Bug:Poison
+193:Yanma:Yanma:Bug:Flying
+205:Forretress:Forretress:Bug:Steel
+212:Scizor:Scizor:Bug:Steel
+212:Scizor:Mega Scizor:Bug:Steel
+213:Shuckle:Shuckle:Bug:Rock
+214:Heracross:Heracross:Bug:Fighting
+214:Heracross:Mega Heracross:Bug:Fighting
+267:Beautifly:Beautifly:Bug:Flying
+269:Dustox:Dustox:Bug:Poison
+283:Surskit:Surskit:Bug:Water
+284:Masquerain:Masquerain:Bug:Flying
+290:Nincada:Nincada:Bug:Ground
+291:Ninjask:Ninjask:Bug:Flying
+292:Shedinja:Shedinja:Bug:Ghost
+413:Wormadam:Wormadam:Bug:Grass
+414:Mothim:Mothim:Bug:Flying
+415:Combee:Combee:Bug:Flying
+416:Vespiquen:Vespiquen:Bug:Flying
+469:Yanmega:Yanmega:Bug:Flying
+540:Sewaddle:Sewaddle:Bug:Grass
+541:Swadloon:Swadloon:Bug:Grass
+542:Leavanny:Leavanny:Bug:Grass
+543:Venipede:Venipede:Bug:Poison
+544:Whirlipede:Whirlipede:Bug:Poison
+545:Scolipede:Scolipede:Bug:Poison
+557:Dwebble:Dwebble:Bug:Rock
+558:Crustle:Crustle:Bug:Rock
+589:Escavalier:Escavalier:Bug:Steel
+595:Joltik:Joltik:Bug:Electric
+596:Galvantula:Galvantula:Bug:Electric
+632:Durant:Durant:Bug:Steel
+636:Larvesta:Larvesta:Bug:Fire
+637:Volcarona:Volcarona:Bug:Fire
+649:Genesect:Genesect:Bug:Steel
+666:Vivillon:Vivillon:Bug:Flying
+149:Dragonite:Dragonite:Dragon:Flying
+334:Altaria:Altaria:Dragon:Flying
+334:Altaria:Mega Altaria:Dragon:Fairy
+373:Salamence:Salamence:Dragon:Flying
+373:Salamence:Mega Salamence:Dragon:Flying
+380:Latias:Latias:Dragon:Psychic
+380:Latias:Mega Latias:Dragon:Psychic
+381:Latios:Latios:Dragon:Psychic
+381:Latios:Mega Latios:Dragon:Psychic
+384:Rayquaza:Rayquaza:Dragon:Flying
+384:Rayquaza:Mega Rayquaza:Dragon:Flying
+443:Gible:Gible:Dragon:Ground
+444:Gabite:Gabite:Dragon:Ground
+445:Garchomp:Garchomp:Dragon:Ground
+445:Garchomp:Mega Garchomp:Dragon:Ground
+643:Reshiram:Reshiram:Dragon:Fire
+644:Zekrom:Zekrom:Dragon:Electric
+646:Kyurem:Kyurem:Dragon:Ice
+646:Kyurem:White Kyurem:Dragon:Ice
+646:Kyurem:Black Kyurem:Dragon:Ice
+718:Zygarde:Zygarde:Dragon:Ground
+092:Gastly:Gastly:Ghost:Poison
+093:Haunter:Haunter:Ghost:Poison
+094:Gengar:Gengar:Ghost:Poison
+094:Gengar:Mega Gengar:Ghost:Poison
+425:Drifloon:Drifloon:Ghost:Flying
+426:Drifblim:Drifblim:Ghost:Flying
+442:Spiritomb:Spiritomb:Ghost:Dark
+487:Giratina:Giratina:Ghost:Dragon
+607:Litwick:Litwick:Ghost:Fire
+608:Lampent:Lampent:Ghost:Fire
+609:Chandelure:Chandelure:Ghost:Fire
+708:Phantump:Phantump:Ghost:Grass
+709:Trevenant:Trevenant:Ghost:Grass
+710:Pumpkaboo:Pumpkaboo:Ghost:Grass
+711:Gourgeist:Gourgeist:Ghost:Grass
+198:Murkrow:Murkrow:Dark:Flying
+215:Sneasel:Sneasel:Dark:Ice
+228:Houndour:Houndour:Dark:Fire
+229:Houndoom:Houndoom:Dark:Fire
+229:Houndoom:Mega Houndoom:Dark:Fire
+302:Sableye:Sableye:Dark:Ghost
+302:Sableye:Mega Sableye:Dark:Ghost
+430:Honchkrow:Honchkrow:Dark:Flying
+461:Weavile:Weavile:Dark:Ice
+559:Scraggy:Scraggy:Dark:Fighting
+560:Scrafty:Scrafty:Dark:Fighting
+624:Pawniard:Pawniard:Dark:Steel
+625:Bisharp:Bisharp:Dark:Steel
+629:Vullaby:Vullaby:Dark:Flying
+630:Mandibuzz:Mandibuzz:Dark:Flying
+633:Deino:Deino:Dark:Dragon
+634:Zweilous:Zweilous:Dark:Dragon
+635:Hydreigon:Hydreigon:Dark:Dragon
+686:Inkay:Inkay:Dark:Psychic
+687:Malamar:Malamar:Dark:Psychic
+717:Yveltal:Yveltal:Dark:Flying
+208:Steelix:Steelix:Steel:Ground
+208:Steelix:Mega Steelix:Steel:Ground
+227:Skarmory:Skarmory:Steel:Flying
+303:Mawile:Mawile:Steel:Fairy
+303:Mawile:Mega Mawile:Steel:Fairy
+304:Aron:Aron:Steel:Rock
+305:Lairon:Lairon:Steel:Rock
+306:Aggron:Aggron:Steel:Rock
+374:Beldum:Beldum:Steel:Psychic
+375:Metang:Metang:Steel:Psychic
+376:Metagross:Metagross:Steel:Psychic
+376:Metagross:Mega Metagross:Steel:Psychic
+385:Jirachi:Jirachi:Steel:Psychic
+436:Bronzor:Bronzor:Steel:Psychic
+437:Bronzong:Bronzong:Steel:Psychic
+483:Dialga:Dialga:Steel:Dragon
+638:Cobalion:Cobalion:Steel:Fighting
+679:Honedge:Honedge:Steel:Ghost
+680:Doublade:Doublade:Steel:Ghost
+681:Aegislash:Aegislash:Steel:Ghost
+707:Klefki:Klefki:Steel:Fairy
+176:Togetic:Togetic:Fairy:Flying
+468:Togekiss:Togekiss:Fairy:Flying

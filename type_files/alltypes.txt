@@ -1,0 +1,17 @@
+010:Caterpie
+:BUG011:Metapod
+:BUG127:Pinsir
+:BUG204:Pineco
+:BUG265:Wurmple
+:BUG266:Silcoon
+:BUG268:Cascoon
+:BUG313:Volbeat
+:BUG314:Illumise
+:BUG401:Kricketot
+:BUG402:Kricketune
+:BUG412:Burmy
+:BUG588:Karrablast
+:BUG616:Shelmet
+:BUG617:Accelgor
+:BUG664:Scatterbug
+:BUG665:Spewpa:BUG

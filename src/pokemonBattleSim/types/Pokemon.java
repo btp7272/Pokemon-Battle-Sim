@@ -104,8 +104,12 @@ public class Pokemon
 	/*
 	 * Basic Constructors for Pokemon Objects
 	 */
-	public Pokemon(){}
-	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed)
+	public Pokemon(){} 
+	
+	/*
+	 * Full constructor with all types
+	 */
+	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne, Type typeTwo)
 	{
 		this.indexNum = indexNum;
 		this.name = name;
@@ -115,7 +119,31 @@ public class Pokemon
 		this.spAtk = spAtk;
 		this.spDef = spDef;
 		this.speed = speed;
+		this.typeOne = typeOne;
+		this.typeTwo = typeTwo;
 	}
+	
+	/*
+	 * Full constructor for single-type Pokemon
+	 */
+	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne)
+	{
+		this.indexNum = indexNum;
+		this.name = name;
+		this.hp = hp;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.typeOne = typeOne;
+		this.typeTwo = null;
+	}
+	
+	
+	/*
+	 * Copy constructor
+	 */
 	public Pokemon(Pokemon a)
 	{
 		this.indexNum = a.getIndex();
@@ -126,6 +154,8 @@ public class Pokemon
 		this.spAtk = a.getSpAtk();
 		this.spDef = a.getSpDef();
 		this.speed = a.getSpeed();
+		this.typeOne = a.getType1();
+		this.typeTwo = a.getType2();
 	}
 	
 }

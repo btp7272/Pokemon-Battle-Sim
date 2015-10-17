@@ -4,12 +4,11 @@ package pokemonBattleSim.formulas;
  * Formula calculator 
  */
 import java.util.*;
+import pokemonBattleSim.types.Type;
 
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Attribute;
 import pokemonBattleSim.types.Move;
-
-import java.lang.*;
 
 public class Formula
 {
@@ -87,14 +86,22 @@ public class Formula
             stab = 1.0;
         
         //Calculate type modifier
-        type = 1.0;/*
-        type *= effectiveness[m.getType().getMask()][b.getType1().getMask()];
-        type *= effectiveness[m.getType().getMask()][b.getType2().getMask()];
-        */
+        type = 1.0;
+        type *= clacEffectiveness(type, m.getType(),b.getType1());
+        type *= clacEffectiveness(type, m.getType(),b.getType2());
+       
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();
         
         return (stab * type * roll);
+    }
+    
+    public static double clacEffectiveness(double curModifier, Type atkType, Type defType)
+    {
+    	curModifier *= effectiveness[atkType.getMask()][defType.getMask()];
+    	//Check ability of pokemon a
+    	//Check ability of pokemon b
+    	return curModifier;
     }
     
     

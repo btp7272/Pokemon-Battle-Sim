@@ -11,8 +11,8 @@ public class PokemonList
 	Pokemon Charmander = new Pokemon(4, "Charmander", 39, 52, 43, 60, 50, 65);
 	Pokemon Charmeleon = new Pokemon(5, "Charmeleon", 58, 64, 58, 80, 65, 80);
 	Pokemon Charizard = new Pokemon(6, "Charizard", 78, 84, 78, 109, 85, 100);
-	Pokemon MegaCharizardX = new Pokemon(-006.1, "Charizard (Mega Charizard X)", 78, 130, 111, 130, 85, 100);
-	Pokemon MegaCharizardY = new Pokemon(-006.2, "Charizard (Mega Charizard Y)", 78, 104, 78, 159, 115, 100);
+	Pokemon MegaCharizardX = new Pokemon(-6.1, "Charizard (Mega Charizard X)", 78, 130, 111, 130, 85, 100);
+	Pokemon MegaCharizardY = new Pokemon(-6.2, "Charizard (Mega Charizard Y)", 78, 104, 78, 159, 115, 100);
 	Pokemon Squirtle = new Pokemon(7, "Squirtle", 44, 48, 65, 50, 64, 43);
 	Pokemon Wartortle = new Pokemon(8, "Wartortle", 59, 63, 80, 65, 80, 58);
 	Pokemon Blastoise = new Pokemon(9, "Blastoise", 79, 83, 100, 85, 105, 78);

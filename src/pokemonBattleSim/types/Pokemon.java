@@ -15,7 +15,7 @@ public class Pokemon
 	int defModifier = 0;
 	int spDefModifier = 0;
 	int spAtkModifier = 0;
-	int speedAtkModifier = 0;
+	int speedModifier = 0;
 	int atk;
 	int baseAtk;
 	int def;
@@ -51,9 +51,9 @@ public class Pokemon
 	private void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	
-	private void changeAtk(int attack)
+	private void changeAtk(int change)
 	{
-		this.atkModifier += attack;
+		this.atkModifier += change;
 		if(this.atkModifier > 6)
 		{
 			this.atkModifier = 6;
@@ -65,49 +65,50 @@ public class Pokemon
 		switch(this.atkModifier) 
 		{
 			case -6 :
-				this.atk = this.baseAtk * (2.0/8);
+				this.atk = (int)(this.baseAtk * (2.0/8));
 				break;
 			case -5 :
-				this.atk = this.baseAtk * (2.0/7);
+				this.atk = (int)(this.baseAtk * (2.0/7));
 				break;
 			case -4 : 
-				this.atk = this.baseAtk * (2.0/6);
+				this.atk = (int)(this.baseAtk * (2.0/6));
 				break;
 			case -3 :
-				this.atk = this.baseAtk * (2.0/5);
+				this.atk = (int)(this.baseAtk * (2.0/5));
 				break;
 			case -2 :
-				this.atk = this.baseAtk * (2.0/4);
+				this.atk = (int)(this.baseAtk * (2.0/4));
 				break;
 			case -1 : 
-				this.atk = this.baseAtk * (2.0/3);
+				this.atk = (int)(this.baseAtk * (2.0/3));
 				break;
 			case 0 :
-				this.atk = this.baseAtk * (2.0/2);
+				this.atk = (int)(this.baseAtk * (2.0/2));
 				break;
 			case 1 :
-				this.atk = this.baseAtk * (3.0/2);
+				this.atk = (int)(this.baseAtk * (3.0/2));
 				break;
 			case 2 :
-				this.atk = this.baseAtk * (2);
+				this.atk = (int)(this.baseAtk * (4.0/2));
 				break;
 			case 3 : 
-				this.atk = this.baseAtk * (5.0/2);
+				this.atk = (int)(this.baseAtk * (5.0/2));
 				break;
 			case 4 :
-				this.atk = this.baseAtk * (3);
+				this.atk = (int)(this.baseAtk * (6.0/2));
 				break;
 			case 5 :
-				this.atk = this.baseAtk * (7.0/2);
+				this.atk = (int)(this.baseAtk * (7.0/2));
 				break;
 			case 6 : 
-				this.atk = this.baseAtk * (4);
+				this.atk = (int)(this.baseAtk * (8.0/2));
 				break;
 		}
 	}
-	private void changeDef(int defense)
+	
+	private void changeDef(int change)
 	{
-		this.defModifier += defense;
+		this.defModifier += change;
 		if(this.defModifier > 6)
 		{
 			this.defModifier = 6;
@@ -119,49 +120,212 @@ public class Pokemon
 		switch(this.defModifier) 
 		{
 			case -6 :
-				this.def = this.baseDef * (2.0/8);
+				this.def = (int)(this.baseDef * (2.0/8));
 				break;
 			case -5 :
-				this.def = this.baseDef * (2.0/7);
+				this.def = (int)(this.baseDef * (2.0/7));
 				break;
 			case -4 : 
-				this.def = this.baseDef * (2.0/6);
+				this.def = (int)(this.baseDef * (2.0/6));
 				break;
 			case -3 :
-				this.def = this.baseDef * (2.0/5);
+				this.def = (int)(this.baseDef * (2.0/5));
 				break;
 			case -2 :
-				this.def = this.baseDef * (2.0/4);
+				this.def = (int)(this.baseDef * (2.0/4));
 				break;
 			case -1 : 
-				this.def = this.baseDef * (2.0/3);
+				this.def = (int)(this.baseDef * (2.0/3));
 				break;
 			case 0 :
-				this.def = this.baseDef * (2.0/2);
+				this.def = (int)(this.baseDef * (2.0/2));
 				break;
 			case 1 :
-				this.def = this.baseDef * (3.0/2);
+				this.def = (int)(this.baseDef * (3.0/2));
 				break;
 			case 2 :
-				this.def = this.baseDef * (2);
+				this.def = (int)(this.baseDef * (4.0/2));
 				break;
 			case 3 : 
-				this.def = this.baseDef * (5.0/2);
+				this.def = (int)(this.baseDef * (5.0/2));
 				break;
 			case 4 :
-				this.def = this.baseDef * (3);
+				this.def = (int)(this.baseDef * (6.0/2));
 				break;
 			case 5 :
-				this.def = this.baseDef * (7.0/2);
+				this.def = (int)(this.baseDef * (7.0/2));
 				break;
 			case 6 : 
-				this.def = this.baseDef * (4);
+				this.def = (int)(this.baseDef * (8.0/2));
 				break;
 		}
 	}
-	private void changeSpAtk
-	private void changeSpDef
-	private void changeSpeed
+	
+	private void changeSpAtk(int change)
+	{
+		this.spAtkModifier += change;
+		if(this.spAtkModifier > 6)
+		{
+			this.spAtkModifier = 6;
+		}
+		if(this.spAtkModifier < -6)
+		{
+			this.spAtkModifier = -6;
+		}
+		switch(this.spAtkModifier) 
+		{
+			case -6 :
+				this.spAtk = (int)(this.baseSpAtk * (2.0/8));
+				break;
+			case -5 :
+				this.spAtk = (int)(this.baseSpAtk * (2.0/7));
+				break;
+			case -4 : 
+				this.spAtk = (int)(this.baseSpAtk * (2.0/6));
+				break;
+			case -3 :
+				this.spAtk = (int)(this.baseSpAtk * (2.0/5));
+				break;
+			case -2 :
+				this.spAtk = (int)(this.baseSpAtk * (2.0/4));
+				break;
+			case -1 : 
+				this.spAtk = (int)(this.baseSpAtk * (2.0/3));
+				break;
+			case 0 :
+				this.spAtk = (int)(this.baseSpAtk * (2.0/2));
+				break;
+			case 1 :
+				this.spAtk = (int)(this.baseSpAtk * (3.0/2));
+				break;
+			case 2 :
+				this.spAtk = (int)(this.baseSpAtk * (4.0/2));
+				break;
+			case 3 : 
+				this.spAtk = (int)(this.baseSpAtk * (5.0/2));
+				break;
+			case 4 :
+				this.spAtk = (int)(this.baseSpAtk * (6.0/2));
+				break;
+			case 5 :
+				this.spAtk = (int)(this.baseSpAtk * (7.0/2));
+				break;
+			case 6 : 
+				this.spAtk = (int)(this.baseSpAtk * (8.0/2));
+				break;
+		}
+	}
+	
+		
+	private void changeSpDef(int change)
+	{
+		this.spDefModifier += change;
+		if(this.spDefModifier > 6)
+		{
+			this.spDefModifier = 6;
+		}
+		if(this.spDefModifier < -6)
+		{
+			this.spDefModifier = -6;
+		}
+		switch(this.spDefModifier) 
+		{
+			case -6 :
+				this.spDef = (int)(this.baseSpDef * (2.0/8));
+				break;
+			case -5 :
+				this.spDef = (int)(this.baseSpDef * (2.0/7));
+				break;
+			case -4 : 
+				this.spDef = (int)(this.baseSpDef * (2.0/6));
+				break;
+			case -3 :
+				this.spDef = (int)(this.baseSpDef * (2.0/5));
+				break;
+			case -2 :
+				this.spDef = (int)(this.baseSpDef * (2.0/4));
+				break;
+			case -1 : 
+				this.spDef = (int)(this.baseSpDef * (2.0/3));
+				break;
+			case 0 :
+				this.spDef = (int)(this.baseSpDef * (2.0/2));
+				break;
+			case 1 :
+				this.spDef = (int)(this.baseSpDef * (3.0/2));
+				break;
+			case 2 :
+				this.spDef = (int)(this.baseSpDef * (4.0/2));
+				break;
+			case 3 : 
+				this.spDef = (int)(this.baseSpDef * (5.0/2));
+				break;
+			case 4 :
+				this.spDef = (int)(this.baseSpDef * (6.0/2));
+				break;
+			case 5 :
+				this.spDef = (int)(this.baseSpDef * (7.0/2));
+				break;
+			case 6 : 
+				this.spDef = (int)(this.baseSpDef * (8.0/2));
+				break;
+		}
+	}
+	
+	private void changeSpeed(int change)
+	{
+		this.speedModifier += change;
+		if(this.speedModifier > 6)
+		{
+			this.speedModifier = 6;
+		}
+		if(this.speedModifier < -6)
+		{
+			this.speedModifier = -6;
+		}
+		switch(this.speedModifier) 
+		{
+			case -6 :
+				this.speed = (int)(this.baseSpeed * (2.0/8));
+				break;
+			case -5 :
+				this.speed = (int)(this.baseSpeed * (2.0/7));
+				break;
+			case -4 : 
+				this.speed = (int)(this.baseSpeed * (2.0/6));
+				break;
+			case -3 :
+				this.speed = (int)(this.baseSpeed * (2.0/5));
+				break;
+			case -2 :
+				this.speed = (int)(this.baseSpeed * (2.0/4));
+				break;
+			case -1 : 
+				this.speed = (int)(this.baseSpeed * (2.0/3));
+				break;
+			case 0 :
+				this.speed = (int)(this.baseSpeed * (2.0/2));
+				break;
+			case 1 :
+				this.speed = (int)(this.baseSpeed * (3.0/2));
+				break;
+			case 2 :
+				this.speed = (int)(this.baseSpeed * (4.0/2));
+				break;
+			case 3 : 
+				this.speed = (int)(this.baseSpeed * (5.0/2));
+				break;
+			case 4 :
+				this.speed = (int)(this.baseSpeed * (6.0/2));
+				break;
+			case 5 :
+				this.speed = (int)(this.baseSpeed * (7.0/2));
+				break;
+			case 6 : 
+				this.speed = (int)(this.baseSpeed * (8.0/2));
+				break;
+		}
+	}
 	private void changeWeight(double newWeight){ this.weight = newWeight;}
 	
 	//private void setAbility(Ability newAbility){ ability = newAbility;}

@@ -6,4 +6,9 @@ import pokemonBattleSim.types.Status;
 public class Statmap 
 {
 	static Map < String, Status > statusMap;
+	
+	static
+	{
+		//statusMap.put();
+	}
 }

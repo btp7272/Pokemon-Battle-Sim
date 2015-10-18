@@ -6,7 +6,6 @@ import pokemonBattleSim.types.Type;
 
 public class Poke
 {
-	
 	static Map < String, Pokemon > pokeMap;
 	static
 	{

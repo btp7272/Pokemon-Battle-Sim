@@ -423,7 +423,7 @@ public class Poke
 		pokeMap.put("Bagon", new Pokemon(371, "Bagon", 45, 75, 60, 40, 30, 50, Type.DRAGON));
 		pokeMap.put("Shelgon", new Pokemon(372, "Shelgon", 65, 95, 100, 60, 50, 50, Type.DRAGON));
 		pokeMap.put("Salamence", new Pokemon(373, "Salamence", 95, 135, 80, 110, 80, 100, Type.DRAGON, Type.FLYING));
-		pokeMap.put("Mega Salamence", new Pokemon-(373, "Mega Salamence", 95, 145, 130, 120, 90, 120, Type.DRAGON, Type.FLYING));
+		pokeMap.put("Mega Salamence", new Pokemon(-373, "Mega Salamence", 95, 145, 130, 120, 90, 120, Type.DRAGON, Type.FLYING));
 		pokeMap.put("Beldum", new Pokemon(374, "Beldum", 40, 55, 80, 35, 60, 30, Type.STEEL, Type.PSYCHIC));
 		pokeMap.put("Metang", new Pokemon(375, "Metang", 60, 75, 100, 55, 80, 50, Type.STEEL, Type.PSYCHIC));
 		pokeMap.put("Metagross", new Pokemon(376, "Metagross", 80, 135, 130, 95, 90, 70, Type.STEEL, Type.PSYCHIC));
@@ -438,9 +438,9 @@ public class Poke
 		pokeMap.put("Kyogre", new Pokemon(382, "Kyogre", 100, 100, 90, 150, 140, 90, Type.WATER));
 		pokeMap.put("Primal Kyogre", new Pokemon(-382, "Primal Kyogre", 100, 150, 90, 180, 160, 90, Type.WATER));
 		pokeMap.put("Groudon", new Pokemon(383, "Groudon", 100, 150, 140, 100, 90, 90, Type.GROUND));
-		pokeMap.put("Primal Groudon", new Pokemon(383P, "Primal Groudon", 100, 180, 160, 150, 90, 90, Type.GROUND, Type.FIRE));
+		pokeMap.put("Primal Groudon", new Pokemon(-383, "Primal Groudon", 100, 180, 160, 150, 90, 90, Type.GROUND, Type.FIRE));
 		pokeMap.put("Rayquaza", new Pokemon(384, "Rayquaza", 105, 150, 90, 150, 90, 95, Type.DRAGON, Type.FLYING));
-		pokeMap.put("Mega Rayquaza", new Pokemon(384M, "Mega Rayquaza", 105, 180, 100, 180, 100, 115, Type.DRAGON, Type.FLYING));
+		pokeMap.put("Mega Rayquaza", new Pokemon(-384, "Mega Rayquaza", 105, 180, 100, 180, 100, 115, Type.DRAGON, Type.FLYING));
 		pokeMap.put("Jirachi", new Pokemon(385, "Jirachi", 100, 100, 100, 100, 100, 100, Type.STEEL, Type.PSYCHIC));
 		pokeMap.put("Deoxys", new Pokemon(386.0, "Deoxys", 50, 150, 50, 150, 50, 150, Type.GROUND));
 		pokeMap.put("Deoxys Attack Form", new Pokemon(386.1, "Deoxys Attack Form", 50, 180, 20, 180, 20, 150, Type.GROUND));

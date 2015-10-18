@@ -27,8 +27,8 @@ public class BattleView extends JFrame {
 		JPanel battlePanel = new JPanel();
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(175,220);
-		
+		//this.setSize(175,220);
+		this.setSize(500,120);
 		battlePanel.add(firstPokemonNameLabel);
 		battlePanel.add(firstPokemonName);
 		battlePanel.add(secondPokemonNameLabel);

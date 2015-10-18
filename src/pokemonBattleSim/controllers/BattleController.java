@@ -27,6 +27,7 @@ public class BattleController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			/*
 			Pokemon firstPokemon = PokemonStringToObjectConverter.convert((battleView.getFirstPokemonName()));
 			Pokemon secondPokemon = PokemonStringToObjectConverter.convert((battleView.getSecondPokemonName()));
 			Move moveToUse = MoveStringToObjectConverter.convert(battleView.getMoveToUse());
@@ -49,6 +50,7 @@ public class BattleController {
 			
 			battleModel.battle(firstPokemon, secondPokemon, moveToUse);
 			battleView.displayPopupMessage(battleModel.getMessage());
+			*/
 		}
 		
 	}

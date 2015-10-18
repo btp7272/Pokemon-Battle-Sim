@@ -66,7 +66,9 @@ public class BattleModel {
 				}
 			}
 		};
-		this.timer.schedule(this.counter, 0, 1000); // count down once per second
+		//this.timer.schedule(this.counter, 0, 1000); // count down once per second
+		timer.schedule(new DelayTask(Entity.PLAYERONE), 0);
+		timer.schedule(new DelayTask(Entity.PLAYERTWO), 0);
 	}
 	
 	public boolean isGameover ()
@@ -160,7 +162,8 @@ public class BattleModel {
 	 * @param souce the entity initiating the action (move, swap)
 	 * @param target the target of the move
 	 * @param args an object containing either a swap index or move
-	 * @param delay how long the move will take
+	 * @param activePeriod how long the move will take
+	 * @param inactivePeriod how long to wait after the move
 	 */
 	public boolean registerAction (Entity source, Entity target, RegisterActionArgs args, int activePeriod, int inActivePeriod)
 	{
@@ -369,9 +372,22 @@ public class BattleModel {
 				{
 					log.push(playerOne.getActiveTeamMember().getName() + " used " + args.getMove() + " on " + playerTwo.getActiveTeamMember().getName() + "\n");
 				}
-				// TODO damage player one
-				// TODO swap active Pokemon is possible
-				// TODO declare game over if no swap possible
+				Pokemon pokemon = playerOne.getActiveTeamMember();
+				pokemon.changeHP(damage);
+				if (pokemon.getHP()<=0)
+				{
+					// Pokemon has fainted
+					int availablePokemon = 0;
+					for (Pokemon p : playerOne.getPokemonTeam())
+					{
+						if (p.getHP() > 0)
+							availablePokemon++;
+					}
+					if (availablePokemon == 0)
+					{
+						gameover();
+					}
+				}
 			}
 			}
 		}
@@ -388,9 +404,23 @@ public class BattleModel {
 				{
 					log.push(playerTwo.getActiveTeamMember().getName() + " used " + args.getMove() + " on " + playerOne.getActiveTeamMember().getName() + "\n");
 				}
-				// TODO damage player two
-				// TODO swap active Pokemon is possible
-				// TODO declare game over if no swap possible
+				
+				Pokemon pokemon = playerTwo.getActiveTeamMember();
+				pokemon.changeHP(damage);
+				if (pokemon.getHP()<=0)
+				{
+					// Pokemon has fainted
+					int availablePokemon = 0;
+					for (Pokemon p : playerTwo.getPokemonTeam())
+					{
+						if (p.getHP() > 0)
+							availablePokemon++;
+					}
+					if (availablePokemon == 0)
+					{
+						gameover();
+					}
+				}
 			}
 			}
 		}

@@ -11,5 +11,4 @@ public interface IPokemonTrainer {
 	public Pokemon getActiveTeamMember ();
 	public boolean swapActiveTeamMember ( int targetIndex );
 	
-	public int getPokemonTeamID (Pokemon pokemon);
 }

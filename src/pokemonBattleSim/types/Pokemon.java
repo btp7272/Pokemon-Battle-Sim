@@ -51,7 +51,8 @@ public class Pokemon
 	private void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	
-	private void changeAtk(int change)
+	//para: number -6 to 6. The stage of the stat
+	public void changeAtk(int change)
 	{
 		this.atkModifier += change;
 		if(this.atkModifier > 6)
@@ -106,7 +107,7 @@ public class Pokemon
 		}
 	}
 	
-	private void changeDef(int change)
+	public void changeDef(int change)
 	{
 		this.defModifier += change;
 		if(this.defModifier > 6)
@@ -161,7 +162,7 @@ public class Pokemon
 		}
 	}
 	
-	private void changeSpAtk(int change)
+	public void changeSpAtk(int change)
 	{
 		this.spAtkModifier += change;
 		if(this.spAtkModifier > 6)
@@ -217,7 +218,7 @@ public class Pokemon
 	}
 	
 		
-	private void changeSpDef(int change)
+	public void changeSpDef(int change)
 	{
 		this.spDefModifier += change;
 		if(this.spDefModifier > 6)
@@ -272,7 +273,7 @@ public class Pokemon
 		}
 	}
 	
-	private void changeSpeed(int change)
+	public void changeSpeed(int change)
 	{
 		this.speedModifier += change;
 		if(this.speedModifier > 6)
@@ -326,7 +327,25 @@ public class Pokemon
 				break;
 		}
 	}
-	private void changeWeight(double newWeight){ this.weight = newWeight;}
+	
+	public void changeHP(int damage)
+	{
+		int newHP = this.hp - damage;
+		if(damage >= this.hp)
+			this.hp = 0;
+		else
+			this.hp = newHP;
+	}
+	
+	public void changeWeight(double newWeight){ this.weight = newWeight;}
+	
+	public void resetHP() { this.hp = this.baseHp; }
+	public void resetAtk() { this.atkModifier = 0; this.atk = this.baseAtk; }
+	public void resetDef() { this.defModifier = 0; this.def = this.baseDef; }
+	public void resetSpAtk() { this.spAtkModifier = 0; this.spAtk = this.baseSpAtk; }
+	public void resetSpDef() { this.spDefModifier = 0; this.spDef = this.baseSpDef; }
+	public void resetSpeed() { this.speedModifier = 0; this.speed = this.baseSpeed; }
+	
 	
 	//private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
@@ -385,6 +404,7 @@ public class Pokemon
 	public double getIndex(){return this.indexNum;}
 	public String getName(){ return this.name;}
 	public int getHP(){return this.hp;}
+	public int getBaseHP() {return this.baseHp;}
 	public int getAtk(){return this.atk;}
 	public int getDef(){return this.def;}
 	public int getSpAtk(){return this.spAtk;}
@@ -395,7 +415,10 @@ public class Pokemon
 	public Type getType2(){return this.typeTwo;}
 	public Gender getGender(){return this.gender;}
 	public int getAtkModifier(){return this.atkModifier;}
-	
+	public int getDefModifier(){return this.defModifier;}
+	public int getSpAtkModifier(){return this.spAtkModifier;}
+	public int getSpDefModifier(){return this.spDefModifier;}
+	public int getSpeedModifier(){return this.speedModifier;}
 	/*
 	 * Basic Constructors for Pokemon Objects
 	 */

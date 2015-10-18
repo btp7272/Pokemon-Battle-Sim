@@ -11,6 +11,11 @@ public class Pokemon
 	String name;
 	int hp;
 	int baseHp;
+	int atkModifier = 0;
+	int defModifier = 0;
+	int spDefModifier = 0;
+	int spAtkModifier = 0;
+	int speedAtkModifier = 0;
 	int atk;
 	int baseAtk;
 	int def;
@@ -37,14 +42,128 @@ public class Pokemon
 	
 	private void setIndex(double index){ this.indexNum = index;}
 	private void setName(String newName){ this.name = newName;}
-	private void setHp(int health){	this.hp = Formula.calcHP(health); this.baseHp = hp;}
-	private void setAtk(int attack){ this.atk = Formula.calcStat(attack); this.baseAtk = atk;}
-	private void setDef(int defense){ this.def = Formula.calcStat(defense); this.baseDef = def;}
-	private void setSpAtk(int spattack){ this.spAtk = Formula.calcStat(spattack); this.baseSpAtk = spAtk;}
-	private void setSpDef(int spdefense){ this.spDef = Formula.calcStat(spdefense); this.baseSpDef = spDef;}
-	private void setSpeed(int newSpeed){ this.speed = Formula.calcStat(newSpeed); this.baseSpeed = speed;}
-	private void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = weight;}
+	private void setHp(int health){	this.hp = Formula.calcHP(health); this.baseHp = this.hp;}
+	private void setAtk(int attack){ this.atk = Formula.calcStat(attack); this.baseAtk = this.atk;}
+	private void setDef(int defense){ this.def = Formula.calcStat(defense); this.baseDef = this.def;}
+	private void setSpAtk(int spattack){ this.spAtk = Formula.calcStat(spattack); this.baseSpAtk = this.spAtk;}
+	private void setSpDef(int spdefense){ this.spDef = Formula.calcStat(spdefense); this.baseSpDef = this.spDef;}
+	private void setSpeed(int newSpeed){ this.speed = Formula.calcStat(newSpeed); this.baseSpeed = this.speed;}
+	private void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
+	
+	private void changeAtk(int attack)
+	{
+		this.atkModifier += attack;
+		if(this.atkModifier > 6)
+		{
+			this.atkModifier = 6;
+		}
+		if(this.atkModifier < -6)
+		{
+			this.atkModifier = -6;
+		}
+		switch(this.atkModifier) 
+		{
+			case -6 :
+				this.atk = this.baseAtk * (2.0/8);
+				break;
+			case -5 :
+				this.atk = this.baseAtk * (2.0/7);
+				break;
+			case -4 : 
+				this.atk = this.baseAtk * (2.0/6);
+				break;
+			case -3 :
+				this.atk = this.baseAtk * (2.0/5);
+				break;
+			case -2 :
+				this.atk = this.baseAtk * (2.0/4);
+				break;
+			case -1 : 
+				this.atk = this.baseAtk * (2.0/3);
+				break;
+			case 0 :
+				this.atk = this.baseAtk * (2.0/2);
+				break;
+			case 1 :
+				this.atk = this.baseAtk * (3.0/2);
+				break;
+			case 2 :
+				this.atk = this.baseAtk * (2);
+				break;
+			case 3 : 
+				this.atk = this.baseAtk * (5.0/2);
+				break;
+			case 4 :
+				this.atk = this.baseAtk * (3);
+				break;
+			case 5 :
+				this.atk = this.baseAtk * (7.0/2);
+				break;
+			case 6 : 
+				this.atk = this.baseAtk * (4);
+				break;
+		}
+	}
+	private void changeDef(int defense)
+	{
+		this.defModifier += defense;
+		if(this.defModifier > 6)
+		{
+			this.defModifier = 6;
+		}
+		if(this.defModifier < -6)
+		{
+			this.defModifier = -6;
+		}
+		switch(this.defModifier) 
+		{
+			case -6 :
+				this.def = this.baseDef * (2.0/8);
+				break;
+			case -5 :
+				this.def = this.baseDef * (2.0/7);
+				break;
+			case -4 : 
+				this.def = this.baseDef * (2.0/6);
+				break;
+			case -3 :
+				this.def = this.baseDef * (2.0/5);
+				break;
+			case -2 :
+				this.def = this.baseDef * (2.0/4);
+				break;
+			case -1 : 
+				this.def = this.baseDef * (2.0/3);
+				break;
+			case 0 :
+				this.def = this.baseDef * (2.0/2);
+				break;
+			case 1 :
+				this.def = this.baseDef * (3.0/2);
+				break;
+			case 2 :
+				this.def = this.baseDef * (2);
+				break;
+			case 3 : 
+				this.def = this.baseDef * (5.0/2);
+				break;
+			case 4 :
+				this.def = this.baseDef * (3);
+				break;
+			case 5 :
+				this.def = this.baseDef * (7.0/2);
+				break;
+			case 6 : 
+				this.def = this.baseDef * (4);
+				break;
+		}
+	}
+	private void changeSpAtk
+	private void changeSpDef
+	private void changeSpeed
+	private void changeWeight(double newWeight){ this.weight = newWeight;}
+	
 	//private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
 	{
@@ -111,6 +230,7 @@ public class Pokemon
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
 	public Gender getGender(){return this.gender;}
+	public int getAtkModifier(){return this.atkModifier;}
 	
 	/*
 	 * Basic Constructors for Pokemon Objects

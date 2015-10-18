@@ -1,0 +1,811 @@
+1	Bulbasaur	15.2 lb	6.9 kg
+2	Ivysaur	28.7 lb	13.0 kg
+3	Venusaur	220.5 lb	100.0 kg
+3	Mega Venusaur	342.8 lb	155.5 kg
+4	Charmander	18.7 lb	8.5 kg
+5	Charmeleon	41.9 lb	19.0 kg
+6	Charizard	199.5 lb	90.5 kg
+6	Mega Charizard X	243.6 lb	110.5 kg
+6	Mega Charizard Y	221.6 lb	100.5 kg
+7	Squirtle	19.8 lb	9.0 kg
+8	Wartortle	49.6 lb	22.5 kg
+9	Blastoise	188.5 lb	85.5 kg
+9	Mega Blastoise	222.9 lb	101.1 kg
+10	Caterpie	6.4 lb	2.9 kg
+11	Metapod	21.8 lb	9.9 kg
+12	Butterfree	70.5 lb	32.0 kg
+13	Weedle	7.1 lb	3.2 kg
+14	Kakuna	22.0 lb	10.0 kg
+15	Beedrill	65.0 lb	29.5 kg
+15	Mega Beedrill	89.3 lb	40.5 kg
+16	Pidgey	4.0 lb	1.8 kg
+17	Pidgeotto	66.1 lb	30.0 kg
+18	Pidgeot	87.1 lb	39.5 kg
+18	Mega Pidgeot	111.3 lb	50.5 kg
+19	Rattata	7.7 lb	3.5 kg
+20	Raticate	40.8 lb	18.5 kg
+21	Spearow	4.4 lb	2.0 kg
+22	Fearow	83.8 lb	38.0 kg
+23	Ekans	15.2 lb	6.9 kg
+24	Arbok	143.3 lb	65.0 kg
+25	Pikachu	13.2 lb	6.0 kg
+25	Cosplay Pikachu	13.2 lb	6.0 kg
+25	Pikachu Rock Star	13.2 lb	6.0 kg
+25	Pikachu Belle	13.2 lb	6.0 kg
+25	Pikachu Pop Star	13.2 lb	6.0 kg
+25	Pikachu, Ph.D.	13.2 lb	6.0 kg
+25	Pikachu Libre	13.2 lb	6.0 kg
+26	Raichu	66.1 lb	30.0 kg
+27	Sandshrew	26.5 lb	12.0 kg
+28	Sandslash	65.0 lb	29.5 kg
+29	Nidoran♀	15.4 lb	7.0 kg
+30	Nidorina	44.1 lb	20.0 kg
+31	Nidoqueen	132.3 lb	60.0 kg
+32	Nidoran♂	19.8 lb	9.0 kg
+33	Nidorino	43.0 lb	19.5 kg
+34	Nidoking	136.7 lb	62.0 kg
+35	Clefairy	16.5 lb	7.5 kg
+36	Clefable	88.2 lb	40.0 kg
+37	Vulpix	21.8 lb	9.9 kg
+38	Ninetales	43.9 lb	19.9 kg
+39	Jigglypuff	12.1 lb	5.5 kg
+40	Wigglytuff	26.5 lb	12.0 kg
+41	Zubat	16.5 lb	7.5 kg
+42	Golbat	121.3 lb	55.0 kg
+43	Oddish	11.9 lb	5.4 kg
+44	Gloom	19.0 lb	8.6 kg
+45	Vileplume	41.0 lb	18.6 kg
+46	Paras	11.9 lb	5.4 kg
+47	Parasect	65.0 lb	29.5 kg
+48	Venonat	66.1 lb	30.0 kg
+49	Venomoth	27.6 lb	12.5 kg
+50	Diglett	1.8 lb	0.8 kg
+51	Dugtrio	73.4 lb	33.3 kg
+52	Meowth	9.3 lb	4.2 kg
+53	Persian	70.5 lb	32.0 kg
+54	Psyduck	43.2 lb	19.6 kg
+55	Golduck	168.9 lb	76.6 kg
+56	Mankey	61.7 lb	28.0 kg
+57	Primeape	70.5 lb	32.0 kg
+58	Growlithe	41.9 lb	19.0 kg
+59	Arcanine	341.7 lb	155.0 kg
+60	Poliwag	27.3 lb	12.4 kg
+61	Poliwhirl	44.1 lb	20.0 kg
+62	Poliwrath	119.0 lb	54.0 kg
+63	Abra	43.0 lb	19.5 kg
+64	Kadabra	124.6 lb	56.5 kg
+65	Alakazam	105.8 lb	48.0 kg
+65	Mega Alakazam	105.8 lb	48.0 kg
+66	Machop	43.0 lb	19.5 kg
+67	Machoke	155.4 lb	70.5 kg
+68	Machamp	286.6 lb	130.0 kg
+69	Bellsprout	8.8 lb	4.0 kg
+70	Weepinbell	14.1 lb	6.4 kg
+71	Victreebel	34.2 lb	15.5 kg
+72	Tentacool	100.3 lb	45.5 kg
+73	Tentacruel	121.3 lb	55.0 kg
+74	Geodude	44.1 lb	20.0 kg
+75	Graveler	231.5 lb	105.0 kg
+76	Golem	661.4 lb	300.0 kg
+77	Ponyta	66.1 lb	30.0 kg
+78	Rapidash	209.4 lb	95.0 kg
+79	Slowpoke	79.4 lb	36.0 kg
+80	Slowbro	173.1 lb	78.5 kg
+80	Mega Slowbro	264.6 lb	120.0 kg
+81	Magnemite	13.2 lb	6.0 kg
+82	Magneton	132.3 lb	60.0 kg
+83	Farfetch'd	33.1 lb	15.0 kg
+84	Doduo	86.4 lb	39.2 kg
+85	Dodrio	187.8 lb	85.2 kg
+86	Seel	198.4 lb	90.0 kg
+87	Dewgong	264.6 lb	120.0 kg
+88	Grimer	66.1 lb	30.0 kg
+89	Muk	66.1 lb	30.0 kg
+90	Shellder	8.8 lb	4.0 kg
+91	Cloyster	292.1 lb	132.5 kg
+92	Gastly	0.2 lb	0.1 kg
+93	Haunter	0.2 lb	0.1 kg
+94	Gengar	89.3 lb	40.5 kg
+94	Mega Gengar	89.3 lb	40.5 kg
+95	Onix	463.0 lb	210.0 kg
+96	Drowzee	71.4 lb	32.4 kg
+97	Hypno	166.7 lb	75.6 kg
+98	Krabby	14.3 lb	6.5 kg
+99	Kingler	132.3 lb	60.0 kg
+100	Voltorb	22.9 lb	10.4 kg
+101	Electrode	146.8 lb	66.6 kg
+102	Exeggcute	5.5 lb	2.5 kg
+103	Exeggutor	264.6 lb	120.0 kg
+104	Cubone	14.3 lb	6.5 kg
+105	Marowak	99.2 lb	45.0 kg
+106	Hitmonlee	109.8 lb	49.8 kg
+107	Hitmonchan	110.7 lb	50.2 kg
+108	Lickitung	144.4 lb	65.5 kg
+109	Koffing	2.2 lb	1.0 kg
+110	Weezing	20.9 lb	9.5 kg
+111	Rhyhorn	253.5 lb	115.0 kg
+112	Rhydon	264.6 lb	120.0 kg
+113	Chansey	76.3 lb	34.6 kg
+114	Tangela	77.2 lb	35.0 kg
+115	Kangaskhan	176.4 lb	80.0 kg
+115	Mega Kangaskhan	220.5 lb	100.0 kg
+116	Horsea	17.6 lb	8.0 kg
+117	Seadra	55.1 lb	25.0 kg
+118	Goldeen	33.1 lb	15.0 kg
+119	Seaking	86.0 lb	39.0 kg
+120	Staryu	76.1 lb	34.5 kg
+121	Starmie	176.4 lb	80.0 kg
+122	Mr. Mime	120.2 lb	54.5 kg
+123	Scyther	123.5 lb	56.0 kg
+124	Jynx	89.5 lb	40.6 kg
+125	Electabuzz	66.1 lb	30.0 kg
+126	Magmar	98.1 lb	44.5 kg
+127	Pinsir	121.3 lb	55.0 kg
+127	Mega Pinsir	130.1 lb	59.0 kg
+128	Tauros	194.9 lb	88.4 kg
+129	Magikarp	22.0 lb	10.0 kg
+130	Gyarados	518.1 lb	235.0 kg
+130	Mega Gyarados	672.4 lb	305.0 kg
+131	Lapras	485.0 lb	220.0 kg
+132	Ditto	8.8 lb	4.0 kg
+133	Eevee	14.3 lb	6.5 kg
+134	Vaporeon	63.9 lb	29.0 kg
+135	Jolteon	54.0 lb	24.5 kg
+136	Flareon	55.1 lb	25.0 kg
+137	Porygon	80.5 lb	36.5 kg
+138	Omanyte	16.5 lb	7.5 kg
+139	Omastar	77.2 lb	35.0 kg
+140	Kabuto	25.4 lb	11.5 kg
+141	Kabutops	89.3 lb	40.5 kg
+142	Aerodactyl	130.1 lb	59.0 kg
+142	Mega Aerodactyl	174.2 lb	79.0 kg
+143	Snorlax	1014.1 lb	460.0 kg
+144	Articuno	122.1 lb	55.4 kg
+145	Zapdos	116.0 lb	52.6 kg
+146	Moltres	132.3 lb	60.0 kg
+147	Dratini	7.3 lb	3.3 kg
+148	Dragonair	36.4 lb	16.5 kg
+149	Dragonite	463.0 lb	210.0 kg
+150	Mewtwo	269.0 lb	122.0 kg
+150	Mega Mewtwo X	280.0 lb	127.0 kg
+150	Mega Mewtwo Y	72.8 lb	33.0 kg
+151	Mew	8.8 lb	4.0 kg
+152	Chikorita	14.1 lb	6.4 kg
+153	Bayleef	34.8 lb	15.8 kg
+154	Meganium	221.6 lb	100.5 kg
+155	Cyndaquil	17.4 lb	7.9 kg
+156	Quilava	41.9 lb	19.0 kg
+157	Typhlosion	175.3 lb	79.5 kg
+158	Totodile	20.9 lb	9.5 kg
+159	Croconaw	55.1 lb	25.0 kg
+160	Feraligatr	195.8 lb	88.8 kg
+161	Sentret	13.2 lb	6.0 kg
+162	Furret	71.7 lb	32.5 kg
+163	Hoothoot	46.7 lb	21.2 kg
+164	Noctowl	89.9 lb	40.8 kg
+165	Ledyba	23.8 lb	10.8 kg
+166	Ledian	78.5 lb	35.6 kg
+167	Spinarak	18.7 lb	8.5 kg
+168	Ariados	73.9 lb	33.5 kg
+169	Crobat	165.3 lb	75.0 kg
+170	Chinchou	26.5 lb	12.0 kg
+171	Lanturn	49.6 lb	22.5 kg
+172	Pichu	4.4 lb	2.0 kg
+173	Cleffa	6.6 lb	3.0 kg
+174	Igglybuff	2.2 lb	1.0 kg
+175	Togepi	3.3 lb	1.5 kg
+176	Togetic	7.1 lb	3.2 kg
+177	Natu	4.4 lb	2.0 kg
+178	Xatu	33.1 lb	15.0 kg
+179	Mareep	17.2 lb	7.8 kg
+180	Flaaffy	29.3 lb	13.3 kg
+181	Ampharos	135.6 lb	61.5 kg
+181	Mega Ampharos	135.6 lb	61.5 kg
+182	Bellossom	12.8 lb	5.8 kg
+183	Marill	18.7 lb	8.5 kg
+184	Azumarill	62.8 lb	28.5 kg
+185	Sudowoodo	83.8 lb	38.0 kg
+186	Politoed	74.7 lb	33.9 kg
+187	Hoppip	1.1 lb	0.5 kg
+188	Skiploom	2.2 lb	1.0 kg
+189	Jumpluff	6.6 lb	3.0 kg
+190	Aipom	25.4 lb	11.5 kg
+191	Sunkern	4.0 lb	1.8 kg
+192	Sunflora	18.7 lb	8.5 kg
+193	Yanma	83.8 lb	38.0 kg
+194	Wooper	18.7 lb	8.5 kg
+195	Quagsire	165.3 lb	75.0 kg
+196	Espeon	58.4 lb	26.5 kg
+197	Umbreon	59.5 lb	27.0 kg
+198	Murkrow	4.6 lb	2.1 kg
+199	Slowking	175.3 lb	79.5 kg
+200	Misdreavus	2.2 lb	1.0 kg
+201	Unown	11.0 lb	5.0 kg
+202	Wobbuffet	62.8 lb	28.5 kg
+203	Girafarig	91.5 lb	41.5 kg
+204	Pineco	15.9 lb	7.2 kg
+205	Forretress	277.3 lb	125.8 kg
+206	Dunsparce	30.9 lb	14.0 kg
+207	Gligar	142.9 lb	64.8 kg
+208	Steelix	881.8 lb	400.0 kg
+208	Mega Steelix	1631.4 lb	740.0 kg
+209	Snubbull	17.2 lb	7.8 kg
+210	Granbull	107.4 lb	48.7 kg
+211	Qwilfish	8.6 lb	3.9 kg
+212	Scizor	260.1 lb	118.0 kg
+212	Mega Scizor	275.6 lb	125.0 kg
+213	Shuckle	45.2 lb	20.5 kg
+214	Heracross	119.0 lb	54.0 kg
+214	Mega Heracross	137.8 lb	62.5 kg
+215	Sneasel	61.7 lb	28.0 kg
+216	Teddiursa	19.4 lb	8.8 kg
+217	Ursaring	277.3 lb	125.8 kg
+218	Slugma	77.2 lb	35.0 kg
+219	Magcargo	121.3 lb	55.0 kg
+220	Swinub	14.3 lb	6.5 kg
+221	Piloswine	123.0 lb	55.8 kg
+222	Corsola	11.0 lb	5.0 kg
+223	Remoraid	26.5 lb	12.0 kg
+224	Octillery	62.8 lb	28.5 kg
+225	Delibird	35.3 lb	16.0 kg
+226	Mantine	485.0 lb	220.0 kg
+227	Skarmory	111.3 lb	50.5 kg
+228	Houndour	23.8 lb	10.8 kg
+229	Houndoom	77.2 lb	35.0 kg
+229	Mega Houndoom	109.1 lb	49.5 kg
+230	Kingdra	335.1 lb	152.0 kg
+231	Phanpy	73.9 lb	33.5 kg
+232	Donphan	264.6 lb	120.0 kg
+233	Porygon2	71.7 lb	32.5 kg
+234	Stantler	157.0 lb	71.2 kg
+235	Smeargle	127.9 lb	58.0 kg
+236	Tyrogue	46.3 lb	21.0 kg
+237	Hitmontop	105.8 lb	48.0 kg
+238	Smoochum	13.2 lb	6.0 kg
+239	Elekid	51.8 lb	23.5 kg
+240	Magby	47.2 lb	21.4 kg
+241	Miltank	166.4 lb	75.5 kg
+242	Blissey	103.2 lb	46.8 kg
+243	Raikou	392.4 lb	178.0 kg
+244	Entei	436.5 lb	198.0 kg
+245	Suicune	412.3 lb	187.0 kg
+246	Larvitar	158.7 lb	72.0 kg
+247	Pupitar	335.1 lb	152.0 kg
+248	Tyranitar	445.3 lb	202.0 kg
+248	Mega Tyranitar	562.2 lb	255.0 kg
+249	Lugia	476.2 lb	216.0 kg
+250	Ho-Oh	438.7 lb	199.0 kg
+251	Celebi	11.0 lb	5.0 kg
+252	Treecko	11.0 lb	5.0 kg
+253	Grovyle	47.6 lb	21.6 kg
+254	Sceptile	115.1 lb	52.2 kg
+254	Mega Sceptile	121.7 lb	55.2 kg
+255	Torchic	5.5 lb	2.5 kg
+256	Combusken	43.0 lb	19.5 kg
+257	Blaziken	114.6 lb	52.0 kg
+257	Mega Blaziken	114.6 lb	52.0 kg
+258	Mudkip	16.8 lb	7.6 kg
+259	Marshtomp	61.7 lb	28.0 kg
+260	Swampert	180.6 lb	81.9 kg
+260	Mega Swampert	224.9 lb	102.0 kg
+261	Poochyena	30.0 lb	13.6 kg
+262	Mightyena	81.6 lb	37.0 kg
+263	Zigzagoon	38.6 lb	17.5 kg
+264	Linoone	71.7 lb	32.5 kg
+265	Wurmple	7.9 lb	3.6 kg
+266	Silcoon	22.0 lb	10.0 kg
+267	Beautifly	62.6 lb	28.4 kg
+268	Cascoon	25.4 lb	11.5 kg
+269	Dustox	69.7 lb	31.6 kg
+270	Lotad	5.7 lb	2.6 kg
+271	Lombre	71.7 lb	32.5 kg
+272	Ludicolo	121.3 lb	55.0 kg
+273	Seedot	8.8 lb	4.0 kg
+274	Nuzleaf	61.7 lb	28.0 kg
+275	Shiftry	131.4 lb	59.6 kg
+276	Taillow	5.1 lb	2.3 kg
+277	Swellow	43.7 lb	19.8 kg
+278	Wingull	20.9 lb	9.5 kg
+279	Pelipper	61.7 lb	28.0 kg
+280	Ralts	14.6 lb	6.6 kg
+281	Kirlia	44.5 lb	20.2 kg
+282	Gardevoir	106.7 lb	48.4 kg
+282	Mega Gardevoir	106.7 lb	48.4 kg
+283	Surskit	3.7 lb	1.7 kg
+284	Masquerain	7.9 lb	3.6 kg
+285	Shroomish	9.9 lb	4.5 kg
+286	Breloom	86.4 lb	39.2 kg
+287	Slakoth	52.9 lb	24.0 kg
+288	Vigoroth	102.5 lb	46.5 kg
+289	Slaking	287.7 lb	130.5 kg
+290	Nincada	12.1 lb	5.5 kg
+291	Ninjask	26.5 lb	12.0 kg
+292	Shedinja	2.6 lb	1.2 kg
+293	Whismur	35.9 lb	16.3 kg
+294	Loudred	89.3 lb	40.5 kg
+295	Exploud	185.2 lb	84.0 kg
+296	Makuhita	190.5 lb	86.4 kg
+297	Hariyama	559.5 lb	253.8 kg
+298	Azurill	4.4 lb	2.0 kg
+299	Nosepass	213.8 lb	97.0 kg
+300	Skitty	24.3 lb	11.0 kg
+301	Delcatty	71.9 lb	32.6 kg
+302	Sableye	24.3 lb	11.0 kg
+302	Mega Sableye	354.9 lb	161.0 kg
+303	Mawile	25.4 lb	11.5 kg
+303	Mega Mawile	51.8 lb	23.5 kg
+304	Aron	132.3 lb	60.0 kg
+305	Lairon	264.6 lb	120.0 kg
+306	Aggron	793.7 lb	360.0 kg
+306	Mega Aggron	870.8 lb	395.0 kg
+307	Meditite	24.7 lb	11.2 kg
+308	Medicham	69.4 lb	31.5 kg
+308	Mega Medicham	69.4 lb	31.5 kg
+309	Electrike	33.5 lb	15.2 kg
+310	Manectric	88.6 lb	40.2 kg
+310	Mega Manectric	97.0 lb	44.0 kg
+311	Plusle	9.3 lb	4.2 kg
+312	Minun	9.3 lb	4.2 kg
+313	Volbeat	39.0 lb	17.7 kg
+314	Illumise	39.0 lb	17.7 kg
+315	Roselia	4.4 lb	2.0 kg
+316	Gulpin	22.7 lb	10.3 kg
+317	Swalot	176.4 lb	80.0 kg
+318	Carvanha	45.9 lb	20.8 kg
+319	Sharpedo	195.8 lb	88.8 kg
+319	Mega Sharpedo	287.3 lb	130.3 kg
+320	Wailmer	286.6 lb	130.0 kg
+321	Wailord	877.4 lb	398.0 kg
+322	Numel	52.9 lb	24.0 kg
+323	Camerupt	485.0 lb	220.0 kg
+323	Mega Camerupt	706.6 lb	320.5 kg
+324	Torkoal	177.3 lb	80.4 kg
+325	Spoink	67.5 lb	30.6 kg
+326	Grumpig	157.6 lb	71.5 kg
+327	Spinda	11.0 lb	5.0 kg
+328	Trapinch	33.1 lb	15.0 kg
+329	Vibrava	33.7 lb	15.3 kg
+330	Flygon	180.8 lb	82.0 kg
+331	Cacnea	113.1 lb	51.3 kg
+332	Cacturne	170.6 lb	77.4 kg
+333	Swablu	2.6 lb	1.2 kg
+334	Altaria	45.4 lb	20.6 kg
+334	Mega Altaria	45.4 lb	20.6 kg
+335	Zangoose	88.8 lb	40.3 kg
+336	Seviper	115.7 lb	52.5 kg
+337	Lunatone	370.4 lb	168.0 kg
+338	Solrock	339.5 lb	154.0 kg
+339	Barboach	4.2 lb	1.9 kg
+340	Whiscash	52.0 lb	23.6 kg
+341	Corphish	25.4 lb	11.5 kg
+342	Crawdaunt	72.3 lb	32.8 kg
+343	Baltoy	47.4 lb	21.5 kg
+344	Claydol	238.1 lb	108.0 kg
+345	Lileep	52.5 lb	23.8 kg
+346	Cradily	133.2 lb	60.4 kg
+347	Anorith	27.6 lb	12.5 kg
+348	Armaldo	150.4 lb	68.2 kg
+349	Feebas	16.3 lb	7.4 kg
+350	Milotic	357.1 lb	162.0 kg
+351	Castform	1.8 lb	0.8 kg
+351	Sunny Castform	1.8 lb	0.8 kg
+351	Rainy Castform	1.8 lb	0.8 kg
+351	Snowy Castform	1.8 lb	0.8 kg
+352	Kecleon	48.5 lb	22.0 kg
+353	Shuppet	5.1 lb	2.3 kg
+354	Banette	27.6 lb	12.5 kg
+354	Mega Banette	28.7 lb	13.0 kg
+355	Duskull	33.1 lb	15.0 kg
+356	Dusclops	67.5 lb	30.6 kg
+357	Tropius	220.5 lb	100.0 kg
+358	Chimecho	2.2 lb	1.0 kg
+359	Absol	103.6 lb	47.0 kg
+359	Mega Absol	108.0 lb	49.0 kg
+360	Wynaut	30.9 lb	14.0 kg
+361	Snorunt	37.0 lb	16.8 kg
+362	Glalie	565.5 lb	256.5 kg
+362	Mega Glalie	772.1 lb	350.2 kg
+363	Spheal	87.1 lb	39.5 kg
+364	Sealeo	193.1 lb	87.6 kg
+365	Walrein	332.0 lb	150.6 kg
+366	Clamperl	115.7 lb	52.5 kg
+367	Huntail	59.5 lb	27.0 kg
+368	Gorebyss	49.8 lb	22.6 kg
+369	Relicanth	51.6 lb	23.4 kg
+370	Luvdisc	19.2 lb	8.7 kg
+371	Bagon	92.8 lb	42.1 kg
+372	Shelgon	243.6 lb	110.5 kg
+373	Salamence	226.2 lb	102.6 kg
+373	Mega Salamence	248.2 lb	112.6 kg
+374	Beldum	209.9 lb	95.2 kg
+375	Metang	446.4 lb	202.5 kg
+376	Metagross	1212.5 lb	550.0 kg
+376	Mega Metagross	2078.7 lb	942.9 kg
+377	Regirock	507.1 lb	230.0 kg
+378	Regice	385.8 lb	175.0 kg
+379	Registeel	451.9 lb	205.0 kg
+380	Latias	88.2 lb	40.0 kg
+380	Mega Latias	114.6 lb	52.0 kg
+381	Latios	132.3 lb	60.0 kg
+381	Mega Latios	154.3 lb	70.0 kg
+382	Kyogre	776.0 lb	352.0 kg
+382	Primal Kyogre	948.0 lb	430.0 kg
+383	Groudon	2094.4 lb	950.0 kg
+383	Primal Groudon	2204.0 lb	999.7 kg
+384	Rayquaza	455.3 lb	206.5 kg
+384	Mega Rayquaza	864.2 lb	392.0 kg
+385	Jirachi	2.4 lb	1.1 kg
+386	Normal Deoxys	134.0 lb	60.8 kg
+386	Attack Deoxys	134.0 lb	60.8 kg
+386	Defense Deoxys	134.0 lb	60.8 kg
+386	Speed Deoxys	134.0 lb	60.8 kg
+387	Turtwig	22.5 lb	10.2 kg
+388	Grotle	213.8 lb	97.0 kg
+389	Torterra	683.4 lb	310.0 kg
+390	Chimchar	13.7 lb	6.2 kg
+391	Monferno	48.5 lb	22.0 kg
+392	Infernape	121.3 lb	55.0 kg
+393	Piplup	11.5 lb	5.2 kg
+394	Prinplup	50.7 lb	23.0 kg
+395	Empoleon	186.3 lb	84.5 kg
+396	Starly	4.4 lb	2.0 kg
+397	Staravia	34.2 lb	15.5 kg
+398	Staraptor	54.9 lb	24.9 kg
+399	Bidoof	44.1 lb	20.0 kg
+400	Bibarel	69.4 lb	31.5 kg
+401	Kricketot	4.9 lb	2.2 kg
+402	Kricketune	56.2 lb	25.5 kg
+403	Shinx	20.9 lb	9.5 kg
+404	Luxio	67.2 lb	30.5 kg
+405	Luxray	92.6 lb	42.0 kg
+406	Budew	2.6 lb	1.2 kg
+407	Roserade	32.0 lb	14.5 kg
+408	Cranidos	69.4 lb	31.5 kg
+409	Rampardos	226.0 lb	102.5 kg
+410	Shieldon	125.7 lb	57.0 kg
+411	Bastiodon	329.6 lb	149.5 kg
+412	Burmy	7.5 lb	3.4 kg
+413	Plant Wormadam	14.3 lb	6.5 kg
+413	Sandy Wormadam	14.3 lb	6.5 kg
+413	Trash Wormadam	14.3 lb	6.5 kg
+414	Mothim	51.4 lb	23.3 kg
+415	Combee	12.1 lb	5.5 kg
+416	Vespiquen	84.9 lb	38.5 kg
+417	Pachirisu	8.6 lb	3.9 kg
+418	Buizel	65.0 lb	29.5 kg
+419	Floatzel	73.9 lb	33.5 kg
+420	Cherubi	7.3 lb	3.3 kg
+421	Cherrim	20.5 lb	9.3 kg
+422	Shellos	13.9 lb	6.3 kg
+423	Gastrodon	65.9 lb	29.9 kg
+424	Ambipom	44.8 lb	20.3 kg
+425	Drifloon	2.6 lb	1.2 kg
+426	Drifblim	33.1 lb	15.0 kg
+427	Buneary	12.1 lb	5.5 kg
+428	Lopunny	73.4 lb	33.3 kg
+428	Mega Lopunny	62.4 lb	28.3 kg
+429	Mismagius	9.7 lb	4.4 kg
+430	Honchkrow	60.2 lb	27.3 kg
+431	Glameow	8.6 lb	3.9 kg
+432	Purugly	96.6 lb	43.8 kg
+433	Chingling	1.3 lb	0.6 kg
+434	Stunky	42.3 lb	19.2 kg
+435	Skuntank	83.8 lb	38.0 kg
+436	Bronzor	133.4 lb	60.5 kg
+437	Bronzong	412.3 lb	187.0 kg
+438	Bonsly	33.1 lb	15.0 kg
+439	Mime Jr.	28.7 lb	13.0 kg
+440	Happiny	53.8 lb	24.4 kg
+441	Chatot	4.2 lb	1.9 kg
+442	Spiritomb	238.1 lb	108.0 kg
+443	Gible	45.2 lb	20.5 kg
+444	Gabite	123.5 lb	56.0 kg
+445	Garchomp	209.4 lb	95.0 kg
+445	Mega Garchomp	209.4 lb	95.0 kg
+446	Munchlax	231.5 lb	105.0 kg
+447	Riolu	44.5 lb	20.2 kg
+448	Lucario	119.0 lb	54.0 kg
+448	Mega Lucario	126.8 lb	57.5 kg
+449	Hippopotas	109.1 lb	49.5 kg
+450	Hippowdon	661.4 lb	300.0 kg
+451	Skorupi	26.5 lb	12.0 kg
+452	Drapion	135.6 lb	61.5 kg
+453	Croagunk	50.7 lb	23.0 kg
+454	Toxicroak	97.9 lb	44.4 kg
+455	Carnivine	59.5 lb	27.0 kg
+456	Finneon	15.4 lb	7.0 kg
+457	Lumineon	52.9 lb	24.0 kg
+458	Mantyke	143.3 lb	65.0 kg
+459	Snover	111.3 lb	50.5 kg
+460	Abomasnow	298.7 lb	135.5 kg
+460	Mega Abomasnow	407.9 lb	185.0 kg
+461	Weavile	75.0 lb	34.0 kg
+462	Magnezone	396.8 lb	180.0 kg
+463	Lickilicky	308.6 lb	140.0 kg
+464	Rhyperior	623.5 lb	282.8 kg
+465	Tangrowth	283.5 lb	128.6 kg
+466	Electivire	305.6 lb	138.6 kg
+467	Magmortar	149.9 lb	68.0 kg
+468	Togekiss	83.8 lb	38.0 kg
+469	Yanmega	113.5 lb	51.5 kg
+470	Leafeon	56.2 lb	25.5 kg
+471	Glaceon	57.1 lb	25.9 kg
+472	Gliscor	93.7 lb	42.5 kg
+473	Mamoswine	641.5 lb	291.0 kg
+474	Porygon-Z	75.0 lb	34.0 kg
+475	Gallade	114.6 lb	52.0 kg
+475	Mega Gallade	124.3 lb	56.4 kg
+476	Probopass	749.6 lb	340.0 kg
+477	Dusknoir	235.0 lb	106.6 kg
+478	Froslass	58.6 lb	26.6 kg
+479	Rotom	0.7 lb	0.3 kg
+479	Heat Rotom	0.7 lb	0.3 kg
+479	Wash Rotom	0.7 lb	0.3 kg
+479	Frost Rotom	0.7 lb	0.3 kg
+479	Fan Rotom	0.7 lb	0.3 kg
+479	Mow Rotom	0.7 lb	0.3 kg
+480	Uxie	0.7 lb	0.3 kg
+481	Mesprit	0.7 lb	0.3 kg
+482	Azelf	0.7 lb	0.3 kg
+483	Dialga	1505.8 lb	683.0 kg
+484	Palkia	740.8 lb	336.0 kg
+485	Heatran	948.0 lb	430.0 kg
+486	Regigigas	925.9 lb	420.0 kg
+487	Altered Giratina	1653.5 lb	750.0 kg
+487	Origin Giratina	1433.0 lb	650.0 kg
+488	Cresselia	188.7 lb	85.6 kg
+489	Phione	6.8 lb	3.1 kg
+490	Manaphy	3.1 lb	1.4 kg
+491	Darkrai	111.3 lb	50.5 kg
+492	Land Shaymin	4.6 lb	2.1 kg
+492	Sky Shaymin	11.5 lb	5.2 kg
+493	Arceus	705.5 lb	320.0 kg
+494	Victini	8.8 lb	4.0 kg
+495	Snivy	17.9 lb	8.1 kg
+496	Servine	35.3 lb	16.0 kg
+497	Serperior	138.9 lb	63.0 kg
+498	Tepig	21.8 lb	9.9 kg
+499	Pignite	122.4 lb	55.5 kg
+500	Emboar	330.7 lb	150.0 kg
+501	Oshawott	13.0 lb	5.9 kg
+502	Dewott	54.0 lb	24.5 kg
+503	Samurott	208.6 lb	94.6 kg
+504	Patrat	25.6 lb	11.6 kg
+505	Watchog	59.5 lb	27.0 kg
+506	Lillipup	9.0 lb	4.1 kg
+507	Herdier	32.4 lb	14.7 kg
+508	Stoutland	134.5 lb	61.0 kg
+509	Purrloin	22.3 lb	10.1 kg
+510	Liepard	82.7 lb	37.5 kg
+511	Pansage	23.1 lb	10.5 kg
+512	Simisage	67.2 lb	30.5 kg
+513	Pansear	24.3 lb	11.0 kg
+514	Simisear	61.7 lb	28.0 kg
+515	Panpour	29.8 lb	13.5 kg
+516	Simipour	63.9 lb	29.0 kg
+517	Munna	51.4 lb	23.3 kg
+518	Musharna	133.4 lb	60.5 kg
+519	Pidove	4.6 lb	2.1 kg
+520	Tranquill	33.1 lb	15.0 kg
+521	Unfezant	63.9 lb	29.0 kg
+522	Blitzle	65.7 lb	29.8 kg
+523	Zebstrika	175.3 lb	79.5 kg
+524	Roggenrola	39.7 lb	18.0 kg
+525	Boldore	224.9 lb	102.0 kg
+526	Gigalith	573.2 lb	260.0 kg
+527	Woobat	4.6 lb	2.1 kg
+528	Swoobat	23.1 lb	10.5 kg
+529	Drilbur	18.7 lb	8.5 kg
+530	Excadrill	89.1 lb	40.4 kg
+531	Audino	68.3 lb	31.0 kg
+531	Mega Audino	70.5 lb	32.0 kg
+532	Timburr	27.6 lb	12.5 kg
+533	Gurdurr	88.2 lb	40.0 kg
+534	Conkeldurr	191.8 lb	87.0 kg
+535	Tympole	9.9 lb	4.5 kg
+536	Palpitoad	37.5 lb	17.0 kg
+537	Seismitoad	136.7 lb	62.0 kg
+538	Throh	122.4 lb	55.5 kg
+539	Sawk	112.4 lb	51.0 kg
+540	Sewaddle	5.5 lb	2.5 kg
+541	Swadloon	16.1 lb	7.3 kg
+542	Leavanny	45.2 lb	20.5 kg
+543	Venipede	11.7 lb	5.3 kg
+544	Whirlipede	129.0 lb	58.5 kg
+545	Scolipede	442.0 lb	200.5 kg
+546	Cottonee	1.3 lb	0.6 kg
+547	Whimsicott	14.6 lb	6.6 kg
+548	Petilil	14.6 lb	6.6 kg
+549	Lilligant	35.9 lb	16.3 kg
+550	Red-Striped Basculin	39.7 lb	18.0 kg
+550	Blue-Striped Basculin	39.7 lb	18.0 kg
+551	Sandile	33.5 lb	15.2 kg
+552	Krokorok	73.6 lb	33.4 kg
+553	Krookodile	212.3 lb	96.3 kg
+554	Darumaka	82.7 lb	37.5 kg
+555	Standard Darmanitan	204.8 lb	92.9 kg
+555	Zen Darmanitan	204.8 lb	92.9 kg
+556	Maractus	61.7 lb	28.0 kg
+557	Dwebble	32.0 lb	14.5 kg
+558	Crustle	440.9 lb	200.0 kg
+559	Scraggy	26.0 lb	11.8 kg
+560	Scrafty	66.1 lb	30.0 kg
+561	Sigilyph	30.9 lb	14.0 kg
+562	Yamask	3.3 lb	1.5 kg
+563	Cofagrigus	168.7 lb	76.5 kg
+564	Tirtouga	36.4 lb	16.5 kg
+565	Carracosta	178.6 lb	81.0 kg
+566	Archen	20.9 lb	9.5 kg
+567	Archeops	70.5 lb	32.0 kg
+568	Trubbish	68.3 lb	31.0 kg
+569	Garbodor	236.6 lb	107.3 kg
+570	Zorua	27.6 lb	12.5 kg
+571	Zoroark	178.8 lb	81.1 kg
+572	Minccino	12.8 lb	5.8 kg
+573	Cinccino	16.5 lb	7.5 kg
+574	Gothita	12.8 lb	5.8 kg
+575	Gothorita	39.7 lb	18.0 kg
+576	Gothitelle	97.0 lb	44.0 kg
+577	Solosis	2.2 lb	1.0 kg
+578	Duosion	17.6 lb	8.0 kg
+579	Reuniclus	44.3 lb	20.1 kg
+580	Ducklett	12.1 lb	5.5 kg
+581	Swanna	53.4 lb	24.2 kg
+582	Vanillite	12.6 lb	5.7 kg
+583	Vanillish	90.4 lb	41.0 kg
+584	Vanilluxe	126.8 lb	57.5 kg
+585	Deerling	43.0 lb	19.5 kg
+586	Sawsbuck	203.9 lb	92.5 kg
+587	Emolga	11.0 lb	5.0 kg
+588	Karrablast	13.0 lb	5.9 kg
+589	Escavalier	72.8 lb	33.0 kg
+590	Foongus	2.2 lb	1.0 kg
+591	Amoonguss	23.1 lb	10.5 kg
+592	Frillish	72.8 lb	33.0 kg
+593	Jellicent	297.6 lb	135.0 kg
+594	Alomomola	69.7 lb	31.6 kg
+595	Joltik	1.3 lb	0.6 kg
+596	Galvantula	31.5 lb	14.3 kg
+597	Ferroseed	41.4 lb	18.8 kg
+598	Ferrothorn	242.5 lb	110.0 kg
+599	Klink	46.3 lb	21.0 kg
+600	Klang	112.4 lb	51.0 kg
+601	Klinklang	178.6 lb	81.0 kg
+602	Tynamo	0.7 lb	0.3 kg
+603	Eelektrik	48.5 lb	22.0 kg
+604	Eelektross	177.5 lb	80.5 kg
+605	Elgyem	19.8 lb	9.0 kg
+606	Beheeyem	76.1 lb	34.5 kg
+607	Litwick	6.8 lb	3.1 kg
+608	Lampent	28.7 lb	13.0 kg
+609	Chandelure	75.6 lb	34.3 kg
+610	Axew	39.7 lb	18.0 kg
+611	Fraxure	79.4 lb	36.0 kg
+612	Haxorus	232.6 lb	105.5 kg
+613	Cubchoo	18.7 lb	8.5 kg
+614	Beartic	573.2 lb	260.0 kg
+615	Cryogonal	326.3 lb	148.0 kg
+616	Shelmet	17.0 lb	7.7 kg
+617	Accelgor	55.8 lb	25.3 kg
+618	Stunfisk	24.3 lb	11.0 kg
+619	Mienfoo	44.1 lb	20.0 kg
+620	Mienshao	78.3 lb	35.5 kg
+621	Druddigon	306.4 lb	139.0 kg
+622	Golett	202.8 lb	92.0 kg
+623	Golurk	727.5 lb	330.0 kg
+624	Pawniard	22.5 lb	10.2 kg
+625	Bisharp	154.3 lb	70.0 kg
+626	Bouffalant	208.6 lb	94.6 kg
+627	Rufflet	23.1 lb	10.5 kg
+628	Braviary	90.4 lb	41.0 kg
+629	Vullaby	19.8 lb	9.0 kg
+630	Mandibuzz	87.1 lb	39.5 kg
+631	Heatmor	127.9 lb	58.0 kg
+632	Durant	72.8 lb	33.0 kg
+633	Deino	38.1 lb	17.3 kg
+634	Zweilous	110.2 lb	50.0 kg
+635	Hydreigon	352.7 lb	160.0 kg
+636	Larvesta	63.5 lb	28.8 kg
+637	Volcarona	101.4 lb	46.0 kg
+638	Cobalion	551.2 lb	250.0 kg
+639	Terrakion	573.2 lb	260.0 kg
+640	Virizion	440.9 lb	200.0 kg
+641	Incarnate Tornadus	138.9 lb	63.0 kg
+641	Therian Tornadus	138.9 lb	63.0 kg
+642	Incarnate Thundurus	134.5 lb	61.0 kg
+642	Therian Thundurus	134.5 lb	61.0 kg
+643	Reshiram	727.5 lb	330.0 kg
+644	Zekrom	760.6 lb	345.0 kg
+645	Incarnate Landorus	149.9 lb	68.0 kg
+645	Therian Landorus	149.9 lb	68.0 kg
+646	Kyurem	716.5 lb	325.0 kg
+646	Black Kyurem	716.5 lb	325.0 kg
+646	White Kyurem	716.5 lb	325.0 kg
+647	Ordinary Keldeo	106.9 lb	48.5 kg
+647	Resolute Keldeo	106.9 lb	48.5 kg
+648	Aria Meloetta	14.3 lb	6.5 kg
+648	Pirouette Meloetta	14.3 lb	6.5 kg
+649	Genesect	181.9 lb	82.5 kg
+650	Chespin	19.8 lb	9.0 kg
+651	Quilladin	63.9 lb	29.0 kg
+652	Chesnaught	198.4 lb	90.0 kg
+653	Fennekin	20.7 lb	9.4 kg
+654	Braixen	32.0 lb	14.5 kg
+655	Delphox	86.0 lb	39.0 kg
+656	Froakie	15.4 lb	7.0 kg
+657	Frogadier	24.0 lb	10.9 kg
+658	Greninja	88.2 lb	40.0 kg
+659	Bunnelby	11.0 lb	5.0 kg
+660	Diggersby	93.5 lb	42.4 kg
+661	Fletchling	3.7 lb	1.7 kg
+662	Fletchinder	35.3 lb	16.0 kg
+663	Talonflame	54.0 lb	24.5 kg
+664	Scatterbug	5.5 lb	2.5 kg
+665	Spewpa	18.5 lb	8.4 kg
+666	Vivillon	37.5 lb	17.0 kg
+667	Litleo	29.8 lb	13.5 kg
+668	Pyroar	179.7 lb	81.5 kg
+669	Flabébé	0.2 lb	0.1 kg
+670	Floette	2.0 lb	0.9 kg
+670	Eternal Floette	2.0 lb	0.9 kg
+671	Florges	22.0 lb	10.0 kg
+672	Skiddo	68.3 lb	31.0 kg
+673	Gogoat	200.6 lb	91.0 kg
+674	Pancham	17.6 lb	8.0 kg
+675	Pangoro	299.8 lb	136.0 kg
+676	Furfrou	61.7 lb	28.0 kg
+677	Espurr	7.7 lb	3.5 kg
+678	Male Meowstic	18.7 lb	8.5 kg
+678	Female Meowstic	18.7 lb	8.5 kg
+679	Honedge	4.4 lb	2.0 kg
+680	Doublade	9.9 lb	4.5 kg
+681	Shield Aegislash	116.8 lb	53.0 kg
+681	Blade Aegislash	116.8 lb	53.0 kg
+682	Spritzee	1.1 lb	0.5 kg
+683	Aromatisse	34.2 lb	15.5 kg
+684	Swirlix	7.7 lb	3.5 kg
+685	Slurpuff	11.0 lb	5.0 kg
+686	Inkay	7.7 lb	3.5 kg
+687	Malamar	103.6 lb	47.0 kg
+688	Binacle	68.3 lb	31.0 kg
+689	Barbaracle	211.6 lb	96.0 kg
+690	Skrelp	16.1 lb	7.3 kg
+691	Dragalge	179.7 lb	81.5 kg
+692	Clauncher	18.3 lb	8.3 kg
+693	Clawitzer	77.8 lb	35.3 kg
+694	Helioptile	13.2 lb	6.0 kg
+695	Heliolisk	46.3 lb	21.0 kg
+696	Tyrunt	57.3 lb	26.0 kg
+697	Tyrantrum	595.2 lb	270.0 kg
+698	Amaura	55.6 lb	25.2 kg
+699	Aurorus	496.0 lb	225.0 kg
+700	Sylveon	51.8 lb	23.5 kg
+701	Hawlucha	47.4 lb	21.5 kg
+702	Dedenne	4.9 lb	2.2 kg
+703	Carbink	12.6 lb	5.7 kg
+704	Goomy	6.2 lb	2.8 kg
+705	Sliggoo	38.6 lb	17.5 kg
+706	Goodra	331.8 lb	150.5 kg
+707	Klefki	6.6 lb	3.0 kg
+708	Phantump	15.4 lb	7.0 kg
+709	Trevenant	156.5 lb	71.0 kg
+710	Small Pumpkaboo	7.7 lb	3.5 kg
+710	Average Pumpkaboo	11.0 lb	5.0 kg
+710	Large Pumpkaboo	16.5 lb	7.5 kg
+710	Super Pumpkaboo	33.1 lb	15.0 kg
+711	Small Gourgeist	20.9 lb	9.5 kg
+711	Average Gourgeist	27.6 lb	12.5 kg
+711	Large Gourgeist	30.9 lb	14.0 kg
+711	Super Gourgeist	86.0 lb	39.0 kg
+712	Bergmite	219.4 lb	99.5 kg
+713	Avalugg	1113.3 lb	505.0 kg
+714	Noibat	17.6 lb	8.0 kg
+715	Noivern	187.4 lb	85.0 kg
+716	Xerneas	474.0 lb	215.0 kg
+717	Yveltal	447.5 lb	203.0 kg
+718	Zygarde	672.4 lb	305.0 kg
+719	Diancie	19.4 lb	8.8 kg
+719	Mega Diancie	61.3 lb	27.8 kg
+720	Hoopa	19.8 lb	9.0 kg
+720	Hoopa Unbound	1080.3 lb	490.0 kg
+721	Volcanion	429.9 lb	195.0 kg

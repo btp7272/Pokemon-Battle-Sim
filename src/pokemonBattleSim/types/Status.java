@@ -2,5 +2,8 @@ package pokemonBattleSim.types;
 
 public class Status 
 {
-	double statusCategory;
+	Volatility volatility;
+	
+	
+	public Volatility getVol() {return volatility;}
 }

@@ -5,10 +5,10 @@ package pokemonBattleSim.formulas;
  */
 import java.util.*;
 import pokemonBattleSim.types.Type;
-
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Attribute;
 import pokemonBattleSim.types.Move;
+import java.lang.Math;
 
 public class Formula
 {
@@ -96,6 +96,7 @@ public class Formula
         return (stab * type * roll);
     }
     
+    //Calculates the type modifier
     public static double clacEffectiveness(double curModifier, Type atkType, Type defType)
     {
     	curModifier *= effectiveness[atkType.getMask()][defType.getMask()];
@@ -104,6 +105,17 @@ public class Formula
     	return curModifier;
     }
     
+    //Calculates the max HP of a pokemon (assumes all IVs are 31 and level is 100)
+    public static int calcHP(int baseHP)
+    {
+    	return ((baseHP + 31) * 2) + (int)(Math.sqrt(31) / 4) + 110 ;
+    }
+    
+    //Calculates all other max stats (assumes all IVs are 31 and level is 100)
+    public static int calcStat(int baseStat)
+    {
+    	return ((baseStat + 31) * 2) + (int)(Math.sqrt(31) / 4) + 5 ;
+    }
     
 } // end class
 

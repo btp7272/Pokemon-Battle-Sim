@@ -558,14 +558,14 @@ public class Poke
 		pokeMap.put("Palkia", new Pokemon(484, "Palkia", 90, 120, 100, 150, 120, 100, Type.WATER, Type.DRAGON));
 		pokeMap.put("Heatran", new Pokemon(485, "Heatran", 91, 90, 106, 130, 106, 77, Type.FIRE, Type.STEEL));
 		pokeMap.put("Regigigas", new Pokemon(486, "Regigigas", 110, 160, 110, 80, 110, 100, Type.NORMAL));
-		pokeMap.put("Giratina Altered Form", new Pokemon(487, "Giratina Altered Form", 150, 100, 120, 100, 120, 90, Type.GHOST, Type.DRAGON));
-		pokeMap.put("Giratina Origin Form", new Pokemon(487O, "Giratina Origin Form", 150, 120, 100, 120, 100, 90, Type.GHOST, Type.DRAGON));
+		pokeMap.put("Giratina Altered Form", new Pokemon(487.0, "Giratina Altered Form", 150, 100, 120, 100, 120, 90, Type.GHOST, Type.DRAGON));
+		pokeMap.put("Giratina Origin Form", new Pokemon(487.1, "Giratina Origin Form", 150, 120, 100, 120, 100, 90, Type.GHOST, Type.DRAGON));
 		pokeMap.put("Cresselia", new Pokemon(488, "Cresselia", 120, 70, 120, 75, 130, 85, Type.PSYCHIC));
 		pokeMap.put("Phione", new Pokemon(489, "Phione", 80, 80, 80, 80, 80, 80, Type.WATER));
 		pokeMap.put("Manaphy", new Pokemon(490, "Manaphy", 100, 100, 100, 100, 100, 100, Type.WATER));
 		pokeMap.put("Darkrai", new Pokemon(491, "Darkrai", 70, 90, 90, 135, 90, 125, Type.DARK));
-		pokeMap.put("Shaymin Land Form", new Pokemon(492, "Shaymin Land Form", 100, 100, 100, 100, 100, 100, Type.GRASS));
-		pokeMap.put("Shaymin Sky Form", new Pokemon(492S, "Shaymin Sky Form", 100, 103, 75, 120, 75, 127, Type.GRASS, Type.FLYING));
+		pokeMap.put("Shaymin Land Form", new Pokemon(492.0, "Shaymin Land Form", 100, 100, 100, 100, 100, 100, Type.GRASS));
+		pokeMap.put("Shaymin Sky Form", new Pokemon(492.1, "Shaymin Sky Form", 100, 103, 75, 120, 75, 127, Type.GRASS, Type.FLYING));
 		pokeMap.put("Arceus", new Pokemon(493, "Arceus", 120, 120, 120, 120, 120, 120, Type.NORMAL));
 		pokeMap.put("Victini", new Pokemon(494, "Victini", 100, 100, 100, 100, 100, 100, Type.PSYCHIC, Type.FIRE));
 		pokeMap.put("Snivy", new Pokemon(495, "Snivy", 45, 45, 55, 45, 55, 63, Type.GRASS));
@@ -716,7 +716,7 @@ public class Poke
 		pokeMap.put("Cobalion", new Pokemon(638, "Cobalion", 91, 90, 129, 90, 72, 108, Type.STEEL, Type.FIGHTING));
 		pokeMap.put("Terrakion", new Pokemon(639, "Terrakion", 91, 129, 90, 72, 90, 108, Type.ROCK, Type.FIGHTING));
 		pokeMap.put("Virizion", new Pokemon(640, "Virizion", 91, 90, 72, 90, 129, 108, Type.GRASS, Type.FIGHTING));
-		pokeMap.put("Tornadus Incarnate", new Pokemon(641.0, "Tornadus Incarnate", 79, 115, 70, 125, 80, 111, Type.FYING));
+		pokeMap.put("Tornadus Incarnate", new Pokemon(641.0, "Tornadus Incarnate", 79, 115, 70, 125, 80, 111, Type.FLYING));
 		pokeMap.put("Tornadus Therian", new Pokemon(641.1, "Tornadus Therian", 79, 100, 80, 110, 90, 121, Type.FLYING));
 		pokeMap.put("Thundurus Incarnate", new Pokemon(642.0, "Thundurus", 79, 115, 70, 125, 80, 111, Type.ELECTRIC, Type.FLYING));
 		pokeMap.put("Thundurus Therian", new Pokemon(642.1, "Thundurus Therian", 79, 105, 70, 145, 80, 101, Type.ELECTRIC, Type.FLYING));
@@ -742,7 +742,7 @@ public class Poke
 		pokeMap.put("Greninja", new Pokemon(658, "Greninja", 72, 95, 67, 103, 71, 122, Type.WATER, Type.DARK));
 		pokeMap.put("Bunnelby", new Pokemon(659, "Bunnelby", 38, 36, 38, 32, 36, 57, Type.NORMAL));
 		pokeMap.put("Diggersby", new Pokemon(660, "Diggersby", 85, 56, 77, 50, 77, 78, Type.NORMAL, Type.GROUND));
-		pokeMap.put("Fletchling", new Pokemon(661, "Fletchling", 45, 50, 43, 40, 38, 62, Type., Type.));
+		pokeMap.put("Fletchling", new Pokemon(661, "Fletchling", 45, 50, 43, 40, 38, 62, Type.FLYING, Type.NORMAL));
 		pokeMap.put("Fletchinder", new Pokemon(662, "Fletchinder", 62, 73, 55, 56, 52, 84, Type.FIRE, Type.FLYING));
 		pokeMap.put("Talonflame", new Pokemon(663, "Talonflame", 78, 81, 71, 74, 69, 126, Type.FIRE, Type.FLYING));
 		pokeMap.put("Scatterbug", new Pokemon(664, "Scatterbug", 38, 35, 40, 27, 25, 35, Type.BUG));

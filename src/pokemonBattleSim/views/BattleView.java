@@ -4,6 +4,7 @@ import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class BattleView extends JFrame {
-	
 	private JLabel firstPokemonNameLabel = new JLabel("First Pokemon: ");
 	private JTextField firstPokemonName = new JTextField(10);
 	private JLabel secondPokemonNameLabel = new JLabel("Second Pokemon: ");
@@ -25,6 +25,7 @@ public class BattleView extends JFrame {
 	{
 		// temporary panel, must populate with UI elements before swapping it
 		JPanel battlePanel = new JPanel();
+		battlePanel.setLayout(new BoxLayout(battlePanel,BoxLayout.PAGE_AXIS));
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//this.setSize(175,220);

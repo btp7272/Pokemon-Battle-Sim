@@ -40,15 +40,15 @@ public class Pokemon
 	Gender gender = null;
 	//heldItem item = null;
 	
-	private void setIndex(double index){ this.indexNum = index;}
-	private void setName(String newName){ this.name = newName;}
-	private void setHp(int health){	this.hp = Formula.calcHP(health); this.baseHp = this.hp;}
-	private void setAtk(int attack){ this.atk = Formula.calcStat(attack); this.baseAtk = this.atk;}
-	private void setDef(int defense){ this.def = Formula.calcStat(defense); this.baseDef = this.def;}
-	private void setSpAtk(int spattack){ this.spAtk = Formula.calcStat(spattack); this.baseSpAtk = this.spAtk;}
-	private void setSpDef(int spdefense){ this.spDef = Formula.calcStat(spdefense); this.baseSpDef = this.spDef;}
-	private void setSpeed(int newSpeed){ this.speed = Formula.calcStat(newSpeed); this.baseSpeed = this.speed;}
-	private void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
+	public void setIndex(double index){ this.indexNum = index;}
+	public void setName(String newName){ this.name = newName;}
+	public void setHp(int health){	this.hp = Formula.calcHP(health); this.baseHp = this.hp;}
+	public void setAtk(int attack){ this.atk = Formula.calcStat(attack); this.baseAtk = this.atk;}
+	public void setDef(int defense){ this.def = Formula.calcStat(defense); this.baseDef = this.def;}
+	public void setSpAtk(int spattack){ this.spAtk = Formula.calcStat(spattack); this.baseSpAtk = this.spAtk;}
+	public void setSpDef(int spdefense){ this.spDef = Formula.calcStat(spdefense); this.baseSpDef = this.spDef;}
+	public void setSpeed(int newSpeed){ this.speed = Formula.calcStat(newSpeed); this.baseSpeed = this.speed;}
+	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	
 	//para: number -6 to 6. The stage of the stat

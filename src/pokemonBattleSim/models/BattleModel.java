@@ -66,6 +66,7 @@ public class BattleModel {
 				}
 			}
 		};
+		//TESTING
 		//this.timer.schedule(this.counter, 0, 1000); // count down once per second
 		timer.schedule(new DelayTask(Entity.PLAYERONE), 0);
 		timer.schedule(new DelayTask(Entity.PLAYERTWO), 0);

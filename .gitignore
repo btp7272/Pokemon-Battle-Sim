@@ -1,1 +1,4 @@
 /bin/
+/release/
+*.jar
+*.class

@@ -30,13 +30,14 @@ public class BattleController {
 		// load the data for the starter pokemon
 		this.view.setPlayerOnePokemonName(user.getActiveTeamMember().getName());
 		this.view.setPlayerOnePokemonHP(user.getActiveTeamMember().getHP());
-		this.view.setPlayerOnePokemonDisplayImage(user.getActiveTeamMember().getName().toLowerCase().replace(' ', '-')
-		);
+		
+		// TODO IMPORTANT, image names do NOT correlate with pokemon names that include ANY spacing for various reasons.
+		// 	Mega-Pokemon in particular do not correlate
+		//  Pokemon with many forms do not correlate
+		this.view.setPlayerOnePokemonDisplayImage(user.getActiveTeamMember().getName().toLowerCase());
 		this.view.setPlayerTwoPokemonName(com.getActiveTeamMember().getName());
 		this.view.setPlayerTwoPokemonHP(com.getActiveTeamMember().getHP());
-		this.view.setPlayerTwoPokemonDisplayImage(com.getActiveTeamMember().getName().toLowerCase().replace(' ', '-')
-		);
-		
+		this.view.setPlayerTwoPokemonDisplayImage(com.getActiveTeamMember().getName().toLowerCase());
 		
 		this.view.setMoveButtonData(moveMap.get(0), new MoveButtonListener());
 		ArrayList<String> userPokemon = new ArrayList<>();

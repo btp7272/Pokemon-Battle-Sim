@@ -2,57 +2,72 @@ package pokemonBattleSim.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Timer;
 
-import pokemonBattleSim.converters.MoveStringToObjectConverter;
-import pokemonBattleSim.converters.PokemonStringToObjectConverter;
 import pokemonBattleSim.models.BattleModel;
+import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
+import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.views.BattleView;
 
 public class BattleController {
 
-	private BattleView battleView;
-	private BattleModel battleModel;
+	private BattleView view;
+	private BattleModel model;
+	private Map<Integer,ArrayList<String>> moveMap;
+	private Timer timer;
 	
-	public BattleController(BattleView view, BattleModel model) {
+	public BattleController(BattleView view, BattleModel model, Timer timer, Map<Integer, ArrayList<String>> moveMap, IPokemonTrainer user, IPokemonTrainer com) {
 		// TODO Auto-generated constructor stub
-		battleView = view;
-		battleModel = model;
+		this.view = view;
+		this.model = model;
+		this.timer = timer;
+		this.moveMap = moveMap;
 		
-		battleView.addMoveButtonListener(new MoveButtonListener());
+		// load the data for the starter pokemon
+		this.view.setPlayerOnePokemonName(user.getActiveTeamMember().getName());
+		this.view.setPlayerOnePokemonHP(user.getActiveTeamMember().getHP());
+		this.view.setPlayerOnePokemonDisplayImage(user.getActiveTeamMember().getName().toLowerCase().replace(' ', '-')
+		);
+		this.view.setPlayerTwoPokemonName(com.getActiveTeamMember().getName());
+		this.view.setPlayerTwoPokemonHP(com.getActiveTeamMember().getHP());
+		this.view.setPlayerTwoPokemonDisplayImage(com.getActiveTeamMember().getName().toLowerCase().replace(' ', '-')
+		);
+		
+		
+		this.view.setMoveButtonData(moveMap.get(0), new MoveButtonListener());
+		ArrayList<String> userPokemon = new ArrayList<>();
+		for (Pokemon poke : user.getPokemonTeam())
+		{
+			userPokemon.add(poke.getName());
+		}
+		this.view.setPokemonButtonData(userPokemon, new PokemonButtonListener());
+	}
+	
+	class QueueButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			//TODO
+		}	
 	}
 	
 	class MoveButtonListener implements ActionListener {
-
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			/*
-			Pokemon firstPokemon = PokemonStringToObjectConverter.convert((battleView.getFirstPokemonName()));
-			Pokemon secondPokemon = PokemonStringToObjectConverter.convert((battleView.getSecondPokemonName()));
-			Move moveToUse = MoveStringToObjectConverter.convert(battleView.getMoveToUse());
-			
-			if (firstPokemon == null)
-			{
-				battleView.displayPopupMessage("Invalid first Pokemon name.");
-				return;
-			}
-			else if (secondPokemon == null)
-			{
-				battleView.displayPopupMessage("Invalid second Pokemon name.");
-				return;
-			}
-			else if (moveToUse == null)
-			{
-				battleView.displayPopupMessage("Invalid move name.");
-				return;
-			}
-			
-			battleModel.battle(firstPokemon, secondPokemon, moveToUse);
-			battleView.displayPopupMessage(battleModel.getMessage());
-			*/
-		}
-		
+		public void actionPerformed(ActionEvent e) 
+		{
+			//TODO
+		}	
 	}
-
+	
+	class PokemonButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			//TODO
+		}
+	}
 }

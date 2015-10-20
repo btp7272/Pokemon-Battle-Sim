@@ -31,17 +31,17 @@ public class BattleModel {
 	private boolean isGameover;
 	
 	// Synchronization Locks
-	private Object playerOneLock;
-	private Object playerTwoLock;
-	private Object playerOneActiveLock;
-	private Object playerTwoActiveLock;
-	private Object playerOneTasksLock; 
-	private Object playerTwoTasksLock;
-	private Object taskMapLock;
-	private Object taskCounterLock;
-	private Object logLock;
-	private Object timeLeftLock;
-	private Object isGameoverLock;
+	private Object playerOneLock = new Object();
+	private Object playerTwoLock = new Object();
+	private Object playerOneActiveLock = new Object();
+	private Object playerTwoActiveLock = new Object();
+	private Object playerOneTasksLock = new Object();
+	private Object playerTwoTasksLock = new Object();
+	private Object taskMapLock = new Object();
+	private Object taskCounterLock = new Object();
+	private Object logLock = new Object();
+	private Object timeLeftLock = new Object();
+	private Object isGameoverLock = new Object();
 	
 	public BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo, Timer timer, int duration)
 	{
@@ -625,12 +625,18 @@ public class BattleModel {
 				{
 					// wait
 					timer.schedule(new DelayTask(player), 50);
+					return;
 				}
 				
 				// perform queued move from map
 				synchronized (taskMapLock)
 				{
-						taskMap.remove(task.getID());
+					if (taskMap == null)
+					{
+						timer.schedule(new DelayTask(player), 50);
+						return;
+					}
+					taskMap.remove(task.getID());
 				}
 				
 				// set active period
@@ -653,12 +659,18 @@ public class BattleModel {
 				{
 					// wait
 					timer.schedule(new DelayTask(player), 50);
+					return;
 				}
 				
 				// perform queued move from map
 				synchronized (taskMapLock)
 				{
-						taskMap.remove(task.getID());
+					if (taskMap == null)
+					{
+						timer.schedule(new DelayTask(player), 50);
+						return;
+					}
+					taskMap.remove(task.getID());
 				}
 				
 				// set active period

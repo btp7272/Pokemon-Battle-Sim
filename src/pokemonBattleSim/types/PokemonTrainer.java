@@ -5,7 +5,12 @@ import java.util.ArrayList;
 public class PokemonTrainer implements IPokemonTrainer
 {
 	private ArrayList<Pokemon> team;
-	private Object teamLock;
+	private Object teamLock = new Object();
+	
+	public PokemonTrainer (ArrayList<Pokemon> team)
+	{
+		this.team = team;
+	}
 	
 	@Override
 	public ArrayList<Pokemon> getPokemonTeam() 
@@ -31,7 +36,7 @@ public class PokemonTrainer implements IPokemonTrainer
 		if (team == null)
 			return false;
 		
-		if (index < 0 || index >= 6 || index >= team.size())
+		if (index < 0 || index >= 6 || index >= (team.size() == 0 ? 1 : team.size()))
 			return false;
 		
 		if (pokemon == null)

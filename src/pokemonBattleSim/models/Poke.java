@@ -6,7 +6,7 @@ import pokemonBattleSim.types.Type;
 
 public class Poke
 {
-	static Map < String, Pokemon > pokeMap;
+	public static Map < String, Pokemon > pokeMap = new HashMap<>();
 	static
 	{
 		pokeMap.put("Bulbasaur", new Pokemon(1, "Bulbasaur", 45, 49, 49, 65, 65, 45, Type.GRASS, Type.POISON));

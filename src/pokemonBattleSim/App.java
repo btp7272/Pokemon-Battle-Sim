@@ -25,11 +25,11 @@ public class App {
 		for (int i = 0; i < 6; i++)
 		{
 			playerPokemon.add(Poke.pokeMap.get("Pikachu"));
-			computerPokemon.add(Poke.pokeMap.get("Pikachu"));
+			computerPokemon.add(Poke.pokeMap.get("Onix"));
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)
 			{
-				m.add("Thunder");
+				m.add("Move Placeholder "+ j);
 			}
 			moveMap.put(i,m);
 		}

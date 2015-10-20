@@ -25,7 +25,7 @@ public class App {
 		for (int i = 0; i < 6; i++)
 		{
 			playerPokemon.add(Poke.pokeMap.get("Pikachu"));
-			computerPokemon.add(Poke.pokeMap.get("Onix"));
+			computerPokemon.add(Poke.pokeMap.get("Terrakion"));
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)
 			{
@@ -39,6 +39,7 @@ public class App {
 		Timer timer = new Timer();
 		BattleView view = new BattleView();
 		BattleModel model = new BattleModel(player,computer,timer, 0);
+		@SuppressWarnings("unused")
 		BattleController controller = new BattleController(view,model,timer,moveMap,player,computer);
 		
 		view.setVisible(true);

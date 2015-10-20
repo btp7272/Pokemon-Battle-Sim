@@ -5,8 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import pokemonBattleSim.models.BattleModel;
+import pokemonBattleSim.models.BattleModel.Entity;
+import pokemonBattleSim.models.MoveList;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
@@ -46,6 +49,29 @@ public class BattleController {
 			userPokemon.add(poke.getName());
 		}
 		this.view.setPokemonButtonData(userPokemon, new PokemonButtonListener());
+		this.timer.schedule(new UpdateUITask(), 0, 10);
+	}
+	
+	class UpdateUITask extends TimerTask
+	{
+		@Override
+		public void run() {
+			// TODO Update UI move properly
+			view.setPlayerOnePokemonHP(model.getPokemonHealth(Entity.PLAYERONE, 0));
+			view.setPlayerTwoPokemonHP(model.getPokemonHealth(Entity.PLAYERTWO, 0));
+			ArrayList<BattleModel.LiteMove> moveList = model.getTasks(Entity.PLAYERONE);
+			ArrayList<String> moveStrings = new ArrayList<>();
+			for (BattleModel.LiteMove move : moveList)
+			{
+				moveStrings.add(move.name);
+			}
+			view.setMoveQueueData(moveStrings, new QueueButtonListener());
+			/*if (!model.getLog().isEmpty())
+			{
+				view.displayPopupMessage(model.getLog().pop());
+			}*/
+			//view.setMoveButtonData(moves, moveButtonListener);
+		}	
 	}
 	
 	class QueueButtonListener implements ActionListener {
@@ -61,6 +87,9 @@ public class BattleController {
 		public void actionPerformed(ActionEvent e) 
 		{
 			//TODO
+			BattleModel.RegisterActionArgs args = model.new RegisterActionArgs(MoveList.Pound);
+			model.registerAction(Entity.PLAYERONE, Entity.PLAYERTWO, args, 1000, 2000);
+			timer.schedule(new UpdateUITask(), 0);
 		}	
 	}
 	

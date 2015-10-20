@@ -7,7 +7,7 @@ import pokemonBattleSim.types.Type;
 
 public class MoveList 
 {	
-	Move Pound = new Move("Pound", Type.NORMAL, Attribute.PHYSICAL, Contest.TOUGH, 35, 40, 100);
+	public static Move Pound = new Move("Pound", Type.NORMAL, Attribute.PHYSICAL, Contest.TOUGH, 35, 40, 100);
 	Move KarateChop = new Move("Karate Chop", Type.NORMAL, Attribute.PHYSICAL, Contest.TOUGH, 25, 50, 100);
 	Move DoubleSlap = new Move("Double Slap", Type.NORMAL, Attribute.PHYSICAL, Contest.CUTE, 10, 15, 85);
 	Move CometPunch = new Move("Comet Punch", Type.NORMAL, Attribute.PHYSICAL, Contest.TOUGH, 15, 18, 85);

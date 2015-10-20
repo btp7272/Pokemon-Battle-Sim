@@ -29,7 +29,7 @@ public class App {
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)
 			{
-				m.add("Move Placeholder "+ j);
+				m.add("ATTACK!");
 			}
 			moveMap.put(i,m);
 		}

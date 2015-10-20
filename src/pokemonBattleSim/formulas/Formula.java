@@ -99,7 +99,7 @@ public class Formula
     //Calculates the type modifier
     public static double clacEffectiveness(double curModifier, Type atkType, Type defType)
     {
-    	curModifier *= effectiveness[atkType.getMask()][defType.getMask()];
+    	curModifier *= 1;//effectiveness[atkType.getMask()][defType.getMask()];
     	//Check ability of pokemon a
     	//Check ability of pokemon b
     	return curModifier;

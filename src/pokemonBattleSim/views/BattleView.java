@@ -172,15 +172,15 @@ public class BattleView extends JFrame {
 		playerTwoPokemonHP.setText(hp + " HP");
 	}
 	
-	public void setPlayerOnePokemonDisplayImage(String resourcePath)
+	public void setPlayerOnePokemonDisplayImage(String resource)
 	{
-		playerOnePokemonDisplayImage = new ImageIcon("src/pokemonBattleSim/resources/images/"+resourcePath+".gif");
+		playerOnePokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 	}
 	
-	public void setPlayerTwoPokemonDisplayImage(String resourcePath)
+	public void setPlayerTwoPokemonDisplayImage(String resource)
 	{
-		playerTwoPokemonDisplayImage = new ImageIcon("src/pokemonBattleSim/resources/images/"+resourcePath+".gif");
+		playerTwoPokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}
 	

@@ -43,24 +43,28 @@ public class Formula
      *****/
     public static int calcDamage(Pokemon a, Pokemon b, Move m)
     {
-        int damage;
+        double damage;
         
         if(m.getCategory() == Attribute.PHYSICAL)
         {
-            double x = ( ( double ) 21 / 25 );
-            double y = ( ( double ) a.getAtk() / b.getDef() );
-            double z = modifier( a, b, m );
-            damage = ( int )( ( x * y * m.getPower() + 2 ) * z );
-            return damage;
+            double numerator, denomenator;
+            numerator = ( ( 2 * a.getLevel() ) + 10  );
+            numerator = numerator * a.getAtk() * m.getPower();
+            denomenator = 250 * b.getDef();
+            damage = (numerator / denomenator) + 2;
+            damage *= modifier( a, b, m );
+            return (int)damage;
         }
             
         else
         {
-            double x = ( (double) 21 / 25 );
-        	double y = ( ( double ) a.getSpAtk() / b.getSpDef() );
-        	double z = modifier( a, b, m );
-        	damage = ( int )( ( x * y * m.getPower() + 2 ) * z );
-        	return damage;
+        	double numerator, denomenator;
+            numerator = ( ( 2 * a.getLevel() ) + 10  );
+            numerator = numerator * a.getSpAtk() * m.getPower();
+            denomenator = 250 * b.getSpDef();
+            damage = (numerator / denomenator) + 2;
+            damage *= modifier( a, b, m );
+            return (int)damage;
         }
     }
 

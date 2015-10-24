@@ -27,6 +27,7 @@ public class Pokemon
 	int baseSpDef;
 	int speed;
 	int baseSpeed;
+	int level;
 	double weight;
 	double baseWeight;
 	//Ability ability = null;
@@ -51,6 +52,7 @@ public class Pokemon
 	public void setSpeed(int newSpeed, int IV, int EV, int level){ this.speed = Formula.calcStat(newSpeed,IV,EV,level); this.baseSpeed = this.speed;}
 	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
+	public void setLevel(int lev){this.level = lev;}
 	
 	//para: number -6 to 6. The stage of the stat
 	public void changeAtk(int change)
@@ -425,6 +427,10 @@ public class Pokemon
 	public int getSpAtkModifier(){return this.spAtkModifier;}
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
+	public int getLevel(){return this.level;}
+	
+	
+	
 	/*
 	 * Basic Constructors for Pokemon Objects
 	 */
@@ -495,6 +501,7 @@ public class Pokemon
 		this.setSpAtk(a.getBaseSpAtk(),IVs[3],EVs[3],level);
 		this.setSpDef(a.getBaseSpDef(),IVs[4],EVs[4],level);
 		this.setSpeed(a.getBaseSpeed(),IVs[5],EVs[5],level);
+		this.setLevel(level);
 		
 		
 		/*

@@ -42,12 +42,12 @@ public class Pokemon
 	
 	public void setIndex(double index){ this.indexNum = index;}
 	public void setName(String newName){ this.name = newName;}
-	public void setHp(int health){	this.hp = Formula.calcHP(health); this.baseHp = this.hp;}
-	public void setAtk(int attack){ this.atk = Formula.calcStat(attack); this.baseAtk = this.atk;}
-	public void setDef(int defense){ this.def = Formula.calcStat(defense); this.baseDef = this.def;}
-	public void setSpAtk(int spattack){ this.spAtk = Formula.calcStat(spattack); this.baseSpAtk = this.spAtk;}
-	public void setSpDef(int spdefense){ this.spDef = Formula.calcStat(spdefense); this.baseSpDef = this.spDef;}
-	public void setSpeed(int newSpeed){ this.speed = Formula.calcStat(newSpeed); this.baseSpeed = this.speed;}
+	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.baseHp = this.hp;}
+	public void setAtk(int attack, int IV, int EV, int level){ this.atk = Formula.calcStat(attack,IV,EV,level); this.baseAtk = this.atk;}
+	public void setDef(int defense, int IV, int EV, int level){ this.def = Formula.calcStat(defense,IV,EV,level); this.baseDef = this.def;}
+	public void setSpAtk(int spattack, int IV, int EV, int level){ this.spAtk = Formula.calcStat(spattack,IV,EV,level); this.baseSpAtk = this.spAtk;}
+	public void setSpDef(int spdefense, int IV, int EV, int level){ this.spDef = Formula.calcStat(spdefense,IV,EV,level); this.baseSpDef = this.spDef;}
+	public void setSpeed(int newSpeed, int IV, int EV, int level){ this.speed = Formula.calcStat(newSpeed,IV,EV,level); this.baseSpeed = this.speed;}
 	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	
@@ -406,10 +406,15 @@ public class Pokemon
 	public int getHP(){return this.hp;}
 	public int getBaseHP() {return this.baseHp;}
 	public int getAtk(){return this.atk;}
+	public int getBaseAtk() {return this.baseAtk;}
 	public int getDef(){return this.def;}
+	public int getBaseDef() {return this.baseDef;}
 	public int getSpAtk(){return this.spAtk;}
+	public int getBaseSpAtk() {return this.baseSpAtk;}
 	public int getSpDef(){return this.spDef;}
-	public int getSpeed(){return this.speed;}
+	public int getBaseSpDef() {return this.baseSpDef;}
+	public int getSpeed() {return this.speed;}
+	public int getBaseSpeed() {return this.baseSpeed;}
 	public double getWeight(){return this.weight;}
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
@@ -425,55 +430,70 @@ public class Pokemon
 	public Pokemon(){} 
 	
 	/*
-	 * Full constructor with two types
+	 * Full constructor for duel-type Pokemon. This is for the map. It is
+	 * never used to create the pokemon the users play with. This constructor passes the
+	 * base statistic of the pokemon before the actual stat is calculate, which
+	 * will be done in the copy constructor.
 	 */
 	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne, Type typeTwo)
 	{
 		setIndex(indexNum);
 		setName(name);
-		setHp(hp);
-		setAtk(atk);
-		setDef(def);
-		setSpAtk(spAtk);
-		setSpDef(spDef);
-		setSpeed(speed);
+		this.baseHp = hp;
+		this.baseAtk = atk;
+		this.baseDef = def;
+		this.baseSpAtk = spAtk;
+		this.baseSpDef = spDef;
+		this.baseSpeed = speed;
 		setType(typeOne,1);
 		setType(typeTwo,2);
 	}
 	
 	/*
-	 * Full constructor for single-type Pokemon
+	 * Full constructor for single-type Pokemon. This is for the map. It is never used
+	 * to create the pokemon the users play with. This constructor passes the
+	 * base statistic of the pokemon before the actual stat is calculated, which
+	 * will be done in the copy constructor
 	 */
 	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne)
 	{
 		setIndex(indexNum);
 		setName(name);
-		setHp(hp);
-		setAtk(atk);
-		setDef(def);
-		setSpAtk(spAtk);
-		setSpDef(spDef);
-		setSpeed(speed);
+		this.baseHp = hp;
+		this.baseAtk = atk;
+		this.baseDef = def;
+		this.baseSpAtk = spAtk;
+		this.baseSpDef = spDef;
+		this.baseSpeed = speed;
 		setType(typeOne,1);
 		setType(null,2);
 	}
 	
 	
 	/*
-	 * Copy constructor
+	 * Copy constructor. In this constructor the stats are set to the calculated,
+	 * final stat of the pokemon. The base stat is used to keep this value unmodified
+	 * in the event it is needed after said stat is modified.
+	 *  @exeption: IV and EV arrays must be size 6
+	 *  @exeption: level must be between 1 and 100
+	 *  @parameter: a = pokemon initialized by a full constructor
+	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
+	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 */
-	public Pokemon(Pokemon a, Move move1, Move move2, Move move3, Move move4)
+	public Pokemon(Pokemon a, Move move1, Move move2, Move move3, Move move4, int[] IVs, int[] EVs, int level)
 	{
+		if(IVs.length != 6 || EVs.length != 6)
+			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
+		if(level < 1 || level > 100)
+			throw new IllegalArgumentException("Invalid level");
 		this.indexNum = a.getIndex();
 		this.name = a.getName();
-		this.hp = a.getHP();
-		this.atk = a.getAtk();
-		this.def = a.getDef();
-		this.spAtk = a.getSpAtk();
-		this.spDef = a.getSpDef();
-		this.speed = a.getSpeed();
-		this.typeOne = a.getType1();
-		this.typeTwo = a.getType2();
+		this.setHp(a.getBaseHP(),IVs[0],EVs[0],level);
+		this.setAtk(a.getBaseAtk(),IVs[1],EVs[1],level);
+		this.setDef(a.getBaseDef(),IVs[2],EVs[2],level);
+		this.setSpAtk(a.getBaseSpAtk(),IVs[3],EVs[3],level);
+		this.setSpDef(a.getBaseSpDef(),IVs[4],EVs[4],level);
+		this.setSpeed(a.getBaseSpeed(),IVs[5],EVs[5],level);
 		setMove(move1,1);
 		setMove(move2,2);
 		setMove(move3,3);

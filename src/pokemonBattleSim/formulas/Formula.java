@@ -100,21 +100,27 @@ public class Formula
     public static double clacEffectiveness(double curModifier, Type atkType, Type defType)
     {
     	curModifier *= 1;//effectiveness[atkType.getMask()][defType.getMask()];
-    	//Check ability of pokemon a
-    	//Check ability of pokemon b
     	return curModifier;
     }
     
     //Calculates the max HP of a pokemon (assumes all IVs are 31 and level is 100)
-    public static int calcHP(int baseHP)
+    public static int calcHP(int baseHP, int IV, int EV, int level)
     {
-    	return ((baseHP + 31) * 2) + (int)(Math.sqrt(31) / 4) + 110 ;
+    	int result;
+    	int numerator =  2 * baseHP + IV + (EV / 4);
+    	numerator *= level;
+    	result = numerator/100 + level + 10;
+    	return result;
     }
     
     //Calculates all other max stats (assumes all IVs are 31 and level is 100)
-    public static int calcStat(int baseStat)
+    public static int calcStat(int baseStat, int IV, int EV, int level)
     {
-    	return ((baseStat + 31) * 2) + (int)(Math.sqrt(31) / 4) + 5 ;
+    	int result;
+    	int numerator =  (2 * baseStat) + IV + (EV / 4);
+    	numerator *= level;
+    	result = numerator/100 + 5;
+    	return result;
     }
     
 } // end class

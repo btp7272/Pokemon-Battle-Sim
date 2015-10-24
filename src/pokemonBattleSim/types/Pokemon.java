@@ -1,5 +1,6 @@
 /*
  * Bryan Powell 9-27-2015
+
  * Pokemon constructors and operators
  */
 package pokemonBattleSim.types;
@@ -480,7 +481,7 @@ public class Pokemon
 	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 */
-	public Pokemon(Pokemon a, Move move1, Move move2, Move move3, Move move4, int[] IVs, int[] EVs, int level)
+	public Pokemon(Pokemon a, Move move1, Move move2, Move move3, Move move4, int[] IVs, int[] EVs, int level, Nature nature)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
@@ -494,6 +495,63 @@ public class Pokemon
 		this.setSpAtk(a.getBaseSpAtk(),IVs[3],EVs[3],level);
 		this.setSpDef(a.getBaseSpDef(),IVs[4],EVs[4],level);
 		this.setSpeed(a.getBaseSpeed(),IVs[5],EVs[5],level);
+		
+		
+		/*
+		 * Attack = 0 
+		 * Defense = 1
+		 * Special Attack = 2
+		 * Special Defense = 3
+		 * Speed = 4
+		 */
+		switch(nature.getType(nature.getIncrease()))
+		{
+			case 0:
+				this.baseAtk *= 1.1;
+				this.atk = baseAtk;
+				break;
+			case 1:
+				this.baseDef *= 1.1;
+				this.atk = baseDef;
+				break;
+			case 2:
+				this.baseSpAtk *= 1.1;
+				this.atk = baseSpAtk;
+				break;
+			case 3:
+				this.baseSpDef *= 1.1;
+				this.atk = baseSpDef;
+				break;
+			case 4:
+				this.baseSpeed *= 1.1;
+				this.atk = baseSpeed;
+				break;
+		}
+		
+		switch(nature.getType(nature.getDecrease()))
+		{
+			case 0:
+				this.baseAtk *= .9;
+				this.atk = baseAtk;
+				break;
+			case 1:
+				this.baseDef *= .9;
+				this.atk = baseDef;
+				break;
+			case 2:
+				this.baseSpAtk *= .9;
+				this.atk = baseSpAtk;
+				break;
+			case 3:
+				this.baseSpDef *= .9;
+				this.atk = baseSpDef;
+				break;
+			case 4:
+				this.baseSpeed *= .9;
+				this.atk = baseSpeed;
+				break;
+		}
+		
 		setMove(move1,1);
 		setMove(move2,2);
 		setMove(move3,3);

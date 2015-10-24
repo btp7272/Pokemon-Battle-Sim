@@ -5,6 +5,10 @@ import pokemonBattleSim.types.Contest;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Type;
 
+/*
+ * Name, type, attribute, contest, PP, power, accuracy
+ */
+
 public class MoveList 
 {	
 	public static Move Pound = new Move("Pound", Type.NORMAL, Attribute.PHYSICAL, Contest.TOUGH, 35, 40, 100);

@@ -1,0 +1,249 @@
+1:Abomasite:Mega Evolves Abomasnow.
+2:Absolite:Mega Evolves Absol.
+3:Absorb Bulb:Boosts Special Attack of holder if hit by a Water-type attack. One-time use.
+4:Adamant Orb:Hold item which raises power of Dialga's STAB moves by 20%.
+5:Aerodactylite:Mega Evolves Aerodactyl.
+6:Aggronite:Mega Evolves Aggron.
+7:Aguav Berry:Restores 1/8 of max HP when at 50% HP or less. One-time use.
+8:Air Balloon:Makes the holder immune to Ground-type attacks. Disappears when holder is hit.
+9:Alakazite:Mega Evolves Alakazam.
+10:Altarianite:Mega Evolves Altaria.
+11:Ampharosite:Mega Evolves Ampharos.
+12:Apicot Berry:Raises Special Defense by one stage when at 25% HP or less. One-time use.
+13:Aspear Berry:Cures freeze. One-time use.
+14:Assault Vest:Holder's Sp. Def is 1.5x, but it can only use damaging moves.
+15:Audinite:Mega Evolves Audino.
+16:Babiri Berry:Reduces damage from a super effective Steel-type attack by 50%. Consumed after use.
+17:Banettite:Mega Evolves Banette.
+18:Beedrillite:Mega Evolves Beedrill.
+19:Berry:Restores 10 HP when at 50% HP or less. One-time use.
+20:Berry Juice:Restores 20 HP when at 50% HP or less. One-time use.
+21:Berserk Gene:Raises Attack, but causes confusion. One-time use.
+22:Big Root:Increases HP gained from draining moves by 30%.
+23:Binding Band:Increases power of multi-turn trapping moves.
+24:Bitter Berry:Cures confusion. One-time use.
+25:Black Belt:Raises power of Fighting-type moves by 20%.
+26:Black Sludge:Recovers 1/16 of max HP each turn for Poison-types. Damages all other types by 1/8 of max HP each turn.
+27:BlackGlasses:Raises power of Dark-type moves by 20%.
+28:Blastoisinite:Mega Evolves Blastoise.
+29:Blazikenite:Mega Evolves Blaziken.
+30:Blue Orb:Causes Kyogre to undergo Primal Reversion upon switching in.
+31:BrightPowder:Raises evasion by 10%.
+32:Bug Gem:Raises the power of a Bug-type move by 30%. One-time use.
+33:Burn Drive:Changes the type of Techno Blast to Fire.
+34:Cameruptite:Mega Evolves Camerupt.
+35:Cell Battery:Boosts Attack of holder if hit by an Electric-type attack. One-time use.
+36:Charcoal:Raises power of Fire-type moves by 20%.
+37:Charizardite X:Mega Evolves Charizard into Mega Charizard X.
+38:Charizardite Y:Mega Evolves Charizard into Mega Charizard Y.
+39:Charti Berry:Reduces damage from a super effective Rock-type attack by 50%. Consumed after use.
+40:Cheri Berry:Cures paralysis. One-time use.
+41:Chesto Berry:Cures sleep. One-time use.
+42:Chilan Berry:Berry blended to make PokÃ©blocks.
+43:Chill Drive:Changes the type of Techno Blast to Ice.
+44:Choice Band:Raises Attack by 50%, but locks the user into one move.
+45:Choice Scarf:Hold item which raises Speed by 50%, but locks holder into one move.
+46:Choice Specs:Hold item which raises Special Attack by 50%, but locks holder into one move.
+47:Chople Berry:Reduces damage from a super effective Fighting-type attack by 50%. Consumed after use.
+48:Cleanse Tag:Decreases the appearance of wild PokÃ©mon.
+49:Coba Berry:Reduces damage from a super effective Flying-type attack by 50%. Consumed after use.
+50:Colbur Berry:Reduces damage from a super effective Dark-type attack by 50%. Consumed after use.
+51:Custap Berry:Activates at 25% HP. Next move used goes first. One-time use.
+52:Damp Rock:Rain Dance and Drizzle lasts 8 turns.
+53:Dark Gem:Raises the power of a Dark-type move by 30%. One-time use.
+54:DeepSeaScale:Doubles Clamperl's Special Defense.
+55:DeepSeaTooth:Doubles Clamperl's Special Attack.
+56:Destiny Knot:If the holder becomes infatuated, so does the enemy.
+57:Diancite:Mega Evolves Diancie.
+58:Douse Drive:Changes the type of Techno Blast to Water.
+59:Draco Plate:Raises power of Dragon-type moves by 20%. Pokemon with Multitype become Dragon-type.
+60:Dragon Fang:Raises power of Dragon-type moves by 20%.
+61:Dragon Gem:Raises the power of a Dragon-type move by 30%. One-time use.
+62:Dread Plate:Raises power of the holder's Dark-type moves by 20%. Pokemon with Multitype become Dark-type.
+63:Earth Plate:Raises power of Ground-type moves by 20%. Pokemon with Multitype become Ground-type.
+64:Eject Button:When the holder is hit, it immediately switches out. One-time use.
+65:Electric Gem:Raises the power of a Electric-type move by 30%. One-time use.
+66:Enigma Berry:PokÃ©block ingredient. Restores 1/4 of the max HP when hit by a super effective move. One-time use.
+67:Eviolite:Boosts Defense and Special Defense of holder by 50% if it is an NFE Pokemon.
+68:Expert Belt:Super effective attacks are 20% stronger.
+69:Fairy Gem:Raises the power of a Fairy-type move by 30%. One-time use.
+70:Fighting Gem:Raises the power of a Fighting-type move by 30%. One-time use.
+71:Figy Berry:Restores 1/8 max HP when at 50% HP or less. One-time use.
+72:Fire Gem:Raises the power of a Fire-type move by 30%. One-time use.
+73:Fist Plate:Raises power of Fighting-type moves 20%. Pokemon with Multitype become Fighting-type.
+74:Flame Orb:Burns the holder.
+75:Flame Plate:Raises power of Fire-type moves 20%. Pokemon with Multitype become Fire-type.
+76:Float Stone:The weight of the holder is halved.
+77:Flying Gem:Raises the power of a Flying-type move by 30%. One-time use.
+78:Focus Band:Gives an 11.7% chance of surviving a hit with at least 1 HP.
+79:Focus Sash:The holder always survives one attack. One-time use.
+80:Full Incense:Makes the holder move last.
+81:Galladite:Mega Evolves Gallade.
+82:Ganlon Berry:Raises Defense by one stage when at 25% HP or less. One-time use.
+83:Garchompite:Mega Evolves Garchomp.
+84:Gardevoirite:Mega Evolves Gardevoir.
+85:Gengarite:Mega Evolves Gengar.
+86:Ghost Gem:Raises the power of a Ghost-type move by 30%. One-time use.
+87:Glalite:Mega Evolves Glalie.
+88:Gold Berry:Restores 30 HP when at 50% HP or less. One-time use.
+89:Grass Gem:Raises the power of a Grass-type move by 30%. One-time use.
+90:Grip Claw:Partial trapping moves last 6 turns.
+91:Griseous Orb:Raises the power of Giratina's STAB moves 20%. May only be held by Giratina, transforms Giratina into Giratina-O when held. Cannot be removed in battle.
+92:Ground Gem:Raises the power of a Ground-type move by 30%. One-time use.
+93:Gyaradosite:Mega Evolves Gyarados.
+94:Haban Berry:Reduces damage from a super effective Dragon-type attack by 50%. Consumed after use.
+95:Hard Stone:Raises power of Rock-type moves by 20%.
+96:Heat Rock:Sunny Day and Drought lasts 8 turns.
+97:Heracronite:Mega Evolves Heracross.
+98:Houndoominite:Mega Evolves Houndoom.
+99:Iapapa Berry:Restores 1/8 of max HP when at 50% HP or less. One-time use.
+100:Ice Berry:Cures burn. One-time use.
+101:Ice Gem:Raises the power of a Ice-type move by 30%. One-time use.
+102:Icicle Plate:Raises power of Ice-type moves 20%. Pokemon with Multitype become Ice-type.
+103:Icy Rock:Hail and Snow Warning lasts 8 turns.
+104:Insect Plate:Raises power of Bug-type moves by 20%. Pokemon with Multitype become Bug-type.
+105:Iron Ball:Reduces Speed by 50%.
+106:Iron Plate:Raises power of Steel-type moves by 20%. Pokemon with Multitype become Steel-type.
+107:Jaboca Berry:If hit by a physical attack, the attacker takes 12.5% damage. One-time use.
+108:Kangaskhanite:Mega Evolves Kangaskhan.
+109:Kasib Berry:Reduces damage from a super effective Ghost-type attack by 50%. Consumed after use.
+110:Kebia Berry:Reduces damage from a super effective Poison-type attack by 50%. Consumed after use.
+111:Kee Berry:Raises Defense by 1 stage if hit by a Physical attack. Single use.
+112:Kelpsy Berry:PokÃ©block ingredient. Plant in loamy soil to grow a Kelpsy plant.
+113:King's Rock:Moves recieve a 10% flinch chance, if they do not have one already.
+114:Lagging Tail:Makes the holder move last.
+115:Lansat Berry:Raises critical hit rate by two stages when at 25% HP or less. One-time use.
+116:Latiasite:Mega Evolves Latias.
+117:Latiosite:Mega Evolves Latios.
+118:Lax Incense:Raises evasion by 5%.
+119:Leftovers:Heals 1/16 of max HP each turn.
+120:Leppa Berry:Restores 10 PP to a move that has run out of PP. One-time use.
+121:Liechi Berry:Raises Attack by one stage when at 25% HP or less. One-time use.
+122:Life Orb:Boosts power by 30%, user takes 10% recoil each turn it attacks.
+123:Light Ball:Doubles Pikachu's Special Attack.
+124:Light Clay:Reflect and Light Screen last 8 turns.
+125:Lopunnite:Mega Evolves Lopunny.
+126:Lucarionite:Mega Evolves Lucario.
+127:Lucky Punch:Raises Chansey's critical hit ratio by two stages.
+128:Lum Berry:Cures status. One-time use.
+129:Luminous Moss:Raises Special Defense by 1 stage if hit by a Water-type attack. Single use.
+130:Lustrous Orb:Raises power of Palkia's STAB moves by 20%.
+131:Macho Brace:Reduces Speed by 50%. Doubles EVs gained.
+132:Magmarizer:Evolves Magmar into Magmortar.
+133:Magnet:Raises power of Electric-type moves by 20%.
+134:Mago Berry:Restores 1/8 max HP when at 50% HP or less. One-time use.
+135:Mail:Prevents Trick from working.
+136:Manectite:Mega Evolves Manectric.
+137:Maranga Berry:Raises Special Defense by 1 stage if hit by a Special attack. Single use.
+138:Mawilite:Mega Evolves Mawile.
+139:Meadow Plate:Raises power of Grass-type moves 20%. Pokemon with Multitype become Grass-type.
+140:Medichamite:Mega Evolves Medicham.
+141:Mental Herb:Cures infatuation. One-time use.
+142:Metagrossite:Mega Evolves Metagross.
+143:Metal Coat:Raises power of Steel-type moves by 20%.
+144:Metal Powder:Raises Ditto's Defense and Special Defense by 50%.
+145:Metronome:Boost the power of attacks used consecutively.
+146:Mewtwonite X:Mega Evolves Mewtwo into Mega Mewtwo X.
+147:Mewtwonite Y:Mega Evolves Mewtwo into Mega Mewtwo Y.
+148:Micle Berry:The next move used will always hit.
+149:Mind Plate:Raises power of Psychic-type moves by 20%. Pokemon with Multitype become Psychic-type.
+150:Mint Berry:Cures sleep. One-time use.
+151:Miracle Berry:Cures status. One-time use.
+152:Miracle Seed:Raises power of Grass-type moves by 20%.
+153:Muscle Band:Raises power of physical moves by 10%.
+154:Mystery Berry:Restores 5 PP to a move that has run out of PP. One-time use.
+155:Mystic Water:Raises power of Water-type moves by 20%.
+156:NeverMeltIce:Raises power of Ice-type moves by 20%.
+157:Normal Gem:Raises the power of a Normal-type move by 30%. One-time use.
+158:Occa Berry:Reduces damage from a super effective Fire-type attack by 50%. Consumed after use.
+159:Odd Incense:Raises power of Psychic-type moves by 20%.
+160:Oran Berry:Restores 10 HP when at 50% HP or less. One-time use.
+161:PRZCure Berry:Cures paralysis. One-time use.
+162:PSNCure Berry:Cures poison. One-time use.
+163:Passho Berry:Reduces damage from a super effective Water-type attack by 50%. Consumed after use.
+164:Payapa Berry:Reduces damage from a super effective Psychic-type attack by 50%. Consumed after use.
+165:Pecha Berry:Cures poison. One-time use.
+166:Persim Berry:Cures confusion. One-time use.
+167:Petaya Berry:Raises Special Attack by one stage when at 25% HP or less. One-time use.
+168:Pidgeotite:Mega Evolves Pidgeot.
+169:Pink Bow:Raises power of Normal-type moves by 20%.
+170:Pinsirite:Mega Evolves Pinsir.
+171:Pixie Plate:Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy-type.
+172:Poison Barb:Raises power of Poison-type moves by 20%.
+173:Poison Gem:Raises the power of a Poison-type move by 30%. One-time use.
+174:Polka Dot Bow:Raises power of Normal moves by 12.5%.
+175:Power Anklet:Reduces Speed by 50%. Grants 4 Speed EVs when the opponent is defeated. Passes down the Speed IV to its offspring in HGSS.
+176:Power Band:Reduces Speed by 50%. Grants 4 Special Defense EVs when the opponent is defeated. Passes down the Special Defense IV to its offspring in HGSS.
+177:Power Belt:Reduces Speed by 50%. Grants 4 Defense EVs when the opponent is defeated. Passes down the Defense IV to its offspring in HGSS.
+178:Power Bracer:Reduces Speed by 50%. Grants 4 Attack EVs when the opponent is defeated. Passes down the Attack IV to its offspring in HGSS.
+179:Power Herb:Removes the charge up turn from all moves. One-time use.
+180:Power Lens:Reduces Speed by 50%. Grants 4 Special Attack EVs when the opponent is defeated. Passes down it's Special Attack IV to its offspring in HGSS.
+181:Power Weight:Reduces Speed by 50%. Grants 4 HP EVs when the opponent is defeated. Passes down HP IV to its offspring in HGSS.
+182:Psychic Gem:Raises the power of a Psychic-type move by 30%. One-time use.
+183:Quick Claw:Gives the user a 23.4375% chance to go first.
+184:Quick Powder:Doubles Ditto's Speed.
+185:Rawst Berry:Cures burn. One-time use.
+186:Razor Claw:Raises critical hit rate by one stage.
+187:Razor Fang:Certain moves have a 10% flinch rate.
+188:Red Card:The opponent is forced out immediately if it attacks the holder. One-time use.
+189:Red Orb:Causes Groudon to undergo Primal Reversion upon switching in.
+190:Rindo Berry:Reduces damage from a super effective Grass-type attack by 50%. Consumed after use.
+191:Rock Gem:Raises the power of a Rock-type move by 30%. One-time use.
+192:Rock Incense:Raises power of Rock-type moves by 20%.
+193:Rocky Helmet:Damages the opponent for 1/6 of max HP when the opponent makes contact.
+194:Rose Incense:Raises power of Grass-type moves by 20%.
+195:Roseli Berry:Halves damage taken from a super effective Fairy-type attack. Single use.
+196:Rowap Berry:If hit by a special attack, the attacker takes 12.5% damage. One-time use.
+197:Sablenite:Mega Evolves Sableye.
+198:Safety Goggles:Protects the holder from weather-related damage and powder moves.
+199:Salac Berry:Raises Speed by one stage when at 25% HP or less. One-time use.
+200:Salamenceite:Mega Evolves Salamence.
+201:Sceptilite:Mega Evolves Sceptile.
+202:Scizorite:Mega Evolves Scizor.
+203:Scope Lens:Raises critical hit rate by one stage.
+204:Sea Incense:Raises power of Water-type moves 5%.
+205:Sharp Beak:Raises power of Flying-type moves by 20%.
+206:Sharpedoite:Mega Evolves Sharpedo.
+207:Shed Shell:Allows holder to switch out even when trapped.
+208:Shell Bell:Heals this Pokemon for 1/8 of the damage it does.
+209:Shock Drive:Changes the type of Techno Blast to Electric.
+210:Shuca Berry:Reduces damage from a super effective Ground-type attack by 50%. Consumed after use.
+211:Silk Scarf:Raises power of Normal-type moves by 20%.
+212:SilverPowder:Raises power of Bug-type moves by 20%.
+213:Sitrus Berry:Restores 1/4 of the max HP when at 1/2 HP or less. One-time use.
+214:Sky Plate:Raises power of Flying-type moves by 20%. Pokemon with Multitype become Flying-type.
+215:Slowbronite:Mega Evolves Slowbro.
+216:Smooth Rock:Makes Sandstorm and Sand Stream last 8 turns.
+217:Snowball:Raises Attack by 1 stage if hit by an Ice-type attack. Single use.
+218:Soft Sand:Raises power of Ground-type moves by 20%.
+219:Soul Dew:Raises Special Attack and Special Defense of Latias and Latios by 50%.
+220:Spell Tag:Raises power of Ghost-type moves by 20%.
+221:Splash Plate:Raises power of Water-type moves by 20%. Pokemon with Multitype become Water-type.
+222:Spooky Plate:Raises power of Ghost-type moves by 20%. Pokemon with Multitype become Ghost-type.
+223:Starf Berry:Raises a stat by two stages when at 25% HP or less. One-time use.
+224:Steel Gem:Raises the power of a Steel-type move by 30%. One-time use.
+225:Steelixite:Mega Evolves Steelix.
+226:Stick:Raises Farfetch'd's critical hit ratio by two stages.
+227:Sticky Barb:Causes damage to holder and attaches to attacker upon contact.
+228:Stone Plate:Raises power of Rock-type moves by 20%. Pokemon with Multitype become Rock-type.
+229:Swampertite:Mega Evolves Swampert.
+230:Tanga Berry:Reduces damage from a super effective Bug-type attack by 50%. Consumed after use.
+231:Thick Club:Doubles Cubone's and Marowak's Attack.
+232:Toxic Orb:Badly poisons the holder.
+233:Toxic Plate:Raises power of Poison-type moves by 20%. Pokemon with Multitype become Poison-type.
+234:Twisted Spoon:Raises power of Psychic-type moves by 20%.
+235:Tyranitarite:Mega Evolves Tyranitar.
+236:Venusaurite:Mega Evolves Venusaur.
+237:Wacan Berry:Reduces damage from a super effective Electric-type attack by 50%. Consumed after use.
+238:Water Gem:Raises the power of a Water-type move by 30%. One-time use.
+239:Water Stone:Evolves Eevee, Poliwhirl, Shellder, and Staryu.
+240:Watmel Berry:Changes Natural Gift into a base 100 power Fire-type attack.
+241:Wave Incense:Raises power of Water-type moves by 20%.
+242:Weakness Policy:Attack and Special Attack sharply increase when hit super effectively. Single use.
+243:White Herb:Removes stat decreases. One-time use.
+244:Wide Lens:Raises accuracy by 10%.
+245:Wiki Berry:Restores 1/8 of max HP when at 50% of max HP or less. One-time use.
+246:Wise Glasses:Raises damage from special moves by 10%.
+247:Yache Berry:Reduces damage from a super effective Ice-type attack by 50%. Consumed after use.
+248:Zap Plate:Raises power of Electric moves by 20%. Pokemon with Multitype become Electric-type.
+249:Zoom Lens:Raises accuracy by 20% if the holder moves after the target.

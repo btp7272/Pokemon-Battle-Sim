@@ -15,24 +15,26 @@ public enum Nature {
 	Jolly(11, "Speed", "SpAtk"),
 	Lax(12, "Defense", "SpDef"),
 	Lonely(13, "Attack", "Defense"),
-	Mild(14, "SpAtk	Defense"),
+	Mild(14, "SpAtk", "Defense"),
 	Modest(15, "SpAtk", "Attack"),
 	Naive(16, "Speed", "SpDef"),
 	Naughty(17, "Attack", "SpDef"),
 	Quiet(18, "SpAtk", "Speed"),
-	Quirky(19 "SpDef", "SpDef"),
+	Quirky(19, "SpDef", "SpDef"),
 	Rash(20, "SpAtk", "SpDef"),
 	Relaxed(21, "Defense", "Speed"),
 	Sassy(22, "SpDef", "Speed"),
 	Serious(23, "Speed", "Speed"),
-	Timid(24, "Speed", "Attack")
+	Timid(24, "Speed", "Attack");
 
 	private final int mask;
 	private final String increase;
 	private final String decrease;
-	Nature(int mask, String increase, String decrease)
+	Nature(int mask, String incr, String decr)
 	{
-		this.mask=mask;
+		this.mask = mask;
+		this.increase = incr;
+		this.decrease = decr;
 	}
 	public int getMask()
 	{
@@ -69,5 +71,7 @@ public enum Nature {
 			case "Speed":
 				return 4;
 		}
+		//error
+		return -1;
 	}
 }

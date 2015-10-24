@@ -1,6 +1,5 @@
 package pokemonBattleSim.views;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.GridLayout;
@@ -125,8 +124,6 @@ public class BattleView extends JFrame {
 		
 		playerOnePokemonDisplayLabel.setHorizontalAlignment(JLabel.CENTER);
 		playerTwoPokemonDisplayLabel.setHorizontalAlignment(JLabel.CENTER);
-		//playerOnePokemonDisplayLabel.setPreferredSize(new Dimension(300,300));
-		//playerTwoPokemonDisplayLabel.setPreferredSize(new Dimension(300,300));
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 		

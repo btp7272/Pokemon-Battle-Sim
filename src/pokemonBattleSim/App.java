@@ -12,6 +12,7 @@ import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.views.BattleView;
+import pokemonBattleSim.models.MoveList;
 
 public class App {
 	public static void main (String[] args)
@@ -24,7 +25,7 @@ public class App {
 		Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
 		for (int i = 0; i < 6; i++)
 		{
-			playerPokemon.add(Poke.pokeMap.get("Pikachu"));
+			playerPokemon.add(Poke.pokeMap.get("Pikachu"));			
 			computerPokemon.add(Poke.pokeMap.get("Terrakion"));
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)

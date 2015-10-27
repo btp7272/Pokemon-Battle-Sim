@@ -485,7 +485,9 @@ public class Pokemon
 	 *  @exeption: level must be between 1 and 100
 	 *  @parameter: a = pokemon initialized by a full constructor
 	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
+	 *  @parameter: An IV is a number between 0 and 31. This is like a gene that determines how strong a trait is
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
+	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
 	 */
 	public Pokemon(Pokemon a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature)
 	{

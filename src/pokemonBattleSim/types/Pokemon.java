@@ -487,7 +487,7 @@ public class Pokemon
 	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 */
-	public Pokemon(Pokemon a, Move move1, Move move2, Move move3, Move move4, int[] IVs, int[] EVs, int level, Nature nature)
+	public Pokemon(Pokemon a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
@@ -559,10 +559,9 @@ public class Pokemon
 				break;
 		}
 		
-		setMove(move1,1);
-		setMove(move2,2);
-		setMove(move3,3);
-		setMove(move4,4);
+		//Right now, we allow for 4 moves.
+		for(int i = 0; i < moves.length; i++)
+			setMove(moves[i],i+1);
 	}
 	
 }

@@ -4,7 +4,7 @@ import java.util.*;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Type;
 
-public class Poke
+public class PokemonMap
 {
 	public static Map < String, Pokemon > pokeMap = new HashMap<>();
 	static

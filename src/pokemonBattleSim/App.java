@@ -12,7 +12,7 @@ import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.views.BattleView;
-import pokemonBattleSim.models.MoveList;
+import pokemonBattleSim.models.MoveMap;
 
 public class App {
 	public static void main (String[] args)

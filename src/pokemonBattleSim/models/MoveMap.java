@@ -9,7 +9,7 @@ import pokemonBattleSim.types.Type;
  * Name, type, attribute, contest, PP, power, accuracy
  */
 
-public class MoveList
+public class MoveMap
 {	public static Map < String, Move > moveMap = new HashMap<>();
 	static
 	{	

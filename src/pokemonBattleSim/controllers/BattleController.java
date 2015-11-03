@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.models.BattleModel.Entity;
-import pokemonBattleSim.models.MoveList;
+import pokemonBattleSim.models.MoveMap;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
@@ -87,7 +87,7 @@ public class BattleController {
 		public void actionPerformed(ActionEvent e) 
 		{
 			//TODO
-			BattleModel.RegisterActionArgs args = model.new RegisterActionArgs(MoveList.Pound);
+			BattleModel.RegisterActionArgs args = model.new RegisterActionArgs(MoveMap.Pound);
 			model.registerAction(Entity.PLAYERONE, Entity.PLAYERTWO, args, 1000, 2000);
 			timer.schedule(new UpdateUITask(), 0);
 		}	

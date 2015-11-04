@@ -6,6 +6,7 @@
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 
+
 public class Pokemon 
 {
 	double indexNum;

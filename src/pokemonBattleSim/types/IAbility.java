@@ -5,5 +5,6 @@ public interface IAbility
 {
 	public int getPriority ();
 	public String getName ();
-	public void run (IPokemon source, IPokemon target);
+	public String getDescription();
+	public void run (IPokemon source, IPokemon target, IField field);
 }

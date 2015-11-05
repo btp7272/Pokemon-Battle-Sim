@@ -12,9 +12,11 @@ public class AbilityMap
 			{
 				   int priority = 0;
 				   String name = "Intimidate";
+				   String description = "Lowers the foe's Attack by 1 stage.";
 				   public int getPriority(){return priority;}
 				   public String getName(){return name;}
-				   public void run (IPokemon source, IPokemon target) 
+				   public String getDescription(){return description;}
+				   public void run (IPokemon source, IPokemon target, IField field) 
 				   { 
 					   target.changeAtk(-1);
 				   }

@@ -84,7 +84,7 @@ public class Formula
 
         
         //Calculate STAB modifier
-        if( a.getType1() == m.getType() || a.getType2() == m.getType() )
+        if( a.getType1() == m.getType() || a.getType2() == m.getType() || a.getType3() == m.getType() )
             stab = 1.5;
         else
             stab = 1.0;

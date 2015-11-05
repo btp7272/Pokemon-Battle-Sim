@@ -8,8 +8,8 @@ public class Species
 	private final int baseHP, baseAtk, baseDef, baseSpAtk, baseSpDef, baseSpeed;
 	private final Type typeOne, typeTwo;
 	private final double weight, indexNum;
-	private ArrayList<Move> learnableMoves;
-	private ArrayList<IAbility> learnableAbilities;
+	private ArrayList<String> learnableMoves;
+	private ArrayList<String> learnableAbilities;
 	
 	/*
 	 * Full constructor for duel-type Pokemon. This is for the map. It is
@@ -53,12 +53,12 @@ public class Species
 		this.weight = mass;
 	}
 	
-	public void setLearnableMoves(ArrayList<Move> list)
+	public void setLearnableMoves(ArrayList<String> list)
 	{
 		this.learnableMoves = list;
 	}
 	
-	public void setLearnableAbilities(ArrayList<IAbility> list)
+	public void setLearnableAbilities(ArrayList<String> list)
 	{
 		this.learnableAbilities = list;
 	}
@@ -74,6 +74,6 @@ public class Species
 	public double getWeight(){return this.weight;}
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
-	public ArrayList<Move> getMoveSet(){return this.learnableMoves;}
-	public ArrayList<IAbility> getAbilitySet(){return this.learnableAbilities;}
+	public ArrayList<String> getMoveSet(){return this.learnableMoves;}
+	public ArrayList<String> getAbilitySet(){return this.learnableAbilities;}
 }

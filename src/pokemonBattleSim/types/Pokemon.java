@@ -502,6 +502,7 @@ public class Pokemon
 	public double getWeight(){return this.weight;}
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
+	public Type getType3(){return this.typeThree;}
 	public Gender getGender(){return this.gender;}
 	public int getAtkModifier(){return this.atkModifier;}
 	public int getDefModifier(){return this.defModifier;}

@@ -19,15 +19,15 @@ public class Pokemon
 	private int spDef, maxSpDef;
 	private int speed, maxSpeed;
 	private int level;
-	private double weight, maxWeight;
-	private IAbility ability = null;
+	private double weight, baseWeight;
+	private IAbility ability, baseAbility;
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
 	//heldItem item = null;
 	
 	/*
-	 * Copy constructor. In this constructor the stats are set to the calculated,
+	 * Initial constructor. In this constructor the stats are set to the calculated,
 	 * final stat of the pokemon. The max stat is used to keep this value unmodified
 	 * in the event it is needed after said stat is modified.
 	 *  @exeption: IV and EV arrays must be size 6
@@ -38,7 +38,7 @@ public class Pokemon
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
 	 */
-	public Pokemon(Species a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature)
+	public Pokemon(Species a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, IAbility abil)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
@@ -55,6 +55,8 @@ public class Pokemon
 		this.setLevel(level);
 		this.setType(a.getType1(), 1);
 		this.setType(a.getType2(), 2);
+		this.weight = this.baseWeight = a.getWeight();
+		this.ability = this.baseAbility = abil;
 		
 		
 		/*
@@ -124,7 +126,7 @@ public class Pokemon
 	public void setSpAtk(int spattack, int IV, int EV, int level){ this.spAtk = Formula.calcStat(spattack,IV,EV,level); this.maxSpAtk = this.spAtk;}
 	public void setSpDef(int spdefense, int IV, int EV, int level){ this.spDef = Formula.calcStat(spdefense,IV,EV,level); this.maxSpDef = this.spDef;}
 	public void setSpeed(int newSpeed, int IV, int EV, int level){ this.speed = Formula.calcStat(newSpeed,IV,EV,level); this.maxSpeed = this.speed;}
-	public void setWeight(double newWeight){ this.weight = newWeight; this.maxWeight = newWeight;}
+	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	public void setLevel(int lev){this.level = lev;}
 	

@@ -1,6 +1,6 @@
 package pokemonBattleSim.types;
 
-import pokemonBattleSim.models.Poke;
+import pokemonBattleSim.models.SpeciesMap;
 
 public class PokemonInitializer implements IPokemonInitializer{
 	private Pokemon pokemon;
@@ -9,7 +9,7 @@ public class PokemonInitializer implements IPokemonInitializer{
 	public PokemonInitializer(String pokemonName, Move[] moves) 
 	{
 		// initialize and validate pokemon;
-		this.pokemon = Poke.pokeMap.get(pokemonName);
+		this.pokemon = SpeciesMap.speciesMap.get(pokemonName);
 		if (pokemon == null)
 		{
 			throw new IllegalArgumentException ("Pokemon name does not exist");

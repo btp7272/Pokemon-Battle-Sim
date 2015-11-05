@@ -8,6 +8,8 @@ import pokemonBattleSim.types.Type;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Attribute;
 import pokemonBattleSim.types.Move;
+import pokemonBattleSim.types.Weather;
+import pokemonBattleSim.types.IField;
 import java.lang.Math;
 
 public class Formula
@@ -41,7 +43,7 @@ public class Formula
      * @param pokemon b :: the defending pokemon
      * @param move m :: the move being used by pokemon a
      *****/
-    public static int calcDamage(Pokemon a, Pokemon b, Move m)
+    public static int calcDamage(Pokemon a, Pokemon b, Move m, IField field)
     {
         double damage;
         
@@ -52,7 +54,7 @@ public class Formula
             numerator = numerator * a.getAtk() * m.getPower();
             denomenator = 250 * b.getDef();
             damage = (numerator / denomenator) + 2;
-            damage *= modifier( a, b, m );
+            damage *= modifier( a, b, m, field );
             return (int)damage;
         }
             
@@ -63,7 +65,7 @@ public class Formula
             numerator = numerator * a.getSpAtk() * m.getPower();
             denomenator = 250 * b.getSpDef();
             damage = (numerator / denomenator) + 2;
-            damage *= modifier( a, b, m );
+            damage *= modifier( a, b, m, field );
             return (int)damage;
         }
     }
@@ -73,14 +75,14 @@ public class Formula
      * @param pokemon b :: the defending pokemon
      * @param move m :: the move being used by pokemon a
      *****/
-    public static double modifier(Pokemon a, Pokemon b, Move m )
+    public static double modifier(Pokemon a, Pokemon b, Move m, IField field )
     {
         Random gen = new Random();
         
         //type is the type effectiveness. Can be 0 or a power between -2 to 2 of 2
         //stab (Same Type Attack Bonus) is a multiplier between 1.0 and 1.5. If the types of the attack and the pokemon are the same then the multiplier is 1.5
         //roll is a random damage rang multiplier between .85 and 1.0
-        double stab,roll,type;
+        double stab,roll,type,weather;
 
         
         //Calculate STAB modifier
@@ -97,7 +99,24 @@ public class Formula
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();
         
-        return (stab * type * roll);
+        //Calculate weather modifier
+        weather = 1.0;
+        if( m.getType() == Type.WATER && (field.getWeather() == Weather.RAIN || field.getWeather() == Weather.HEAVY_RAIN ))
+        	weather = 1.5;
+        else if( m.getType() == Type.FIRE && field.getWeather() == Weather.RAIN)
+        	weather = 0.5;
+        else if( m.getType() == Type.FIRE && field.getWeather() == Weather.HEAVY_RAIN)
+        	weather = 0.0;
+        else if( m.getType() == Type.FIRE && (field.getWeather() == Weather.SUN || field.getWeather() == Weather.INTENSE_SUN ))
+        	weather = 1.5;
+        else if( m.getType() == Type.WATER && field.getWeather() == Weather.SUN)
+        	weather = 0.5;
+        else if( m.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
+        	weather = 0.0;
+        else if( m.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
+        	weather = 0.5;
+        
+        return (stab * type * roll * weather);
     }
     
     //Calculates the type modifier

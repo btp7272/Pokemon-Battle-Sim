@@ -1,5 +1,6 @@
 package pokemonBattleSim.models;
 
+import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
@@ -14,36 +15,30 @@ import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BattleModel {
+public class BattleModel implements IBattleModel {
+	
 	// holds the information for the battle
 	private IPokemonTrainer playerOne;
 	private IPokemonTrainer playerTwo;
+	private Timer timer;
+	
 	private boolean playerOneActive;
 	private boolean playerTwoActive;
-	private Queue<RegisterTask> playerOneTasks;
-	private Queue<RegisterTask> playerTwoTasks;
-	private Map<Integer, RegisterTask> taskMap;
+	private Queue<MoveTask> playerOneTasks;
+	private Queue<MoveTask> playerTwoTasks;
+	private Map<Integer, MoveTask> taskMap;
 	private Stack<String> log;
-	private int taskCounter;
-	private Timer timer;
-	private TimerTask counter;
-	private int timeLeft;
 	private boolean isGameover;
+	private int taskCounter;
 	
-	// Synchronization Locks
-	private Object playerOneLock = new Object();
-	private Object playerTwoLock = new Object();
-	private Object playerOneActiveLock = new Object();
-	private Object playerTwoActiveLock = new Object();
-	private Object playerOneTasksLock = new Object();
-	private Object playerTwoTasksLock = new Object();
-	private Object taskMapLock = new Object();
-	private Object taskCounterLock = new Object();
-	private Object logLock = new Object();
-	private Object timeLeftLock = new Object();
-	private Object isGameoverLock = new Object();
+	// Synchronization Lock Objects: required for synchronized sections
+	private Object playerOneActiveLock 	= new Object();
+	private Object playerTwoActiveLock 	= new Object();
+	private Object taskMapLock 			= new Object();
+	private Object taskCounterLock 		= new Object();
+	private Object isGameoverLock 		= new Object();
 	
-	public BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo, Timer timer, int duration)
+	public BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo, Timer timer)
 	{
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
@@ -55,29 +50,8 @@ public class BattleModel {
 		this.taskMap = new HashMap<>();
 		this.taskCounter = 0;
 		this.log = new Stack<>();
-		this.timeLeft = duration;
-		this.counter = new TimerTask() {
-			public void run () {
-				synchronized (timeLeftLock)
-				{
-					timeLeft--;
-					if (timeLeft <= 0)
-						gameover();
-				}
-			}
-		};
-		//TESTING
-		//this.timer.schedule(this.counter, 0, 1000); // count down once per second
 		timer.schedule(new DelayTask(Entity.PLAYERONE), 0);
 		timer.schedule(new DelayTask(Entity.PLAYERTWO), 0);
-	}
-	
-	public boolean isGameover ()
-	{
-		synchronized (isGameoverLock)
-		{
-			return isGameover;
-		}
 	}
 	
 	/**
@@ -85,76 +59,177 @@ public class BattleModel {
 	 */
 	public void gameover ()
 	{
-		synchronized (isGameoverLock)
-		{
-			// check if game is already over
-			if (isGameover)
-				return; 
-			else 
-			{
-				isGameover = true;
-				timer.cancel();
-			}
-		}
+		// do nothing if game is already over
+		if (isGameover()) return; 
+			
+		isGameover = true;
 	}
+	
+	@Override
+	public synchronized boolean isGameover ()
+	{
+		return isGameover;
+	}
+	
 	
 	/**
 	 * get the last 5 elements in the log
 	 * @return a Stack of 5 elements or fewer
 	 */
-	public Stack <String> getLog ()
+	@Override
+	public ArrayList<String> getLogData ()
 	{
-		Stack<String> output = new Stack<>();
-		synchronized (logLock)
+		ArrayList<String> output = new ArrayList<>();
+		synchronized (log)
 		{
-			for (int i = 0; i < 5 && i < log.size(); i++)
+			for ( String logMessage : log)
 			{
-				output.push(log.elementAt(i));
+				output.add(logMessage);
 			}
 		}
 		return output;
 	}
 	
-	public int getPokemonHealth (Entity player, int index)
+	@Override
+	public ArrayList<Boolean> getPlayerAvailablePokemon (int playerID)
 	{
-		Pokemon pokemon = null;
-		if (player == Entity.PLAYERONE)
+		ArrayList<Boolean> availability = new ArrayList<>();
+		IPokemonTrainer trainer;
+		if (playerID == this.playerOne.getTrainerID())
+			trainer = this.playerOne;
+		else if (playerID == this.playerTwo.getTrainerID())
+			trainer = this.playerTwo;
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+		
+		for (int i = 0; i < 6; i++)
 		{
-			synchronized (playerOneLock)
-			{
-				pokemon = playerOne.getPokemonTeamMember(index);
-			}
+			availability.set(i, (trainer.getPokemonTeamMember(i).getHP() > 0) );
 		}
-		else if (player == Entity.PLAYERTWO)
+		
+		return availability;
+	}
+
+	@Override
+	public ArrayList<Boolean> getOpponentAvailablePokemon ( int playerID )
+	{
+		ArrayList<Boolean> availability = new ArrayList<>();
+		IPokemonTrainer trainer;
+		if (playerID == this.playerOne.getTrainerID())
+			trainer = this.playerTwo;
+		else if (playerID == this.playerTwo.getTrainerID())
+			trainer = this.playerOne;
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+		
+		for (int i = 0; i < 6; i++)
 		{
-			synchronized (playerTwoLock)
-			{
-				pokemon = playerTwo.getPokemonTeamMember(index);
-			}
+			availability.set(i, (trainer.getPokemonTeamMember(i).getHP() > 0) );
 		}
-		return pokemon.getHP();
+		
+		return availability;
+	}
+
+	@Override
+	public int getPlayerPokemonHP ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getHP();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getHP();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+
+	@Override
+	public int getOpponentPokemonHP (int playerID)
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getHP();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getHP();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
 	}
 	
-	public ArrayList<LiteMove> getTasks (Entity player)
+	public ArrayList<String> getMoveData (int playerID)
 	{
-		ArrayList<LiteMove> moves = new ArrayList<>();
-		if (player == Entity.PLAYERONE)
+		ArrayList<String> moveNames = new ArrayList<>();
+		IPokemon pokemon;
+		if (playerID == this.playerOne.getTrainerID())
+			pokemon = this.playerOne.getActiveTeamMember();
+		else if (playerID == this.playerTwo.getTrainerID())
+			pokemon = this.playerTwo.getActiveTeamMember();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+		
+		for (int i = 1; i <= 4; i++)
 		{
-			synchronized (playerOneTasksLock)
+			synchronized (pokemon)
 			{
-				for ( RegisterTask task : playerOneTasks)
-					moves.add(new LiteMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+				moveNames.add(pokemon.getMove(i).getName());
 			}
 		}
-		else if (player == Entity.PLAYERTWO)
+		
+		return moveNames;
+	}
+	
+	/**
+	 * get a list of simplified queued moves for the view
+	 * @param playerID
+	 * @return
+	 */
+	@Override
+	public ArrayList<QueuedMove> getTasks (int playerID)
+	{
+		ArrayList<QueuedMove> moves = new ArrayList<>();
+		if (playerID == this.playerOne.getTrainerID())
 		{
-			synchronized (playerTwoTasksLock)
+			synchronized (playerOneTasks)
+			{
+				for ( MoveTask task : playerOneTasks)
+					moves.add(new QueuedMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+			}
+		}
+		else if (playerID == this.playerTwo.getTrainerID())
+		{
+			synchronized (playerTwoTasks)
 			{
 				for ( RegisterTask task : playerTwoTasks)
-					moves.add(new LiteMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+					moves.add(new QueuedMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
 			}
 		}
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+
 		return moves;
+	}
+	
+	@Override
+	public synchronized boolean RegisterMove ( int playerID, Entity target, Move move, int activerPeriod, int inactiverPeriod )
+	{
+		synchronized (isGameoverLock)
+		{
+			if (isGameover) return false; // game is already over
+		}
+		
+		
+		if (playerID == this.playerOne.getTrainerID())
+		{
+			synchronized (this.playerOneTasks)
+			{
+				if (target == Entity.ENEMY)
+				{
+					
+				}
+			}
+		}
+		else if (playerID == this.playerTwo.getTrainerID())
+		{
+			
+		}
+		else throw new IllegalArgumentException ("playerID does not match active players");
+		return true;
 	}
 	
 	/**
@@ -435,19 +510,6 @@ public class BattleModel {
 	}
 	
 	/**
-	 * Enumeration to define entities
-	 * @author Shane
-	 *
-	 */
-	public enum Entity
-	{
-		PLAYERONE,
-		PLAYERTWO,
-		SWAP,
-		ARENA;
-	}
-	
-	/**
 	 * supporting class for managing variable arguments
 	 * @author Shane
 	 *
@@ -476,96 +538,82 @@ public class BattleModel {
 		}
 	}
 	
-	public class LiteMove
-	{
-		public String name;
-		public int id;
-		public int activePeriod;
-		public int inactiverPeriod;
-		
-		public LiteMove (String name, int id, int activePeriod, int inactiverPeriod)
-		{
-			this.name = name;
-			this.id = id;
-			this.activePeriod = activePeriod;
-			this.inactiverPeriod = inactiverPeriod;
-		}
-	}
 	
 	/** 
 	 * public class for managing tasks for the timer
 	 * @author Shane
 	 *
 	 */
-	public class RegisterTask extends TimerTask
-	{		
-		private Entity source;
-		private Entity target;
-		private RegisterActionArgs args;
-		private int id;
-		private int activePeriod;
-		private int inactivePeriod;
+	private abstract class BattleTask extends TimerTask
+	{
+		protected final IPokemonTrainer source;
+		protected final IPokemonTrainer target;
+		private final int id;
+		private final int activePeriod;
+		private final int inactivePeriod;
+		private boolean valid;
 		
-		public RegisterTask ( Entity source, Entity target, RegisterActionArgs args, int id, int activePeriod, int inactivePeriod)
+		public BattleTask (IPokemonTrainer source, IPokemonTrainer target, int id, int activePeriod, int inactivePeriod)
 		{
 			super();
 			this.source = source;
 			this.target = target;
-			this.args = args;
 			this.id = id;
 			this.activePeriod = activePeriod;
 			this.inactivePeriod = inactivePeriod;
+			this.valid = true;
 		}
-		public String getMoveName ()
+	
+		public final int getID ()
 		{
-			if (args.swapIndex > 0)
-				return "SWAP";
-			else
-				return args.getMove().name;
+			return this.id;
 		}
-		public int getID ()
+		public final int getActivePeriod ()
 		{
-			return id;
+			return this.activePeriod;
 		}
-		public int getActivePeriod ()
+		public final int getInactivePeriod ()
 		{
-			return activePeriod;
-		}
-		public int getInactivePeriod ()
-		{
-			return inactivePeriod;
+			return this.inactivePeriod;
 		}
 		
-		@Override
-		public void run() {
-			performAction( source, target, args);
-
-			synchronized (isGameoverLock)
-			{
-				if (isGameover) return; // game is already over
-			}
+		public final void run ()
+		{
+			if (!this.valid) return;
+			if (isGameover()) return;
+			execute();
+			remove();
+		}
+		
+		public abstract void execute();
+		
+		private final void remove ()
+		{
+			if (!this.valid) return;
 			
 			// remove task from the proper queue
-			if ( source == Entity.PLAYERONE )
+			if ( source == playerOne )
 			{
-				synchronized (playerOneTasksLock)
+				synchronized (playerOneTasks)
 				{
 					playerOneTasks.remove(this);
 				}
+				
 				// register next task
-				TimerTask task = new DelayTask (source);
+				TimerTask task = new DelayTask(source);
 				timer.schedule(task, inactivePeriod);
 				synchronized (playerOneActiveLock)
 				{
 					playerOneActive = false;
 				}
 			}
-			else if (source == Entity.PLAYERTWO )
+			else if ( source == playerTwo )
 			{
-				synchronized (playerTwoTasksLock)
+				synchronized (playerTwoTasks)
 				{
 					playerTwoTasks.remove(this);
 				}
+				
 				// register next task
 				TimerTask task = new DelayTask (source);
 				timer.schedule(task, inactivePeriod);
@@ -574,18 +622,52 @@ public class BattleModel {
 					playerTwoActive = false;
 				}
 			}
+			
+			this.valid = false;
 		}
 		
 		@Override
-		public boolean equals (Object obj)
+		public final boolean equals (Object obj)
 		{
-			if (!(obj instanceof RegisterTask))
+			if (!(obj instanceof BattleTask))
 				return false;
 			
-			RegisterTask other = (RegisterTask) obj;
+			BattleTask other = (BattleTask) obj;
 			return this.id == other.id;
 		}
+	}
+	
+	private class MoveTask extends BattleTask
+	{		
+		private Move move;
 		
+		public MoveTask ( IPokemonTrainer source, IPokemonTrainer target, Move move, int id, int activePeriod, int inactivePeriod)
+		{
+			super(source, target, id, activePeriod, inactivePeriod);
+			this.move = move;
+		}
+		
+		@Override
+		public void execute() {
+			executeMove(source, target, move);
+		}
+	}
+	
+	private class SwapTask extends BattleTask
+	{		
+		private int swapIndex;
+		
+		public SwapTask ( IPokemonTrainer source, IPokemonTrainer target, int swapIndex, int id, int activePeriod, int inactivePeriod)
+		{
+			super(source, target, id, activePeriod, inactivePeriod);
+			this.swapIndex = swapIndex;
+		}
+		
+		@Override
+		public void execute() {
+			if (!playerOneActive && !playerTwoActive)
+				this.source.setActiveTeamMember(swapIndex);
+		}
 	}
 	
 	/**
@@ -595,9 +677,9 @@ public class BattleModel {
 	 */
 	class DelayTask extends TimerTask
 	{
-		Entity player;
+		IPokemonTrainer player;
 		
-		public DelayTask (Entity player)
+		public DelayTask (IPokemonTrainer player)
 		{
 			this.player = player;
 		}
@@ -611,11 +693,11 @@ public class BattleModel {
 			}
 			
 			// set player inactive
-			RegisterTask task;
-			if (player == Entity.PLAYERONE)
+			BattleTask task;
+			if (player.getTrainerID() == playerOne.getTrainerID())
 			{
 				// activate next action
-				synchronized (playerOneTasksLock)
+				synchronized (playerOneTasks)
 				{
 					task = playerOneTasks.poll();
 				}
@@ -646,10 +728,10 @@ public class BattleModel {
 				}
 				timer.schedule(task, task.getActivePeriod());
 			}
-			if (player == Entity.PLAYERTWO)
+			if (player.getTrainerID() == playerTwo.getTrainerID())
 			{
 				// activate next action
-				synchronized (playerTwoTasksLock)
+				synchronized (playerTwoTasks)
 				{
 					task = playerTwoTasks.poll();
 				}

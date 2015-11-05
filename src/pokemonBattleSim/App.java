@@ -7,7 +7,7 @@ import java.util.Timer;
 
 import pokemonBattleSim.controllers.BattleController;
 import pokemonBattleSim.models.BattleModel;
-import pokemonBattleSim.models.PokemonMap;
+import pokemonBattleSim.models.SpeciesMap;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
@@ -25,8 +25,8 @@ public class App {
 		Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
 		for (int i = 0; i < 6; i++)
 		{
-			playerPokemon.add(PokemonMap.pokeMap.get("Pikachu"));			
-			computerPokemon.add(PokemonMap.pokeMap.get("Terrakion"));
+			playerPokemon.add(SpeciesMap.pokeMap.get("Pikachu"));			
+			computerPokemon.add(SpeciesMap.pokeMap.get("Terrakion"));
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)
 			{

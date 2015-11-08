@@ -6,7 +6,7 @@ import pokemonBattleSim.types.Move;
 
 public interface IBattleModel {
 	// Methods for Controller: Registering actions
-	public boolean RegisterMove ( int playerID, Entity target, Move move, int activePeriod, int inactivePeriod );
+	public boolean RegisterMove ( int playerID, String moveName, int activePeriod, int inactivePeriod );
 	public boolean RegisterSwap ( int playerID, int swapIndex );
 	
 	// Methods for View: Data Retrieval

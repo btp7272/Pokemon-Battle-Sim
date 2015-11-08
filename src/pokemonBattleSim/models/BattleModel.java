@@ -1,9 +1,13 @@
 package pokemonBattleSim.models;
 
+import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.types.IField;
 import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
+import pokemonBattleSim.types.Weather;
+
 import static pokemonBattleSim.formulas.Formula.*;
 
 import java.util.ArrayDeque;
@@ -24,9 +28,9 @@ public class BattleModel implements IBattleModel {
 	
 	private boolean playerOneActive;
 	private boolean playerTwoActive;
-	private Queue<MoveTask> playerOneTasks;
-	private Queue<MoveTask> playerTwoTasks;
-	private Map<Integer, MoveTask> taskMap;
+	private Queue<BattleTask> playerOneTasks;
+	private Queue<BattleTask> playerTwoTasks;
+	private Map<Integer, BattleTask> taskMap;
 	private Stack<String> log;
 	private boolean isGameover;
 	private int taskCounter;
@@ -50,8 +54,8 @@ public class BattleModel implements IBattleModel {
 		this.taskMap = new HashMap<>();
 		this.taskCounter = 0;
 		this.log = new Stack<>();
-		timer.schedule(new DelayTask(Entity.PLAYERONE), 0);
-		timer.schedule(new DelayTask(Entity.PLAYERTWO), 0);
+		timer.schedule(new DelayTask(playerOne), 0);
+		timer.schedule(new DelayTask(playerTwo), 0);
 	}
 	
 	/**
@@ -65,6 +69,11 @@ public class BattleModel implements IBattleModel {
 		isGameover = true;
 	}
 	
+	
+	/*
+	 * returns whether or not the game is over
+	 * @see pokemonBattleSim.models.IBattleModel#isGameover()
+	 */
 	@Override
 	public synchronized boolean isGameover ()
 	{
@@ -73,7 +82,7 @@ public class BattleModel implements IBattleModel {
 	
 	
 	/**
-	 * get the last 5 elements in the log
+	 * get a copy of the log as it was last recorded
 	 * @return a Stack of 5 elements or fewer
 	 */
 	@Override
@@ -90,6 +99,7 @@ public class BattleModel implements IBattleModel {
 		return output;
 	}
 	
+
 	@Override
 	public ArrayList<Boolean> getPlayerAvailablePokemon (int playerID)
 	{
@@ -187,16 +197,16 @@ public class BattleModel implements IBattleModel {
 		{
 			synchronized (playerOneTasks)
 			{
-				for ( MoveTask task : playerOneTasks)
-					moves.add(new QueuedMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+				for ( BattleTask task : playerOneTasks)
+					moves.add(new QueuedMove(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
 			}
 		}
 		else if (playerID == this.playerTwo.getTrainerID())
 		{
 			synchronized (playerTwoTasks)
 			{
-				for ( RegisterTask task : playerTwoTasks)
-					moves.add(new QueuedMove(task.getMoveName(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+				for ( BattleTask task : playerTwoTasks)
+					moves.add(new QueuedMove(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
 			}
 		}
 		else 
@@ -204,341 +214,114 @@ public class BattleModel implements IBattleModel {
 
 		return moves;
 	}
-	
+
 	@Override
-	public synchronized boolean RegisterMove ( int playerID, Entity target, Move move, int activerPeriod, int inactiverPeriod )
+	public synchronized boolean RegisterMove ( int playerID, String moveName, int activePeriod, int inactivePeriod )
 	{
 		synchronized (isGameoverLock)
 		{
 			if (isGameover) return false; // game is already over
 		}
 		
+		if (playerID != this.playerOne.getTrainerID() && playerID != this.playerTwo.getTrainerID() )
+			throw new IllegalArgumentException ("playerID does not match active players");
+		
+		BattleTask task;
+		Move move;
+		
+		// get a new ID for this task
+		int taskId;
+		synchronized (taskCounterLock) { taskId = taskCounter++; }
+		
+		// retrieve the move and post create the task
+		move = MoveMap.moveMap.get(moveName);
+		if (move == null) return false; // invalid move name
+		if (activePeriod < 20 || inactivePeriod < 20) return false; // invalid activity times
 		
 		if (playerID == this.playerOne.getTrainerID())
 		{
 			synchronized (this.playerOneTasks)
 			{
-				if (target == Entity.ENEMY)
-				{
-					
-				}
+				task = new MoveTask(playerOne, playerTwo, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
 			}
 		}
 		else if (playerID == this.playerTwo.getTrainerID())
 		{
-			
-		}
-		else throw new IllegalArgumentException ("playerID does not match active players");
-		return true;
-	}
-	
-	/**
-	 * register a new action to the queues
-	 * task are NOT registered to the timer yet
-	 * @param souce the entity initiating the action (move, swap)
-	 * @param target the target of the move
-	 * @param args an object containing either a swap index or move
-	 * @param activePeriod how long the move will take
-	 * @param inactivePeriod how long to wait after the move
-	 */
-	public boolean registerAction (Entity source, Entity target, RegisterActionArgs args, int activePeriod, int inActivePeriod)
-	{
-		synchronized (isGameoverLock)
-		{
-			if (isGameover) return false; // game is already over
-		}
-		int id;
-		RegisterTask task;
-		
-		synchronized (taskCounterLock)
-		{
-			id = taskCounter++;
-		}
-		
-		// Special Case: attempt a swap
-		if (target == Entity.SWAP)
-		{
-			synchronized (playerOneActiveLock)
+			synchronized (this.playerTwoTasks)
 			{
-			synchronized (playerTwoActiveLock)
-			{
-				if (playerOneActive || playerTwoActive) return false;
-				else 
-				{
-					task = new RegisterTask(source, target, args, id, activePeriod, inActivePeriod);
-					timer.schedule(task, 0);
-				}
-					
-			}
+				task = new MoveTask(playerTwo, playerOne, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
 			}
 		}
+		else return false; // playerID doesn't match anyone
 		
-		
-		task = new RegisterTask(source, target, args, id, activePeriod, inActivePeriod);
-		// Add task to corresponding queue
-		if ( source == Entity.PLAYERONE )
-		{
-			synchronized (playerOneTasksLock)
-			{
-				playerOneTasks.add(task);
-			}
-		}
-		else if (source == Entity.PLAYERTWO )
-		{
-			synchronized (playerTwoTasksLock)
-			{
-				playerTwoTasks.add(task);
-			}
-		}
-		
-		// register task to map
 		synchronized (taskMapLock)
 		{
-			taskMap.put(id, task);
+			taskMap.put(taskId, task);
 		}
-		// timer.schedule(task, delay);
+		
 		return true;
 	}
-	
-	/**
-	 * cancel an action by id
-	 * @param source the player who owns the id of the action
-	 * @param id the id of the action
-	 */
-	public void cancelAction (Entity source, int id)
-	{
-		RegisterTask task;
-		// remove task from map
-		synchronized (taskMapLock)
-		{
-			task = taskMap.get(id);
-			taskMap.remove(id);
-		}
-		
-		// remove task from player
-		if ( source == Entity.PLAYERONE )
-		{
-			synchronized (playerOneTasksLock)
-			{
-				playerOneTasks.remove(task);
-				task.cancel();
-			}
-		}
-		else if (source == Entity.PLAYERTWO )
-		{
-			synchronized (playerTwoTasksLock)
-			{
-				playerTwoTasks.remove(task);
-				task.cancel();
-			}
-		}
-	}
-	
-	/**
-	 * Attempt to perform the specified action
-	 * @param source the source object of the action
-	 * @param target the target object of the action
-	 * @param args the arguments that are required to perform the action
-	 */
-	private void performAction (Entity source, Entity target, RegisterActionArgs args )
-	{
-		synchronized (isGameoverLock)
-		{
-			if (isGameover) return; // game is already over
-		}
-		
-		// [On-swap Action] target is swap
-		if ( target == Entity.SWAP )
-		{
-			if ( source == Entity.ARENA || source == Entity.SWAP ) return; // source invalid for operation
-			
-			Pokemon original, swapped;
-			if ( source == Entity.PLAYERONE ) 
-			{
-				synchronized (playerOneLock)
-				{
-					original = playerOne.getActiveTeamMember();
-					swapped = playerOne.getPokemonTeamMember(args.getSwapIndex());
-					// prevent swap is pokemon is unable to battle
-					if (swapped == null) return;
-					else if (swapped.getHP() <= 0) return;
-					
-					playerOne.swapActiveTeamMember(args.getSwapIndex());
-					
-					// clear queue
-					synchronized (playerOneTasksLock)
-					{
-						playerOneTasks.clear();
-					}
-					
-					synchronized (logLock)
-					{
-						log.push(original.getName() + " swapped with " + swapped.getName() + "\n");
-					}
-				}
-			}
-			else if ( source == Entity.PLAYERTWO ) 
-			{
-				synchronized (playerTwoLock)
-				{
-					original = playerTwo.getActiveTeamMember();
-					swapped = playerTwo.getPokemonTeamMember(args.getSwapIndex());
-					// prevent swap is pokemon is unable to battle
-					if (swapped == null) return;
-					else if (swapped.getHP() <= 0) return;
-					
-					playerTwo.swapActiveTeamMember(args.getSwapIndex());
 
-					// clear queue
-					synchronized (playerTwoTasksLock)
-					{
-						playerTwoTasks.clear();
-					}
+	
+	public void executeMove(IPokemonTrainer source, IPokemonTrainer target, Move move) {
+		synchronized (playerOne) { synchronized (playerTwo)
+		{
+		IPokemon attacker = source.getActiveTeamMember();
+		IPokemon defender = target.getActiveTeamMember();
+		// calculate and apply the damage
+		int damage = Formula.calcDamage(attacker, defender, move, new IField() {
 
-					synchronized (logLock)
-					{
-						log.push(original.getName() + " swapped with " + swapped.getName() + "\n");
-					}
-				}
+			@Override
+			public Weather setWeather(Weather weather) {
+				return null;
 			}
-		}
+
+			@Override
+			public Weather getWeather() {
+				return null;
+			}});
 		
-		// [On-self Action] target is self
-		else if ( target == source )
+		defender.changeHP(damage);
+		
+		
+		// log the move
+		synchronized (log)
 		{
-			if ( source == Entity.ARENA || source == Entity.SWAP ) return; // source invalid for operation
-			
-			if ( source == Entity.PLAYERONE )
-			{
-				synchronized (playerOneLock)
-				{
-					// TODO apply affect to Player one
-					
-					synchronized (logLock)
-					{
-						log.push(playerOne.getActiveTeamMember().getName() + " used " + args.getMove() + " on itself\n");
-					}
-				}
-			}
-			else if ( source == Entity.PLAYERTWO )
-			{
-				synchronized (playerTwoLock)
-				{
-					// TODO apply affect to Player two
-					
-					synchronized (logLock)
-					{
-						log.push(playerTwo.getActiveTeamMember().getName() + " used " + args.getMove() + " on itself\n");
-					}
-				}
-			}
+			log.push(attacker.getName() + " used " + move.toString() + " on " + defender.getName() + "\n");
 		}
 		
-		// [On-Opponent Action] target is pokemon
-		else if ( target == Entity.PLAYERONE )
+		// check for fainting
+		if (attacker.getHP() <=0 )
 		{
-			synchronized (playerOneLock) 
-			{ 
-			synchronized (playerTwoLock)
+			int availablePokemon = 0;
+			for (int i = 0; i < 6; i++)
 			{
-				if ( source == Entity.ARENA || source == Entity.SWAP ) return; // source invalid for operation
-				int damage = calcDamage(playerOne.getActiveTeamMember(),playerTwo.getActiveTeamMember(), args.getMove());
-	
-				synchronized (logLock)
-				{
-					log.push(playerOne.getActiveTeamMember().getName() + " used " + args.getMove() + " on " + playerTwo.getActiveTeamMember().getName() + "\n");
-				}
-				Pokemon pokemon = playerOne.getActiveTeamMember();
-				pokemon.changeHP(damage);
-				if (pokemon.getHP()<=0)
-				{
-					// Pokemon has fainted
-					int availablePokemon = 0;
-					for (Pokemon p : playerOne.getPokemonTeam())
-					{
-						if (p.getHP() > 0)
-							availablePokemon++;
-					}
-					if (availablePokemon == 0)
-					{
-						gameover();
-					}
-				}
+				if (source.getPokemonTeamMember(i).getHP() > 0)
+					availablePokemon++;
 			}
+			if (availablePokemon == 0)
+			{
+				gameover();
 			}
 		}
-		else if ( target == Entity.PLAYERTWO )
+		
+		if (defender.getHP() <=0 )
 		{
-			synchronized (playerOneLock) 
-			{ 
-			synchronized (playerTwoLock)
+			int availablePokemon = 0;
+			for (int i = 0; i < 6; i++)
 			{
-				if ( source == Entity.ARENA || source == Entity.SWAP ) return; // source invalid for operation
-				int damage = calcDamage(playerTwo.getActiveTeamMember(),playerOne.getActiveTeamMember(), args.getMove());
-				
-				synchronized (logLock)
-				{
-					log.push(playerTwo.getActiveTeamMember().getName() + " used " + args.getMove() + " on " + playerOne.getActiveTeamMember().getName() + "\n");
-				}
-				
-				Pokemon pokemon = playerTwo.getActiveTeamMember();
-				pokemon.changeHP(damage);
-				if (pokemon.getHP()<=0)
-				{
-					// Pokemon has fainted
-					int availablePokemon = 0;
-					for (Pokemon p : playerTwo.getPokemonTeam())
-					{
-						if (p.getHP() > 0)
-							availablePokemon++;
-					}
-					if (availablePokemon == 0)
-					{
-						gameover();
-					}
-				}
+				if (source.getPokemonTeamMember(i).getHP() > 0)
+					availablePokemon++;
 			}
+			if (availablePokemon == 0)
+			{
+				gameover();
 			}
 		}
 		
-		// [On-arena Action] target is environmental effect
-		else if ( target == Entity.ARENA){
-			// TODO change environment
-		}
-		
-		return; // request invalid
+		}} // synchronized (playerOne),(playerTwo)
 	}
-	
-	/**
-	 * supporting class for managing variable arguments
-	 * @author Shane
-	 *
-	 */
-	public class RegisterActionArgs 
-	{
-		private Move move;
-		private int swapIndex;
-		public RegisterActionArgs (Move move)
-		{
-			this.move = move;
-			this.swapIndex = 0;
-		}
-		public RegisterActionArgs (int index)
-		{
-			this.move = null;
-			this.swapIndex = index;
-		}
-		public Move getMove ()
-		{
-			return move;
-		}
-		public int getSwapIndex ()
-		{
-			return swapIndex;
-		}
-	}
-	
-	
+
 	/** 
 	 * public class for managing tasks for the timer
 	 * @author Shane
@@ -635,6 +418,12 @@ public class BattleModel implements IBattleModel {
 			BattleTask other = (BattleTask) obj;
 			return this.id == other.id;
 		}
+		
+		@Override
+		public String toString ()
+		{
+			return "BattleTask";
+		}
 	}
 	
 	private class MoveTask extends BattleTask
@@ -651,6 +440,12 @@ public class BattleModel implements IBattleModel {
 		public void execute() {
 			executeMove(source, target, move);
 		}
+
+		@Override
+		public String toString ()
+		{
+			return move.toString();
+		}
 	}
 	
 	private class SwapTask extends BattleTask
@@ -665,6 +460,10 @@ public class BattleModel implements IBattleModel {
 		
 		@Override
 		public void execute() {
+			synchronized (playerOneActiveLoc)
+			{
+				
+			}
 			if (!playerOneActive && !playerTwoActive)
 				this.source.setActiveTeamMember(swapIndex);
 		}
@@ -766,5 +565,6 @@ public class BattleModel implements IBattleModel {
 		}
 		
 	}
+
 	
 }

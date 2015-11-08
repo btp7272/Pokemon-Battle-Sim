@@ -40,7 +40,7 @@ public class Formula
      * @param pokemon b :: the defending pokemon
      * @param move m :: the move being used by pokemon a
      *****/
-    public static int calcDamage(Pokemon attacker, Pokemon defender, Move m, IField field)
+    public static int calcDamage(IPokemon attacker, IPokemon defender, Move m, IField field)
     {
         double damage;
         double numerator, denomenator;
@@ -69,7 +69,7 @@ public class Formula
      * @param pokemon defender :: the defending pokemon
      * @param move m :: the move being used by attacker
      *****/
-    public static double modifier(Pokemon attacker, Pokemon defender, Move m, IField field )
+    public static double modifier(IPokemon attacker, IPokemon defender, Move m, IField field )
     {
         Random gen = new Random();
         

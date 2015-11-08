@@ -51,6 +51,7 @@ public interface IPokemon
 		public double getWeight();
 		public Type getType1();
 		public Type getType2();
+		public Type getType3();
 		public Gender getGender();
 		public int getAtkModifier();
 		public int getDefModifier();
@@ -93,5 +94,6 @@ public interface IPokemon
 		public void addWeatherEvent(IAbility a);
 		public void removeWeatherEvent(IAbility a);
 		public void onWeather();
+		public IAbility getAbility();
 		
 }

@@ -6,5 +6,5 @@ public interface IAbility
 	public String getName();
 	public String getDescription();
 	public EventType getEventTrigger();
-	public double run (Pokemon wielder, Pokemon opponent, IField field, Pokemon attacker, Pokemon defender, Move lastMoveUsed);
+	public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed);
 }

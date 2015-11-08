@@ -7,9 +7,8 @@ package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 
 
-public class Pokemon 
+public class Pokemon implements IPokemon
 {
-	private double indexNum;
 	private String speciesName, nickName;
 	private int hp, maxHp;
 	private int atkModifier = 0, defModifier = 0, spDefModifier = 0, spAtkModifier = 0, speedModifier = 0;
@@ -44,7 +43,6 @@ public class Pokemon
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
 		if(level < 1 || level > 100)
 			throw new IllegalArgumentException("Invalid level");
-		this.indexNum = a.getIndex();
 		this.speciesName = a.getName();
 		this.nickName = nickname;
 		this.setHp(a.getBaseHP(),IVs[0],EVs[0],level);
@@ -446,7 +444,7 @@ public class Pokemon
 	public void resetSpeed() { this.speedModifier = 0; this.speed = this.maxSpeed; }
 	
 	
-	private void setMove(Move newMove, int moveNum)
+	public void setMove(Move newMove, int moveNum)
 	{
 		switch(moveNum)
 		{
@@ -477,7 +475,8 @@ public class Pokemon
 			}
 		}
 	}
-	private void setType(Type newType, int typeNum)
+	
+	public void setType(Type newType, int typeNum)
 	{
 		switch(typeNum)
 		{
@@ -504,7 +503,6 @@ public class Pokemon
 		}
 	}
 
-	public double getIndex(){return this.indexNum;}
 	public String getSpeciesName(){ return this.speciesName;}
 	public String getNickName(){ return this.nickName;}
 	public int getHP(){return this.hp;}

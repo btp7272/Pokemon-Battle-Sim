@@ -61,7 +61,6 @@ public interface IPokemon
 		public int getSpDefModifier();
 		public int getSpeedModifier();
 		public int getLevel();
-<<<<<<< HEAD
 		public Move getMove (int moveNumber);
 		
 		public void addHPChangeEvent(IAbility a);
@@ -97,10 +96,6 @@ public interface IPokemon
 		public void addWeatherEvent(IAbility a);
 		public void removeWeatherEvent(IAbility a);
 		public void onWeather();
-		public IAbility getAbility();
-=======
-		public IAbility getAbility();
 		public IAbility getBaseAbility();
->>>>>>> refs/remotes/origin/master
 		
 }

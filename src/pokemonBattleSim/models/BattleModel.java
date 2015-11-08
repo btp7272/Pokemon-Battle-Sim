@@ -287,7 +287,7 @@ public class BattleModel implements IBattleModel {
 		// log the move
 		synchronized (log)
 		{
-			log.push(attacker.getName() + " used " + move.toString() + " on " + defender.getName() + "\n");
+			log.push(attacker.getSpeciesName() + " used " + move.toString() + " on " + defender.getSpeciesName() + "\n");
 		}
 		
 		// check for fainting
@@ -462,13 +462,26 @@ public class BattleModel implements IBattleModel {
 		public void execute() {
 			synchronized (playerOneActiveLock) { synchronized (playerTwoActiveLock)
 			{	
-			if (playerOneActive || playerTwoActive){
-				return;
-			}
+				if (playerOneActive || playerTwoActive){
+					return;
+				}
 				if (this.source.getTrainerID() == playerOne.getTrainerID())
+				{
+					playerOneTasks.clear();
+				}
+				else if (this.source.getTrainerID() == playerTwo.getTrainerID())
+				{
+					playerTwoTasks.clear();
+				}
 				
 				this.source.setActiveTeamMember(swapIndex);
 			}}
+		}
+		
+		@Override
+		public String toString ()
+		{
+			return "Swap to " + swapIndex;
 		}
 	}
 	

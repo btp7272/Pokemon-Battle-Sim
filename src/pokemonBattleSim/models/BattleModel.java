@@ -460,12 +460,15 @@ public class BattleModel implements IBattleModel {
 		
 		@Override
 		public void execute() {
-			synchronized (playerOneActiveLoc)
-			{
-				
+			synchronized (playerOneActiveLock) { synchronized (playerTwoActiveLock)
+			{	
+			if (playerOneActive || playerTwoActive){
+				return;
 			}
-			if (!playerOneActive && !playerTwoActive)
+				if (this.source.getTrainerID() == playerOne.getTrainerID())
+				
 				this.source.setActiveTeamMember(swapIndex);
+			}}
 		}
 	}
 	

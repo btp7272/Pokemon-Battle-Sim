@@ -12,6 +12,10 @@ public interface IBattleModel {
 	// Methods for View: Data Retrieval
 	public ArrayList<Boolean> getPlayerAvailablePokemon ( int playerID );
 	public ArrayList<Boolean> getOpponentAvailablePokemon ( int playerID );
+	public String getPlayerPokemonName ( int playerID, int index );
+	public String getOpponentPokemonName ( int playerID, int index );
+	public String getPlayerCurrentPokemonIndex ( int playerID, int index );
+	public String getOpponentCurrentPokemonIndex ( int playerID, int index );
 	public int getPlayerPokemonHP ( int playerID );
 	public int getOpponentPokemonHP ( int playerID );
 	public ArrayList<String> getMoveData ( int playerID );

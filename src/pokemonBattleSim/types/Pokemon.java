@@ -10,7 +10,7 @@ import pokemonBattleSim.formulas.Formula;
 public class Pokemon 
 {
 	private double indexNum;
-	private String name;
+	private String speciesName, nickName;
 	private int hp, maxHp;
 	private int atkModifier = 0, defModifier = 0, spDefModifier = 0, spAtkModifier = 0, speedModifier = 0;
 	private int atk, maxAtk;
@@ -38,14 +38,15 @@ public class Pokemon
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
 	 */
-	public Pokemon(Species a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, IAbility abil)
+	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, IAbility abil)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
 		if(level < 1 || level > 100)
 			throw new IllegalArgumentException("Invalid level");
 		this.indexNum = a.getIndex();
-		this.name = a.getName();
+		this.speciesName = a.getName();
+		this.nickName = nickname;
 		this.setHp(a.getBaseHP(),IVs[0],EVs[0],level);
 		this.setAtk(a.getBaseAtk(),IVs[1],EVs[1],level);
 		this.setDef(a.getBaseDef(),IVs[2],EVs[2],level);
@@ -119,7 +120,6 @@ public class Pokemon
 			setMove(moves[i],i+1);
 	}
 
-	public void setName(String newName){ this.name = newName;}
 	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.maxHp = this.hp;}
 	public void setAtk(int attack, int IV, int EV, int level){ this.atk = Formula.calcStat(attack,IV,EV,level); this.maxAtk = this.atk;}
 	public void setDef(int defense, int IV, int EV, int level){ this.def = Formula.calcStat(defense,IV,EV,level); this.maxDef = this.def;}
@@ -129,6 +129,25 @@ public class Pokemon
 	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	public void setLevel(int lev){this.level = lev;}
+	public void setAtkModifier(int mod){ changeAtk(mod - this.atkModifier);}
+	public void setDefModifier(int mod){ changeAtk(mod - this.defModifier);}
+	public void setSpAtkModifier(int mod){ changeAtk(mod - this.spAtkModifier);}
+	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
+	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
+	public void setAbility(IAbility abil){ this.ability = abil;}
+	
+	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
+	{
+		this.atk *= multiplier;
+		if(wasOdd && multiplier > 1)
+			this.atk += 1;
+	}
+	public void changeSpAtkNoModifier(double multiplier, boolean wasOdd)
+	{
+		this.spAtk *= multiplier;
+		if(wasOdd && multiplier > 1)
+			this.atk += 1;
+	}
 	
 	//para: number -6 to 6. The stage of the stat
 	public void changeAtk(int change)
@@ -418,6 +437,7 @@ public class Pokemon
 	
 	public void changeWeight(double newWeight){ this.weight = newWeight;}
 	
+	
 	public void resetHP() { this.hp = this.maxHp; }
 	public void resetAtk() { this.atkModifier = 0; this.atk = this.maxAtk; }
 	public void resetDef() { this.defModifier = 0; this.def = this.maxDef; }
@@ -426,7 +446,6 @@ public class Pokemon
 	public void resetSpeed() { this.speedModifier = 0; this.speed = this.maxSpeed; }
 	
 	
-	//private void setAbility(Ability newAbility){ ability = newAbility;}
 	private void setMove(Move newMove, int moveNum)
 	{
 		switch(moveNum)
@@ -486,19 +505,20 @@ public class Pokemon
 	}
 
 	public double getIndex(){return this.indexNum;}
-	public String getName(){ return this.name;}
+	public String getSpeciesName(){ return this.speciesName;}
+	public String getNickName(){ return this.nickName;}
 	public int getHP(){return this.hp;}
-	public int getmaxHP() {return this.maxHp;}
+	public int getMaxHP() {return this.maxHp;}
 	public int getAtk(){return this.atk;}
-	public int getmaxAtk() {return this.maxAtk;}
+	public int getMaxAtk() {return this.maxAtk;}
 	public int getDef(){return this.def;}
-	public int getmaxDef() {return this.maxDef;}
+	public int getMaxDef() {return this.maxDef;}
 	public int getSpAtk(){return this.spAtk;}
-	public int getmaxSpAtk() {return this.maxSpAtk;}
+	public int getMaxSpAtk() {return this.maxSpAtk;}
 	public int getSpDef(){return this.spDef;}
-	public int getmaxSpDef() {return this.maxSpDef;}
+	public int getMaxSpDef() {return this.maxSpDef;}
 	public int getSpeed() {return this.speed;}
-	public int getmaxSpeed() {return this.maxSpeed;}
+	public int getMaxSpeed() {return this.maxSpeed;}
 	public double getWeight(){return this.weight;}
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
@@ -510,6 +530,8 @@ public class Pokemon
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
 	public int getLevel(){return this.level;}
+	public IAbility getAbility(){return this.ability;}
+	public IAbility getBaseAbility(){return this.baseAbility;}
 	
 	
 	

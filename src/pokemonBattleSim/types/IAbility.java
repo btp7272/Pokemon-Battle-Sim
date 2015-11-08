@@ -3,8 +3,8 @@ import pokemonBattleSim.formulas.Formula;;
 
 public interface IAbility 
 {
-	public int getPriority ();
 	public String getName ();
 	public String getDescription();
-	public double run (IPokemon source, IPokemon target, IField field);
+	public EventType getEventTrigger();
+	public double run (Pokemon wielder, Pokemon opponent, IField field, Pokemon attacker, Pokemon defender, Move lastMoveUsed);
 }

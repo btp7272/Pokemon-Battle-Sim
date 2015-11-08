@@ -1,6 +1,8 @@
 package pokemonBattleSim.types;
 
 import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.types.*;
@@ -437,28 +439,71 @@ public class AbilityMap
 				       damage *= modifier( attacker, defender, lastMoveUsed, field );
 				       
 				       defender.changeHP((int)damage);
+				       if(defender.getHP() == 0)
+				    	   Event.abilityEvent(opponent.getAbility(),EventType.KO,opponent,wielder,field,attacker,defender,lastMoveUsed);
+				       
+				       //Move Event
+				       
+				       //for phasing move, include hazard damage
 				       
 					   return 1;
 				   }
 			});
 			
-			abilityMap.put("Mummy", new IAbility()
+			abilityMap.put("Aftermath", new IAbility()
 			{
-				   String name = "Mummy";
-				   String description = "The opponent's ability becomes Mummy when it hits the wielder with a contact move.";
-				   EventType trigger = EventType.POST_ATTACK;
+				   String name = "Aftermath";
+				   String description = "Deals 25% damage when KOed by contact damage.";
+				   EventType trigger = EventType.KO;
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
 				   public double run (Pokemon wielder, Pokemon opponent, IField field, Pokemon attacker, Pokemon defender, Move lastMoveUsed) 
 				   { 
-					   if(lastMoveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
+					   if(lastMoveUsed.getCategory() == Attribute.PHYSICAL)
+						   attacker.changeHP(attacker.getMaxHP() / 4);
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Regenerator", new IAbility()
+			{
+				   String name = "Regenerator";
+				   String description = "Wielder heals 1/3 of its maximum HP on switching out.";
+				   EventType trigger = EventType.EXIT;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (Pokemon wielder, Pokemon opponent, IField field, Pokemon attacker, Pokemon defender, Move lastMoveUsed) 
+				   { 
+					   wielder.changeHP(- wielder.getMaxHP() / 3);
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Speed Boost", new IAbility()
+			{
+				   String name = "Speed Boost";
+				   String description = "Speed raises over time.";
+				   EventType trigger = EventType.ENTRY;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (Pokemon wielder, Pokemon opponent, IField field, Pokemon attacker, Pokemon defender, Move lastMoveUsed) 
+				   { 
+					   Timer timer = new Timer();
+					   class SetTimer extends TimerTask
 					   {
-						   System.out.println(wielder.getNickName() + "'s Mummy");
-						   opponent.setAbility(abilityMap.get("Mummy"));
-						   System.out.println(opponent.getNickName() + "'s Mummy");
+						   @Override
+						   public void run()
+						   {
+							   //if this pokemon is no longer out, cancel the timer
+							   //else
+							   wielder.changeSpeed(1);
+						   }
 					   }
-					   lastMoveUsed = null;
+					   TimerTask task = new SetTimer();
+					   timer.schedule(task, 10000, 10000);
 					   return 1;
 				   }
 			});

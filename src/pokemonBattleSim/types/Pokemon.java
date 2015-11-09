@@ -5,6 +5,7 @@
  */
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
+import java.util.ArrayList;
 
 
 public class Pokemon implements IPokemon
@@ -24,7 +25,8 @@ public class Pokemon implements IPokemon
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
-	//heldItem item = null;
+	private IStatus nonVolatileStatus;
+	private ArrayList<IStatus> volatileStatus; 
 	
 	/*
 	 * Initial constructor. In this constructor the stats are set to the calculated,
@@ -136,6 +138,8 @@ public class Pokemon implements IPokemon
 	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
 	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
 	public void setAbility(IAbility abil){ this.ability = abil;}
+	public void addVolatileStatus(IStatus status){this.volatileStatus.add(status);}
+	public void setNonVolatileStatus(IStatus status){this.nonVolatileStatus = status;}
 	
 	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
 	{
@@ -453,6 +457,7 @@ public class Pokemon implements IPokemon
 	public void resetSpAtk() { this.spAtkModifier = 0; this.spAtk = this.maxSpAtk; }
 	public void resetSpDef() { this.spDefModifier = 0; this.spDef = this.maxSpDef; }
 	public void resetSpeed() { this.speedModifier = 0; this.speed = this.maxSpeed; }
+	public void resetVolatileStatus(){ this.volatileStatus.clear(); }
 	
 	
 	public void setMove(Move newMove, int moveNum)
@@ -543,6 +548,7 @@ public class Pokemon implements IPokemon
 	public int getLevel(){return this.level;}
 	public IAbility getAbility(){return this.ability;}
 	public IAbility getBaseAbility(){return this.baseAbility;}
-		
+	public IStatus getNonVolatileStatus(){return this.nonVolatileStatus;}
+	public ArrayList<IStatus> getVolatileStatus(){return this.volatileStatus;}
 	
 }

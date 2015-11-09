@@ -42,11 +42,11 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed)
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Intimidate");
 					   statChangeQueue[Stat.ATTACK.getMask()] = -1;
-					   if(Event.abilityEvent(opponent.getAbility(),EventType.STATISTIC_CHANGE,opponent,wielder,field,attacker,defender,lastMoveUsed))
+					   if(Event.abilityEvent(opponent.getAbility(),EventType.STATISTIC_CHANGE,opponent,wielder,field,attacker,defender,moveUsed))
 					   {
 						   statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   return 1;
@@ -69,7 +69,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Simple");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
@@ -94,7 +94,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Clear Body");
 					   System.out.println(opponent.getNickName() + "'s Clear Body prevented stat changes");
@@ -110,7 +110,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Simple");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
@@ -135,7 +135,7 @@ public class AbilityMap
 				 public EventType getEventTrigger(){return trigger;}
 				 public String getName(){return name;}
 				 public String getDescription(){return description;}
-				 public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				 public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				 { 
 					 if(field.getWeather() == Weather.HEAVY_RAIN)
 						 return 1;
@@ -167,7 +167,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(field.getWeather() == Weather.HEAVY_RAIN)
 						   return 1;
@@ -199,7 +199,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(field.getWeather() == Weather.INTENSE_SUN)
 						   return 1;
@@ -223,7 +223,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(field.getWeather() == Weather.HEAVY_RAIN)
 						   return 1;
@@ -247,15 +247,15 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(lastMoveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
+					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
 						   System.out.println(wielder.getNickName() + "'s Mummy");
 						   opponent.setAbility(abilityMap.get("Mummy"));
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
-					   lastMoveUsed = null;
+					   moveUsed = null;
 					   return 1;
 				   }
 			});
@@ -268,11 +268,11 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(wielder == defender)
 					   {
-						   if(lastMoveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
+						   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 							   Formula.ability = 1 / (opponent.getAtk() / opponent.getMaxAtk());
 						   else
 							   Formula.ability = 1 / (opponent.getSpAtk() / opponent.getMaxSpAtk());
@@ -280,7 +280,7 @@ public class AbilityMap
 					   }
 					   else
 					   {
-						   if(lastMoveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
+						   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 							   Formula.ability = 1 / (opponent.getDef() / opponent.getMaxDef());
 						   else
 							   Formula.ability = 1 / (opponent.getSpDef() / opponent.getMaxSpDef());
@@ -297,7 +297,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Cloud Nine");
 					   if(field.getWeather() == Weather.NONE)
@@ -330,7 +330,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   Boolean active = false;
 				   Boolean atkOddNumber, spAtkOddNumber, alreadySet = false;
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(! alreadySet)
 					   {
@@ -374,7 +374,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   private double modifier(IPokemon attacker, IPokemon defender, Move lastMoveUsed, IField field )
+				   private double modifier(IPokemon attacker, IPokemon defender, Move moveUsed, IField field )
 				   {
 					   Random gen = new Random();
 				        
@@ -384,15 +384,15 @@ public class AbilityMap
 				        double stab,roll,type,weather;
 				        
 				        //Calculate STAB modifier
-				        if( attacker.getType1() == lastMoveUsed.getType() || attacker.getType2() == lastMoveUsed.getType() || attacker.getType3() == lastMoveUsed.getType() )
+				        if( attacker.getType1() == moveUsed.getType() || attacker.getType2() == moveUsed.getType() || attacker.getType3() == moveUsed.getType() )
 				            stab = 1.5;
 				        else
 				            stab = 1.0;
 				        
 				        //Calculate type modifier
 				        type = 1.0;
-				        type *= Formula.clacEffectiveness(type, lastMoveUsed.getType(),defender.getType1());
-				        type *= Formula.clacEffectiveness(type, lastMoveUsed.getType(),defender.getType2());
+				        type *= Formula.clacEffectiveness(type, moveUsed.getType(),defender.getType1());
+				        type *= Formula.clacEffectiveness(type, moveUsed.getType(),defender.getType2());
 				       
 				        //Calculate damage range
 				        roll = .85 + (1.0 - .85) * gen.nextDouble();
@@ -400,48 +400,48 @@ public class AbilityMap
 				        //Calculate weather modifier
 				        if(field.getWeather() == Weather.NONE)
 				        	weather = 1.0;
-				        else if( lastMoveUsed.getType() == Type.WATER && (field.getWeather() == Weather.RAIN || field.getWeather() == Weather.HEAVY_RAIN ))
+				        else if( moveUsed.getType() == Type.WATER && (field.getWeather() == Weather.RAIN || field.getWeather() == Weather.HEAVY_RAIN ))
 				        	weather = 1.5;
-				        else if( lastMoveUsed.getType() == Type.FIRE && field.getWeather() == Weather.RAIN)
+				        else if( moveUsed.getType() == Type.FIRE && field.getWeather() == Weather.RAIN)
 				        	weather = 0.5;
-				        else if( lastMoveUsed.getType() == Type.FIRE && field.getWeather() == Weather.HEAVY_RAIN)
+				        else if( moveUsed.getType() == Type.FIRE && field.getWeather() == Weather.HEAVY_RAIN)
 				        	weather = 0.0;
-				        else if( lastMoveUsed.getType() == Type.FIRE && (field.getWeather() == Weather.SUN || field.getWeather() == Weather.INTENSE_SUN ))
+				        else if( moveUsed.getType() == Type.FIRE && (field.getWeather() == Weather.SUN || field.getWeather() == Weather.INTENSE_SUN ))
 				        	weather = 1.5;
-				        else if( lastMoveUsed.getType() == Type.WATER && field.getWeather() == Weather.SUN)
+				        else if( moveUsed.getType() == Type.WATER && field.getWeather() == Weather.SUN)
 				        	weather = 0.5;
-				        else if( lastMoveUsed.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
+				        else if( moveUsed.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
 				        	weather = 0.0;
-				        else if( lastMoveUsed.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && lastMoveUsed.getCategory() == Attribute.SPECIAL)
+				        else if( moveUsed.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && moveUsed.getCategory() == Attribute.SPECIAL)
 				        	weather = 0.5;
 				        else
 				        	weather = 1;
 				        				        
 				        return (stab * type * roll * weather);
 				   }
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   double damage;
 				       double numerator, denomenator;
 				       numerator = ( ( 2 * attacker.getLevel() ) + 10  );
 				        
-				       if(lastMoveUsed.getCategory() == Attribute.PHYSICAL)
+				       if(moveUsed.getCategory() == Attribute.PHYSICAL)
 				       {
-				           numerator = numerator * attacker.getAtk() * lastMoveUsed.getPower();
+				           numerator = numerator * attacker.getAtk() * moveUsed.getPower();
 				           denomenator = 250 * defender.getDef();
 				       }
 				           
 				       else
 				       {
-			            numerator = numerator * attacker.getSpAtk() * lastMoveUsed.getPower();
+			            numerator = numerator * attacker.getSpAtk() * moveUsed.getPower();
 			            denomenator = 250 * defender.getSpDef();
 			        }
 			           damage = (numerator / denomenator) + 2;
-				       damage *= modifier( attacker, defender, lastMoveUsed, field );
+				       damage *= modifier( attacker, defender, moveUsed, field );
 				       
 				       defender.changeHP((int)damage);
 				       if(defender.getHP() == 0)
-				    	   Event.abilityEvent(opponent.getAbility(),EventType.KO,opponent,wielder,field,attacker,defender,lastMoveUsed);
+				    	   Event.abilityEvent(opponent.getAbility(),EventType.KO,opponent,wielder,field,attacker,defender,moveUsed);
 				       
 				       //Move Event
 				       
@@ -459,9 +459,9 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(lastMoveUsed.getCategory() == Attribute.PHYSICAL)
+					   if(moveUsed.getCategory() == Attribute.PHYSICAL)
 						   attacker.changeHP(attacker.getMaxHP() / 4);
 					   return 1;
 				   }
@@ -475,7 +475,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   wielder.changeHP(- wielder.getMaxHP() / 3);
 					   return 1;
@@ -490,7 +490,7 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move lastMoveUsed) 
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   Timer timer = new Timer();
 					   class SetTimer extends TimerTask

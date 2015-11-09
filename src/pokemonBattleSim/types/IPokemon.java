@@ -1,5 +1,7 @@
 package pokemonBattleSim.types;
 
+import java.util.ArrayList;
+
 public interface IPokemon 
 {
 
@@ -15,6 +17,8 @@ public interface IPokemon
 		public void setGender(Gender gen);
 		public void setLevel(int lev);
 		public void setAbility(IAbility abil);
+		public void addVolatileStatus(IStatus status);
+		public void setNonVolatileStatus(IStatus status);
 		
 		//para: number -6 to 6. The stage of the stat
 		public void changeAtk(int change);
@@ -33,6 +37,7 @@ public interface IPokemon
 		public void resetSpAtk();
 		public void resetSpDef();
 		public void resetSpeed();
+		public void resetVolatileStatus();
 		
 		//void setAbility(Ability newAbility){ ability = newAbility;}
 		public void setMove(Move newMove, int moveNum);
@@ -67,4 +72,6 @@ public interface IPokemon
 		public int getLevel();
 		public IAbility getAbility();
 		public IAbility getBaseAbility();
+		public IStatus getNonVolatileStatus();
+		public ArrayList<IStatus> getVolatileStatus();
 }

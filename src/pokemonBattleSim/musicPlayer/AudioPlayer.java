@@ -69,7 +69,7 @@ public class AudioPlayer {
      
     public static void main(String[] args) 
     {
-        String audioFilePath = "pokemonBattleSim/resources/soundtrack/Abandoned Ship.wav";
+        String audioFilePath = "pokemonBattleSim/resources/soundtrack/AbandonedShip.wav";
         AudioPlayer player = new AudioPlayer();
         player.play(audioFilePath);
     }

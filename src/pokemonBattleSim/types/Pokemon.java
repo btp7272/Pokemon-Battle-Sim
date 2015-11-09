@@ -10,6 +10,7 @@ import pokemonBattleSim.formulas.Formula;
 public class Pokemon implements IPokemon
 {
 	private String speciesName, nickName;
+	private int playerID, benchPosition;
 	private int hp, maxHp;
 	private int atkModifier = 0, defModifier = 0, spDefModifier = 0, spAtkModifier = 0, speedModifier = 0;
 	private int atk, maxAtk;
@@ -118,6 +119,8 @@ public class Pokemon implements IPokemon
 			setMove(moves[i],i+1);
 	}
 
+	public void setPlayerID(int id){ this.playerID = id;}
+	public void setBenchPosition(int pos){ this.benchPosition = pos;}
 	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.maxHp = this.hp;}
 	public void setAtk(int attack, int IV, int EV, int level){ this.atk = Formula.calcStat(attack,IV,EV,level); this.maxAtk = this.atk;}
 	public void setDef(int defense, int IV, int EV, int level){ this.def = Formula.calcStat(defense,IV,EV,level); this.maxDef = this.def;}
@@ -136,15 +139,23 @@ public class Pokemon implements IPokemon
 	
 	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
 	{
+		this.maxAtk *= multiplier;
 		this.atk *= multiplier;
 		if(wasOdd && multiplier > 1)
+		{
+			this.maxAtk += 1;
 			this.atk += 1;
+		}
 	}
 	public void changeSpAtkNoModifier(double multiplier, boolean wasOdd)
 	{
+		this.maxSpAtk *= multiplier;
 		this.spAtk *= multiplier;
 		if(wasOdd && multiplier > 1)
-			this.atk += 1;
+		{
+			this.maxSpAtk += 1;
+			this.spAtk += 1;
+		}
 	}
 	
 	//para: number -6 to 6. The stage of the stat
@@ -505,6 +516,8 @@ public class Pokemon implements IPokemon
 
 	public String getSpeciesName(){ return this.speciesName;}
 	public String getNickName(){ return this.nickName;}
+	public int getPlayerID(){return this.playerID;}
+	public int getBenchPosition(){return this.benchPosition;}
 	public int getHP(){return this.hp;}
 	public int getMaxHP() {return this.maxHp;}
 	public int getAtk(){return this.atk;}

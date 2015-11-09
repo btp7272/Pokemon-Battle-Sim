@@ -3,6 +3,8 @@ package pokemonBattleSim.types;
 public interface IPokemon 
 {
 
+		public void setPlayerID(int id);
+		public void setBenchPosition(int pos);
 		public void setHp(int health, int IV, int EV, int level);
 		public void setAtk(int attack, int IV, int EV, int level);
 		public void setDef(int defense, int IV, int EV, int level);
@@ -38,6 +40,8 @@ public interface IPokemon
 
 		public String getSpeciesName();
 		public String getNickName();
+		public int getPlayerID();
+		public int getBenchPosition();
 		public int getHP();
 		public int getMaxHP();
 		public int getAtk();

@@ -5,12 +5,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
-import pokemonBattleSim.types.*;
+import pokemonBattleSim.models.*;
 
 public class AbilityMap
 {
 	public static Map < String, IAbility > abilityMap = new HashMap<>();
 	public static int[] statChangeQueue = new int[5];
+	private static IBattleModel model = BattleModel.getInstance();
 	
 	public enum Stat
 	{
@@ -150,7 +151,7 @@ public class AbilityMap
 			   			 return 1;
 					 
 					 System.out.println(wielder.getNickName() + "'s Drizzle");
-					 if(opponent.getAbility().getName() == "Cloud Nine")
+					 if(opponent.getAbility().getName().equals("Cloud Nine"))
 						 field.setWeather(Weather.RAIN_NO_EFFECT);
 					 else
 						 field.setWeather(Weather.RAIN);
@@ -182,7 +183,7 @@ public class AbilityMap
 						   return 1;
 					   
 					   System.out.println(wielder.getNickName() + "'s Drought");
-					   if(opponent.getAbility().getName() == "Cloud Nine")
+					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.SUN_NO_EFFECT);
 						 else
 							 field.setWeather(Weather.SUN);
@@ -206,7 +207,7 @@ public class AbilityMap
 						   return 1;
 					   
 					   System.out.println(wielder.getNickName() + "'s Desolate Land");
-					   if(opponent.getAbility().getName() == "Cloud Nine")
+					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.INTENSE_SUN_NO_EFFECT);
 						 else
 							 field.setWeather(Weather.INTENSE_SUN);
@@ -230,7 +231,7 @@ public class AbilityMap
 						   return 1;
 					   
 					   System.out.println(wielder.getNickName() + "'s Primordial Sea");
-					   if(opponent.getAbility().getName() == "Cloud Nine")
+					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.HEAVY_RAIN_NO_EFFECT);
 						 else
 							 field.setWeather(Weather.HEAVY_RAIN);
@@ -319,7 +320,7 @@ public class AbilityMap
 				   }
 			});
 			
-			abilityMap.put("Defeatist", new IAbility()
+			abilityMap.put("Defeatist", new IAbility() //needs work
 			{
 				   String name = "Defeatist";
 				   String description = "Halves the wielder's Attack and Special Attack if its HP drops below 50%.";
@@ -485,7 +486,7 @@ public class AbilityMap
 			{
 				   String name = "Speed Boost";
 				   String description = "Speed raises over time.";
-				   EventType trigger = EventType.ENTRY;
+				   EventType trigger = EventType.CONTINUOUS;
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
@@ -497,9 +498,13 @@ public class AbilityMap
 						   @Override
 						   public void run()
 						   {
-							   //if this pokemon is no longer out, cancel the timer
-							   //else
-							   wielder.changeSpeed(1);
+							   if(model.getPlayerCurrentPokemonIndex(wielder.getPlayerID()).equals(wielder.getBenchPosition()))
+							   {
+								   timer.cancel();
+								   return;
+							   }
+							   if(wielder.getSpeedModifier() != 6)
+								   wielder.changeSpeed(1);
 						   }
 					   }
 					   TimerTask task = new SetTimer();

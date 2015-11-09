@@ -252,15 +252,15 @@ public class BattleModel implements IBattleModel {
 	 * @return
 	 */
 	@Override
-	public ArrayList<QueuedMove> getTasks (int playerID)
+	public ArrayList<QueuedAction> getTasks (int playerID)
 	{
-		ArrayList<QueuedMove> moves = new ArrayList<>();
+		ArrayList<QueuedAction> actions = new ArrayList<>();
 		if (playerID == this.playerOne.getTrainerID())
 		{
 			synchronized (playerOneTasks)
 			{
 				for ( BattleTask task : playerOneTasks)
-					moves.add(new QueuedMove(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+					actions.add(new QueuedAction(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
 			}
 		}
 		else if (playerID == this.playerTwo.getTrainerID())
@@ -268,13 +268,13 @@ public class BattleModel implements IBattleModel {
 			synchronized (playerTwoTasks)
 			{
 				for ( BattleTask task : playerTwoTasks)
-					moves.add(new QueuedMove(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
+					actions.add(new QueuedAction(task.toString(),task.getID(),task.getActivePeriod(),task.getInactivePeriod()));
 			}
 		}
 		else 
 			throw new IllegalArgumentException ("playerID does not match active players");
 
-		return moves;
+		return actions;
 	}
 
 	public void registerView(IPokemonView view)

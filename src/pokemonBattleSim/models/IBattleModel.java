@@ -16,13 +16,13 @@ public interface IBattleModel {
 	public ArrayList<Boolean> getOpponentAvailablePokemon ( int playerID );
 	public String getPlayerPokemonName ( int playerID, int index );
 	public String getOpponentPokemonName ( int playerID, int index );
-	public String getPlayerPokemonName ( int playerID);
-	public String getOpponentPokemonName ( int playerID);
+	public String getPlayerPokemonName ( int playerID );
+	public String getOpponentPokemonName ( int playerID );
 	public int getPlayerPokemonHP ( int playerID );
 	public int getOpponentPokemonHP ( int playerID );
 	public ArrayList<String> getMoveData ( int playerID );
 	public ArrayList<String> getLogData ();
-	public ArrayList<QueuedMove> getTasks ( int playerID );
+	public ArrayList<QueuedAction> getTasks ( int playerID );
 	public boolean isGameover();
 	
 	// Methods for View: Notification

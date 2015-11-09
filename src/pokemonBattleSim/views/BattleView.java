@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 
 import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.models.IBattleModel;
+import pokemonBattleSim.models.QueuedAction;
 
 public class BattleView extends JFrame implements IPokemonView{
 	/**
@@ -29,6 +30,8 @@ public class BattleView extends JFrame implements IPokemonView{
 	
 	private int playerID;
 	private ArrayList<ActionListener> queueButtonListeners;
+	private ArrayList<ActionListener> moveButtonListeners;
+	private ArrayList<ActionListener> pokemonButtonListeners;
 	
 	//private JPanel battlePanel;
 	private JPanel pokemonDataPanel;
@@ -69,6 +72,10 @@ public class BattleView extends JFrame implements IPokemonView{
 	{
 		super();
 		this.playerID = playerID;
+		this.moveButtonListeners = new ArrayList<>();
+		this.queueButtonListeners = new ArrayList<>();
+		this.pokemonButtonListeners = new ArrayList<>();
+		
 		
 		// Initialize all components
 		//battlePanel = 			new JPanel();
@@ -163,7 +170,8 @@ public class BattleView extends JFrame implements IPokemonView{
 		//this.add(battlePanel);
 	}
 
-	public void onNotifyView ()
+	@Override
+	public void onViewNotify()
 	{
 		IBattleModel model = BattleModel.getInstance();
 		if (model == null) return;
@@ -174,7 +182,9 @@ public class BattleView extends JFrame implements IPokemonView{
 		this.setPlayerTwoPokemonHP(model.getOpponentPokemonHP(playerID));
 		this.setPlayerOnePokemonDisplayImage(model.getPlayerPokemonName(playerID));
 		this.setPlayerTwoPokemonDisplayImage(model.getOpponentPokemonName(playerID));
-		this.setMoveQueueData(model.getMoveData(playerID), queueButtonListener);
+		this.setMoveQueueData(model.getTasks(playerID));
+		this.setMoveButtonData(model.getMoveData(playerID));
+		this.setPokemonButtonData(model);
 	}
 	
 	public void setPlayerOnePokemonName(String name)
@@ -209,41 +219,85 @@ public class BattleView extends JFrame implements IPokemonView{
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}
 	
-	public void addMoveQueueListener (ActionListener queueButtonListener);
+	public void addMoveQueueListener (ActionListener listener)
 	{
+		if (listener == null) return;
+		if (queueButtonListeners.contains(listener)) return;
 		
+		queueButtonListeners.add(listener);
 	}
 	
-	public void setMoveQueueData(ArrayList<String> moves)
+	public void removeMoveQueueListener (ActionListener listener)
+	{
+		if (listener == null) return;
+		
+		queueButtonListeners.remove(listener);
+	}
+	
+	public void setMoveQueueData(ArrayList<QueuedAction> actions)
 	{
 		moveQueuePanel.removeAll();
-		for (String move : moves)
+		for (QueuedAction action : actions)
 		{
-			JButton btn = new JButton(move);
+			JButton btn = new JButton(action.name);
 			for (ActionListener listener : queueButtonListeners)
-			btn.addActionListener(queueButtonListener);
+				btn.addActionListener(listener);
 			moveQueuePanel.add(btn);
 		}
 	}
 	
-	public void setMoveButtonData (ArrayList<String> moves, ActionListener moveButtonListener)
+	public void addMoveButtonListener (ActionListener listener)
+	{
+		if (listener == null) return;
+		if (moveButtonListeners.contains(listener)) return;
+		
+		moveButtonListeners.add(listener);
+	}
+	
+	public void removeMoveButtonListener (ActionListener listener)
+	{
+		if (listener == null) return;
+		
+		moveButtonListeners.remove(listener);
+	}
+	
+	public void setMoveButtonData (ArrayList<String> moves)
 	{
 		moveListPanel.removeAll();
 		for (String move : moves)
 		{
 			JButton btn = new JButton(move);
-			btn.addActionListener(moveButtonListener);
+			for (ActionListener listener : moveButtonListeners)
+				btn.addActionListener(listener);
 			moveListPanel.add(btn);
 		}
 	}
 	
-	public void setPokemonButtonData (ArrayList<String> pokemon, ActionListener pokemonButtonListener)
+	public void addPokemonButtonListener (ActionListener listener)
+	{
+		if (listener == null) return;
+		if (pokemonButtonListeners.contains(listener)) return;
+		
+		pokemonButtonListeners.add(listener);
+	}
+	
+	public void removePokemonButtonListener (ActionListener listener)
+	{
+		if (listener == null) return;
+		
+		pokemonButtonListeners.remove(listener);
+	}
+	
+	public void setPokemonButtonData (IBattleModel model)
 	{
 		teamListPanel.removeAll();
-		for (String poke : pokemon)
+		ArrayList<Boolean> availablePokemon =  model.getPlayerAvailablePokemon(playerID);
+		for (int i = 0; i < 6; i++)
 		{
-			JButton btn = new JButton(poke);
-			btn.addActionListener(pokemonButtonListener);
+			JButton btn = new JButton(model.getPlayerPokemonName(playerID, i));
+			btn.setEnabled(availablePokemon.get(i));
+			for (ActionListener listener : moveButtonListeners)
+				btn.addActionListener(listener);
 			teamListPanel.add(btn);
 		}
 	}
@@ -253,9 +307,4 @@ public class BattleView extends JFrame implements IPokemonView{
 		JOptionPane.showMessageDialog(this, message);
 	}
 
-	@Override
-	public void onViewNotify() {
-		// TODO Auto-generated method stub
-		
-	}
 }

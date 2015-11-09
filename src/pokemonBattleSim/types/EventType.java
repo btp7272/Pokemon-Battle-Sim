@@ -13,7 +13,8 @@ public enum EventType
 	CONTINUOUS(7),
 	STATUS_CHANGE(8),
 	KO(9),
-	WEATHER_CHANGE(10);
+	WEATHER_CHANGE(10),
+	PRE_SWITCH(11);
 	
 	private final int mask;
 	EventType(int mask)

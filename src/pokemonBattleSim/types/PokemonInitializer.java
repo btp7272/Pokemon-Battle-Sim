@@ -3,7 +3,7 @@ package pokemonBattleSim.types;
 import pokemonBattleSim.models.SpeciesMap;
 
 public class PokemonInitializer implements IPokemonInitializer{
-	private Pokemon pokemon;
+	private Species pokemon;
 	private Move[] moves;
 	
 	public PokemonInitializer(String pokemonName, Move[] moves) 
@@ -25,7 +25,7 @@ public class PokemonInitializer implements IPokemonInitializer{
 		{
 			if ( move == null )
 			{
-				throw new IllegalArgumentException ("Pokemon may have have a NULL move");
+				throw new IllegalArgumentException ("Pokemon may not have have a NULL move");
 			}
 		}
 	}
@@ -36,7 +36,7 @@ public class PokemonInitializer implements IPokemonInitializer{
 		int[] EVs = {1,1,1,1,1,1};
 		int level = 100;
 		Nature nature = Nature.Timid;
-		return new Pokemon(this.pokemon, moves, IVs, EVs, level, nature );
+		return new Pokemon(SpeciesMap.speciesMap.get(this.pokemon.getName()), "nickname", moves, IVs, EVs, level, nature );
 	}
 
 }

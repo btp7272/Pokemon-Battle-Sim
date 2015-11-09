@@ -1,4 +1,5 @@
-#!/usr/bin/perl
+:q
+I#!/usr/bin/perl
 open(TYPE,"<./alltypes.txt") or die "couldn't open type";
 open(DTYPE,"<./dual_types.txt") or die "couldn't open dual types";
 open(POKE,"<./newpoke.txt") or die "couldn't open poke";
@@ -7,7 +8,7 @@ my @enil = <DTYPE>;
 open(my $fh, '>', "dPoke.txt") or die "couldn't open new file";
 while(<POKE>){
    ($h,$num,$name,$health,$attack,$defense,$SPattack,$SPdefense,$speed,$total,$avg)=split /:/;
-   for (@enil) {
+   for (@enil) {:::
       if($_ =~ /$name/) {
          ($numb,$nameh,$type1,$type2)=split /:/;
          chomp $type2;

@@ -74,4 +74,5 @@ public interface IPokemon
 		public IAbility getBaseAbility();
 		public IStatus getNonVolatileStatus();
 		public ArrayList<IStatus> getVolatileStatus();
+		public Move getMove(int i);
 }

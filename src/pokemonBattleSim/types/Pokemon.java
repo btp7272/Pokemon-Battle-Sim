@@ -40,7 +40,7 @@ public class Pokemon implements IPokemon
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
 	 */
-	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, IAbility abil)
+	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature/*, IAbility abil*/)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
@@ -58,7 +58,7 @@ public class Pokemon implements IPokemon
 		this.setType(a.getType1(), 1);
 		this.setType(a.getType2(), 2);
 		this.weight = this.baseWeight = a.getWeight();
-		this.ability = this.baseAbility = abil;
+		//this.ability = this.baseAbility = abil;
 		
 		
 		/*
@@ -551,4 +551,27 @@ public class Pokemon implements IPokemon
 	public IStatus getNonVolatileStatus(){return this.nonVolatileStatus;}
 	public ArrayList<IStatus> getVolatileStatus(){return this.volatileStatus;}
 	
+	public Move getMove(int i)
+	{
+		switch(i)
+		{
+			case 1:
+			{
+				return this.moveOne;
+			}
+			case 2:
+			{
+				return this.moveTwo;
+			}
+			case 3:
+			{
+				return this.moveThree;
+			}
+			case 4:
+			{
+				return this.moveFour;
+			}	
+		}
+		return null;
+	}
 }

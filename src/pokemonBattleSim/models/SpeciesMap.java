@@ -1,8 +1,8 @@
-package SpeciesBattleSim.models;
+package pokemonBattleSim.models;
 
 import java.util.*;
-import SpeciesBattleSim.types.Species;
-import SpeciesBattleSim.types.Type;
+import pokemonBattleSim.types.Species;
+import pokemonBattleSim.types.Type;
 
 public class SpeciesMap
 {

@@ -4,77 +4,66 @@ import java.util.ArrayList;
 
 public class PokemonTrainer implements IPokemonTrainer
 {
-	private ArrayList<Pokemon> team;
-	private Object teamLock = new Object();
+	// private fields
+	private static int PokemonTrainerID = 0;
 	
-	public PokemonTrainer (ArrayList<Pokemon> team)
+	// instance fields
+	private ArrayList<IPokemon> team;
+	private int activePokemon;
+	private int trainerID;
+	
+	public PokemonTrainer (ArrayList<IPokemonInitializer> team)
 	{
-		this.team = team;
+		if (team.size() != 6) 
+			throw new IllegalArgumentException ("Invalid Team size passed to Pokemon Trainer Constructor");
+		
+		this.team = new ArrayList<> ();
+		for ( IPokemonInitializer initializer : team)
+		{
+			this.team.add(initializer.getPokemon());
+		}
+		this.activePokemon = 0;
+		this.trainerID = PokemonTrainerID++; 
 	}
 	
 	@Override
-	public ArrayList<Pokemon> getPokemonTeam() 
+	public IPokemon getPokemonTeamMember (int index)
 	{
-		return team;
+		if (index < 0 || index >= this.team.size())
+			throw new IllegalArgumentException ("index must be between 0-6");
+		
+		return this.team.get(index);
 	}
-
+	
 	@Override
-	public Pokemon getPokemonTeamMember(int index) 
+	public int getPokemonTeamMemberHP (int index)
 	{
-		if (this.team == null || team.isEmpty())
-			return null;
-
-		if (index < 0 || index >= team.size())
-			return null;
+		if (index < 0 || index >= this.team.size())
+			throw new IllegalArgumentException ("index must be between 0-6");
 		
-		return team.get(index);
+		return this.team.get(index).getHP();
+	}
+	
+	@Override
+	public IPokemon getActiveTeamMember () {
+		return this.team.get(activePokemon);
 	}
 
 	@Override
-	public boolean setPokemonTeamMember(int index, Pokemon pokemon) 
-	{
-		if (team == null)
+	public boolean setActiveTeamMember(int index) {
+		if (index < 0 || index >= this.team.size())
+			throw new IllegalArgumentException ("index must be between 0-6");
+		
+		if (this.team.get(0).getHP() <= 0)
 			return false;
 		
-		if (index < 0 || index >= 6 || index >= (team.size() == 0 ? 1 : team.size()))
-			return false;
-		
-		if (pokemon == null)
-			return false;
-		
-		synchronized (teamLock)
-		{
-			this.team.set(index, pokemon);
-			return true;
-		}
+		this.activePokemon = index;
+		return true;
 	}
 
 	@Override
-	public Pokemon getActiveTeamMember() {
-		if (this.team == null || team.isEmpty())
-			return null;
-		
-		return this.team.get(0);
-	}
-
-	@Override
-	public boolean swapActiveTeamMember(int index) {
-		if (this.team == null || team.isEmpty())
-			return false;
-		
-		if (index < 0 || index >= team.size())
-			return false;
-		
-		synchronized (teamLock)
-		{
-			Pokemon initial = team.get(0);
-			Pokemon swapped = team.get(index);
-			Pokemon temp = initial;
-			team.set(0, swapped);
-			team.set(index, temp);
-		}
-		
-		return false;
+	public int getTrainerID() {
+		return this.trainerID;
 	}
 
 	

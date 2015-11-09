@@ -6,53 +6,146 @@
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 
-public class Pokemon 
+
+public class Pokemon implements IPokemon
 {
-	double indexNum;
-	String name;
-	int hp;
-	int baseHp;
-	int atkModifier = 0;
-	int defModifier = 0;
-	int spDefModifier = 0;
-	int spAtkModifier = 0;
-	int speedModifier = 0;
-	int atk;
-	int baseAtk;
-	int def;
-	int baseDef;
-	int spAtk;
-	int baseSpAtk;
-	int spDef;
-	int baseSpDef;
-	int speed;
-	int baseSpeed;
-	int level;
-	double weight;
-	double baseWeight;
-	//Ability ability = null;
-	Move moveOne = null;
-	Move moveTwo = null;
-	Move moveThree = null;
-	Move moveFour = null;
-	Type typeOne = null;
-	Type baseTypeOne = null;
-	Type typeTwo = null;
-	Type baseTypeTwo = null;
-	Gender gender = null;
+	private String speciesName, nickName;
+	private int hp, maxHp;
+	private int atkModifier = 0, defModifier = 0, spDefModifier = 0, spAtkModifier = 0, speedModifier = 0;
+	private int atk, maxAtk;
+	private int def, maxDef;
+	private int spAtk, maxSpAtk;
+	private int spDef, maxSpDef;
+	private int speed, maxSpeed;
+	private int level;
+	private double weight, baseWeight;
+	private IAbility ability, baseAbility;
+	private Move moveOne, moveTwo, moveThree, moveFour;
+	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
+	private Gender gender;
 	//heldItem item = null;
 	
-	public void setIndex(double index){ this.indexNum = index;}
-	public void setName(String newName){ this.name = newName;}
-	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.baseHp = this.hp;}
-	public void setAtk(int attack, int IV, int EV, int level){ this.atk = Formula.calcStat(attack,IV,EV,level); this.baseAtk = this.atk;}
-	public void setDef(int defense, int IV, int EV, int level){ this.def = Formula.calcStat(defense,IV,EV,level); this.baseDef = this.def;}
-	public void setSpAtk(int spattack, int IV, int EV, int level){ this.spAtk = Formula.calcStat(spattack,IV,EV,level); this.baseSpAtk = this.spAtk;}
-	public void setSpDef(int spdefense, int IV, int EV, int level){ this.spDef = Formula.calcStat(spdefense,IV,EV,level); this.baseSpDef = this.spDef;}
-	public void setSpeed(int newSpeed, int IV, int EV, int level){ this.speed = Formula.calcStat(newSpeed,IV,EV,level); this.baseSpeed = this.speed;}
+	/*
+	 * Initial constructor. In this constructor the stats are set to the calculated,
+	 * final stat of the pokemon. The max stat is used to keep this value unmodified
+	 * in the event it is needed after said stat is modified.
+	 *  @exeption: IV and EV arrays must be size 6
+	 *  @exeption: level must be between 1 and 100
+	 *  @parameter: a = pokemon initialized by a full constructor
+	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
+	 *  @parameter: An IV is a number between 0 and 31. This is like a gene that determines how strong a trait is
+	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
+	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
+	 */
+	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, IAbility abil)
+	{
+		if(IVs.length != 6 || EVs.length != 6)
+			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
+		if(level < 1 || level > 100)
+			throw new IllegalArgumentException("Invalid level");
+		this.speciesName = a.getName();
+		this.nickName = nickname;
+		this.setHp(a.getBaseHP(),IVs[0],EVs[0],level);
+		this.setAtk(a.getBaseAtk(),IVs[1],EVs[1],level);
+		this.setDef(a.getBaseDef(),IVs[2],EVs[2],level);
+		this.setSpAtk(a.getBaseSpAtk(),IVs[3],EVs[3],level);
+		this.setSpDef(a.getBaseSpDef(),IVs[4],EVs[4],level);
+		this.setSpeed(a.getBaseSpeed(),IVs[5],EVs[5],level);
+		this.setLevel(level);
+		this.setType(a.getType1(), 1);
+		this.setType(a.getType2(), 2);
+		this.weight = this.baseWeight = a.getWeight();
+		this.ability = this.baseAbility = abil;
+		
+		
+		/*
+		 * Attack = 0 
+		 * Defense = 1
+		 * Special Attack = 2
+		 * Special Defense = 3
+		 * Speed = 4
+		 */
+		switch(nature.getType(nature.getIncrease()))
+		{
+			case 0:
+				this.maxAtk *= 1.1;
+				this.atk = maxAtk;
+				break;
+			case 1:
+				this.maxDef *= 1.1;
+				this.atk = maxDef;
+				break;
+			case 2:
+				this.maxSpAtk *= 1.1;
+				this.atk = maxSpAtk;
+				break;
+			case 3:
+				this.maxSpDef *= 1.1;
+				this.atk = maxSpDef;
+				break;
+			case 4:
+				this.maxSpeed *= 1.1;
+				this.atk = maxSpeed;
+				break;
+		}
+		
+		switch(nature.getType(nature.getDecrease()))
+		{
+			case 0:
+				this.maxAtk *= .9;
+				this.atk = maxAtk;
+				break;
+			case 1:
+				this.maxDef *= .9;
+				this.atk = maxDef;
+				break;
+			case 2:
+				this.maxSpAtk *= .9;
+				this.atk = maxSpAtk;
+				break;
+			case 3:
+				this.maxSpDef *= .9;
+				this.atk = maxSpDef;
+				break;
+			case 4:
+				this.maxSpeed *= .9;
+				this.atk = maxSpeed;
+				break;
+		}
+		
+		//Right now, we allow for 4 moves.
+		for(int i = 0; i < moves.length; i++)
+			setMove(moves[i],i+1);
+	}
+
+	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.maxHp = this.hp;}
+	public void setAtk(int attack, int IV, int EV, int level){ this.atk = Formula.calcStat(attack,IV,EV,level); this.maxAtk = this.atk;}
+	public void setDef(int defense, int IV, int EV, int level){ this.def = Formula.calcStat(defense,IV,EV,level); this.maxDef = this.def;}
+	public void setSpAtk(int spattack, int IV, int EV, int level){ this.spAtk = Formula.calcStat(spattack,IV,EV,level); this.maxSpAtk = this.spAtk;}
+	public void setSpDef(int spdefense, int IV, int EV, int level){ this.spDef = Formula.calcStat(spdefense,IV,EV,level); this.maxSpDef = this.spDef;}
+	public void setSpeed(int newSpeed, int IV, int EV, int level){ this.speed = Formula.calcStat(newSpeed,IV,EV,level); this.maxSpeed = this.speed;}
 	public void setWeight(double newWeight){ this.weight = newWeight; this.baseWeight = newWeight;}
 	public void setGender(Gender gen){this.gender = gen;}
 	public void setLevel(int lev){this.level = lev;}
+	public void setAtkModifier(int mod){ changeAtk(mod - this.atkModifier);}
+	public void setDefModifier(int mod){ changeAtk(mod - this.defModifier);}
+	public void setSpAtkModifier(int mod){ changeAtk(mod - this.spAtkModifier);}
+	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
+	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
+	public void setAbility(IAbility abil){ this.ability = abil;}
+	
+	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
+	{
+		this.atk *= multiplier;
+		if(wasOdd && multiplier > 1)
+			this.atk += 1;
+	}
+	public void changeSpAtkNoModifier(double multiplier, boolean wasOdd)
+	{
+		this.spAtk *= multiplier;
+		if(wasOdd && multiplier > 1)
+			this.atk += 1;
+	}
 	
 	//para: number -6 to 6. The stage of the stat
 	public void changeAtk(int change)
@@ -69,43 +162,43 @@ public class Pokemon
 		switch(this.atkModifier) 
 		{
 			case -6 :
-				this.atk = (int)(this.baseAtk * (2.0/8));
+				this.atk = (int)(this.maxAtk * (2.0/8));
 				break;
 			case -5 :
-				this.atk = (int)(this.baseAtk * (2.0/7));
+				this.atk = (int)(this.maxAtk * (2.0/7));
 				break;
 			case -4 : 
-				this.atk = (int)(this.baseAtk * (2.0/6));
+				this.atk = (int)(this.maxAtk * (2.0/6));
 				break;
 			case -3 :
-				this.atk = (int)(this.baseAtk * (2.0/5));
+				this.atk = (int)(this.maxAtk * (2.0/5));
 				break;
 			case -2 :
-				this.atk = (int)(this.baseAtk * (2.0/4));
+				this.atk = (int)(this.maxAtk * (2.0/4));
 				break;
 			case -1 : 
-				this.atk = (int)(this.baseAtk * (2.0/3));
+				this.atk = (int)(this.maxAtk * (2.0/3));
 				break;
 			case 0 :
-				this.atk = (int)(this.baseAtk * (2.0/2));
+				this.atk = (int)(this.maxAtk * (2.0/2));
 				break;
 			case 1 :
-				this.atk = (int)(this.baseAtk * (3.0/2));
+				this.atk = (int)(this.maxAtk * (3.0/2));
 				break;
 			case 2 :
-				this.atk = (int)(this.baseAtk * (4.0/2));
+				this.atk = (int)(this.maxAtk * (4.0/2));
 				break;
 			case 3 : 
-				this.atk = (int)(this.baseAtk * (5.0/2));
+				this.atk = (int)(this.maxAtk * (5.0/2));
 				break;
 			case 4 :
-				this.atk = (int)(this.baseAtk * (6.0/2));
+				this.atk = (int)(this.maxAtk * (6.0/2));
 				break;
 			case 5 :
-				this.atk = (int)(this.baseAtk * (7.0/2));
+				this.atk = (int)(this.maxAtk * (7.0/2));
 				break;
 			case 6 : 
-				this.atk = (int)(this.baseAtk * (8.0/2));
+				this.atk = (int)(this.maxAtk * (8.0/2));
 				break;
 		}
 	}
@@ -124,43 +217,43 @@ public class Pokemon
 		switch(this.defModifier) 
 		{
 			case -6 :
-				this.def = (int)(this.baseDef * (2.0/8));
+				this.def = (int)(this.maxDef * (2.0/8));
 				break;
 			case -5 :
-				this.def = (int)(this.baseDef * (2.0/7));
+				this.def = (int)(this.maxDef * (2.0/7));
 				break;
 			case -4 : 
-				this.def = (int)(this.baseDef * (2.0/6));
+				this.def = (int)(this.maxDef * (2.0/6));
 				break;
 			case -3 :
-				this.def = (int)(this.baseDef * (2.0/5));
+				this.def = (int)(this.maxDef * (2.0/5));
 				break;
 			case -2 :
-				this.def = (int)(this.baseDef * (2.0/4));
+				this.def = (int)(this.maxDef * (2.0/4));
 				break;
 			case -1 : 
-				this.def = (int)(this.baseDef * (2.0/3));
+				this.def = (int)(this.maxDef * (2.0/3));
 				break;
 			case 0 :
-				this.def = (int)(this.baseDef * (2.0/2));
+				this.def = (int)(this.maxDef * (2.0/2));
 				break;
 			case 1 :
-				this.def = (int)(this.baseDef * (3.0/2));
+				this.def = (int)(this.maxDef * (3.0/2));
 				break;
 			case 2 :
-				this.def = (int)(this.baseDef * (4.0/2));
+				this.def = (int)(this.maxDef * (4.0/2));
 				break;
 			case 3 : 
-				this.def = (int)(this.baseDef * (5.0/2));
+				this.def = (int)(this.maxDef * (5.0/2));
 				break;
 			case 4 :
-				this.def = (int)(this.baseDef * (6.0/2));
+				this.def = (int)(this.maxDef * (6.0/2));
 				break;
 			case 5 :
-				this.def = (int)(this.baseDef * (7.0/2));
+				this.def = (int)(this.maxDef * (7.0/2));
 				break;
 			case 6 : 
-				this.def = (int)(this.baseDef * (8.0/2));
+				this.def = (int)(this.maxDef * (8.0/2));
 				break;
 		}
 	}
@@ -179,43 +272,43 @@ public class Pokemon
 		switch(this.spAtkModifier) 
 		{
 			case -6 :
-				this.spAtk = (int)(this.baseSpAtk * (2.0/8));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/8));
 				break;
 			case -5 :
-				this.spAtk = (int)(this.baseSpAtk * (2.0/7));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/7));
 				break;
 			case -4 : 
-				this.spAtk = (int)(this.baseSpAtk * (2.0/6));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/6));
 				break;
 			case -3 :
-				this.spAtk = (int)(this.baseSpAtk * (2.0/5));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/5));
 				break;
 			case -2 :
-				this.spAtk = (int)(this.baseSpAtk * (2.0/4));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/4));
 				break;
 			case -1 : 
-				this.spAtk = (int)(this.baseSpAtk * (2.0/3));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/3));
 				break;
 			case 0 :
-				this.spAtk = (int)(this.baseSpAtk * (2.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (2.0/2));
 				break;
 			case 1 :
-				this.spAtk = (int)(this.baseSpAtk * (3.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (3.0/2));
 				break;
 			case 2 :
-				this.spAtk = (int)(this.baseSpAtk * (4.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (4.0/2));
 				break;
 			case 3 : 
-				this.spAtk = (int)(this.baseSpAtk * (5.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (5.0/2));
 				break;
 			case 4 :
-				this.spAtk = (int)(this.baseSpAtk * (6.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (6.0/2));
 				break;
 			case 5 :
-				this.spAtk = (int)(this.baseSpAtk * (7.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (7.0/2));
 				break;
 			case 6 : 
-				this.spAtk = (int)(this.baseSpAtk * (8.0/2));
+				this.spAtk = (int)(this.maxSpAtk * (8.0/2));
 				break;
 		}
 	}
@@ -235,43 +328,43 @@ public class Pokemon
 		switch(this.spDefModifier) 
 		{
 			case -6 :
-				this.spDef = (int)(this.baseSpDef * (2.0/8));
+				this.spDef = (int)(this.maxSpDef * (2.0/8));
 				break;
 			case -5 :
-				this.spDef = (int)(this.baseSpDef * (2.0/7));
+				this.spDef = (int)(this.maxSpDef * (2.0/7));
 				break;
 			case -4 : 
-				this.spDef = (int)(this.baseSpDef * (2.0/6));
+				this.spDef = (int)(this.maxSpDef * (2.0/6));
 				break;
 			case -3 :
-				this.spDef = (int)(this.baseSpDef * (2.0/5));
+				this.spDef = (int)(this.maxSpDef * (2.0/5));
 				break;
 			case -2 :
-				this.spDef = (int)(this.baseSpDef * (2.0/4));
+				this.spDef = (int)(this.maxSpDef * (2.0/4));
 				break;
 			case -1 : 
-				this.spDef = (int)(this.baseSpDef * (2.0/3));
+				this.spDef = (int)(this.maxSpDef * (2.0/3));
 				break;
 			case 0 :
-				this.spDef = (int)(this.baseSpDef * (2.0/2));
+				this.spDef = (int)(this.maxSpDef * (2.0/2));
 				break;
 			case 1 :
-				this.spDef = (int)(this.baseSpDef * (3.0/2));
+				this.spDef = (int)(this.maxSpDef * (3.0/2));
 				break;
 			case 2 :
-				this.spDef = (int)(this.baseSpDef * (4.0/2));
+				this.spDef = (int)(this.maxSpDef * (4.0/2));
 				break;
 			case 3 : 
-				this.spDef = (int)(this.baseSpDef * (5.0/2));
+				this.spDef = (int)(this.maxSpDef * (5.0/2));
 				break;
 			case 4 :
-				this.spDef = (int)(this.baseSpDef * (6.0/2));
+				this.spDef = (int)(this.maxSpDef * (6.0/2));
 				break;
 			case 5 :
-				this.spDef = (int)(this.baseSpDef * (7.0/2));
+				this.spDef = (int)(this.maxSpDef * (7.0/2));
 				break;
 			case 6 : 
-				this.spDef = (int)(this.baseSpDef * (8.0/2));
+				this.spDef = (int)(this.maxSpDef * (8.0/2));
 				break;
 		}
 	}
@@ -290,43 +383,43 @@ public class Pokemon
 		switch(this.speedModifier) 
 		{
 			case -6 :
-				this.speed = (int)(this.baseSpeed * (2.0/8));
+				this.speed = (int)(this.maxSpeed * (2.0/8));
 				break;
 			case -5 :
-				this.speed = (int)(this.baseSpeed * (2.0/7));
+				this.speed = (int)(this.maxSpeed * (2.0/7));
 				break;
 			case -4 : 
-				this.speed = (int)(this.baseSpeed * (2.0/6));
+				this.speed = (int)(this.maxSpeed * (2.0/6));
 				break;
 			case -3 :
-				this.speed = (int)(this.baseSpeed * (2.0/5));
+				this.speed = (int)(this.maxSpeed * (2.0/5));
 				break;
 			case -2 :
-				this.speed = (int)(this.baseSpeed * (2.0/4));
+				this.speed = (int)(this.maxSpeed * (2.0/4));
 				break;
 			case -1 : 
-				this.speed = (int)(this.baseSpeed * (2.0/3));
+				this.speed = (int)(this.maxSpeed * (2.0/3));
 				break;
 			case 0 :
-				this.speed = (int)(this.baseSpeed * (2.0/2));
+				this.speed = (int)(this.maxSpeed * (2.0/2));
 				break;
 			case 1 :
-				this.speed = (int)(this.baseSpeed * (3.0/2));
+				this.speed = (int)(this.maxSpeed * (3.0/2));
 				break;
 			case 2 :
-				this.speed = (int)(this.baseSpeed * (4.0/2));
+				this.speed = (int)(this.maxSpeed * (4.0/2));
 				break;
 			case 3 : 
-				this.speed = (int)(this.baseSpeed * (5.0/2));
+				this.speed = (int)(this.maxSpeed * (5.0/2));
 				break;
 			case 4 :
-				this.speed = (int)(this.baseSpeed * (6.0/2));
+				this.speed = (int)(this.maxSpeed * (6.0/2));
 				break;
 			case 5 :
-				this.speed = (int)(this.baseSpeed * (7.0/2));
+				this.speed = (int)(this.maxSpeed * (7.0/2));
 				break;
 			case 6 : 
-				this.speed = (int)(this.baseSpeed * (8.0/2));
+				this.speed = (int)(this.maxSpeed * (8.0/2));
 				break;
 		}
 	}
@@ -342,16 +435,16 @@ public class Pokemon
 	
 	public void changeWeight(double newWeight){ this.weight = newWeight;}
 	
-	public void resetHP() { this.hp = this.baseHp; }
-	public void resetAtk() { this.atkModifier = 0; this.atk = this.baseAtk; }
-	public void resetDef() { this.defModifier = 0; this.def = this.baseDef; }
-	public void resetSpAtk() { this.spAtkModifier = 0; this.spAtk = this.baseSpAtk; }
-	public void resetSpDef() { this.spDefModifier = 0; this.spDef = this.baseSpDef; }
-	public void resetSpeed() { this.speedModifier = 0; this.speed = this.baseSpeed; }
+	
+	public void resetHP() { this.hp = this.maxHp; }
+	public void resetAtk() { this.atkModifier = 0; this.atk = this.maxAtk; }
+	public void resetDef() { this.defModifier = 0; this.def = this.maxDef; }
+	public void resetSpAtk() { this.spAtkModifier = 0; this.spAtk = this.maxSpAtk; }
+	public void resetSpDef() { this.spDefModifier = 0; this.spDef = this.maxSpDef; }
+	public void resetSpeed() { this.speedModifier = 0; this.speed = this.maxSpeed; }
 	
 	
-	//private void setAbility(Ability newAbility){ ability = newAbility;}
-	private void setMove(Move newMove, int moveNum)
+	public void setMove(Move newMove, int moveNum)
 	{
 		switch(moveNum)
 		{
@@ -382,7 +475,8 @@ public class Pokemon
 			}
 		}
 	}
-	private void setType(Type newType, int typeNum)
+	
+	public void setType(Type newType, int typeNum)
 	{
 		switch(typeNum)
 		{
@@ -396,6 +490,11 @@ public class Pokemon
 				this.typeTwo = newType;
 				break;
 			}
+			case 3:
+			{
+				this.typeThree = newType;
+				break;
+			}
 			default:
 			{
 				System.err.println("Incorrect type number");
@@ -404,23 +503,24 @@ public class Pokemon
 		}
 	}
 
-	public double getIndex(){return this.indexNum;}
-	public String getName(){ return this.name;}
+	public String getSpeciesName(){ return this.speciesName;}
+	public String getNickName(){ return this.nickName;}
 	public int getHP(){return this.hp;}
-	public int getBaseHP() {return this.baseHp;}
+	public int getMaxHP() {return this.maxHp;}
 	public int getAtk(){return this.atk;}
-	public int getBaseAtk() {return this.baseAtk;}
+	public int getMaxAtk() {return this.maxAtk;}
 	public int getDef(){return this.def;}
-	public int getBaseDef() {return this.baseDef;}
+	public int getMaxDef() {return this.maxDef;}
 	public int getSpAtk(){return this.spAtk;}
-	public int getBaseSpAtk() {return this.baseSpAtk;}
+	public int getMaxSpAtk() {return this.maxSpAtk;}
 	public int getSpDef(){return this.spDef;}
-	public int getBaseSpDef() {return this.baseSpDef;}
+	public int getMaxSpDef() {return this.maxSpDef;}
 	public int getSpeed() {return this.speed;}
-	public int getBaseSpeed() {return this.baseSpeed;}
+	public int getMaxSpeed() {return this.maxSpeed;}
 	public double getWeight(){return this.weight;}
 	public Type getType1(){return this.typeOne;}
 	public Type getType2(){return this.typeTwo;}
+	public Type getType3(){return this.typeThree;}
 	public Gender getGender(){return this.gender;}
 	public int getAtkModifier(){return this.atkModifier;}
 	public int getDefModifier(){return this.defModifier;}
@@ -428,142 +528,222 @@ public class Pokemon
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
 	public int getLevel(){return this.level;}
+	public IAbility getAbility(){return this.ability;}
+	public IAbility getBaseAbility(){return this.baseAbility;}
 	
 	
 	
 	/*
 	 * Basic Constructors for Pokemon Objects
 	 */
-	public Pokemon(){} 
-	
-	/*
-	 * Full constructor for duel-type Pokemon. This is for the map. It is
-	 * never used to create the pokemon the users play with. This constructor passes the
-	 * base statistic of the pokemon before the actual stat is calculate, which
-	 * will be done in the copy constructor.
-	 */
-	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne, Type typeTwo)
-	{
-		setIndex(indexNum);
-		setName(name);
-		this.baseHp = hp;
-		this.baseAtk = atk;
-		this.baseDef = def;
-		this.baseSpAtk = spAtk;
-		this.baseSpDef = spDef;
-		this.baseSpeed = speed;
-		setType(typeOne,1);
-		setType(typeTwo,2);
+	public Pokemon(){}
+
+	@Override
+	public Move getMove(int moveNumber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	/*
-	 * Full constructor for single-type Pokemon. This is for the map. It is never used
-	 * to create the pokemon the users play with. This constructor passes the
-	 * base statistic of the pokemon before the actual stat is calculated, which
-	 * will be done in the copy constructor
-	 */
-	public Pokemon(double indexNum, String name, int hp, int atk, int def, int spAtk, int spDef, int speed, Type typeOne)
-	{
-		setIndex(indexNum);
-		setName(name);
-		this.baseHp = hp;
-		this.baseAtk = atk;
-		this.baseDef = def;
-		this.baseSpAtk = spAtk;
-		this.baseSpDef = spDef;
-		this.baseSpeed = speed;
-		setType(typeOne,1);
-		setType(null,2);
+
+	@Override
+	public void addHPChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	
-	/*
-	 * Copy constructor. In this constructor the stats are set to the calculated,
-	 * final stat of the pokemon. The base stat is used to keep this value unmodified
-	 * in the event it is needed after said stat is modified.
-	 *  @exeption: IV and EV arrays must be size 6
-	 *  @exeption: level must be between 1 and 100
-	 *  @parameter: a = pokemon initialized by a full constructor
-	 *  @parameter: IVs = the IVs for each stat in order they appear in this document
-	 *  @parameter: An IV is a number between 0 and 31. This is like a gene that determines how strong a trait is
-	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
-	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
-	 */
-	public Pokemon(Pokemon a, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature)
-	{
-		if(IVs.length != 6 || EVs.length != 6)
-			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
-		if(level < 1 || level > 100)
-			throw new IllegalArgumentException("Invalid level");
-		this.indexNum = a.getIndex();
-		this.name = a.getName();
-		this.setHp(a.getBaseHP(),IVs[0],EVs[0],level);
-		this.setAtk(a.getBaseAtk(),IVs[1],EVs[1],level);
-		this.setDef(a.getBaseDef(),IVs[2],EVs[2],level);
-		this.setSpAtk(a.getBaseSpAtk(),IVs[3],EVs[3],level);
-		this.setSpDef(a.getBaseSpDef(),IVs[4],EVs[4],level);
-		this.setSpeed(a.getBaseSpeed(),IVs[5],EVs[5],level);
-		this.setLevel(level);
+
+	@Override
+	public void removeHPChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
 		
-		
-		/*
-		 * Attack = 0 
-		 * Defense = 1
-		 * Special Attack = 2
-		 * Special Defense = 3
-		 * Speed = 4
-		 */
-		switch(nature.getType(nature.getIncrease()))
-		{
-			case 0:
-				this.baseAtk *= 1.1;
-				this.atk = baseAtk;
-				break;
-			case 1:
-				this.baseDef *= 1.1;
-				this.atk = baseDef;
-				break;
-			case 2:
-				this.baseSpAtk *= 1.1;
-				this.atk = baseSpAtk;
-				break;
-			case 3:
-				this.baseSpDef *= 1.1;
-				this.atk = baseSpDef;
-				break;
-			case 4:
-				this.baseSpeed *= 1.1;
-				this.atk = baseSpeed;
-				break;
-		}
-		
-		switch(nature.getType(nature.getDecrease()))
-		{
-			case 0:
-				this.baseAtk *= .9;
-				this.atk = baseAtk;
-				break;
-			case 1:
-				this.baseDef *= .9;
-				this.atk = baseDef;
-				break;
-			case 2:
-				this.baseSpAtk *= .9;
-				this.atk = baseSpAtk;
-				break;
-			case 3:
-				this.baseSpDef *= .9;
-				this.atk = baseSpDef;
-				break;
-			case 4:
-				this.baseSpeed *= .9;
-				this.atk = baseSpeed;
-				break;
-		}
-		
-		//Right now, we allow for 4 moves.
-		for(int i = 0; i < moves.length; i++)
-			setMove(moves[i],i+1);
 	}
+
+	@Override
+	public void onHPChange() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addStatisticChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeStatisticChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatisticChange() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEntryEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEntryEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onEntry() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addExitEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeExitEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onExit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addPreDamageEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removePreDamageEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPreDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addPostDamageEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removePostDamageEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPostDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addPreAttackEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removePreAttackEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPreAttack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addContinuousEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeContinuousEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onContinuous() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addStatusChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeStatusChangeEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChange() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addKOEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeKOEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onKO() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addWeatherEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeWeatherEvent(IAbility a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWeather() {
+		// TODO Auto-generated method stub
+		
+	} 
+	
+	
+	
+	
 	
 }

@@ -4,10 +4,7 @@ package pokemonBattleSim.formulas;
  * Formula calculator 
  */
 import java.util.*;
-import pokemonBattleSim.types.Type;
-import pokemonBattleSim.types.Pokemon;
-import pokemonBattleSim.types.Attribute;
-import pokemonBattleSim.types.Move;
+import pokemonBattleSim.types.*;
 import java.lang.Math;
 
 public class Formula
@@ -34,6 +31,8 @@ public class Formula
 			  /*Dark*/ 		{ 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 0.5, 0.5 },
 			  /*Fairy*/  	{ 1.0, 2.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 1.0 }
 			    			};
+			    			
+    public static double ability;
     
 
     /****** Calculates the damage
@@ -41,63 +40,83 @@ public class Formula
      * @param pokemon b :: the defending pokemon
      * @param move m :: the move being used by pokemon a
      *****/
-    public static int calcDamage(Pokemon a, Pokemon b, Move m)
+    public static int calcDamage(IPokemon attacker, IPokemon defender, Move m, IField field)
     {
         double damage;
+        double numerator, denomenator;
+        
+        numerator = ( ( 2 * attacker.getLevel() ) + 10  );
         
         if(m.getCategory() == Attribute.PHYSICAL)
         {
-            double numerator, denomenator;
-            numerator = ( ( 2 * a.getLevel() ) + 10  );
-            numerator = numerator * a.getAtk() * m.getPower();
-            denomenator = 250 * b.getDef();
-            damage = (numerator / denomenator) + 2;
-            damage *= modifier( a, b, m );
-            return (int)damage;
+            numerator = numerator * attacker.getAtk() * m.getPower();
+            denomenator = 250 * defender.getDef();
         }
             
         else
         {
-        	double numerator, denomenator;
-            numerator = ( ( 2 * a.getLevel() ) + 10  );
-            numerator = numerator * a.getSpAtk() * m.getPower();
-            denomenator = 250 * b.getSpDef();
-            damage = (numerator / denomenator) + 2;
-            damage *= modifier( a, b, m );
-            return (int)damage;
+            numerator = numerator * attacker.getSpAtk() * m.getPower();
+            denomenator = 250 * defender.getSpDef();
         }
+        
+        damage = (numerator / denomenator) + 2;
+        damage *= modifier( attacker, defender, m, field );
+        return (int)damage;
     }
 
     /****** Calculates addition factors for calcDamage
-     * @param pokemon a :: the attacking pokemon
-     * @param pokemon b :: the defending pokemon
-     * @param move m :: the move being used by pokemon a
+     * @param pokemon attacker :: the attacking pokemon
+     * @param pokemon defender :: the defending pokemon
+     * @param move m :: the move being used by attacker
      *****/
-    public static double modifier(Pokemon a, Pokemon b, Move m )
+    public static double modifier(IPokemon attacker, IPokemon defender, Move m, IField field )
     {
         Random gen = new Random();
         
         //type is the type effectiveness. Can be 0 or a power between -2 to 2 of 2
         //stab (Same Type Attack Bonus) is a multiplier between 1.0 and 1.5. If the types of the attack and the pokemon are the same then the multiplier is 1.5
         //roll is a random damage rang multiplier between .85 and 1.0
-        double stab,roll,type;
-
+        double stab,roll,type,weather;
+        ability = 1;
         
         //Calculate STAB modifier
-        if( a.getType1() == m.getType() || a.getType2() == m.getType() )
+        if( attacker.getType1() == m.getType() || attacker.getType2() == m.getType() || attacker.getType3() == m.getType() )
             stab = 1.5;
         else
             stab = 1.0;
         
         //Calculate type modifier
         type = 1.0;
-        type *= clacEffectiveness(type, m.getType(),b.getType1());
-        type *= clacEffectiveness(type, m.getType(),b.getType2());
+        type *= clacEffectiveness(type, m.getType(),defender.getType1());
+        type *= clacEffectiveness(type, m.getType(),defender.getType2());
        
         //Calculate damage range
         roll = .85 + (1.0 - .85) * gen.nextDouble();
         
-        return (stab * type * roll);
+        //Calculate weather modifier
+        if(field.getWeather() == Weather.NONE)
+        	weather = 1.0;
+        else if( m.getType() == Type.WATER && (field.getWeather() == Weather.RAIN || field.getWeather() == Weather.HEAVY_RAIN ))
+        	weather = 1.5;
+        else if( m.getType() == Type.FIRE && field.getWeather() == Weather.RAIN)
+        	weather = 0.5;
+        else if( m.getType() == Type.FIRE && field.getWeather() == Weather.HEAVY_RAIN)
+        	weather = 0.0;
+        else if( m.getType() == Type.FIRE && (field.getWeather() == Weather.SUN || field.getWeather() == Weather.INTENSE_SUN ))
+        	weather = 1.5;
+        else if( m.getType() == Type.WATER && field.getWeather() == Weather.SUN)
+        	weather = 0.5;
+        else if( m.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
+        	weather = 0.0;
+        else if( m.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
+        	weather = 0.5;
+        else
+        	weather = 1;
+        
+        Event.abilityEvent(attacker.getAbility(),EventType.PRE_DAMAGE,attacker,defender,field,attacker,defender,m);
+        Event.abilityEvent(defender.getAbility(),EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
+        
+        return (stab * type * roll * weather * ability);
     }
     
     //Calculates the type modifier

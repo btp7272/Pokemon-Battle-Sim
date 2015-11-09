@@ -2,11 +2,17 @@ package pokemonBattleSim.types;
 
 import pokemonBattleSim.models.SpeciesMap;
 
-public class PokemonInitializer implements IPokemonInitializer{
+
+/*
+ * This class is used to create an instance of a pokemon for the team builder
+ */
+
+
+public class PokemonCreator implements IPokemonCreator{
 	private Species pokemon;
 	private Move[] moves;
 	
-	public PokemonInitializer(String pokemonName, Move[] moves) 
+	public PokemonCreator(String pokemonName, Move[] moves) 
 	{
 		// initialize and validate pokemon;
 		this.pokemon = SpeciesMap.speciesMap.get(pokemonName);

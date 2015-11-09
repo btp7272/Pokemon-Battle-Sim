@@ -1,5 +1,5 @@
 package pokemonBattleSim.types;
 
-public interface IPokemonInitializer {
+public interface IPokemonCreator {
 	public IPokemon getPokemon ();
 }

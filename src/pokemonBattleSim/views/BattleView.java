@@ -18,11 +18,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class BattleView extends JFrame {
+import pokemonBattleSim.models.BattleModel;
+import pokemonBattleSim.models.IBattleModel;
+
+public class BattleView extends JFrame implements IPokemonView{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7696970813661473987L;
+	
+	private int playerID;
+	private ArrayList<ActionListener> queueButtonListeners;
 	
 	//private JPanel battlePanel;
 	private JPanel pokemonDataPanel;
@@ -59,9 +65,11 @@ public class BattleView extends JFrame {
 	private ArrayList<JButton> pokemonButtons;
 	
 	
-	public BattleView() throws HeadlessException 
+	public BattleView(int playerID) throws HeadlessException 
 	{
 		super();
+		this.playerID = playerID;
+		
 		// Initialize all components
 		//battlePanel = 			new JPanel();
 		pokemonDataPanel = 		new JPanel();
@@ -155,6 +163,20 @@ public class BattleView extends JFrame {
 		//this.add(battlePanel);
 	}
 
+	public void onNotifyView ()
+	{
+		IBattleModel model = BattleModel.getInstance();
+		if (model == null) return;
+		
+		this.setPlayerOnePokemonName(model.getPlayerPokemonName(playerID));
+		this.setPlayerTwoPokemonName(model.getOpponentPokemonName(playerID));
+		this.setPlayerOnePokemonHP(model.getPlayerPokemonHP(playerID));
+		this.setPlayerTwoPokemonHP(model.getOpponentPokemonHP(playerID));
+		this.setPlayerOnePokemonDisplayImage(model.getPlayerPokemonName(playerID));
+		this.setPlayerTwoPokemonDisplayImage(model.getOpponentPokemonName(playerID));
+		this.setMoveQueueData(model.getMoveData(playerID), queueButtonListener);
+	}
+	
 	public void setPlayerOnePokemonName(String name)
 	{
 		playerOnePokemonName.setText(name + ": ");
@@ -187,12 +209,18 @@ public class BattleView extends JFrame {
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}
 	
-	public void setMoveQueueData(ArrayList<String> moves, ActionListener queueButtonListener)
+	public void addMoveQueueListener (ActionListener queueButtonListener);
+	{
+		
+	}
+	
+	public void setMoveQueueData(ArrayList<String> moves)
 	{
 		moveQueuePanel.removeAll();
 		for (String move : moves)
 		{
 			JButton btn = new JButton(move);
+			for (ActionListener listener : queueButtonListeners)
 			btn.addActionListener(queueButtonListener);
 			moveQueuePanel.add(btn);
 		}
@@ -223,5 +251,11 @@ public class BattleView extends JFrame {
 	public void displayPopupMessage(String message)
 	{
 		JOptionPane.showMessageDialog(this, message);
+	}
+
+	@Override
+	public void onViewNotify() {
+		// TODO Auto-generated method stub
+		
 	}
 }

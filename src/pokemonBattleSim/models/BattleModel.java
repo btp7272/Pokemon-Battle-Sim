@@ -7,6 +7,7 @@ import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Weather;
+import pokemonBattleSim.views.IPokemonView;
 
 import static pokemonBattleSim.formulas.Formula.*;
 
@@ -21,6 +22,27 @@ import java.util.TimerTask;
 
 public class BattleModel implements IBattleModel {
 	
+	/*
+	 * Singleton static methods
+	 */
+	static BattleModel model;
+	static Object owner;
+	
+	public static void CreateInstance (Object owner, IPokemonTrainer playerOne, IPokemonTrainer playerTwo) throws Exception
+	{
+		if (BattleModel.owner == null) 
+			BattleModel.owner = owner;
+		else if (!BattleModel.owner.equals(owner)) 
+			throw new Exception ("Object other than the owner attempted to change instance");
+		
+		BattleModel.model = new BattleModel(playerOne, playerTwo);
+	}
+	
+	public static BattleModel getInstance ()
+	{
+		return BattleModel.model;
+	}
+	
 	// holds the information for the battle
 	private IPokemonTrainer playerOne;
 	private IPokemonTrainer playerTwo;
@@ -30,28 +52,28 @@ public class BattleModel implements IBattleModel {
 	private boolean playerTwoActive;
 	private Queue<BattleTask> playerOneTasks;
 	private Queue<BattleTask> playerTwoTasks;
-	private Map<Integer, BattleTask> taskMap;
 	private Stack<String> log;
 	private boolean isGameover;
 	private int taskCounter;
 	
+	private ArrayList<IPokemonView> views;
+	
 	// Synchronization Lock Objects: required for synchronized sections
 	private Object playerOneActiveLock 	= new Object();
 	private Object playerTwoActiveLock 	= new Object();
-	private Object taskMapLock 			= new Object();
 	private Object taskCounterLock 		= new Object();
 	private Object isGameoverLock 		= new Object();
 	
-	public BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo, Timer timer)
+	private BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo)
 	{
+		this.views = new ArrayList<>();
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
 		this.playerOneActive = true;
 		this.playerTwoActive = true;
-		this.timer = timer;
+		this.timer = new Timer();
 		this.playerOneTasks = new ArrayDeque<>();
 		this.playerTwoTasks = new ArrayDeque<>();
-		this.taskMap = new HashMap<>();
 		this.taskCounter = 0;
 		this.log = new Stack<>();
 		timer.schedule(new DelayTask(playerOne), 0);
@@ -61,7 +83,7 @@ public class BattleModel implements IBattleModel {
 	/**
 	 * will run when game ends automatically, clean up resources
 	 */
-	public void gameover ()
+	public synchronized void gameover ()
 	{
 		// do nothing if game is already over
 		if (isGameover()) return; 
@@ -69,17 +91,18 @@ public class BattleModel implements IBattleModel {
 		isGameover = true;
 	}
 	
+		/*
+	 * Methods for View
+	 */
 	
-	/*
+	/**
 	 * returns whether or not the game is over
-	 * @see pokemonBattleSim.models.IBattleModel#isGameover()
 	 */
 	@Override
 	public synchronized boolean isGameover ()
 	{
 		return isGameover;
 	}
-	
 	
 	/**
 	 * get a copy of the log as it was last recorded
@@ -99,7 +122,6 @@ public class BattleModel implements IBattleModel {
 		return output;
 	}
 	
-
 	@Override
 	public ArrayList<Boolean> getPlayerAvailablePokemon (int playerID)
 	{
@@ -140,6 +162,46 @@ public class BattleModel implements IBattleModel {
 		return availability;
 	}
 
+	public String getPlayerPokemonName ( int playerID, int index )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getPokemonTeamMember(index).getNickName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getPokemonTeamMember(index).getNickName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getOpponentPokemonName ( int playerID, int index )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getPokemonTeamMember(index).getNickName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getPokemonTeamMember(index).getNickName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getPlayerPokemonName ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getNickName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getNickName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getOpponentPokemonName ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getNickName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getNickName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
 	@Override
 	public int getPlayerPokemonHP ( int playerID )
 	{
@@ -215,6 +277,27 @@ public class BattleModel implements IBattleModel {
 		return moves;
 	}
 
+	public void registerView(IPokemonView view)
+	{
+		IPokemonView safeView = view;
+		if (safeView != null)
+		this.views.add(safeView);
+	}
+
+	public void notifyView()
+	{
+		for (IPokemonView view : this.views)
+		{
+			IPokemonView safeView = view;
+			if (safeView != null);
+			safeView.onViewNotify();
+		}
+	}
+	
+	/*
+	 * Methods for Controller
+	 */
+	
 	@Override
 	public synchronized boolean RegisterMove ( int playerID, String moveName, int activePeriod, int inactivePeriod )
 	{
@@ -243,6 +326,7 @@ public class BattleModel implements IBattleModel {
 			synchronized (this.playerOneTasks)
 			{
 				task = new MoveTask(playerOne, playerTwo, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
+				playerOneTasks.add(task);
 			}
 		}
 		else if (playerID == this.playerTwo.getTrainerID())
@@ -250,18 +334,100 @@ public class BattleModel implements IBattleModel {
 			synchronized (this.playerTwoTasks)
 			{
 				task = new MoveTask(playerTwo, playerOne, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
+				playerTwoTasks.add(task);
 			}
 		}
 		else return false; // playerID doesn't match anyone
-		
-		synchronized (taskMapLock)
-		{
-			taskMap.put(taskId, task);
-		}
-		
+		notifyView();
 		return true;
 	}
 
+	public synchronized boolean RegisterSwap ( int playerID, int swapIndex )
+	{
+		synchronized (isGameoverLock)
+		{
+			if (isGameover) return false; // game is already over
+		}
+		
+		if (playerID != this.playerOne.getTrainerID() && playerID != this.playerTwo.getTrainerID() )
+			throw new IllegalArgumentException ("playerID does not match active players");
+		
+		BattleTask task;
+		int activePeriod = 20;
+		int inactivePeriod = 20;
+
+		// get a new ID for this task
+		int taskId;
+		synchronized (taskCounterLock) { taskId = taskCounter++; }
+		
+		if (playerID == this.playerOne.getTrainerID())
+		{
+			synchronized (this.playerOneTasks)
+			{
+				task = new SwapTask(playerOne, playerTwo, swapIndex, taskId, activePeriod, inactivePeriod);
+			}
+		}
+		else if (playerID == this.playerTwo.getTrainerID())
+		{
+			synchronized (this.playerTwoTasks)
+			{
+				task = new SwapTask(playerTwo, playerOne, swapIndex, taskId, activePeriod, inactivePeriod);
+			}
+		}
+		else return false; // playerID doesn't match anyone
+		notifyView();
+		return true;
+	}
+	
+	public boolean DeregisterAction ( int playerID, int index )
+	{
+		int counter = 0;
+		BattleTask taskToRemove;
+		if (playerID == this.playerOne.getTrainerID())
+		{
+			synchronized (this.playerOneTasks)
+			{
+				if (counter < playerOneTasks.size()) return false;
+				for (BattleTask task : playerOneTasks)
+				{
+					if (counter != index)
+					{
+						counter++; 
+						continue;
+					}
+						
+					playerOneTasks.remove(task);
+					break;
+				}
+			}
+		}
+		else if (playerID == this.playerTwo.getTrainerID())
+		{
+			synchronized (this.playerTwoTasks)
+			{
+				if (counter < playerTwoTasks.size()) return false;
+				for (BattleTask task : playerTwoTasks)
+				{
+					if (counter != index)
+					{
+						counter++; 
+						continue;
+					}
+						
+					playerTwoTasks.remove(task);
+					break;
+				}
+			}
+		}
+		else return false;
+		
+		notifyView();
+		return true;
+	}
+	
+	/*
+	 * Methods and Types for the Model
+	 */
 	
 	public void executeMove(IPokemonTrainer source, IPokemonTrainer target, Move move) {
 		synchronized (playerOne) { synchronized (playerTwo)
@@ -320,6 +486,7 @@ public class BattleModel implements IBattleModel {
 		}
 		
 		}} // synchronized (playerOne),(playerTwo)
+		notifyView();
 	}
 
 	/** 
@@ -366,6 +533,7 @@ public class BattleModel implements IBattleModel {
 			if (isGameover()) return;
 			execute();
 			remove();
+			notifyView();
 		}
 		
 		public abstract void execute();
@@ -439,6 +607,7 @@ public class BattleModel implements IBattleModel {
 		@Override
 		public void execute() {
 			executeMove(source, target, move);
+			notifyView();
 		}
 
 		@Override
@@ -525,17 +694,6 @@ public class BattleModel implements IBattleModel {
 					return;
 				}
 				
-				// perform queued move from map
-				synchronized (taskMapLock)
-				{
-					if (taskMap == null)
-					{
-						timer.schedule(new DelayTask(player), 50);
-						return;
-					}
-					taskMap.remove(task.getID());
-				}
-				
 				// set active period
 				synchronized (playerOneActiveLock)
 				{
@@ -559,25 +717,13 @@ public class BattleModel implements IBattleModel {
 					return;
 				}
 				
-				// perform queued move from map
-				synchronized (taskMapLock)
-				{
-					if (taskMap == null)
-					{
-						timer.schedule(new DelayTask(player), 50);
-						return;
-					}
-					taskMap.remove(task.getID());
-				}
-				
 				// set active period
 				synchronized (playerTwoActiveLock)
 				{
 					playerTwoActive = true;
 				}
 				timer.schedule(task, task.getActivePeriod());
-			}
-			
+			}			
 		}
 		
 	}

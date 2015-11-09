@@ -61,41 +61,6 @@ public interface IPokemon
 		public int getSpDefModifier();
 		public int getSpeedModifier();
 		public int getLevel();
-		public Move getMove (int moveNumber);
-		
-		public void addHPChangeEvent(IAbility a);
-		public void removeHPChangeEvent(IAbility a);
-		public void onHPChange();
-		public void addStatisticChangeEvent(IAbility a);
-		public void removeStatisticChangeEvent(IAbility a);
-		public void onStatisticChange();
-		public void addEntryEvent(IAbility a);
-		public void removeEntryEvent(IAbility a);
-		public void onEntry();
-		public void addExitEvent(IAbility a);
-		public void removeExitEvent(IAbility a);
-		public void onExit();
-		public void addPreDamageEvent(IAbility a);
-		public void removePreDamageEvent(IAbility a);
-		public void onPreDamage();
-		public void addPostDamageEvent(IAbility a);
-		public void removePostDamageEvent(IAbility a);
-		public void onPostDamage();
-		public void addPreAttackEvent(IAbility a);
-		public void removePreAttackEvent(IAbility a);
-		public void onPreAttack();
-		public void addContinuousEvent(IAbility a);
-		public void removeContinuousEvent(IAbility a);
-		public void onContinuous();
-		public void addStatusChangeEvent(IAbility a);
-		public void removeStatusChangeEvent(IAbility a);
-		public void onStatusChange();
-		public void addKOEvent(IAbility a);
-		public void removeKOEvent(IAbility a);
-		public void onKO();
-		public void addWeatherEvent(IAbility a);
-		public void removeWeatherEvent(IAbility a);
-		public void onWeather();
+		public IAbility getAbility();
 		public IAbility getBaseAbility();
-		
 }

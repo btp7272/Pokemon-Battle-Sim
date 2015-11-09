@@ -1,11 +1,19 @@
-package pokemonBattleSim.types;
+package pokemonBattleSim.models;
 
 import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
-import pokemonBattleSim.models.*;
+import pokemonBattleSim.types.Attribute;
+import pokemonBattleSim.types.Event;
+import pokemonBattleSim.types.EventType;
+import pokemonBattleSim.types.IAbility;
+import pokemonBattleSim.types.IField;
+import pokemonBattleSim.types.IPokemon;
+import pokemonBattleSim.types.Move;
+import pokemonBattleSim.types.Type;
+import pokemonBattleSim.types.Weather;
 
 public class AbilityMap
 {

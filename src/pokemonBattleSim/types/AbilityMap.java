@@ -498,7 +498,7 @@ public class AbilityMap
 						   @Override
 						   public void run()
 						   {
-							   if(model.getPlayerCurrentPokemonIndex(wielder.getPlayerID()).equals(wielder.getBenchPosition()))
+							   if(model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 							   {
 								   timer.cancel();
 								   return;

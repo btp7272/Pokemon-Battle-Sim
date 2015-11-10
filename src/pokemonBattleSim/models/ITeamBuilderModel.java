@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
 
-public interface ITeamBuilderModel {
+public interface ITeamBuilderModel 
+{
 	//Methods for Controller
 	
 	public void addToTeam(Pokemon poke, PokemonTrainer player);

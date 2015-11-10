@@ -22,13 +22,13 @@ public class BattleController {
 		
 		this.view.addMoveButtonListener(new MoveButtonListener());
 		this.view.addPokemonButtonListener(new PokemonButtonListener());
+		this.model.notifyView();
 	}
 	
 	class QueueButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			//TODO
 		}	
 	}
 	
@@ -36,9 +36,11 @@ public class BattleController {
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
+			//System.out.println("Move Button pushed");
 			JButton btn = (JButton) e.getSource();
 			String moveName = btn.getText();
-			model.RegisterMove(playerID, moveName, 1000, 2000);
+			boolean response = model.RegisterMove(playerID, moveName, 1000, 2000);
+			//System.out.println("Move Button pushed: " + moveName + "    Response: " + response);
 		}	
 	}
 	
@@ -46,9 +48,11 @@ public class BattleController {
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
+			System.out.println("Pokemon Button pushed");
 			JButton btn = (JButton) e.getSource();
-			int swapIndex = Integer.parseInt(btn.getText().substring(0, 1));
-			model.RegisterSwap(playerID, swapIndex);
+			int swapIndex = Integer.parseInt(btn.getText().substring(0, 1)) - 1;
+			boolean response = model.RegisterSwap(playerID, swapIndex);
+			//System.out.println("Index of selected Pokemon: " + swapIndex + "    Response: " + response);
 		}
 	}
 }

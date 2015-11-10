@@ -8,6 +8,8 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -168,23 +170,30 @@ public class BattleView extends JFrame implements IPokemonView{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(800, 600);
 		//this.add(battlePanel);
+		BattleModel.getInstance().registerView(this);
+		onViewNotify();
 	}
 
 	@Override
 	public void onViewNotify()
 	{
 		IBattleModel model = BattleModel.getInstance();
-		if (model == null) return;
+		if (model == null) 
+		{
+			return;
+		}
 		
+		//displayPopupMessage("Updating");
 		this.setPlayerOnePokemonName(model.getPlayerPokemonName(playerID));
 		this.setPlayerTwoPokemonName(model.getOpponentPokemonName(playerID));
 		this.setPlayerOnePokemonHP(model.getPlayerPokemonHP(playerID));
 		this.setPlayerTwoPokemonHP(model.getOpponentPokemonHP(playerID));
-		this.setPlayerOnePokemonDisplayImage(model.getPlayerPokemonName(playerID));
-		this.setPlayerTwoPokemonDisplayImage(model.getOpponentPokemonName(playerID));
+		this.setPlayerOnePokemonDisplayImage(model.getPlayerPokemonSpeciesName(playerID));
+		this.setPlayerTwoPokemonDisplayImage(model.getOpponentPokemonSpeciesName(playerID));
 		this.setMoveQueueData(model.getTasks(playerID));
 		this.setMoveButtonData(model.getMoveData(playerID));
 		this.setPokemonButtonData(model);
+		repaint();
 	}
 	
 	public void setPlayerOnePokemonName(String name)
@@ -209,12 +218,14 @@ public class BattleView extends JFrame implements IPokemonView{
 	
 	public void setPlayerOnePokemonDisplayImage(String resource)
 	{
+		//resource = "Pikachu";
 		playerOnePokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 	}
 	
 	public void setPlayerTwoPokemonDisplayImage(String resource)
 	{
+		//resource = "Pikachu";
 		playerTwoPokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}
@@ -241,9 +252,13 @@ public class BattleView extends JFrame implements IPokemonView{
 		{
 			JButton btn = new JButton(action.name);
 			for (ActionListener listener : queueButtonListeners)
+			{
+				//System.out.println("Adding listener");
 				btn.addActionListener(listener);
+			}
 			moveQueuePanel.add(btn);
 		}
+		moveQueuePanel.validate();
 	}
 	
 	public void addMoveButtonListener (ActionListener listener)
@@ -271,6 +286,7 @@ public class BattleView extends JFrame implements IPokemonView{
 				btn.addActionListener(listener);
 			moveListPanel.add(btn);
 		}
+		moveListPanel.validate();
 	}
 	
 	public void addPokemonButtonListener (ActionListener listener)
@@ -297,10 +313,11 @@ public class BattleView extends JFrame implements IPokemonView{
 		{
 			JButton btn = new JButton((counter++) + ": " +model.getPlayerPokemonName(playerID, i));
 			btn.setEnabled(availablePokemon.get(i));
-			for (ActionListener listener : moveButtonListeners)
+			for (ActionListener listener : pokemonButtonListeners)
 				btn.addActionListener(listener);
 			teamListPanel.add(btn);
 		}
+		teamListPanel.validate();
 	}
 	
 	public void displayPopupMessage(String message)

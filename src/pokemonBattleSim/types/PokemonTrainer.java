@@ -17,6 +17,13 @@ public class PokemonTrainer implements IPokemonTrainer
 		return this.team;
 	}
 	
+	public PokemonTrainer ()
+	{
+		this.team = new ArrayList<> ();
+		this.activePokemon = 0;
+		this.trainerID = PokemonTrainerID++; 
+	}
+	
 	public PokemonTrainer (ArrayList<Pokemon> team)
 	{
 		if (team.size() != 6) 

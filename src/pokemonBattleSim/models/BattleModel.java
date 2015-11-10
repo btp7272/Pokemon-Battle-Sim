@@ -136,7 +136,7 @@ public class BattleModel implements IBattleModel {
 		
 		for (int i = 0; i < 6; i++)
 		{
-			availability.set(i, (trainer.getPokemonTeamMember(i).getHP() > 0) );
+			availability.add((trainer.getPokemonTeamMember(i).getHP() > 0) );
 		}
 		
 		return availability;
@@ -162,6 +162,46 @@ public class BattleModel implements IBattleModel {
 		return availability;
 	}
 
+	public String getPlayerPokemonSpeciesName ( int playerID, int index )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getPokemonTeamMember(index).getSpeciesName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getPokemonTeamMember(index).getSpeciesName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getOpponentPokemonSpeciesName ( int playerID, int index )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getPokemonTeamMember(index).getSpeciesName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getPokemonTeamMember(index).getSpeciesName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getPlayerPokemonSpeciesName ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getSpeciesName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getSpeciesName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public String getOpponentPokemonSpeciesName ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getActiveTeamMember().getSpeciesName();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getActiveTeamMember().getSpeciesName();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
 	public String getPlayerPokemonName ( int playerID, int index )
 	{
 		if (playerID == this.playerOne.getTrainerID())
@@ -325,7 +365,8 @@ public class BattleModel implements IBattleModel {
 		{
 			synchronized (this.playerOneTasks)
 			{
-				task = new MoveTask(playerOne, playerTwo, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
+				move = MoveMap.moveMap.get(moveName);
+				task = new MoveTask(playerOne, playerTwo, move, taskId, activePeriod, inactivePeriod);
 				playerOneTasks.add(task);
 			}
 		}
@@ -333,7 +374,8 @@ public class BattleModel implements IBattleModel {
 		{
 			synchronized (this.playerTwoTasks)
 			{
-				task = new MoveTask(playerTwo, playerOne, MoveMap.moveMap.get(move), taskId, activePeriod, inactivePeriod);
+				move = MoveMap.moveMap.get(moveName);
+				task = new MoveTask(playerTwo, playerOne, move, taskId, activePeriod, inactivePeriod);
 				playerTwoTasks.add(task);
 			}
 		}
@@ -365,6 +407,7 @@ public class BattleModel implements IBattleModel {
 			synchronized (this.playerOneTasks)
 			{
 				task = new SwapTask(playerOne, playerTwo, swapIndex, taskId, activePeriod, inactivePeriod);
+				playerOneTasks.add(task);
 			}
 		}
 		else if (playerID == this.playerTwo.getTrainerID())
@@ -372,6 +415,7 @@ public class BattleModel implements IBattleModel {
 			synchronized (this.playerTwoTasks)
 			{
 				task = new SwapTask(playerTwo, playerOne, swapIndex, taskId, activePeriod, inactivePeriod);
+				playerTwoTasks.add(task);
 			}
 		}
 		else return false; // playerID doesn't match anyone
@@ -430,6 +474,7 @@ public class BattleModel implements IBattleModel {
 	 */
 	
 	public void executeMove(IPokemonTrainer source, IPokemonTrainer target, Move move) {
+		//System.out.println("[Executing Move] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " move: " + move.getName());
 		synchronized (playerOne) { synchronized (playerTwo)
 		{
 		IPokemon attacker = source.getActiveTeamMember();
@@ -446,8 +491,9 @@ public class BattleModel implements IBattleModel {
 			public Weather getWeather() {
 				return null;
 			}});
-		
+		System.out.println("Defender HP before attack: " + defender.getHP());
 		defender.changeHP(damage);
+		System.out.println("Defender HP after attack: " + defender.getHP());
 		
 		
 		// log the move
@@ -613,7 +659,7 @@ public class BattleModel implements IBattleModel {
 		@Override
 		public String toString ()
 		{
-			return move.toString();
+			return move.getName().toString();
 		}
 	}
 	
@@ -632,8 +678,10 @@ public class BattleModel implements IBattleModel {
 			synchronized (playerOneActiveLock) { synchronized (playerTwoActiveLock)
 			{	
 				if (playerOneActive || playerTwoActive){
+					//System.out.println("[Executing SWAP] source: " + playerOneActive + " target: " + playerTwoActive + " result: failed");
 					return;
 				}
+				//System.out.println("[Executing SWAP] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " result: swapped to " + swapIndex);
 				if (this.source.getTrainerID() == playerOne.getTrainerID())
 				{
 					playerOneTasks.clear();
@@ -686,18 +734,21 @@ public class BattleModel implements IBattleModel {
 					task = playerOneTasks.poll();
 				}
 				
-				// check that task is available 
-				if (task == null)
-				{
-					// wait
-					timer.schedule(new DelayTask(player), 50);
-					return;
-				}
 				
 				// set active period
 				synchronized (playerOneActiveLock)
 				{
-					playerOneActive = true;
+					// check that task is available 
+					if (task == null)
+					{
+						// wait
+						playerOneActive = false;
+						timer.schedule(new DelayTask(player), 50);
+						return;
+					}
+					else if ( task instanceof SwapTask )
+						playerOneActive = false;
+					else playerOneActive = true;
 				}
 				timer.schedule(task, task.getActivePeriod());
 			}
@@ -709,18 +760,22 @@ public class BattleModel implements IBattleModel {
 					task = playerTwoTasks.poll();
 				}
 				
-				// check that task is available 
-				if (task == null)
-				{
-					// wait
-					timer.schedule(new DelayTask(player), 50);
-					return;
-				}
+				
 				
 				// set active period
 				synchronized (playerTwoActiveLock)
 				{
-					playerTwoActive = true;
+					// check that task is available 
+					if (task == null)
+					{
+						// wait
+						playerTwoActive = false;
+						timer.schedule(new DelayTask(player), 50);
+						return;
+					}
+					else if ( task instanceof SwapTask )
+						playerTwoActive = false;
+					else playerTwoActive = true;
 				}
 				timer.schedule(task, task.getActivePeriod());
 			}			

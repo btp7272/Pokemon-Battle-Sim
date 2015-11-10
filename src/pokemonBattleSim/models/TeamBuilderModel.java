@@ -14,29 +14,29 @@ public class TeamBuilderModel {
 	
 	private ArrayList<IPokemonView> views;
 	
-	public ArrayList<Pokemon> buildTeam(PokemonTrainer player)
+	public ArrayList<Pokemon> buildTeam(PokemonTrainer player, Pokemon one, Pokemon two, Pokemon three, Pokemon four, Pokemon five, Pokemon six)
 	{
 		logData("----Building new Team for player: "+player.getTrainerID()+"----");
 		ArrayList<Pokemon> Team = null;
-			
-		String poke = "Pikachu";
-		String nickname = "pika";
 		
-		Move[] moves = new Move[4];
-			moves[1] = MoveMap.moveMap.get("Tackle");
-			moves[2] = MoveMap.moveMap.get("Tackle");
-			moves[3] = MoveMap.moveMap.get("Tackle");
-			moves[4] = MoveMap.moveMap.get("Tackle");
-		int[] IVs = {31,31,31,31,31,31};
-		int[] EVs = {85,85,85,85,85,85};
-		Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(poke), nickname, moves, IVs, EVs, 100, Nature.Timid);
-		
-		for(int i = 0; i < 6; i++)
-		{
-			addToTeam(temp, player);
-		}
+		addToTeam(one, player);
+		addToTeam(two, player);
+		addToTeam(three, player);
+		addToTeam(four, player);
+		addToTeam(five, player);
+		addToTeam(six, player);
 		
 		return Team;
+	}
+	
+	public void notifyView()
+	{
+		for (IPokemonView view : this.views)
+		{
+			IPokemonView safeView = view;
+			if (safeView != null);
+			safeView.onViewNotify();
+		}
 	}
 	
 	public String generateAbilities(String poke)

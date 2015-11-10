@@ -11,47 +11,382 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	
 	public void onViewNotify()
 	{
-	model = TeamBuilderModel.getInstance();
-	if (model == null) 
-	return;
-	
-	/*
-	 * update things
-	 */
-
-    pokeOne = poke1.getText();
-    pokeTwo = poke2.getText();
-    pokeThree = poke3.getText();
-    pokeFour = poke4.getText();
-    pokeFive = poke5.getText();
-    pokeSix = poke6.getText();
-	
-    moves1 = model.generateMoves(pokeOne);
-	moves2 = model.generateMoves(pokeTwo);
-	moves3 = model.generateMoves(pokeThree);
-	moves4 = model.generateMoves(pokeFour);
-	moves5 = model.generateMoves(pokeFive);
-	moves6 = model.generateMoves(pokeSix);
-    
-	abilities1 = model.generateAbilities(pokeOne);
-	abilities2 = model.generateAbilities(pokeTwo);
-	abilities3 = model.generateAbilities(pokeThree);
-	abilities4 = model.generateAbilities(pokeFour);
-	abilities5 = model.generateAbilities(pokeFive);
-	abilities6 = model.generateAbilities(pokeSix);
-	
+		model = TeamBuilderModel.getInstance();
+		if (model == null) 
+			return;
+		
+		/*
+		 * update things
+		 */
+		
+	    pokeOne = poke1.getText();
+	    pokeTwo = poke2.getText();
+	    pokeThree = poke3.getText();
+	    pokeFour = poke4.getText();
+	    pokeFive = poke5.getText();
+	    pokeSix = poke6.getText();
+		
+	    moves1 = model.generateMoves(pokeOne);
+		moves2 = model.generateMoves(pokeTwo);
+		moves3 = model.generateMoves(pokeThree);
+		moves4 = model.generateMoves(pokeFour);
+		moves5 = model.generateMoves(pokeFive);
+		moves6 = model.generateMoves(pokeSix);
+	    
+		abilities1 = model.generateAbilities(pokeOne);
+		abilities2 = model.generateAbilities(pokeTwo);
+		abilities3 = model.generateAbilities(pokeThree);
+		abilities4 = model.generateAbilities(pokeFour);
+		abilities5 = model.generateAbilities(pokeFive);
+		abilities6 = model.generateAbilities(pokeSix);
+		
 	}
 	
 	public void Finalize()
 	{
+		onViewNotify();
+		/*
+		 * Check IV and EV Sums
+		 */
 		
+		//Check poke1
+		if(checkPokeIVs())
+			return;
+		if(checkMoves())
+			return;
 	}
 	
 	
+	/*
+	 * Check Move validity
+	 */
 	
-	
-	
-	
+	public boolean checkMoves()
+	{
+		if (	poke1move1.equals(poke1move2)  ||
+				poke1move1.equals(poke1move3)  ||
+				poke1move1.equals(poke1move4)  ||
+				poke1move2.equals(poke1move3)  ||
+				poke1move2.equals(poke1move4)  ||
+				poke1move3.equals(poke1move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
+			return true;
+		}
+		else if 
+			(	poke2move1.equals(poke2move2)  ||
+				poke2move1.equals(poke2move3)  ||
+				poke2move1.equals(poke2move4)  ||
+				poke2move2.equals(poke2move3)  ||
+				poke2move2.equals(poke2move4)  ||
+				poke2move3.equals(poke2move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 2 may not have two of the same moves");
+			return true;
+		}
+		else if 
+			(	poke3move1.equals(poke3move2)  ||
+				poke3move1.equals(poke3move3)  ||
+				poke3move1.equals(poke3move4)  ||
+				poke3move2.equals(poke3move3)  ||
+				poke3move2.equals(poke3move4)  ||
+				poke3move3.equals(poke3move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 3 may not have two of the same moves");
+			return true;
+		}
+		else if 
+			(	poke4move1.equals(poke4move2)  ||
+				poke4move1.equals(poke4move3)  ||
+				poke4move1.equals(poke4move4)  ||
+				poke4move2.equals(poke4move3)  ||
+				poke4move2.equals(poke4move4)  ||
+				poke4move3.equals(poke4move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 4 may not have two of the same moves");
+			return true;
+		}
+		else if 
+			(	poke5move1.equals(poke5move2)  ||
+				poke5move1.equals(poke5move3)  ||
+				poke5move1.equals(poke5move4)  ||
+				poke5move2.equals(poke5move3)  ||
+				poke5move2.equals(poke5move4)  ||
+				poke5move3.equals(poke5move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 5 may not have two of the same moves");
+			return true;
+		}
+		else if 
+			(	poke6move1.equals(poke6move2)  ||
+				poke6move1.equals(poke6move3)  ||
+				poke6move1.equals(poke6move4)  ||
+				poke6move2.equals(poke6move3)  ||
+				poke6move2.equals(poke6move4)  ||
+				poke6move3.equals(poke6move4)
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
+			return true;
+		}
+		else
+			return false;
+	}
+	/*
+	 * Check IV and EV value functions 
+	 */
+	public boolean checkPokeIVs()
+	{
+		//Calculate IV validity
+		if (	Integer.parseInt(poke1iv1.getText()) > 31  ||
+				Integer.parseInt(poke1iv2.getText()) > 31  ||
+				Integer.parseInt(poke1iv3.getText()) > 31  ||
+				Integer.parseInt(poke1iv4.getText()) > 31  ||
+				Integer.parseInt(poke1iv5.getText()) > 31  ||
+				Integer.parseInt(poke1iv6.getText()) > 31  ||
+				Integer.parseInt(poke1iv1.getText()) < 0   ||
+				Integer.parseInt(poke1iv1.getText()) < 0   ||
+				Integer.parseInt(poke1iv2.getText()) < 0   ||
+				Integer.parseInt(poke1iv3.getText()) < 0   ||
+				Integer.parseInt(poke1iv4.getText()) < 0   ||
+				Integer.parseInt(poke1iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 1 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke2iv1.getText()) > 31  ||
+				Integer.parseInt(poke2iv2.getText()) > 31  ||
+				Integer.parseInt(poke2iv3.getText()) > 31  ||
+				Integer.parseInt(poke2iv4.getText()) > 31  ||
+				Integer.parseInt(poke2iv5.getText()) > 31  ||
+				Integer.parseInt(poke2iv6.getText()) > 31  ||
+				Integer.parseInt(poke2iv1.getText()) < 0   ||
+				Integer.parseInt(poke2iv1.getText()) < 0   ||
+				Integer.parseInt(poke2iv2.getText()) < 0   ||
+				Integer.parseInt(poke2iv3.getText()) < 0   ||
+				Integer.parseInt(poke2iv4.getText()) < 0   ||
+				Integer.parseInt(poke2iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 2 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke3iv1.getText()) > 31  ||
+				Integer.parseInt(poke3iv2.getText()) > 31  ||
+				Integer.parseInt(poke3iv3.getText()) > 31  ||
+				Integer.parseInt(poke3iv4.getText()) > 31  ||
+				Integer.parseInt(poke3iv5.getText()) > 31  ||
+				Integer.parseInt(poke3iv6.getText()) > 31  ||
+				Integer.parseInt(poke3iv1.getText()) < 0   ||
+				Integer.parseInt(poke3iv1.getText()) < 0   ||
+				Integer.parseInt(poke3iv2.getText()) < 0   ||
+				Integer.parseInt(poke3iv3.getText()) < 0   ||
+				Integer.parseInt(poke3iv4.getText()) < 0   ||
+				Integer.parseInt(poke3iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 3 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke4iv1.getText()) > 31  ||
+				Integer.parseInt(poke4iv2.getText()) > 31  ||
+				Integer.parseInt(poke4iv3.getText()) > 31  ||
+				Integer.parseInt(poke4iv4.getText()) > 31  ||
+				Integer.parseInt(poke4iv5.getText()) > 31  ||
+				Integer.parseInt(poke4iv6.getText()) > 31  ||
+				Integer.parseInt(poke4iv1.getText()) < 0   ||
+				Integer.parseInt(poke4iv1.getText()) < 0   ||
+				Integer.parseInt(poke4iv2.getText()) < 0   ||
+				Integer.parseInt(poke4iv3.getText()) < 0   ||
+				Integer.parseInt(poke4iv4.getText()) < 0   ||
+				Integer.parseInt(poke4iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 4 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke5iv1.getText()) > 31  ||
+				Integer.parseInt(poke5iv2.getText()) > 31  ||
+				Integer.parseInt(poke5iv3.getText()) > 31  ||
+				Integer.parseInt(poke5iv4.getText()) > 31  ||
+				Integer.parseInt(poke5iv5.getText()) > 31  ||
+				Integer.parseInt(poke5iv6.getText()) > 31  ||
+				Integer.parseInt(poke5iv1.getText()) < 0   ||
+				Integer.parseInt(poke5iv1.getText()) < 0   ||
+				Integer.parseInt(poke5iv2.getText()) < 0   ||
+				Integer.parseInt(poke5iv3.getText()) < 0   ||
+				Integer.parseInt(poke5iv4.getText()) < 0   ||
+				Integer.parseInt(poke5iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 5 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke6iv1.getText()) > 31  ||
+				Integer.parseInt(poke6iv2.getText()) > 31  ||
+				Integer.parseInt(poke6iv3.getText()) > 31  ||
+				Integer.parseInt(poke6iv4.getText()) > 31  ||
+				Integer.parseInt(poke6iv5.getText()) > 31  ||
+				Integer.parseInt(poke6iv6.getText()) > 31  ||
+				Integer.parseInt(poke6iv1.getText()) < 0   ||
+				Integer.parseInt(poke6iv1.getText()) < 0   ||
+				Integer.parseInt(poke6iv2.getText()) < 0   ||
+				Integer.parseInt(poke6iv3.getText()) < 0   ||
+				Integer.parseInt(poke6iv4.getText()) < 0   ||
+				Integer.parseInt(poke6iv5.getText()) < 0   
+			)
+		{
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 6 are invalid");
+			return true;
+		}
+		//Calculate EV Validity
+		else if(Integer.parseInt(poke1ev1.getText()) > 252  ||
+				Integer.parseInt(poke1ev2.getText()) > 252  ||
+				Integer.parseInt(poke1ev3.getText()) > 252  ||
+				Integer.parseInt(poke1ev4.getText()) > 252  ||
+				Integer.parseInt(poke1ev5.getText()) > 252  ||
+				Integer.parseInt(poke1ev6.getText()) > 252  ||
+				Integer.parseInt(poke1ev1.getText()) < 0    ||
+				Integer.parseInt(poke1ev2.getText()) < 0    ||
+				Integer.parseInt(poke1ev3.getText()) < 0    ||
+				Integer.parseInt(poke1ev4.getText()) < 0    ||
+				Integer.parseInt(poke1ev5.getText()) < 0    ||
+				Integer.parseInt(poke1ev6.getText()) < 0    ||
+				Integer.parseInt(poke1ev1.getText()) +
+				Integer.parseInt(poke1ev2.getText()) +
+				Integer.parseInt(poke1ev3.getText()) +
+				Integer.parseInt(poke1ev4.getText()) +
+				Integer.parseInt(poke1ev5.getText()) +
+				Integer.parseInt(poke1ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 1 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke2ev1.getText()) > 252  ||
+				Integer.parseInt(poke2ev2.getText()) > 252  ||
+				Integer.parseInt(poke2ev3.getText()) > 252  ||
+				Integer.parseInt(poke2ev4.getText()) > 252  ||
+				Integer.parseInt(poke2ev5.getText()) > 252  ||
+				Integer.parseInt(poke2ev6.getText()) > 252  ||
+				Integer.parseInt(poke2ev1.getText()) < 0    ||
+				Integer.parseInt(poke2ev2.getText()) < 0    ||
+				Integer.parseInt(poke2ev3.getText()) < 0    ||
+				Integer.parseInt(poke2ev4.getText()) < 0    ||
+				Integer.parseInt(poke2ev5.getText()) < 0    ||
+				Integer.parseInt(poke2ev6.getText()) < 0    ||
+				Integer.parseInt(poke2ev1.getText()) +
+				Integer.parseInt(poke2ev2.getText()) +
+				Integer.parseInt(poke2ev3.getText()) +
+				Integer.parseInt(poke2ev4.getText()) +
+				Integer.parseInt(poke2ev5.getText()) +
+				Integer.parseInt(poke2ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 2 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke3ev1.getText()) > 252  ||
+				Integer.parseInt(poke3ev2.getText()) > 252  ||
+				Integer.parseInt(poke3ev3.getText()) > 252  ||
+				Integer.parseInt(poke3ev4.getText()) > 252  ||
+				Integer.parseInt(poke3ev5.getText()) > 252  ||
+				Integer.parseInt(poke3ev6.getText()) > 252  ||
+				Integer.parseInt(poke3ev1.getText()) < 0    ||
+				Integer.parseInt(poke3ev2.getText()) < 0    ||
+				Integer.parseInt(poke3ev3.getText()) < 0    ||
+				Integer.parseInt(poke3ev4.getText()) < 0    ||
+				Integer.parseInt(poke3ev5.getText()) < 0    ||
+				Integer.parseInt(poke3ev6.getText()) < 0    ||
+				Integer.parseInt(poke3ev1.getText()) +
+				Integer.parseInt(poke3ev2.getText()) +
+				Integer.parseInt(poke3ev3.getText()) +
+				Integer.parseInt(poke3ev4.getText()) +
+				Integer.parseInt(poke3ev5.getText()) +
+				Integer.parseInt(poke3ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 3 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke4ev1.getText()) > 252  ||
+				Integer.parseInt(poke4ev2.getText()) > 252  ||
+				Integer.parseInt(poke4ev3.getText()) > 252  ||
+				Integer.parseInt(poke4ev4.getText()) > 252  ||
+				Integer.parseInt(poke4ev5.getText()) > 252  ||
+				Integer.parseInt(poke4ev6.getText()) > 252  ||
+				Integer.parseInt(poke4ev1.getText()) < 0    ||
+				Integer.parseInt(poke4ev2.getText()) < 0    ||
+				Integer.parseInt(poke4ev3.getText()) < 0    ||
+				Integer.parseInt(poke4ev4.getText()) < 0    ||
+				Integer.parseInt(poke4ev5.getText()) < 0    ||
+				Integer.parseInt(poke4ev6.getText()) < 0    ||
+				Integer.parseInt(poke4ev1.getText()) +
+				Integer.parseInt(poke4ev2.getText()) +
+				Integer.parseInt(poke4ev3.getText()) +
+				Integer.parseInt(poke4ev4.getText()) +
+				Integer.parseInt(poke4ev5.getText()) +
+				Integer.parseInt(poke4ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 4 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke5ev1.getText()) > 252  ||
+				Integer.parseInt(poke5ev2.getText()) > 252  ||
+				Integer.parseInt(poke5ev3.getText()) > 252  ||
+				Integer.parseInt(poke5ev4.getText()) > 252  ||
+				Integer.parseInt(poke5ev5.getText()) > 252  ||
+				Integer.parseInt(poke5ev6.getText()) > 252  ||
+				Integer.parseInt(poke5ev1.getText()) < 0    ||
+				Integer.parseInt(poke5ev2.getText()) < 0    ||
+				Integer.parseInt(poke5ev3.getText()) < 0    ||
+				Integer.parseInt(poke5ev4.getText()) < 0    ||
+				Integer.parseInt(poke5ev5.getText()) < 0    ||
+				Integer.parseInt(poke5ev6.getText()) < 0    ||
+				Integer.parseInt(poke5ev1.getText()) +
+				Integer.parseInt(poke5ev2.getText()) +
+				Integer.parseInt(poke5ev3.getText()) +
+				Integer.parseInt(poke5ev4.getText()) +
+				Integer.parseInt(poke5ev5.getText()) +
+				Integer.parseInt(poke5ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 5 are invalid");
+			return true;
+		}
+		else if(Integer.parseInt(poke6ev1.getText()) > 252  ||
+				Integer.parseInt(poke6ev2.getText()) > 252  ||
+				Integer.parseInt(poke6ev3.getText()) > 252  ||
+				Integer.parseInt(poke6ev4.getText()) > 252  ||
+				Integer.parseInt(poke6ev5.getText()) > 252  ||
+				Integer.parseInt(poke6ev6.getText()) > 252  ||
+				Integer.parseInt(poke6ev1.getText()) < 0    ||
+				Integer.parseInt(poke6ev2.getText()) < 0    ||
+				Integer.parseInt(poke6ev3.getText()) < 0    ||
+				Integer.parseInt(poke6ev4.getText()) < 0    ||
+				Integer.parseInt(poke6ev5.getText()) < 0    ||
+				Integer.parseInt(poke6ev6.getText()) < 0    ||
+				Integer.parseInt(poke6ev1.getText()) +
+				Integer.parseInt(poke6ev2.getText()) +
+				Integer.parseInt(poke6ev3.getText()) +
+				Integer.parseInt(poke6ev4.getText()) +
+				Integer.parseInt(poke6ev5.getText()) +
+				Integer.parseInt(poke6ev6.getText()) > 510
+				)
+		{
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 6 are invalid");
+			return true;
+		}
+		else
+			return false;
+	}
 	
 	TeamBuilderModel model;
 	
@@ -142,7 +477,7 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
     private JLabel ev3Label;
     private JLabel ev5Label;
     private JLabel ev6Label;
-    private JPasswordField nickname1;
+    private JTextField nickname1;
     private JTextField nickname2;
     private JLabel nicknameHeader;
     private JTextField nickname3;
@@ -167,31 +502,31 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
     private JTextField poke5iv1;
     private JTextField poke6iv1;
     private JTextField poke6ev1;
-    private JTextField textField_4;
-    private JTextField textField_5;
-    private JTextField textField_6;
-    private JTextField textField_7;
-    private JTextField textField_8;
-    private JTextField textField_10;
-    private JTextField textField_11;
-    private JTextField textField_12;
-    private JTextField textField_13;
-    private JTextField textField_14;
-    private JTextField textField_15;
-    private JTextField textField_16;
-    private JTextField textField_17;
-    private JTextField textField_18;
-    private JTextField textField_19;
-    private JTextField textField_20;
-    private JTextField textField_21;
-    private JTextField textField_22;
-    private JTextField textField_23;
-    private JTextField textField_24;
-    private JTextField textField_25;
-    private JTextField textField_26;
-    private JTextField textField_27;
-    private JTextField textField_28;
-    private JTextField textField_29;
+    private JTextField poke2iv6;
+    private JTextField poke2iv3;
+    private JTextField poke2iv2;
+    private JTextField poke2iv4;
+    private JTextField poke2iv5;
+    private JTextField poke3iv6;
+    private JTextField poke3iv3;
+    private JTextField poke3iv2;
+    private JTextField poke3iv4;
+    private JTextField poke3iv5;
+    private JTextField poke4iv6;
+    private JTextField poke4iv3;
+    private JTextField poke4iv2;
+    private JTextField poke4iv4;
+    private JTextField poke4iv5;
+    private JTextField poke5iv6;
+    private JTextField poke5iv3;
+    private JTextField poke5iv2;
+    private JTextField poke5iv4;
+    private JTextField poke5iv5;
+    private JTextField poke6iv6;
+    private JTextField poke6iv3;
+    private JTextField poke6iv2;
+    private JTextField poke6iv4;
+    private JTextField poke6iv5;
     private JTextField poke2ev6;
     private JTextField poke2ev3;
     private JTextField poke2ev2;
@@ -279,12 +614,12 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          * Pokemon NickNames
          */
         {
-        	nickname1 = new JPasswordField (5);
-            nickname2 = new JTextField (5);
-            nickname3 = new JTextField (5);
-            nickname4 = new JTextField (5);
-            nickname5 = new JTextField (5);
-            nickname6 = new JTextField (5);
+        	nickname1 = new JTextField (30);
+            nickname2 = new JTextField (30);
+            nickname3 = new JTextField (30);
+            nickname4 = new JTextField (30);
+            nickname5 = new JTextField (30);
+            nickname6 = new JTextField (30);
         }
         
         /*
@@ -292,12 +627,12 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	{	//IV labels
-        		iv1Label = new JLabel ("IV 1 (max 31)");
-	        	iv2Label = new JLabel ("IV 2 (max 31)");
-	            iv3Label = new JLabel ("IV 3 (max 31)");
-	            iv4Label = new JLabel ("IV 4 (max 31)");
-	            iv5Label = new JLabel ("IV 5 (max 31)");
-	            iv6Label = new JLabel ("IV 6 (max 31)");
+        		iv1Label = new JLabel ("HP");
+	        	iv2Label = new JLabel ("Attack");
+	            iv3Label = new JLabel ("Defense");
+	            iv4Label = new JLabel ("Special Attack");
+	            iv5Label = new JLabel ("Special Defense");
+	            iv6Label = new JLabel ("Speed");
         	}
         	
         	{   //Pokemon Labels
@@ -317,12 +652,12 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         	}
         	
         	{	//EV Labels
-                ev1Label = new JLabel ("EV 1(max 252)");
-                ev2Label = new JLabel ("EV 2(max 252)");
-                ev3Label = new JLabel ("EV 3(max 252)");
-                ev4Label = new JLabel ("EV 4(max 252)");
-                ev5Label = new JLabel ("EV 5(max 252)");
-                ev6Label = new JLabel ("EV 6(max 252)");
+                ev1Label = new JLabel ("HP");
+                ev2Label = new JLabel ("Attack");
+                ev3Label = new JLabel ("Defense");
+                ev4Label = new JLabel ("Special Attack");
+                ev5Label = new JLabel ("Special Defense");
+                ev6Label = new JLabel ("Speed");
         	}
         	
         	{	//Other Labels
@@ -446,6 +781,14 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         	{	//poke4
         		
         	}
+        	
+        	{	//poke5
+        		
+        	}
+        	
+        	{	//poke6
+        		
+        	}
         }
         
         /*
@@ -453,12 +796,12 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	{	//poke1
-        		poke1ev1 = new JTextField (5);
-        		poke1ev2 = new JTextField (5);
-        		poke1ev3 = new JTextField (5);
-        		poke1ev4 = new JTextField (5);
-        		poke1ev5 = new JTextField (5);
-        		poke1ev6 = new JTextField (5);
+        		poke1ev1 = new JTextField (3);
+        		poke1ev2 = new JTextField (3);
+        		poke1ev3 = new JTextField (3);
+        		poke1ev4 = new JTextField (3);
+        		poke1ev5 = new JTextField (3);
+        		poke1ev6 = new JTextField (3);
         	}
         	{	//poke2
         		
@@ -491,12 +834,20 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
             poke6.setToolTipText ("Pokemon");
         }
         
-        FinalizeButton = new JButton ("Finalize");
-        RefreshButton = new JButton ("Refresh");
-        RefreshButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
+        /*
+         * Buttons
+         */
+        {
+        	FinalizeButton = new JButton ("Finalize");
+            RefreshButton = new JButton ("Refresh");
+            RefreshButton.addActionListener(new ActionListener()
+            {
+            	public void actionPerformed(ActionEvent e)
+            	{
+            		onViewNotify();
+            	}
+            });	
+        }
 
         //set components properties
         
@@ -669,262 +1020,266 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         FinalizeButton.setBounds (515, 561, 100, 25);
         RefreshButton.setBounds (375, 561, 100, 25);
         
-        JLabel evHeader = new JLabel("Effort Values (max total 510)");
-        evHeader.setBounds(52, 400, 195, 14);
+        JLabel evHeader = new JLabel("Effort Values (Individual Max of 252 - Total Max of510)");
+        evHeader.setBounds(90, 398, 280, 14);
         add(evHeader);
         
-        JLabel ivHeader = new JLabel("Individual Values");
-        ivHeader.setBounds(90, 238, 130, 14);
+        JLabel ivHeader = new JLabel("Individual Values (Individual Max of 31)");
+        ivHeader.setBounds(90, 238, 240, 14);
         add(ivHeader);
         
-        poke5ev1 = new JTextField();
-        poke5ev1.setBounds(660, 412, 100, 25);
-        add(poke5ev1);
-        poke5ev1.setColumns(10);
+	        poke5ev1 = new JTextField();
+	        poke2ev1 = new JTextField();
+	        poke3ev1 = new JTextField();
+	        poke4ev1 = new JTextField();
+	        poke2iv1 = new JTextField();
+	        
+	        poke2ev1.setBounds(230, 412, 100, 25);
+	        poke5ev1.setBounds(660, 412, 100, 25);
+	        poke3ev1.setBounds(375, 412, 100, 25);
+	        poke4ev1.setBounds(515, 412, 100, 25);
+	        poke2iv1.setBounds(230, 252, 100, 25);
+	        
+	        add(poke4ev1);
+	        add(poke5ev1);
+	        add(poke2ev1);
+	        add(poke3ev1);
+	        
+	        poke5ev1.setColumns(10);
+	        poke2ev1.setColumns(10);
+	        poke3ev1.setColumns(10);
+	        poke4ev1.setColumns(10);
+	        poke2iv1.setColumns(10);
+	        
+	        
+	        
+	        
+	        add(poke2iv1);
+	        
+	        poke3iv1 = new JTextField();
+	        poke3iv1.setColumns(10);
+	        poke3iv1.setBounds(375, 252, 100, 25);
+	        add(poke3iv1);
+	        
+	        poke4iv1 = new JTextField();
+	        poke4iv1.setColumns(10);
+	        poke4iv1.setBounds(515, 252, 100, 25);
+	        add(poke4iv1);
+	        
+	        poke5iv1 = new JTextField();
+	        poke5iv1.setColumns(10);
+	        poke5iv1.setBounds(660, 252, 100, 25);
+	        add(poke5iv1);
+	        
+	        poke6iv1 = new JTextField();
+	        poke6iv1.setColumns(10);
+	        poke6iv1.setBounds(800, 252, 100, 25);
+	        add(poke6iv1);
+	        
+	        poke6ev1 = new JTextField();
+	        poke6ev1.setColumns(10);
+	        poke6ev1.setBounds(800, 412, 100, 25);
+	        add(poke6ev1);
+	        
+	        poke2iv6 = new JTextField(5);
+	        poke2iv6.setBounds(230, 362, 100, 25);
+	        add(poke2iv6);
+	        
+	        poke2iv3 = new JTextField(5);
+	        poke2iv3.setBounds(230, 296, 100, 25);
+	        add(poke2iv3);
+	        
+	        poke2iv2 = new JTextField(5);
+	        poke2iv2.setBounds(230, 274, 100, 25);
+	        add(poke2iv2);
+	        
+	        poke2iv4 = new JTextField(5);
+	        poke2iv4.setBounds(230, 318, 100, 25);
+	        add(poke2iv4);
+	        
+	        poke2iv5 = new JTextField(5);
+	        poke2iv5.setBounds(230, 340, 100, 25);
+	        add(poke2iv5);
+	        
+	        poke3iv6 = new JTextField(5);
+	        poke3iv6.setBounds(375, 362, 100, 25);
+	        add(poke3iv6);
+	        
+	        poke3iv3 = new JTextField(5);
+	        poke3iv3.setBounds(375, 296, 100, 25);
+	        add(poke3iv3);
+	        
+	        poke3iv2 = new JTextField(5);
+	        poke3iv2.setBounds(375, 274, 100, 25);
+	        add(poke3iv2);
+	        
+	        poke3iv4 = new JTextField(5);
+	        poke3iv4.setBounds(375, 318, 100, 25);
+	        add(poke3iv4);
+	        
+	        poke3iv5 = new JTextField(5);
+	        poke3iv5.setBounds(375, 340, 100, 25);
+	        add(poke3iv5);
+	        
+	        poke4iv6 = new JTextField(5);
+	        poke4iv6.setBounds(515, 362, 100, 25);
+	        add(poke4iv6);
+	        
+	        poke4iv3 = new JTextField(5);
+	        poke4iv3.setBounds(515, 296, 100, 25);
+	        add(poke4iv3);
+	        
+	        poke4iv2 = new JTextField(5);
+	        poke4iv2.setBounds(515, 274, 100, 25);
+	        add(poke4iv2);
+	        
+	        poke4iv4 = new JTextField(5);
+	        poke4iv4.setBounds(515, 318, 100, 25);
+	        add(poke4iv4);
+	        
+	        poke4iv5 = new JTextField(5);
+	        poke4iv5.setBounds(515, 340, 100, 25);
+	        add(poke4iv5);
+	        
+	        poke5iv6 = new JTextField(5);
+	        poke5iv6.setBounds(660, 362, 100, 25);
+	        add(poke5iv6);
+	        
+	        poke5iv3 = new JTextField(5);
+	        poke5iv3.setBounds(660, 296, 100, 25);
+	        add(poke5iv3);
+	        
+	        poke5iv2 = new JTextField(5);
+	        poke5iv2.setBounds(660, 274, 100, 25);
+	        add(poke5iv2);
+	        
+	        poke5iv4 = new JTextField(5);
+	        poke5iv4.setBounds(660, 318, 100, 25);
+	        add(poke5iv4);
+	        
+	        poke5iv5 = new JTextField(5);
+	        poke5iv5.setBounds(660, 340, 100, 25);
+	        add(poke5iv5);
+	        
+	        poke6iv6 = new JTextField(5);
+	        poke6iv6.setBounds(800, 362, 100, 25);
+	        add(poke6iv6);
+	        
+	        poke6iv3 = new JTextField(5);
+	        poke6iv3.setBounds(800, 296, 100, 25);
+	        add(poke6iv3);
+	        
+	        poke6iv2 = new JTextField(5);
+	        poke6iv2.setBounds(800, 274, 100, 25);
+	        add(poke6iv2);
+	        
+	        poke6iv4 = new JTextField(5);
+	        poke6iv4.setBounds(800, 318, 100, 25);
+	        add(poke6iv4);
+	        
+	        poke6iv5 = new JTextField(5);
+	        poke6iv5.setBounds(800, 340, 100, 25);
+	        add(poke6iv5);
+	        
+	        poke2ev6 = new JTextField(5);
+	        poke2ev6.setBounds(230, 522, 100, 25);
+	        add(poke2ev6);
+	        
+	        poke2ev3 = new JTextField(5);
+	        poke2ev3.setBounds(230, 456, 100, 25);
+	        add(poke2ev3);
+	        
+	        poke2ev2 = new JTextField(5);
+	        poke2ev2.setBounds(230, 434, 100, 25);
+	        add(poke2ev2);
+	        
+	        poke2ev4 = new JTextField(5);
+	        poke2ev4.setBounds(230, 478, 100, 25);
+	        add(poke2ev4);
+	        
+	        poke2ev5 = new JTextField(5);
+	        poke2ev5.setBounds(230, 500, 100, 25);
+	        add(poke2ev5);
+	        
+	        poke3ev6 = new JTextField(5);
+	        poke3ev6.setBounds(375, 522, 100, 25);
+	        add(poke3ev6);
+	        
+	        poke3ev3 = new JTextField(5);
+	        poke3ev3.setBounds(375, 456, 100, 25);
+	        add(poke3ev3);
+	        
+	        poke3ev2 = new JTextField(5);
+	        poke3ev2.setBounds(375, 434, 100, 25);
+	        add(poke3ev2);
+	        
+	        poke3ev4 = new JTextField(5);
+	        poke3ev4.setBounds(375, 478, 100, 25);
+	        add(poke3ev4);
+	        
+	        poke3ev5 = new JTextField(5);
+	        poke3ev5.setBounds(375, 500, 100, 25);
+	        add(poke3ev5);
+	        
+	        poke4ev6 = new JTextField(5);
+	        poke4ev6.setBounds(515, 522, 100, 25);
+	        add(poke4ev6);
+	        
+	        poke4ev3 = new JTextField(5);
+	        poke4ev3.setBounds(515, 456, 100, 25);
+	        add(poke4ev3);
+	        
+	        poke4ev2 = new JTextField(5);
+	        poke4ev2.setBounds(515, 434, 100, 25);
+	        add(poke4ev2);
+	        
+	        poke4ev4 = new JTextField(5);
+	        poke4ev4.setBounds(515, 478, 100, 25);
+	        add(poke4ev4);
+	        
+	        poke4ev5 = new JTextField(5);
+	        poke4ev5.setBounds(515, 500, 100, 25);
+	        add(poke4ev5);
+	        
+	        poke5ev6 = new JTextField(5);
+	        poke5ev6.setBounds(660, 522, 100, 25);
+	        add(poke5ev6);
+	        
+	        poke5ev3 = new JTextField(5);
+	        poke5ev3.setBounds(660, 456, 100, 25);
+	        add(poke5ev3);
+	        
+	        poke5ev2 = new JTextField(5);
+	        poke5ev2.setBounds(660, 434, 100, 25);
+	        add(poke5ev2);
+	        
+	        poke5ev4 = new JTextField(5);
+	        poke5ev4.setBounds(660, 478, 100, 25);
+	        add(poke5ev4);
+	        
+	        poke5ev5 = new JTextField(5);
+	        poke5ev5.setBounds(660, 500, 100, 25);
+	        add(poke5ev5);
+	        
+	        poke6ev6 = new JTextField(5);
+	        poke6ev6.setBounds(800, 522, 100, 25);
+	        add(poke6ev6);
+	        
+	        poke6ev3 = new JTextField(5);
+	        poke6ev3.setBounds(800, 456, 100, 25);
+	        add(poke6ev3);
+	        
+	        poke6ev2 = new JTextField(5);
+	        poke6ev2.setBounds(800, 434, 100, 25);
+	        add(poke6ev2);
+	        
+	        poke6ev4 = new JTextField(5);
+	        poke6ev4.setBounds(800, 478, 100, 25);
+	        add(poke6ev4);
+	        
+	        poke6ev5 = new JTextField(5);
+	        poke6ev5.setBounds(800, 500, 100, 25);
+	        add(poke6ev5);
         
-        poke2ev1 = new JTextField();
-        poke2ev1.setColumns(10);
-        poke2ev1.setBounds(230, 412, 100, 25);
-        add(poke2ev1);
-        
-        poke3ev1 = new JTextField();
-        poke3ev1.setColumns(10);
-        poke3ev1.setBounds(375, 412, 100, 25);
-        add(poke3ev1);
-        
-        poke4ev1 = new JTextField();
-        poke4ev1.setColumns(10);
-        poke4ev1.setBounds(515, 412, 100, 25);
-        add(poke4ev1);
-        
-        poke2iv1 = new JTextField();
-        poke2iv1.setColumns(10);
-        poke2iv1.setBounds(230, 252, 100, 25);
-        add(poke2iv1);
-        
-        poke3iv1 = new JTextField();
-        poke3iv1.setColumns(10);
-        poke3iv1.setBounds(375, 252, 100, 25);
-        add(poke3iv1);
-        
-        poke4iv1 = new JTextField();
-        poke4iv1.setColumns(10);
-        poke4iv1.setBounds(515, 252, 100, 25);
-        add(poke4iv1);
-        
-        poke5iv1 = new JTextField();
-        poke5iv1.setColumns(10);
-        poke5iv1.setBounds(660, 252, 100, 25);
-        add(poke5iv1);
-        
-        poke6iv1 = new JTextField();
-        poke6iv1.setColumns(10);
-        poke6iv1.setBounds(800, 252, 100, 25);
-        add(poke6iv1);
-        
-        poke6ev1 = new JTextField();
-        poke6ev1.setColumns(10);
-        poke6ev1.setBounds(800, 412, 100, 25);
-        add(poke6ev1);
-        
-        textField_4 = new JTextField(5);
-        textField_4.setBounds(230, 362, 100, 25);
-        add(textField_4);
-        
-        textField_5 = new JTextField(5);
-        textField_5.setBounds(230, 296, 100, 25);
-        add(textField_5);
-        
-        textField_6 = new JTextField(5);
-        textField_6.setBounds(230, 274, 100, 25);
-        add(textField_6);
-        
-        textField_7 = new JTextField(5);
-        textField_7.setBounds(230, 318, 100, 25);
-        add(textField_7);
-        
-        textField_8 = new JTextField(5);
-        textField_8.setBounds(230, 340, 100, 25);
-        add(textField_8);
-        
-        textField_10 = new JTextField(5);
-        textField_10.setBounds(375, 362, 100, 25);
-        add(textField_10);
-        
-        textField_11 = new JTextField(5);
-        textField_11.setBounds(375, 296, 100, 25);
-        add(textField_11);
-        
-        textField_12 = new JTextField(5);
-        textField_12.setBounds(375, 274, 100, 25);
-        add(textField_12);
-        
-        textField_13 = new JTextField(5);
-        textField_13.setBounds(375, 318, 100, 25);
-        add(textField_13);
-        
-        textField_14 = new JTextField(5);
-        textField_14.setBounds(375, 340, 100, 25);
-        add(textField_14);
-        
-        textField_15 = new JTextField(5);
-        textField_15.setBounds(515, 362, 100, 25);
-        add(textField_15);
-        
-        textField_16 = new JTextField(5);
-        textField_16.setBounds(515, 296, 100, 25);
-        add(textField_16);
-        
-        textField_17 = new JTextField(5);
-        textField_17.setBounds(515, 274, 100, 25);
-        add(textField_17);
-        
-        textField_18 = new JTextField(5);
-        textField_18.setBounds(515, 318, 100, 25);
-        add(textField_18);
-        
-        textField_19 = new JTextField(5);
-        textField_19.setBounds(515, 340, 100, 25);
-        add(textField_19);
-        
-        textField_20 = new JTextField(5);
-        textField_20.setBounds(660, 362, 100, 25);
-        add(textField_20);
-        
-        textField_21 = new JTextField(5);
-        textField_21.setBounds(660, 296, 100, 25);
-        add(textField_21);
-        
-        textField_22 = new JTextField(5);
-        textField_22.setBounds(660, 274, 100, 25);
-        add(textField_22);
-        
-        textField_23 = new JTextField(5);
-        textField_23.setBounds(660, 318, 100, 25);
-        add(textField_23);
-        
-        textField_24 = new JTextField(5);
-        textField_24.setBounds(660, 340, 100, 25);
-        add(textField_24);
-        
-        textField_25 = new JTextField(5);
-        textField_25.setBounds(800, 362, 100, 25);
-        add(textField_25);
-        
-        textField_26 = new JTextField(5);
-        textField_26.setBounds(800, 296, 100, 25);
-        add(textField_26);
-        
-        textField_27 = new JTextField(5);
-        textField_27.setBounds(800, 274, 100, 25);
-        add(textField_27);
-        
-        textField_28 = new JTextField(5);
-        textField_28.setBounds(800, 318, 100, 25);
-        add(textField_28);
-        
-        textField_29 = new JTextField(5);
-        textField_29.setBounds(800, 340, 100, 25);
-        add(textField_29);
-        
-        poke2ev6 = new JTextField(5);
-        poke2ev6.setBounds(230, 522, 100, 25);
-        add(poke2ev6);
-        
-        poke2ev3 = new JTextField(5);
-        poke2ev3.setBounds(230, 456, 100, 25);
-        add(poke2ev3);
-        
-        poke2ev2 = new JTextField(5);
-        poke2ev2.setBounds(230, 434, 100, 25);
-        add(poke2ev2);
-        
-        poke2ev4 = new JTextField(5);
-        poke2ev4.setBounds(230, 478, 100, 25);
-        add(poke2ev4);
-        
-        poke2ev5 = new JTextField(5);
-        poke2ev5.setBounds(230, 500, 100, 25);
-        add(poke2ev5);
-        
-        poke3ev6 = new JTextField(5);
-        poke3ev6.setBounds(375, 522, 100, 25);
-        add(poke3ev6);
-        
-        poke3ev3 = new JTextField(5);
-        poke3ev3.setBounds(375, 456, 100, 25);
-        add(poke3ev3);
-        
-        poke3ev2 = new JTextField(5);
-        poke3ev2.setBounds(375, 434, 100, 25);
-        add(poke3ev2);
-        
-        poke3ev4 = new JTextField(5);
-        poke3ev4.setBounds(375, 478, 100, 25);
-        add(poke3ev4);
-        
-        poke3ev5 = new JTextField(5);
-        poke3ev5.setBounds(375, 500, 100, 25);
-        add(poke3ev5);
-        
-        poke4ev6 = new JTextField(5);
-        poke4ev6.setBounds(515, 522, 100, 25);
-        add(poke4ev6);
-        
-        poke4ev3 = new JTextField(5);
-        poke4ev3.setBounds(515, 456, 100, 25);
-        add(poke4ev3);
-        
-        poke4ev2 = new JTextField(5);
-        poke4ev2.setBounds(515, 434, 100, 25);
-        add(poke4ev2);
-        
-        poke4ev4 = new JTextField(5);
-        poke4ev4.setBounds(515, 478, 100, 25);
-        add(poke4ev4);
-        
-        poke4ev5 = new JTextField(5);
-        poke4ev5.setBounds(515, 500, 100, 25);
-        add(poke4ev5);
-        
-        poke5ev6 = new JTextField(5);
-        poke5ev6.setBounds(660, 522, 100, 25);
-        add(poke5ev6);
-        
-        poke5ev3 = new JTextField(5);
-        poke5ev3.setBounds(660, 456, 100, 25);
-        add(poke5ev3);
-        
-        poke5ev2 = new JTextField(5);
-        poke5ev2.setBounds(660, 434, 100, 25);
-        add(poke5ev2);
-        
-        poke5ev4 = new JTextField(5);
-        poke5ev4.setBounds(660, 478, 100, 25);
-        add(poke5ev4);
-        
-        poke5ev5 = new JTextField(5);
-        poke5ev5.setBounds(660, 500, 100, 25);
-        add(poke5ev5);
-        
-        poke6ev6 = new JTextField(5);
-        poke6ev6.setBounds(800, 522, 100, 25);
-        add(poke6ev6);
-        
-        poke6ev3 = new JTextField(5);
-        poke6ev3.setBounds(800, 456, 100, 25);
-        add(poke6ev3);
-        
-        poke6ev2 = new JTextField(5);
-        poke6ev2.setBounds(800, 434, 100, 25);
-        add(poke6ev2);
-        
-        poke6ev4 = new JTextField(5);
-        poke6ev4.setBounds(800, 478, 100, 25);
-        add(poke6ev4);
-        
-        poke6ev5 = new JTextField(5);
-        poke6ev5.setBounds(800, 500, 100, 25);
-        add(poke6ev5);
     }
 }

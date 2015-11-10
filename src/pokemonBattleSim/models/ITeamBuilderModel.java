@@ -12,6 +12,10 @@ public interface ITeamBuilderModel
 	public void addToTeam(Pokemon poke, PokemonTrainer player);
 	public void removeFromTeam(int index, PokemonTrainer player);
 	public void logData(String s);
+	public static ITeamBuilderModel getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	//Methods for View
 	

@@ -8,6 +8,8 @@ import pokemonBattleSim.views.*;
 
 public class TeamBuilderModel {
 	
+	static TeamBuilderModel model;
+	
 	private Stack<String> buildLog;
 	
 	private ArrayList<IPokemonView> views;
@@ -36,6 +38,20 @@ public class TeamBuilderModel {
 		
 		return Team;
 	}
+	
+	public String generateMoves(Pokemon poke)
+	{
+		String moves = new String();
+		
+		/*
+		 * Retrieve list of valid moves
+		 */
+		
+		//Temporary move set
+		moves = "Tackle, Flamethrower, Thunderbolt";
+		return moves;
+	}
+	
 	
 	/*
 	 * sets 1st null object in team to pokemon selected
@@ -75,6 +91,10 @@ public class TeamBuilderModel {
 		{
 			buildLog.push(s);
 		}
+	}
+
+	public TeamBuilderModel getInstance() {
+		return TeamBuilderModel.model;
 	}
 	
 }

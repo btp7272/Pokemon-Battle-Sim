@@ -64,7 +64,7 @@ public class BattleModel implements IBattleModel {
 	private Object taskCounterLock 		= new Object();
 	private Object isGameoverLock 		= new Object();
 	
-	private BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo)
+	private BattleModel ( IPokemonTrainer playerOne, IPokemonTrainer playerTwo )
 	{
 		this.views = new ArrayList<>();
 		this.playerOne = playerOne;

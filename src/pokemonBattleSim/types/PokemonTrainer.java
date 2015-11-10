@@ -12,15 +12,20 @@ public class PokemonTrainer implements IPokemonTrainer
 	private int activePokemon;
 	private int trainerID;
 	
-	public PokemonTrainer (ArrayList<IPokemonCreator> team)
+	public ArrayList<IPokemon> getTeam()
+	{
+		return this.team;
+	}
+	
+	public PokemonTrainer (ArrayList<Pokemon> team)
 	{
 		if (team.size() != 6) 
 			throw new IllegalArgumentException ("Invalid Team size passed to Pokemon Trainer Constructor");
 		
 		this.team = new ArrayList<> ();
-		for ( IPokemonCreator initializer : team)
+		for ( Pokemon initializer : team)
 		{
-			this.team.add(initializer.getPokemon());
+			this.team.add(initializer);
 		}
 		this.activePokemon = 0;
 		this.trainerID = PokemonTrainerID++; 

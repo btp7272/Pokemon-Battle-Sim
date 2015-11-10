@@ -21,13 +21,13 @@ public class App {
 		// This is the main entry point to the program, will use other classes
 		IPokemonTrainer player;
 		IPokemonTrainer computer;
-		ArrayList<Pokemon> playerPokemon = new ArrayList<>();
-		ArrayList<Pokemon> computerPokemon = new ArrayList<>();
+		ArrayList<Pokemon> playerTeam = new ArrayList<>();
+		ArrayList<Pokemon> computerTeam = new ArrayList<>();
 		Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
 		for (int i = 0; i < 6; i++)
 		{
-			playerPokemon.add(speciesMap.get("Pikachu"));			
-			computerPokemon.add(SpeciesMap.pokeMap.get("Terrakion"));
+			playerTeam.add(speciesMap.get("Pikachu"));			
+			computerTeam.add(SpeciesMap.pokeMap.get("Terrakion"));
 			ArrayList<String> m = new ArrayList<>();
 			for (int j = 0; j < 6; j++)
 			{
@@ -35,11 +35,11 @@ public class App {
 			}
 			moveMap.put(i,m);
 		}
-		player = new PokemonTrainer(playerPokemon);
-		computer = new PokemonTrainer(computerPokemon);
+		player = new PokemonTrainer(playerTeam);
+		computer = new PokemonTrainer(computerTeam);
 		
 		Timer timer = new Timer();
-		BattleView view = new BattleView();
+		BattleView view = new BattleView(player.getTrainerID());
 		BattleModel model = new BattleModel(player,computer,timer, 0);
 		@SuppressWarnings("unused")
 		BattleController controller = new BattleController(view,model,timer,moveMap,player,computer);

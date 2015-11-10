@@ -11,14 +11,32 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	
 	public void onViewNotify()
 	 {
-	  ITeamBuilderModel model = ITeamBuilderModel.getInstance();
+	  model = TeamBuilderModel.getInstance();
 	  if (model == null) 
 	   return;
 	  
 	  /*
 	   * update things
 	   */
-	  }
+	  
+	
+	  
+	}
+	TeamBuilderModel model;
+	
+	public String pokeOne;
+	public String pokeTwo;
+	public String pokeThree;
+	public String pokeFour;
+	public String pokeFive;
+	public String pokeSix;
+	public String moves1 = model.generateMoves(pokeOne);
+	public String moves2 = model.generateMoves(pokeTwo);
+	public String moves3 = model.generateMoves(pokeThree);
+	public String moves4 = model.generateMoves(pokeFour);
+	public String moves5 = model.generateMoves(pokeFive);
+	public String moves6 = model.generateMoves(pokeSix);
+	
 	
     private JTextField jcomp1;
     private JTextField jcomp2;
@@ -137,15 +155,15 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 
         //construct components
         jcomp1 = new JTextField (30);
-        jcomp1.setText("1");
+        jcomp1.setText(pokeOne="1");
         jcomp2 = new JTextField (30);
-        jcomp2.setText("3");
+        jcomp2.setText(pokeThree="3");
         jcomp3 = new JTextField (30);
-        jcomp3.setText("4");
+        jcomp3.setText(pokeFour="4");
         jcomp4 = new JTextField (30);
-        jcomp4.setText("5");
+        jcomp4.setText(pokeFive="5");
         jcomp5 = new JTextField (30);
-        jcomp5.setText("6");
+        jcomp5.setText(pokeSix="6");
         jcomp6 = new JTextField (5);
         jcomp7 = new JLabel ("Pokemon 3");
         jcomp8 = new JLabel ("Pokemon 1");
@@ -155,32 +173,54 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         jcomp12 = new JLabel ("Pokemon 6");
         jcomp13 = new JLabel ("Pokemon");
         jcomp14 = new JTextField (30);
-        jcomp14.setText("2");
+        jcomp14.setText(pokeTwo="2");
         jcomp15 = new JComboBox (jcomp15Items);
         jcomp16 = new JComboBox (jcomp16Items);
-        jcomp16.setModel(new DefaultComboBoxModel(new String[] {"Item 1", "Item 2", "Item 3"}));
+        jcomp16.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp17 = new JComboBox (jcomp17Items);
+        jcomp17.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp18 = new JComboBox (jcomp18Items);
+        jcomp18.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp19 = new JComboBox (jcomp19Items);
+        jcomp19.setModel(new DefaultComboBoxModel(new String[] {moves2}));
         jcomp20 = new JComboBox (jcomp20Items);
+        jcomp20.setModel(new DefaultComboBoxModel(new String[] {moves2}));
         jcomp21 = new JComboBox (jcomp21Items);
+        jcomp21.setModel(new DefaultComboBoxModel(new String[] {moves2}));
         jcomp22 = new JComboBox (jcomp22Items);
+        jcomp22.setModel(new DefaultComboBoxModel(new String[] {moves2}));
         jcomp23 = new JComboBox (jcomp23Items);
+        jcomp23.setModel(new DefaultComboBoxModel(new String[] {moves3}));
         jcomp24 = new JComboBox (jcomp24Items);
+        jcomp24.setModel(new DefaultComboBoxModel(new String[] {moves3}));
         jcomp25 = new JComboBox (jcomp25Items);
+        jcomp25.setModel(new DefaultComboBoxModel(new String[] {moves3}));
         jcomp26 = new JComboBox (jcomp26Items);
+        jcomp26.setModel(new DefaultComboBoxModel(new String[] {moves4}));
         jcomp27 = new JComboBox (jcomp27Items);
+        jcomp27.setModel(new DefaultComboBoxModel(new String[] {moves3}));
         jcomp28 = new JComboBox (jcomp28Items);
+        jcomp28.setModel(new DefaultComboBoxModel(new String[] {moves4}));
         jcomp29 = new JComboBox (jcomp29Items);
+        jcomp29.setModel(new DefaultComboBoxModel(new String[] {moves5}));
         jcomp30 = new JComboBox (jcomp30Items);
+        jcomp30.setModel(new DefaultComboBoxModel(new String[] {moves5}));
         jcomp31 = new JComboBox (jcomp31Items);
+        jcomp31.setModel(new DefaultComboBoxModel(new String[] {moves6}));
         jcomp32 = new JComboBox (jcomp32Items);
+        jcomp32.setModel(new DefaultComboBoxModel(new String[] {moves6}));
         jcomp33 = new JComboBox (jcomp33Items);
+        jcomp33.setModel(new DefaultComboBoxModel(new String[] {moves4}));
         jcomp34 = new JComboBox (jcomp34Items);
+        jcomp34.setModel(new DefaultComboBoxModel(new String[] {moves6}));
         jcomp35 = new JComboBox (jcomp35Items);
+        jcomp35.setModel(new DefaultComboBoxModel(new String[] {moves4}));
         jcomp36 = new JComboBox (jcomp36Items);
+        jcomp36.setModel(new DefaultComboBoxModel(new String[] {moves5}));
         jcomp37 = new JComboBox (jcomp37Items);
+        jcomp37.setModel(new DefaultComboBoxModel(new String[] {moves6}));
         jcomp38 = new JComboBox (jcomp38Items);
+        jcomp38.setModel(new DefaultComboBoxModel(new String[] {moves5}));
         jcomp39 = new JLabel ("Move 1");
         jcomp40 = new JLabel ("Move 2");
         jcomp41 = new JLabel ("Move 3");
@@ -188,6 +228,7 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         jcomp43 = new JLabel ("IV 1 (max 31)");
         jcomp44 = new JLabel ("Ability");
         jcomp45 = new JComboBox (jcomp45Items);
+        jcomp45.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp46 = new JComboBox (jcomp46Items);
         jcomp47 = new JComboBox (jcomp47Items);
         jcomp48 = new JComboBox (jcomp48Items);

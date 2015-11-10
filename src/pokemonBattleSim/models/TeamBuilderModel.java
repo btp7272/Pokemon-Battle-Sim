@@ -39,8 +39,9 @@ public class TeamBuilderModel {
 		return Team;
 	}
 	
-	public String generateMoves(Pokemon poke)
+	public String generateMoves(String pokeOne)
 	{
+		Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(pokeOne));
 		String moves = new String();
 		
 		/*
@@ -93,7 +94,7 @@ public class TeamBuilderModel {
 		}
 	}
 
-	public TeamBuilderModel getInstance() {
+	public static TeamBuilderModel getInstance() {
 		return TeamBuilderModel.model;
 	}
 	

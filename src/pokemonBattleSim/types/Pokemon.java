@@ -121,6 +121,15 @@ public class Pokemon implements IPokemon
 			setMove(moves[i],i+1);
 	}
 
+	public Pokemon(Species species) {
+		this.speciesName = species.getName();
+		
+		/*
+		 * Need move list
+		 * Need ability List
+		 */
+	}
+
 	public void setPlayerID(int id){ this.playerID = id;}
 	public void setBenchPosition(int pos){ this.benchPosition = pos;}
 	public void setHp(int health, int IV, int EV, int level){ this.hp = Formula.calcHP(health,IV,EV,level); this.maxHp = this.hp;}

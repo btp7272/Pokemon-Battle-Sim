@@ -48,7 +48,7 @@ public class BattleController {
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("Pokemon Button pushed");
+			//System.out.println("Pokemon Button pushed");
 			JButton btn = (JButton) e.getSource();
 			int swapIndex = Integer.parseInt(btn.getText().substring(0, 1)) - 1;
 			boolean response = model.RegisterSwap(playerID, swapIndex);

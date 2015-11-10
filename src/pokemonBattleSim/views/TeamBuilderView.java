@@ -44,23 +44,82 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	
 	public void Finalize()
 	{
+		//Update
 		onViewNotify();
-		/*
-		 * Check IV and EV Sums
-		 */
 		
-		//Check poke1
-		if(checkPokeIVs())
+		//Check IV and EVs
+		if(checkSums())
 			return;
+		//check Moves
 		if(checkMoves())
+			return;
+		//check Pokemon names and for doubles
+		if(checkPokemon())
 			return;
 	}
 	
 	
 	/*
+	 * Check Pokemone names for validity, check for doubles
+	 */
+	public boolean checkPokemon()
+	{
+		if(SpeciesMap.speciesMap.get(poke1.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 1 is not a valid Pokemon");
+			return true;
+		}
+		else if(SpeciesMap.speciesMap.get(poke2.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 2 is not a valid Pokemon");
+			return true;
+		}
+		else if(SpeciesMap.speciesMap.get(poke3.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 3 is not a valid Pokemon");
+			return true;
+		}
+		else if(SpeciesMap.speciesMap.get(poke4.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 4 is not a valid Pokemon");
+			return true;
+		}
+		else if(SpeciesMap.speciesMap.get(poke5.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 5 is not a valid Pokemon");
+			return true;
+		}
+		else if(SpeciesMap.speciesMap.get(poke6.getText()) == null)
+		{
+			JOptionPane.showMessageDialog(null, "Pokemon 6 is not a valid Pokemon");
+			return true;
+		}
+		else if(poke1.getText().equals(poke2.getText())  ||
+				poke1.getText().equals(poke3.getText())  ||
+				poke1.getText().equals(poke4.getText())  ||
+				poke1.getText().equals(poke5.getText())  ||
+				poke1.getText().equals(poke6.getText())  ||
+				poke2.getText().equals(poke3.getText())  ||
+				poke2.getText().equals(poke4.getText())  ||
+				poke2.getText().equals(poke5.getText())  ||
+				poke2.getText().equals(poke6.getText())  ||
+				poke3.getText().equals(poke4.getText())  ||
+				poke3.getText().equals(poke5.getText())  ||
+				poke3.getText().equals(poke6.getText())  ||
+				poke4.getText().equals(poke5.getText())  ||
+				poke4.getText().equals(poke6.getText())  ||
+				poke5.getText().equals(poke6.getText())
+				)
+		{
+			JOptionPane.showMessageDialog(null, "You ccannot have two of the same Pokemon on your team");
+			return true;
+		}
+		else
+			return false;
+	}
+	/*
 	 * Check Move validity
 	 */
-	
 	public boolean checkMoves()
 	{
 		if (	poke1move1.equals(poke1move2)  ||
@@ -140,7 +199,7 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	/*
 	 * Check IV and EV value functions 
 	 */
-	public boolean checkPokeIVs()
+	public boolean checkSums()
 	{
 		//Calculate IV validity
 		if (	Integer.parseInt(poke1iv1.getText()) > 31  ||

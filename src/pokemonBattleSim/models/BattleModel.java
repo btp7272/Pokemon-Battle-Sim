@@ -491,9 +491,9 @@ public class BattleModel implements IBattleModel {
 			public Weather getWeather() {
 				return null;
 			}});
-		System.out.println("Defender HP before attack: " + defender.getHP());
+		//System.out.println("Defender HP before attack: " + defender.getHP());
 		defender.changeHP(damage);
-		System.out.println("Defender HP after attack: " + defender.getHP());
+		//System.out.println("Defender HP after attack: " + defender.getHP());
 		
 		
 		// log the move

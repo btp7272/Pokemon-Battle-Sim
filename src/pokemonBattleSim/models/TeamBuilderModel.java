@@ -14,15 +14,24 @@ public class TeamBuilderModel {
 	
 	public ArrayList<Pokemon> buildTeam(PokemonTrainer player)
 	{
+		logData("----Building new Team for player: "+player.getTrainerID()+"----");
 		ArrayList<Pokemon> Team = null;
-		while(teamVacancy(player))
-		{
-			ArrayList<String> poke = promptPlayer();
-			Move[] moves = promptMoves();
-			int[] IVs = promptIVs();
-			int[] EVs = promptEVs();
-			Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(poke.get(0)), poke.get(1), moves, IVs, EVs, 100, Nature.Timid);
 			
+		String poke = "Pikachu";
+		String nickname = "pika";
+		
+		Move[] moves = new Move[4];
+			moves[1] = MoveMap.moveMap.get("Tackle");
+			moves[2] = MoveMap.moveMap.get("Tackle");
+			moves[3] = MoveMap.moveMap.get("Tackle");
+			moves[4] = MoveMap.moveMap.get("Tackle");
+		int[] IVs = {31,31,31,31,31,31};
+		int[] EVs = {85,85,85,85,85,85};
+		Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(poke), nickname, moves, IVs, EVs, 100, Nature.Timid);
+		
+		for(int i = 0; i < 6; i++)
+		{
+			addToTeam(temp, player);
 		}
 		
 		return Team;
@@ -47,75 +56,7 @@ public class TeamBuilderModel {
 			i++;
 		}
 	}
-	
-	public int[] promptIVs()
-	{
-		
-	}
-	
-	/*
-	 * Todo
-	 * 
-	 * PromptMoves take input from player in form of move names until there are 4 objects in the array list, then return that list.
-	 */
-	public Move[] promptMoves()
-	{
-		Move[] moves = new Move[4];
-		while(moveVacancy(moves))
-		{
-			/*
-			 * Replace with asking for moves
-			 */
-			moves[1] = MoveMap.moveMap.get("Tackle");
-			moves[2] = MoveMap.moveMap.get("Tackle");
-			moves[3] = MoveMap.moveMap.get("Tackle");
-			moves[4] = MoveMap.moveMap.get("Tackle");
-		}
-		return moves;
-	}
-	
-	
-	/*
-	 * Todo
-	 * 			PromptPlayer will take input from the player in form a pokemon name and feed it to the team builder.
-	 * 		It will also ask for a nickname.
-	 */
-	public ArrayList<String> promptPlayer()
-	{
-		ArrayList<String> names = null;
-		names.add("Pikachu");
-		names.add("pikapika");
-		return names;
-	}
-	
-	/*
-	 * determine if there are any vacancies on the team
-	 */
-	public boolean teamVacancy(PokemonTrainer player)
-	{
-		boolean vacancy = false;
-		for(int i = 0; i < 6; i ++)
-		{
-			if(player.getPokemonTeamMember(i) == null)
-				vacancy = true;
-		}
-		return vacancy;
-	}
-	
-	/*
-	 * determine if there are any vacancies in the move list
-	 */
-	public boolean moveVacancy(Move [] moves)
-	{
-		boolean vacancy = false;
-		for(int i = 0; i < 4; i ++)
-		{
-			if(moves[i] == null)
-				vacancy = true;
-		}
-		return vacancy;
-	}
-	
+
 	/*
 	 * Remove pokemon from a team
 	 */

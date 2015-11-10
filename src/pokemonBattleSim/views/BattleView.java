@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.models.IBattleModel;
 import pokemonBattleSim.models.QueuedAction;
+import pokemonBattleSim.musicPlayer.AudioPlayer;
 
 public class BattleView extends JFrame implements IPokemonView{
 	/**
@@ -172,6 +173,15 @@ public class BattleView extends JFrame implements IPokemonView{
 		//this.add(battlePanel);
 		BattleModel.getInstance().registerView(this);
 		onViewNotify();
+		new Thread() {
+			@Override
+			public void run() {
+				AudioPlayer player = new AudioPlayer();
+				String resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav").getFile();
+				System.out.println(resource);
+				player.play(resource);
+			}
+		}.start();
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class AudioPlayer {
      * Play a given audio file.
      * @param audioFilePath Path of the audio file.
      */
-    void play(String audioFilePath) {
+    public void play(String audioFilePath) {
         File audioFile = new File(audioFilePath);
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -66,12 +66,12 @@ public class AudioPlayer {
             ex.printStackTrace();
         }      
     }
-     
+     /*
     public static void main(String[] args) 
     {
         String audioFilePath = "pokemonBattleSim/resources/soundtrack/AbandonedShip.wav";
         AudioPlayer player = new AudioPlayer();
         player.play(audioFilePath);
-    }
+    }*/
  
 }

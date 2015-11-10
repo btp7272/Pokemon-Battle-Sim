@@ -19,6 +19,7 @@ import pokemonBattleSim.views.BattleView;
 import pokemonBattleSim.models.MoveMap;
 
 public class App {
+	private static Object owner = new Object();
 	public static void main (String[] args)
 	{
 		// This is the main entry point to the program, will use other classes
@@ -57,7 +58,7 @@ public class App {
 		
 		//CREATE LATIOS
 		int EVs5[] = {0,0,252,0,4,252};
-		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyschock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
+		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Ben",moves5,IVs,EVs5,100,Nature.Timid);
 		playerTeam.add(member);
 		
@@ -79,10 +80,15 @@ public class App {
 		computer = new PokemonTrainer(computerTeam);
 		
 		Timer timer = new Timer();
+		try {
+			BattleModel.CreateInstance(owner, player, computer);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BattleModel model = BattleModel.getInstance();
 		BattleView view = new BattleView(player.getTrainerID());
-		BattleModel model = new BattleModel(player,computer,timer, 0);
-		@SuppressWarnings("unused")
-		BattleController controller = new BattleController(view,model,timer,moveMap,player,computer);
+		BattleController controller = new BattleController(view,model, player.getTrainerID());
 		
 		view.setVisible(true);
 	}

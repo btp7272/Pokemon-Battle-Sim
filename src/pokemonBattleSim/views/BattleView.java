@@ -291,10 +291,11 @@ public class BattleView extends JFrame implements IPokemonView{
 	public void setPokemonButtonData (IBattleModel model)
 	{
 		teamListPanel.removeAll();
+		int counter = 1;
 		ArrayList<Boolean> availablePokemon =  model.getPlayerAvailablePokemon(playerID);
 		for (int i = 0; i < 6; i++)
 		{
-			JButton btn = new JButton(model.getPlayerPokemonName(playerID, i));
+			JButton btn = new JButton((counter++) + ": " +model.getPlayerPokemonName(playerID, i));
 			btn.setEnabled(availablePokemon.get(i));
 			for (ActionListener listener : moveButtonListeners)
 				btn.addActionListener(listener);

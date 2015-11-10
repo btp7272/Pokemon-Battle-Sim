@@ -2,20 +2,10 @@ package pokemonBattleSim.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JButton;
 
 import pokemonBattleSim.models.BattleModel;
-import pokemonBattleSim.models.BattleModel.Entity;
-import pokemonBattleSim.models.MoveMap;
-import pokemonBattleSim.types.IPokemonTrainer;
-import pokemonBattleSim.types.Move;
-import pokemonBattleSim.types.Pokemon;
-import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.views.BattleView;
 
 public class BattleController {
@@ -30,8 +20,8 @@ public class BattleController {
 		this.model = model;
 		this.playerID = playerID;
 		
-		this.view.addMouseMotionListener(new MoveButtonListener());
-		this.view.addPokemonButtonListner(new PokemonButtonListener());
+		this.view.addMoveButtonListener(new MoveButtonListener());
+		this.view.addPokemonButtonListener(new PokemonButtonListener());
 	}
 	
 	class QueueButtonListener implements ActionListener {
@@ -56,7 +46,9 @@ public class BattleController {
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			//TODO
+			JButton btn = (JButton) e.getSource();
+			int swapIndex = Integer.parseInt(btn.getText().substring(0, 1));
+			model.RegisterSwap(playerID, swapIndex);
 		}
 	}
 }

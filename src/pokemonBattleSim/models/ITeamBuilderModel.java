@@ -13,6 +13,7 @@ public interface ITeamBuilderModel
 	public void removeFromTeam(int index, PokemonTrainer player);
 	public void logData(String s);
 	public String generateMoves(Pokemon poke);
+	public String generateAbilities(Pokemon poke);
 	
 	//Methods for View
 	

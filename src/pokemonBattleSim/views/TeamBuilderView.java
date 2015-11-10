@@ -30,6 +30,7 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	public String pokeFour;
 	public String pokeFive;
 	public String pokeSix;
+	
 	public String moves1 = model.generateMoves(pokeOne);
 	public String moves2 = model.generateMoves(pokeTwo);
 	public String moves3 = model.generateMoves(pokeThree);
@@ -37,6 +38,12 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	public String moves5 = model.generateMoves(pokeFive);
 	public String moves6 = model.generateMoves(pokeSix);
 	
+	public String abilities1 = model.generateAbilities(pokeOne);
+	public String abilities2 = model.generateAbilities(pokeTwo);
+	public String abilities3 = model.generateAbilities(pokeThree);
+	public String abilities4 = model.generateAbilities(pokeFour);
+	public String abilities5 = model.generateAbilities(pokeFive);
+	public String abilities6 = model.generateAbilities(pokeSix);
 	
     private JTextField jcomp1;
     private JTextField jcomp2;
@@ -175,6 +182,7 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         jcomp14 = new JTextField (30);
         jcomp14.setText(pokeTwo="2");
         jcomp15 = new JComboBox (jcomp15Items);
+        jcomp15.setModel(new DefaultComboBoxModel(new String[] {abilities1}));
         jcomp16 = new JComboBox (jcomp16Items);
         jcomp16.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp17 = new JComboBox (jcomp17Items);
@@ -230,10 +238,15 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         jcomp45 = new JComboBox (jcomp45Items);
         jcomp45.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         jcomp46 = new JComboBox (jcomp46Items);
+        jcomp46.setModel(new DefaultComboBoxModel(new String[] {abilities2}));
         jcomp47 = new JComboBox (jcomp47Items);
+        jcomp47.setModel(new DefaultComboBoxModel(new String[] {abilities3}));
         jcomp48 = new JComboBox (jcomp48Items);
+        jcomp48.setModel(new DefaultComboBoxModel(new String[] {abilities4}));
         jcomp49 = new JComboBox (jcomp49Items);
+        jcomp49.setModel(new DefaultComboBoxModel(new String[] {abilities5}));
         jcomp50 = new JComboBox (jcomp50Items);
+        jcomp50.setModel(new DefaultComboBoxModel(new String[] {abilities6}));
         jcomp51 = new JLabel ("IV 2 (max 31)");
         jcomp52 = new JLabel ("IV 3 (max 31)");
         jcomp53 = new JLabel ("IV 4 (max 31)");

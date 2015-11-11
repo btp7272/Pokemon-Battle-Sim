@@ -142,11 +142,11 @@ public class Formula
     //Calculates all other max stats (assumes all IVs are 31 and level is 100)
     public static int calcStat(int baseStat, int IV, int EV, int level)
     {
-    	int result;
-    	int numerator =  (2 * baseStat) + IV + (EV / 4);
+    	double result;
+    	double numerator =  (2 * baseStat) + IV + Math.floor((EV / 4));
     	numerator *= level;
-    	result = numerator/100 + 5;
-    	return result;
+    	result = Math.floor(numerator/100) + 5;
+    	return (int)result;
     }
     
 } // end class

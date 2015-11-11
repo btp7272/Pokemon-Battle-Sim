@@ -61,11 +61,16 @@ public class App {
 		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Ben",moves5,IVs,EVs5,100,Nature.Timid);
 		playerTeam.add(member);
+		System.out.println(member.getAtk());
+		System.out.println(member.getDef());
+		System.out.println(member.getSpAtk());
+		System.out.println(member.getSpDef());
+		System.out.println(member.getSpeed());
 		
 		//CREATE GLISCOR
 		int EVs6[] = {244,40,8,0,96,120};
 		Move[] moves6 = {MoveMap.moveMap.get("Swords Dance"),MoveMap.moveMap.get("Earthquake"),MoveMap.moveMap.get("Knock Off"),MoveMap.moveMap.get("Roost")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Not Pikachu",moves6,IVs,EVs6,100,Nature.Careful);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Not Pikachu",moves6,IVs2,EVs6,100,Nature.Careful);
 		playerTeam.add(member);
 		
 		Move[] moves7 = {MoveMap.moveMap.get("Thunderbolt"),MoveMap.moveMap.get("Surf"),MoveMap.moveMap.get("Shadowball"),MoveMap.moveMap.get("Toxic")};

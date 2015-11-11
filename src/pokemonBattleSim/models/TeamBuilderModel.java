@@ -14,17 +14,17 @@ public class TeamBuilderModel {
 	
 	private ArrayList<IPokemonView> views;
 	
-	public ArrayList<Pokemon> buildTeam(PokemonTrainer player, Pokemon one, Pokemon two, Pokemon three, Pokemon four, Pokemon five, Pokemon six)
+	public ArrayList<Pokemon> buildTeam(Pokemon one, Pokemon two, Pokemon three, Pokemon four, Pokemon five, Pokemon six)
 	{
-		logData("----Building new Team for player: "+player.getTrainerID()+"----");
-		ArrayList<Pokemon> Team = null;
+		logData("----Building new Team----");
+		ArrayList<Pokemon> Team = new ArrayList<Pokemon>();
 		
-		addToTeam(one, player);
-		addToTeam(two, player);
-		addToTeam(three, player);
-		addToTeam(four, player);
-		addToTeam(five, player);
-		addToTeam(six, player);
+		Team.add(one);
+		Team.add(two);
+		Team.add(three);
+		Team.add(four);
+		Team.add(five);
+		Team.add(six);
 		
 		return Team;
 	}
@@ -38,6 +38,7 @@ public class TeamBuilderModel {
 			safeView.onViewNotify();
 		}
 	}
+	
 	
 	public String generateAbilities(String poke)
 	{
@@ -67,25 +68,7 @@ public class TeamBuilderModel {
 	}
 	
 	
-	/*
-	 * sets 1st null object in team to pokemon selected
-	 */
-	public void addToTeam(Pokemon poke, PokemonTrainer player)
-	{
-		int i = 0;
-		for(IPokemon p : player.getTeam())
-		{
-			if(i > 5)
-				return;
-			if(p == null)
-			{
-				player.getTeam().set(i, poke);
-				logData("Player ID: "+player.getTrainerID()+" added "+poke.getSpeciesName()+" to team in position "+i);
-				return;
-			}
-			i++;
-		}
-	}
+
 
 	/*
 	 * Remove pokemon from a team

@@ -2,6 +2,8 @@ package pokemonBattleSim.views;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import pokemonBattleSim.models.*;
@@ -56,6 +58,41 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 		//check Pokemon names and for doubles
 		if(checkPokemon())
 			return;
+		
+		ArrayList<Pokemon> team = model.buildTeam (
+				new Pokemon(SpeciesMap.speciesMap.get(poke1.getText()), nickname1.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke1move1.getToolTipText()), MoveMap.moveMap.get(poke1move2.getToolTipText()), MoveMap.moveMap.get(poke1move3.getToolTipText()), MoveMap.moveMap.get(poke1move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke1iv1.getText()), Integer.parseInt(poke1iv2.getText()), Integer.parseInt(poke1iv3.getText()), Integer.parseInt(poke1iv4.getText()), Integer.parseInt(poke1iv5.getText()), Integer.parseInt(poke1iv6.getText()) },
+						new int[] {Integer.parseInt(poke1ev1.getText()), Integer.parseInt(poke1ev2.getText()), Integer.parseInt(poke1ev3.getText()), Integer.parseInt(poke1ev4.getText()), Integer.parseInt(poke1ev5.getText()), Integer.parseInt(poke1ev6.getText()) },
+						100, Nature.Timid), 
+				new Pokemon(SpeciesMap.speciesMap.get(poke2.getText()), nickname2.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke2move1.getToolTipText()), MoveMap.moveMap.get(poke2move2.getToolTipText()), MoveMap.moveMap.get(poke2move3.getToolTipText()), MoveMap.moveMap.get(poke2move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke2iv1.getText()), Integer.parseInt(poke2iv2.getText()), Integer.parseInt(poke2iv3.getText()), Integer.parseInt(poke2iv4.getText()), Integer.parseInt(poke2iv5.getText()), Integer.parseInt(poke2iv6.getText()) },
+						new int[] {Integer.parseInt(poke2ev1.getText()), Integer.parseInt(poke2ev2.getText()), Integer.parseInt(poke2ev3.getText()), Integer.parseInt(poke2ev4.getText()), Integer.parseInt(poke2ev5.getText()), Integer.parseInt(poke2ev6.getText()) },
+						100, Nature.Timid), 
+				new Pokemon(SpeciesMap.speciesMap.get(poke3.getText()), nickname3.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke3move1.getToolTipText()), MoveMap.moveMap.get(poke3move2.getToolTipText()), MoveMap.moveMap.get(poke3move3.getToolTipText()), MoveMap.moveMap.get(poke3move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke3iv1.getText()), Integer.parseInt(poke3iv2.getText()), Integer.parseInt(poke3iv3.getText()), Integer.parseInt(poke3iv4.getText()), Integer.parseInt(poke3iv5.getText()), Integer.parseInt(poke3iv6.getText()) },
+						new int[] {Integer.parseInt(poke3ev1.getText()), Integer.parseInt(poke3ev2.getText()), Integer.parseInt(poke3ev3.getText()), Integer.parseInt(poke3ev4.getText()), Integer.parseInt(poke3ev5.getText()), Integer.parseInt(poke3ev6.getText()) },
+						100, Nature.Timid), 
+				new Pokemon(SpeciesMap.speciesMap.get(poke4.getText()), nickname4.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke4move1.getToolTipText()), MoveMap.moveMap.get(poke4move2.getToolTipText()), MoveMap.moveMap.get(poke4move3.getToolTipText()), MoveMap.moveMap.get(poke4move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke4iv1.getText()), Integer.parseInt(poke4iv2.getText()), Integer.parseInt(poke4iv3.getText()), Integer.parseInt(poke4iv4.getText()), Integer.parseInt(poke4iv5.getText()), Integer.parseInt(poke4iv6.getText()) },
+						new int[] {Integer.parseInt(poke4ev1.getText()), Integer.parseInt(poke4ev2.getText()), Integer.parseInt(poke4ev3.getText()), Integer.parseInt(poke4ev4.getText()), Integer.parseInt(poke4ev5.getText()), Integer.parseInt(poke4ev6.getText()) },
+						100, Nature.Timid), 
+				new Pokemon(SpeciesMap.speciesMap.get(poke5.getText()), nickname5.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke5move1.getToolTipText()), MoveMap.moveMap.get(poke5move2.getToolTipText()), MoveMap.moveMap.get(poke5move3.getToolTipText()), MoveMap.moveMap.get(poke5move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke5iv1.getText()), Integer.parseInt(poke5iv2.getText()), Integer.parseInt(poke5iv3.getText()), Integer.parseInt(poke5iv4.getText()), Integer.parseInt(poke5iv5.getText()), Integer.parseInt(poke5iv6.getText()) },
+						new int[] {Integer.parseInt(poke5ev1.getText()), Integer.parseInt(poke5ev2.getText()), Integer.parseInt(poke5ev3.getText()), Integer.parseInt(poke5ev4.getText()), Integer.parseInt(poke5ev5.getText()), Integer.parseInt(poke5ev6.getText()) },
+						100, Nature.Timid), 
+				new Pokemon(SpeciesMap.speciesMap.get(poke6.getText()), nickname6.getText(), 
+						new Move[]{MoveMap.moveMap.get(poke1move1.getToolTipText()), MoveMap.moveMap.get(poke1move2.getToolTipText()), MoveMap.moveMap.get(poke1move3.getToolTipText()), MoveMap.moveMap.get(poke1move4.getToolTipText())}, 
+						new int[] {Integer.parseInt(poke1iv1.getText()), Integer.parseInt(poke1iv2.getText()), Integer.parseInt(poke1iv3.getText()), Integer.parseInt(poke1iv4.getText()), Integer.parseInt(poke1iv5.getText()), Integer.parseInt(poke1iv6.getText()) },
+						new int[] {Integer.parseInt(poke1ev1.getText()), Integer.parseInt(poke1ev2.getText()), Integer.parseInt(poke1ev3.getText()), Integer.parseInt(poke1ev4.getText()), Integer.parseInt(poke1ev5.getText()), Integer.parseInt(poke1ev6.getText()) },
+						100, Nature.Timid)
+				);
+		
+		
 	}
 	
 	

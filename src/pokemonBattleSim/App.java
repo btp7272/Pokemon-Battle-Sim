@@ -45,7 +45,7 @@ public class App {
 		
 		//CREATE SLOWBRO
 		int EVs3[] = {248,0,200,0,52,8};
-		Move[] moves3 = {MoveMap.moveMap.get("Calm Mind"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
+		Move[] moves3 = {MoveMap.moveMap.get("Shadow Ball"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Slowbro"),"Dr Cook",moves3,IVs,EVs3,100,Nature.Bold);
 		playerTeam.add(member);
 		

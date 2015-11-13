@@ -28,7 +28,8 @@ public class Pokemon implements IPokemon
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
 	private IStatus nonVolatileStatus;
-	private ArrayList<IStatus> volatileStatus; 
+	private ArrayList<IStatus> volatileStatus;
+	private BattleState battleState;
 	
 	/*
 	 * Initial constructor. In this constructor the stats are set to the calculated,
@@ -151,6 +152,7 @@ public class Pokemon implements IPokemon
 	public void setAbility(IAbility abil){ this.ability = abil;}
 	public void addVolatileStatus(IStatus status){this.volatileStatus.add(status);}
 	public void setNonVolatileStatus(IStatus status){this.nonVolatileStatus = status;}
+	public void setBattleState(BattleState state){this.battleState = state;}
 	
 	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
 	{
@@ -561,6 +563,7 @@ public class Pokemon implements IPokemon
 	public IAbility getBaseAbility(){return this.baseAbility;}
 	public IStatus getNonVolatileStatus(){return this.nonVolatileStatus;}
 	public ArrayList<IStatus> getVolatileStatus(){return this.volatileStatus;}
+	public BattleState getBattleState(){return this.getBattleState();}
 	
 	public Move getMove(int i)
 	{

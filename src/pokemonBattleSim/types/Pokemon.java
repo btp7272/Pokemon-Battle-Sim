@@ -5,6 +5,8 @@
  */
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.models.AbilityMap.Stat;
+
 import java.util.ArrayList;
 
 
@@ -76,19 +78,19 @@ public class Pokemon implements IPokemon
 				break;
 			case 1:
 				this.maxDef *= 1.1;
-				this.atk = maxDef;
+				this.def = maxDef;
 				break;
 			case 2:
 				this.maxSpAtk *= 1.1;
-				this.atk = maxSpAtk;
+				this.spAtk = maxSpAtk;
 				break;
 			case 3:
 				this.maxSpDef *= 1.1;
-				this.atk = maxSpDef;
+				this.spDef = maxSpDef;
 				break;
 			case 4:
 				this.maxSpeed *= 1.1;
-				this.atk = maxSpeed;
+				this.speed = maxSpeed;
 				break;
 		}
 		
@@ -100,19 +102,19 @@ public class Pokemon implements IPokemon
 				break;
 			case 1:
 				this.maxDef *= .9;
-				this.atk = maxDef;
+				this.def = maxDef;
 				break;
 			case 2:
 				this.maxSpAtk *= .9;
-				this.atk = maxSpAtk;
+				this.spAtk = maxSpAtk;
 				break;
 			case 3:
 				this.maxSpDef *= .9;
-				this.atk = maxSpDef;
+				this.spDef = maxSpDef;
 				break;
 			case 4:
 				this.maxSpeed *= .9;
-				this.atk = maxSpeed;
+				this.speed = maxSpeed;
 				break;
 		}
 		

@@ -87,7 +87,8 @@ public class Formula
         
         //Calculate type modifier
         type = 1.0;
-        type = clacEffectiveness(type, m.getType(),defender.getType1());
+        if(defender.getType1() != null)
+        	type = clacEffectiveness(type, m.getType(),defender.getType1());
         if(defender.getType2() != null)
         	type = clacEffectiveness(type, m.getType(),defender.getType2());
         if(defender.getType3() != null)

@@ -57,15 +57,10 @@ public class App {
 		playerTeam.add(member);
 		
 		//CREATE LATIOS
-		int EVs5[] = {0,0,252,0,4,252};
+		int EVs5[] = {0,0,0,252,4,252};
 		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Ben",moves5,IVs,EVs5,100,Nature.Timid);
 		playerTeam.add(member);
-		System.out.println(member.getAtk());
-		System.out.println(member.getDef());
-		System.out.println(member.getSpAtk());
-		System.out.println(member.getSpDef());
-		System.out.println(member.getSpeed());
 		
 		//CREATE GLISCOR
 		int EVs6[] = {244,40,8,0,96,120};

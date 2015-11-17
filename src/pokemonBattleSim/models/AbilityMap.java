@@ -62,7 +62,6 @@ public class AbilityMap
 					   else
 					   {
 						   opponent.changeAtk(statChangeQueue[Stat.ATTACK.getMask()]);
-						   System.out.println(opponent.getNickName() + "'s attack fell!");
 						   statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   return 1;
 					   }
@@ -337,10 +336,10 @@ public class AbilityMap
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
 				   Boolean active = false;
-				   Boolean atkOddNumber, spAtkOddNumber, alreadySet = false;
+				   Boolean atkOddNumber, spAtkOddNumber;
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(! alreadySet)
+					   if(! active)
 					   {
 						   if(wielder.getAtk() % 2 == 1)
 							   atkOddNumber = true;
@@ -352,7 +351,7 @@ public class AbilityMap
 						   else
 							   spAtkOddNumber = false;
 						   
-						   alreadySet = true;
+						   active = true;
 					   }
 					   
 					   if( ! active && wielder.getHP() < (wielder.getMaxHP() / 2) )

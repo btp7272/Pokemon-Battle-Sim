@@ -10,7 +10,8 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
- 
+import java.util.*;
+
 /**
  * This is an example program that demonstrates how to play back an audio file
  * using the SourceDataLine in Java Sound API.
@@ -66,12 +67,47 @@ public class AudioPlayer {
             ex.printStackTrace();
         }      
     }
-     /*
+     
     public static void main(String[] args) 
     {
-        String audioFilePath = "pokemonBattleSim/resources/soundtrack/AbandonedShip.wav";
-        AudioPlayer player = new AudioPlayer();
-        player.play(audioFilePath);
-    }*/
+        /*Random ran = new Random(); 
+        int songID = ran.nextInt(12);
+        String audioFilePath;
+        if(songID == 0)		//battle view music random selection
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav";
+        else if (songID == 1)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrain.wav";
+        else if (songID == 2)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav";
+        else if (songID == 3)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav";
+        else if (songID == 4)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav";
+        else if (songID == 5)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav";
+        else if (songID == 6)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav";
+        else if (songID == 7)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/SilphCo.wav";
+        else if (songID == 8)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav";
+        else if (songID == 9)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/TeamPlasma.wav";
+        else if (songID == 10)
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/XAndYWildBattleCut.wav";
+        else //songID is 11
+        	audioFilePath = "pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav";
+        */
+        
+        //Menu song
+        //audioFilePath = "pokemonBattleSim/resources/soundtrack/JohtoRoute47.wav";
+        
+        //Team Builder song
+        //audioFilePath = "pokemonBattleSim/resources/soundtrack/XAndYAnistarCity.wav";
+                
+        //play the selected song
+        /*AudioPlayer player = new AudioPlayer();
+        player.play(audioFilePath);*/
+    }
  
 }

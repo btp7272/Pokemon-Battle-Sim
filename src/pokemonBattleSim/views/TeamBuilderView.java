@@ -48,7 +48,6 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	{
 		//Update
 		onViewNotify();
-		
 		//Check IV and EVs
 		if(checkSums())
 			return;
@@ -91,8 +90,6 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 						new int[] {Integer.parseInt(poke1ev1.getText()), Integer.parseInt(poke1ev2.getText()), Integer.parseInt(poke1ev3.getText()), Integer.parseInt(poke1ev4.getText()), Integer.parseInt(poke1ev5.getText()), Integer.parseInt(poke1ev6.getText()) },
 						100, Nature.Timid)
 				);
-		
-		
 	}
 	
 	
@@ -508,146 +505,179 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
 	public String abilities6;
 	
     private JTextField poke1;
+    private JTextField poke2;
     private JTextField poke3;
     private JTextField poke4;
     private JTextField poke5;
     private JTextField poke6;
-    private JTextField poke1iv6;
-    private JLabel poke3Label;
+    
+    private JTextField nickname1;
+    private JTextField nickname2;
+    private JTextField nickname3;
+    private JTextField nickname4;
+    private JTextField nickname5;
+    private JTextField nickname6;
+    
     private JLabel poke1Label;
     private JLabel poke2Label;
+    private JLabel poke3Label;
     private JLabel poke4Label;
     private JLabel poke5Label;
     private JLabel poke6Label;
+    
     private JLabel pokemonHeader;
-    private JTextField poke2;
-    private JComboBox poke1Ability;
+    private JLabel nicknameHeader;
+    
+    private JButton FinalizeButton;
+    private JButton RefreshButton;
+    
+    private JLabel abilityLabel;
+    
     private JComboBox poke1move1;
     private JComboBox poke1move2;
     private JComboBox poke1move3;
-    private JComboBox poke2move4;
-    private JComboBox poke2move3;
-    private JComboBox poke2move2;
+    private JComboBox poke1move4;
+    
     private JComboBox poke2move1;
+    private JComboBox poke2move2;
+    private JComboBox poke2move3;
+    private JComboBox poke2move4;
+    
+    private JComboBox poke3move1;
     private JComboBox poke3move2;
     private JComboBox poke3move3;
     private JComboBox poke3move4;
+    
     private JComboBox poke4move1;
-    private JComboBox poke3move1;
     private JComboBox poke4move2;
+    private JComboBox poke4move3;
+    private JComboBox poke4move4;
+    
     private JComboBox poke5move1;
     private JComboBox poke5move2;
-    private JComboBox poke6move2;
-    private JComboBox poke6move1;
-    private JComboBox poke4move4;
-    private JComboBox poke6move3;
-    private JComboBox poke4move3;
     private JComboBox poke5move3;
-    private JComboBox poke6move4;
     private JComboBox poke5move4;
+    
+    private JComboBox poke6move1;
+    private JComboBox poke6move2;
+    private JComboBox poke6move3;
+    private JComboBox poke6move4;
+    
     private JLabel move1Label;
     private JLabel move2Label;
     private JLabel move3Label;
     private JLabel move4Label;
-    private JLabel iv1Label;
-    private JLabel abilityLabel;
-    private JComboBox poke1move4;
+    
+    private JComboBox poke1Ability;
     private JComboBox poke2Ability;
     private JComboBox poke3Ability;
     private JComboBox poke4Ability;
     private JComboBox poke5Ability;
     private JComboBox poke6Ability;
+    
+    private JLabel iv1Label;
     private JLabel iv2Label;
     private JLabel iv3Label;
     private JLabel iv4Label;
-    private JLabel iv6Label;
     private JLabel iv5Label;
-    private JTextField poke1iv1;
-    private JTextField poke1iv3;
-    private JTextField poke1iv2;
-    private JTextField poke1iv4;
-    private JTextField poke1iv5;
-    private JLabel ev2Label;
+    private JLabel iv6Label;
+    
     private JLabel ev1Label;
-    private JLabel ev4Label;
+    private JLabel ev2Label;
     private JLabel ev3Label;
+    private JLabel ev4Label;
     private JLabel ev5Label;
     private JLabel ev6Label;
-    private JTextField nickname1;
-    private JTextField nickname2;
-    private JLabel nicknameHeader;
-    private JTextField nickname3;
-    private JTextField nickname4;
-    private JTextField nickname5;
-    private JTextField nickname6;
-    private JTextField poke1ev2;
-    private JTextField poke1ev4;
-    private JTextField poke1ev6;
-    private JTextField poke1ev3;
-    private JTextField poke1ev1;
-    private JTextField poke1ev5;
-    private JButton FinalizeButton;
-    private JButton RefreshButton;
-    private JTextField poke5ev1;
-    private JTextField poke2ev1;
-    private JTextField poke3ev1;
-    private JTextField poke4ev1;
+    
+    /*
+     * Pokemon IVs
+     */    
+    private JTextField poke1iv1;
+    private JTextField poke1iv2;
+    private JTextField poke1iv3;
+    private JTextField poke1iv4;
+    private JTextField poke1iv5;
+    private JTextField poke1iv6;
+    
     private JTextField poke2iv1;
-    private JTextField poke3iv1;
-    private JTextField poke4iv1;
-    private JTextField poke5iv1;
-    private JTextField poke6iv1;
-    private JTextField poke6ev1;
-    private JTextField poke2iv6;
-    private JTextField poke2iv3;
     private JTextField poke2iv2;
+    private JTextField poke2iv3;
     private JTextField poke2iv4;
     private JTextField poke2iv5;
-    private JTextField poke3iv6;
-    private JTextField poke3iv3;
+    private JTextField poke2iv6;
+    
+    private JTextField poke3iv1;
     private JTextField poke3iv2;
+    private JTextField poke3iv3;
     private JTextField poke3iv4;
     private JTextField poke3iv5;
-    private JTextField poke4iv6;
-    private JTextField poke4iv3;
+    private JTextField poke3iv6;
+    
+    private JTextField poke4iv1;
     private JTextField poke4iv2;
+    private JTextField poke4iv3;
     private JTextField poke4iv4;
     private JTextField poke4iv5;
-    private JTextField poke5iv6;
-    private JTextField poke5iv3;
+    private JTextField poke4iv6;
+    
+    private JTextField poke5iv1;
     private JTextField poke5iv2;
+    private JTextField poke5iv3;
     private JTextField poke5iv4;
     private JTextField poke5iv5;
-    private JTextField poke6iv6;
-    private JTextField poke6iv3;
+    private JTextField poke5iv6;
+    
+    private JTextField poke6iv1;
     private JTextField poke6iv2;
+    private JTextField poke6iv3;
     private JTextField poke6iv4;
     private JTextField poke6iv5;
-    private JTextField poke2ev6;
-    private JTextField poke2ev3;
+    private JTextField poke6iv6;
+	
+    /*
+     * Pokemon EVs
+     */
+    private JTextField poke1ev1;
+    private JTextField poke1ev2;
+    private JTextField poke1ev3;
+    private JTextField poke1ev4;
+    private JTextField poke1ev5;
+    private JTextField poke1ev6;
+    
+    private JTextField poke2ev1;
     private JTextField poke2ev2;
+    private JTextField poke2ev3;
     private JTextField poke2ev4;
     private JTextField poke2ev5;
-    private JTextField poke3ev6;
-    private JTextField poke3ev3;
+    private JTextField poke2ev6;
+    
+    private JTextField poke3ev1;
     private JTextField poke3ev2;
+    private JTextField poke3ev3;
     private JTextField poke3ev4;
     private JTextField poke3ev5;
-    private JTextField poke4ev6;
-    private JTextField poke4ev3;
+    private JTextField poke3ev6;
+    
+    private JTextField poke4ev1;
     private JTextField poke4ev2;
+    private JTextField poke4ev3;
     private JTextField poke4ev4;
     private JTextField poke4ev5;
-    private JTextField poke5ev6;
-    private JTextField poke5ev3;
+    private JTextField poke4ev6;
+       
+    private JTextField poke5ev1;
     private JTextField poke5ev2;
+    private JTextField poke5ev3;
     private JTextField poke5ev4;
     private JTextField poke5ev5;
-    private JTextField poke6ev6;
-    private JTextField poke6ev3;
+    private JTextField poke5ev6;
+    
+    private JTextField poke6ev1;
     private JTextField poke6ev2;
+    private JTextField poke6ev3;
     private JTextField poke6ev4;
     private JTextField poke6ev5;
+    private JTextField poke6ev6;
 
     public TeamBuilderView() {
     	
@@ -656,36 +686,43 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         setLayout (null);
         
         //construct preComponents
-        String[] jcomp15Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp16Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp17Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp18Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp19Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp20Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp21Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp22Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp23Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp24Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp25Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp26Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp27Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp28Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp29Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp30Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp31Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp32Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp33Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp34Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp35Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp36Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp37Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp38Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp45Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp46Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp47Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp48Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp49Items = {"Item 1", "Item 2", "Item 3"};
-        String[] jcomp50Items = {"Item 1", "Item 2", "Item 3"};
+        String[] poke1move1List = {moves1};
+        String[] poke1move2List = {moves1};
+        String[] poke1move3List = {moves1};
+        String[] poke1move4List = {moves1};
+        
+        String[] poke2move1List = {moves2};
+        String[] poke2move2List = {moves2};
+        String[] poke2move3List = {moves2};
+        String[] poke2move4List = {moves2};
+        
+        String[] poke3move1List = {moves3};
+        String[] poke3move2List = {moves3};
+        String[] poke3move3List = {moves3};
+        String[] poke3move4List = {moves3};
+        
+        String[] poke4move1List = {moves4};
+        String[] poke4move2List = {moves4};
+        String[] poke4move3List = {moves4};
+        String[] poke4move4List = {moves4};
+        
+        String[] poke5move1List = {moves5};
+        String[] poke5move2List = {moves5};
+        String[] poke5move3List = {moves5};
+        String[] poke5move4List = {moves5};
+        
+        String[] poke6move1List = {moves6};
+        String[] poke6move2List = {moves6};
+        String[] poke6move3List = {moves6};
+        String[] poke6move4List = {moves6};
+        
+        
+        String[] poke1AbilityList = {abilities1};
+        String[] poke2AbilityList = {abilities2};
+        String[] poke3AbilityList = {abilities3};
+        String[] poke4AbilityList = {abilities4};
+        String[] poke5AbilityList = {abilities5};
+        String[] poke6AbilityList = {abilities6};
         
         //construct components
         /*
@@ -693,17 +730,11 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
 	        poke1 = new JTextField (30);
-	        poke1.setText("1");
 	        poke2 = new JTextField (30);
-	        poke2.setText("2");
 	        poke3 = new JTextField (30);
-	        poke3.setText("3");
 	        poke4 = new JTextField (30);
-	        poke4.setText("4");
 	        poke5 = new JTextField (30);
-	        poke5.setText("5");
 	        poke6 = new JTextField (30);
-	        poke6.setText("6");
         }
         
         /*
@@ -726,8 +757,8 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         		iv1Label = new JLabel ("HP");
 	        	iv2Label = new JLabel ("Attack");
 	            iv3Label = new JLabel ("Defense");
-	            iv4Label = new JLabel ("Special Attack");
-	            iv5Label = new JLabel ("Special Defense");
+	            iv4Label = new JLabel ("Sp. Attack");
+	            iv5Label = new JLabel ("Sp. Defense");
 	            iv6Label = new JLabel ("Speed");
         	}
         	
@@ -751,8 +782,8 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
                 ev1Label = new JLabel ("HP");
                 ev2Label = new JLabel ("Attack");
                 ev3Label = new JLabel ("Defense");
-                ev4Label = new JLabel ("Special Attack");
-                ev5Label = new JLabel ("Special Defense");
+                ev4Label = new JLabel ("Sp. Attack");
+                ev5Label = new JLabel ("Sp. Defense");
                 ev6Label = new JLabel ("Speed");
         	}
         	
@@ -768,17 +799,17 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          * Abilities
          */
         {
-        	poke1Ability = new JComboBox (jcomp15Items);
+        	poke1Ability = new JComboBox (poke1AbilityList);
             poke1Ability.setModel(new DefaultComboBoxModel(new String[] {abilities1}));
-            poke2Ability = new JComboBox (jcomp46Items);
+            poke2Ability = new JComboBox (poke2AbilityList);
             poke2Ability.setModel(new DefaultComboBoxModel(new String[] {abilities2}));
-            poke3Ability = new JComboBox (jcomp47Items);
+            poke3Ability = new JComboBox (poke3AbilityList);
             poke3Ability.setModel(new DefaultComboBoxModel(new String[] {abilities3}));
-            poke4Ability = new JComboBox (jcomp48Items);
+            poke4Ability = new JComboBox (poke4AbilityList);
             poke4Ability.setModel(new DefaultComboBoxModel(new String[] {abilities4}));
-            poke5Ability = new JComboBox (jcomp49Items);
+            poke5Ability = new JComboBox (poke5AbilityList);
             poke5Ability.setModel(new DefaultComboBoxModel(new String[] {abilities5}));
-            poke6Ability = new JComboBox (jcomp50Items);
+            poke6Ability = new JComboBox (poke6AbilityList);
             poke6Ability.setModel(new DefaultComboBoxModel(new String[] {abilities6}));
         }
         
@@ -787,68 +818,68 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	{	//Poke1
-        		poke1move1 = new JComboBox (jcomp16Items);
+        		poke1move1 = new JComboBox (poke1move1List);
         	    poke1move1.setModel(new DefaultComboBoxModel(new String[] {moves1}));
-        	    poke1move2 = new JComboBox (jcomp17Items);
+        	    poke1move2 = new JComboBox (poke1move2List);
         	    poke1move2.setModel(new DefaultComboBoxModel(new String[] {moves1}));
-        	    poke1move3 = new JComboBox (jcomp18Items);
+        	    poke1move3 = new JComboBox (poke1move3List);
         	    poke1move3.setModel(new DefaultComboBoxModel(new String[] {moves1}));
-        	    poke1move4 = new JComboBox (jcomp45Items);
+        	    poke1move4 = new JComboBox (poke1move4List);
                 poke1move4.setModel(new DefaultComboBoxModel(new String[] {moves1}));
         	}
         	
         	{	//Poke2
-        		poke2move1 = new JComboBox (jcomp22Items);
+        		poke2move1 = new JComboBox (poke2move1List);
                 poke2move1.setModel(new DefaultComboBoxModel(new String[] {moves2}));
-                poke2move2 = new JComboBox (jcomp21Items);
+                poke2move2 = new JComboBox (poke2move2List);
                 poke2move2.setModel(new DefaultComboBoxModel(new String[] {moves2}));
-                poke2move3 = new JComboBox (jcomp20Items);
+                poke2move3 = new JComboBox (poke2move3List);
                 poke2move3.setModel(new DefaultComboBoxModel(new String[] {moves2}));
-                poke2move4 = new JComboBox (jcomp19Items);
+                poke2move4 = new JComboBox (poke2move4List);
                 poke2move4.setModel(new DefaultComboBoxModel(new String[] {moves2}));
         	}
         	
         	{	//Poke3
-        		poke3move1 = new JComboBox (jcomp27Items);
+        		poke3move1 = new JComboBox (poke3move1List);
                 poke3move1.setModel(new DefaultComboBoxModel(new String[] {moves3}));
-        		poke3move2 = new JComboBox (jcomp23Items);
+        		poke3move2 = new JComboBox (poke3move2List);
                 poke3move2.setModel(new DefaultComboBoxModel(new String[] {moves3}));
-                poke3move3 = new JComboBox (jcomp24Items);
+                poke3move3 = new JComboBox (poke3move3List);
                 poke3move3.setModel(new DefaultComboBoxModel(new String[] {moves3}));
-                poke3move4 = new JComboBox (jcomp25Items);
+                poke3move4 = new JComboBox (poke3move4List);
                 poke3move4.setModel(new DefaultComboBoxModel(new String[] {moves3}));
         	}
         	
         	{	//Poke4
-        		poke4move1 = new JComboBox (jcomp26Items);
+        		poke4move1 = new JComboBox (poke4move1List);
         		poke4move1.setModel(new DefaultComboBoxModel(new String[] {moves4}));
-        		poke4move2 = new JComboBox (jcomp28Items);
+        		poke4move2 = new JComboBox (poke4move2List);
                 poke4move2.setModel(new DefaultComboBoxModel(new String[] {moves4}));
-                poke4move3 = new JComboBox (jcomp35Items);
+                poke4move3 = new JComboBox (poke4move3List);
                 poke4move3.setModel(new DefaultComboBoxModel(new String[] {moves4}));
-                poke4move4 = new JComboBox (jcomp33Items);
+                poke4move4 = new JComboBox (poke4move4List);
                 poke4move4.setModel(new DefaultComboBoxModel(new String[] {moves4}));
         	}
         	
         	{	//Poke5
-        		poke5move1 = new JComboBox (jcomp29Items);
+        		poke5move1 = new JComboBox (poke5move1List);
                 poke5move1.setModel(new DefaultComboBoxModel(new String[] {moves5}));
-                poke5move2 = new JComboBox (jcomp30Items);
+                poke5move2 = new JComboBox (poke5move2List);
                 poke5move2.setModel(new DefaultComboBoxModel(new String[] {moves5}));
-                poke5move3 = new JComboBox (jcomp36Items);
+                poke5move3 = new JComboBox (poke5move3List);
                 poke5move3.setModel(new DefaultComboBoxModel(new String[] {moves5}));
-                poke5move4 = new JComboBox (jcomp38Items);
+                poke5move4 = new JComboBox (poke5move4List);
                 poke5move4.setModel(new DefaultComboBoxModel(new String[] {moves5}));
         	}
         	
         	{	//Poke6
-        		poke6move1 = new JComboBox (jcomp32Items);
+        		poke6move1 = new JComboBox (poke6move1List);
         	    poke6move1.setModel(new DefaultComboBoxModel(new String[] {moves6}));
-        		poke6move2 = new JComboBox (jcomp31Items);
+        		poke6move2 = new JComboBox (poke6move2List);
                 poke6move2.setModel(new DefaultComboBoxModel(new String[] {moves6}));
-                poke6move3 = new JComboBox (jcomp34Items);
+                poke6move3 = new JComboBox (poke6move3List);
                 poke6move3.setModel(new DefaultComboBoxModel(new String[] {moves6}));
-                poke6move4 = new JComboBox (jcomp37Items);
+                poke6move4 = new JComboBox (poke6move4List);
                 poke6move4.setModel(new DefaultComboBoxModel(new String[] {moves6}));
         	}
         }
@@ -858,32 +889,57 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	{	//poke1
-	        	poke1iv1 = new JTextField (2);
-	            poke1iv2 = new JTextField (2);
-	            poke1iv3 = new JTextField (2);
-	            poke1iv4 = new JTextField (2);
-	            poke1iv5 = new JTextField (2);
-	            poke1iv6 = new JTextField (2);
+	        	poke1iv1 = new JTextField(2);
+	            poke1iv2 = new JTextField(2);
+	            poke1iv3 = new JTextField(2);
+	            poke1iv4 = new JTextField(2);
+	            poke1iv5 = new JTextField(2);
+	            poke1iv6 = new JTextField(2);
         	}
         	
         	{	//poke2
-        		
+    	        poke2iv1 = new JTextField(2);
+    	        poke2iv2 = new JTextField(2);
+    	        poke2iv3 = new JTextField(2);
+    	        poke2iv4 = new JTextField(2);
+    	        poke2iv5 = new JTextField(2);
+    	        poke2iv6 = new JTextField(2);
         	}
         	
         	{	//poke3
-        		
+        		poke3iv1 = new JTextField(2);
+        		poke3iv2 = new JTextField(2);
+        		poke3iv3 = new JTextField(2);
+                poke3iv4 = new JTextField(2);
+                poke3iv5 = new JTextField(2);
+                poke3iv6 = new JTextField(2);
         	}
         	
         	{	//poke4
-        		
+        		poke4iv1 = new JTextField(2);
+        		poke4iv2 = new JTextField(2);
+        		poke4iv3 = new JTextField(2);
+        		poke4iv4 = new JTextField(2);
+        		poke4iv5 = new JTextField(2);
+                poke4iv6 = new JTextField(2);
         	}
         	
         	{	//poke5
-        		
+        		poke5iv1 = new JTextField(2);
+        		poke5iv2 = new JTextField(2);
+        		poke5iv3 = new JTextField(2);
+                poke5iv4 = new JTextField(2);
+                poke5iv5 = new JTextField(2);
+                poke5iv6 = new JTextField(2);
         	}
         	
         	{	//poke6
-        		
+        		poke6iv1 = new JTextField(2);
+        		poke6iv2 = new JTextField(2);
+                poke6iv3 = new JTextField(2);
+                poke6iv4 = new JTextField(2);
+                poke6iv5 = new JTextField(2);
+                poke6iv6 = new JTextField(2);
         	}
         }
         
@@ -892,31 +948,59 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	{	//poke1
-        		poke1ev1 = new JTextField (3);
-        		poke1ev2 = new JTextField (3);
-        		poke1ev3 = new JTextField (3);
-        		poke1ev4 = new JTextField (3);
-        		poke1ev5 = new JTextField (3);
-        		poke1ev6 = new JTextField (3);
+        		poke1ev1 = new JTextField(3);
+        		poke1ev2 = new JTextField(3);
+        		poke1ev3 = new JTextField(3);
+        		poke1ev4 = new JTextField(3);
+        		poke1ev5 = new JTextField(3);
+        		poke1ev6 = new JTextField(3);
         	}
+        	
         	{	//poke2
-        		
+        		poke2ev1 = new JTextField(3);
+        		poke2ev2 = new JTextField(3);
+                poke2ev3 = new JTextField(3);
+                poke2ev4 = new JTextField(3);
+                poke2ev5 = new JTextField(3);
+                poke2ev6 = new JTextField(3);
         	}
+        	
         	{	//poke3
-        		
+    	        poke3ev1 = new JTextField(3);
+    	        poke3ev2 = new JTextField(3);
+    	        poke3ev3 = new JTextField(3);
+    	        poke3ev4 = new JTextField(3);
+    	        poke3ev5 = new JTextField(3);
+                poke3ev6 = new JTextField(3);
         	}
+        	
         	{	//poke4
-        		
+        		poke4ev1 = new JTextField(3);
+        		poke4ev2 = new JTextField(3);
+                poke4ev3 = new JTextField(3);
+                poke4ev4 = new JTextField(3);
+                poke4ev5 = new JTextField(3);
+                poke4ev6 = new JTextField(3);
         	}
+        	
         	{	//poke5
-        		
+        		poke5ev1 = new JTextField(3);
+        		poke5ev2 = new JTextField(3);
+                poke5ev3 = new JTextField(3);
+                poke5ev4 = new JTextField(3);
+                poke5ev5 = new JTextField(3);
+                poke5ev6 = new JTextField(3);
         	}
+        	
         	{	//poke6
-        		
+        		poke6ev1 = new JTextField(3);
+        		poke6ev2 = new JTextField(3);
+        		poke6ev3 = new JTextField(3);
+        		poke6ev4 = new JTextField(3);
+        		poke6ev5 = new JTextField(3);
+        		poke6ev6 = new JTextField(3);
         	}
         }
-        
-        
         
         /*
          * Tooltips
@@ -935,6 +1019,14 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
          */
         {
         	FinalizeButton = new JButton ("Finalize");
+        	FinalizeButton.addActionListener(new ActionListener()
+        	{
+        		public void actionPerformed(ActionEvent e)
+        		{
+        			Finalize();
+        		}
+        	});
+        	
             RefreshButton = new JButton ("Refresh");
             RefreshButton.addActionListener(new ActionListener()
             {
@@ -944,11 +1036,6 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
             	}
             });	
         }
-
-        //set components properties
-        
-
-        
 
         //add components
         add (poke1);
@@ -1032,7 +1119,67 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         add (poke1ev5);
         add (FinalizeButton);
         add (RefreshButton);
-
+        add(poke4ev1);
+        add(poke5ev1);
+        add(poke2ev1);
+        add(poke3ev1);
+        add(poke2iv1);
+        add(poke3iv1);
+        add(poke4iv1);
+        add(poke5iv1);
+        add(poke6iv1);
+        add(poke2iv2);
+        add(poke2iv4);
+        add(poke2iv5);
+        add(poke3iv6);
+        add(poke3iv3);
+        add(poke3iv2);
+        add(poke3iv4);
+        add(poke3iv5);
+        add(poke4iv6);
+        add(poke4iv3);
+        add(poke4iv2);
+        add(poke4iv4);
+        add(poke4iv5);
+        add(poke5iv6);
+        add(poke5iv3);
+        add(poke5iv2);
+        add(poke5iv4);
+        add(poke5iv5);
+        add(poke6iv6);
+        add(poke6iv3);
+        add(poke6iv2);
+        add(poke6iv4);
+        add(poke6iv5);
+        add(poke2ev6);
+        add(poke2ev3);
+        add(poke2ev2);
+        add(poke2ev4);
+        add(poke2ev5);
+        add(poke3ev6);
+        add(poke3ev3);
+        add(poke3ev2);
+        add(poke3ev4);
+        add(poke3ev5);
+        add(poke4ev6);
+        add(poke4ev3);
+        add(poke4ev2);
+        add(poke4ev4);
+        add(poke4ev5);
+        add(poke5ev6);
+        add(poke5ev3);
+        add(poke5ev2);
+        add(poke5ev4);
+        add(poke5ev5);
+        add(poke6ev6);
+        add(poke6ev3);
+        add(poke6ev2);
+        add(poke6ev4);
+        add(poke6ev5);
+        add(poke6ev1);
+        add(poke2iv6);
+        add(poke2iv3);
+        
         //set component bounds (only needed by Absolute Positioning)
         poke1.setBounds (90, 25, 100, 25);
         poke3.setBounds (375, 25, 100, 25);
@@ -1115,6 +1262,66 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         poke1ev5.setBounds (90, 500, 100, 25);
         FinalizeButton.setBounds (515, 561, 100, 25);
         RefreshButton.setBounds (375, 561, 100, 25);
+        poke2ev1.setBounds(230, 412, 100, 25);
+        poke5ev1.setBounds(660, 412, 100, 25);
+        poke3ev1.setBounds(375, 412, 100, 25);
+        poke4ev1.setBounds(515, 412, 100, 25);
+        poke2iv1.setBounds(230, 252, 100, 25);
+        poke3iv1.setBounds(375, 252, 100, 25);
+        poke4iv1.setBounds(515, 252, 100, 25);
+        poke5iv1.setBounds(660, 252, 100, 25);
+        poke6iv1.setBounds(800, 252, 100, 25);
+        poke2iv3.setBounds(230, 296, 100, 25);
+        poke2iv2.setBounds(230, 274, 100, 25);
+        poke2iv4.setBounds(230, 318, 100, 25);
+        poke2iv5.setBounds(230, 340, 100, 25);
+        poke3iv6.setBounds(375, 362, 100, 25);
+        poke3iv3.setBounds(375, 296, 100, 25);
+        poke3iv2.setBounds(375, 274, 100, 25);
+        poke3iv4.setBounds(375, 318, 100, 25);
+        poke3iv5.setBounds(375, 340, 100, 25);
+        poke4iv6.setBounds(515, 362, 100, 25);
+        poke4iv3.setBounds(515, 296, 100, 25);
+        poke4iv2.setBounds(515, 274, 100, 25);
+        poke4iv4.setBounds(515, 318, 100, 25);
+        poke4iv5.setBounds(515, 340, 100, 25);
+        poke5iv6.setBounds(660, 362, 100, 25);
+        poke5iv3.setBounds(660, 296, 100, 25);
+        poke5iv2.setBounds(660, 274, 100, 25);
+        poke5iv4.setBounds(660, 318, 100, 25);
+        poke5iv5.setBounds(660, 340, 100, 25);
+        poke6iv6.setBounds(800, 362, 100, 25);
+        poke6iv3.setBounds(800, 296, 100, 25);
+        poke6iv2.setBounds(800, 274, 100, 25);
+        poke6iv4.setBounds(800, 318, 100, 25);
+        poke6iv5.setBounds(800, 340, 100, 25);
+        poke2ev6.setBounds(230, 522, 100, 25);
+        poke2ev3.setBounds(230, 456, 100, 25);
+        poke2ev2.setBounds(230, 434, 100, 25);
+        poke2ev4.setBounds(230, 478, 100, 25);
+        poke2ev5.setBounds(230, 500, 100, 25);
+        poke3ev6.setBounds(375, 522, 100, 25);
+        poke3ev3.setBounds(375, 456, 100, 25);
+        poke3ev2.setBounds(375, 434, 100, 25);
+        poke3ev4.setBounds(375, 478, 100, 25);
+        poke3ev5.setBounds(375, 500, 100, 25);
+        poke4ev6.setBounds(515, 522, 100, 25);
+        poke6ev5.setBounds(800, 500, 100, 25);
+        poke6ev4.setBounds(800, 478, 100, 25);
+        poke6ev2.setBounds(800, 434, 100, 25);
+        poke6ev3.setBounds(800, 456, 100, 25);
+        poke6ev6.setBounds(800, 522, 100, 25);
+        poke5ev5.setBounds(660, 500, 100, 25);
+        poke5ev4.setBounds(660, 478, 100, 25);
+        poke5ev2.setBounds(660, 434, 100, 25);
+        poke5ev3.setBounds(660, 456, 100, 25);
+        poke5ev6.setBounds(660, 522, 100, 25);
+        poke4ev5.setBounds(515, 500, 100, 25);
+        poke4ev4.setBounds(515, 478, 100, 25);
+        poke4ev2.setBounds(515, 434, 100, 25);
+        poke4ev3.setBounds(515, 456, 100, 25);
+        poke6ev1.setBounds(800, 412, 100, 25);
+        poke2iv6.setBounds(230, 362, 100, 25);
         
         JLabel evHeader = new JLabel("Effort Values (Individual Max of 252 - Total Max of510)");
         evHeader.setBounds(90, 398, 280, 14);
@@ -1123,259 +1330,5 @@ public class TeamBuilderView extends JPanel implements IPokemonView{
         JLabel ivHeader = new JLabel("Individual Values (Individual Max of 31)");
         ivHeader.setBounds(90, 238, 240, 14);
         add(ivHeader);
-        
-	        poke5ev1 = new JTextField();
-	        poke2ev1 = new JTextField();
-	        poke3ev1 = new JTextField();
-	        poke4ev1 = new JTextField();
-	        poke2iv1 = new JTextField();
-	        
-	        poke2ev1.setBounds(230, 412, 100, 25);
-	        poke5ev1.setBounds(660, 412, 100, 25);
-	        poke3ev1.setBounds(375, 412, 100, 25);
-	        poke4ev1.setBounds(515, 412, 100, 25);
-	        poke2iv1.setBounds(230, 252, 100, 25);
-	        
-	        add(poke4ev1);
-	        add(poke5ev1);
-	        add(poke2ev1);
-	        add(poke3ev1);
-	        
-	        poke5ev1.setColumns(10);
-	        poke2ev1.setColumns(10);
-	        poke3ev1.setColumns(10);
-	        poke4ev1.setColumns(10);
-	        poke2iv1.setColumns(10);
-	        
-	        
-	        
-	        
-	        add(poke2iv1);
-	        
-	        poke3iv1 = new JTextField();
-	        poke3iv1.setColumns(10);
-	        poke3iv1.setBounds(375, 252, 100, 25);
-	        add(poke3iv1);
-	        
-	        poke4iv1 = new JTextField();
-	        poke4iv1.setColumns(10);
-	        poke4iv1.setBounds(515, 252, 100, 25);
-	        add(poke4iv1);
-	        
-	        poke5iv1 = new JTextField();
-	        poke5iv1.setColumns(10);
-	        poke5iv1.setBounds(660, 252, 100, 25);
-	        add(poke5iv1);
-	        
-	        poke6iv1 = new JTextField();
-	        poke6iv1.setColumns(10);
-	        poke6iv1.setBounds(800, 252, 100, 25);
-	        add(poke6iv1);
-	        
-	        poke6ev1 = new JTextField();
-	        poke6ev1.setColumns(10);
-	        poke6ev1.setBounds(800, 412, 100, 25);
-	        add(poke6ev1);
-	        
-	        poke2iv6 = new JTextField(5);
-	        poke2iv6.setBounds(230, 362, 100, 25);
-	        add(poke2iv6);
-	        
-	        poke2iv3 = new JTextField(5);
-	        poke2iv3.setBounds(230, 296, 100, 25);
-	        add(poke2iv3);
-	        
-	        poke2iv2 = new JTextField(5);
-	        poke2iv2.setBounds(230, 274, 100, 25);
-	        add(poke2iv2);
-	        
-	        poke2iv4 = new JTextField(5);
-	        poke2iv4.setBounds(230, 318, 100, 25);
-	        add(poke2iv4);
-	        
-	        poke2iv5 = new JTextField(5);
-	        poke2iv5.setBounds(230, 340, 100, 25);
-	        add(poke2iv5);
-	        
-	        poke3iv6 = new JTextField(5);
-	        poke3iv6.setBounds(375, 362, 100, 25);
-	        add(poke3iv6);
-	        
-	        poke3iv3 = new JTextField(5);
-	        poke3iv3.setBounds(375, 296, 100, 25);
-	        add(poke3iv3);
-	        
-	        poke3iv2 = new JTextField(5);
-	        poke3iv2.setBounds(375, 274, 100, 25);
-	        add(poke3iv2);
-	        
-	        poke3iv4 = new JTextField(5);
-	        poke3iv4.setBounds(375, 318, 100, 25);
-	        add(poke3iv4);
-	        
-	        poke3iv5 = new JTextField(5);
-	        poke3iv5.setBounds(375, 340, 100, 25);
-	        add(poke3iv5);
-	        
-	        poke4iv6 = new JTextField(5);
-	        poke4iv6.setBounds(515, 362, 100, 25);
-	        add(poke4iv6);
-	        
-	        poke4iv3 = new JTextField(5);
-	        poke4iv3.setBounds(515, 296, 100, 25);
-	        add(poke4iv3);
-	        
-	        poke4iv2 = new JTextField(5);
-	        poke4iv2.setBounds(515, 274, 100, 25);
-	        add(poke4iv2);
-	        
-	        poke4iv4 = new JTextField(5);
-	        poke4iv4.setBounds(515, 318, 100, 25);
-	        add(poke4iv4);
-	        
-	        poke4iv5 = new JTextField(5);
-	        poke4iv5.setBounds(515, 340, 100, 25);
-	        add(poke4iv5);
-	        
-	        poke5iv6 = new JTextField(5);
-	        poke5iv6.setBounds(660, 362, 100, 25);
-	        add(poke5iv6);
-	        
-	        poke5iv3 = new JTextField(5);
-	        poke5iv3.setBounds(660, 296, 100, 25);
-	        add(poke5iv3);
-	        
-	        poke5iv2 = new JTextField(5);
-	        poke5iv2.setBounds(660, 274, 100, 25);
-	        add(poke5iv2);
-	        
-	        poke5iv4 = new JTextField(5);
-	        poke5iv4.setBounds(660, 318, 100, 25);
-	        add(poke5iv4);
-	        
-	        poke5iv5 = new JTextField(5);
-	        poke5iv5.setBounds(660, 340, 100, 25);
-	        add(poke5iv5);
-	        
-	        poke6iv6 = new JTextField(5);
-	        poke6iv6.setBounds(800, 362, 100, 25);
-	        add(poke6iv6);
-	        
-	        poke6iv3 = new JTextField(5);
-	        poke6iv3.setBounds(800, 296, 100, 25);
-	        add(poke6iv3);
-	        
-	        poke6iv2 = new JTextField(5);
-	        poke6iv2.setBounds(800, 274, 100, 25);
-	        add(poke6iv2);
-	        
-	        poke6iv4 = new JTextField(5);
-	        poke6iv4.setBounds(800, 318, 100, 25);
-	        add(poke6iv4);
-	        
-	        poke6iv5 = new JTextField(5);
-	        poke6iv5.setBounds(800, 340, 100, 25);
-	        add(poke6iv5);
-	        
-	        poke2ev6 = new JTextField(5);
-	        poke2ev6.setBounds(230, 522, 100, 25);
-	        add(poke2ev6);
-	        
-	        poke2ev3 = new JTextField(5);
-	        poke2ev3.setBounds(230, 456, 100, 25);
-	        add(poke2ev3);
-	        
-	        poke2ev2 = new JTextField(5);
-	        poke2ev2.setBounds(230, 434, 100, 25);
-	        add(poke2ev2);
-	        
-	        poke2ev4 = new JTextField(5);
-	        poke2ev4.setBounds(230, 478, 100, 25);
-	        add(poke2ev4);
-	        
-	        poke2ev5 = new JTextField(5);
-	        poke2ev5.setBounds(230, 500, 100, 25);
-	        add(poke2ev5);
-	        
-	        poke3ev6 = new JTextField(5);
-	        poke3ev6.setBounds(375, 522, 100, 25);
-	        add(poke3ev6);
-	        
-	        poke3ev3 = new JTextField(5);
-	        poke3ev3.setBounds(375, 456, 100, 25);
-	        add(poke3ev3);
-	        
-	        poke3ev2 = new JTextField(5);
-	        poke3ev2.setBounds(375, 434, 100, 25);
-	        add(poke3ev2);
-	        
-	        poke3ev4 = new JTextField(5);
-	        poke3ev4.setBounds(375, 478, 100, 25);
-	        add(poke3ev4);
-	        
-	        poke3ev5 = new JTextField(5);
-	        poke3ev5.setBounds(375, 500, 100, 25);
-	        add(poke3ev5);
-	        
-	        poke4ev6 = new JTextField(5);
-	        poke4ev6.setBounds(515, 522, 100, 25);
-	        add(poke4ev6);
-	        
-	        poke4ev3 = new JTextField(5);
-	        poke4ev3.setBounds(515, 456, 100, 25);
-	        add(poke4ev3);
-	        
-	        poke4ev2 = new JTextField(5);
-	        poke4ev2.setBounds(515, 434, 100, 25);
-	        add(poke4ev2);
-	        
-	        poke4ev4 = new JTextField(5);
-	        poke4ev4.setBounds(515, 478, 100, 25);
-	        add(poke4ev4);
-	        
-	        poke4ev5 = new JTextField(5);
-	        poke4ev5.setBounds(515, 500, 100, 25);
-	        add(poke4ev5);
-	        
-	        poke5ev6 = new JTextField(5);
-	        poke5ev6.setBounds(660, 522, 100, 25);
-	        add(poke5ev6);
-	        
-	        poke5ev3 = new JTextField(5);
-	        poke5ev3.setBounds(660, 456, 100, 25);
-	        add(poke5ev3);
-	        
-	        poke5ev2 = new JTextField(5);
-	        poke5ev2.setBounds(660, 434, 100, 25);
-	        add(poke5ev2);
-	        
-	        poke5ev4 = new JTextField(5);
-	        poke5ev4.setBounds(660, 478, 100, 25);
-	        add(poke5ev4);
-	        
-	        poke5ev5 = new JTextField(5);
-	        poke5ev5.setBounds(660, 500, 100, 25);
-	        add(poke5ev5);
-	        
-	        poke6ev6 = new JTextField(5);
-	        poke6ev6.setBounds(800, 522, 100, 25);
-	        add(poke6ev6);
-	        
-	        poke6ev3 = new JTextField(5);
-	        poke6ev3.setBounds(800, 456, 100, 25);
-	        add(poke6ev3);
-	        
-	        poke6ev2 = new JTextField(5);
-	        poke6ev2.setBounds(800, 434, 100, 25);
-	        add(poke6ev2);
-	        
-	        poke6ev4 = new JTextField(5);
-	        poke6ev4.setBounds(800, 478, 100, 25);
-	        add(poke6ev4);
-	        
-	        poke6ev5 = new JTextField(5);
-	        poke6ev5.setBounds(800, 500, 100, 25);
-	        add(poke6ev5);
-        
     }
 }

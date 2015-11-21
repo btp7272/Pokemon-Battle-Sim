@@ -743,6 +743,7 @@ public class BattleModel implements IBattleModel {
 				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.EXIT, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
+				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.CONTINUOUS, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 			}}
 		}
 		

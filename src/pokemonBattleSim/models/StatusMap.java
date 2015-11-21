@@ -10,7 +10,7 @@ import pokemonBattleSim.types.*;
 public class StatusMap 
 {
 	private static IBattleModel model = BattleModel.getInstance();
-	static Map < String, IStatus > statusMap;
+	public static Map < String, IStatus > statusMap;
 	
 	static
 	{
@@ -406,7 +406,7 @@ public class StatusMap
 						   if(degree == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(statusMap.get("Healthy"));
+							   wielder.setNonVolatileStatus("Healthy");
 							   active = false;
 							   wielder.setMaxAtk(originalAttack);
 							   return;

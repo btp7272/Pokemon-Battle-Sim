@@ -18,8 +18,8 @@ public interface IPokemon
 		public void setLevel(int lev);
 		public void setAbility(String abil);
 		public void setBaseAbility(String abil);
-		public void addVolatileStatus(IStatus status);
-		public void setNonVolatileStatus(IStatus status);
+		public void addVolatileStatus(String status);
+		public void setNonVolatileStatus(String status);
 		public void setBattleState(BattleState state);
 		
 		//para: number -6 to 6. The stage of the stat
@@ -80,7 +80,7 @@ public interface IPokemon
 		public IAbility getAbility();
 		public IAbility getBaseAbility();
 		public IStatus getNonVolatileStatus();
-		public ArrayList<IStatus> getVolatileStatus();
+		public ArrayList<String> getVolatileStatus();
 		public Move getMove(int i);
 		public BattleState getBattleState();
 }

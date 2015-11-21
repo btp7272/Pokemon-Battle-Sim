@@ -7,6 +7,7 @@ package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap;
 import pokemonBattleSim.models.AbilityMap.Stat;
+import pokemonBattleSim.models.StatusMap;
 
 import java.util.ArrayList;
 
@@ -28,14 +29,10 @@ public class Pokemon implements IPokemon
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
-	private IStatus nonVolatileStatus;
-	private ArrayList<IStatus> volatileStatus;
+	private String nonVolatileStatus;
+	private ArrayList<String> volatileStatus;
 	private BattleState battleState;
 	
-	public void setBaseAbility(String abil){this.baseAbility = abil;}
-	public void setAbility(String abil){this.ability = abil;}
-	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
-	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
 	
 	/*
 	 * Initial constructor. In this constructor the stats are set to the calculated,
@@ -155,9 +152,11 @@ public class Pokemon implements IPokemon
 	public void setSpAtkModifier(int mod){ changeAtk(mod - this.spAtkModifier);}
 	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
 	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
-	public void addVolatileStatus(IStatus status){this.volatileStatus.add(status);}
-	public void setNonVolatileStatus(IStatus status){this.nonVolatileStatus = status;}
+	public void addVolatileStatus(String status){this.volatileStatus.add(status);}
+	public void setNonVolatileStatus(String status){this.nonVolatileStatus = status;}
 	public void setBattleState(BattleState state){this.battleState = state;}
+	public void setBaseAbility(String abil){this.baseAbility = abil;}
+	public void setAbility(String abil){this.ability = abil;}
 	
 	public void setMaxAtk(int atk) {this.maxAtk = atk; this.setAtkModifier(this.getAtkModifier());}
 	public void setMaxDef(int def) {this.maxDef = def; this.setAtkModifier(this.getDefModifier());}
@@ -576,8 +575,10 @@ public class Pokemon implements IPokemon
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
 	public int getLevel(){return this.level;}
-	public IStatus getNonVolatileStatus(){return this.nonVolatileStatus;}
-	public ArrayList<IStatus> getVolatileStatus(){return this.volatileStatus;}
+	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
+	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
+	public IStatus getNonVolatileStatus(){return StatusMap.statusMap.get(this.nonVolatileStatus);}
+	public ArrayList<String> getVolatileStatus(){return this.volatileStatus;}
 	public BattleState getBattleState(){return this.getBattleState();}
 	
 	public Move getMove(int i)

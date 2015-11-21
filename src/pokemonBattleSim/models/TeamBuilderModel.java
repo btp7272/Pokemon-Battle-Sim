@@ -12,7 +12,7 @@ public class TeamBuilderModel {
 	
 	private Stack<String> buildLog;
 	
-	private ArrayList<IPokemonView> views;
+	private ArrayList<IView> views;
 	
 	public ArrayList<Pokemon> buildTeam(Pokemon one, Pokemon two, Pokemon three, Pokemon four, Pokemon five, Pokemon six)
 	{
@@ -31,9 +31,9 @@ public class TeamBuilderModel {
 	
 	public void notifyView()
 	{
-		for (IPokemonView view : this.views)
+		for (IView view : this.views)
 		{
-			IPokemonView safeView = view;
+			IView safeView = view;
 			if (safeView != null);
 			safeView.onViewNotify();
 		}

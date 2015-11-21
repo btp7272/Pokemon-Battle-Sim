@@ -25,7 +25,7 @@ import pokemonBattleSim.models.IBattleModel;
 import pokemonBattleSim.models.QueuedAction;
 import pokemonBattleSim.musicPlayer.AudioPlayer;
 
-public class BattleView extends JFrame implements IPokemonView{
+public class BattleView extends JFrame implements IView{
 	/**
 	 * 
 	 */

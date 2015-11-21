@@ -7,7 +7,7 @@ import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Weather;
-import pokemonBattleSim.views.IPokemonView;
+import pokemonBattleSim.views.IView;
 
 import static pokemonBattleSim.formulas.Formula.*;
 
@@ -56,7 +56,7 @@ public class BattleModel implements IBattleModel {
 	private boolean isGameover;
 	private int taskCounter;
 	
-	private ArrayList<IPokemonView> views;
+	private ArrayList<IView> views;
 	
 	// Synchronization Lock Objects: required for synchronized sections
 	private Object playerOneActiveLock 	= new Object();
@@ -317,18 +317,18 @@ public class BattleModel implements IBattleModel {
 		return actions;
 	}
 
-	public void registerView(IPokemonView view)
+	public void registerView(IView view)
 	{
-		IPokemonView safeView = view;
+		IView safeView = view;
 		if (safeView != null)
 		this.views.add(safeView);
 	}
 
 	public void notifyView()
 	{
-		for (IPokemonView view : this.views)
+		for (IView view : this.views)
 		{
-			IPokemonView safeView = view;
+			IView safeView = view;
 			if (safeView != null);
 			safeView.onViewNotify();
 		}

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import pokemonBattleSim.models.QueuedAction;
 import pokemonBattleSim.models.IBattleModel;
 
-public interface IPokemonView 
+public interface IView 
 {
 	public void onViewNotify ();
 	public void setPlayerOnePokemonName(String name);

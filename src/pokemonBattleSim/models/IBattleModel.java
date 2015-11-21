@@ -3,7 +3,7 @@ package pokemonBattleSim.models;
 import java.util.ArrayList;
 
 import pokemonBattleSim.types.Move;
-import pokemonBattleSim.views.IPokemonView;
+import pokemonBattleSim.views.IView;
 
 public interface IBattleModel {
 	// Methods for Controller: Registering actions
@@ -30,6 +30,6 @@ public interface IBattleModel {
 	public boolean isGameover();
 	
 	// Methods for View: Notification
-	public void registerView(IPokemonView view);
+	public void registerView(IView view);
 	public void notifyView();
 }

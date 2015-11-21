@@ -296,6 +296,23 @@ public class AbilityMap
 				   }
 			});
 			
+			abilityMap.put("Levitate", new IAbility()
+			{
+				   String name = "Levitate";
+				   String description = "This Pokemon is immune to Ground-type moves..";
+				   EventType trigger = EventType.PRE_DAMAGE;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(moveUsed.getType() == Type.GROUND && wielder == defender)
+						   Formula.ability = 0;
+						   
+					   return 1;
+				   }
+			});
+			
 			abilityMap.put("Cloud Nine", new IAbility()
 			{
 				   String name = "Cloud Nine";
@@ -505,7 +522,7 @@ public class AbilityMap
 						   @Override
 						   public void run()
 						   {
-							   if(model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+							   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 							   {
 								   timer.cancel();
 								   return;

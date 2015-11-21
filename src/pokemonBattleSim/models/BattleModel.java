@@ -521,10 +521,27 @@ public class BattleModel implements IBattleModel {
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
 		// calculate and apply the damage
-		int damage = Formula.calcDamage(attacker, defender, move, field);
-		//System.out.println("Defender HP before attack: " + defender.getHP());
-		defender.changeHP(damage);
-		//System.out.println("Defender HP after attack: " + defender.getHP());
+		//check for ability event of the attacker
+		if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, defender, field, attacker, defender, move))
+		{
+			//run method automatically executed
+		}
+		//check for ability event of the defender
+		else if(Event.abilityEvent(defender.getAbility(), EventType.PRE_ATTACK, defender, attacker, field, attacker, defender, move))
+		{
+			//run method automatically executed
+		}
+		else
+		{
+			int damage = Formula.calcDamage(attacker, defender, move, field);
+			defender.changeHP(damage);
+			//check for ability even of the defender
+			Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
+			//check for ability event of the attacker
+			if(Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move))
+			//check for ability event of the defender
+			Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
+		}
 		
 		
 		// log the move

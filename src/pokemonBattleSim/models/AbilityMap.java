@@ -329,17 +329,17 @@ public class AbilityMap
 					   if(wielder == defender)
 					   {
 						   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
-							   Formula.ability = 1 / (opponent.getAtk() / opponent.getMaxAtk());
+							   Formula.ability *= 1 / ((double)opponent.getAtk() / opponent.getMaxAtk());
 						   else
-							   Formula.ability = 1 / (opponent.getSpAtk() / opponent.getMaxSpAtk());
+							   Formula.ability *= 1 / ((double)opponent.getSpAtk() / opponent.getMaxSpAtk());
 						   return 1;
 					   }
 					   else
 					   {
 						   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
-							   Formula.ability = 1 / (opponent.getDef() / opponent.getMaxDef());
+							   Formula.ability *= 1 / ((double)opponent.getDef() / opponent.getMaxDef());
 						   else
-							   Formula.ability = 1 / (opponent.getSpDef() / opponent.getMaxSpDef());
+							   Formula.ability *= 1 / ((double)opponent.getSpDef() / opponent.getMaxSpDef());
 						   return 1;
 					   }
 				   }
@@ -356,8 +356,10 @@ public class AbilityMap
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(moveUsed.getType() == Type.GROUND && wielder == defender)
-						   Formula.ability = 0;
-						   
+					   {
+						   System.out.println(wielder.getNickName()+" 's Levitate");
+						   Formula.ability *= 0; 
+					   }
 					   return 1;
 				   }
 			});

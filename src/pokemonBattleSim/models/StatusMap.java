@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.types.*;
 
 public class StatusMap 
@@ -200,7 +201,7 @@ public class StatusMap
 		
 		statusMap.put("Flinch", new IStatus()
 		{
-				EventType trigger = EventType.NONE;
+				EventType trigger = EventType.POST_ATTACK;
 				String name = "Flinch";
 				String description = "Prevents a Pokémon from attacking.";
 				private int degree = 0;
@@ -231,6 +232,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 				public int getDegree(){return degree;}
+				private boolean active = false;
 				public void setDegree(int deg)
 				{
 					//not applicable
@@ -241,14 +243,189 @@ public class StatusMap
 				{
 					forcedMove = move;
 				}
-				
+					
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
+					Timer timer = new Timer();
+					class SetTimer extends TimerTask
+					{
+					   @Override
+					   public void run()
+					   {
+						   timer.cancel();
+						   wielder.getVolatileStatus().remove(statusMap.get("Encore"));
+						   active = false;
+						   return;
+					   }
+			     	}
+					
+					if(!active)
+					{
+						TimerTask task = new SetTimer();
+						timer.schedule(task,30000); //3 turns
+						active = true;
+					}
+					
 					IPokemon defender = model.getOpponentPokemon(wielder.getPlayerID());
-					int damage = 1; //= calcDamage(wielder, defender, forcedMove, field);
+					int damage = Formula.calcDamage(wielder, defender, forcedMove, model.getField());
 					//add events
 					defender.changeHP(damage);
 					return 1;
+				}
+		});
+		
+		statusMap.put("Protection1", new IStatus()
+		{
+				EventType trigger = EventType.CONTINUOUS;
+				String name = "Protection";
+				String description = "A Pokémon that uses Protect or Detect will be impervious to attacks and negative status moves targeting them that turn except; "
+						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, the Pokémon's protection is removed for the rest of the turn.";
+				private int degree = 0;
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				public int getDegree(){return degree;}
+				private boolean active = false;
+				public void setDegree(int deg)
+				{
+					degree += deg;
+					if(degree > 100)
+						degree %= 100;
+				}
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {
+						   timer.cancel();
+						   active = false;
+						   wielder.getVolatileStatus().remove(statusMap.get("Protection1"));
+						   wielder.getVolatileStatus().remove(statusMap.get("Protection2"));
+						   return;
+					   }
+				   }
+					   
+				   if(!active)
+				   {
+					   TimerTask task = new SetTimer();
+					   timer.schedule(task, 10000);
+					   active = true;
+				   }
+				   return 1;
+				}
+		});
+		
+		statusMap.put("Protection2", new IStatus()
+		{
+				EventType trigger = EventType.PRE_ATTACK;
+				String name = "Protection";
+				String description = "A Pokémon that uses Protect or Detect will be impervious to attacks and negative status moves targeting them that turn except; "
+						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, the Pokémon's protection is removed for the rest of the turn.";
+				private int degree = -1;
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				public int getDegree(){return degree;}
+				public void setDegree(int deg)
+				{
+					//not applicable
+				}
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
+				    {
+				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
+						int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+						//add events
+						wielder.changeHP(damage);
+						wielder.getVolatileStatus().remove(statusMap.get("Protection1"));
+						wielder.getVolatileStatus().remove(statusMap.get("Protection2"));
+				    }
+				    else if(moveUsed.getName().equals("Hyperspace Fury"))
+				    {
+				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
+						int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+						//add events
+						wielder.changeHP(damage);
+				    }
+				    else
+				    	System.out.println(wielder.getNickName()+" protected itself!");
+					return 1;
+				}
+		});
+		
+		statusMap.put("Burn", new IStatus()
+		{
+				EventType trigger = EventType.CONTINUOUS;
+				String name = "Burn";
+				String description = "The burn condition halves damage dealt by a Pokémon's physical moves (except for Pokémon with the Guts Ability, where this condition raises Attack by 50%). "
+						+ "Additionally, at the end of a turn, the Pokémon loses 1/8 its maximum hit points.";
+				private int degree = 0;
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				public int getDegree(){return degree;}
+				public void setDegree(int deg)
+				{
+					degree += deg;
+					if(degree > 100)
+						degree = 100;
+				}
+				
+				private int originalAttack;
+				public void setOriginalAttack(int baseAtk)
+				{
+					originalAttack = baseAtk;
+				}
+				
+				boolean active = false;
+				
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {
+						   if(wielder.getHP() == 0)
+						   {
+							   timer.cancel();
+							   active = false;
+						   }
+						   
+						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   {
+							   timer.cancel();
+							   active = false;
+						   }
+						   
+						   if(degree == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(statusMap.get("Healthy"));
+							   active = false;
+							   wielder.setMaxAtk(originalAttack);
+							   return;
+						   }
+						   wielder.setMaxAtk((int)( (double)originalAttack - (((double)originalAttack)/2) * ((double)degree/100)) );
+						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)degree/100)) );
+						   return;
+					   }
+				   }
+				   
+				   if(!active && degree > 0)
+				   {
+					   TimerTask task = new SetTimer();
+				   	   timer.schedule(task, 0, 10000);
+				   	   active = true;
+				   	   originalAttack = wielder.getMaxAtk();
+				   }
+					   
+				   return 1;
 				}
 		});
 	}

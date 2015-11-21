@@ -119,7 +119,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   System.out.println(wielder.getNickName() + "'s Simple");
+					   System.out.println(wielder.getNickName() + "'s Contrary");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
 						   wielder.changeAtk(- statChangeQueue[Stat.ATTACK.getMask()]);
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] != 0)
@@ -259,7 +259,7 @@ public class AbilityMap
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
 						   System.out.println(wielder.getNickName() + "'s Mummy");
-						   opponent.setAbility(abilityMap.get("Mummy"));
+						   opponent.setAbility("Mummy");
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
 					   moveUsed = null;

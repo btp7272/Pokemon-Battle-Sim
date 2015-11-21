@@ -16,7 +16,8 @@ public interface IPokemon
 		public void setWeight(double newWeight);
 		public void setGender(Gender gen);
 		public void setLevel(int lev);
-		public void setAbility(IAbility abil);
+		public void setAbility(String abil);
+		public void setBaseAbility(String abil);
 		public void addVolatileStatus(IStatus status);
 		public void setNonVolatileStatus(IStatus status);
 		public void setBattleState(BattleState state);
@@ -40,7 +41,12 @@ public interface IPokemon
 		public void resetSpeed();
 		public void resetVolatileStatus();
 		
-		//void setAbility(Ability newAbility){ ability = newAbility;}
+		public void setMaxAtk(int atk);
+		public void setMaxDef(int def);
+		public void setMaxSpAtk(int spatk);
+		public void setMaxSpDef(int spdef);
+		public void setMaxSpeed(int spd);
+		
 		public void setMove(Move newMove, int moveNum);
 		public void setType(Type newType, int typeNum);
 

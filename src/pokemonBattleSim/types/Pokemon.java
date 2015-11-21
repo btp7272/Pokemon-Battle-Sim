@@ -5,6 +5,7 @@
  */
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.models.AbilityMap;
 import pokemonBattleSim.models.AbilityMap.Stat;
 
 import java.util.ArrayList;
@@ -23,13 +24,18 @@ public class Pokemon implements IPokemon
 	private int speed, maxSpeed;
 	private int level;
 	private double weight, baseWeight;
-	private IAbility ability, baseAbility;
+	private String ability, baseAbility;
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
 	private IStatus nonVolatileStatus;
 	private ArrayList<IStatus> volatileStatus;
 	private BattleState battleState;
+	
+	public void setBaseAbility(String abil){this.baseAbility = abil;}
+	public void setAbility(String abil){this.ability = abil;}
+	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
+	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
 	
 	/*
 	 * Initial constructor. In this constructor the stats are set to the calculated,
@@ -149,10 +155,15 @@ public class Pokemon implements IPokemon
 	public void setSpAtkModifier(int mod){ changeAtk(mod - this.spAtkModifier);}
 	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
 	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
-	public void setAbility(IAbility abil){ this.ability = abil;}
 	public void addVolatileStatus(IStatus status){this.volatileStatus.add(status);}
 	public void setNonVolatileStatus(IStatus status){this.nonVolatileStatus = status;}
 	public void setBattleState(BattleState state){this.battleState = state;}
+	
+	public void setMaxAtk(int atk) {this.maxAtk = atk; this.setAtkModifier(this.getAtkModifier());}
+	public void setMaxDef(int def) {this.maxDef = def; this.setAtkModifier(this.getDefModifier());}
+	public void setMaxSpAtk(int spatk) {this.maxSpAtk = spatk; this.setAtkModifier(this.getSpAtkModifier());}
+	public void setMaxSpDef(int spdef) {this.maxSpDef = spdef; this.setAtkModifier(this.getSpDefModifier());}
+	public void setMaxSpeed(int spd) {this.maxSpeed = spd; this.setAtkModifier(this.getSpeedModifier());}
 	
 	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
 	{
@@ -182,10 +193,12 @@ public class Pokemon implements IPokemon
 		if(this.atkModifier > 6)
 		{
 			this.atkModifier = 6;
+			System.out.println("Failed");
 		}
 		if(this.atkModifier < -6)
 		{
 			this.atkModifier = -6;
+			System.out.println("Failed");
 		}
 		switch(this.atkModifier) 
 		{
@@ -203,18 +216,22 @@ public class Pokemon implements IPokemon
 				break;
 			case -2 :
 				this.atk = (int)(this.maxAtk * (2.0/4));
+				System.out.println("Attack Fell - 2");
 				break;
 			case -1 : 
 				this.atk = (int)(this.maxAtk * (2.0/3));
+				System.out.println("Attack Fell - 1");
 				break;
 			case 0 :
 				this.atk = (int)(this.maxAtk * (2.0/2));
 				break;
 			case 1 :
 				this.atk = (int)(this.maxAtk * (3.0/2));
+				System.out.println("Attack Rose + 1");
 				break;
 			case 2 :
 				this.atk = (int)(this.maxAtk * (4.0/2));
+				System.out.println("Attack Rose + 1");
 				break;
 			case 3 : 
 				this.atk = (int)(this.maxAtk * (5.0/2));
@@ -559,8 +576,6 @@ public class Pokemon implements IPokemon
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
 	public int getLevel(){return this.level;}
-	public IAbility getAbility(){return this.ability;}
-	public IAbility getBaseAbility(){return this.baseAbility;}
 	public IStatus getNonVolatileStatus(){return this.nonVolatileStatus;}
 	public ArrayList<IStatus> getVolatileStatus(){return this.volatileStatus;}
 	public BattleState getBattleState(){return this.getBattleState();}

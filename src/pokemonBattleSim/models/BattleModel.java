@@ -1,6 +1,8 @@
 package pokemonBattleSim.models;
 
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.types.Event;
+import pokemonBattleSim.types.EventType;
 import pokemonBattleSim.types.IField;
 import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.IPokemonTrainer;
@@ -27,6 +29,20 @@ public class BattleModel implements IBattleModel {
 	 */
 	static BattleModel model;
 	static Object owner;
+	static IField field = new IField() {
+		
+		private Weather weatherCondition;
+
+		@Override
+		public Weather setWeather(Weather weather) {
+			weatherCondition = weather;
+			return weatherCondition;
+		}
+
+		@Override
+		public Weather getWeather() {
+			return weatherCondition;
+		}};
 	
 	public static void CreateInstance (Object owner, IPokemonTrainer playerOne, IPokemonTrainer playerTwo) throws Exception
 	{
@@ -284,6 +300,11 @@ public class BattleModel implements IBattleModel {
 			throw new IllegalArgumentException ("playerID does not match active players");
 	}
 	
+	public IField getField()
+	{
+		return field;
+	}
+	
 	public ArrayList<String> getMoveData (int playerID)
 	{
 		ArrayList<String> moveNames = new ArrayList<>();
@@ -500,17 +521,7 @@ public class BattleModel implements IBattleModel {
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
 		// calculate and apply the damage
-		int damage = Formula.calcDamage(attacker, defender, move, new IField() {
-
-			@Override
-			public Weather setWeather(Weather weather) {
-				return null;
-			}
-
-			@Override
-			public Weather getWeather() {
-				return null;
-			}});
+		int damage = Formula.calcDamage(attacker, defender, move, field);
 		//System.out.println("Defender HP before attack: " + defender.getHP());
 		defender.changeHP(damage);
 		//System.out.println("Defender HP after attack: " + defender.getHP());
@@ -712,6 +723,7 @@ public class BattleModel implements IBattleModel {
 				}
 				
 				this.source.setActiveTeamMember(swapIndex);
+				Event.abilityEvent(AbilityMap.abilityMap.get("Intimidate"), EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 			}}
 		}
 		

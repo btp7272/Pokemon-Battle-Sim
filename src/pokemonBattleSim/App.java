@@ -73,6 +73,7 @@ public class App {
 		for (int i = 0; i < 6; i++)
 		{
 			member = new Pokemon(SpeciesMap.speciesMap.get("Pikachu"),"Pikablooooo",moves7,IVs,EVs,100,Nature.Timid);
+			member.setAbility("Levitate");
 			computerTeam.add(member);
 		}
 		

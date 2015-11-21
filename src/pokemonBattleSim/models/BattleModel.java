@@ -264,6 +264,26 @@ public class BattleModel implements IBattleModel {
 			throw new IllegalArgumentException ("playerID does not match active players");
 	}
 	
+	public IPokemon getPlayerPokemon ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerOne.getActiveTeamMember();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerTwo.getActiveTeamMember();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
+	public IPokemon getOpponentPokemon ( int playerID )
+	{
+		if (playerID == this.playerOne.getTrainerID())
+			return this.playerTwo.getActiveTeamMember();
+		else if (playerID == this.playerTwo.getTrainerID())
+			return this.playerOne.getActiveTeamMember();
+		else 
+			throw new IllegalArgumentException ("playerID does not match active players");
+	}
+	
 	public ArrayList<String> getMoveData (int playerID)
 	{
 		ArrayList<String> moveNames = new ArrayList<>();

@@ -2,6 +2,7 @@ package pokemonBattleSim.models;
 
 import java.util.ArrayList;
 
+import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.views.IView;
 
@@ -24,6 +25,8 @@ public interface IBattleModel {
 	public String getOpponentPokemonName ( int playerID );
 	public int getPlayerPokemonHP ( int playerID );
 	public int getOpponentPokemonHP ( int playerID );
+	public IPokemon getPlayerPokemon ( int playerID );
+	public IPokemon getOpponentPokemon ( int playerID );
 	public ArrayList<String> getMoveData ( int playerID );
 	public ArrayList<String> getLogData ();
 	public ArrayList<QueuedAction> getTasks ( int playerID );

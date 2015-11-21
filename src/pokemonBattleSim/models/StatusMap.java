@@ -38,7 +38,7 @@ public class StatusMap
 				EventType trigger = EventType.PRE_ATTACK;
 				String name = "Confusion";
 				String description = "The confused condition causes a Pokémon to hurt itself in its confusion 50% of the time. The damage is done as if the Pokémon attacked itself with a 40-power typeless physical attack.";
-				private int degree;
+				private int degree = 0;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
@@ -200,9 +200,32 @@ public class StatusMap
 		
 		statusMap.put("Flinch", new IStatus()
 		{
-				EventType trigger = EventType.HP_CHANGE;
+				EventType trigger = EventType.NONE;
 				String name = "Flinch";
 				String description = "Prevents a Pokémon from attacking.";
+				private int degree = 0;
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				public int getDegree(){return degree;}
+				public void setDegree(int deg)
+				{
+					degree += deg;
+					if(degree > 100)
+						degree %= 100;
+				}
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				    //pause the opposing pokemon's move queue
+					return 1;
+				}
+		});
+		
+		statusMap.put("Encore", new IStatus()
+		{
+				EventType trigger = EventType.PRE_ATTACK;
+				String name = "Encore";
+				String description = "Forces the Pokémon to repeat its last attack for 3 turns.";
 				private int degree = -1;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
@@ -212,9 +235,19 @@ public class StatusMap
 				{
 					//not applicable
 				}
+				
+				private Move forcedMove;
+				public void setForcedMove(Move move)
+				{
+					forcedMove = move;
+				}
+				
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
-				    System.out.println(wielder.getNickName()+" is prevented from healing!");
+					IPokemon defender = model.getOpponentPokemon(wielder.getPlayerID());
+					int damage = 1; //= calcDamage(wielder, defender, forcedMove, field);
+					//add events
+					defender.changeHP(damage);
 					return 1;
 				}
 		});

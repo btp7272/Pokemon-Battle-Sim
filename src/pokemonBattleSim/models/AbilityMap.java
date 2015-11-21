@@ -246,6 +246,38 @@ public class AbilityMap
 				   }
 			});
 			
+			abilityMap.put("Sand Stream", new IAbility()
+			{
+				   String name = "Sand Stream";
+				   String description = "Summons Sandstorm.";
+				   EventType trigger = EventType.ENTRY;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(field.getWeather() == Weather.HEAVY_RAIN)
+						   return 1;
+					   else if(field.getWeather() == Weather.HEAVY_RAIN_NO_EFFECT)
+						   return 1;
+					   else if(field.getWeather() == Weather.INTENSE_SUN)
+						   return 1;
+					   else if(field.getWeather() == Weather.INTENSE_SUN_NO_EFFECT)
+						   return 1;
+					   else if(field.getWeather() == Weather.SANDSTORM)
+						   return 1;
+					   else if(field.getWeather() == Weather.SANDSTORM_NO_EFFECT)
+						   return 1;
+					   
+					   System.out.println(wielder.getNickName() + "'s Sand Stream");
+					   if(opponent.getAbility().getName().equals("Cloud Nine"))
+							 field.setWeather(Weather.SANDSTORM_NO_EFFECT);
+						 else
+							 field.setWeather(Weather.SANDSTORM);
+					   return 1;
+				   }
+			});
+			
 			abilityMap.put("Mummy", new IAbility()
 			{
 				   String name = "Mummy";
@@ -262,7 +294,24 @@ public class AbilityMap
 						   opponent.setAbility("Mummy");
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
-					   moveUsed = null;
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Iron Barbs", new IAbility()
+			{
+				   String name = "Iron Barbs";
+				   String description = "Deals 1/8 recoil damage when the opponent makes contact.";
+				   EventType trigger = EventType.POST_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
+					   {
+						   System.out.println(wielder.getNickName() + "'s Iron Barbs");
+					   }
 					   return 1;
 				   }
 			});
@@ -533,6 +582,20 @@ public class AbilityMap
 					   }
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task, 10000, 10000);
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Poison Heal", new IAbility()
+			{
+				   String name = "Poison Heal";
+				   String description = "Heals 1/8 of max HP per turn when poisoned.";
+				   EventType trigger = EventType.CONTINUOUS;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
 					   return 1;
 				   }
 			});

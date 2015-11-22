@@ -7,9 +7,10 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.Timer;
+//import java.util.TimerTask;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -177,7 +178,33 @@ public class BattleView extends JFrame implements IView{
 			@Override
 			public void run() {
 				AudioPlayer player = new AudioPlayer();
-				String resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav").getFile();
+				Random ran = new Random(); 
+		        int songID = ran.nextInt(12);
+		        String resource;
+		        if (songID == 0)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();
+		        else if (songID == 1)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrain.wav").getFile();
+		        else if (songID == 2)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav").getFile();
+		        else if (songID == 3)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav").getFile();
+		        else if (songID == 4)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav").getFile();
+		        else if (songID == 5)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav").getFile();
+		        else if (songID == 6)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav").getFile();
+		        else if (songID == 7)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/SilphCo.wav").getFile();
+		        else if (songID == 8)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav").getFile();
+		        else if (songID == 9)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamPlasma.wav").getFile();
+		        else if (songID == 10)
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYWildBattleCut.wav").getFile();
+		        else //songID is 11
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav").getFile();
 				System.out.println(resource);
 				player.play(resource);
 			}

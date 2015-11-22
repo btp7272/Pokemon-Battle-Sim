@@ -29,8 +29,8 @@ public class Pokemon implements IPokemon
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
-	private String nonVolatileStatus;
-	private ArrayList<String> volatileStatus;
+	private StatusContainer nonVolatileStatus;
+	private ArrayList<StatusContainer> volatileStatus;
 	private BattleState battleState;
 	
 	
@@ -152,8 +152,8 @@ public class Pokemon implements IPokemon
 	public void setSpAtkModifier(int mod){ changeAtk(mod - this.spAtkModifier);}
 	public void setSpDefModifier(int mod){ changeAtk(mod - this.spDefModifier);}
 	public void setSpeedModifier(int mod){ changeAtk(mod - this.speedModifier);}
-	public void addVolatileStatus(String status){this.volatileStatus.add(status);}
-	public void setNonVolatileStatus(String status){this.nonVolatileStatus = status;}
+	public void addVolatileStatus(StatusContainer status){this.volatileStatus.add(status);}
+	public void setNonVolatileStatus(StatusContainer status){this.nonVolatileStatus = status;}
 	public void setBattleState(BattleState state){this.battleState = state;}
 	public void setBaseAbility(String abil){this.baseAbility = abil;}
 	public void setAbility(String abil){this.ability = abil;}
@@ -577,9 +577,43 @@ public class Pokemon implements IPokemon
 	public int getLevel(){return this.level;}
 	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
 	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
-	public IStatus getNonVolatileStatus(){return StatusMap.statusMap.get(this.nonVolatileStatus);}
-	public ArrayList<String> getVolatileStatus(){return this.volatileStatus;}
+	public IStatus getNonVolatileStatus(){return StatusMap.statusMap.get(this.nonVolatileStatus.getName());}
+	public ArrayList<StatusContainer> getVolatileStatus(){return this.volatileStatus;}
 	public BattleState getBattleState(){return this.getBattleState();}
+	
+	//Gets the StatusContainer of a specified volatile status. Returns null if not found.
+	public StatusContainer getVolatileStatus(String name)
+	{
+		for(int i = 0; i < this.volatileStatus.size(); i++ )
+		{
+			if(name.equals(volatileStatus.get(i)))
+				return volatileStatus.get(i);
+		}
+		return null;
+	}
+	
+	public boolean removeVolatileStatus(String name)
+	{
+		for(int i = 0; i < this.volatileStatus.size(); i++ )
+		{
+			if(name.equals(volatileStatus.get(i)))
+			{
+				volatileStatus.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean hasVolatileStatus(String name)
+	{
+		for(int i = 0; i < this.volatileStatus.size(); i++ )
+		{
+			if(name.equals(volatileStatus.get(i)))
+				return true;
+		}
+		return false;
+	}
 	
 	public Move getMove(int i)
 	{

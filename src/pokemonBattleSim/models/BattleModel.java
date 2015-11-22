@@ -538,7 +538,7 @@ public class BattleModel implements IBattleModel {
 			//check for ability even of the defender
 			Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
 			//check for ability event of the attacker
-			if(Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move))
+			//if(Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move))
 			//check for ability event of the defender
 			Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
 		}

@@ -184,7 +184,7 @@ public class BattleView extends JFrame implements IView{
 		        if (songID == 0)
 		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();
 		        else if (songID == 1)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrain.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrainV2.wav").getFile();
 		        else if (songID == 2)
 		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav").getFile();
 		        else if (songID == 3)

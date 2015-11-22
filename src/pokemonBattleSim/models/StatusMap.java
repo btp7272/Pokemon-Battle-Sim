@@ -87,7 +87,7 @@ public class StatusMap
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task, 10000, 10000);
 					   wielder.getVolatileStatus("Curse1").setActiveStatus(true);
-					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Curse2"));
+					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Curse2",null));
 				   }
 				   return 1;
 				}
@@ -138,7 +138,7 @@ public class StatusMap
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task,50000); //5 turns
 					   wielder.getVolatileStatus("Heal Block").setActiveStatus(true);
-					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Heal Block2"));
+					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Heal Block2",null));
 				   }
 				   return 1;
 				}
@@ -166,20 +166,15 @@ public class StatusMap
 				EventType trigger = EventType.POST_ATTACK;
 				String name = "Flinch";
 				String description = "Prevents a Pokémon from attacking.";
-				private int degree = 0;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public int getDegree(){return degree;}
-				public void setDegree(int deg)
-				{
-					degree += deg;
-					if(degree > 100)
-						degree %= 100;
-				}
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
-				    //pause the opposing pokemon's move queue
+				    if(wielder.getVolatileStatus("Flinch").getDegreeResetStatus())
+				    {
+				    	//push dead space to the opponent's queue
+				    }
 					return 1;
 				}
 		});
@@ -189,22 +184,9 @@ public class StatusMap
 				EventType trigger = EventType.PRE_ATTACK;
 				String name = "Encore";
 				String description = "Forces the Pokémon to repeat its last attack for 3 turns.";
-				private int degree = -1;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public int getDegree(){return degree;}
-				private boolean active = false;
-				public void setDegree(int deg)
-				{
-					//not applicable
-				}
-				
-				private Move forcedMove;
-				public void setForcedMove(Move move)
-				{
-					forcedMove = move;
-				}
 					
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
@@ -215,23 +197,38 @@ public class StatusMap
 					   public void run()
 					   {
 						   timer.cancel();
-						   wielder.getVolatileStatus().remove("Encore");
-						   active = false;
+						   wielder.removeVolatileStatus("Encore");
 						   return;
 					   }
 			     	}
 					
-					if(!active)
+					if(wielder.getVolatileStatus("Encore").getActiveStatus() == false)
 					{
 						TimerTask task = new SetTimer();
 						timer.schedule(task,30000); //3 turns
-						active = true;
+						wielder.getVolatileStatus("Encore").setActiveStatus(true);
 					}
-					
+
 					IPokemon defender = model.getOpponentPokemon(wielder.getPlayerID());
-					int damage = Formula.calcDamage(wielder, defender, forcedMove, model.getField());
-					//add events
-					defender.changeHP(damage);
+					if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, defender, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
+					{
+						//run method automatically executed
+					}
+					//check for ability event of the defender
+					else if(Event.abilityEvent(defender.getAbility(), EventType.PRE_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
+					{
+						//run method automatically executed
+					}
+					else
+					{
+						int damage = Formula.calcDamage(wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove(), model.getField());
+						defender.changeHP(damage);
+						//check for ability even of the defender
+						Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
+						//check for ability event of the defender
+						Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
+					}
+
 					return 1;
 				}
 		});
@@ -368,7 +365,7 @@ public class StatusMap
 						   if(degree == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy"));
+							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
 							   active = false;
 							   wielder.setMaxAtk(originalAttack);
 							   return;

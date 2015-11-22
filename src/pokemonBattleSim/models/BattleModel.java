@@ -554,6 +554,7 @@ public class BattleModel implements IBattleModel {
 		if (attacker.getHP() <=0 )
 		{
 			Event.abilityEvent(attacker.getAbility(), EventType.KO, attacker, defender, field, attacker, defender, move);
+			Event.abilityEvent(defender.getAbility(), EventType.KO, defender, attacker, field, attacker, defender, move);
 			int availablePokemon = 0;
 			for (int i = 0; i < 6; i++)
 			{
@@ -569,6 +570,7 @@ public class BattleModel implements IBattleModel {
 		if (defender.getHP() <=0 )
 		{
 			Event.abilityEvent(defender.getAbility(), EventType.KO, defender, attacker, field, attacker, defender, move);
+			Event.abilityEvent(attacker.getAbility(), EventType.KO, attacker, defender, field, attacker, defender, move);
 			int availablePokemon = 0;
 			for (int i = 0; i < 6; i++)
 			{

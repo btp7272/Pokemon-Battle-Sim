@@ -159,8 +159,8 @@ public class StatusMap
 					   public void run()
 					   {
 						   timer.cancel();
-						   wielder.getVolatileStatus().remove(statusMap.get("Heal Block1"));
-						   wielder.getVolatileStatus().remove(statusMap.get("Heal Block2"));
+						   wielder.getVolatileStatus().remove("Heal Block1");
+						   wielder.getVolatileStatus().remove("Heal Block2");
 						   return;
 					   }
 				   }
@@ -253,7 +253,7 @@ public class StatusMap
 					   public void run()
 					   {
 						   timer.cancel();
-						   wielder.getVolatileStatus().remove(statusMap.get("Encore"));
+						   wielder.getVolatileStatus().remove("Encore");
 						   active = false;
 						   return;
 					   }
@@ -302,8 +302,8 @@ public class StatusMap
 					   {
 						   timer.cancel();
 						   active = false;
-						   wielder.getVolatileStatus().remove(statusMap.get("Protection1"));
-						   wielder.getVolatileStatus().remove(statusMap.get("Protection2"));
+						   wielder.getVolatileStatus().remove("Protection1");
+						   wielder.getVolatileStatus().remove("Protection2");
 						   return;
 					   }
 				   }
@@ -341,8 +341,8 @@ public class StatusMap
 						int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
 						//add events
 						wielder.changeHP(damage);
-						wielder.getVolatileStatus().remove(statusMap.get("Protection1"));
-						wielder.getVolatileStatus().remove(statusMap.get("Protection2"));
+						wielder.getVolatileStatus().remove("Protection1");
+						wielder.getVolatileStatus().remove("Protection2");
 				    }
 				    else if(moveUsed.getName().equals("Hyperspace Fury"))
 				    {

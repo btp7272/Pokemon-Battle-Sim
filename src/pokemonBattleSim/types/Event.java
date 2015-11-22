@@ -1,5 +1,7 @@
 package pokemonBattleSim.types;
 
+import pokemonBattleSim.models.StatusMap;
+
 public class Event 
 {
 	public static Boolean abilityEvent(IAbility ability, EventType type, IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
@@ -21,9 +23,9 @@ public class Event
 		
 		for(int i = 0; i < wielder.getVolatileStatus().size(); i++)
 		{
-			if(wielder.getVolatileStatus().get(i).getEventTrigger().getMask() == type.getMask())
+			if(StatusMap.statusMap.get(wielder.getVolatileStatus().get(i)).getEventTrigger().getMask() == type.getMask())
 			{
-				wielder.getVolatileStatus().get(i).run(wielder, type, moveUsed);
+				StatusMap.statusMap.get(wielder.getVolatileStatus().get(i)).run(wielder, type, moveUsed);
 				return true;
 			}
 		}

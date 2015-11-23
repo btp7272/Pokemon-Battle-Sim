@@ -642,6 +642,6 @@ public class Pokemon implements IPokemon
 	
 	public void activeNonVolatileStatus()
 	{
-		this.getNonVolatileStatus().run(this, EventType.POST_STATUS_CHANGE, null);
+		this.getNonVolatileStatus().run(this, null);
 	}
 }

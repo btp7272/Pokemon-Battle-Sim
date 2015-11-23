@@ -23,7 +23,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 					return 1;
 				}
@@ -37,7 +37,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 					double damage;
 			        double numerator, denomenator;
@@ -63,7 +63,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -87,8 +87,9 @@ public class StatusMap
 				   {
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task, 10000, 10000);
-					   wielder.getVolatileStatus("Curse1").setActiveStatus(true);
-					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Curse2",null));
+					   wielder.getVolatileStatus("Curse").setActiveStatus(true);
+					   wielder.addVolatileStatus(new StatusContainer(-1,-1,"Curse2",null));
+					   wielder.getVolatileStatus("Curse2").setActiveStatus(true);
 				   }
 				   return 1;
 				}
@@ -102,7 +103,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				    System.out.println(wielder.getNickName()+" is prevented from healing!");
 					return 1;
@@ -119,7 +120,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -139,7 +140,8 @@ public class StatusMap
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task,50000); //5 turns
 					   wielder.getVolatileStatus("Heal Block").setActiveStatus(true);
-					   wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Heal Block2",null));
+					   wielder.addVolatileStatus(new StatusContainer(-1,-1,"Heal Block2",null));
+					   wielder.getVolatileStatus("Heal Block2").setActiveStatus(true);
 				   }
 				   return 1;
 				}
@@ -155,7 +157,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				    System.out.println(wielder.getNickName()+" is prevented from healing!");
 					return 1;
@@ -170,7 +172,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				    if(wielder.getVolatileStatus("Flinch").getDegreeResetStatus())
 				    {
@@ -189,7 +191,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 					
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 					Timer timer = new Timer();
 					class SetTimer extends TimerTask
@@ -243,7 +245,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 					Timer timer = new Timer();
 					class SetTimer extends TimerTask
@@ -263,7 +265,8 @@ public class StatusMap
 						TimerTask task = new SetTimer();
 						timer.schedule(task,10000); //3 turns
 						wielder.getVolatileStatus("Protection").setActiveStatus(true);
-						wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Protection2",null));
+						wielder.addVolatileStatus(new StatusContainer(-1,-1,"Protection2",null));
+						wielder.getVolatileStatus("Protection").setActiveStatus(true);
 					}
 					return 1;
 				}
@@ -278,7 +281,7 @@ public class StatusMap
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
 				    {
@@ -340,7 +343,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 				
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -363,7 +366,7 @@ public class StatusMap
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
 							   return;
 						   }
@@ -396,7 +399,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 				
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -419,7 +422,7 @@ public class StatusMap
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   wielder.setMaxSpeed(wielder.getNonVolatileStatusContainer().getOriginalStat());
 							   return;
 						   }
@@ -452,7 +455,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 				
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -475,7 +478,7 @@ public class StatusMap
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   return;
 						   }
 						   
@@ -506,7 +509,7 @@ public class StatusMap
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
 				
-				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				public double run (IPokemon wielder,  Move moveUsed)
 				{
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
@@ -529,7 +532,7 @@ public class StatusMap
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   return;
 						   }
 						   

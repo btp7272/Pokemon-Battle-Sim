@@ -36,8 +36,8 @@ public class App {
 		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Solar Beam"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
 		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Charizard"),"Confused",moves,IVs,EVs,100,Nature.Modest);
 		member.setAbility("Drought");
-		member.addVolatileStatus(new StatusContainer(true,-1,100,"Confusion",null));
-		member.setNonVolatileStatus(new StatusContainer(false,-1,-1,"Healthy",null));
+		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
+		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 		playerTeam.add(member);
 		
 		//CREATE TYRANITAR
@@ -46,7 +46,7 @@ public class App {
 		Move[] moves2 = {MoveMap.moveMap.get("Crunch"),MoveMap.moveMap.get("Pursuit"),MoveMap.moveMap.get("Stone Edge"),MoveMap.moveMap.get("Earthquake")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly);
 		member.setAbility("Sand Stream");
-		member.setNonVolatileStatus(new StatusContainer(false,member.getMaxAtk(),100,"Burn",null));
+		member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 		playerTeam.add(member);
 		
 		//CREATE SLOWBRO
@@ -54,8 +54,8 @@ public class App {
 		Move[] moves3 = {MoveMap.moveMap.get("Shadow Ball"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold);
 		member.setAbility("Regenerator");
-		member.addVolatileStatus(new StatusContainer(false,-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
-		member.setNonVolatileStatus(new StatusContainer(false,-1,-1,"Healthy",null));
+		member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
+		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 		playerTeam.add(member);
 		
 		//CREATE FERROTHRON
@@ -64,7 +64,7 @@ public class App {
 		Move[] moves4 = {MoveMap.moveMap.get("Stealth Rock"),MoveMap.moveMap.get("Leech Seed"),MoveMap.moveMap.get("Power Whip"),MoveMap.moveMap.get("Gyro Ball")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Badly Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed);
 		member.setAbility("Iron Barbs");
-		member.setNonVolatileStatus(new StatusContainer(false,-1,1,"Badly Poison",null));
+		member.setNonVolatileStatus(new StatusContainer(-1,1,"Badly Poison",null));
 		playerTeam.add(member);
 		
 		//CREATE LATIOS
@@ -72,7 +72,7 @@ public class App {
 		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid);
 		member.setAbility("Levitate");
-		member.setNonVolatileStatus(new StatusContainer(false,member.getMaxSpeed(),100,"Paralysis",null));
+		member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
 		playerTeam.add(member);
 		
 		//CREATE GLISCOR
@@ -80,7 +80,7 @@ public class App {
 		Move[] moves6 = {MoveMap.moveMap.get("Swords Dance"),MoveMap.moveMap.get("Earthquake"),MoveMap.moveMap.get("Knock Off"),MoveMap.moveMap.get("Roost")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful);
 		member.setAbility("Poison Heal");
-		member.setNonVolatileStatus(new StatusContainer(false,-1,1,"Poison",null));
+		member.setNonVolatileStatus(new StatusContainer(-1,1,"Poison",null));
 		playerTeam.add(member);
 		
 		Move[] moves7 = {MoveMap.moveMap.get("Thunderbolt"),MoveMap.moveMap.get("Surf"),MoveMap.moveMap.get("Shadowball"),MoveMap.moveMap.get("Toxic")};
@@ -89,7 +89,7 @@ public class App {
 		{
 			member = new Pokemon(SpeciesMap.speciesMap.get("Pikachu"),"Pikablooooo",moves7,IVs,EVs,100,Nature.Timid);
 			member.setAbility("Levitate");
-			member.setNonVolatileStatus(new StatusContainer(false,-1,-1,"Healthy",null));
+			member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 			computerTeam.add(member);
 		}
 		

@@ -7,9 +7,9 @@ public class StatusContainer
 	private String name;
 	private Move forcedMove;
 	
-	public StatusContainer(boolean act, int orgStat, int deg, String nm, Move forced)
+	public StatusContainer(int orgStat, int deg, String nm, Move forced)
 	{
-		active = act;
+		active = false;
 		originalStat = orgStat; //set to -1 is never used
 		degree = deg;			//set to -1 is never used
 		name = nm;

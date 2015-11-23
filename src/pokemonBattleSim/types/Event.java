@@ -25,7 +25,7 @@ public class Event
 		{
 			if(StatusMap.statusMap.get(wielder.getVolatileStatus().get(i).getName()).getEventTrigger().getMask() == type.getMask())
 			{
-				StatusMap.statusMap.get(wielder.getVolatileStatus().get(i).getName()).run(wielder, type, moveUsed);
+				StatusMap.statusMap.get(wielder.getVolatileStatus().get(i).getName()).run(wielder, moveUsed);
 				return true;
 			}
 		}
@@ -37,7 +37,7 @@ public class Event
 	{
 		if(wielder.getNonVolatileStatus().getEventTrigger().getMask() == type.getMask())
 		{
-			wielder.getNonVolatileStatus().run(wielder,type,moveUsed);
+			wielder.getNonVolatileStatus().run(wielder,moveUsed);
 			return true;
 		}
 		return false;

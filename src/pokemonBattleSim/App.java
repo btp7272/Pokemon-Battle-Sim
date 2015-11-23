@@ -34,7 +34,7 @@ public class App {
 		int IVs[] = {31,0,31,31,31,31};
 		int EVs[] = {96,0,0,196,0,216};
 		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Solar Beam"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
-		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Charizard"),"Confused",moves,IVs,EVs,100,Nature.Modest);
+		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard X"),"Confused",moves,IVs,EVs,100,Nature.Modest);
 		member.setAbility("Drought");
 		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
 		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
@@ -52,7 +52,7 @@ public class App {
 		//CREATE SLOWBRO
 		int EVs3[] = {248,0,200,0,52,8};
 		Move[] moves3 = {MoveMap.moveMap.get("Shadow Ball"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold);
 		member.setAbility("Regenerator");
 		member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
 		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));

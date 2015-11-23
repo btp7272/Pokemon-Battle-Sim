@@ -256,6 +256,32 @@ public class BattleView extends JFrame implements IView{
 	public void setPlayerOnePokemonDisplayImage(String resource)
 	{
 		//resource = "Pikachu";
+		if(resource.contains("Mega ") && ( resource.contains(" Y") || resource.contains(" X") ))
+		{
+			int endIndex;
+			boolean yNotX;
+			if(resource.contains(" Y"))
+			{
+				endIndex = resource.indexOf(" Y");
+				yNotX = true;
+			}
+			else
+			{
+				endIndex = resource.indexOf(" X");
+				yNotX = false;
+			}
+			resource = resource.substring(5,endIndex);
+			resource = resource.concat("-mega");
+			if(yNotX)
+				resource = resource.concat("-y");
+			else
+				resource = resource.concat("-x");
+		}
+		else if(resource.contains("Mega "))
+		{
+			resource = resource.substring(5);
+			resource = resource.concat("-mega");
+		}
 		playerOnePokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 	}
@@ -263,6 +289,32 @@ public class BattleView extends JFrame implements IView{
 	public void setPlayerTwoPokemonDisplayImage(String resource)
 	{
 		//resource = "Pikachu";
+		if(resource.contains("Mega ") && ( resource.contains(" Y") || resource.contains(" X") ))
+		{
+			int endIndex;
+			boolean yNotX;
+			if(resource.contains(" Y"))
+			{
+				endIndex = resource.indexOf(" Y");
+				yNotX = true;
+			}
+			else
+			{
+				endIndex = resource.indexOf(" X");
+				yNotX = false;
+			}
+			resource = resource.substring(5,endIndex);
+			resource = resource.concat("-mega");
+			if(yNotX)
+				resource = resource.concat("-y");
+			else
+				resource = resource.concat("-x");
+		}
+		else if(resource.contains("Mega "))
+		{
+			resource = resource.substring(5);
+			resource = resource.concat("-mega");
+		}
 		playerTwoPokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}

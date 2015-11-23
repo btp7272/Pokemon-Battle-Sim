@@ -32,7 +32,10 @@ public class Formula
 			  /*17Fairy*/  	{ 1.0, 2.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 1.0 }
 			    			};
 			    			
+	static double[] priorityOperand = new double[]{ 5.0, 4.5, 4.0, 3.5, 3.0, 2.5, 2.0, 1.5 , 1, 1.0/2, 1.0/3, 1.0/4, 1.0/5, 1.0/6, 1.0/7, 1.0/8};
+			    			
     public static double ability;
+    public static int priority;
     
 
     /****** Calculates the damage
@@ -149,6 +152,28 @@ public class Formula
     	numerator *= level;
     	result = Math.floor(numerator/100) + 5;
     	return (int)result;
+    }
+    
+    //Calculates the amount of time the start up of a move takes (in millisecons)
+    public static int calcStartUp(IPokemon attacker, Move move)
+    {
+    	double result = move.getAccuracy() * attacker.getSpeed();
+    	result *= 35;
+    	return (int)result;
+    }
+    
+    //Calculates the amount of time the execution of a move takes (in millisecons)
+    public static int calcExecution(IPokemon attacker, Move move)
+    {
+    	double result = move.getPower() * priorityOperand[priority + 6];
+    	result *= 35;
+    	return (int)result;
+    }
+    
+  //Calculates the amount of time the execution of a move takes (in millisecons)
+    public static int calcCoolDown(int executionTime)
+    {
+    	return executionTime / 3;
     }
     
 } // end class

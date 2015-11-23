@@ -16,7 +16,8 @@ public enum EventType
 	POST_STATUS_CHANGE(12),
 	KO(9),
 	WEATHER_CHANGE(10),
-	PRE_SWITCH(11);
+	PRE_SWITCH(11),
+	PRE_QUEUE_REGISTER(14);
 	
 	private final int mask;
 	EventType(int mask)

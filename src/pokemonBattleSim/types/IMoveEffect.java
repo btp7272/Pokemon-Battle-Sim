@@ -1,9 +1,9 @@
 package pokemonBattleSim.types;
 
-public interface IStatus 
+public interface IMoveEffect 
 {
 	public String getName();
 	public String getDescription();
 	public EventType getEventTrigger();
-	public double run (IPokemon wielder, Move moveUsed);
+	public double run (IPokemon attacker, Move moveUsed);
 }

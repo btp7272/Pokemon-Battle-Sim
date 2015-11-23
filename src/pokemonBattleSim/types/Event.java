@@ -1,5 +1,6 @@
 package pokemonBattleSim.types;
 
+import pokemonBattleSim.models.MoveEffectMap;
 import pokemonBattleSim.models.StatusMap;
 
 public class Event 
@@ -40,6 +41,20 @@ public class Event
 			wielder.getNonVolatileStatus().run(wielder,moveUsed);
 			return true;
 		}
+		return false;
+	}
+	
+	public static Boolean moveEffectEvent(IPokemon attacker, EventType type, Move moveUsed) // needs work
+	{
+		if(MoveEffectMap.effectMap.get(moveUsed.getName()) == null)
+			return false;
+		
+		if(MoveEffectMap.effectMap.get(moveUsed.getName()).getEventTrigger().getMask() == type.getMask())
+		{
+			MoveEffectMap.effectMap.get(moveUsed.getMoveEffectContainer().getName()).run(attacker,moveUsed);
+			return true;
+		}
+		
 		return false;
 	}
 }

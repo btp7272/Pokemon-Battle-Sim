@@ -2,20 +2,22 @@ package pokemonBattleSim.types;
 
 public class Move 
 {
-	public String name;
-	public Type type = null;
-	public Attribute category = null;
-	public int pp;
-	public int power;
-	public double accuracy;
+	private String name;
+	private Type type = null;
+	private Attribute category = null;
+	private int pp;
+	private int power;
+	private double accuracy;
+	private MoveEffectContainer effect;
 	
 	
-	private void setName(String name){this.name = name;}
-	private void setType(Type yype){this.type = type;}
-	private void setCategory(Attribute category){this.category = category;}
-	private void setPP(int pp){this.pp = pp;}
-	private void setPower(int power){this.power = power;}
-	private void setAccuracy(double accuracy){this.accuracy = accuracy;}
+	public void setName(String name){this.name = name;}
+	public void setType(Type type){this.type = type;}
+	public void setCategory(Attribute category){this.category = category;}
+	public void setPP(int pp){this.pp = pp;}
+	public void setPower(int power){this.power = power;}
+	public void setAccuracy(double accuracy){this.accuracy = accuracy;}
+	public void setMoveEffectContainer(MoveEffectContainer mec){this.effect = mec;}
 	
 	public String getName(){return this.name;}
 	public Type getType(){return this.type;}
@@ -23,6 +25,7 @@ public class Move
 	public int getPP(){return this.pp;}
 	public int getPower(){return this.power;}
 	public double getAccuracy(){return this.accuracy;}
+	public MoveEffectContainer getMoveEffectContainer(){return this.effect;}
 	
 	
 	public Move(){}
@@ -34,5 +37,6 @@ public class Move
 		this.pp = pp;
 		this.power = power;
 		this.accuracy = accuracy/100;
+		this.effect = new MoveEffectContainer(name);
 	}
 }

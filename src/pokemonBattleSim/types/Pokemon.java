@@ -32,6 +32,7 @@ public class Pokemon implements IPokemon
 	private StatusContainer nonVolatileStatus;
 	private ArrayList<StatusContainer> volatileStatus = new ArrayList<StatusContainer>();
 	private BattleState battleState;
+	private Move lastMoveUsed;
 	
 	
 	/*
@@ -157,6 +158,7 @@ public class Pokemon implements IPokemon
 	public void setBattleState(BattleState state){this.battleState = state;}
 	public void setBaseAbility(String abil){this.baseAbility = abil;}
 	public void setAbility(String abil){this.ability = abil;}
+	public void setLastMoveUsed(Move move){this.lastMoveUsed = move;}
 	
 	public void setMaxAtk(int atk) {this.maxAtk = atk; this.setAtkModifier(this.getAtkModifier());}
 	public void setMaxDef(int def) {this.maxDef = def; this.setAtkModifier(this.getDefModifier());}
@@ -468,13 +470,18 @@ public class Pokemon implements IPokemon
 		}
 	}
 	
-	public void changeHP(int damage)
+	public int changeHP(int damage)
 	{
-		int newHP = this.hp - damage;
 		if(damage >= this.hp)
+		{
+			damage = this.hp;
 			this.hp = 0;
-		else
-			this.hp = newHP;
+			return damage;
+		}
+		this.hp -= damage;
+		if(this.getMaxHP() < this.hp)
+			this.hp = this.getMaxHP();
+		return damage;
 	}
 	
 	public void changeWeight(double newWeight){ this.weight = newWeight;}
@@ -640,8 +647,7 @@ public class Pokemon implements IPokemon
 		return null;
 	}
 	
-	public void activeNonVolatileStatus()
-	{
-		this.getNonVolatileStatus().run(this, null);
-	}
+	public void activeNonVolatileStatus(){this.getNonVolatileStatus().run(this, null);}
+	
+	public Move getLastMoveUsed(){return this.lastMoveUsed;}
 }

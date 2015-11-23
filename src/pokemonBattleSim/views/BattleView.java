@@ -282,6 +282,11 @@ public class BattleView extends JFrame implements IView{
 			resource = resource.substring(5);
 			resource = resource.concat("-mega");
 		}
+		else if(resource.contains("Primal "))
+		{
+			resource = resource.substring(7);
+			resource = resource.concat("-primal");
+		}
 		playerOnePokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 	}
@@ -314,6 +319,11 @@ public class BattleView extends JFrame implements IView{
 		{
 			resource = resource.substring(5);
 			resource = resource.concat("-mega");
+		}
+		else if(resource.contains("Primal "))
+		{
+			resource = resource.substring(7);
+			resource = resource.concat("-primal");
 		}
 		playerTwoPokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);

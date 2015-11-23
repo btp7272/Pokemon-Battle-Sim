@@ -43,4 +43,5 @@ public class StatusContainer
 	public String getName(){ return this.name; }
 	public boolean getDegreeResetStatus(){ return this.degreeReset; }
 	public Move getForcedMove(){ return this.forcedMove; }
+	public void resetDegreeReset(){ this.degreeReset = false; }
 }

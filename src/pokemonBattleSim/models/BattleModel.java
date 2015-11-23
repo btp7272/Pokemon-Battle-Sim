@@ -520,6 +520,7 @@ public class BattleModel implements IBattleModel {
 		{
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
+		attacker.setLastMoveUsed(move);
 		// calculate and apply the damage
 		
 		/*
@@ -546,7 +547,7 @@ public class BattleModel implements IBattleModel {
 		else
 		{
 			int damage = Formula.calcDamage(attacker, defender, move, field);
-			defender.changeHP(damage);
+			damage = defender.changeHP(damage);
 			//check for ability even of the defender
 			Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
 			//check for ability event of the attacker
@@ -555,6 +556,8 @@ public class BattleModel implements IBattleModel {
 			Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
 			//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
 			Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
+			move.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+			Event.moveEffectEvent(attacker, EventType.POST_ATTACK, move);
 		}
 		
 		

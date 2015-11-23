@@ -33,8 +33,10 @@ public class App {
 		Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
 		int IVs[] = {31,0,31,31,31,31};
 		int EVs[] = {96,0,0,196,0,216};
-		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Solar Beam"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
-		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard X"),"Confused",moves,IVs,EVs,100,Nature.Modest);
+		Move testMove = MoveMap.moveMap.get("Giga Drain");
+		
+		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Giga Drain"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
+		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest);
 		member.setAbility("Drought");
 		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
 		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));

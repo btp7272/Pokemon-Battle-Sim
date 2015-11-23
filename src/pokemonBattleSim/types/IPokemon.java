@@ -80,10 +80,12 @@ public interface IPokemon
 		public IAbility getAbility();
 		public IAbility getBaseAbility();
 		public IStatus getNonVolatileStatus();
+		public StatusContainer getNonVolatileStatusContainer();
 		public ArrayList<StatusContainer> getVolatileStatus();
 		public Move getMove(int i);
 		public BattleState getBattleState();
 		public StatusContainer getVolatileStatus(String name);
 		public boolean removeVolatileStatus(String name);
 		public boolean hasVolatileStatus(String name);
+		public void activeNonVolatileStatus();
 }

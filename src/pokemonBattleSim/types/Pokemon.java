@@ -30,7 +30,7 @@ public class Pokemon implements IPokemon
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
 	private StatusContainer nonVolatileStatus;
-	private ArrayList<StatusContainer> volatileStatus;
+	private ArrayList<StatusContainer> volatileStatus = new ArrayList<StatusContainer>();
 	private BattleState battleState;
 	
 	
@@ -578,6 +578,7 @@ public class Pokemon implements IPokemon
 	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
 	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
 	public IStatus getNonVolatileStatus(){return StatusMap.statusMap.get(this.nonVolatileStatus.getName());}
+	public StatusContainer getNonVolatileStatusContainer(){return this.nonVolatileStatus;}
 	public ArrayList<StatusContainer> getVolatileStatus(){return this.volatileStatus;}
 	public BattleState getBattleState(){return this.getBattleState();}
 	
@@ -586,7 +587,7 @@ public class Pokemon implements IPokemon
 	{
 		for(int i = 0; i < this.volatileStatus.size(); i++ )
 		{
-			if(name.equals(volatileStatus.get(i)))
+			if(name.equals(volatileStatus.get(i).getName()))
 				return volatileStatus.get(i);
 		}
 		return null;
@@ -596,7 +597,7 @@ public class Pokemon implements IPokemon
 	{
 		for(int i = 0; i < this.volatileStatus.size(); i++ )
 		{
-			if(name.equals(volatileStatus.get(i)))
+			if(name.equals(volatileStatus.get(i).getName()))
 			{
 				volatileStatus.remove(i);
 				return true;
@@ -637,5 +638,10 @@ public class Pokemon implements IPokemon
 			}	
 		}
 		return null;
+	}
+	
+	public void activeNonVolatileStatus()
+	{
+		this.getNonVolatileStatus().run(this, EventType.POST_STATUS_CHANGE, null);
 	}
 }

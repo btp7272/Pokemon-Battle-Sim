@@ -17,26 +17,30 @@ public class StatusContainer
 		forcedMove = forced;
 	}
 	
-	public void setActiveStatus(boolean set){ active = set; }
-	public void setOriginalStat(int stat){ originalStat = stat; }
-	public void setDegree(int deg){ degree = degree; }
+	public void setActiveStatus(boolean set){ this.active = set; }
+	public void setOriginalStat(int stat){ this.originalStat = stat; }
+	public void setDegree(int deg){ this.degree = deg; }
 	
-	public void addToDegree(int deg) 
+	public void addToDegree(int deg, boolean resetable) 
 	{ 
-		degree += deg; 
-		if(degree > 100)
+		this.degree += deg; 
+		if(this.degree > 100 && resetable)
 		{
-			degree %= 100;
-			degreeReset = true;
+			this.degree %= 100;
+			this.degreeReset = true;
+		}
+		else if(this.degree > 100 && !resetable)
+		{
+			this.degree = 100;
 		}
 	}
 	
-	public void setName(String nm){ name = nm; }
+	public void setName(String nm){ this.name = nm; }
 	
-	public boolean getActiveStatus(){ return active; }
-	public int getOriginalStat(){ return originalStat; }
-	public int getDegree(){ return degree; }
-	public String getName(){ return name; }
-	public boolean getDegreeResetStatus(){ return degreeReset; }
-	public Move getForcedMove(){ return forcedMove; }
+	public boolean getActiveStatus(){ return this.active; }
+	public int getOriginalStat(){ return this.originalStat; }
+	public int getDegree(){ return this.degree; }
+	public String getName(){ return this.name; }
+	public boolean getDegreeResetStatus(){ return this.degreeReset; }
+	public Move getForcedMove(){ return this.forcedMove; }
 }

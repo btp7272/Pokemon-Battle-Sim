@@ -1,5 +1,6 @@
 package pokemonBattleSim.models;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,7 +11,7 @@ import pokemonBattleSim.types.*;
 public class StatusMap 
 {
 	private static IBattleModel model = BattleModel.getInstance();
-	public static Map < String, IStatus > statusMap;
+	public static Map < String, IStatus > statusMap = new HashMap<>();
 	
 	static
 	{
@@ -95,7 +96,7 @@ public class StatusMap
 		
 		statusMap.put("Curse2", new IStatus()
 		{
-				EventType trigger = EventType.HP_CHANGE;
+				EventType trigger = EventType.HEAL;
 				String name = "Curse";
 				String description = "The curse condition causes a Pokémon to lose ¼ of its maximum hit points every turn. A Pokémon afflicted by Curse cannot be healed except by switching out. If the victim of a Ghost-type Curse uses Baton Pass, the health-sapping effect is transferred to its replacement.";
 				public EventType getEventTrigger(){return trigger;}
@@ -146,7 +147,7 @@ public class StatusMap
 		
 		statusMap.put("Heal Block2", new IStatus()
 		{
-				EventType trigger = EventType.HP_CHANGE;
+				EventType trigger = EventType.HEAL;
 				String name = "Heal Block";
 				String description = "A Pokémon affected by Heal Block is prevented from healing for five turns. It cannot use Ingrain, Aqua Ring, Moonlight, Morning Sun, Roost, Recover, Heal Order, Rest, Soft-Boiled, Wish, Milk Drink, Slack Off, or Synthesis while it is under effect. "
 						+ "It is unaffected by Ingrain, Aqua Ring, and Heal Pulse. The player can still use items such as Potions to heal the Pokémon.The moves Absorb, Mega Drain, Giga Drain, Leech Life, Dream Eater, Drain Punch, Horn Leech, Parabolic Charge, Draining Kiss, Oblivion Wing, and Leech Seed will still inflict damage, but will not restore HP when the user is affected by Heal Block. "
@@ -233,47 +234,38 @@ public class StatusMap
 				}
 		});
 		
-		statusMap.put("Protection1", new IStatus()
+		statusMap.put("Protection", new IStatus()
 		{
-				EventType trigger = EventType.CONTINUOUS;
+				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Protection";
 				String description = "A Pokémon that uses Protect or Detect will be impervious to attacks and negative status moves targeting them that turn except; "
 						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, the Pokémon's protection is removed for the rest of the turn.";
-				private int degree = 0;
 				public EventType getEventTrigger(){return trigger;}
-				public String getName(){return name;}					
+				public String getName(){return name;}
 				public String getDescription(){return description;}
-				public int getDegree(){return degree;}
-				private boolean active = false;
-				public void setDegree(int deg)
-				{
-					degree += deg;
-					if(degree > 100)
-						degree %= 100;
-				}
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
-				   Timer timer = new Timer();
-				   class SetTimer extends TimerTask
-				   {
+					Timer timer = new Timer();
+					class SetTimer extends TimerTask
+					{
 					   @Override
 					   public void run()
 					   {
 						   timer.cancel();
-						   active = false;
-						   wielder.getVolatileStatus().remove("Protection1");
-						   wielder.getVolatileStatus().remove("Protection2");
+						   wielder.removeVolatileStatus("Protection");
+						   wielder.removeVolatileStatus("Protection2");
 						   return;
 					   }
-				   }
-					   
-				   if(!active)
-				   {
-					   TimerTask task = new SetTimer();
-					   timer.schedule(task, 10000);
-					   active = true;
-				   }
-				   return 1;
+			     	}
+					
+					if(wielder.getVolatileStatus("Protection").getActiveStatus() == false)
+					{
+						TimerTask task = new SetTimer();
+						timer.schedule(task,10000); //3 turns
+						wielder.getVolatileStatus("Protection").setActiveStatus(true);
+						wielder.addVolatileStatus(new StatusContainer(true,-1,-1,"Protection2",null));
+					}
+					return 1;
 				}
 		});
 		
@@ -283,32 +275,54 @@ public class StatusMap
 				String name = "Protection";
 				String description = "A Pokémon that uses Protect or Detect will be impervious to attacks and negative status moves targeting them that turn except; "
 						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, the Pokémon's protection is removed for the rest of the turn.";
-				private int degree = -1;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public int getDegree(){return degree;}
-				public void setDegree(int deg)
-				{
-					//not applicable
-				}
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
 				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
-						int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
-						//add events
-						wielder.changeHP(damage);
-						wielder.getVolatileStatus().remove("Protection1");
-						wielder.getVolatileStatus().remove("Protection2");
+						if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
+						{
+							//run method automatically executed
+						}
+						//check for ability event of the defender
+						else if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						{
+							//run method automatically executed
+						}
+						else
+						{
+							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+							wielder.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(wielder.getAbility(), EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							//check for ability event of the defender
+							Event.abilityEvent(wielder.getAbility(), EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+						}
 				    }
 				    else if(moveUsed.getName().equals("Hyperspace Fury"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
-						int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
-						//add events
-						wielder.changeHP(damage);
+						if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
+						{
+							//run method automatically executed
+						}
+						//check for ability event of the defender
+						else if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						{
+							//run method automatically executed
+						}
+						else
+						{
+							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+							wielder.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(wielder.getAbility(), EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							//check for ability event of the defender
+							Event.abilityEvent(wielder.getAbility(), EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+						}
 				    }
 				    else
 				    	System.out.println(wielder.getNickName()+" protected itself!");
@@ -318,29 +332,13 @@ public class StatusMap
 		
 		statusMap.put("Burn", new IStatus()
 		{
-				EventType trigger = EventType.CONTINUOUS;
+				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Burn";
 				String description = "The burn condition halves damage dealt by a Pokémon's physical moves (except for Pokémon with the Guts Ability, where this condition raises Attack by 50%). "
 						+ "Additionally, at the end of a turn, the Pokémon loses 1/8 its maximum hit points.";
-				private int degree = 0;
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
-				public int getDegree(){return degree;}
-				public void setDegree(int deg)
-				{
-					degree += deg;
-					if(degree > 100)
-						degree = 100;
-				}
-				
-				private int originalAttack;
-				public void setOriginalAttack(int baseAtk)
-				{
-					originalAttack = baseAtk;
-				}
-				
-				boolean active = false;
 				
 				public double run (IPokemon wielder, EventType type, Move moveUsed)
 				{
@@ -353,35 +351,199 @@ public class StatusMap
 						   if(wielder.getHP() == 0)
 						   {
 							   timer.cancel();
-							   active = false;
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
 						   }
 						   
 						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 						   {
 							   timer.cancel();
-							   active = false;
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
 						   }
 						   
-						   if(degree == 0)
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
-							   active = false;
-							   wielder.setMaxAtk(originalAttack);
+							   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
 							   return;
 						   }
-						   wielder.setMaxAtk((int)( (double)originalAttack - (((double)originalAttack)/2) * ((double)degree/100)) );
-						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)degree/100)) );
+						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   return;
 					   }
 				   }
 				   
-				   if(!active && degree > 0)
+				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
 				   	   timer.schedule(task, 0, 10000);
-				   	   active = true;
-				   	   originalAttack = wielder.getMaxAtk();
+				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
+				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxAtk());
+				   }
+					   
+				   return 1;
+				}
+		});
+		
+		statusMap.put("Paralysis", new IStatus()
+		{
+				EventType trigger = EventType.POST_STATUS_CHANGE;
+				String name = "Paralysis";
+				String description = "The paralysis condition causes a Pokémon to be unable to attack if 100% paralyzed. "
+						+ "Additionally, its Speed is reduced to 25% of its previous value (except for Pokémon with the Quick Feet Ability, where this condition raises the Speed by 50%).";
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {
+						   if(wielder.getHP() == 0)
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   wielder.setMaxSpeed(wielder.getNonVolatileStatusContainer().getOriginalStat());
+							   return;
+						   }
+						   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   return;
+					   }
+				   }
+				   
+				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
+				   {
+					   TimerTask task = new SetTimer();
+				   	   timer.schedule(task, 0, 10000);
+				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
+				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxSpeed());
+				   }
+					   
+				   return 1;
+				}
+		});
+		
+		statusMap.put("Poison", new IStatus()
+		{
+				EventType trigger = EventType.POST_STATUS_CHANGE;
+				String name = "Poison";
+				String description = "The poison condition causes a Pokémon to lose 1/8 of its maximum hit points every turn."
+						+ "Normally Steel- and Poison-type Pokémon and Pokémon with the Immunity Ability cannot be poisoned; however, if a Pokémon is poisoned then has its type changed to Steel or Poison or its "
+						+ "Ability changed to Immunity, the poison will remain. A Pokémon with the Poison Heal Ability will gradually recover health instead when poisoned.";
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {
+						   if(wielder.getHP() == 0)
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   return;
+						   }
+						   
+						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   return;
+					   }
+				   }
+				   
+				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
+				   {
+					   TimerTask task = new SetTimer();
+				   	   timer.schedule(task, 0, 10000);
+				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
+				   }
+					   
+				   return 1;
+				}
+		});
+		
+		statusMap.put("Badly Poison", new IStatus()
+		{
+				EventType trigger = EventType.POST_STATUS_CHANGE;
+				String name = "Badly Poison";
+				String description = "The badly poison condition causes a Pokémon to lose 1/2 of its maximum hit points multiplied by the degree of the status (a percent) every turn."
+						+ "The degree of the status increases over time.";
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				
+				public double run (IPokemon wielder, EventType type, Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {
+						   if(wielder.getHP() == 0)
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   {
+							   timer.cancel();
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+						   }
+						   
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(new StatusContainer(true,-1,-1,"Healthy",null));
+							   return;
+						   }
+						   
+						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/2) - ((double)(wielder.getMaxHP()/2)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.getNonVolatileStatusContainer().addToDegree(10, false);
+						   return;
+					   }
+				   }
+				   
+				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
+				   {
+					   TimerTask task = new SetTimer();
+				   	   timer.schedule(task, 0, 10000);
+				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   }
 					   
 				   return 1;

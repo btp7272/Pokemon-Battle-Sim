@@ -521,8 +521,20 @@ public class BattleModel implements IBattleModel {
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
 		// calculate and apply the damage
+		
+		/*
+		 * ** EVENT ORDER **
+		 * STATUS
+		 * ABILITIES
+		 * SECONDARY EFFECTS
+		 * ITEMS
+		 */
+		if(Event.statusVolatileEvent(attacker, EventType.PRE_ATTACK, move))
+		{
+			//run method automatically executed
+		}
 		//check for ability event of the attacker
-		if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, defender, field, attacker, defender, move))
+		else if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, defender, field, attacker, defender, move))
 		{
 			//run method automatically executed
 		}
@@ -538,8 +550,10 @@ public class BattleModel implements IBattleModel {
 			//check for ability even of the defender
 			Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
 			//check for ability event of the attacker
-			//if(Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move))
+			//Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move)
 			//check for ability event of the defender
+			Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
+			//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
 			Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
 		}
 		
@@ -743,9 +757,11 @@ public class BattleModel implements IBattleModel {
 					playerTwoTasks.clear();
 				}
 				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.EXIT, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
+				model.getPlayerPokemon(this.source.getTrainerID()).resetVolatileStatus();
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				Event.abilityEvent(model.getPlayerPokemon(this.source.getTrainerID()).getAbility(), EventType.CONTINUOUS, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
+				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here
 			}}
 		}
 		

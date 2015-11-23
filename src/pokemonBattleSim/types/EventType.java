@@ -3,7 +3,8 @@ package pokemonBattleSim.types;
 public enum EventType 
 {
 	NONE(-1),
-	HP_CHANGE(0), 
+	HP_CHANGE(0),
+	HEAL(13),
 	STATISTIC_CHANGE(1),
 	ENTRY(2),
 	EXIT(3),

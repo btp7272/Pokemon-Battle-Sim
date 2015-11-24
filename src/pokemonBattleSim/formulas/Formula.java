@@ -124,8 +124,8 @@ public class Formula
         	weather = 1;
         
         //Calculate Ability modifier
-        Event.abilityEvent(attacker.getAbility(),EventType.PRE_DAMAGE,attacker,defender,field,attacker,defender,m);
-        Event.abilityEvent(defender.getAbility(),EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
+        Event.abilityEvent(EventType.PRE_DAMAGE,attacker,defender,field,attacker,defender,m);
+        Event.abilityEvent(EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
         
         return (stab * type * roll * weather * ability);
     }

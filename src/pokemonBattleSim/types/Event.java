@@ -1,16 +1,19 @@
 package pokemonBattleSim.types;
 
+import pokemonBattleSim.models.AbilityMap;
 import pokemonBattleSim.models.MoveEffectMap;
 import pokemonBattleSim.models.StatusMap;
 
 public class Event 
 {
-	public static Boolean abilityEvent(IAbility ability, EventType type, IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
+	public static Boolean abilityEvent(EventType type, IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
 	{
+		if(AbilityMap.abilityMap.get(wielder.getAbility().getName()) == null)
+			return false;
 		
-		if(ability.getEventTrigger().getMask() == type.getMask())
+		if(AbilityMap.abilityMap.get(wielder.getAbility().getName()).getEventTrigger().getMask() == type.getMask())
 		{
-			ability.run(wielder, opponent, field, attacker, defender, moveUsed);
+			AbilityMap.abilityMap.get(wielder.getAbility().getName()).run(wielder, opponent, field, attacker, defender, moveUsed);
 			return true;
 		}
 		

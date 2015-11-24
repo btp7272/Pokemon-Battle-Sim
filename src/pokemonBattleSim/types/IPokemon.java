@@ -16,8 +16,8 @@ public interface IPokemon
 		public void setWeight(double newWeight);
 		public void setGender(Gender gen);
 		public void setLevel(int lev);
-		public void setAbility(String abil);
-		public void setBaseAbility(String abil);
+		public void setAbility(AbilityContainer abil);
+		public void setBaseAbility(AbilityContainer abil);
 		public void addVolatileStatus(StatusContainer status);
 		public void setNonVolatileStatus(StatusContainer status);
 		public void setBattleState(BattleState state);
@@ -78,8 +78,8 @@ public interface IPokemon
 		public int getSpDefModifier();
 		public int getSpeedModifier();
 		public int getLevel();
-		public IAbility getAbility();
-		public IAbility getBaseAbility();
+		public AbilityContainer getAbility();
+		public AbilityContainer getBaseAbility();
 		public IStatus getNonVolatileStatus();
 		public StatusContainer getNonVolatileStatusContainer();
 		public ArrayList<StatusContainer> getVolatileStatus();

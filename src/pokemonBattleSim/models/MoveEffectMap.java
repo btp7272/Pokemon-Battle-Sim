@@ -2,9 +2,11 @@ package pokemonBattleSim.models;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap.Stat;
 import pokemonBattleSim.types.Event;
 import pokemonBattleSim.types.EventType;
@@ -20,6 +22,7 @@ public class MoveEffectMap
 {
 	public static Map < String, IMoveEffect > effectMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
+	
 	
 	static
 	{
@@ -175,6 +178,42 @@ public class MoveEffectMap
 					  return 0;
 				  }
 				  attacker.changeHP(- attacker.getMaxHP() / 2);
+				  return 1;
+			   }
+		});
+		
+		effectMap.put("Bullet Seed", new IMoveEffect()
+		{
+			   EventType trigger = EventType.PRE_ATTACK;
+			   String name = "Bullet Seed";
+			   String description = "Hits two to five times.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon attacker, Move moveUsed)
+			   { 
+				   	IPokemon defender = model.getOpponentPokemon(attacker.getPlayerID());
+				   	Random gen = new Random();
+				   	int timesExecuted = gen.nextInt(5 - 2) + 2;
+				   	
+				   	for(int i = 0; i < timesExecuted; i++)
+				   	{
+					    if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, model.getField(), attacker, defender, moveUsed))
+						{
+							//run method automatically executed
+						}
+						else
+						{
+							int damage = Formula.calcDamage(attacker, defender, moveUsed, model.getField());
+							damage = defender.changeHP(damage);
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, model.getField(), attacker, defender, moveUsed);
+							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, model.getField(), attacker, defender, moveUsed);
+							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+							Event.moveEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+						}
+				   	}
+				   	System.out.println("It hit "+timesExecuted+" times!");
 				  return 1;
 			   }
 		});

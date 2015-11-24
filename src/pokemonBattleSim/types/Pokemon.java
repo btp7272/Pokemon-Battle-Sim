@@ -25,7 +25,7 @@ public class Pokemon implements IPokemon
 	private int speed, maxSpeed;
 	private int level;
 	private double weight, baseWeight;
-	private String ability, baseAbility;
+	private AbilityContainer ability, baseAbility;
 	private Move moveOne, moveTwo, moveThree, moveFour;
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
@@ -65,7 +65,6 @@ public class Pokemon implements IPokemon
 		this.setType(a.getType1(), 1);
 		this.setType(a.getType2(), 2);
 		this.weight = this.baseWeight = a.getWeight();
-		//this.ability = this.baseAbility = abil;
 		
 		
 		/*
@@ -156,8 +155,8 @@ public class Pokemon implements IPokemon
 	public void addVolatileStatus(StatusContainer status){this.volatileStatus.add(status);}
 	public void setNonVolatileStatus(StatusContainer status){this.nonVolatileStatus = status;}
 	public void setBattleState(BattleState state){this.battleState = state;}
-	public void setBaseAbility(String abil){this.baseAbility = abil;}
-	public void setAbility(String abil){this.ability = abil;}
+	public void setBaseAbility(AbilityContainer abil){this.baseAbility = abil;}
+	public void setAbility(AbilityContainer abil){this.ability = abil;}
 	public void setLastMoveUsed(Move move){this.lastMoveUsed = move;}
 	
 	public void setMaxAtk(int atk) {this.maxAtk = atk; this.setAtkModifier(this.getAtkModifier());}
@@ -582,8 +581,8 @@ public class Pokemon implements IPokemon
 	public int getSpDefModifier(){return this.spDefModifier;}
 	public int getSpeedModifier(){return this.speedModifier;}
 	public int getLevel(){return this.level;}
-	public IAbility getAbility(){return AbilityMap.abilityMap.get(this.ability);}
-	public IAbility getBaseAbility(){return AbilityMap.abilityMap.get(this.baseAbility);}
+	public AbilityContainer getAbility(){return this.ability;}
+	public AbilityContainer getBaseAbility(){return this.baseAbility;}
 	public IStatus getNonVolatileStatus(){return StatusMap.statusMap.get(this.nonVolatileStatus.getName());}
 	public StatusContainer getNonVolatileStatusContainer(){return this.nonVolatileStatus;}
 	public ArrayList<StatusContainer> getVolatileStatus(){return this.volatileStatus;}

@@ -213,12 +213,12 @@ public class StatusMap
 					}
 
 					IPokemon defender = model.getOpponentPokemon(wielder.getPlayerID());
-					if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, defender, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
+					if(Event.abilityEvent(EventType.PRE_ATTACK, wielder, defender, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
 					{
 						//run method automatically executed
 					}
 					//check for ability event of the defender
-					else if(Event.abilityEvent(defender.getAbility(), EventType.PRE_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
+					else if(Event.abilityEvent(EventType.PRE_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove()))
 					{
 						//run method automatically executed
 					}
@@ -227,9 +227,9 @@ public class StatusMap
 						int damage = Formula.calcDamage(wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove(), model.getField());
 						defender.changeHP(damage);
 						//check for ability even of the defender
-						Event.abilityEvent(defender.getAbility(), EventType.HP_CHANGE, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
+						Event.abilityEvent(EventType.HP_CHANGE, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
 						//check for ability event of the defender
-						Event.abilityEvent(defender.getAbility(), EventType.POST_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
+						Event.abilityEvent(EventType.POST_ATTACK, defender, wielder, model.getField(), wielder, defender, wielder.getVolatileStatus("Encore").getForcedMove());
 					}
 
 					return 1;
@@ -286,12 +286,12 @@ public class StatusMap
 				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
-						if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
+						if(Event.abilityEvent(EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
 						//check for ability event of the defender
-						else if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						else if(Event.abilityEvent(EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
@@ -300,20 +300,20 @@ public class StatusMap
 							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
 							wielder.changeHP(damage);
 							//check for ability even of the defender
-							Event.abilityEvent(wielder.getAbility(), EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
 							//check for ability event of the defender
-							Event.abilityEvent(wielder.getAbility(), EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
 						}
 				    }
 				    else if(moveUsed.getName().equals("Hyperspace Fury"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
-						if(Event.abilityEvent(attacker.getAbility(), EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
+						if(Event.abilityEvent(EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
 						//check for ability event of the defender
-						else if(Event.abilityEvent(wielder.getAbility(), EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						else if(Event.abilityEvent(EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
@@ -322,9 +322,9 @@ public class StatusMap
 							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
 							wielder.changeHP(damage);
 							//check for ability even of the defender
-							Event.abilityEvent(wielder.getAbility(), EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
 							//check for ability event of the defender
-							Event.abilityEvent(wielder.getAbility(), EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
 						}
 				    }
 				    else
@@ -355,12 +355,14 @@ public class StatusMap
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
@@ -411,12 +413,14 @@ public class StatusMap
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
@@ -467,12 +471,14 @@ public class StatusMap
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
@@ -491,7 +497,7 @@ public class StatusMap
 				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
-				   	   timer.schedule(task, 0, 10000);
+				   	   timer.schedule(task, 10000, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   }
 					   
@@ -521,6 +527,7 @@ public class StatusMap
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
@@ -537,7 +544,7 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/2) - ((double)(wielder.getMaxHP()/2)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.changeHP((int)( ((double)(wielder.getMaxHP()/2)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(10, false);
 						   return;
 					   }
@@ -546,7 +553,7 @@ public class StatusMap
 				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
-				   	   timer.schedule(task, 0, 10000);
+				   	   timer.schedule(task, 10000, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   }
 					   

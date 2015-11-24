@@ -14,6 +14,7 @@ import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Type;
 import pokemonBattleSim.types.Weather;
+import pokemonBattleSim.types.AbilityContainer;
 
 public class AbilityMap
 {
@@ -54,7 +55,7 @@ public class AbilityMap
 				   { 
 					   System.out.println(wielder.getNickName() + "'s Intimidate");
 					   statChangeQueue[Stat.ATTACK.getMask()] = -1;
-					   if(Event.abilityEvent(opponent.getAbility(),EventType.STATISTIC_CHANGE,opponent,wielder,field,attacker,defender,moveUsed))
+					   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,opponent,wielder,field,attacker,defender,moveUsed))
 					   {
 						   statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   return 1;
@@ -291,7 +292,7 @@ public class AbilityMap
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
 						   System.out.println(wielder.getNickName() + "'s Mummy");
-						   opponent.setAbility("Mummy");
+						   opponent.setAbility(new AbilityContainer("Mummy",-1));
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
 					   return 1;
@@ -522,7 +523,7 @@ public class AbilityMap
 				       
 				       defender.changeHP((int)damage);
 				       if(defender.getHP() == 0)
-				    	   Event.abilityEvent(opponent.getAbility(),EventType.KO,opponent,wielder,field,attacker,defender,moveUsed);
+				    	   Event.abilityEvent(EventType.KO,opponent,wielder,field,attacker,defender,moveUsed);
 				       
 				       //Move Event
 				       

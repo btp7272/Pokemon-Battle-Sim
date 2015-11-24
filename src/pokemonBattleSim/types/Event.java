@@ -1,6 +1,7 @@
 package pokemonBattleSim.types;
 
 import pokemonBattleSim.models.AbilityMap;
+import pokemonBattleSim.models.ItemMap;
 import pokemonBattleSim.models.MoveEffectMap;
 import pokemonBattleSim.models.StatusMap;
 
@@ -39,6 +40,9 @@ public class Event
 	
 	public static Boolean statusNonVolatileEvent(IPokemon wielder, EventType type, Move moveUsed)
 	{
+		if(MoveEffectMap.effectMap.get(moveUsed.getName()) == null)
+			return false;
+		
 		if(wielder.getNonVolatileStatus().getEventTrigger().getMask() == type.getMask())
 		{
 			wielder.getNonVolatileStatus().run(wielder,moveUsed);
@@ -47,7 +51,7 @@ public class Event
 		return false;
 	}
 	
-	public static Boolean moveEffectEvent(IPokemon attacker, EventType type, Move moveUsed) // needs work
+	public static Boolean moveEffectEvent(IPokemon attacker, EventType type, Move moveUsed)
 	{
 		if(MoveEffectMap.effectMap.get(moveUsed.getName()) == null)
 			return false;
@@ -55,6 +59,20 @@ public class Event
 		if(MoveEffectMap.effectMap.get(moveUsed.getName()).getEventTrigger().getMask() == type.getMask())
 		{
 			MoveEffectMap.effectMap.get(moveUsed.getMoveEffectContainer().getName()).run(attacker,moveUsed);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static Boolean itemEffectEvent(IPokemon holder, EventType type, Move moveUsed)
+	{
+		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)
+			return false;
+		
+		if(holder.getItem().getEventTrigger().getMask() == type.getMask())
+		{
+			holder.getItem().run(holder,moveUsed);
 			return true;
 		}
 		

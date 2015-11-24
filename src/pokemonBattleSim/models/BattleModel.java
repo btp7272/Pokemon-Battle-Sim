@@ -534,7 +534,7 @@ public class BattleModel implements IBattleModel {
 		{
 			//run method automatically executed
 		}
-		if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
+		else if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
 		{
 			//run method automatically executed
 		}
@@ -548,25 +548,20 @@ public class BattleModel implements IBattleModel {
 		{
 			//run method automatically executed
 		}
-		//check for ability event of the defender
-		else if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, field, attacker, defender, move))
-		{
-			//run method automatically executed
-		}
 		else
 		{
 			int damage = Formula.calcDamage(attacker, defender, move, field);
 			damage = defender.changeHP(damage);
 			//check for ability even of the defender
 			Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
-			//check for ability event of the attacker
-			//Event.abilityEvent(attacker.getAbility(), EventType.POST_ATTACK, attacker, defender, field, attacker, defender, move)
 			//check for ability event of the defender
 			Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
 			//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
 			Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
 			move.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
 			Event.moveEffectEvent(attacker, EventType.POST_ATTACK, move);
+			Event.itemEffectEvent(attacker, EventType.POST_ATTACK, move);
+			Event.itemEffectEvent(defender, EventType.POST_ATTACK, move);
 		}
 		
 		

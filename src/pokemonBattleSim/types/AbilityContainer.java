@@ -6,15 +6,16 @@ public class AbilityContainer
 	private int[] originalStats;
 	private boolean active;
 	
-	public AbilityContainer(String nm, IPokemon poke)
+	public AbilityContainer(String nm)
 	{
 		name = nm;
-		originalStats = new int[]{poke.getMaxAtk(), poke.getMaxDef(), poke.getMaxSpAtk(), poke.getMaxSpDef(), poke.getMaxSpeed()};
+		originalStats = null;
 		active = false;
 	}
 	public void setActiveStatus(boolean bool){ active = bool; }
+	public void setOriginalStats(IPokemon poke){ originalStats = new int[]{poke.getMaxAtk(), poke.getMaxDef(), poke.getMaxSpAtk(), poke.getMaxSpDef(), poke.getMaxSpeed()}; }
 	
 	public String getName(){ return name; }
-	public int[] getOriginalStat(){ return originalStats; }
+	public int getOriginalStat(int index){ return originalStats[index]; }
 	public boolean getActiveStatus(){ return active; }
 }

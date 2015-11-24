@@ -34,7 +34,7 @@ public class Formula
 			    			
 	static double[] priorityOperand = new double[]{ 5.0, 4.5, 4.0, 3.5, 3.0, 2.5, 2.0, 1.5 , 1, 1.0/2, 1.0/3, 1.0/4, 1.0/5, 1.0/6, 1.0/7, 1.0/8};
 			    			
-    public static double ability;
+    public static double ability, item;
     public static int priority;
     
 
@@ -84,6 +84,7 @@ public class Formula
         //roll is a random damage rang multiplier between .85 and 1.0
         double stab,roll,type,weather;
         ability = 1;
+        item = 1;
         
         //Calculate STAB modifier
         if( attacker.getType1() == m.getType() || attacker.getType2() == m.getType() || attacker.getType3() == m.getType() )
@@ -126,8 +127,10 @@ public class Formula
         //Calculate Ability modifier
         Event.abilityEvent(EventType.PRE_DAMAGE,attacker,defender,field,attacker,defender,m);
         Event.abilityEvent(EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
+        Event.itemEffectEvent(attacker, EventType.PRE_DAMAGE, m);
+        Event.itemEffectEvent(defender, EventType.PRE_DAMAGE, m);
         
-        return (stab * type * roll * weather * ability);
+        return (stab * type * roll * weather * ability * item);
     }
     
     //Calculates the type modifier
@@ -173,10 +176,37 @@ public class Formula
     	return (int)result;
     }
     
-  //Calculates the amount of time the execution of a move takes (in millisecons)
+    //Calculates the amount of time the execution of a move takes (in millisecons)
     public static int calcCoolDown(int executionTime)
     {
     	return executionTime / 3;
+    }
+    
+    public static boolean isSuperEffective(IPokemon defender, Move moveUsed)
+    {
+       if(defender.getType3() != null && defender.getType2() != null)
+	   {
+		   if(Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType1())
+				   * Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType2()) 
+				   * Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType2()) > 1.0)
+		   {
+			   return true;
+		   }
+	   }
+	   else if(defender.getType2() != null)
+	   {
+		   if(Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType1())
+				   + Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType2()) > 1.0)
+		   {
+			   return true;
+		   }
+	   }
+	   else if(Formula.clacEffectiveness(1, moveUsed.getType(), defender.getType1()) > 1.0)
+	   {
+		   return true;
+	   }
+    	
+       return false;
     }
     
 } // end class

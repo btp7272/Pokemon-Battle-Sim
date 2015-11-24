@@ -6,6 +6,7 @@
 package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap;
+import pokemonBattleSim.models.ItemMap;
 import pokemonBattleSim.models.AbilityMap.Stat;
 import pokemonBattleSim.models.StatusMap;
 
@@ -30,9 +31,10 @@ public class Pokemon implements IPokemon
 	private Type typeOne, baseTypeOne, typeTwo, baseTypeTwo, typeThree = null;
 	private Gender gender;
 	private StatusContainer nonVolatileStatus;
-	private ArrayList<StatusContainer> volatileStatus = new ArrayList<StatusContainer>();
+	private ArrayList<StatusContainer> volatileStatus;
 	private BattleState battleState;
 	private Move lastMoveUsed;
+	private ItemContainer item;
 	
 	
 	/*
@@ -47,7 +49,7 @@ public class Pokemon implements IPokemon
 	 *  @parameter: EVs = the EVs for each stat in order they appear in this document
 	 *  @parameter: An EV is a number between 0 and 252. This is like skill resultant of training. A pokemon is only allowed a total of 510 EVs
 	 */
-	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature/*, IAbility abil*/)
+	public Pokemon(Species a, String nickname, Move[] moves, int[] IVs, int[] EVs, int level, Nature nature, AbilityContainer abil, ItemContainer itemC)
 	{
 		if(IVs.length != 6 || EVs.length != 6)
 			throw new ArrayIndexOutOfBoundsException("There must be 6 values for both IVs and EVs");
@@ -65,6 +67,11 @@ public class Pokemon implements IPokemon
 		this.setType(a.getType1(), 1);
 		this.setType(a.getType2(), 2);
 		this.weight = this.baseWeight = a.getWeight();
+		this.baseAbility = abil;
+		this.ability = abil;
+		this.volatileStatus = new ArrayList<StatusContainer>();
+		this.nonVolatileStatus = new StatusContainer(-1,-1,"Healthy",null);
+		this.item = itemC;
 		
 		
 		/*
@@ -158,6 +165,7 @@ public class Pokemon implements IPokemon
 	public void setBaseAbility(AbilityContainer abil){this.baseAbility = abil;}
 	public void setAbility(AbilityContainer abil){this.ability = abil;}
 	public void setLastMoveUsed(Move move){this.lastMoveUsed = move;}
+	public void setItem(ItemContainer ic){this.item = ic;}
 	
 	public void setMaxAtk(int atk) {this.maxAtk = atk; this.setAtkModifier(this.getAtkModifier());}
 	public void setMaxDef(int def) {this.maxDef = def; this.setAtkModifier(this.getDefModifier());}
@@ -645,4 +653,7 @@ public class Pokemon implements IPokemon
 		
 		return true;
 	}
+	
+	public IItem getItem(){return ItemMap.itemMap.get(this.item.getName());}
+	public ItemContainer getItemContainer(){return this.item;}
 }

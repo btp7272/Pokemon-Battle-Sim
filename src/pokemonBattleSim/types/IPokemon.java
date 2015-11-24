@@ -22,6 +22,7 @@ public interface IPokemon
 		public void setNonVolatileStatus(StatusContainer status);
 		public void setBattleState(BattleState state);
 		public void setLastMoveUsed(Move move);
+		public void setItem(ItemContainer item);
 		
 		//para: number -6 to 6. The stage of the stat
 		public void changeAtk(int change);
@@ -90,4 +91,6 @@ public interface IPokemon
 		public boolean hasNonVolatileStatus();
 		public void activeNonVolatileStatus();
 		public Move getLastMoveUsed();
+		public IItem getItem();
+		public ItemContainer getItemContainer();
 }

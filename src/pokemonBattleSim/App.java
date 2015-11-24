@@ -17,6 +17,7 @@ import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.types.Species;
 import pokemonBattleSim.types.StatusContainer;
 import pokemonBattleSim.types.AbilityContainer;
+import pokemonBattleSim.types.ItemContainer;
 import pokemonBattleSim.views.BattleView;
 import pokemonBattleSim.models.MoveMap;
 
@@ -36,10 +37,8 @@ public class App {
 		int EVs[] = {96,0,0,196,0,216};
 		
 		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Giga Drain"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
-		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest);
-		member.setAbility(new AbilityContainer("Drought",member));
+		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("None"));
 		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
-		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
 		
@@ -47,8 +46,7 @@ public class App {
 		int IVs2[] = {31,31,31,31,31,31};
 		int EVs2[] = {0,252,0,0,4,252};
 		Move[] moves2 = {MoveMap.moveMap.get("Crunch"),MoveMap.moveMap.get("Bullet Seed"),MoveMap.moveMap.get("Stone Edge"),MoveMap.moveMap.get("Earthquake")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly);
-		member.setAbility(new AbilityContainer("Skill Link",member));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Skill Link"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
@@ -56,10 +54,8 @@ public class App {
 		//CREATE SLOWBRO
 		int EVs3[] = {248,0,200,0,52,8};
 		Move[] moves3 = {MoveMap.moveMap.get("Shadow Ball"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold);
-		member.setAbility(new AbilityContainer("Regenerator",member));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Regenerator"), new ItemContainer("None"));
 		member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
-		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
 		
@@ -67,8 +63,7 @@ public class App {
 		int IVs4[] = {31,31,31,31,31,0};
 		int EVs4[] = {248,0,200,0,52,8};
 		Move[] moves4 = {MoveMap.moveMap.get("Stealth Rock"),MoveMap.moveMap.get("Leech Seed"),MoveMap.moveMap.get("Power Whip"),MoveMap.moveMap.get("Gyro Ball")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Badly Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed);
-		member.setAbility(new AbilityContainer("Iron Barbs",member));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Badly Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(-1,0,"Badly Poison",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
@@ -76,8 +71,7 @@ public class App {
 		//CREATE LATIOS
 		int EVs5[] = {0,0,0,252,4,252};
 		Move[] moves5 = {MoveMap.moveMap.get("Draco Meteor"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Recover"),MoveMap.moveMap.get("Defog")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid);
-		member.setAbility(new AbilityContainer("Levitate",member));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Levitate"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
@@ -85,8 +79,7 @@ public class App {
 		//CREATE GLISCOR
 		int EVs6[] = {244,40,8,0,96,120};
 		Move[] moves6 = {MoveMap.moveMap.get("Swords Dance"),MoveMap.moveMap.get("Earthquake"),MoveMap.moveMap.get("Knock Off"),MoveMap.moveMap.get("Roost")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful);
-		member.setAbility(new AbilityContainer("Poison Heal",member));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Poison Heal"), new ItemContainer("Life Orb"));
 		member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
@@ -95,9 +88,7 @@ public class App {
 
 		for (int i = 0; i < 6; i++)
 		{
-			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Pikablooooo",moves7,IVs,EVs,100,Nature.Timid);
-			member.setAbility(new AbilityContainer("Solid Rock",member));
-			member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+			member = new Pokemon(SpeciesMap.speciesMap.get("Mew"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Levitate"), new ItemContainer("Colbur Berry"));
 			member.setPlayerID(1);
 			computerTeam.add(member);
 		}

@@ -292,7 +292,7 @@ public class AbilityMap
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
 						   System.out.println(wielder.getNickName() + "'s Mummy");
-						   opponent.setAbility(new AbilityContainer("Mummy",opponent));
+						   opponent.setAbility(new AbilityContainer("Mummy"));
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
 					   return 1;
@@ -408,6 +408,7 @@ public class AbilityMap
 				   { 
 					   if( wielder.getAbility().getActiveStatus() == false && wielder.getHP() < (wielder.getMaxHP() / 2) )
 					   {
+						   wielder.getAbility().setOriginalStats(wielder);
 						   wielder.setMaxAtk(wielder.getMaxAtk() / 2);
 						   wielder.setMaxSpAtk(wielder.getMaxSpAtk() / 2);
 						   wielder.getAbility().setActiveStatus(true);
@@ -416,8 +417,8 @@ public class AbilityMap
 					   
 					   if( wielder.getAbility().getActiveStatus() == true && wielder.getHP() >= (wielder.getMaxHP() / 2) )
 					   {
-						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat()[Stat.ATTACK.getMask()]);
-						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat()[Stat.SPECIAL_ATTACK.getMask()]);
+						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat(Stat.ATTACK.getMask()));
+						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat(Stat.SPECIAL_ATTACK.getMask()));
 						   wielder.getAbility().setActiveStatus(false);
 						   return 1;
 					   }
@@ -588,27 +589,8 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(wielder.getType3() != null && wielder.getType2() != null)
-					   {
-						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1())
-								   * Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) 
-								   * Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1.0)
-						   {
-							   Formula.ability = ( 3.0 / 4);
-						   }
-					   }
-					   else if(wielder.getType2() != null)
-					   {
-						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1())
-								   + Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1.0)
-						   {
-							   Formula.ability = ( 3.0 / 4);
-						   }
-					   }
-					   else if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1.0)
-					   {
-						   Formula.ability = ( 3.0 / 4);
-					   }
+					   if(Formula.isSuperEffective(wielder, moveUsed))
+						   Formula.ability *= ( 3.0 / 4);
 						   
 					   return 1;
 				   }
@@ -655,6 +637,8 @@ public class AbilityMap
 									//check for ability event of the defender
 									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+									Event.itemEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 								}
 								System.out.println("It hit 5 times!");
 							}
@@ -664,11 +648,6 @@ public class AbilityMap
 					   {
 						   	//check for move event of the attacker
 							if(Event.moveEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
-							{
-								//run method automatically executed
-							}
-							//check for ability event of the defender
-							else if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, field, attacker, defender, moveUsed))
 							{
 								//run method automatically executed
 							}

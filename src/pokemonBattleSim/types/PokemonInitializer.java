@@ -42,7 +42,7 @@ public class PokemonInitializer implements IPokemonInitializer{
 		int[] EVs = {1,1,1,1,1,1};
 		int level = 100;
 		Nature nature = Nature.Timid;
-		return new Pokemon(SpeciesMap.speciesMap.get(this.pokemon.getName()), "nickname", moves, IVs, EVs, level, nature );
+		return new Pokemon(SpeciesMap.speciesMap.get(this.pokemon.getName()), "nickname", moves, IVs, EVs, level, nature, new AbilityContainer("None"), new ItemContainer("None"));
 	}
 
 }

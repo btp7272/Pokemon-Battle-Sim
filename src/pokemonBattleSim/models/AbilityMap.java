@@ -506,11 +506,17 @@ public class AbilityMap
 				           denomenator = 250 * defender.getDef();
 				       }
 				           
-				       else
+				       else if(moveUsed.getCategory() == Attribute.SPECIAL)
 				       {
 			            numerator = numerator * attacker.getSpAtk() * moveUsed.getPower();
 			            denomenator = 250 * defender.getSpDef();
-			        }
+				       }
+				       
+				       else
+				       {
+				    	   numerator = -2;
+				    	   denomenator = 1;
+				       }
 			           damage = (numerator / denomenator) + 2;
 				       damage *= modifier( attacker, defender, moveUsed, field );
 				       
@@ -561,7 +567,7 @@ public class AbilityMap
 			{
 				   String name = "Speed Boost";
 				   String description = "Speed raises over time.";
-				   EventType trigger = EventType.CONTINUOUS;
+				   EventType trigger = EventType.ENTRY;
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}

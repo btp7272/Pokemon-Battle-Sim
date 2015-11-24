@@ -88,6 +88,8 @@ public interface IPokemon
 		public StatusContainer getVolatileStatus(String name);
 		public boolean removeVolatileStatus(String name);
 		public boolean hasVolatileStatus(String name);
+		public boolean hasNonVolatileStatus(String name);
+		public boolean hasNonVolatileStatus();
 		public void activeNonVolatileStatus();
 		public Move getLastMoveUsed();
 }

@@ -45,6 +45,9 @@ public class Formula
      *****/
     public static int calcDamage(IPokemon attacker, IPokemon defender, Move m, IField field)
     {
+    	if(m.getCategory() == Attribute.STATUS)
+    		return 0;
+    	
         double damage;
         double numerator, denomenator;
         

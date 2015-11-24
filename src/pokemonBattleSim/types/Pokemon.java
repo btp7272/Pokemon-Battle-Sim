@@ -650,4 +650,21 @@ public class Pokemon implements IPokemon
 	public void activeNonVolatileStatus(){this.getNonVolatileStatus().run(this, null);}
 	
 	public Move getLastMoveUsed(){return this.lastMoveUsed;}
+	
+	public boolean hasNonVolatileStatus(String name)
+	{
+		if(this.nonVolatileStatus.getName().equals(name))
+			return true;
+		
+		return false;
+	}
+	
+	//Checks to see if a pokemon has a NVS other than "Healthy"
+	public boolean hasNonVolatileStatus()
+	{
+		if(this.nonVolatileStatus.getName().equals("Healthy"))
+			return false;
+		
+		return true;
+	}
 }

@@ -2,6 +2,8 @@ package pokemonBattleSim.models;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pokemonBattleSim.models.AbilityMap.Stat;
 import pokemonBattleSim.types.Event;
@@ -11,6 +13,8 @@ import pokemonBattleSim.types.IField;
 import pokemonBattleSim.types.IMoveEffect;
 import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.Move;
+import pokemonBattleSim.types.StatusContainer;
+import pokemonBattleSim.types.Type;
 
 public class MoveEffectMap 
 {
@@ -35,6 +39,142 @@ public class MoveEffectMap
 					  return 0;
 				  }
 				  attacker.changeHP(- moveUsed.getMoveEffectContainer().getDamageDelt() / 2);
+				  return 1;
+			   }
+		});
+		
+		effectMap.put("Flamethrower", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Flamethrower";
+			   String description = "10% chance to burn the target.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon attacker, Move moveUsed)
+			   { 
+				  if(Event.statusNonVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
+				  {
+					  //run event automatic
+					  return 0;
+				  }
+				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+				  
+				  if(!opponent.hasNonVolatileStatus())
+				  {
+					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10,"Burn",null));
+				  }
+				  else if(opponent.hasNonVolatileStatus("Burn"))
+				  {
+					  opponent.getNonVolatileStatusContainer().addToDegree(10, false);
+				  }
+				  
+				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+				  return 1;
+			   }
+		});
+		
+		effectMap.put("Scald", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Scald";
+			   String description = "10% chance to burn the target.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon attacker, Move moveUsed)
+			   { 
+				  if(Event.statusNonVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
+				  {
+					  //run event automatic
+					  return 0;
+				  }
+				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+				  
+				  if(!opponent.hasNonVolatileStatus())
+				  {
+					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30,"Burn",null));
+				  }
+				  else if(opponent.hasNonVolatileStatus("Burn"))
+				  {
+					  opponent.getNonVolatileStatusContainer().addToDegree(30, false);
+				  }
+				  
+				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+				  return 1;
+			   }
+		});
+		
+		effectMap.put("Roost", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Roost";
+			   String description = "Heals 50% of the user's max HP. "
+			   		+ "Temporarily removes the user's Flying type and turns it into a Normal-type if it is a pure Flying-type.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon attacker, Move moveUsed)
+			   {  
+				  Timer timer = new Timer();
+				  class SetTimer extends TimerTask
+				  {
+					  @Override
+					  public void run()
+					  {
+						  timer.cancel();
+						  moveUsed.getMoveEffectContainer().restoreOriginalTyping(attacker);
+						  return;
+					  }
+				  }
+				  
+				  if(Event.statusVolatileEvent(attacker, EventType.HEAL, moveUsed))
+				  {
+					  //run event automatic
+					  return 0;
+				  }
+				  attacker.changeHP(- attacker.getMaxHP() / 2);
+				  
+				  moveUsed.getMoveEffectContainer().setOriginalTyping(attacker.getType1(), attacker.getType2());
+				  
+				  if(attacker.getType1() == Type.FLYING && attacker.getType2() == null)
+				  {
+					  attacker.setType(Type.NORMAL, 1);
+				  }
+				  
+				  else if(attacker.getType1() == Type.FLYING)
+				  {
+					  attacker.setType(null, 1);
+				  }
+				  
+				  else if(attacker.getType2() == Type.FLYING)
+				  {
+					  attacker.setType(null, 2);
+				  }
+					  
+				  TimerTask task = new SetTimer();
+				  timer.schedule(task, 0, 10000);
+				  return 1;
+					  
+			   }
+		});
+		
+		effectMap.put("Recover", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Recover";
+			   String description = "Heals 50% of the user's max HP.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon attacker, Move moveUsed)
+			   { 
+				  if(Event.statusVolatileEvent(attacker, EventType.HEAL, moveUsed))
+				  {
+					  //run event automatic
+					  return 0;
+				  }
+				  attacker.changeHP(- attacker.getMaxHP() / 2);
 				  return 1;
 			   }
 		});

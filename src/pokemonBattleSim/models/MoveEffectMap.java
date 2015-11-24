@@ -81,7 +81,7 @@ public class MoveEffectMap
 		{
 			   EventType trigger = EventType.POST_ATTACK;
 			   String name = "Scald";
-			   String description = "10% chance to burn the target.";
+			   String description = "30% chance to burn the target.";
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
@@ -97,13 +97,12 @@ public class MoveEffectMap
 				  if(!opponent.hasNonVolatileStatus())
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30,"Burn",null));
+					  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(30, false);
 				  }
-				  
-				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
 				  return 1;
 			   }
 		});

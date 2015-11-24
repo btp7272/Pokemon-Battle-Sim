@@ -34,13 +34,13 @@ public class App {
 		Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
 		int IVs[] = {31,0,31,31,31,31};
 		int EVs[] = {96,0,0,196,0,216};
-		Move testMove = MoveMap.moveMap.get("Giga Drain");
 		
 		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Giga Drain"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
 		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest);
 		member.setAbility(new AbilityContainer("Drought",member));
 		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
 		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE TYRANITAR
@@ -50,6 +50,7 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly);
 		member.setAbility(new AbilityContainer("Skill Link",member));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE SLOWBRO
@@ -59,6 +60,7 @@ public class App {
 		member.setAbility(new AbilityContainer("Regenerator",member));
 		member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
 		member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE FERROTHRON
@@ -68,6 +70,7 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Badly Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed);
 		member.setAbility(new AbilityContainer("Iron Barbs",member));
 		member.setNonVolatileStatus(new StatusContainer(-1,0,"Badly Poison",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE LATIOS
@@ -76,6 +79,7 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid);
 		member.setAbility(new AbilityContainer("Levitate",member));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE GLISCOR
@@ -84,6 +88,7 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful);
 		member.setAbility(new AbilityContainer("Poison Heal",member));
 		member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
+		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		Move[] moves7 = {MoveMap.moveMap.get("Thunderbolt"),MoveMap.moveMap.get("Surf"),MoveMap.moveMap.get("Shadowball"),MoveMap.moveMap.get("Toxic")};
@@ -93,6 +98,7 @@ public class App {
 			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Pikablooooo",moves7,IVs,EVs,100,Nature.Timid);
 			member.setAbility(new AbilityContainer("Solid Rock",member));
 			member.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+			member.setPlayerID(1);
 			computerTeam.add(member);
 		}
 		

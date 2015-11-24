@@ -3,14 +3,18 @@ package pokemonBattleSim.types;
 public class AbilityContainer 
 {
 	private String name;
-	private int originalStat;
+	private int[] originalStats;
+	private boolean active;
 	
-	public AbilityContainer(String nm, int orStat)
+	public AbilityContainer(String nm, IPokemon poke)
 	{
 		name = nm;
-		originalStat = orStat;
+		originalStats = new int[]{poke.getMaxAtk(), poke.getMaxDef(), poke.getMaxSpAtk(), poke.getMaxSpDef(), poke.getMaxSpeed()};
+		active = false;
 	}
+	public void setActiveStatus(boolean bool){ active = bool; }
 	
 	public String getName(){ return name; }
-	public int getOriginalStat(){ return originalStat; }
+	public int[] getOriginalStat(){ return originalStats; }
+	public boolean getActiveStatus(){ return active; }
 }

@@ -534,6 +534,10 @@ public class BattleModel implements IBattleModel {
 		{
 			//run method automatically executed
 		}
+		if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
+		{
+			//run method automatically executed
+		}
 		//check for ability event of the attacker
 		else if(Event.abilityEvent(EventType.PRE_ATTACK, attacker, defender, field, attacker, defender, move))
 		{

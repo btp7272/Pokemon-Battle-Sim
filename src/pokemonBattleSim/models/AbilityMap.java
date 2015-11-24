@@ -292,7 +292,7 @@ public class AbilityMap
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
 						   System.out.println(wielder.getNickName() + "'s Mummy");
-						   opponent.setAbility(new AbilityContainer("Mummy",-1));
+						   opponent.setAbility(new AbilityContainer("Mummy",opponent));
 						   System.out.println(opponent.getNickName() + "'s Mummy");
 					   }
 					   return 1;
@@ -396,7 +396,7 @@ public class AbilityMap
 				   }
 			});
 			
-			abilityMap.put("Defeatist", new IAbility() //needs work
+			abilityMap.put("Defeatist", new IAbility()
 			{
 				   String name = "Defeatist";
 				   String description = "Halves the wielder's Attack and Special Attack if its HP drops below 50%.";
@@ -404,38 +404,21 @@ public class AbilityMap
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
-				   Boolean active = false;
-				   Boolean atkOddNumber, spAtkOddNumber;
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(! active)
+					   if( wielder.getAbility().getActiveStatus() == false && wielder.getHP() < (wielder.getMaxHP() / 2) )
 					   {
-						   if(wielder.getAtk() % 2 == 1)
-							   atkOddNumber = true;
-						   else
-							   atkOddNumber = false;
-						   
-						   if(wielder.getSpAtk() % 2 == 1)
-							   spAtkOddNumber = true;
-						   else
-							   spAtkOddNumber = false;
-						   
-						   active = true;
-					   }
-					   
-					   if( ! active && wielder.getHP() < (wielder.getMaxHP() / 2) )
-					   {
-						   wielder.changeAtkNoModifier(.5,atkOddNumber);
-						   wielder.changeSpAtkNoModifier(.5,spAtkOddNumber);
-						   active = true;
+						   wielder.setMaxAtk(wielder.getMaxAtk() / 2);
+						   wielder.setMaxSpAtk(wielder.getMaxSpAtk() / 2);
+						   wielder.getAbility().setActiveStatus(true);
 						   return 1;
 					   }
 					   
-					   if( active && wielder.getHP() >= (wielder.getMaxHP() / 2) )
+					   if( wielder.getAbility().getActiveStatus() == true && wielder.getHP() >= (wielder.getMaxHP() / 2) )
 					   {
-						   wielder.changeAtkNoModifier(2,atkOddNumber);
-						   wielder.changeSpAtkNoModifier(2,spAtkOddNumber);
-						   active = false;
+						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat()[Stat.ATTACK.getMask()]);
+						   wielder.setMaxAtk(wielder.getAbility().getOriginalStat()[Stat.SPECIAL_ATTACK.getMask()]);
+						   wielder.getAbility().setActiveStatus(false);
 						   return 1;
 					   }
 					   return 1;
@@ -595,16 +578,105 @@ public class AbilityMap
 				   }
 			});
 			
-			abilityMap.put("Poison Heal", new IAbility()
+			abilityMap.put("Solid Rock", new IAbility()
 			{
-				   String name = "Poison Heal";
-				   String description = "Heals 1/8 of max HP per turn when poisoned.";
-				   EventType trigger = EventType.CONTINUOUS;
+				   String name = "Solid Rock";
+				   String description = "Reduces damage from super effective hits by 1/4.";
+				   EventType trigger = EventType.PRE_DAMAGE;
 				   public EventType getEventTrigger(){return trigger;}
 				   public String getName(){return name;}
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
+					   if(wielder.getType2() != null)
+					   {
+						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1
+								   || Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1)
+						   {
+							   Formula.ability = ( 3.0 / 4);
+						   }
+					   }
+					   else if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1)
+					   {
+						   Formula.ability = ( 3.0 / 4);
+					   }
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Skill Link", new IAbility()
+			{
+				   String name = "Skill Link";
+				   String description = "Multi-hit moves will always hit the maximum number of times.";
+				   EventType trigger = EventType.PRE_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(moveUsed.getName().equals("Bullet Seed")
+						   || moveUsed.getName().equals("Arm Thrust")	
+						   || moveUsed.getName().equals("Barrage")	
+						   || moveUsed.getName().equals("Bone Rush")	
+						   || moveUsed.getName().equals("Comet Punch")	
+						   || moveUsed.getName().equals("Double Slap")
+						   || moveUsed.getName().equals("Fury Attack")	
+						   || moveUsed.getName().equals("Fury Swipes")
+						   || moveUsed.getName().equals("Icicle Spear")	
+						   || moveUsed.getName().equals("Pin Missile")
+						   || moveUsed.getName().equals("Rock Blast")
+						   || moveUsed.getName().equals("Spike Cannon")	
+						   || moveUsed.getName().equals("Tail Slap")
+						   || moveUsed.getName().equals("Water Shuriken"))
+					   {
+						    if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, field, attacker, defender, moveUsed))
+							{
+								//run method automatically executed
+							}
+							else
+							{
+								int damage;
+								for(int i = 0; i < 5; i++)
+								{
+									damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+									defender.changeHP(damage);
+									//check for ability even of the defender
+									Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+									//check for ability event of the defender
+									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+								}
+								System.out.println("It hit 5 times!");
+							}
+					   }
+					   
+					   else
+					   {
+						   	//check for move event of the attacker
+							if(Event.moveEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+							{
+								//run method automatically executed
+							}
+							//check for ability event of the defender
+							else if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, field, attacker, defender, moveUsed))
+							{
+								//run method automatically executed
+							}
+							else
+							{
+								int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+								damage = defender.changeHP(damage);
+								//check for ability even of the defender
+								Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+								//check for ability event of the defender
+								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+								Event.moveEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							}
+					   }
+						   
 					   return 1;
 				   }
 			});

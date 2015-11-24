@@ -31,8 +31,6 @@ public interface IPokemon
 		public void changeSpeed(int change);
 		public int changeHP(int damage);
 		public void changeWeight(double newWeight);
-		public void changeAtkNoModifier(double multiplier, boolean wasOdd);
-		public void changeSpAtkNoModifier(double multiplier, boolean wasOdd);
 		
 		public void resetHP();
 		public void resetAtk();

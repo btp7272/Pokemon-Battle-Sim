@@ -165,27 +165,6 @@ public class Pokemon implements IPokemon
 	public void setMaxSpDef(int spdef) {this.maxSpDef = spdef; this.setAtkModifier(this.getSpDefModifier());}
 	public void setMaxSpeed(int spd) {this.maxSpeed = spd; this.setAtkModifier(this.getSpeedModifier());}
 	
-	public void changeAtkNoModifier(double multiplier, boolean wasOdd)
-	{
-		this.maxAtk *= multiplier;
-		this.atk *= multiplier;
-		if(wasOdd && multiplier > 1)
-		{
-			this.maxAtk += 1;
-			this.atk += 1;
-		}
-	}
-	public void changeSpAtkNoModifier(double multiplier, boolean wasOdd)
-	{
-		this.maxSpAtk *= multiplier;
-		this.spAtk *= multiplier;
-		if(wasOdd && multiplier > 1)
-		{
-			this.maxSpAtk += 1;
-			this.spAtk += 1;
-		}
-	}
-	
 	//para: number -6 to 6. The stage of the stat
 	public void changeAtk(int change)
 	{

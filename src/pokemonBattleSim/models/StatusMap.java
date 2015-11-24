@@ -527,6 +527,7 @@ public class StatusMap
 						   {
 							   timer.cancel();
 							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   return;
 						   }
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)

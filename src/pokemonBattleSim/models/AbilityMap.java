@@ -563,7 +563,7 @@ public class AbilityMap
 						   @Override
 						   public void run()
 						   {
-							   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+							   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 							   {
 								   timer.cancel();
 								   return;
@@ -588,15 +588,24 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(wielder.getType2() != null)
+					   if(wielder.getType3() != null && wielder.getType2() != null)
 					   {
-						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1
-								   || Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1)
+						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1())
+								   * Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) 
+								   * Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1.0)
 						   {
 							   Formula.ability = ( 3.0 / 4);
 						   }
 					   }
-					   else if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1)
+					   else if(wielder.getType2() != null)
+					   {
+						   if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1())
+								   + Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType2()) > 1.0)
+						   {
+							   Formula.ability = ( 3.0 / 4);
+						   }
+					   }
+					   else if(Formula.clacEffectiveness(1, moveUsed.getType(), wielder.getType1()) > 1.0)
 					   {
 						   Formula.ability = ( 3.0 / 4);
 					   }

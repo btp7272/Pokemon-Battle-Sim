@@ -71,7 +71,7 @@ public class StatusMap
 					   @Override
 					   public void run()
 					   {
-						   if(!model.getPlayerPokemon(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   if(!model.getPlayerPokemon(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   timer.cancel();
 							   wielder.removeVolatileStatus("Curse");
@@ -105,7 +105,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
-				    System.out.println(wielder.getNickName()+" is prevented from healing!");
+				    System.out.println(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
 		});
@@ -159,7 +159,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
-				    System.out.println(wielder.getNickName()+" is prevented from healing!");
+				    System.out.println(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
 		});
@@ -328,7 +328,7 @@ public class StatusMap
 						}
 				    }
 				    else
-				    	System.out.println(wielder.getNickName()+" protected itself!");
+				    	System.out.println(wielder.getSpeciesName()+" protected itself!");
 					return 1;
 				}
 		});
@@ -358,10 +358,9 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
-							   timer.cancel();
-							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 							   return;
 						   }
 						   
@@ -416,10 +415,9 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
-							   timer.cancel();
-							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 							   return;
 						   }
 						   
@@ -474,10 +472,9 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
-							   timer.cancel();
-							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 							   return;
 						   }
 						   
@@ -530,10 +527,10 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   if(!model.getPlayerPokemonName(wielder.getPlayerID()).equals(wielder.getNickName()))
+						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   timer.cancel();
-							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
+							   wielder.getNonVolatileStatusContainer().setDegree(0);
 							   return;
 						   }
 						   
@@ -553,7 +550,7 @@ public class StatusMap
 				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
-				   	   timer.schedule(task, 10000, 10000);
+				   	   timer.schedule(task, 0, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   }
 					   

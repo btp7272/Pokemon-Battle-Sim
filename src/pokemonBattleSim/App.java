@@ -67,7 +67,7 @@ public class App {
 		Move[] moves4 = {MoveMap.moveMap.get("Stealth Rock"),MoveMap.moveMap.get("Leech Seed"),MoveMap.moveMap.get("Power Whip"),MoveMap.moveMap.get("Gyro Ball")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Badly Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed);
 		member.setAbility(new AbilityContainer("Iron Barbs",member));
-		member.setNonVolatileStatus(new StatusContainer(-1,1,"Badly Poison",null));
+		member.setNonVolatileStatus(new StatusContainer(-1,0,"Badly Poison",null));
 		playerTeam.add(member);
 		
 		//CREATE LATIOS
@@ -83,7 +83,7 @@ public class App {
 		Move[] moves6 = {MoveMap.moveMap.get("Swords Dance"),MoveMap.moveMap.get("Earthquake"),MoveMap.moveMap.get("Knock Off"),MoveMap.moveMap.get("Roost")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful);
 		member.setAbility(new AbilityContainer("Poison Heal",member));
-		member.setNonVolatileStatus(new StatusContainer(-1,1,"Poison",null));
+		member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
 		playerTeam.add(member);
 		
 		Move[] moves7 = {MoveMap.moveMap.get("Thunderbolt"),MoveMap.moveMap.get("Surf"),MoveMap.moveMap.get("Shadowball"),MoveMap.moveMap.get("Toxic")};

@@ -63,7 +63,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double run (IPokemon holder, Move moveUsed)
 			   { 
-				   if(moveUsed.getType() == Type.DARK && Formula.isSuperEffective(holder, moveUsed))
+				   if(moveUsed.getType() == Type.DARK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
 					   System.out.println(holder.getNickName()+" ate it's Colbur Berry!");

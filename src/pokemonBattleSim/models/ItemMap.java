@@ -89,5 +89,56 @@ public class ItemMap
 				   return 1;
 			   }
 		});
+		
+		itemMap.put("Choice Specs", new IItem()
+		{
+			   EventType trigger = EventType.PRE_ATTACK;
+			   String name = "Choice Specs";
+			   String description = "Hold item which raises Special Attack by 50%, but locks holder into one move.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(holder.getItemContainer().getActiveStatus() == false)
+				   {
+					   holder.getItemContainer().setForcedMove(moveUsed);
+					   holder.getItemContainer().setActiveStatus(true);
+				   }
+				   
+				   IPokemon defender = model.getOpponentPokemon(holder.getPlayerID());
+				   
+				   	if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
+			   	    {
+					//run method automatically executed
+					}
+					//check for ability event of the attacker
+					else if(Event.abilityEvent(EventType.PRE_ATTACK, holder, defender, model.getField(), holder, defender,holder.getItemContainer().getForcedMove()))
+					{
+						//run method automatically executed
+					}
+					//check for move event of the attacker
+					else if(Event.moveEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
+					{
+						//run method automatically executed
+					}
+					else
+					{
+					   int damage = Formula.calcDamage(holder, defender, holder.getItemContainer().getForcedMove(), model.getField());
+					   damage = defender.changeHP((int)(damage * 1.5));
+					   //check for ability even of the defender
+					   Event.abilityEvent(EventType.HP_CHANGE, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
+					   //check for ability event of the defender
+					   Event.statusVolatileEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
+					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
+					   Event.moveEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					}
+				   
+				   return 1;
+			   }
+		});
 	}
 }

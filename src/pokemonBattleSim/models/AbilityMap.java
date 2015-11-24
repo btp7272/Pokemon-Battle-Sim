@@ -590,7 +590,10 @@ public class AbilityMap
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
 					   if(Formula.isSuperEffective(wielder, moveUsed))
+					   {
 						   Formula.ability *= ( 3.0 / 4);
+						   System.out.println(wielder.getNickName()+"'s Solid Rock!");
+					   }
 						   
 					   return 1;
 				   }

@@ -37,7 +37,7 @@ public class App {
 		int EVs[] = {96,0,0,196,0,216};
 		
 		Move[] moves = {MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Giga Drain"),MoveMap.moveMap.get("Focus Blast"),MoveMap.moveMap.get("Roost")};
-		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("None"));
+		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Confused",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
 		member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
@@ -88,7 +88,7 @@ public class App {
 
 		for (int i = 0; i < 6; i++)
 		{
-			member = new Pokemon(SpeciesMap.speciesMap.get("Mew"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Levitate"), new ItemContainer("Colbur Berry"));
+			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Solid Rock"), new ItemContainer("Colbur Berry"));
 			member.setPlayerID(1);
 			computerTeam.add(member);
 		}

@@ -534,6 +534,10 @@ public class BattleModel implements IBattleModel {
 		{
 			//run method automatically executed
 		}
+		else if(Event.itemEffectEvent(attacker, EventType.PRE_ATTACK, move))
+		{
+			//run method automatically executed
+		}
 		else if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
 		{
 			//run method automatically executed
@@ -765,6 +769,7 @@ public class BattleModel implements IBattleModel {
 				}
 				Event.abilityEvent(EventType.EXIT, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				model.getPlayerPokemon(this.source.getTrainerID()).resetVolatileStatus();
+				model.getPlayerPokemon(this.source.getTrainerID()).getItemContainer().resetItemStats();;
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here

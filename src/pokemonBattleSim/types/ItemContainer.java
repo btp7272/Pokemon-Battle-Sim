@@ -23,4 +23,10 @@ public class ItemContainer
 	public Move getForcedMove(){ return forcedMove; }
 	public boolean getActiveStatus(){ return active; }
 	public int getOriginalStat(int index){ return originalStats[index]; }
+	
+	public void resetItemStats()
+	{
+		active = false;
+		forcedMove = null;
+	}
 }

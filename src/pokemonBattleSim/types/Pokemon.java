@@ -70,7 +70,7 @@ public class Pokemon implements IPokemon
 		this.baseAbility = abil;
 		this.ability = abil;
 		this.volatileStatus = new ArrayList<StatusContainer>();
-		this.nonVolatileStatus = new StatusContainer(-1,-1,"Healthy",null);
+		this.nonVolatileStatus = new StatusContainer("Healthy");
 		this.item = itemC;
 		
 		

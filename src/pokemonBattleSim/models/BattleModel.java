@@ -523,13 +523,7 @@ public class BattleModel implements IBattleModel {
 		attacker.setLastMoveUsed(move);
 		// calculate and apply the damage
 		
-		/*
-		 * ** EVENT ORDER **
-		 * STATUS
-		 * ABILITIES
-		 * SECONDARY EFFECTS
-		 * ITEMS
-		 */
+		
 		if(Event.statusVolatileEvent(attacker, EventType.PRE_ATTACK, move))
 		{
 			//run method automatically executed

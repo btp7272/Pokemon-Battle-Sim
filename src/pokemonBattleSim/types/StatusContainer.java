@@ -10,11 +10,17 @@ public class StatusContainer
 	public StatusContainer(int orgStat, int deg, String nm, Move forced)
 	{
 		active = false;
-		originalStat = orgStat; //set to -1 is never used
-		degree = deg;			//set to -1 is never used
+		originalStat = orgStat; 
+		degree = deg;			
 		name = nm;
 		degreeReset = false;
 		forcedMove = forced;
+	}
+	
+	public StatusContainer(String nm)
+	{
+		active = false;
+		name = nm;
 	}
 	
 	public void setActiveStatus(boolean set){ this.active = set; }

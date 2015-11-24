@@ -367,7 +367,7 @@ public class StatusMap
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   wielder.setNonVolatileStatus(new StatusContainer("Healthy"));
 							   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
 							   return;
 						   }

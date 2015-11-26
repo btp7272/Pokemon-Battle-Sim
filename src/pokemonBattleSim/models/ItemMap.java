@@ -134,25 +134,6 @@ public class ItemMap
 			   }
 		});
 		
-		itemMap.put("Rindo Berry", new IItem()
-		{
-			   EventType trigger = EventType.PRE_DAMAGE;
-			   String name = "Rindo Berry";
-			   String description = "Reduces damage from a super effective Grass-type attack by 50%. Consumed after use.";
-			   public EventType getEventTrigger(){return trigger;}
-			   public String getName(){return name;}
-			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
-			   { 
-				   if(moveUsed.getType() == Type.GRASS && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
-				   {
-					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Rindo Berry!");
-					   holder.setItem(new ItemContainer("None"));
-				   }
-				   return 1;
-			   }
-		});
 		
 		itemMap.put("Rindo Berry", new IItem()
 		{
@@ -328,26 +309,6 @@ public class ItemMap
 				   {
 					   Formula.item *= 0.5;
 					   System.out.println(holder.getNickName()+" ate it's Haban Berry!");
-					   holder.setItem(new ItemContainer("None"));
-				   }
-				   return 1;
-			   }
-		});
-		
-		itemMap.put("Colbur Berry", new IItem()
-		{
-			   EventType trigger = EventType.PRE_DAMAGE;
-			   String name = "Colbur Berry";
-			   String description = "Reduces damage from a super effective Dark-type attack by 50%. Consumed after use.";
-			   public EventType getEventTrigger(){return trigger;}
-			   public String getName(){return name;}
-			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
-			   { 
-				   if(moveUsed.getType() == Type.DARK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
-				   {
-					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Colbur Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;

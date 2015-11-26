@@ -42,7 +42,7 @@ public class AudioPlayer {
             while ((bytesRead = audioStream.read(bytesBuffer)) != -1) 
             {
                 audioLine.write(bytesBuffer, 0, bytesRead);
-            } 
+            }
             audioLine.drain();
             audioLine.close();
             audioStream.close();

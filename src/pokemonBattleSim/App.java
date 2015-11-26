@@ -45,7 +45,7 @@ public class App {
 		//CREATE TYRANITAR
 		int IVs2[] = {31,31,31,31,31,31};
 		int EVs2[] = {0,252,0,0,4,252};
-		Move[] moves2 = {MoveMap.moveMap.get("Crunch"),MoveMap.moveMap.get("Bullet Seed"),MoveMap.moveMap.get("Stone Edge"),MoveMap.moveMap.get("Earthquake")};
+		Move[] moves2 = {MoveMap.moveMap.get("Crunch"),MoveMap.moveMap.get("Bullet Seed"),MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Earthquake")};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Skill Link"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 		member.setPlayerID(0);
@@ -88,7 +88,7 @@ public class App {
 
 		for (int i = 0; i < 6; i++)
 		{
-			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Solid Rock"), new ItemContainer("Colbur Berry"));
+			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Solid Rock"), new ItemContainer("Rindo Berry"));
 			member.setPlayerID(1);
 			computerTeam.add(member);
 		}

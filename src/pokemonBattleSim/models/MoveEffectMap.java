@@ -64,7 +64,7 @@ public class MoveEffectMap
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
-				  if(Event.statusNonVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
+				  if(Event.statusVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
 				  {
 					  //runPrimaryEffectevent automatic
 					  return 0;
@@ -74,10 +74,13 @@ public class MoveEffectMap
 				  if(!opponent.hasNonVolatileStatus())
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10,"Burn",null));
+					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
+					  System.out.println(opponent.getNickName()+" was burnt!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(10, false);
+					  System.out.println(opponent.getNickName()+" was burnt more!");
 				  }
 				  
 				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
@@ -99,22 +102,25 @@ public class MoveEffectMap
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
-				  if(Event.statusNonVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
+				  if(Event.statusVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
 				  {
 					  //runPrimaryEffectevent automatic
 					  return 0;
 				  }
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
-				  
+
 				  if(!opponent.hasNonVolatileStatus())
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30,"Burn",null));
-					  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
+					  System.out.println(opponent.getNickName()+" was burnt!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(30, false);
+					  System.out.println(opponent.getNickName()+" was burnt more!");
 				  }
+				  
 				  return 1;
 			   }
 		});

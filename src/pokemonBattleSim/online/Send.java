@@ -1,9 +1,10 @@
-package pokemonBattleSim.models;
+package pokemonBattleSim.online;
 
 import java.io.*;
 import java.net.*;
 
-public class Send {
+public class Send 
+{
 	Socket opponent = null;  
     DataOutputStream output = null;
     

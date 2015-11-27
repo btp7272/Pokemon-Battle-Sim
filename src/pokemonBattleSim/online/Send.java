@@ -4,6 +4,7 @@ import pokemonBattleSim.types.*;
 import pokemonBattleSim.online.Recieve;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class Send 
 {
@@ -55,11 +56,100 @@ public class Send
 		return Recieve.getTestConnection();
 	}
 	
-	public void out(Pokemon p)
+	public void sendData(String s, Object o)
+	{
+		switch(s){
+		case "Pokemon":
+			sendString("Pokemon");
+			sendPokemon((Pokemon) o);
+			break;
+		case "Team":
+			sendString("Team");
+			sendTeam((ArrayList<Pokemon>) o);
+			break;
+		case "Move":
+			sendString("Move");
+			sendMove((Move) o);
+			break;
+		case "Game Over":
+			sendString("Game Over");
+			sendGameOver((boolean) o);
+			break;
+		}
+	}
+	
+	public void sendString(String s)
+	{
+		try 
+		{
+			out.writeBytes(s);
+			out.flush();
+		}
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+	}
+	
+	public void sendPokemon(Pokemon p)
 	{
 		try	
 		{
 			out.writeObject(p);
+			out.writeBytes("END");
+			out.flush();
+		}
+	    catch (UnknownHostException e) 
+	    {
+	    	System.err.println("Trying to connect to unknown host: " + e);
+	    } 
+	    catch (IOException e) 
+	    {
+	        System.err.println("IOException:  " + e);
+	    }
+	}
+	
+	public void sendTeam(ArrayList<Pokemon> p)
+	{
+		try	
+		{
+			out.writeObject(p);
+			out.writeBytes("END");
+			out.flush();
+		}
+	    catch (UnknownHostException e) 
+	    {
+	    	System.err.println("Trying to connect to unknown host: " + e);
+	    } 
+	    catch (IOException e) 
+	    {
+	        System.err.println("IOException:  " + e);
+	    }
+	}
+	
+	public void sendGameOver(Boolean b)
+	{
+		try	
+		{
+			out.writeObject(b);
+			out.writeBytes("END");
+			out.flush();
+		}
+	    catch (UnknownHostException e) 
+	    {
+	    	System.err.println("Trying to connect to unknown host: " + e);
+	    } 
+	    catch (IOException e) 
+	    {
+	        System.err.println("IOException:  " + e);
+	    }
+	}
+	
+	public void sendMove(Move m)
+	{
+		try	
+		{
+			out.writeObject(m);
 			out.writeBytes("END");
 			out.flush();
 		}

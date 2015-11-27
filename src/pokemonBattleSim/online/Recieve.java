@@ -1,7 +1,10 @@
 package pokemonBattleSim.online;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+
 import pokemonBattleSim.types.*;
+import pokemonBattleSim.models.*;
 
 public class Recieve 
 {
@@ -104,7 +107,48 @@ public class Recieve
 		return ip;
 	}
 	
-	public Pokemon listen()
+	public void Listen()
+	{
+		try 
+	    {
+	       read = Server.accept();
+	       input = new ObjectInputStream(read.getInputStream());
+	    }   
+	    catch (IOException e) 
+	    {
+	    	System.out.println(e);
+	    }
+		String s = null;
+		try 
+		{
+			s = (String) input.readObject();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.err.println(e);
+		}
+		
+		switch(s){
+			case "Pokemon":
+				recievePokemon();
+				break;
+			case "Team":
+				recieveTeam();
+				break;
+			case "Move":
+				recieveMove();
+				break;
+			case "Game Over":
+				recieveGameOver();
+				break;
+		}
+	}
+	
+	public Pokemon recievePokemon()
 	{
 		try 
 	    {
@@ -123,9 +167,92 @@ public class Recieve
 		catch (IOException e) 
 		{
 			System.err.println(e);
-		} catch (ClassNotFoundException e) {
+		} 
+		catch (ClassNotFoundException e) 
+		{
 			System.err.println(e);
 		}
 		return p;
+	}
+	
+	public ArrayList<Pokemon> recieveTeam()
+	{
+		try 
+	    {
+	       read = Server.accept();
+	       input = new ObjectInputStream(read.getInputStream());
+	    }   
+	    catch (IOException e) 
+	    {
+	    	System.out.println(e);
+	    }
+		ArrayList<Pokemon> team = null;
+		try 
+		{
+			team = (ArrayList<Pokemon>) input.readObject();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.err.println(e);
+		}
+		return team;
+	}
+	
+	public Move recieveMove()
+	{
+		try 
+	    {
+	       read = Server.accept();
+	       input = new ObjectInputStream(read.getInputStream());
+	    }   
+	    catch (IOException e) 
+	    {
+	    	System.out.println(e);
+	    }
+		Move m = null;
+		try 
+		{
+			m = (Move) input.readObject();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.err.println(e);
+		}
+		return m;
+	}
+	
+	public boolean recieveGameOver()
+	{
+		try 
+	    {
+	       read = Server.accept();
+	       input = new ObjectInputStream(read.getInputStream());
+	    }   
+	    catch (IOException e) 
+	    {
+	    	System.out.println(e);
+	    }
+		boolean b = false;
+		try 
+		{
+			b = (boolean) input.readObject();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.err.println(e);
+		}
+		return b;
 	}
 }

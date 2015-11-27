@@ -1,18 +1,20 @@
 package pokemonBattleSim.online;
 
+import pokemonBattleSim.online.Recieve;
 import java.io.*;
 import java.net.*;
 
 public class Send 
 {
 	Socket opponent = null;  
-    DataOutputStream output = null;
+    ObjectOutputStream out = null;
+    Socket socket = null;
     
 	public Socket createSocket()
 	{
 		try {
             opponent = new Socket("opponent", 8000);
-            output = new DataOutputStream(opponent.getOutputStream());
+            out = new ObjectOutputStream(opponent.getOutputStream());
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: opponent");
         } catch (IOException e) {
@@ -21,15 +23,40 @@ public class Send
 		return opponent;
 	}
 	
-	public void sendBytes(String s)
+	public boolean testConnection(String ip) throws IOException
 	{
-		if (opponent!= null && output != null)
+		// TODO retrieve IP Address from view
+		String s = "TEST";
+		try 
+		{
+			Socket out = new Socket("", 8000);
+		}
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		try 
+		{
+			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		out.writeObject(out);
+		out.flush();
+		return Recieve.getTestConnection();
+	}
+	
+	public void outBytes(String s)
+	{
+		if (opponent!= null && out != null)
 		{
 			try	
 			{
-				output.writeBytes(s);
-				output.writeBytes("END");
-				output.close();
+				out.writeBytes(s);
+				out.writeBytes("END");
+				out.close();
 			}
 		    catch (UnknownHostException e) 
 		    {

@@ -22,6 +22,17 @@ public class Recieve
         }
 	}
 	
+	public boolean recieveConnection()
+	{
+		
+		return false;
+	}
+	
+	public static boolean getTestConnection()
+	{
+		return false;
+	}
+	
 	public String getIPAddress()
 	{
 		URL whatismyip = null;

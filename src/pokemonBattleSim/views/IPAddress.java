@@ -8,10 +8,13 @@ import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 import pokemonBattleSim.online.*;
 import javax.swing.JMenuBar;
+import javax.swing.JTextPane;
+import javax.swing.JPasswordField;
+import javax.swing.JFormattedTextField;
 
 public class IPAddress {
 
-	private JFrame frame;
+	private JFrame frmHello;
 
 	/**
 	 * Launch the application.
@@ -21,7 +24,7 @@ public class IPAddress {
 			public void run() {
 				try {
 					IPAddress window = new IPAddress();
-					window.frame.setVisible(true);
+					window.frmHello.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,13 +43,14 @@ public class IPAddress {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHello = new JFrame();
+		frmHello.setTitle("Your IP Address");
+		frmHello.setBounds(100, 100, 232, 75);
+		frmHello.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTextArea txtrTesting = new JTextArea();
 		txtrTesting.setText(Recieve.getIPAddress());
-		frame.getContentPane().add(txtrTesting, BorderLayout.CENTER);
+		frmHello.getContentPane().add(txtrTesting, BorderLayout.CENTER);
 	}
 
 }

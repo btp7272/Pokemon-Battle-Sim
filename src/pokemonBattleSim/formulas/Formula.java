@@ -119,7 +119,7 @@ public class Formula
         	weather = 0.5;
         else if( m.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
         	weather = 0.0;
-        else if( m.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
+        else if( defender.isType(Type.ROCK) && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
         	weather = 0.5;
         else
         	weather = 1;
@@ -282,7 +282,7 @@ public class Formula
 	        	weather = 0.5;
 	        else if( m.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
 	        	weather = 0.0;
-	        else if( m.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
+	        else if( defender.isType(Type.ROCK) && field.getWeather() == Weather.SANDSTORM && m.getCategory() == Attribute.SPECIAL)
 	        	weather = 0.5;
 	        else
 	        	weather = 1;

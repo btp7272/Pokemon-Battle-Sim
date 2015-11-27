@@ -543,9 +543,10 @@ public class BattleModel implements IBattleModel {
 			//run method automatically executed
 		}
 		//check for move event of the attacker
-		else if(Event.moveEffectEvent(attacker, EventType.PRE_ATTACK, move))
+		else if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, move))
 		{
 			//run method automatically executed
+			Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, move);
 		}
 		else
 		{
@@ -558,7 +559,8 @@ public class BattleModel implements IBattleModel {
 			//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
 			Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
 			move.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
-			Event.moveEffectEvent(attacker, EventType.POST_ATTACK, move);
+			Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+			Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
 			Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
 			Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
 			Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, move);

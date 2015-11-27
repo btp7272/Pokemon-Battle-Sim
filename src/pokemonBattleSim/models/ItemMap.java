@@ -640,9 +640,10 @@ public class ItemMap
 						//runPrimaryEffectmethod automatically executed
 					}
 					//check for move event of the attacker
-					else if(Event.moveEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
+					else if(Event.movePrimaryEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 					{
 						//runPrimaryEffectmethod automatically executed
+						Event.moveSecondaryEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove());
 					}
 					else
 					{
@@ -657,7 +658,8 @@ public class ItemMap
 					   Event.statusVolatileEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
 					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
-					   Event.moveEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.moveSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
@@ -700,9 +702,10 @@ public class ItemMap
 						//runPrimaryEffectmethod automatically executed
 					}
 					//check for move event of the attacker
-					else if(Event.moveEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
+					else if(Event.movePrimaryEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 					{
 						//runPrimaryEffect method automatically executed
+						Event.moveSecondaryEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove());
 					}
 					else
 					{
@@ -717,7 +720,8 @@ public class ItemMap
 					   Event.statusVolatileEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
 					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
-					   Event.moveEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.moveSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());

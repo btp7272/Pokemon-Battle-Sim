@@ -22,6 +22,39 @@ public class Recieve
         }
 	}
 	
+	public String getIPAddress()
+	{
+		URL whatismyip = null;
+		BufferedReader in = null;
+		String ip = null;
+		try 
+		{
+			whatismyip = new URL("http://checkip.amazonaws.com");
+		} 
+		catch (MalformedURLException e) 
+		{
+			System.err.println(e);
+		}
+		try 
+		{
+			in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+		}
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+
+		try 
+		{
+			ip = in.readLine();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		return ip;
+	}
+	
 	public void listen()
 	{
 		try 

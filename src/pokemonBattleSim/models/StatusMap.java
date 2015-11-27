@@ -374,6 +374,7 @@ public class StatusMap
 						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   System.out.println(wielder.getNickName()+" is hurt by its burn!");
 						   return;
 					   }
 				   }
@@ -384,6 +385,7 @@ public class StatusMap
 				   	   timer.schedule(task, 0, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxAtk());
+				   	   System.out.println("Timer started");
 				   }
 					   
 				   return 1;

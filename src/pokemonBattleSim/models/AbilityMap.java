@@ -678,9 +678,10 @@ public class AbilityMap
 					   else
 					   {
 						   	//check for move event of the attacker
-							if(Event.moveEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+							if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
 							{
 								//run method automatically executed
+								Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
 							}
 							else
 							{
@@ -692,7 +693,8 @@ public class AbilityMap
 								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 								Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
 								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
-								Event.moveEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							}
 					   }
 						   

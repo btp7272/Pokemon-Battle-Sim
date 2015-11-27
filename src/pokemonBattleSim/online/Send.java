@@ -8,6 +8,8 @@ public class Send
 {
 	Socket opponent = null;  
     ObjectOutputStream out = null;
+    DataOutputStream test = null;
+    Socket testSocket = null;
     Socket socket = null;
     
 	public Socket createSocket()
@@ -25,11 +27,10 @@ public class Send
 	
 	public boolean testConnection(String ip) throws IOException
 	{
-		// TODO retrieve IP Address from view
 		String s = "TEST";
 		try 
 		{
-			Socket out = new Socket("", 8000);
+			Socket testSocket = new Socket(ip, 8000);
 		}
 		catch (IOException e) 
 		{
@@ -37,14 +38,14 @@ public class Send
 		}
 		try 
 		{
-			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+			DataOutputStream test = new DataOutputStream(socket.getOutputStream());
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
-		out.writeObject(out);
-		out.flush();
+		test.writeBytes(s);
+		test.flush();
 		return Recieve.getTestConnection();
 	}
 	

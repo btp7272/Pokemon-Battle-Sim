@@ -5,6 +5,9 @@ import java.net.*;
 public class Recieve 
 {
 	ServerSocket Server = null;
+	static ServerSocket Test = null;
+	static Socket socketTest = null;
+	static DataInputStream testIn = null;
 	String line;
 	DataInputStream input;
 	PrintStream print;
@@ -22,14 +25,48 @@ public class Recieve
         }
 	}
 	
-	public boolean recieveConnection()
-	{
-		
-		return false;
-	}
-	
 	public static boolean getTestConnection()
 	{
+		try
+		{
+			Test = new ServerSocket(8000);
+		}
+		catch (IOException e)
+		{
+			System.err.println(e);
+		}
+		
+		try
+		{
+			socketTest = Test.accept();
+		}
+		catch (IOException e)
+		{
+			System.err.println(e);
+		}
+		
+		try 
+		{
+			testIn = new DataInputStream(socketTest.getInputStream());
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		
+		String s = "";
+		try 
+		{
+			s = testIn.readLine();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		if(s == "TEST")
+		{
+			return true;
+		}
 		return false;
 	}
 	

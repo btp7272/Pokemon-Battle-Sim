@@ -104,8 +104,34 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   System.out.println(wielder.getNickName() + "'s Clear Body");
-					   System.out.println(opponent.getNickName() + "'s Clear Body prevented stat changes");
+					   boolean negativeAttempt = false;
+					   
+					   if(statChangeQueue[Stat.ATTACK.getMask()] > -1)
+						   wielder.changeAtk(statChangeQueue[Stat.ATTACK.getMask()]);
+					   else
+						   negativeAttempt = true;
+					   if(statChangeQueue[Stat.DEFENSE.getMask()] > -1)
+						   wielder.changeDef(statChangeQueue[Stat.DEFENSE.getMask()]);
+					   else
+						   negativeAttempt = true;
+					   if(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] > -1)
+						   wielder.changeSpAtk(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   else
+						   negativeAttempt = true;
+					   if(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] > -1)
+						   wielder.changeSpDef(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+					   else
+						   negativeAttempt = true;
+					   if(statChangeQueue[Stat.SPEED.getMask()] > -1)
+						   wielder.changeSpeed(statChangeQueue[Stat.SPEED.getMask()]);
+					   else
+						   negativeAttempt = true;
+					   
+					   if(negativeAttempt)
+					   {
+						   System.out.println(wielder.getNickName() + "'s Clear Body");
+						   System.out.println(opponent.getNickName() + "'s Clear Body prevented negative stat changes");
+					   }
 					   return 1;
 				   }
 			});

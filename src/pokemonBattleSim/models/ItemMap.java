@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.models.AbilityMap.Stat;
 import pokemonBattleSim.types.*;
 
 public class ItemMap 
@@ -52,37 +53,11 @@ public class ItemMap
 				   return 1;
 			   }
 		});
-		/*
-		itemMap.put("Leftovers", new IItem()
-		{
-			   EventType trigger = EventType.POST_ATTACK;
-			   String name = "Sitrus Berry";
-			   String description = "Restores 1/4 of the max HP when at 1/2 HP or less. One-time use.";
-			   public EventType getEventTrigger(){return trigger;}
-			   public String getName(){return name;}
-			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
-			   { 
-				   if(holder.getHP() <= holder.getMaxHP() / 2)
-				   {
-					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
-					   {
-						   //run event automatic
-						   return 0;
-					   }
-					   holder.changeHP(- holder.getMaxHP() / 4);
-					   System.out.println(holder.getNickName()+" ate it's Sitrus Berry!");
-					   holder.setItem(new ItemContainer("None"));
-					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
-				   }
-				   return 1;
-			   }
-		});*/
 		
-		/*
+		
 		itemMap.put("Liechi Berry", new IItem()
 		{
-			   EventType trigger = EventType.POST_ATTACK;
+			   EventType trigger = EventType.HP_CHANGE;
 			   String name = "Liechi Berry";
 			   String description = "Raises Attack by one stage when at 25% HP or less. One-time use.";
 			   public EventType getEventTrigger(){return trigger;}
@@ -92,14 +67,24 @@ public class ItemMap
 			   { 
 				   if(holder.getHP() <= holder.getMaxHP() / 4)
 				   {
-					   holder.changeHP(- holder.getMaxHP() / 4);
-					   System.out.println(holder.getNickName()+" ate it's Sitrus Berry!");
-					   holder.setItem(new ItemContainer("None"));
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
+					   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,holder,null,null,null,null,null))
+					   {
+						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+						   return 1;
+					   }
+					   else
+					   {
+						   holder.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+						   System.out.println(holder.getNickName()+" ate it's Liechi Berry!");
+						   holder.setItem(new ItemContainer("None"));
+						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   }
 				   }
 				   return 1;
 			   }
 		});
-		*/
+		
 		itemMap.put("Berry", new IItem()
 		{
 			   EventType trigger = EventType.POST_ATTACK;
@@ -508,7 +493,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double run (IPokemon holder, Move moveUsed)
 			   { 
-				   if(moveUsed.getType() == Type.NORMAL) //&& moveUsed.getCategory() != Attribute.STATUS
+				   if(moveUsed.getType() == Type.NORMAL && moveUsed.getCategory() != Attribute.STATUS)
 					   Formula.item *= 1.2;
 				   return 1;
 			   }

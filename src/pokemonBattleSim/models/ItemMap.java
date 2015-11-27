@@ -602,7 +602,7 @@ public class ItemMap
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   Formula.item *= 1.3;
-				   return 1;
+				   return 1.3;
 			   }
 			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
 			   {

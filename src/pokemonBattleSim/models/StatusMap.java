@@ -385,7 +385,6 @@ public class StatusMap
 				   	   timer.schedule(task, 0, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxAtk());
-				   	   System.out.println("Timer started");
 				   }
 					   
 				   return 1;

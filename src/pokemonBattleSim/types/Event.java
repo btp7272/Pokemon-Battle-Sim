@@ -79,6 +79,19 @@ public class Event
 		return false;
 	}
 	
+	public static Boolean moveHasSecondaryEffect(EventType type, Move moveUsed)
+	{
+		if(MoveEffectMap.effectMap.get(moveUsed.getName()) == null)
+			return false;
+		
+		if(MoveEffectMap.effectMap.get(moveUsed.getName()).getEventTrigger().getMask() == type.getMask())
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public static Boolean itemPrimaryEffectEvent(IPokemon holder, EventType type, Move moveUsed)
 	{
 		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)

@@ -93,4 +93,5 @@ public interface IPokemon
 		public Move getLastMoveUsed();
 		public IItem getItem();
 		public ItemContainer getItemContainer();
+		public boolean isType(Type typeCheck);
 }

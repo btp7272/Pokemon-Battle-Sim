@@ -22,6 +22,7 @@ public class MoveEffectMap
 {
 	public static Map < String, IMoveEffect > effectMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
+	public static int sereneGraceMultiplier = 1;
 	
 	
 	static
@@ -71,16 +72,16 @@ public class MoveEffectMap
 				  }
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 				  
-				  if(!opponent.hasNonVolatileStatus())
+				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
 				  {
-					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10,"Burn",null));
+					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10 * sereneGraceMultiplier,"Burn",null));
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
-					  System.out.println(opponent.getNickName()+" was burnt!");
+					  System.out.println(opponent.getNickName()+" was burnt with a degree of "+ 10 * sereneGraceMultiplier +"!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
-					  opponent.getNonVolatileStatusContainer().addToDegree(10, false);
-					  System.out.println(opponent.getNickName()+" was burnt more!");
+					  opponent.getNonVolatileStatusContainer().addToDegree(10 * sereneGraceMultiplier, false);
+					  System.out.println(opponent.getNickName()+" was burnt more with a degree of "+ 10 * sereneGraceMultiplier +"!");
 				  }
 				  
 				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
@@ -109,16 +110,16 @@ public class MoveEffectMap
 				  }
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 
-				  if(!opponent.hasNonVolatileStatus())
+				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
 				  {
-					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30,"Burn",null));
+					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30 * sereneGraceMultiplier,"Burn",null));
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
 					  System.out.println(opponent.getNickName()+" was burnt!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
-					  opponent.getNonVolatileStatusContainer().addToDegree(30, false);
-					  System.out.println(opponent.getNickName()+" was burnt more!");
+					  opponent.getNonVolatileStatusContainer().addToDegree(30 * sereneGraceMultiplier, false);
+					  System.out.println(opponent.getNickName()+" was burnt more with a degree of "+ 30 * sereneGraceMultiplier +"!");
 				  }
 				  
 				  return 1;

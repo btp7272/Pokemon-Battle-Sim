@@ -46,16 +46,16 @@ public class App {
 		int IVs2[] = {31,31,31,31,31,31};
 		int EVs2[] = {0,252,0,0,4,252};
 		Move[] moves2 = {MoveMap.moveMap.get("Crunch"),MoveMap.moveMap.get("Bullet Seed"),MoveMap.moveMap.get("Flamethrower"),MoveMap.moveMap.get("Earthquake")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Burned",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Skill Link"), new ItemContainer("None"));
-		member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+		//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);
 		
 		//CREATE SLOWBRO
 		int EVs3[] = {248,0,200,0,52,8};
 		Move[] moves3 = {MoveMap.moveMap.get("Shadow Ball"),MoveMap.moveMap.get("Scald"),MoveMap.moveMap.get("Psyshock"),MoveMap.moveMap.get("Slack Off")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"Encored",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Regenerator"), new ItemContainer("None"));
-		member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
+		//member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
 		member.setPlayerID(0);
 		playerTeam.add(member);
 		

@@ -1,8 +1,6 @@
 package pokemonBattleSim.models;
 
 import java.util.*;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.types.Attribute;
@@ -104,6 +102,12 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
+					   //If the opponent didn't cause the status change
+					   if(opponent == null)
+					   {
+						   return 1;
+					   }
+					   
 					   boolean negativeAttempt = false;
 					   
 					   if(statChangeQueue[Stat.ATTACK.getMask()] > -1)
@@ -697,6 +701,87 @@ public class AbilityMap
 								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							}
 					   }
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Serene Grace", new IAbility()
+			{
+				   String name = "Serene Grace";
+				   String description = "This Pokemon's secondary effect chances are doubled.";
+				   EventType trigger = EventType.PRE_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					    MoveEffectMap.sereneGraceMultiplier = 2;
+					   	//check for move event of the attacker
+						if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+						{
+							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
+						}
+						else
+						{
+							int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+							damage = defender.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							//check for ability event of the defender
+							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+						}
+						   
+						MoveEffectMap.sereneGraceMultiplier = 1;
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Sheer Force", new IAbility()
+			{
+				   String name = "Sheer Force";
+				   String description = "Increases power of moves with secondary effects by 30%, but removes the effects.";
+				   EventType trigger = EventType.PRE_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   	//check for move event of the attacker
+						if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+						{
+							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
+						}
+						else
+						{
+							int damage = Formula.calcSheerForceDamage(attacker, defender, moveUsed, field);
+							damage = defender.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							//check for ability event of the defender
+							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//No secondary effects of moves can activate for the attacker
+							Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//No secondary effects of items can activate for the attacker
+							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							//No secondary effects of items can activate for the defender
+						}
 						   
 					   return 1;
 				   }

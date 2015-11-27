@@ -656,4 +656,15 @@ public class Pokemon implements IPokemon
 	
 	public IItem getItem(){return ItemMap.itemMap.get(this.item.getName());}
 	public ItemContainer getItemContainer(){return this.item;}
+	
+	public boolean isType(Type typeCheck)
+	{
+		if(this.getType1() == Type.FIRE)
+			return true;
+		
+		if(this.getType2() != null && this.getType2() == Type.FIRE)
+			return true;
+		
+		return false;
+	}
 }

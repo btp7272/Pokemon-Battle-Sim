@@ -5,5 +5,6 @@ public interface IItem
 	public String getName();
 	public String getDescription();
 	public EventType getEventTrigger();
-	public double run (IPokemon holder, Move moveUsed);
+	public double runPrimaryEffect(IPokemon holder, Move moveUsed);
+	public double runSecondaryEffect(IPokemon holder, Move moveUsed);
 }

@@ -22,9 +22,13 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				  return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
+				   return 1;
 			   }
 		});
 		
@@ -36,13 +40,13 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
 					   {
-						   //run event automatic
+						   //runPrimaryEffectevent automatic
 						   return 0;
 					   }
 					   holder.changeHP(- holder.getMaxHP() / 4);
@@ -50,6 +54,10 @@ public class ItemMap
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -63,7 +71,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getHP() <= holder.getMaxHP() / 4)
 				   {
@@ -83,6 +91,10 @@ public class ItemMap
 				   }
 				   return 1;
 			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
+				   return 1;
+			   }
 		});
 		
 		itemMap.put("Berry", new IItem()
@@ -93,13 +105,13 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
 					   {
-						   //run event automatic
+						   //runPrimaryEffectevent automatic
 						   return 0;
 					   }
 					   holder.changeHP(- 10);
@@ -107,6 +119,10 @@ public class ItemMap
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -119,13 +135,13 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
 					   {
-						   //run event automatic
+						   //runPrimaryEffectevent automatic
 						   return 0;
 					   }
 					   holder.changeHP(- 20);
@@ -133,6 +149,10 @@ public class ItemMap
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -147,7 +167,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.DARK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -155,6 +175,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Colbur Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -167,7 +191,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.FIRE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -175,6 +199,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Occa Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -187,7 +215,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.WATER && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -195,6 +223,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Passho Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -207,7 +239,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.ELECTRIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -215,6 +247,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Wacon Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -228,7 +264,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.GRASS && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -236,6 +272,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Rindo Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -248,7 +288,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.ICE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -256,6 +296,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Yache Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -268,7 +312,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.FIGHTING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -276,6 +320,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Chople Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -288,7 +336,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.GROUND && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -296,6 +344,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's sHUCA Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -308,7 +360,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.FLYING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -316,6 +368,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Coba Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -328,7 +384,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.PSYCHIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -336,6 +392,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Payapa Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -348,7 +408,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.BUG && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -356,6 +416,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Tanga Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -368,7 +432,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.ROCK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -376,6 +440,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Charti Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -388,7 +456,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.DRAGON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -396,6 +464,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Haban Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -408,7 +480,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.STEEL && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -416,6 +488,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Babiri Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -429,7 +505,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.GHOST && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -437,6 +513,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Kasib Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -449,7 +529,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.POISON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -457,6 +537,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Kebia Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -469,7 +553,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.FAIRY && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
@@ -477,6 +561,10 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Roseli Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -491,10 +579,14 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(moveUsed.getType() == Type.NORMAL && moveUsed.getCategory() != Attribute.STATUS)
 					   Formula.item *= 1.2;
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -507,9 +599,13 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   Formula.item *= 1.3;
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   holder.changeHP(holder.getMaxHP() / 10);
 				   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   return 1;
@@ -524,7 +620,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getItemContainer().getActiveStatus() == false)
 				   {
@@ -536,17 +632,17 @@ public class ItemMap
 				   
 				   	if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 			   	    {
-					//run method automatically executed
+					//runPrimaryEffectmethod automatically executed
 					}
 					//check for ability event of the attacker
 					else if(Event.abilityEvent(EventType.PRE_ATTACK, holder, defender, model.getField(), holder, defender,holder.getItemContainer().getForcedMove()))
 					{
-						//run method automatically executed
+						//runPrimaryEffectmethod automatically executed
 					}
 					//check for move event of the attacker
 					else if(Event.moveEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 					{
-						//run method automatically executed
+						//runPrimaryEffectmethod automatically executed
 					}
 					else
 					{
@@ -562,10 +658,16 @@ public class ItemMap
 					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
 					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
 					   Event.moveEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					}
 				   
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});
@@ -578,7 +680,7 @@ public class ItemMap
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
+			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
 				   if(holder.getItemContainer().getActiveStatus() == false)
 				   {
@@ -590,17 +692,17 @@ public class ItemMap
 				   
 				   	if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 			   	    {
-					//run method automatically executed
+					//runPrimaryEffect method automatically executed
 					}
 					//check for ability event of the attacker
 					else if(Event.abilityEvent(EventType.PRE_ATTACK, holder, defender, model.getField(), holder, defender,holder.getItemContainer().getForcedMove()))
 					{
-						//run method automatically executed
+						//runPrimaryEffectmethod automatically executed
 					}
 					//check for move event of the attacker
 					else if(Event.moveEffectEvent(holder, EventType.PRE_ATTACK, holder.getItemContainer().getForcedMove()))
 					{
-						//run method automatically executed
+						//runPrimaryEffect method automatically executed
 					}
 					else
 					{
@@ -616,10 +718,16 @@ public class ItemMap
 					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
 					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
 					   Event.moveEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+					   Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
 					}
 				   
+				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
+			   {
 				   return 1;
 			   }
 		});

@@ -65,14 +65,28 @@ public class Event
 		return false;
 	}
 	
-	public static Boolean itemEffectEvent(IPokemon holder, EventType type, Move moveUsed)
+	public static Boolean itemPrimaryEffectEvent(IPokemon holder, EventType type, Move moveUsed)
 	{
 		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)
 			return false;
 		
 		if(holder.getItem().getEventTrigger().getMask() == type.getMask())
 		{
-			holder.getItem().run(holder,moveUsed);
+			holder.getItem().runPrimaryEffect(holder,moveUsed);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static Boolean itemSecondaryEffectEvent(IPokemon holder, EventType type, Move moveUsed)
+	{
+		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)
+			return false;
+		
+		if(holder.getItem().getEventTrigger().getMask() == type.getMask())
+		{
+			holder.getItem().runSecondaryEffect(holder,moveUsed);
 			return true;
 		}
 		

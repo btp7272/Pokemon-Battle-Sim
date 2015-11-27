@@ -70,7 +70,7 @@ public class Recieve
 		return false;
 	}
 	
-	public String getIPAddress()
+	public static String getIPAddress()
 	{
 		URL whatismyip = null;
 		BufferedReader in = null;

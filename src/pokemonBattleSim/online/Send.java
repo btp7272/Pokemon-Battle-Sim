@@ -1,5 +1,4 @@
 package pokemonBattleSim.online;
-import pokemonBattleSim.models.*;
 import pokemonBattleSim.types.*;
 import pokemonBattleSim.online.Recieve;
 import java.io.*;
@@ -45,7 +44,7 @@ public class Send
 		}
 		try 
 		{
-			DataOutputStream test = new DataOutputStream(socket.getOutputStream());
+			DataOutputStream test = new DataOutputStream(testSocket.getOutputStream());
 		} 
 		catch (IOException e) 
 		{

@@ -4,7 +4,6 @@ import java.net.*;
 import java.util.ArrayList;
 
 import pokemonBattleSim.types.*;
-import pokemonBattleSim.models.*;
 
 public class Recieve 
 {
@@ -61,7 +60,7 @@ public class Recieve
 		String s = "";
 		try 
 		{
-			s = testIn.readLine();
+			s = testIn.readUTF();
 		} 
 		catch (IOException e) 
 		{
@@ -74,7 +73,7 @@ public class Recieve
 		return false;
 	}
 	
-	public String getIPAddress()
+	public static String getIPAddress()
 	{
 		URL whatismyip = null;
 		BufferedReader in = null;

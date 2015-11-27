@@ -88,7 +88,7 @@ public class App {
 
 		for (int i = 0; i < 6; i++)
 		{
-			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Solid Rock"), new ItemContainer("Rindo Berry"));
+			member = new Pokemon(SpeciesMap.speciesMap.get("Milotic"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Solid Rock"), new ItemContainer("Sitrus Berry"));
 			member.setPlayerID(1);
 			computerTeam.add(member);
 		}

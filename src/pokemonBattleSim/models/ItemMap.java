@@ -52,8 +52,108 @@ public class ItemMap
 				   return 1;
 			   }
 		});
+		/*
+		itemMap.put("Leftovers", new IItem()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Sitrus Berry";
+			   String description = "Restores 1/4 of the max HP when at 1/2 HP or less. One-time use.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(holder.getHP() <= holder.getMaxHP() / 2)
+				   {
+					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
+					   {
+						   //run event automatic
+						   return 0;
+					   }
+					   holder.changeHP(- holder.getMaxHP() / 4);
+					   System.out.println(holder.getNickName()+" ate it's Sitrus Berry!");
+					   holder.setItem(new ItemContainer("None"));
+					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
+				   }
+				   return 1;
+			   }
+		});*/
 		
-		//Next 18 items are the berries for each type
+		/*
+		itemMap.put("Liechi Berry", new IItem()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Liechi Berry";
+			   String description = "Raises Attack by one stage when at 25% HP or less. One-time use.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(holder.getHP() <= holder.getMaxHP() / 4)
+				   {
+					   holder.changeHP(- holder.getMaxHP() / 4);
+					   System.out.println(holder.getNickName()+" ate it's Sitrus Berry!");
+					   holder.setItem(new ItemContainer("None"));
+				   }
+				   return 1;
+			   }
+		});
+		*/
+		itemMap.put("Berry", new IItem()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Berry";
+			   String description = "Restores 10 HP when at 50% HP or less. One-time use.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(holder.getHP() <= holder.getMaxHP() / 2)
+				   {
+					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
+					   {
+						   //run event automatic
+						   return 0;
+					   }
+					   holder.changeHP(- 10);
+					   System.out.println(holder.getNickName()+" ate it's Berry!");
+					   holder.setItem(new ItemContainer("None"));
+					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
+				   }
+				   return 1;
+			   }
+		});
+		
+		itemMap.put("Berry Juice", new IItem()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Berry Juice";
+			   String description = "Restores 20 HP when at 50% HP or less. One-time use.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(holder.getHP() <= holder.getMaxHP() / 2)
+				   {
+					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
+					   {
+						   //run event automatic
+						   return 0;
+					   }
+					   holder.changeHP(- 20);
+					   System.out.println(holder.getNickName()+" drank it's Berry Juice!");
+					   holder.setItem(new ItemContainer("None"));
+					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
+				   }
+				   return 1;
+			   }
+		});
+		
+		//Next 17 items are the berries for each type besides normal, which can't be super effective
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		itemMap.put("Colbur Berry", new IItem()
 		{
 			   EventType trigger = EventType.PRE_DAMAGE;
@@ -335,25 +435,6 @@ public class ItemMap
 			   }
 		});
 		
-		itemMap.put("Chilan Berry", new IItem()
-		{
-			   EventType trigger = EventType.PRE_DAMAGE;
-			   String name = "Chilan Berry";
-			   String description = "Reduces damage from a super effective Normal-type attack by 50%. Consumed after use.";
-			   public EventType getEventTrigger(){return trigger;}
-			   public String getName(){return name;}
-			   public String getDescription(){return description;}
-			   public double run (IPokemon holder, Move moveUsed)
-			   { 
-				   if(moveUsed.getType() == Type.NORMAL && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
-				   {
-					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Chilan Berry!");
-					   holder.setItem(new ItemContainer("None"));
-				   }
-				   return 1;
-			   }
-		});
 		
 		itemMap.put("Kasib Berry", new IItem()
 		{
@@ -391,6 +472,44 @@ public class ItemMap
 					   System.out.println(holder.getNickName()+" ate it's Kebia Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
+				   return 1;
+			   }
+		});
+		
+		itemMap.put("Roseli Berry", new IItem()
+		{
+			   EventType trigger = EventType.PRE_DAMAGE;
+			   String name = "Roseli Berry";
+			   String description = "Reduces damage from a super effective Fairy-type attack by 50%. Consumed after use.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(moveUsed.getType() == Type.FAIRY && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
+				   {
+					   Formula.item *= 0.5;
+					   System.out.println(holder.getNickName()+" ate it's Roseli Berry!");
+					   holder.setItem(new ItemContainer("None"));
+				   }
+				   return 1;
+			   }
+		});
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		itemMap.put("Pink Bow", new IItem()
+		{
+			   EventType trigger = EventType.PRE_DAMAGE;
+			   String name = "Pink Bow";
+			   String description = "Raises power of Normal-type moves by 20%.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double run (IPokemon holder, Move moveUsed)
+			   { 
+				   if(moveUsed.getType() == Type.NORMAL) //&& moveUsed.getCategory() != Attribute.STATUS
+					   Formula.item *= 1.2;
 				   return 1;
 			   }
 		});

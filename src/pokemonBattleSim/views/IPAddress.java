@@ -11,6 +11,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class IPAddress {
 
@@ -45,12 +50,25 @@ public class IPAddress {
 	private void initialize() {
 		frmHello = new JFrame();
 		frmHello.setTitle("Your IP Address");
-		frmHello.setBounds(100, 100, 232, 75);
+		frmHello.setBounds(100, 100, 313, 141);
 		frmHello.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHello.getContentPane().setLayout(null);
 		
-		JTextArea txtrTesting = new JTextArea();
-		txtrTesting.setText(Recieve.getIPAddress());
-		frmHello.getContentPane().add(txtrTesting, BorderLayout.CENTER);
+		JLabel lblNewLabel = new JLabel("Your IP Address: "+Recieve.getIPAddress());
+		lblNewLabel.setBounds(63, 11, 218, 37);
+		frmHello.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Cancel");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(192, 59, 89, 23);
+		frmHello.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Waiting for connection...");
+		btnNewButton_1.setEnabled(false);
+		btnNewButton_1.setBounds(10, 59, 172, 23);
+		frmHello.getContentPane().add(btnNewButton_1);
 	}
-
 }

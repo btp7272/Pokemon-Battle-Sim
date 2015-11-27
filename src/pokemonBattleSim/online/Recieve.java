@@ -1,6 +1,7 @@
 package pokemonBattleSim.online;
 import java.io.*;
 import java.net.*;
+import pokemonBattleSim.types.*;
 
 public class Recieve 
 {
@@ -9,7 +10,7 @@ public class Recieve
 	static Socket socketTest = null;
 	static DataInputStream testIn = null;
 	String line;
-	DataInputStream input;
+	ObjectInputStream input;
 	PrintStream print;
 	Socket read = null;
        
@@ -103,22 +104,28 @@ public class Recieve
 		return ip;
 	}
 	
-	public void listen()
+	public Pokemon listen()
 	{
 		try 
 	    {
 	       read = Server.accept();
-	       input = new DataInputStream(read.getInputStream());
-	       print = new PrintStream(read.getOutputStream());
-	
-	       while (true) {
-	         line = input.readLine();
-	         print.println(line); 
-	       }
+	       input = new ObjectInputStream(read.getInputStream());
 	    }   
 	    catch (IOException e) 
 	    {
 	    	System.out.println(e);
 	    }
+		Pokemon p = null;
+		try 
+		{
+			p = (Pokemon) input.readObject();
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		} catch (ClassNotFoundException e) {
+			System.err.println(e);
+		}
+		return p;
 	}
 }

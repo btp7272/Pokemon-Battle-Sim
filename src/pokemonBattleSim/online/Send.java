@@ -1,5 +1,6 @@
 package pokemonBattleSim.online;
-
+import pokemonBattleSim.models.*;
+import pokemonBattleSim.types.*;
 import pokemonBattleSim.online.Recieve;
 import java.io.*;
 import java.net.*;
@@ -12,14 +13,19 @@ public class Send
     Socket testSocket = null;
     Socket socket = null;
     
-	public Socket createSocket()
+	public Socket createSocket(String ip)
 	{
-		try {
-            opponent = new Socket("opponent", 8000);
+		try 
+		{
+            opponent = new Socket(ip, 8000);
             out = new ObjectOutputStream(opponent.getOutputStream());
-        } catch (UnknownHostException e) {
+        } 
+		catch (UnknownHostException e) 
+		{
             System.err.println("Don't know about host: opponent");
-        } catch (IOException e) {
+        } 
+		catch (IOException e) 
+		{
             System.err.println("Couldn't get I/O for the connection to: opponent");
         }
 		return opponent;
@@ -49,24 +55,21 @@ public class Send
 		return Recieve.getTestConnection();
 	}
 	
-	public void outBytes(String s)
+	public void out(Pokemon p)
 	{
-		if (opponent!= null && out != null)
+		try	
 		{
-			try	
-			{
-				out.writeBytes(s);
-				out.writeBytes("END");
-				out.close();
-			}
-		    catch (UnknownHostException e) 
-		    {
-		    	System.err.println("Trying to connect to unknown host: " + e);
-		    } 
-		    catch (IOException e) 
-		    {
-		        System.err.println("IOException:  " + e);
-		    }
+			out.writeObject(p);
+			out.writeBytes("END");
+			out.flush();
 		}
+	    catch (UnknownHostException e) 
+	    {
+	    	System.err.println("Trying to connect to unknown host: " + e);
+	    } 
+	    catch (IOException e) 
+	    {
+	        System.err.println("IOException:  " + e);
+	    }
 	}
 }

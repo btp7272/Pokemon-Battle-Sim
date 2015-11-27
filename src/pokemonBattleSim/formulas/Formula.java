@@ -127,8 +127,10 @@ public class Formula
         //Calculate Ability modifier
         Event.abilityEvent(EventType.PRE_DAMAGE,attacker,defender,field,attacker,defender,m);
         Event.abilityEvent(EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
-        Event.itemEffectEvent(attacker, EventType.PRE_DAMAGE, m);
-        Event.itemEffectEvent(defender, EventType.PRE_DAMAGE, m);
+        Event.itemPrimaryEffectEvent(attacker, EventType.PRE_DAMAGE, m);
+        Event.itemSecondaryEffectEvent(attacker, EventType.PRE_DAMAGE, m);
+        Event.itemPrimaryEffectEvent(defender, EventType.PRE_DAMAGE, m);
+        Event.itemSecondaryEffectEvent(defender, EventType.PRE_DAMAGE, m);
         
         return (stab * type * roll * weather * ability * item);
     }

@@ -666,8 +666,10 @@ public class AbilityMap
 									//check for ability event of the defender
 									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
-									Event.itemEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-									Event.itemEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 								}
 								System.out.println("It hit 5 times!");
 							}

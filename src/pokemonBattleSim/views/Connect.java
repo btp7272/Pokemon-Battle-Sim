@@ -50,7 +50,6 @@ public class Connect {
 	 */
 	private void initialize() {
 		frmConnect = new JFrame();
-		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage(Connect.class.getResource("/pokemonBattleSim/resources/auxImages/Pokeball1.png")));
 		frmConnect.setTitle("Connect");
 		frmConnect.setBounds(100, 100, 506, 137);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

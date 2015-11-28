@@ -249,5 +249,110 @@ public class MoveEffectMap
 			   }
 		});
 		
+		effectMap.put("Thunder Wave", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Thunder Wave";
+			   String description = "Paralyzes the target.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+					  
+					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.ELECTRIC)))
+					  {
+						  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxSpeed(),100,"Paralysis",null));
+						  System.out.println(opponent.getNickName()+" was paralyzed fully!");
+					  }
+					  else if(opponent.hasNonVolatileStatus("Paralysis"))
+					  {
+						  opponent.getNonVolatileStatusContainer().addToDegree(100, false);
+						  System.out.println(opponent.getNickName()+" was paralyzed fully again!");
+					  }
+					  else
+					  {
+						  System.out.println("The move failed!");
+					  }
+					  
+				  return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Will-O-Wisp", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Will-O-Wisp";
+			   String description = "Burns the target.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+
+					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.FIRE)))
+					  {
+						  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),100,"Burn",null));
+						  System.out.println(opponent.getNickName()+" was burnt fully!");
+					  }
+					  else if(opponent.hasNonVolatileStatus("Burn"))
+					  {
+						  opponent.getNonVolatileStatusContainer().addToDegree(100, false);
+						  System.out.println(opponent.getNickName()+" was burnt fully again!");
+					  }
+					  else
+					  {
+						  System.out.println("The move failed!");
+					  }
+					  
+				  return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Toxic", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Toxic";
+			   String description = "Badly Poisons the target.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+
+					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.POISON)))
+					  {
+						  opponent.setNonVolatileStatus(new StatusContainer(-1,1,"Toxic Poison",null));
+						  System.out.println(opponent.getNickName()+" was badly poisoned!");
+					  }
+					  else if(opponent.hasNonVolatileStatus("Toxic Poison"))
+					  {
+						  opponent.getNonVolatileStatusContainer().addToDegree(10, false);
+						  System.out.println(opponent.getNickName()+" was poisoned even more!");
+					  }
+					  else
+					  {
+						  System.out.println("The move failed!");
+					  }
+					  
+				  return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
 	}
 }

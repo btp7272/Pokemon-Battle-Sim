@@ -557,12 +557,9 @@ public class BattleModel implements IBattleModel {
 				{
 					  //run method automatic
 				}
-				else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, move))
-				{
-					 //run method automatic
-				}
 				else
 				{
+					Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, move);
 					Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
 					Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, move);
 					Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, move);

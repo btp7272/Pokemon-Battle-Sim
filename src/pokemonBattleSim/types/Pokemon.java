@@ -659,10 +659,10 @@ public class Pokemon implements IPokemon
 	
 	public boolean isType(Type typeCheck)
 	{
-		if(this.getType1() == Type.FIRE)
+		if(this.getType1() == typeCheck)
 			return true;
 		
-		if(this.getType2() != null && this.getType2() == Type.FIRE)
+		if(this.getType2() != null && this.getType2() == typeCheck)
 			return true;
 		
 		return false;

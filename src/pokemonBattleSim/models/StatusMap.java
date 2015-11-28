@@ -372,9 +372,10 @@ public class StatusMap
 							   return;
 						   }
 						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   System.out.println(wielder.getNickName()+" is hurt by its burn!");
+						   System.out.println(wielder.getNickName()+"'s burn healed a little!");
 						   return;
 					   }
 				   }
@@ -431,6 +432,7 @@ public class StatusMap
 						   }
 						   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   System.out.println(wielder.getNickName()+"'s paralysis healed a little!");
 						   return;
 					   }
 				   }
@@ -486,8 +488,10 @@ public class StatusMap
 							   return;
 						   }
 						   
-						   wielder.changeHP((int)( (double)(wielder.getMaxHP()/8) - ((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   System.out.println(wielder.getNickName()+" was hurt by poison!");
+						   System.out.println(wielder.getNickName()+"'s poisoning healed a little!");
 						   return;
 					   }
 				   }
@@ -503,10 +507,10 @@ public class StatusMap
 				}
 		});
 		
-		statusMap.put("Badly Poison", new IStatus()
+		statusMap.put("Toxic Poison", new IStatus()
 		{
 				EventType trigger = EventType.POST_STATUS_CHANGE;
-				String name = "Badly Poison";
+				String name = "Toxic Poison";
 				String description = "The badly poison condition causes a Pokémon to lose 1/2 of its maximum hit points multiplied by the degree of the status (a percent) every turn."
 						+ "The degree of the status increases over time.";
 				public EventType getEventTrigger(){return trigger;}
@@ -543,7 +547,9 @@ public class StatusMap
 						   }
 						   
 						   wielder.changeHP((int)( ((double)(wielder.getMaxHP()/2)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.getNonVolatileStatusContainer().addToDegree(10, false);
+						   wielder.getNonVolatileStatusContainer().addToDegree(5, false);
+						   System.out.println(wielder.getNickName()+" was hurt by poison!");
+						   System.out.println(wielder.getNickName()+"'s poisoning got worse!");
 						   return;
 					   }
 				   }

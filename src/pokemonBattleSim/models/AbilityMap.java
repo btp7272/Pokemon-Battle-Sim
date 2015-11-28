@@ -882,5 +882,47 @@ public class AbilityMap
 					   return 1;
 				   }
 			});
+			
+			abilityMap.put("Volt Absorb", new IAbility()
+			{
+				   String name = "Volt Absorb";
+				   String description = "Heals 25% HP when hit by an Electric-type attack.";
+				   EventType trigger = EventType.PRE_DAMAGE;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(moveUsed.getType() == Type.ELECTRIC)
+					   {
+						   wielder.changeHP(- wielder.getMaxHP() / 4);
+						   Formula.ability *= 0;
+						   System.out.println(wielder.getNickName()+"'s Volt Absorb");
+					   }
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Water Absorb", new IAbility()
+			{
+				   String name = "Volt Absorb";
+				   String description = "Heals 25% HP when hit by an Water-type attack.";
+				   EventType trigger = EventType.PRE_DAMAGE;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(moveUsed.getType() == Type.WATER)
+					   {
+						   wielder.changeHP(- wielder.getMaxHP() / 4);
+						   Formula.ability *= 0;
+						   System.out.println(wielder.getNickName()+"'s Water Absorb");
+					   }
+						   
+					   return 1;
+				   }
+			});
 	}
 }

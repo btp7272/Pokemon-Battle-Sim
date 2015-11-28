@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class IPAddress {
 
@@ -49,6 +50,7 @@ public class IPAddress {
 	 */
 	private void initialize() {
 		frmHello = new JFrame();
+		frmHello.setIconImage(Toolkit.getDefaultToolkit().getImage(IPAddress.class.getResource("/pokemonBattleSim/resources/auxImages/Pokeball1.png")));
 		frmHello.setTitle("Your IP Address");
 		frmHello.setBounds(100, 100, 313, 141);
 		frmHello.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

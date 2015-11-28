@@ -102,7 +102,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   //If the opponent didn't cause the status change
+					   //If the opponent didn't cause the status change. Assumes the opponent field is null
 					   if(opponent == null)
 					   {
 						   return 1;
@@ -456,96 +456,7 @@ public class AbilityMap
 				   }
 			});
 			
-			abilityMap.put("Mold Breaker", new IAbility()
-			{
-				   String name = "Mold Breaker";
-				   String description = "Abilities that hinder attacks are nullified.";
-				   EventType trigger = EventType.PRE_ATTACK;
-				   public EventType getEventTrigger(){return trigger;}
-				   public String getName(){return name;}
-				   public String getDescription(){return description;}
-				   private double modifier(IPokemon attacker, IPokemon defender, Move moveUsed, IField field )
-				   {
-					   Random gen = new Random();
-				        
-				        //type is the type effectiveness. Can be 0 or a power between -2 to 2 of 2
-				        //stab (Same Type Attack Bonus) is a multiplier between 1.0 and 1.5. If the types of the attack and the pokemon are the same then the multiplier is 1.5
-				        //roll is a random damage rang multiplier between .85 and 1.0
-				        double stab,roll,type,weather;
-				        
-				        //Calculate STAB modifier
-				        if( attacker.getType1() == moveUsed.getType() || attacker.getType2() == moveUsed.getType() || attacker.getType3() == moveUsed.getType() )
-				            stab = 1.5;
-				        else
-				            stab = 1.0;
-				        
-				        //Calculate type modifier
-				        type = 1.0;
-				        type *= Formula.clacEffectiveness(type, moveUsed.getType(),defender.getType1());
-				        type *= Formula.clacEffectiveness(type, moveUsed.getType(),defender.getType2());
-				       
-				        //Calculate damage range
-				        roll = .85 + (1.0 - .85) * gen.nextDouble();
-				        
-				        //Calculate weather modifier
-				        if(field.getWeather() == Weather.NONE)
-				        	weather = 1.0;
-				        else if( moveUsed.getType() == Type.WATER && (field.getWeather() == Weather.RAIN || field.getWeather() == Weather.HEAVY_RAIN ))
-				        	weather = 1.5;
-				        else if( moveUsed.getType() == Type.FIRE && field.getWeather() == Weather.RAIN)
-				        	weather = 0.5;
-				        else if( moveUsed.getType() == Type.FIRE && field.getWeather() == Weather.HEAVY_RAIN)
-				        	weather = 0.0;
-				        else if( moveUsed.getType() == Type.FIRE && (field.getWeather() == Weather.SUN || field.getWeather() == Weather.INTENSE_SUN ))
-				        	weather = 1.5;
-				        else if( moveUsed.getType() == Type.WATER && field.getWeather() == Weather.SUN)
-				        	weather = 0.5;
-				        else if( moveUsed.getType() == Type.WATER && field.getWeather() == Weather.INTENSE_SUN)
-				        	weather = 0.0;
-				        else if( moveUsed.getType() == Type.ROCK && field.getWeather() == Weather.SANDSTORM && moveUsed.getCategory() == Attribute.SPECIAL)
-				        	weather = 0.5;
-				        else
-				        	weather = 1;
-				        				        
-				        return (stab * type * roll * weather);
-				   }
-				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
-				   { 
-					   double damage;
-				       double numerator, denomenator;
-				       numerator = ( ( 2 * attacker.getLevel() ) + 10  );
-				        
-				       if(moveUsed.getCategory() == Attribute.PHYSICAL)
-				       {
-				           numerator = numerator * attacker.getAtk() * moveUsed.getPower();
-				           denomenator = 250 * defender.getDef();
-				       }
-				           
-				       else if(moveUsed.getCategory() == Attribute.SPECIAL)
-				       {
-			            numerator = numerator * attacker.getSpAtk() * moveUsed.getPower();
-			            denomenator = 250 * defender.getSpDef();
-				       }
-				       
-				       else
-				       {
-				    	   numerator = -2;
-				    	   denomenator = 1;
-				       }
-			           damage = (numerator / denomenator) + 2;
-				       damage *= modifier( attacker, defender, moveUsed, field );
-				       
-				       defender.changeHP((int)damage);
-				       if(defender.getHP() == 0)
-				    	   Event.abilityEvent(EventType.KO,opponent,wielder,field,attacker,defender,moveUsed);
-				       
-				       //Move Event
-				       
-				       //for phasing move, include hazard damage
-				       
-					   return 1;
-				   }
-			});
+			
 			
 			abilityMap.put("Aftermath", new IAbility()
 			{
@@ -689,16 +600,39 @@ public class AbilityMap
 							}
 							else
 							{
-								int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
-								damage = defender.changeHP(damage);
-								//check for ability even of the defender
-								Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
-								//check for ability event of the defender
-								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
-								Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
-								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
-								Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								if(moveUsed.getCategory() == Attribute.STATUS)
+								{
+									if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, moveUsed))
+									{
+										  //run method automatic
+									}
+									else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, moveUsed))
+									{
+										 //run method automatic
+									}
+									else
+									{
+										Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+										Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+										Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+										Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+										Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+										Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									}
+								}
+								else
+								{
+									int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+									damage = defender.changeHP(damage);
+									//check for ability even of the defender
+									Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+									//check for ability event of the defender
+									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+									moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								}
 							}
 					   }
 						   
@@ -725,21 +659,44 @@ public class AbilityMap
 						}
 						else
 						{
-							int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
-							damage = defender.changeHP(damage);
-							//check for ability even of the defender
-							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
-							//check for ability event of the defender
-							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
-							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
-							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
-							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
-							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-							Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-							Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-							Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
-							Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, moveUsed))
+								{
+									 //run method automatic
+								}
+								else
+								{
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
+							else
+							{
+								int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+								damage = defender.changeHP(damage);
+								//check for ability even of the defender
+								Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+								//check for ability event of the defender
+								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+								Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+								Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							}
 						}
 						   
 						MoveEffectMap.sereneGraceMultiplier = 1;
@@ -766,6 +723,26 @@ public class AbilityMap
 						}
 						else
 						{
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, moveUsed))
+								{
+									 //run method automatic
+								}
+								else
+								{
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
 							int damage = Formula.calcSheerForceDamage(attacker, defender, moveUsed, field);
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
@@ -781,6 +758,125 @@ public class AbilityMap
 							//No secondary effects of items can activate for the attacker
 							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 							//No secondary effects of items can activate for the defender
+						}
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Shield Dust", new IAbility()
+			{
+				   String name = "Shield Dust";
+				   String description = "Secondary effects won't occur.";
+				   EventType trigger = EventType.PRE_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   	//check for move event of the attacker
+						if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+						{
+							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
+						}
+						else
+						{
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, moveUsed))
+								{
+									 //run method automatic
+								}
+								else
+								{
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
+							int damage = Formula.calcDamage(attacker, defender, moveUsed, field);
+							damage = defender.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							//check for ability event of the defender
+							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//secondary effects of moves do not occur
+							Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+						}
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Mold Breaker", new IAbility()
+			{
+				   String name = "Mold Breaker";
+				   String description = "Abilities that hinder attacks are nullified.";
+				   EventType trigger = EventType.PRE_ATTACK;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   	//check for move event of the attacker
+						if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
+						{
+							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
+						}
+						else
+						{
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								//Ability event suppressed
+//								else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, moveUsed))
+//								{
+//									 //run method automatic
+//								}
+								else
+								{
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
+							int damage = Formula.calcMoldBreakerDamage(attacker, defender, moveUsed, field);
+							damage = defender.changeHP(damage);
+							//check for ability even of the defender
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							//check for ability event of the defender
+							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
+							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 						}
 						   
 					   return 1;

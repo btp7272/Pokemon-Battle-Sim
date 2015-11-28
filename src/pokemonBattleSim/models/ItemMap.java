@@ -647,23 +647,46 @@ public class ItemMap
 					}
 					else
 					{
-					   int damage = Formula.calcDamage(holder, defender, holder.getItemContainer().getForcedMove(), model.getField());
-					   if(holder.getItemContainer().getForcedMove().getCategory() == Attribute.SPECIAL)
-						   damage = defender.changeHP((int)(damage * 1.5));
-					   else
-						   damage = defender.changeHP((int)(damage));
-					   //check for ability even of the defender
-					   Event.abilityEvent(EventType.HP_CHANGE, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
-					   //check for ability event of the defender
-					   Event.statusVolatileEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
-					   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
-					   Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.moveSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
-					   Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						if(holder.getItemContainer().getForcedMove().getCategory() == Attribute.STATUS)
+						{
+							if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, holder.getItemContainer().getForcedMove()))
+							{
+								  //run method automatic
+							}
+							else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove()))
+							{
+								 //run method automatic
+							}
+							else
+							{
+								Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+								Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusVolatileEvent(holder, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+							}
+						}
+						else
+						{
+						   int damage = Formula.calcDamage(holder, defender, holder.getItemContainer().getForcedMove(), model.getField());
+						   if(holder.getItemContainer().getForcedMove().getCategory() == Attribute.SPECIAL)
+							   damage = defender.changeHP((int)(damage * 1.5));
+						   else
+							   damage = defender.changeHP((int)(damage));
+						   //check for ability even of the defender
+						   Event.abilityEvent(EventType.HP_CHANGE, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
+						   //check for ability event of the defender
+						   Event.statusVolatileEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.abilityEvent(EventType.POST_ATTACK, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove());
+						   holder.getItemContainer().getForcedMove().getMoveEffectContainer().updateMoveEffectContainer(holder, damage);
+						   Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.moveSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.itemPrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.itemSecondaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						   Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+						}
 					}
 				   
 				   return 1;
@@ -709,6 +732,26 @@ public class ItemMap
 					}
 					else
 					{
+						if(holder.getItemContainer().getForcedMove().getCategory() == Attribute.STATUS)
+						{
+							if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, holder.getItemContainer().getForcedMove()))
+							{
+								  //run method automatic
+							}
+							else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, holder, model.getField(), holder, defender, holder.getItemContainer().getForcedMove()))
+							{
+								 //run method automatic
+							}
+							else
+							{
+								Event.movePrimaryEffectEvent(holder, EventType.POST_ATTACK, holder.getItemContainer().getForcedMove());
+								Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusVolatileEvent(holder, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+								Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, holder.getItemContainer().getForcedMove());
+							}
+					   }
 					   int damage = Formula.calcDamage(holder, defender, holder.getItemContainer().getForcedMove(), model.getField());
 					   if(holder.getItemContainer().getForcedMove().getCategory() == Attribute.PHYSICAL)
 						   damage = defender.changeHP((int)(damage * 1.5));

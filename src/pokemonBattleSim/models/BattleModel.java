@@ -1,6 +1,7 @@
 package pokemonBattleSim.models;
 
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.types.Attribute;
 import pokemonBattleSim.types.Event;
 import pokemonBattleSim.types.EventType;
 import pokemonBattleSim.types.IField;
@@ -550,21 +551,44 @@ public class BattleModel implements IBattleModel {
 		}
 		else
 		{
-			int damage = Formula.calcDamage(attacker, defender, move, field);
-			damage = defender.changeHP(damage);
-			//check for ability even of the defender
-			Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
-			//check for ability event of the defender
-			Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
-			//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
-			Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
-			move.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
-			Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
-			Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
-			Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
-			Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
-			Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, move);
-			Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, move);
+			if(move.getCategory() == Attribute.STATUS)
+			{
+				if(Event.statusVolatileEvent(defender, EventType.PRE_STATUS_CHANGE, move))
+				{
+					  //run method automatic
+				}
+				else if(Event.abilityEvent(EventType.PRE_DAMAGE, defender, attacker, field, attacker, defender, move))
+				{
+					 //run method automatic
+				}
+				else
+				{
+					Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+					Event.itemPrimaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, move);
+					Event.itemSecondaryEffectEvent(defender, EventType.POST_STATUS_CHANGE, move);
+					Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, move);
+					Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, move);
+					Event.statusNonVolatileEvent(defender, EventType.POST_STATUS_CHANGE, move);
+				}
+			}
+			else
+			{
+				int damage = Formula.calcDamage(attacker, defender, move, field);
+				damage = defender.changeHP(damage);
+				//check for ability even of the defender
+				Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
+				//check for ability event of the defender
+				Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
+				//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+				Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, move);
+				move.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+				Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+				Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+				Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+				Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, move);
+				Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, move);
+				Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, move);
+			}
 		}
 		
 		

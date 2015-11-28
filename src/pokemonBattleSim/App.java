@@ -79,7 +79,7 @@ public class App {
 		//CREATE GLISCOR
 		int EVs6[] = {244,40,8,0,96,120};
 		Move[] moves6 = {MoveMap.moveMap.get("Swords Dance"),MoveMap.moveMap.get("Earthquake"),MoveMap.moveMap.get("Knock Off"),MoveMap.moveMap.get("Roost")};
-		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Poison Heal"), new ItemContainer("Life Orb"));
+		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
 		member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
 		member.setPlayerID(0);
 		playerTeam.add(member);

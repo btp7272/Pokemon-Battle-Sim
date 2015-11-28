@@ -105,7 +105,7 @@ public class MoveEffectMap
 			   { 
 				  if(Event.statusVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
 				  {
-					  //runPrimaryEffectevent automatic
+					  //run method automatic
 					  return 0;
 				  }
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());

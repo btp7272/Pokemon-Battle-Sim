@@ -39,4 +39,15 @@ public class Move
 		this.accuracy = accuracy/100;
 		this.effect = new MoveEffectContainer(name);
 	}
+	
+	public Move(Move toCopy)
+	{
+		this.name = toCopy.getName();
+		this.type = toCopy.getType();
+		this.category = toCopy.getCategory();
+		this.pp = toCopy.getPP();
+		this.power = toCopy.getPower();
+		this.accuracy = toCopy.getAccuracy();
+		this.effect = new MoveEffectContainer(toCopy.getName());
+	}
 }

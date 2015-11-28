@@ -667,4 +667,10 @@ public class Pokemon implements IPokemon
 		
 		return false;
 	}
+	
+	public void resetMoves()
+	{
+		for(int i = 1; i < 5; i++)
+			this.getMove(i).setPower((int)(this.getMove(i).getPower()));
+	}
 }

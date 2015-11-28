@@ -893,7 +893,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(moveUsed.getType() == Type.ELECTRIC)
+					   if(wielder == defender && moveUsed.getType() == Type.ELECTRIC)
 					   {
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
@@ -914,11 +914,38 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   if(moveUsed.getType() == Type.WATER)
+					   if(wielder == defender && moveUsed.getType() == Type.WATER)
 					   {
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
 						   System.out.println(wielder.getNickName()+"'s Water Absorb");
+					   }
+						   
+					   return 1;
+				   }
+			});
+			
+			abilityMap.put("Flash Fire", new IAbility()
+			{
+				   String name = "Flash Fire";
+				   String description = "Grants immunity to Fire and increases Fire's power 50% when hit by a Fire move.";
+				   EventType trigger = EventType.PRE_DAMAGE;
+				   public EventType getEventTrigger(){return trigger;}
+				   public String getName(){return name;}
+				   public String getDescription(){return description;}
+				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
+				   { 
+					   if(wielder == defender 
+							   && moveUsed.getType() == Type.FIRE 
+							   && wielder.getAbility().getActiveStatus() == false)
+					   {
+						   for(int i = 1; i < 5; i++)
+							   if(wielder.getMove(i).getType() == Type.FIRE)
+								   wielder.getMove(i).setPower((int)(wielder.getMove(i).getPower() * 1.5));
+						   Formula.ability *= 0;
+						   System.out.println(wielder.getNickName()+"'s Flash Fire");
+						   System.out.println("Fire moves were powered up!");
+						   wielder.getAbility().setActiveStatus(true);
 					   }
 						   
 					   return 1;

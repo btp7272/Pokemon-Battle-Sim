@@ -789,7 +789,8 @@ public class BattleModel implements IBattleModel {
 				}
 				Event.abilityEvent(EventType.EXIT, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				model.getPlayerPokemon(this.source.getTrainerID()).resetVolatileStatus();
-				model.getPlayerPokemon(this.source.getTrainerID()).getItemContainer().resetItemStats();;
+				model.getPlayerPokemon(this.source.getTrainerID()).getItemContainer().resetItemStats();
+				model.getPlayerPokemon(this.source.getTrainerID()).resetMoves();
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here

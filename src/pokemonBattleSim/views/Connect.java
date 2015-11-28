@@ -25,7 +25,7 @@ public class Connect {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void NewConnection() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

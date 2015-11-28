@@ -25,7 +25,7 @@ public class IPAddress {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void NewAddress() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

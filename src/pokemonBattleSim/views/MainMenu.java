@@ -45,6 +45,7 @@ public class MainMenu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmPokemonBattleSim = new JFrame();
 		frmPokemonBattleSim.setTitle("Pokemon Battle Sim");
 		frmPokemonBattleSim.setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/pokemonBattleSim/resources/auxImages/Pokeball1.png")));
@@ -67,11 +68,27 @@ public class MainMenu {
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Host Online");
+		btnNewButton_2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				IPAddress na = new IPAddress();
+				na.NewAddress();
+			}
+		});
 		btnNewButton_2.setBounds(86, 232, 204, 65);
 		btnNewButton_2.setIcon(new ImageIcon(MainMenu.class.getResource("/pokemonBattleSim/resources/auxImages/chansey.png")));
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Connect Online");
+		btnNewButton_3.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Connect nc = new Connect();
+				nc.NewConnection();
+			}
+		});
 		btnNewButton_3.setIcon(new ImageIcon(MainMenu.class.getResource("/pokemonBattleSim/resources/auxImages/Red.png")));
 		btnNewButton_3.setBounds(86, 308, 204, 65);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_3);

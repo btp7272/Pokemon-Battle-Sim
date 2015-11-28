@@ -7,6 +7,7 @@ package pokemonBattleSim.types;
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap;
 import pokemonBattleSim.models.ItemMap;
+import pokemonBattleSim.models.MoveMap;
 import pokemonBattleSim.models.AbilityMap.Stat;
 import pokemonBattleSim.models.StatusMap;
 
@@ -633,6 +634,14 @@ public class Pokemon implements IPokemon
 		return null;
 	}
 	
+	public Move getMove(String move)
+	{
+		for(int i = 1; i < 5; i++)
+			if(this.getMove(i).getName().equals(move))
+					return this.getMove(i);
+		return null;
+	}
+	
 	public void activeNonVolatileStatus(){this.getNonVolatileStatus().run(this, null);}
 	
 	public Move getLastMoveUsed(){return this.lastMoveUsed;}
@@ -671,6 +680,6 @@ public class Pokemon implements IPokemon
 	public void resetMoves()
 	{
 		for(int i = 1; i < 5; i++)
-			this.getMove(i).setPower((int)(this.getMove(i).getPower()));
+			this.getMove(i).setPower(MoveMap.moveMap.get(this.getMove(i).getName()).getPower());
 	}
 }

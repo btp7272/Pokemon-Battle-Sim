@@ -83,6 +83,7 @@ public interface IPokemon
 		public StatusContainer getNonVolatileStatusContainer();
 		public ArrayList<StatusContainer> getVolatileStatus();
 		public Move getMove(int i);
+		public Move getMove(String move);
 		public BattleState getBattleState();
 		public StatusContainer getVolatileStatus(String name);
 		public boolean removeVolatileStatus(String name);

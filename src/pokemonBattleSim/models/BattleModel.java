@@ -399,7 +399,7 @@ public class BattleModel implements IBattleModel {
 		synchronized (taskCounterLock) { taskId = taskCounter++; }
 		
 		// retrieve the move and post create the task
-		move = MoveMap.moveMap.get(moveName);
+		move = this.getPlayerPokemon(playerID).getMove(moveName);  //MoveMap.moveMap.get(moveName);
 		if (move == null) return false; // invalid move name
 		if (activePeriod < 20 || inactivePeriod < 20) return false; // invalid activity times
 		
@@ -407,7 +407,7 @@ public class BattleModel implements IBattleModel {
 		{
 			synchronized (this.playerOneTasks)
 			{
-				move = MoveMap.moveMap.get(moveName);
+				move = this.getPlayerPokemon(playerID).getMove(moveName);//MoveMap.moveMap.get(moveName);
 				task = new MoveTask(playerOne, playerTwo, move, taskId, activePeriod, inactivePeriod);
 				playerOneTasks.add(task);
 			}
@@ -416,7 +416,7 @@ public class BattleModel implements IBattleModel {
 		{
 			synchronized (this.playerTwoTasks)
 			{
-				move = MoveMap.moveMap.get(moveName);
+				move = this.getPlayerPokemon(playerID).getMove(moveName);//MoveMap.moveMap.get(moveName);
 				task = new MoveTask(playerTwo, playerOne, move, taskId, activePeriod, inactivePeriod);
 				playerTwoTasks.add(task);
 			}

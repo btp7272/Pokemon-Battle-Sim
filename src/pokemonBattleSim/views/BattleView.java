@@ -389,7 +389,7 @@ public class BattleView extends JFrame implements IView{
 			for (ActionListener listener : moveButtonListeners)
 				btn.addActionListener(listener);
 				//have type determine button color
-				btn.setBackground(Color.red);
+				//btn.setBackground(Color.red);
 			moveListPanel.add(btn);
 		}
 		moveListPanel.validate();

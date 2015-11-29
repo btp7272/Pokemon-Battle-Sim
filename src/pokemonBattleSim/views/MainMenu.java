@@ -102,6 +102,9 @@ public class MainMenu extends JFrame {
 		btnNewButton_4.setBounds(86, 308, 204, 65);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Credits ncrd = new Credits();
+				ncrd.NewCredits();
+				frmPokemonBattleSim.setVisible(false);
 			}
 		});
 		btnNewButton_4.setIcon(null);

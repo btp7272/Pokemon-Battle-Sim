@@ -33,7 +33,7 @@ public class OnlineBattleModel implements IBattleModel
 	 */
 	static OnlineBattleModel model;
 	static Object owner;
-	static Object recievedData;
+	static instructionPacket recievedData;
 	static IField field = new IField() {
 		
 		private Weather weatherCondition;
@@ -108,6 +108,63 @@ public class OnlineBattleModel implements IBattleModel
 		timer.schedule(new DelayTask(playerTwo), 0);
 	}
 	
+	public void Listen()
+	{
+		Timer timer = new Timer();
+	    class SetTimer extends TimerTask
+	    {
+	 	    @Override
+	 	    public void run()
+	 	    {
+	 		    recievedData = (instructionPacket)Recieve.Listen();
+	 		    if(recievedData == null){
+	 			    return;
+	 		    }
+	 		    else
+	 		    {
+	 		    	IPokemon recievedPokemon;
+		 		    switch(recievedData.getInstruction())
+		 		    {
+		 		    
+		 		  		case "Swap":
+		 		  			recievedPokemon = (IPokemon) recievedData.getObject();
+		 		  			if(playerOne.getTrainerID() == recievedPokemon.getPlayerID())
+		 		  			{
+		 		  				playerOne.setActiveTeamMember(recievedPokemon.getBenchPosition());
+		 		  			}
+		 		  			else if(playerTwo.getTrainerID() == recievedPokemon.getPlayerID())
+		 		  			{
+		 		  				playerTwo.setActiveTeamMember(recievedPokemon.getBenchPosition());
+		 		  			}
+		 		  			else
+		 		  				System.err.println("Invalid Trainer");
+		 		  			break;
+		 		  		case "Attack":
+		 		  			recievedPokemon = (IPokemon) recievedData.getObject();
+		 		  			int playerID = recievedPokemon.getPlayerID();
+		 		  			getPlayerPokemon(playerID).updatePokemon(recievedPokemon);
+		 		  			break;
+		 		  		case "Defend":
+		 		  			recievedPokemon = (IPokemon) recievedData.getObject();
+		 		  			int opponentID = recievedPokemon.getPlayerID();
+		 		  			getPlayerPokemon(opponentID).updatePokemon(recievedPokemon);
+		 		  			break;
+		 		  		case "gameover":
+		 		  			if((boolean)recievedData.getObject() == true)
+		 		  				gameover();
+		 		  			break;
+		 		  		default:
+		 		  			return;
+		 		    }
+		 		    notifyView();
+	 		    }
+	 	    }
+	    }
+	    TimerTask task = new SetTimer();
+	    timer.schedule(task, 0, 5);
+	    return;
+	}
+	
 	/**
 	 * will run when game ends automatically, clean up resources
 	 */
@@ -116,15 +173,10 @@ public class OnlineBattleModel implements IBattleModel
 		//do nothing if game is already over
 		if (isGameover()) 
 			return;
-		recievedData = Recieve.Listen();
-		if(recievedData.getClass() == boolean.class)
-		{
-			if((boolean)recievedData == true)
-				isGameover = true;
-			Send.sendPacket("gameover", isGameover);
-			Send.closeSocket();
-			Recieve.CloseServer();
-		}
+		isGameover = true;
+		Send.closeSocket();
+		Recieve.CloseServer();
+		
 	}
 	
 		/*
@@ -608,6 +660,8 @@ public class OnlineBattleModel implements IBattleModel
 			}
 		}
 		
+		Send.sendPacket("Attack", attacker);
+		Send.sendPacket("Defend", defender);
 		
 		// log the move
 		synchronized (log)
@@ -628,6 +682,7 @@ public class OnlineBattleModel implements IBattleModel
 			}
 			if (availablePokemon == 0)
 			{
+				Send.sendPacket("gameover", isGameover);
 				gameover();
 			}
 		}
@@ -644,11 +699,11 @@ public class OnlineBattleModel implements IBattleModel
 			}
 			if (availablePokemon == 0)
 			{
+				Send.sendPacket("gameover", isGameover);
 				gameover();
 			}
 		}
-		Send.sendPacket("Attack", attacker);
-		Send.sendPacket("Defend", defender);
+		
 		}} // synchronized (playerOne),(playerTwo)
 		
 		notifyView();

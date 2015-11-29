@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IPokemon 
 {
-
+		public void updatePokemon(IPokemon copy);
 		public void setPlayerID(int id);
 		public void setBenchPosition(int pos);
 		public void setHp(int health, int IV, int EV, int level);

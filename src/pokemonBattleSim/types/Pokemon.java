@@ -682,4 +682,30 @@ public class Pokemon implements IPokemon
 		for(int i = 1; i < 5; i++)
 			this.getMove(i).setPower(MoveMap.moveMap.get(this.getMove(i).getName()).getPower());
 	}
+
+	@Override
+	public void updatePokemon(IPokemon copy) {
+		this.hp = copy.getHP();
+		this.atk = copy.getAtk();
+		this.def = copy.getDef();
+		this.spDef = copy.getSpDef();
+		this.spAtk = copy.getSpAtk();
+		this.speed = copy.getSpeed();
+		this.atkModifier = copy.getAtkModifier();
+		this.defModifier = copy.getDefModifier();
+		this.spAtkModifier = copy.getSpAtkModifier();
+		this.spDefModifier = copy.getSpDefModifier();
+		this.speedModifier = copy.getSpeedModifier();
+		this.setType(copy.getType1(), 1);
+		this.setType(copy.getType2(), 2);
+		this.setType(copy.getType3(), 3);
+		this.ability = copy.getAbility();
+		this.volatileStatus = copy.getVolatileStatus();
+		this.nonVolatileStatus = copy.getNonVolatileStatusContainer();
+		this.item = copy.getItemContainer();
+		this.battleState = copy.getBattleState();
+		this.lastMoveUsed = copy.getLastMoveUsed();
+		for(int i = 0; i < 4; i++)
+			this.setMove(copy.getMove(i+1), i+1);
+	}
 }

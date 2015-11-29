@@ -10,13 +10,13 @@ public class instructionPacket {
 		instruction = s;
 	}
 	
-	public String getInstruction()
+	public static String getInstruction()
 	{
-		return this.instruction;
+		return instruction;
 	}
 	
-	public Object getObject()
+	public static Object getObject()
 	{
-		return this.object;
+		return object;
 	}
 }

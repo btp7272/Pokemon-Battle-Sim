@@ -219,7 +219,7 @@ public class Pokemon implements IPokemon
 				break;
 			case 2 :
 				this.atk = (int)(this.maxAtk * (4.0/2));
-				System.out.println("Attack Rose + 1");
+				System.out.println("Attack Rose + 2");
 				break;
 			case 3 : 
 				this.atk = (int)(this.maxAtk * (5.0/2));

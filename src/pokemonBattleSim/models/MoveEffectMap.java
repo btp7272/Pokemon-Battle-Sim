@@ -354,5 +354,162 @@ public class MoveEffectMap
 			   }
 		});
 		
+		effectMap.put("Draco Meteor", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Draco Meteor";
+			   String description = "Lowers the user's Special Attack by two stages.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = -2;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Leaf Storm", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Leaf Storm";
+			   String description = "Lowers the user's Special Attack by two stages.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = -2;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Dragon Dance", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Dragon Dance";
+			   String description = "Boosts the user's Attack and Speed by one stage each.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
+				   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 1;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+					   attacker.changeSpeed(AbilityMap.statChangeQueue[Stat.SPEED.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Swords Dance", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Swords Dance";
+			   String description = "Boosts the user's Attack by two stages.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 2;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Calm Mind", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Calm Mind";
+			   String description = "Boosts the user's Special Attack and Special Defense by one stage each.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 1;
+				   AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] = 1;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   attacker.changeSpDef(AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
+					   AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
 	}
 }

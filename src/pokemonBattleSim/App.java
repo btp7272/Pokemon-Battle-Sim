@@ -40,7 +40,12 @@ public class App {
 		Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
 		//member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
 		member.setPlayerID(0);
+		member.setBenchPosition(1);
 		playerTeam.add(member);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
+		member.setPlayerID(1);
+		member.setBenchPosition(1);
+		computerTeam.add(member);
 		
 		//CREATE TYRANITAR
 		int IVs2[] = {31,31,31,31,31,31};
@@ -49,15 +54,24 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
 		//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 		member.setPlayerID(0);
+		member.setBenchPosition(2);
 		playerTeam.add(member);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+		member.setPlayerID(1);
+		member.setBenchPosition(2);
+		computerTeam.add(member);
 		
 		//CREATE SLOWBRO
 		int EVs3[] = {248,0,200,0,52,8};
 		Move[] moves3 = {new Move(MoveMap.moveMap.get("Shadow Ball")),new Move(MoveMap.moveMap.get("Scald")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Slack Off"))};
 		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
-		//member.addVolatileStatus(new StatusContainer(-1,100,"Encore",MoveMap.moveMap.get("Slack Off")));
 		member.setPlayerID(0);
+		member.setBenchPosition(3);
 		playerTeam.add(member);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
+		member.setPlayerID(1);
+		member.setBenchPosition(3);
+		computerTeam.add(member);
 		
 		//CREATE FERROTHRON
 		int IVs4[] = {31,31,31,31,31,0};
@@ -66,7 +80,12 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(-1,0,"Toxic Poison",null));
 		member.setPlayerID(0);
+		member.setBenchPosition(4);
 		playerTeam.add(member);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
+		member.setPlayerID(1);
+		member.setBenchPosition(4);
+		computerTeam.add(member);
 		
 		//CREATE LATIOS
 		int EVs5[] = {0,0,0,252,4,252};
@@ -74,7 +93,12 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
 		member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
 		member.setPlayerID(0);
+		member.setBenchPosition(5);
 		playerTeam.add(member);
+		member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
+		member.setPlayerID(1);
+		member.setBenchPosition(5);
+		computerTeam.add(member);
 		
 		//CREATE GLISCOR
 		int EVs6[] = {244,40,8,0,96,120};
@@ -82,16 +106,12 @@ public class App {
 		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
 		member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
 		member.setPlayerID(0);
+		member.setBenchPosition(6);
 		playerTeam.add(member);
-		
-		Move[] moves7 = {new Move(MoveMap.moveMap.get("Thunderbolt")),new Move(MoveMap.moveMap.get("Surf")),new Move(MoveMap.moveMap.get("Shadow Ball")),new Move(MoveMap.moveMap.get("Toxic"))};
-
-		for (int i = 0; i < 6; i++)
-		{
-			member = new Pokemon(SpeciesMap.speciesMap.get("Voltorb"),"Test Subject",moves7,IVs,EVs,100,Nature.Timid, new AbilityContainer("Volt Absorb"), new ItemContainer("Colbur Berry"));
-			member.setPlayerID(1);
-			computerTeam.add(member);
-		}
+		member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
+		member.setPlayerID(1);
+		member.setBenchPosition(6);
+		computerTeam.add(member);
 		
 		player = new PokemonTrainer(playerTeam);
 		computer = new PokemonTrainer(computerTeam);

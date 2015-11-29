@@ -113,11 +113,11 @@ public class OnlineBattleModel implements IBattleModel
 	public synchronized void gameover ()
 	{
 		//do nothing if game is already over
-		if (isGameover()) return; 
-		if(Recieve.Listen().getClass() == boolean.class)
+		if (isGameover()) return;
+		Object x = Recieve.Listen();
+		if(x.getClass() == boolean.class)
 		{
-			boolean x = (boolean) Recieve.Listen();
-			if(x == true)
+			if((boolean)x == true)
 				isGameover = true;
 			Send.sendData("Game Over", isGameover);
 		}

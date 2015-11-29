@@ -561,6 +561,13 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+				   if(attacker.getAtkModifier() == 6 || attacker.getHP() <= attacker.getMaxHP() / 2)
+				   {
+					   System.out.println("But it failed!");
+					   return 1;
+				   }
+				   
+				   attacker.changeHP(attacker.getHP() / 2);
 				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 12;
 				   
 				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))

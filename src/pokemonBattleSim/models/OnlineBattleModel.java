@@ -102,12 +102,6 @@ public class OnlineBattleModel implements IBattleModel
 		this.playerTwoTasks = new ArrayDeque<>();
 		this.taskCounter = 0;
 		this.log = new Stack<>();
-		
-		//BEN:
-		//initialize socket data members
-		this.sender = new Send();
-		this.reciever = new Recieve();
-				
 				
 		timer.schedule(new DelayTask(playerOne), 0);
 		timer.schedule(new DelayTask(playerTwo), 0);
@@ -122,6 +116,7 @@ public class OnlineBattleModel implements IBattleModel
 		if (isGameover()) return; 
 			
 		isGameover = true;
+		Send.sendData("Game Over", isGameover);
 	}
 	
 		/*

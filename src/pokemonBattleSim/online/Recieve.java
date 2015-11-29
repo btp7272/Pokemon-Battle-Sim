@@ -11,10 +11,10 @@ public class Recieve
 	static ServerSocket Test = null;
 	static Socket socketTest = null;
 	static DataInputStream testIn = null;
-	String line;
-	ObjectInputStream input;
-	PrintStream print;
-	Socket read = null;
+	static String line;
+	static ObjectInputStream input;
+	static PrintStream print;
+	static Socket read = null;
        
 	public static void CreateServer()
 	{
@@ -106,7 +106,7 @@ public class Recieve
 		return ip;
 	}
 	
-	public void Listen()
+	public static void Listen()
 	{
 		try 
 	    {
@@ -144,10 +144,13 @@ public class Recieve
 			case "Game Over":
 				recieveGameOver();
 				break;
+			case "String":
+				recieveString();
+				break;
 		}
 	}
 	
-	public Pokemon recievePokemon()
+	public static Pokemon recievePokemon()
 	{
 		try 
 	    {
@@ -174,7 +177,34 @@ public class Recieve
 		return p;
 	}
 	
-	public ArrayList<Pokemon> recieveTeam()
+	public static String recieveString()
+	{
+		try
+		{
+			read = Server.accept();
+			input = new ObjectInputStream(read.getInputStream());
+		}
+		catch (IOException e)
+		{
+			System.out.println(e);
+		}
+		String s = null;
+		try
+		{
+			s = (String) input.readObject();
+		}
+		catch (IOException e)
+		{
+			System.err.println(e);
+		}
+		catch (ClassNotFoundException e)
+		{
+			System.err.println(e);
+		}
+		return s;
+	}
+	
+	public static ArrayList<Pokemon> recieveTeam()
 	{
 		try 
 	    {
@@ -201,7 +231,7 @@ public class Recieve
 		return team;
 	}
 	
-	public Move recieveMove()
+	public static Move recieveMove()
 	{
 		try 
 	    {
@@ -228,7 +258,7 @@ public class Recieve
 		return m;
 	}
 	
-	public boolean recieveGameOver()
+	public static boolean recieveGameOver()
 	{
 		try 
 	    {

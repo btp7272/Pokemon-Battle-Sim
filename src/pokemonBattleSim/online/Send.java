@@ -55,7 +55,7 @@ public class Send
 		return Recieve.getTestConnection();
 	}
 	
-	public void sendData(String s, Object o)
+	public static void sendData(String s, Object o)
 	{
 		switch(s){
 		case "Pokemon":
@@ -81,7 +81,7 @@ public class Send
 		}
 	}
 	
-	public void sendString(String s)
+	public static void sendString(String s)
 	{
 		try 
 		{
@@ -94,7 +94,7 @@ public class Send
 		}
 	}
 	
-	public void sendPokemon(Pokemon p)
+	public static void sendPokemon(Pokemon p)
 	{
 		try	
 		{
@@ -112,7 +112,7 @@ public class Send
 	    }
 	}
 	
-	public void sendTeam(ArrayList<Pokemon> p)
+	public static void sendTeam(ArrayList<Pokemon> p)
 	{
 		try	
 		{
@@ -130,7 +130,7 @@ public class Send
 	    }
 	}
 	
-	public void sendGameOver(Boolean b)
+	public static void sendGameOver(Boolean b)
 	{
 		try	
 		{
@@ -148,7 +148,7 @@ public class Send
 	    }
 	}
 	
-	public void sendMove(Move m)
+	public static void sendMove(Move m)
 	{
 		try	
 		{

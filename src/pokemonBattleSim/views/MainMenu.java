@@ -12,10 +12,12 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+
+import pokemonBattleSim.online.Send;
+
 import java.awt.Font;
 
 public class MainMenu {
-
 	private JFrame frmPokemonBattleSim;
 
 	/**
@@ -48,7 +50,7 @@ public class MainMenu {
 		
 		frmPokemonBattleSim = new JFrame();
 		frmPokemonBattleSim.setTitle("Pokemon Battle Sim");
-		frmPokemonBattleSim.setBounds(100, 100, 399, 516);
+		frmPokemonBattleSim.setBounds(100, 100, 399, 430);
 		frmPokemonBattleSim.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPokemonBattleSim.getContentPane().setLayout(null);
 		
@@ -57,25 +59,17 @@ public class MainMenu {
 		btnNewButton.setIcon(null);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Local 2 Player");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton_1.setIcon(null);
-		btnNewButton_1.setBounds(86, 156, 204, 65);
-		frmPokemonBattleSim.getContentPane().add(btnNewButton_1);
-		
 		JButton btnNewButton_2 = new JButton("Host Online");
 		btnNewButton_2.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				Send.Online = true;
 				IPAddress na = new IPAddress();
 				na.NewAddress();
 			}
 		});
-		btnNewButton_2.setBounds(86, 232, 204, 65);
+		btnNewButton_2.setBounds(86, 156, 204, 65);
 		btnNewButton_2.setIcon(null);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_2);
 		
@@ -84,16 +78,17 @@ public class MainMenu {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				Send.Online = true;
 				Connect nc = new Connect();
 				nc.NewConnection();
 			}
 		});
 		btnNewButton_3.setIcon(null);
-		btnNewButton_3.setBounds(86, 308, 204, 65);
+		btnNewButton_3.setBounds(86, 232, 204, 65);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Credits");
-		btnNewButton_4.setBounds(86, 384, 204, 65);
+		btnNewButton_4.setBounds(86, 308, 204, 65);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}

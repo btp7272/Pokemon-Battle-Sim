@@ -6,11 +6,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.online.Send;
 import pokemonBattleSim.types.*;
 
 public class StatusMap 
 {
 	private static IBattleModel model = BattleModel.getInstance();
+	{
+		if(Send.Online == true)
+			model = OnlineBattleModel.getInstance();
+	}
 	public static Map < String, IStatus > statusMap = new HashMap<>();
 	
 	static

@@ -9,6 +9,7 @@ public class Send
 {
 	static Socket opponent = null;  
     static ObjectOutputStream out = null;
+    public static boolean Online = false;
     DataOutputStream test = null;
     Socket testSocket = null;
     Socket socket = null;

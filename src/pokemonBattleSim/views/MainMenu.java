@@ -17,7 +17,7 @@ import pokemonBattleSim.online.Send;
 
 import java.awt.Font;
 
-public class MainMenu {
+public class MainMenu extends JFrame {
 	private JFrame frmPokemonBattleSim;
 
 	/**

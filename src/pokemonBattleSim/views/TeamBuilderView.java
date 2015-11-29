@@ -9,7 +9,7 @@ import javax.swing.event.*;
 import pokemonBattleSim.models.*;
 import pokemonBattleSim.types.*;
 
-public class TeamBuilderView extends JPanel {//implements IView{
+public class TeamBuilderView extends JFrame {//implements IView{
 	
 	public void onViewNotify()
 	{

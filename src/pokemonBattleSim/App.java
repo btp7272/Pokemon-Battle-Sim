@@ -19,6 +19,7 @@ import pokemonBattleSim.types.StatusContainer;
 import pokemonBattleSim.types.AbilityContainer;
 import pokemonBattleSim.types.ItemContainer;
 import pokemonBattleSim.views.BattleView;
+import pokemonBattleSim.views.MainMenu;
 import pokemonBattleSim.models.MoveMap;
 
 public class App {
@@ -124,9 +125,12 @@ public class App {
 			e.printStackTrace();
 		}
 		BattleModel model = BattleModel.getInstance();
-		BattleView view = new BattleView(player.getTrainerID());
-		BattleController controller = new BattleController(view,model, player.getTrainerID());
+		MainMenu.main(null);
 		
-		view.setVisible(true);
+		
+		//BattleView view = new BattleView(player.getTrainerID());
+		//BattleController controller = new BattleController(view,model, player.getTrainerID());
+		
+		//view.setVisible(true);
 	}
 }

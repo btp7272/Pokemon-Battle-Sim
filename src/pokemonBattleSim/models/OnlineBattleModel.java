@@ -33,6 +33,7 @@ public class OnlineBattleModel implements IBattleModel
 	 */
 	static OnlineBattleModel model;
 	static Object owner;
+	static Object recievedData;
 	static IField field = new IField() {
 		
 		private Weather weatherCondition;
@@ -78,7 +79,7 @@ public class OnlineBattleModel implements IBattleModel
 	private Queue<BattleTask> playerOneTasks;
 	private Queue<BattleTask> playerTwoTasks;
 	private Stack<String> log;
-	private boolean isGameover;
+	private boolean isGameover = false;
 	private int taskCounter;
 	
 	private ArrayList<IView> views;
@@ -113,13 +114,16 @@ public class OnlineBattleModel implements IBattleModel
 	public synchronized void gameover ()
 	{
 		//do nothing if game is already over
-		if (isGameover()) return;
-		Object x = Recieve.Listen();
-		if(x.getClass() == boolean.class)
+		if (isGameover()) 
+			return;
+		recievedData = Recieve.Listen();
+		if(recievedData.getClass() == boolean.class)
 		{
-			if((boolean)x == true)
+			if((boolean)recievedData == true)
 				isGameover = true;
-			Send.sendData("Game Over", isGameover);
+			Send.sendPacket("gameover", isGameover);
+			Send.closeSocket();
+			Recieve.CloseServer();
 		}
 	}
 	
@@ -643,8 +647,10 @@ public class OnlineBattleModel implements IBattleModel
 				gameover();
 			}
 		}
-		
+		Send.sendPacket("Attack", attacker);
+		Send.sendPacket("Defend", defender);
 		}} // synchronized (playerOne),(playerTwo)
+		
 		notifyView();
 	}
 
@@ -810,6 +816,7 @@ public class OnlineBattleModel implements IBattleModel
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here
+				Send.sendPacket("Swap", this.source.getActiveTeamMember());
 			}}
 		}
 		

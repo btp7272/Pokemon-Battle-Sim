@@ -16,6 +16,18 @@ public class Recieve
 	static PrintStream print;
 	static Socket read = null;
        
+	public static void CloseServer()
+	{
+		try
+		{
+			Server.close();
+		}
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+	
 	public static void CreateServer()
 	{
 		try 
@@ -106,7 +118,7 @@ public class Recieve
 		return ip;
 	}
 	
-	public static Object Listen()
+	public static instructionPacket Listen()
 	{
 		try 
 	    {
@@ -117,10 +129,10 @@ public class Recieve
 	    {
 	    	System.out.println(e);
 	    }
-		String s = null;
+		instructionPacket packet = null;
 		try 
 		{
-			s = (String) input.readObject();
+			packet = (instructionPacket) input.readObject();
 		} 
 		catch (IOException e) 
 		{
@@ -130,154 +142,6 @@ public class Recieve
 		{
 			System.err.println(e);
 		}
-		
-		switch(s){
-			case "Pokemon":
-				return recievePokemon();
-			case "Team":
-				return recieveTeam();
-			case "Move":
-				return recieveMove();
-			case "Game Over":
-				return recieveGameOver();
-			case "String":
-				return recieveString();
-		}
-		return null;
-	}
-	
-	public static Pokemon recievePokemon()
-	{
-		try 
-	    {
-	       read = Server.accept();
-	       input = new ObjectInputStream(read.getInputStream());
-	    }   
-	    catch (IOException e) 
-	    {
-	    	System.out.println(e);
-	    }
-		Pokemon p = null;
-		try 
-		{
-			p = (Pokemon) input.readObject();
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		} 
-		catch (ClassNotFoundException e) 
-		{
-			System.err.println(e);
-		}
-		return p;
-	}
-	
-	public static String recieveString()
-	{
-		try
-		{
-			read = Server.accept();
-			input = new ObjectInputStream(read.getInputStream());
-		}
-		catch (IOException e)
-		{
-			System.out.println(e);
-		}
-		String s = null;
-		try
-		{
-			s = (String) input.readObject();
-		}
-		catch (IOException e)
-		{
-			System.err.println(e);
-		}
-		catch (ClassNotFoundException e)
-		{
-			System.err.println(e);
-		}
-		return s;
-	}
-	
-	public static ArrayList<Pokemon> recieveTeam()
-	{
-		try 
-	    {
-	       read = Server.accept();
-	       input = new ObjectInputStream(read.getInputStream());
-	    }   
-	    catch (IOException e) 
-	    {
-	    	System.out.println(e);
-	    }
-		ArrayList<Pokemon> team = null;
-		try 
-		{
-			team = (ArrayList<Pokemon>) input.readObject();
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		} 
-		catch (ClassNotFoundException e) 
-		{
-			System.err.println(e);
-		}
-		return team;
-	}
-	
-	public static Move recieveMove()
-	{
-		try 
-	    {
-	       read = Server.accept();
-	       input = new ObjectInputStream(read.getInputStream());
-	    }   
-	    catch (IOException e) 
-	    {
-	    	System.out.println(e);
-	    }
-		Move m = null;
-		try 
-		{
-			m = (Move) input.readObject();
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		} 
-		catch (ClassNotFoundException e) 
-		{
-			System.err.println(e);
-		}
-		return m;
-	}
-	
-	public static boolean recieveGameOver()
-	{
-		try 
-	    {
-	       read = Server.accept();
-	       input = new ObjectInputStream(read.getInputStream());
-	    }   
-	    catch (IOException e) 
-	    {
-	    	System.out.println(e);
-	    }
-		boolean b = false;
-		try 
-		{
-			b = (boolean) input.readObject();
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		} 
-		catch (ClassNotFoundException e) 
-		{
-			System.err.println(e);
-		}
-		return b;
+		return packet;
 	}
 }

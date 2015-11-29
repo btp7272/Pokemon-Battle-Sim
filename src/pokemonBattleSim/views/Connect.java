@@ -103,6 +103,12 @@ public class Connect {
 		frmConnect.getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu.startup();
+				frmConnect.setVisible(false);
+			}
+		});
 		GridBagConstraints gbc_btnCancel = new GridBagConstraints();
 		gbc_btnCancel.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnCancel.gridx = 3;

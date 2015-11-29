@@ -62,6 +62,8 @@ public class IPAddress {
 		JButton btnNewButton = new JButton("Cancel");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainMenu.startup();
+				frmHello.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(192, 59, 89, 23);

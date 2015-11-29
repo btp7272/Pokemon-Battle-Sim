@@ -895,6 +895,10 @@ public class AbilityMap
 				   { 
 					   if(wielder == defender && moveUsed.getType() == Type.ELECTRIC)
 					   {
+						   if(Event.statusVolatileEvent(wielder, EventType.HEAL, null))
+						   {
+							   return 1;
+						   }
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
 						   System.out.println(wielder.getNickName()+"'s Volt Absorb");
@@ -916,6 +920,10 @@ public class AbilityMap
 				   { 
 					   if(wielder == defender && moveUsed.getType() == Type.WATER)
 					   {
+						   if(Event.statusVolatileEvent(wielder, EventType.HEAL, null))
+						   {
+							   return 1;
+						   }
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
 						   System.out.println(wielder.getNickName()+"'s Water Absorb");

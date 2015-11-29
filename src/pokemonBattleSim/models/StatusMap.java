@@ -83,12 +83,12 @@ public class StatusMap
 					   }
 				   }
 				   
-				   if(wielder.getVolatileStatus("Curse1").getActiveStatus() == false)
+				   if(wielder.getVolatileStatus("Curse").getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task, 10000, 10000);
 					   wielder.getVolatileStatus("Curse").setActiveStatus(true);
-					   wielder.addVolatileStatus(new StatusContainer(-1,-1,"Curse2",null));
+					   wielder.addVolatileStatus(new StatusContainer("Curse2"));
 					   wielder.getVolatileStatus("Curse2").setActiveStatus(true);
 				   }
 				   return 1;
@@ -135,7 +135,7 @@ public class StatusMap
 					   }
 				   }
 				   
-				   if(wielder.getVolatileStatus("Curse1").getActiveStatus() == false)
+				   if(wielder.getVolatileStatus("Heal Block").getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
 					   timer.schedule(task,50000); //5 turns

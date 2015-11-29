@@ -42,6 +42,10 @@ public class MoveEffectMap
 					  //runPrimaryEffectevent automatic
 					  return 0;
 				  }
+				  if(Event.abilityEvent(EventType.HEAL, attacker, null, null, null, null, null))
+				  {
+					  return 1;
+				  }
 				  attacker.changeHP(- moveUsed.getMoveEffectContainer().getDamageDelt() / 2);
 				  return 1;
 			   }
@@ -581,7 +585,13 @@ public class MoveEffectMap
 				   
 				   else
 				   {
-					   
+					   IPokemon defender = model.getOpponentPokemon(attacker.getPlayerID());
+					   attacker.changeHP( attacker.getMaxHP() / 2 );
+					   Event.abilityEvent(EventType.HP_CHANGE, attacker, defender, null, attacker, defender, moveUsed);
+					   Event.itemPrimaryEffectEvent(attacker, EventType.HP_CHANGE, moveUsed);
+					   Event.itemSecondaryEffectEvent(attacker, EventType.HP_CHANGE, moveUsed);
+					   defender.addVolatileStatus(new StatusContainer("Cruse"));
+					   Event.statusVolatileEvent(defender, EventType.POST_STATUS_CHANGE, null);
 				   }
 				   
 				   return 1;

@@ -551,6 +551,36 @@ public class MoveEffectMap
 			   }
 		});
 		
+		effectMap.put("Belly Drum", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Belly Drum";
+			   String description = "Boosts the user's Special Attack by three stages.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 12;
+				   
+				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+				   {
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+				   else
+				   {
+					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+					   return 1;
+				   }
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
 		effectMap.put("Curse", new IMoveEffect()
 		{
 			   EventType trigger = EventType.POST_ATTACK;
@@ -600,6 +630,28 @@ public class MoveEffectMap
 				   }
 				   
 				   return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
+		
+		effectMap.put("Wild Charge", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Wild Charge";
+			   String description = "User takes a quarter of damage dealt in recoil.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				  attacker.changeHP(moveUsed.getMoveEffectContainer().getDamageDelt() / 4);
+				  Event.abilityEvent(EventType.HP_CHANGE, attacker, null, null, null, null, null);
+				  Event.itemPrimaryEffectEvent(attacker, EventType.HP_CHANGE, moveUsed);
+				  Event.itemSecondaryEffectEvent(attacker, EventType.HP_CHANGE, moveUsed);
+				  return 1;
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   {

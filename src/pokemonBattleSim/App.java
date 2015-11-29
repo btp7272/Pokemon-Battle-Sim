@@ -20,6 +20,7 @@ import pokemonBattleSim.types.AbilityContainer;
 import pokemonBattleSim.types.ItemContainer;
 import pokemonBattleSim.views.BattleView;
 import pokemonBattleSim.views.MainMenu;
+import pokemonBattleSim.views.TeamBuilderView;
 import pokemonBattleSim.models.MoveMap;
 
 public class App {
@@ -125,8 +126,7 @@ public class App {
 			e.printStackTrace();
 		}
 		BattleModel model = BattleModel.getInstance();
-		MainMenu.main(null);
-		
+		MainMenu.startup();
 		
 		//BattleView view = new BattleView(player.getTrainerID());
 		//BattleController controller = new BattleController(view,model, player.getTrainerID());

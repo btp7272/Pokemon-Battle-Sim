@@ -546,25 +546,36 @@ public class MoveEffectMap
 		{
 			   EventType trigger = EventType.POST_ATTACK;
 			   String name = "Tail Glow";
-			   String description = "Does 1/4 of max HP damage per turn at the cost of half the user's max HP if the user is a Ghost-type. Boosts the user's Attack and Defense and lowers Speed by one stage each otherwise.";
+			   String description = "Does 1/4 of max HP damage per turn at the cost of half the user's max HP if the user is a Ghost-type. "
+			   		+ "Boosts the user's Attack and Defense and lowers Speed by one stage each otherwise.";
 			   public EventType getEventTrigger(){return trigger;}
 			   public String getName(){return name;}
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
-				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 3;
-				   
-				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
-				   {
-					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
-					   return 1;
-				   }
-				   else
-				   {
-					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
-					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
-					   return 1;
-				   }
+				   if(! (attacker.isType(Type.GHOST)) )
+					   
+					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
+					   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 1;
+					   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = -1;
+					   
+					   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
+					   {
+						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+						   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 0;
+						   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
+						   return 1;
+					   }
+					   else
+					   {
+						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
+						   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 0;
+						   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
+						   return 1;
+					   }
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   {

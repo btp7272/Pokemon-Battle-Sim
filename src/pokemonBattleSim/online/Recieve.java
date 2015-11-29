@@ -106,7 +106,7 @@ public class Recieve
 		return ip;
 	}
 	
-	public static void Listen()
+	public static Object Listen()
 	{
 		try 
 	    {
@@ -133,21 +133,17 @@ public class Recieve
 		
 		switch(s){
 			case "Pokemon":
-				recievePokemon();
-				break;
+				return recievePokemon();
 			case "Team":
-				recieveTeam();
-				break;
+				return recieveTeam();
 			case "Move":
-				recieveMove();
-				break;
+				return recieveMove();
 			case "Game Over":
-				recieveGameOver();
-				break;
+				return recieveGameOver();
 			case "String":
-				recieveString();
-				break;
+				return recieveString();
 		}
+		return null;
 	}
 	
 	public static Pokemon recievePokemon()

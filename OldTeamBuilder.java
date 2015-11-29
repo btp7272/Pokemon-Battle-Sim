@@ -20,7 +20,6 @@ public class OldTeamBuilder extends JFrame {//implements IView{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TeamBuilderView frame = new TeamBuilder();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -5,12 +5,17 @@ import java.util.Map;
 
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap.Stat;
+import pokemonBattleSim.online.Send;
 import pokemonBattleSim.types.*;
 
 public class ItemMap 
 {
 	public static Map < String, IItem > itemMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
+	{
+		if(Send.Online == true)
+			model = OnlineBattleModel.getInstance();
+	}
 	
 	static
 	{

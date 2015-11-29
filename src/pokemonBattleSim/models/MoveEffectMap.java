@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 import pokemonBattleSim.formulas.Formula;
 import pokemonBattleSim.models.AbilityMap.Stat;
+import pokemonBattleSim.online.Send;
 import pokemonBattleSim.types.Event;
 import pokemonBattleSim.types.EventType;
 import pokemonBattleSim.types.IAbility;
@@ -22,6 +23,10 @@ public class MoveEffectMap
 {
 	public static Map < String, IMoveEffect > effectMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
+	{
+		if(Send.Online == true)
+			model = OnlineBattleModel.getInstance();
+	}
 	public static int sereneGraceMultiplier = 1;
 	
 	

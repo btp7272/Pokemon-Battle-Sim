@@ -40,91 +40,91 @@ import java.awt.event.ActionEvent;
 public class TeamBuilderView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JComboBox comboBox_4;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	private JTextField textField_21;
-	private JTextField textField_22;
-	private JTextField textField_23;
-	private JTextField textField_24;
-	private JTextField textField_25;
-	private JTextField textField_26;
-	private JTextField textField_27;
-	private JTextField textField_28;
-	private JTextField textField_29;
-	private JTextField textField_30;
-	private JTextField textField_31;
-	private JTextField textField_32;
-	private JTextField textField_33;
-	private JTextField textField_34;
-	private JTextField textField_35;
-	private JTextField textField_36;
-	private JTextField textField_37;
-	private JTextField textField_38;
-	private JTextField textField_39;
-	private JTextField textField_40;
-	private JTextField textField_41;
-	private JTextField textField_42;
-	private JTextField textField_43;
-	private JTextField textField_44;
-	private JTextField textField_45;
-	private JTextField textField_46;
-	private JTextField textField_47;
-	private JTextField textField_48;
-	private JTextField textField_49;
-	private JTextField textField_50;
-	private JTextField textField_51;
-	private JTextField textField_52;
-	private JTextField textField_53;
-	private JTextField textField_54;
-	private JTextField textField_55;
-	private JTextField textField_56;
-	private JTextField textField_57;
-	private JTextField textField_58;
-	private JTextField textField_59;
-	private JTextField textField_60;
-	private JTextField textField_61;
-	private JTextField textField_62;
-	private JTextField textField_63;
-	private JTextField textField_64;
-	private JTextField textField_65;
-	private JTextField textField_66;
-	private JTextField textField_67;
-	private JTextField textField_68;
-	private JTextField textField_69;
-	private JTextField textField_70;
-	private JTextField textField_71;
-	private JTextField textField_72;
-	private JTextField textField_73;
-	private JTextField textField_74;
-	private JTextField textField_75;
-	private JTextField textField_76;
-	private JTextField textField_77;
-	private JTextField textField_78;
-	private JTextField textField_79;
-	private JTextField textField_80;
-	private JTextField textField_81;
-	private JTextField textField_82;
-	private JTextField textField_83;
+	private JTextField p1_species;
+	private JTextField p1_nickname;
+	private JTextField p1_hp_iv;
+	private JTextField p1_atk_iv;
+	private JTextField p1_def_iv;
+	private JTextField p1_spatk_iv;
+	private JTextField p1_spdef_iv;
+	private JTextField p1_speed_iv;
+	private JTextField p1_hp_ev;
+	private JTextField p1_atk_ev;
+	private JTextField p1_def_ev;
+	private JTextField p1_spatk_ev;
+	private JTextField p1_spdef_ev;
+	private JTextField p1_speed_ev;
+	private JComboBox p1_ability;
+	private JTextField p2_species;
+	private JTextField p2_nickname;
+	private JTextField p2_hp_iv;
+	private JTextField p2_atk_iv;
+	private JTextField p2_def_iv;
+	private JTextField p2_spatk_iv;
+	private JTextField p2_spdef_iv;
+	private JTextField p2_speed_iv;
+	private JTextField p2_hp_ev;
+	private JTextField p2_atk_ev;
+	private JTextField p2_def_ev;
+	private JTextField p2_spatk_ev;
+	private JTextField p2_spdef_ev;
+	private JTextField p2_speed_ev;
+	private JTextField p3_species;
+	private JTextField p3_nickname;
+	private JTextField p3_hp_iv;
+	private JTextField p3_atk_iv;
+	private JTextField p3_def_iv;
+	private JTextField p3_spatk_iv;
+	private JTextField p3_spdef_iv;
+	private JTextField p3_speed_iv;
+	private JTextField p3_hp_ev;
+	private JTextField p3_atk_ev;
+	private JTextField p3_def_ev;
+	private JTextField p3_spatk_ev;
+	private JTextField p3_spdef_ev;
+	private JTextField p3_speed_ev;
+	private JTextField p4_species;
+	private JTextField p4_nickname;
+	private JTextField p4_hp_iv;
+	private JTextField p4_atk_iv;
+	private JTextField p4_def_iv;
+	private JTextField p4_spatk_iv;
+	private JTextField p4_spdef_iv;
+	private JTextField p4_speed_iv;
+	private JTextField p4_hp_ev;
+	private JTextField p4_atk_ev;
+	private JTextField p4_def_ev;
+	private JTextField p4_spatk_ev;
+	private JTextField p4_spdef_ev;
+	private JTextField p4_speed_ev;
+	private JTextField p5_species;
+	private JTextField p5_nickname;
+	private JTextField p5_hp_iv;
+	private JTextField p5_atk_iv;
+	private JTextField p5_def_iv;
+	private JTextField p5_spatk_iv;
+	private JTextField p5_spdef_iv;
+	private JTextField p5_speed_iv;
+	private JTextField p5_hp_ev;
+	private JTextField p5_atk_ev;
+	private JTextField p5_def_ev;
+	private JTextField p5_spatk_ev;
+	private JTextField p5_spdef_ev;
+	private JTextField p5_speed_ev;
+	private JTextField p6_species;
+	private JTextField p6_nickname;
+	private JTextField p6_hp_iv;
+	private JTextField p6_atk_iv;
+	private JTextField p6_def_iv;
+	private JTextField p6_spatk_iv;
+	private JTextField p6_spdef_iv;
+	private JTextField p6_speed_iv;
+	private JTextField p6_hp_ev;
+	private JTextField p6_atk_ev;
+	private JTextField p6_def_ev;
+	private JTextField p6_spatk_ev;
+	private JTextField p6_spdef_ev;
+	private JTextField p6_speed_ev;
 	private JButton btnRefresh;
 	private JButton btnFinalize;
 	private JButton btnCancel;
@@ -168,7 +168,7 @@ public class TeamBuilderView extends JFrame {
 	    pokeFive = poke5.getText();
 	    pokeSix = poke6.getText();
 		*/
-	    moves1 = model.generateMoves(textField.getText());
+	    moves1 = model.generateMoves(p1_species.getText());
 		/*moves2 = model.generateMoves(pokeTwo);
 		moves3 = model.generateMoves(pokeThree);
 		moves4 = model.generateMoves(pokeFour);
@@ -232,61 +232,61 @@ public class TeamBuilderView extends JFrame {
 		label_7.setBounds(5, 55, 100, 25);
 		contentPane.add(label_7);
 		
-		textField = new JTextField(30);
-		textField.setToolTipText("Pokemon");
-		textField.setBounds(90, 25, 100, 25);
-		contentPane.add(textField);
+		p1_species = new JTextField(30);
+		p1_species.setToolTipText("Pokemon");
+		p1_species.setBounds(90, 25, 100, 25);
+		contentPane.add(p1_species);
 		
-		textField_1 = new JTextField(30);
-		textField_1.setToolTipText("Pokemon");
-		textField_1.setBounds(90, 55, 100, 25);
-		contentPane.add(textField_1);
+		p1_nickname = new JTextField(30);
+		p1_nickname.setToolTipText("Pokemon");
+		p1_nickname.setBounds(90, 55, 100, 25);
+		contentPane.add(p1_nickname);
 		
-		JComboBox comboBox = new JComboBox(new Object[]{});
-		comboBox.setBounds(90, 95, 100, 25);
-		contentPane.add(comboBox);
+		JComboBox p1_move1 = new JComboBox(new Object[]{});
+		p1_move1.setBounds(90, 95, 100, 25);
+		contentPane.add(p1_move1);
 		
-		JComboBox comboBox_1 = new JComboBox(poke1move2List);
-		comboBox_1.setBounds(90, 125, 100, 25);
-		contentPane.add(comboBox_1);
+		JComboBox p1_move2 = new JComboBox(poke1move2List);
+		p1_move2.setBounds(90, 125, 100, 25);
+		contentPane.add(p1_move2);
 		
-		JComboBox comboBox_2 = new JComboBox(new Object[]{});
-		comboBox_2.setBounds(90, 155, 100, 25);
-		contentPane.add(comboBox_2);
+		JComboBox p1_move3 = new JComboBox(new Object[]{});
+		p1_move3.setBounds(90, 155, 100, 25);
+		contentPane.add(p1_move3);
 		
-		JComboBox comboBox_3 = new JComboBox(new Object[]{});
-		comboBox_3.setBounds(90, 185, 100, 25);
-		contentPane.add(comboBox_3);
+		JComboBox p1_move4 = new JComboBox(new Object[]{});
+		p1_move4.setBounds(90, 185, 100, 25);
+		contentPane.add(p1_move4);
 		
-		textField_2 = new JTextField(2);
-		textField_2.setText("31");
-		textField_2.setBounds(90, 265, 100, 25);
-		contentPane.add(textField_2);
+		p1_hp_iv = new JTextField(2);
+		p1_hp_iv.setText("31");
+		p1_hp_iv.setBounds(90, 265, 100, 25);
+		contentPane.add(p1_hp_iv);
 		
-		textField_3 = new JTextField(2);
-		textField_3.setText("31");
-		textField_3.setBounds(90, 290, 100, 25);
-		contentPane.add(textField_3);
+		p1_atk_iv = new JTextField(2);
+		p1_atk_iv.setText("31");
+		p1_atk_iv.setBounds(90, 290, 100, 25);
+		contentPane.add(p1_atk_iv);
 		
-		textField_4 = new JTextField(2);
-		textField_4.setText("31");
-		textField_4.setBounds(90, 315, 100, 25);
-		contentPane.add(textField_4);
+		p1_def_iv = new JTextField(2);
+		p1_def_iv.setText("31");
+		p1_def_iv.setBounds(90, 315, 100, 25);
+		contentPane.add(p1_def_iv);
 		
-		textField_5 = new JTextField(2);
-		textField_5.setText("31");
-		textField_5.setBounds(90, 340, 100, 25);
-		contentPane.add(textField_5);
+		p1_spatk_iv = new JTextField(2);
+		p1_spatk_iv.setText("31");
+		p1_spatk_iv.setBounds(90, 340, 100, 25);
+		contentPane.add(p1_spatk_iv);
 		
-		textField_6 = new JTextField(2);
-		textField_6.setText("31");
-		textField_6.setBounds(90, 365, 100, 25);
-		contentPane.add(textField_6);
+		p1_spdef_iv = new JTextField(2);
+		p1_spdef_iv.setText("31");
+		p1_spdef_iv.setBounds(90, 365, 100, 25);
+		contentPane.add(p1_spdef_iv);
 		
-		textField_7 = new JTextField(2);
-		textField_7.setText("31");
-		textField_7.setBounds(90, 390, 100, 25);
-		contentPane.add(textField_7);
+		p1_speed_iv = new JTextField(2);
+		p1_speed_iv.setText("31");
+		p1_speed_iv.setBounds(90, 390, 100, 25);
+		contentPane.add(p1_speed_iv);
 		
 		JLabel pokelabel1 = new JLabel("Pokemon 1");
 		pokelabel1.setBounds(90, 5, 100, 25);
@@ -297,42 +297,42 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(lblIndividualValuesindividual);
 		
 		JLabel lblEffortValuesindividual = new JLabel("Effort Values (Individual Max of 252 - Total Max of 510)");
-		lblEffortValuesindividual.setBounds(90, 419, 280, 14);
+		lblEffortValuesindividual.setBounds(90, 419, 461, 14);
 		contentPane.add(lblEffortValuesindividual);
 		
-		textField_8 = new JTextField(2);
-		textField_8.setText("0");
-		textField_8.setBounds(90, 435, 100, 25);
-		contentPane.add(textField_8);
+		p1_hp_ev = new JTextField(2);
+		p1_hp_ev.setText("0");
+		p1_hp_ev.setBounds(90, 435, 100, 25);
+		contentPane.add(p1_hp_ev);
 		
-		textField_9 = new JTextField(2);
-		textField_9.setText("0");
-		textField_9.setBounds(90, 460, 100, 25);
-		contentPane.add(textField_9);
+		p1_atk_ev = new JTextField(2);
+		p1_atk_ev.setText("0");
+		p1_atk_ev.setBounds(90, 460, 100, 25);
+		contentPane.add(p1_atk_ev);
 		
-		textField_10 = new JTextField(2);
-		textField_10.setText("0");
-		textField_10.setBounds(90, 485, 100, 25);
-		contentPane.add(textField_10);
+		p1_def_ev = new JTextField(2);
+		p1_def_ev.setText("0");
+		p1_def_ev.setBounds(90, 485, 100, 25);
+		contentPane.add(p1_def_ev);
 		
-		textField_11 = new JTextField(2);
-		textField_11.setText("0");
-		textField_11.setBounds(90, 510, 100, 25);
-		contentPane.add(textField_11);
+		p1_spatk_ev = new JTextField(2);
+		p1_spatk_ev.setText("0");
+		p1_spatk_ev.setBounds(90, 510, 100, 25);
+		contentPane.add(p1_spatk_ev);
 		
-		textField_12 = new JTextField(2);
-		textField_12.setText("0");
-		textField_12.setBounds(90, 535, 100, 25);
-		contentPane.add(textField_12);
+		p1_spdef_ev = new JTextField(2);
+		p1_spdef_ev.setText("0");
+		p1_spdef_ev.setBounds(90, 535, 100, 25);
+		contentPane.add(p1_spdef_ev);
 		
-		textField_13 = new JTextField(2);
-		textField_13.setText("0");
-		textField_13.setBounds(90, 560, 100, 25);
-		contentPane.add(textField_13);
+		p1_speed_ev = new JTextField(2);
+		p1_speed_ev.setText("0");
+		p1_speed_ev.setBounds(90, 560, 100, 25);
+		contentPane.add(p1_speed_ev);
 		
-		comboBox_4 = new JComboBox(new Object[]{});
-		comboBox_4.setBounds(90, 215, 100, 25);
-		contentPane.add(comboBox_4);
+		p1_ability = new JComboBox(new Object[]{});
+		p1_ability.setBounds(90, 215, 100, 25);
+		contentPane.add(p1_ability);
 		
 		JLabel lblNewLabel = new JLabel("Move 1");
 		lblNewLabel.setBounds(5, 100, 46, 14);
@@ -363,14 +363,14 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(lblAttack);
 		
 		JLabel lblDefense = new JLabel("Defense");
-		lblDefense.setBounds(5, 320, 46, 14);
+		lblDefense.setBounds(5, 320, 73, 14);
 		contentPane.add(lblDefense);
 		
-		JLabel lblSpecialAttack = new JLabel("Special Attack");
-		lblSpecialAttack.setBounds(5, 345, 46, 14);
+		JLabel lblSpecialAttack = new JLabel("Special Atk");
+		lblSpecialAttack.setBounds(5, 345, 85, 14);
 		contentPane.add(lblSpecialAttack);
 		
-		JLabel lblSepcialDefense = new JLabel("Special Defense");
+		JLabel lblSepcialDefense = new JLabel("Special Def");
 		lblSepcialDefense.setBounds(5, 370, 85, 14);
 		contentPane.add(lblSepcialDefense);
 		
@@ -382,16 +382,16 @@ public class TeamBuilderView extends JFrame {
 		label.setBounds(5, 565, 46, 14);
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("Special Defense");
-		label_1.setBounds(5, 540, 85, 14);
-		contentPane.add(label_1);
+		JLabel lblSpecialDef = new JLabel("Special Def");
+		lblSpecialDef.setBounds(5, 540, 85, 14);
+		contentPane.add(lblSpecialDef);
 		
-		JLabel label_2 = new JLabel("Special Attack");
-		label_2.setBounds(5, 515, 46, 14);
-		contentPane.add(label_2);
+		JLabel lblSpecialAtk = new JLabel("Special Atk");
+		lblSpecialAtk.setBounds(5, 515, 85, 14);
+		contentPane.add(lblSpecialAtk);
 		
 		JLabel label_3 = new JLabel("Defense");
-		label_3.setBounds(5, 490, 46, 14);
+		label_3.setBounds(5, 490, 85, 14);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("Attack");
@@ -402,456 +402,456 @@ public class TeamBuilderView extends JFrame {
 		label_5.setBounds(5, 440, 46, 14);
 		contentPane.add(label_5);
 		
-		textField_14 = new JTextField(30);
-		textField_14.setToolTipText("Pokemon");
-		textField_14.setBounds(220, 25, 100, 25);
-		contentPane.add(textField_14);
-		
-		textField_15 = new JTextField(30);
-		textField_15.setToolTipText("Pokemon");
-		textField_15.setBounds(220, 55, 100, 25);
-		contentPane.add(textField_15);
-		
-		JComboBox comboBox_5 = new JComboBox(new Object[]{});
-		comboBox_5.setBounds(220, 95, 100, 25);
-		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {moves1}));
-		contentPane.add(comboBox_5);
-		
-		JComboBox comboBox_6 = new JComboBox(new Object[]{});
-		comboBox_6.setBounds(220, 125, 100, 25);
-		contentPane.add(comboBox_6);
-		
-		JComboBox comboBox_7 = new JComboBox(new Object[]{});
-		comboBox_7.setBounds(220, 155, 100, 25);
-		contentPane.add(comboBox_7);
-		
-		JComboBox comboBox_8 = new JComboBox(new Object[]{});
-		comboBox_8.setBounds(220, 185, 100, 25);
-		contentPane.add(comboBox_8);
-		
-		JComboBox comboBox_9 = new JComboBox(new Object[]{});
-		comboBox_9.setBounds(220, 215, 100, 25);
-		contentPane.add(comboBox_9);
-		
-		textField_16 = new JTextField(2);
-		textField_16.setText("31");
-		textField_16.setBounds(220, 265, 100, 25);
-		contentPane.add(textField_16);
-		
-		textField_17 = new JTextField(2);
-		textField_17.setText("31");
-		textField_17.setBounds(220, 290, 100, 25);
-		contentPane.add(textField_17);
-		
-		textField_18 = new JTextField(2);
-		textField_18.setText("31");
-		textField_18.setBounds(220, 315, 100, 25);
-		contentPane.add(textField_18);
-		
-		textField_19 = new JTextField(2);
-		textField_19.setText("31");
-		textField_19.setBounds(220, 340, 100, 25);
-		contentPane.add(textField_19);
-		
-		textField_20 = new JTextField(2);
-		textField_20.setText("31");
-		textField_20.setBounds(220, 365, 100, 25);
-		contentPane.add(textField_20);
-		
-		textField_21 = new JTextField(2);
-		textField_21.setText("31");
-		textField_21.setBounds(220, 390, 100, 25);
-		contentPane.add(textField_21);
-		
-		textField_22 = new JTextField(2);
-		textField_22.setText("0");
-		textField_22.setBounds(220, 435, 100, 25);
-		contentPane.add(textField_22);
-		
-		textField_23 = new JTextField(2);
-		textField_23.setText("0");
-		textField_23.setBounds(220, 460, 100, 25);
-		contentPane.add(textField_23);
-		
-		textField_24 = new JTextField(2);
-		textField_24.setText("0");
-		textField_24.setBounds(220, 485, 100, 25);
-		contentPane.add(textField_24);
-		
-		textField_25 = new JTextField(2);
-		textField_25.setText("0");
-		textField_25.setBounds(220, 510, 100, 25);
-		contentPane.add(textField_25);
-		
-		textField_26 = new JTextField(2);
-		textField_26.setText("0");
-		textField_26.setBounds(220, 535, 100, 25);
-		contentPane.add(textField_26);
-		
-		textField_27 = new JTextField(2);
-		textField_27.setText("0");
-		textField_27.setBounds(220, 560, 100, 25);
-		contentPane.add(textField_27);
-		
-		textField_28 = new JTextField(30);
-		textField_28.setToolTipText("Pokemon");
-		textField_28.setBounds(350, 25, 100, 25);
-		contentPane.add(textField_28);
-		
-		textField_29 = new JTextField(30);
-		textField_29.setToolTipText("Pokemon");
-		textField_29.setBounds(350, 55, 100, 25);
-		contentPane.add(textField_29);
-		
-		JComboBox comboBox_10 = new JComboBox(new Object[]{});
-		comboBox_10.setBounds(350, 95, 100, 25);
-		contentPane.add(comboBox_10);
-		
-		JComboBox comboBox_11 = new JComboBox(new Object[]{});
-		comboBox_11.setBounds(350, 125, 100, 25);
-		contentPane.add(comboBox_11);
-		
-		JComboBox comboBox_12 = new JComboBox(new Object[]{});
-		comboBox_12.setBounds(350, 155, 100, 25);
-		contentPane.add(comboBox_12);
-		
-		JComboBox comboBox_13 = new JComboBox(new Object[]{});
-		comboBox_13.setBounds(350, 185, 100, 25);
-		contentPane.add(comboBox_13);
-		
-		JComboBox comboBox_14 = new JComboBox(new Object[]{});
-		comboBox_14.setBounds(350, 215, 100, 25);
-		contentPane.add(comboBox_14);
-		
-		textField_30 = new JTextField(2);
-		textField_30.setText("31");
-		textField_30.setBounds(350, 265, 100, 25);
-		contentPane.add(textField_30);
-		
-		textField_31 = new JTextField(2);
-		textField_31.setText("31");
-		textField_31.setBounds(350, 290, 100, 25);
-		contentPane.add(textField_31);
-		
-		textField_32 = new JTextField(2);
-		textField_32.setText("31");
-		textField_32.setBounds(350, 315, 100, 25);
-		contentPane.add(textField_32);
-		
-		textField_33 = new JTextField(2);
-		textField_33.setText("31");
-		textField_33.setBounds(350, 340, 100, 25);
-		contentPane.add(textField_33);
-		
-		textField_34 = new JTextField(2);
-		textField_34.setText("31");
-		textField_34.setBounds(350, 365, 100, 25);
-		contentPane.add(textField_34);
-		
-		textField_35 = new JTextField(2);
-		textField_35.setText("31");
-		textField_35.setBounds(350, 390, 100, 25);
-		contentPane.add(textField_35);
-		
-		textField_36 = new JTextField(2);
-		textField_36.setText("0");
-		textField_36.setBounds(350, 435, 100, 25);
-		contentPane.add(textField_36);
-		
-		textField_37 = new JTextField(2);
-		textField_37.setText("0");
-		textField_37.setBounds(350, 460, 100, 25);
-		contentPane.add(textField_37);
-		
-		textField_38 = new JTextField(2);
-		textField_38.setText("0");
-		textField_38.setBounds(350, 485, 100, 25);
-		contentPane.add(textField_38);
-		
-		textField_39 = new JTextField(2);
-		textField_39.setText("0");
-		textField_39.setBounds(350, 510, 100, 25);
-		contentPane.add(textField_39);
-		
-		textField_40 = new JTextField(2);
-		textField_40.setText("0");
-		textField_40.setBounds(350, 535, 100, 25);
-		contentPane.add(textField_40);
-		
-		textField_41 = new JTextField(2);
-		textField_41.setText("0");
-		textField_41.setBounds(350, 560, 100, 25);
-		contentPane.add(textField_41);
-		
-		textField_42 = new JTextField(30);
-		textField_42.setToolTipText("Pokemon");
-		textField_42.setBounds(480, 25, 100, 25);
-		contentPane.add(textField_42);
-		
-		textField_43 = new JTextField(30);
-		textField_43.setToolTipText("Pokemon");
-		textField_43.setBounds(480, 55, 100, 25);
-		contentPane.add(textField_43);
-		
-		JComboBox comboBox_15 = new JComboBox(new Object[]{});
-		comboBox_15.setBounds(480, 95, 100, 25);
-		contentPane.add(comboBox_15);
-		
-		JComboBox comboBox_16 = new JComboBox(new Object[]{});
-		comboBox_16.setBounds(480, 125, 100, 25);
-		contentPane.add(comboBox_16);
-		
-		JComboBox comboBox_17 = new JComboBox(new Object[]{});
-		comboBox_17.setBounds(480, 155, 100, 25);
-		contentPane.add(comboBox_17);
-		
-		JComboBox comboBox_18 = new JComboBox(new Object[]{});
-		comboBox_18.setBounds(480, 185, 100, 25);
-		contentPane.add(comboBox_18);
-		
-		JComboBox comboBox_19 = new JComboBox(new Object[]{});
-		comboBox_19.setBounds(480, 215, 100, 25);
-		contentPane.add(comboBox_19);
-		
-		textField_44 = new JTextField(2);
-		textField_44.setText("31");
-		textField_44.setBounds(480, 265, 100, 25);
-		contentPane.add(textField_44);
-		
-		textField_45 = new JTextField(2);
-		textField_45.setText("31");
-		textField_45.setBounds(480, 290, 100, 25);
-		contentPane.add(textField_45);
-		
-		textField_46 = new JTextField(2);
-		textField_46.setText("31");
-		textField_46.setBounds(480, 315, 100, 25);
-		contentPane.add(textField_46);
-		
-		textField_47 = new JTextField(2);
-		textField_47.setText("31");
-		textField_47.setBounds(480, 340, 100, 25);
-		contentPane.add(textField_47);
-		
-		textField_48 = new JTextField(2);
-		textField_48.setText("31");
-		textField_48.setBounds(480, 365, 100, 25);
-		contentPane.add(textField_48);
-		
-		textField_49 = new JTextField(2);
-		textField_49.setText("31");
-		textField_49.setBounds(480, 390, 100, 25);
-		contentPane.add(textField_49);
-		
-		textField_50 = new JTextField(2);
-		textField_50.setText("0");
-		textField_50.setBounds(480, 435, 100, 25);
-		contentPane.add(textField_50);
-		
-		textField_51 = new JTextField(2);
-		textField_51.setText("0");
-		textField_51.setBounds(480, 460, 100, 25);
-		contentPane.add(textField_51);
-		
-		textField_52 = new JTextField(2);
-		textField_52.setText("0");
-		textField_52.setBounds(480, 485, 100, 25);
-		contentPane.add(textField_52);
-		
-		textField_53 = new JTextField(2);
-		textField_53.setText("0");
-		textField_53.setBounds(480, 510, 100, 25);
-		contentPane.add(textField_53);
-		
-		textField_54 = new JTextField(2);
-		textField_54.setText("0");
-		textField_54.setBounds(480, 535, 100, 25);
-		contentPane.add(textField_54);
-		
-		textField_55 = new JTextField(2);
-		textField_55.setText("0");
-		textField_55.setBounds(480, 560, 100, 25);
-		contentPane.add(textField_55);
-		
-		textField_56 = new JTextField(30);
-		textField_56.setToolTipText("Pokemon");
-		textField_56.setBounds(610, 25, 100, 25);
-		contentPane.add(textField_56);
-		
-		textField_57 = new JTextField(30);
-		textField_57.setToolTipText("Pokemon");
-		textField_57.setBounds(610, 55, 100, 25);
-		contentPane.add(textField_57);
-		
-		JComboBox comboBox_20 = new JComboBox(new Object[]{});
-		comboBox_20.setBounds(610, 95, 100, 25);
-		contentPane.add(comboBox_20);
-		
-		JComboBox comboBox_21 = new JComboBox(new Object[]{});
-		comboBox_21.setBounds(610, 125, 100, 25);
-		contentPane.add(comboBox_21);
-		
-		JComboBox comboBox_22 = new JComboBox(new Object[]{});
-		comboBox_22.setBounds(610, 155, 100, 25);
-		contentPane.add(comboBox_22);
-		
-		JComboBox comboBox_23 = new JComboBox(new Object[]{});
-		comboBox_23.setBounds(610, 185, 100, 25);
-		contentPane.add(comboBox_23);
-		
-		JComboBox comboBox_24 = new JComboBox(new Object[]{});
-		comboBox_24.setBounds(610, 215, 100, 25);
-		contentPane.add(comboBox_24);
-		
-		textField_58 = new JTextField(2);
-		textField_58.setText("31");
-		textField_58.setBounds(610, 265, 100, 25);
-		contentPane.add(textField_58);
-		
-		textField_59 = new JTextField(2);
-		textField_59.setText("31");
-		textField_59.setBounds(610, 290, 100, 25);
-		contentPane.add(textField_59);
-		
-		textField_60 = new JTextField(2);
-		textField_60.setText("31");
-		textField_60.setBounds(610, 315, 100, 25);
-		contentPane.add(textField_60);
-		
-		textField_61 = new JTextField(2);
-		textField_61.setText("31");
-		textField_61.setBounds(610, 340, 100, 25);
-		contentPane.add(textField_61);
-		
-		textField_62 = new JTextField(2);
-		textField_62.setText("31");
-		textField_62.setBounds(610, 365, 100, 25);
-		contentPane.add(textField_62);
-		
-		textField_63 = new JTextField(2);
-		textField_63.setText("31");
-		textField_63.setBounds(610, 390, 100, 25);
-		contentPane.add(textField_63);
-		
-		textField_64 = new JTextField(2);
-		textField_64.setText("0");
-		textField_64.setBounds(610, 435, 100, 25);
-		contentPane.add(textField_64);
-		
-		textField_65 = new JTextField(2);
-		textField_65.setText("0");
-		textField_65.setBounds(610, 460, 100, 25);
-		contentPane.add(textField_65);
-		
-		textField_66 = new JTextField(2);
-		textField_66.setText("0");
-		textField_66.setBounds(610, 485, 100, 25);
-		contentPane.add(textField_66);
-		
-		textField_67 = new JTextField(2);
-		textField_67.setText("0");
-		textField_67.setBounds(610, 510, 100, 25);
-		contentPane.add(textField_67);
-		
-		textField_68 = new JTextField(2);
-		textField_68.setText("0");
-		textField_68.setBounds(610, 535, 100, 25);
-		contentPane.add(textField_68);
-		
-		textField_69 = new JTextField(2);
-		textField_69.setText("0");
-		textField_69.setBounds(610, 560, 100, 25);
-		contentPane.add(textField_69);
-		
-		textField_70 = new JTextField(30);
-		textField_70.setToolTipText("Pokemon");
-		textField_70.setBounds(740, 25, 100, 25);
-		contentPane.add(textField_70);
-		
-		textField_71 = new JTextField(30);
-		textField_71.setToolTipText("Pokemon");
-		textField_71.setBounds(740, 55, 100, 25);
-		contentPane.add(textField_71);
-		
-		JComboBox comboBox_25 = new JComboBox(new Object[]{});
-		comboBox_25.setBounds(740, 95, 100, 25);
-		contentPane.add(comboBox_25);
-		
-		JComboBox comboBox_26 = new JComboBox(new Object[]{});
-		comboBox_26.setBounds(740, 125, 100, 25);
-		contentPane.add(comboBox_26);
-		
-		JComboBox comboBox_27 = new JComboBox(new Object[]{});
-		comboBox_27.setBounds(740, 155, 100, 25);
-		contentPane.add(comboBox_27);
-		
-		JComboBox comboBox_28 = new JComboBox(new Object[]{});
-		comboBox_28.setBounds(740, 185, 100, 25);
-		contentPane.add(comboBox_28);
-		
-		JComboBox comboBox_29 = new JComboBox(new Object[]{});
-		comboBox_29.setBounds(740, 215, 100, 25);
-		contentPane.add(comboBox_29);
-		
-		textField_72 = new JTextField(2);
-		textField_72.setText("31");
-		textField_72.setBounds(740, 265, 100, 25);
-		contentPane.add(textField_72);
-		
-		textField_73 = new JTextField(2);
-		textField_73.setText("31");
-		textField_73.setBounds(740, 290, 100, 25);
-		contentPane.add(textField_73);
-		
-		textField_74 = new JTextField(2);
-		textField_74.setText("31");
-		textField_74.setBounds(740, 315, 100, 25);
-		contentPane.add(textField_74);
-		
-		textField_75 = new JTextField(2);
-		textField_75.setText("31");
-		textField_75.setBounds(740, 340, 100, 25);
-		contentPane.add(textField_75);
-		
-		textField_76 = new JTextField(2);
-		textField_76.setText("31");
-		textField_76.setBounds(740, 365, 100, 25);
-		contentPane.add(textField_76);
-		
-		textField_77 = new JTextField(2);
-		textField_77.setText("31");
-		textField_77.setBounds(740, 390, 100, 25);
-		contentPane.add(textField_77);
-		
-		textField_78 = new JTextField(2);
-		textField_78.setText("0");
-		textField_78.setBounds(740, 435, 100, 25);
-		contentPane.add(textField_78);
-		
-		textField_79 = new JTextField(2);
-		textField_79.setText("0");
-		textField_79.setBounds(740, 460, 100, 25);
-		contentPane.add(textField_79);
-		
-		textField_80 = new JTextField(2);
-		textField_80.setText("0");
-		textField_80.setBounds(740, 485, 100, 25);
-		contentPane.add(textField_80);
-		
-		textField_81 = new JTextField(2);
-		textField_81.setText("0");
-		textField_81.setBounds(740, 510, 100, 25);
-		contentPane.add(textField_81);
-		
-		textField_82 = new JTextField(2);
-		textField_82.setText("0");
-		textField_82.setBounds(740, 535, 100, 25);
-		contentPane.add(textField_82);
-		
-		textField_83 = new JTextField(2);
-		textField_83.setText("0");
-		textField_83.setBounds(740, 560, 100, 25);
-		contentPane.add(textField_83);
+		p2_species = new JTextField(30);
+		p2_species.setToolTipText("Pokemon");
+		p2_species.setBounds(220, 25, 100, 25);
+		contentPane.add(p2_species);
+		
+		p2_nickname = new JTextField(30);
+		p2_nickname.setToolTipText("Pokemon");
+		p2_nickname.setBounds(220, 55, 100, 25);
+		contentPane.add(p2_nickname);
+		
+		JComboBox p2_move1 = new JComboBox(new Object[]{});
+		p2_move1.setBounds(220, 95, 100, 25);
+		p2_move1.setModel(new DefaultComboBoxModel(new String[] {moves1}));
+		contentPane.add(p2_move1);
+		
+		JComboBox p2_move2 = new JComboBox(new Object[]{});
+		p2_move2.setBounds(220, 125, 100, 25);
+		contentPane.add(p2_move2);
+		
+		JComboBox p2_move3 = new JComboBox(new Object[]{});
+		p2_move3.setBounds(220, 155, 100, 25);
+		contentPane.add(p2_move3);
+		
+		JComboBox p2_move4 = new JComboBox(new Object[]{});
+		p2_move4.setBounds(220, 185, 100, 25);
+		contentPane.add(p2_move4);
+		
+		JComboBox p2_ability = new JComboBox(new Object[]{});
+		p2_ability.setBounds(220, 215, 100, 25);
+		contentPane.add(p2_ability);
+		
+		p2_hp_iv = new JTextField(2);
+		p2_hp_iv.setText("31");
+		p2_hp_iv.setBounds(220, 265, 100, 25);
+		contentPane.add(p2_hp_iv);
+		
+		p2_atk_iv = new JTextField(2);
+		p2_atk_iv.setText("31");
+		p2_atk_iv.setBounds(220, 290, 100, 25);
+		contentPane.add(p2_atk_iv);
+		
+		p2_def_iv = new JTextField(2);
+		p2_def_iv.setText("31");
+		p2_def_iv.setBounds(220, 315, 100, 25);
+		contentPane.add(p2_def_iv);
+		
+		p2_spatk_iv = new JTextField(2);
+		p2_spatk_iv.setText("31");
+		p2_spatk_iv.setBounds(220, 340, 100, 25);
+		contentPane.add(p2_spatk_iv);
+		
+		p2_spdef_iv = new JTextField(2);
+		p2_spdef_iv.setText("31");
+		p2_spdef_iv.setBounds(220, 365, 100, 25);
+		contentPane.add(p2_spdef_iv);
+		
+		p2_speed_iv = new JTextField(2);
+		p2_speed_iv.setText("31");
+		p2_speed_iv.setBounds(220, 390, 100, 25);
+		contentPane.add(p2_speed_iv);
+		
+		p2_hp_ev = new JTextField(2);
+		p2_hp_ev.setText("0");
+		p2_hp_ev.setBounds(220, 435, 100, 25);
+		contentPane.add(p2_hp_ev);
+		
+		p2_atk_ev = new JTextField(2);
+		p2_atk_ev.setText("0");
+		p2_atk_ev.setBounds(220, 460, 100, 25);
+		contentPane.add(p2_atk_ev);
+		
+		p2_def_ev = new JTextField(2);
+		p2_def_ev.setText("0");
+		p2_def_ev.setBounds(220, 485, 100, 25);
+		contentPane.add(p2_def_ev);
+		
+		p2_spatk_ev = new JTextField(2);
+		p2_spatk_ev.setText("0");
+		p2_spatk_ev.setBounds(220, 510, 100, 25);
+		contentPane.add(p2_spatk_ev);
+		
+		p2_spdef_ev = new JTextField(2);
+		p2_spdef_ev.setText("0");
+		p2_spdef_ev.setBounds(220, 535, 100, 25);
+		contentPane.add(p2_spdef_ev);
+		
+		p2_speed_ev = new JTextField(2);
+		p2_speed_ev.setText("0");
+		p2_speed_ev.setBounds(220, 560, 100, 25);
+		contentPane.add(p2_speed_ev);
+		
+		p3_species = new JTextField(30);
+		p3_species.setToolTipText("Pokemon");
+		p3_species.setBounds(350, 25, 100, 25);
+		contentPane.add(p3_species);
+		
+		p3_nickname = new JTextField(30);
+		p3_nickname.setToolTipText("Pokemon");
+		p3_nickname.setBounds(350, 55, 100, 25);
+		contentPane.add(p3_nickname);
+		
+		JComboBox p3_move1 = new JComboBox(new Object[]{});
+		p3_move1.setBounds(350, 95, 100, 25);
+		contentPane.add(p3_move1);
+		
+		JComboBox p3_move2 = new JComboBox(new Object[]{});
+		p3_move2.setBounds(350, 125, 100, 25);
+		contentPane.add(p3_move2);
+		
+		JComboBox p3_move3 = new JComboBox(new Object[]{});
+		p3_move3.setBounds(350, 155, 100, 25);
+		contentPane.add(p3_move3);
+		
+		JComboBox p3_move4 = new JComboBox(new Object[]{});
+		p3_move4.setBounds(350, 185, 100, 25);
+		contentPane.add(p3_move4);
+		
+		JComboBox p3_ability = new JComboBox(new Object[]{});
+		p3_ability.setBounds(350, 215, 100, 25);
+		contentPane.add(p3_ability);
+		
+		p3_hp_iv = new JTextField(2);
+		p3_hp_iv.setText("31");
+		p3_hp_iv.setBounds(350, 265, 100, 25);
+		contentPane.add(p3_hp_iv);
+		
+		p3_atk_iv = new JTextField(2);
+		p3_atk_iv.setText("31");
+		p3_atk_iv.setBounds(350, 290, 100, 25);
+		contentPane.add(p3_atk_iv);
+		
+		p3_def_iv = new JTextField(2);
+		p3_def_iv.setText("31");
+		p3_def_iv.setBounds(350, 315, 100, 25);
+		contentPane.add(p3_def_iv);
+		
+		p3_spatk_iv = new JTextField(2);
+		p3_spatk_iv.setText("31");
+		p3_spatk_iv.setBounds(350, 340, 100, 25);
+		contentPane.add(p3_spatk_iv);
+		
+		p3_spdef_iv = new JTextField(2);
+		p3_spdef_iv.setText("31");
+		p3_spdef_iv.setBounds(350, 365, 100, 25);
+		contentPane.add(p3_spdef_iv);
+		
+		p3_speed_iv = new JTextField(2);
+		p3_speed_iv.setText("31");
+		p3_speed_iv.setBounds(350, 390, 100, 25);
+		contentPane.add(p3_speed_iv);
+		
+		p3_hp_ev = new JTextField(2);
+		p3_hp_ev.setText("0");
+		p3_hp_ev.setBounds(350, 435, 100, 25);
+		contentPane.add(p3_hp_ev);
+		
+		p3_atk_ev = new JTextField(2);
+		p3_atk_ev.setText("0");
+		p3_atk_ev.setBounds(350, 460, 100, 25);
+		contentPane.add(p3_atk_ev);
+		
+		p3_def_ev = new JTextField(2);
+		p3_def_ev.setText("0");
+		p3_def_ev.setBounds(350, 485, 100, 25);
+		contentPane.add(p3_def_ev);
+		
+		p3_spatk_ev = new JTextField(2);
+		p3_spatk_ev.setText("0");
+		p3_spatk_ev.setBounds(350, 510, 100, 25);
+		contentPane.add(p3_spatk_ev);
+		
+		p3_spdef_ev = new JTextField(2);
+		p3_spdef_ev.setText("0");
+		p3_spdef_ev.setBounds(350, 535, 100, 25);
+		contentPane.add(p3_spdef_ev);
+		
+		p3_speed_ev = new JTextField(2);
+		p3_speed_ev.setText("0");
+		p3_speed_ev.setBounds(350, 560, 100, 25);
+		contentPane.add(p3_speed_ev);
+		
+		p4_species = new JTextField(30);
+		p4_species.setToolTipText("Pokemon");
+		p4_species.setBounds(480, 25, 100, 25);
+		contentPane.add(p4_species);
+		
+		p4_nickname = new JTextField(30);
+		p4_nickname.setToolTipText("Pokemon");
+		p4_nickname.setBounds(480, 55, 100, 25);
+		contentPane.add(p4_nickname);
+		
+		JComboBox p4_move1 = new JComboBox(new Object[]{});
+		p4_move1.setBounds(480, 95, 100, 25);
+		contentPane.add(p4_move1);
+		
+		JComboBox p4_move2 = new JComboBox(new Object[]{});
+		p4_move2.setBounds(480, 125, 100, 25);
+		contentPane.add(p4_move2);
+		
+		JComboBox p4_move3 = new JComboBox(new Object[]{});
+		p4_move3.setBounds(480, 155, 100, 25);
+		contentPane.add(p4_move3);
+		
+		JComboBox p4_move4 = new JComboBox(new Object[]{});
+		p4_move4.setBounds(480, 185, 100, 25);
+		contentPane.add(p4_move4);
+		
+		JComboBox p4_ability = new JComboBox(new Object[]{});
+		p4_ability.setBounds(480, 215, 100, 25);
+		contentPane.add(p4_ability);
+		
+		p4_hp_iv = new JTextField(2);
+		p4_hp_iv.setText("31");
+		p4_hp_iv.setBounds(480, 265, 100, 25);
+		contentPane.add(p4_hp_iv);
+		
+		p4_atk_iv = new JTextField(2);
+		p4_atk_iv.setText("31");
+		p4_atk_iv.setBounds(480, 290, 100, 25);
+		contentPane.add(p4_atk_iv);
+		
+		p4_def_iv = new JTextField(2);
+		p4_def_iv.setText("31");
+		p4_def_iv.setBounds(480, 315, 100, 25);
+		contentPane.add(p4_def_iv);
+		
+		p4_spatk_iv = new JTextField(2);
+		p4_spatk_iv.setText("31");
+		p4_spatk_iv.setBounds(480, 340, 100, 25);
+		contentPane.add(p4_spatk_iv);
+		
+		p4_spdef_iv = new JTextField(2);
+		p4_spdef_iv.setText("31");
+		p4_spdef_iv.setBounds(480, 365, 100, 25);
+		contentPane.add(p4_spdef_iv);
+		
+		p4_speed_iv = new JTextField(2);
+		p4_speed_iv.setText("31");
+		p4_speed_iv.setBounds(480, 390, 100, 25);
+		contentPane.add(p4_speed_iv);
+		
+		p4_hp_ev = new JTextField(2);
+		p4_hp_ev.setText("0");
+		p4_hp_ev.setBounds(480, 435, 100, 25);
+		contentPane.add(p4_hp_ev);
+		
+		p4_atk_ev = new JTextField(2);
+		p4_atk_ev.setText("0");
+		p4_atk_ev.setBounds(480, 460, 100, 25);
+		contentPane.add(p4_atk_ev);
+		
+		p4_def_ev = new JTextField(2);
+		p4_def_ev.setText("0");
+		p4_def_ev.setBounds(480, 485, 100, 25);
+		contentPane.add(p4_def_ev);
+		
+		p4_spatk_ev = new JTextField(2);
+		p4_spatk_ev.setText("0");
+		p4_spatk_ev.setBounds(480, 510, 100, 25);
+		contentPane.add(p4_spatk_ev);
+		
+		p4_spdef_ev = new JTextField(2);
+		p4_spdef_ev.setText("0");
+		p4_spdef_ev.setBounds(480, 535, 100, 25);
+		contentPane.add(p4_spdef_ev);
+		
+		p4_speed_ev = new JTextField(2);
+		p4_speed_ev.setText("0");
+		p4_speed_ev.setBounds(480, 560, 100, 25);
+		contentPane.add(p4_speed_ev);
+		
+		p5_species = new JTextField(30);
+		p5_species.setToolTipText("Pokemon");
+		p5_species.setBounds(610, 25, 100, 25);
+		contentPane.add(p5_species);
+		
+		p5_nickname = new JTextField(30);
+		p5_nickname.setToolTipText("Pokemon");
+		p5_nickname.setBounds(610, 55, 100, 25);
+		contentPane.add(p5_nickname);
+		
+		JComboBox p5_move1 = new JComboBox(new Object[]{});
+		p5_move1.setBounds(610, 95, 100, 25);
+		contentPane.add(p5_move1);
+		
+		JComboBox p5_move2 = new JComboBox(new Object[]{});
+		p5_move2.setBounds(610, 125, 100, 25);
+		contentPane.add(p5_move2);
+		
+		JComboBox p5_move3 = new JComboBox(new Object[]{});
+		p5_move3.setBounds(610, 155, 100, 25);
+		contentPane.add(p5_move3);
+		
+		JComboBox p5_move4 = new JComboBox(new Object[]{});
+		p5_move4.setBounds(610, 185, 100, 25);
+		contentPane.add(p5_move4);
+		
+		JComboBox p5_ability = new JComboBox(new Object[]{});
+		p5_ability.setBounds(610, 215, 100, 25);
+		contentPane.add(p5_ability);
+		
+		p5_hp_iv = new JTextField(2);
+		p5_hp_iv.setText("31");
+		p5_hp_iv.setBounds(610, 265, 100, 25);
+		contentPane.add(p5_hp_iv);
+		
+		p5_atk_iv = new JTextField(2);
+		p5_atk_iv.setText("31");
+		p5_atk_iv.setBounds(610, 290, 100, 25);
+		contentPane.add(p5_atk_iv);
+		
+		p5_def_iv = new JTextField(2);
+		p5_def_iv.setText("31");
+		p5_def_iv.setBounds(610, 315, 100, 25);
+		contentPane.add(p5_def_iv);
+		
+		p5_spatk_iv = new JTextField(2);
+		p5_spatk_iv.setText("31");
+		p5_spatk_iv.setBounds(610, 340, 100, 25);
+		contentPane.add(p5_spatk_iv);
+		
+		p5_spdef_iv = new JTextField(2);
+		p5_spdef_iv.setText("31");
+		p5_spdef_iv.setBounds(610, 365, 100, 25);
+		contentPane.add(p5_spdef_iv);
+		
+		p5_speed_iv = new JTextField(2);
+		p5_speed_iv.setText("31");
+		p5_speed_iv.setBounds(610, 390, 100, 25);
+		contentPane.add(p5_speed_iv);
+		
+		p5_hp_ev = new JTextField(2);
+		p5_hp_ev.setText("0");
+		p5_hp_ev.setBounds(610, 435, 100, 25);
+		contentPane.add(p5_hp_ev);
+		
+		p5_atk_ev = new JTextField(2);
+		p5_atk_ev.setText("0");
+		p5_atk_ev.setBounds(610, 460, 100, 25);
+		contentPane.add(p5_atk_ev);
+		
+		p5_def_ev = new JTextField(2);
+		p5_def_ev.setText("0");
+		p5_def_ev.setBounds(610, 485, 100, 25);
+		contentPane.add(p5_def_ev);
+		
+		p5_spatk_ev = new JTextField(2);
+		p5_spatk_ev.setText("0");
+		p5_spatk_ev.setBounds(610, 510, 100, 25);
+		contentPane.add(p5_spatk_ev);
+		
+		p5_spdef_ev = new JTextField(2);
+		p5_spdef_ev.setText("0");
+		p5_spdef_ev.setBounds(610, 535, 100, 25);
+		contentPane.add(p5_spdef_ev);
+		
+		p5_speed_ev = new JTextField(2);
+		p5_speed_ev.setText("0");
+		p5_speed_ev.setBounds(610, 560, 100, 25);
+		contentPane.add(p5_speed_ev);
+		
+		p6_species = new JTextField(30);
+		p6_species.setToolTipText("Pokemon");
+		p6_species.setBounds(740, 25, 100, 25);
+		contentPane.add(p6_species);
+		
+		p6_nickname = new JTextField(30);
+		p6_nickname.setToolTipText("Pokemon");
+		p6_nickname.setBounds(740, 55, 100, 25);
+		contentPane.add(p6_nickname);
+		
+		JComboBox p6_move1 = new JComboBox(new Object[]{});
+		p6_move1.setBounds(740, 95, 100, 25);
+		contentPane.add(p6_move1);
+		
+		JComboBox p6_move2 = new JComboBox(new Object[]{});
+		p6_move2.setBounds(740, 125, 100, 25);
+		contentPane.add(p6_move2);
+		
+		JComboBox p6_move3 = new JComboBox(new Object[]{});
+		p6_move3.setBounds(740, 155, 100, 25);
+		contentPane.add(p6_move3);
+		
+		JComboBox p6_move4 = new JComboBox(new Object[]{});
+		p6_move4.setBounds(740, 185, 100, 25);
+		contentPane.add(p6_move4);
+		
+		JComboBox p6_ability = new JComboBox(new Object[]{});
+		p6_ability.setBounds(740, 215, 100, 25);
+		contentPane.add(p6_ability);
+		
+		p6_hp_iv = new JTextField(2);
+		p6_hp_iv.setText("31");
+		p6_hp_iv.setBounds(740, 265, 100, 25);
+		contentPane.add(p6_hp_iv);
+		
+		p6_atk_iv = new JTextField(2);
+		p6_atk_iv.setText("31");
+		p6_atk_iv.setBounds(740, 290, 100, 25);
+		contentPane.add(p6_atk_iv);
+		
+		p6_def_iv = new JTextField(2);
+		p6_def_iv.setText("31");
+		p6_def_iv.setBounds(740, 315, 100, 25);
+		contentPane.add(p6_def_iv);
+		
+		p6_spatk_iv = new JTextField(2);
+		p6_spatk_iv.setText("31");
+		p6_spatk_iv.setBounds(740, 340, 100, 25);
+		contentPane.add(p6_spatk_iv);
+		
+		p6_spdef_iv = new JTextField(2);
+		p6_spdef_iv.setText("31");
+		p6_spdef_iv.setBounds(740, 365, 100, 25);
+		contentPane.add(p6_spdef_iv);
+		
+		p6_speed_iv = new JTextField(2);
+		p6_speed_iv.setText("31");
+		p6_speed_iv.setBounds(740, 390, 100, 25);
+		contentPane.add(p6_speed_iv);
+		
+		p6_hp_ev = new JTextField(2);
+		p6_hp_ev.setText("0");
+		p6_hp_ev.setBounds(740, 435, 100, 25);
+		contentPane.add(p6_hp_ev);
+		
+		p6_atk_ev = new JTextField(2);
+		p6_atk_ev.setText("0");
+		p6_atk_ev.setBounds(740, 460, 100, 25);
+		contentPane.add(p6_atk_ev);
+		
+		p6_def_ev = new JTextField(2);
+		p6_def_ev.setText("0");
+		p6_def_ev.setBounds(740, 485, 100, 25);
+		contentPane.add(p6_def_ev);
+		
+		p6_spatk_ev = new JTextField(2);
+		p6_spatk_ev.setText("0");
+		p6_spatk_ev.setBounds(740, 510, 100, 25);
+		contentPane.add(p6_spatk_ev);
+		
+		p6_spdef_ev = new JTextField(2);
+		p6_spdef_ev.setText("0");
+		p6_spdef_ev.setBounds(740, 535, 100, 25);
+		contentPane.add(p6_spdef_ev);
+		
+		p6_speed_ev = new JTextField(2);
+		p6_speed_ev.setText("0");
+		p6_speed_ev.setBounds(740, 560, 100, 25);
+		contentPane.add(p6_speed_ev);
 		
 		btnRefresh = new JButton("Refresh");
 		btnRefresh.addActionListener(new ActionListener()
@@ -861,7 +861,7 @@ public class TeamBuilderView extends JFrame {
         		onViewNotify();
         	}
         });	
-		btnRefresh.setBounds(350, 614, 100, 25);
+		btnRefresh.setBounds(516, 634, 100, 25);
 		contentPane.add(btnRefresh);
 		
 		btnFinalize = new JButton("Finalize");
@@ -975,7 +975,7 @@ public class TeamBuilderView extends JFrame {
 				closeFrame();
 			}
 		});
-		btnFinalize.setBounds(480, 614, 100, 25);
+		btnFinalize.setBounds(628, 634, 100, 25);
 		contentPane.add(btnFinalize);
 		
 		btnCancel = new JButton("Cancel");
@@ -985,8 +985,36 @@ public class TeamBuilderView extends JFrame {
 				closeFrame();
 			}
 		});
-		btnCancel.setBounds(610, 614, 100, 25);
+		btnCancel.setBounds(740, 634, 100, 25);
 		contentPane.add(btnCancel);
+		
+		JLabel naturelbl = new JLabel("Nature");
+		naturelbl.setBounds(5, 604, 85, 14);
+		contentPane.add(naturelbl);
+		
+		JComboBox p1_nature = new JComboBox(new Object[]{});
+		p1_nature.setBounds(90, 600, 100, 25);
+		contentPane.add(p1_nature);
+		
+		JComboBox p2_nature = new JComboBox(new Object[]{});
+		p2_nature.setBounds(220, 600, 100, 25);
+		contentPane.add(p2_nature);
+		
+		JComboBox p3_nature = new JComboBox(new Object[]{});
+		p3_nature.setBounds(350, 600, 100, 25);
+		contentPane.add(p3_nature);
+		
+		JComboBox p4_nature = new JComboBox(new Object[]{});
+		p4_nature.setBounds(480, 600, 100, 25);
+		contentPane.add(p4_nature);
+		
+		JComboBox p5_nature = new JComboBox(new Object[]{});
+		p5_nature.setBounds(610, 600, 100, 25);
+		contentPane.add(p5_nature);
+		
+		JComboBox p6_nature = new JComboBox(new Object[]{});
+		p6_nature.setBounds(740, 600, 100, 25);
+		contentPane.add(p6_nature);
 	}
 	
 	private void closeFrame()

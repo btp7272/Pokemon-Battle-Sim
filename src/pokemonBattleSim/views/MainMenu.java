@@ -23,7 +23,7 @@ public class MainMenu extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void startup() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,6 +55,15 @@ public class MainMenu extends JFrame {
 		frmPokemonBattleSim.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Play VS AI");
+		btnNewButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Send.Online = false;
+				TeamBuilderView.startTeam();
+				frmPokemonBattleSim.setVisible(false);
+			}
+		});
 		btnNewButton.setBounds(86, 80, 204, 65);
 		btnNewButton.setIcon(null);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton);

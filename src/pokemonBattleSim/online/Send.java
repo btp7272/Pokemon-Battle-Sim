@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class Send 
 {
-	Socket opponent = null;  
-    ObjectOutputStream out = null;
+	static Socket opponent = null;  
+    static ObjectOutputStream out = null;
     DataOutputStream test = null;
     Socket testSocket = null;
     Socket socket = null;
     
-	public Socket createSocket(String ip)
+	public static Socket createSocket(String ip)
 	{
 		try 
 		{
@@ -73,6 +73,10 @@ public class Send
 		case "Game Over":
 			sendString("Game Over");
 			sendGameOver((boolean) o);
+			break;
+		case "String":
+			sendString("String");
+			sendString((String) o);
 			break;
 		}
 	}

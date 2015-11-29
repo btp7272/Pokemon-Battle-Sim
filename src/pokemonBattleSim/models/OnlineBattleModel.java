@@ -13,6 +13,7 @@ import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Weather;
 import pokemonBattleSim.views.IView;
 import pokemonBattleSim.online.*;
+import pokemonBattleSim.views.Connect;
 
 import static pokemonBattleSim.formulas.Formula.*;
 
@@ -56,10 +57,8 @@ public class OnlineBattleModel implements IBattleModel
 		
 		OnlineBattleModel.model = new OnlineBattleModel(playerOne, playerTwo);
 		
-		//BEN
-		//Set up socket data members
-		//OnlineBattleModel.model.sender.createSocket(ip)	//NEED GLOBAL IP VARIABLE TO USE
-		OnlineBattleModel.model.reciever.CreateServer();
+		Send.createSocket(Connect.IPAddress.getText());
+		Recieve.CreateServer();
 	}
 	
 	public static OnlineBattleModel getInstance ()
@@ -81,11 +80,6 @@ public class OnlineBattleModel implements IBattleModel
 	private Stack<String> log;
 	private boolean isGameover;
 	private int taskCounter;
-	
-	//BEN:
-	//Give the model data members that deal with sockets
-	private Send sender;
-	private Recieve reciever;
 	
 	private ArrayList<IView> views;
 	

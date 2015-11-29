@@ -7,7 +7,7 @@ import pokemonBattleSim.types.*;
 
 public class Recieve 
 {
-	ServerSocket Server = null;
+	static ServerSocket Server = null;
 	static ServerSocket Test = null;
 	static Socket socketTest = null;
 	static DataInputStream testIn = null;
@@ -16,7 +16,7 @@ public class Recieve
 	PrintStream print;
 	Socket read = null;
        
-	public void CreateServer()
+	public static void CreateServer()
 	{
 		try 
         {

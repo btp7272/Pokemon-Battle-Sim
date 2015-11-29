@@ -18,7 +18,7 @@ import java.awt.Toolkit;
 public class Connect {
 
 	private JFrame frmConnect;
-	private JTextField textField;
+	public static JTextField IPAddress;
 	private JButton btnNewButton;
 	private JButton btnCancel;
 
@@ -70,14 +70,14 @@ public class Connect {
 		gbc_lblHostIpAddress.gridy = 1;
 		frmConnect.getContentPane().add(lblHostIpAddress, gbc_lblHostIpAddress);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.BOTH;
-		gbc_textField.insets = new Insets(0, 0, 0, 5);
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 1;
-		frmConnect.getContentPane().add(textField, gbc_textField);
-		textField.setColumns(10);
+		IPAddress = new JTextField();
+		GridBagConstraints gbc_IPAddress = new GridBagConstraints();
+		gbc_IPAddress.fill = GridBagConstraints.BOTH;
+		gbc_IPAddress.insets = new Insets(0, 0, 0, 5);
+		gbc_IPAddress.gridx = 1;
+		gbc_IPAddress.gridy = 1;
+		frmConnect.getContentPane().add(IPAddress, gbc_IPAddress);
+		IPAddress.setColumns(10);
 		
 		btnNewButton = new JButton("Connect to Host");
 		btnNewButton.addActionListener(new ActionListener() {

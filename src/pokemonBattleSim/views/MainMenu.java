@@ -67,6 +67,7 @@ public class MainMenu {
 				Send.Online = true;
 				IPAddress na = new IPAddress();
 				na.NewAddress();
+				frmPokemonBattleSim.setVisible(false);
 			}
 		});
 		btnNewButton_2.setBounds(86, 156, 204, 65);
@@ -81,6 +82,7 @@ public class MainMenu {
 				Send.Online = true;
 				Connect nc = new Connect();
 				nc.NewConnection();
+				frmPokemonBattleSim.setVisible(false);
 			}
 		});
 		btnNewButton_3.setIcon(null);

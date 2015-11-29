@@ -1,5 +1,7 @@
 package pokemonBattleSim.views;
 
+import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GraphicsConfiguration;
@@ -8,6 +10,7 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.*;
+
 //import java.util.ArrayList;
 //import java.util.Timer;
 //import java.util.TimerTask;
@@ -23,6 +26,7 @@ import javax.swing.JTextField;
 
 import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.models.IBattleModel;
+import pokemonBattleSim.models.MoveMap;
 import pokemonBattleSim.models.QueuedAction;
 import pokemonBattleSim.musicPlayer.AudioPlayer;
 
@@ -380,9 +384,12 @@ public class BattleView extends JFrame implements IView{
 		moveListPanel.removeAll();
 		for (String move : moves)
 		{
+			//System.out.println(MoveMap.moveMap.get(move).getType());
 			JButton btn = new JButton(move);
 			for (ActionListener listener : moveButtonListeners)
 				btn.addActionListener(listener);
+				//have type determine button color
+				btn.setBackground(Color.red);
 			moveListPanel.add(btn);
 		}
 		moveListPanel.validate();

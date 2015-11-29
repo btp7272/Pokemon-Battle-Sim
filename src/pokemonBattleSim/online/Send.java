@@ -1,5 +1,6 @@
 package pokemonBattleSim.online;
 import pokemonBattleSim.types.*;
+import pokemonBattleSim.views.Connect;
 import pokemonBattleSim.online.Recieve;
 import java.io.*;
 import java.net.*;
@@ -10,9 +11,10 @@ public class Send
 	static Socket opponent = null;  
     static ObjectOutputStream out = null;
     public static boolean Online = false;
-    DataOutputStream test = null;
-    Socket testSocket = null;
-    Socket socket = null;
+    static DataOutputStream test = null;
+    static Socket testSocket = null;
+    static Socket socket = null;
+    public static String IPAddress;
     
     public static void closeSocket()
     {
@@ -49,7 +51,7 @@ public class Send
 		return opponent;
 	}
 	
-	public boolean testConnection(String ip) throws IOException
+	public static boolean testConnection(String ip) throws IOException
 	{
 		String s = "TEST";
 		try 
@@ -70,7 +72,7 @@ public class Send
 		}
 		test.writeBytes(s);
 		test.flush();
-		return Recieve.getTestConnection();
+		return true;
 	}
 	
 	public static void sendPacket(String s, Object o)
@@ -85,5 +87,14 @@ public class Send
 		{
 			System.err.println(e);
 		}
+	}
+	public static String getIPAddress()
+	{
+		return IPAddress;
+	}
+	public static void setIPAddress() throws IOException
+	{
+		IPAddress = Connect.IPAddress.getText();
+		testConnection(IPAddress);
 	}
 }

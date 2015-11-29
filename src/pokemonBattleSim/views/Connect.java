@@ -9,11 +9,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import pokemonBattleSim.online.*;
 
 public class Connect {
 
@@ -82,6 +84,14 @@ public class Connect {
 		btnNewButton = new JButton("Connect to Host");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try 
+				{
+					Send.setIPAddress();
+				} 
+				catch (IOException e) 
+				{
+					System.err.println(e);
+				}
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();

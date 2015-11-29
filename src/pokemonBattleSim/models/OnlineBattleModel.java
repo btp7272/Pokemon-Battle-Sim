@@ -129,6 +129,7 @@ public class OnlineBattleModel implements IBattleModel
 	
 	/**
 	 * returns whether or not the game is over
+	 * No need to send over the socket
 	 */
 	@Override
 	public synchronized boolean isGameover ()

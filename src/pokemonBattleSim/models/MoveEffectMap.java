@@ -554,6 +554,7 @@ public class MoveEffectMap
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
 				   if(! (attacker.isType(Type.GHOST)) )
+				   {
 					   
 					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
 					   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 1;
@@ -569,13 +570,21 @@ public class MoveEffectMap
 					   else
 					   {
 						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
-						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
-						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+						   attacker.changeDef(AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()]);
+						   attacker.changeSpeed(AbilityMap.statChangeQueue[Stat.SPEED.getMask()]);
 						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 0;
 						   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
 						   return 1;
 					   }
+				   }
+				   
+				   else
+				   {
+					   
+				   }
+				   
+				   return 1;
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   {

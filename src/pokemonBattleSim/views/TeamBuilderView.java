@@ -110,6 +110,7 @@ public class TeamBuilderView extends JFrame {
 	private JTextField textField_83;
 	private JButton btnRefresh;
 	private JButton btnFinalize;
+	private JButton btnCancel;
 	public String moves1;
 	public String moves2;
 	public String moves3;
@@ -853,5 +854,20 @@ public class TeamBuilderView extends JFrame {
 		});
 		btnFinalize.setBounds(480, 614, 100, 25);
 		contentPane.add(btnFinalize);
+		
+		btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainMenu.startup();
+				closeFrame();
+			}
+		});
+		btnCancel.setBounds(610, 614, 100, 25);
+		contentPane.add(btnCancel);
+	}
+	
+	private void closeFrame()
+	{
+		this.setVisible(false);
 	}
 }

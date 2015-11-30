@@ -35,6 +35,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import pokemonBattleSim.types.Gender;
 
 
 public class TeamBuilderView extends JFrame {
@@ -42,90 +45,89 @@ public class TeamBuilderView extends JFrame {
 	private JPanel contentPane;
 	private JTextField p1_species;
 	private JTextField p1_nickname;
-	private JTextField p1_hp_iv;
-	private JTextField p1_atk_iv;
-	private JTextField p1_def_iv;
-	private JTextField p1_spatk_iv;
-	private JTextField p1_spdef_iv;
-	private JTextField p1_speed_iv;
-	private JTextField p1_hp_ev;
-	private JTextField p1_atk_ev;
-	private JTextField p1_def_ev;
-	private JTextField p1_spatk_ev;
-	private JTextField p1_spdef_ev;
-	private JTextField p1_speed_ev;
+	private JSpinner p1_hp_iv;
+	private JSpinner p1_atk_iv;
+	private JSpinner p1_def_iv;
+	private JSpinner p1_spatk_iv;
+	private JSpinner p1_spdef_iv;
+	private JSpinner p1_speed_iv;
+	private JSpinner p1_hp_ev;
+	private JSpinner p1_atk_ev;
+	private JSpinner p1_def_ev;
+	private JSpinner p1_spatk_ev;
+	private JSpinner p1_spdef_ev;
+	private JSpinner p1_speed_ev;
 	private JComboBox p1_ability;
 	private JTextField p2_species;
 	private JTextField p2_nickname;
-	private JTextField p2_hp_iv;
-	private JTextField p2_atk_iv;
-	private JTextField p2_def_iv;
-	private JTextField p2_spatk_iv;
-	private JTextField p2_spdef_iv;
-	private JTextField p2_speed_iv;
-	private JTextField p2_hp_ev;
-	private JTextField p2_atk_ev;
-	private JTextField p2_def_ev;
-	private JTextField p2_spatk_ev;
-	private JTextField p2_spdef_ev;
-	private JTextField p2_speed_ev;
+	private JSpinner p2_hp_iv;
+	private JSpinner p2_atk_iv;
+	private JSpinner p2_def_iv;
+	private JSpinner p2_spatk_iv;
+	private JSpinner p2_spdef_iv;
+	private JSpinner p2_speed_iv;
+	private JSpinner p2_hp_ev;
+	private JSpinner p2_atk_ev;
+	private JSpinner p2_def_ev;
+	private JSpinner p2_spatk_ev;
+	private JSpinner p2_spdef_ev;
+	private JSpinner p2_speed_ev;
 	private JTextField p3_species;
 	private JTextField p3_nickname;
-	private JTextField p3_hp_iv;
-	private JTextField p3_atk_iv;
-	private JTextField p3_def_iv;
-	private JTextField p3_spatk_iv;
-	private JTextField p3_spdef_iv;
-	private JTextField p3_speed_iv;
-	private JTextField p3_hp_ev;
-	private JTextField p3_atk_ev;
-	private JTextField p3_def_ev;
-	private JTextField p3_spatk_ev;
-	private JTextField p3_spdef_ev;
-	private JTextField p3_speed_ev;
+	private JSpinner p3_hp_iv;
+	private JSpinner p3_atk_iv;
+	private JSpinner p3_def_iv;
+	private JSpinner p3_spatk_iv;
+	private JSpinner p3_spdef_iv;
+	private JSpinner p3_speed_iv;
+	private JSpinner p3_hp_ev;
+	private JSpinner p3_atk_ev;
+	private JSpinner p3_def_ev;
+	private JSpinner p3_spatk_ev;
+	private JSpinner p3_spdef_ev;
+	private JSpinner p3_speed_ev;
 	private JTextField p4_species;
 	private JTextField p4_nickname;
-	private JTextField p4_hp_iv;
-	private JTextField p4_atk_iv;
-	private JTextField p4_def_iv;
-	private JTextField p4_spatk_iv;
-	private JTextField p4_spdef_iv;
-	private JTextField p4_speed_iv;
-	private JTextField p4_hp_ev;
-	private JTextField p4_atk_ev;
-	private JTextField p4_def_ev;
-	private JTextField p4_spatk_ev;
-	private JTextField p4_spdef_ev;
-	private JTextField p4_speed_ev;
+	private JSpinner p4_hp_iv;
+	private JSpinner p4_atk_iv;
+	private JSpinner p4_def_iv;
+	private JSpinner p4_spatk_iv;
+	private JSpinner p4_spdef_iv;
+	private JSpinner p4_speed_iv;
+	private JSpinner p4_hp_ev;
+	private JSpinner p4_atk_ev;
+	private JSpinner p4_def_ev;
+	private JSpinner p4_spatk_ev;
+	private JSpinner p4_spdef_ev;
+	private JSpinner p4_speed_ev;
 	private JTextField p5_species;
 	private JTextField p5_nickname;
-	private JTextField p5_hp_iv;
-	private JTextField p5_atk_iv;
-	private JTextField p5_def_iv;
-	private JTextField p5_spatk_iv;
-	private JTextField p5_spdef_iv;
-	private JTextField p5_speed_iv;
-	private JTextField p5_hp_ev;
-	private JTextField p5_atk_ev;
-	private JTextField p5_def_ev;
-	private JTextField p5_spatk_ev;
-	private JTextField p5_spdef_ev;
-	private JTextField p5_speed_ev;
+	private JSpinner p5_hp_iv;
+	private JSpinner p5_atk_iv;
+	private JSpinner p5_def_iv;
+	private JSpinner p5_spatk_iv;
+	private JSpinner p5_spdef_iv;
+	private JSpinner p5_speed_iv;
+	private JSpinner p5_hp_ev;
+	private JSpinner p5_atk_ev;
+	private JSpinner p5_def_ev;
+	private JSpinner p5_spatk_ev;
+	private JSpinner p5_spdef_ev;
+	private JSpinner p5_speed_ev;
 	private JTextField p6_species;
 	private JTextField p6_nickname;
-	private JTextField p6_hp_iv;
-	private JTextField p6_atk_iv;
-	private JTextField p6_def_iv;
-	private JTextField p6_spatk_iv;
-	private JTextField p6_spdef_iv;
-	private JTextField p6_speed_iv;
-	private JTextField p6_hp_ev;
-	private JTextField p6_atk_ev;
-	private JTextField p6_def_ev;
-	private JTextField p6_spatk_ev;
-	private JTextField p6_spdef_ev;
-	private JTextField p6_speed_ev;
-	private JButton btnRefresh;
+	private JSpinner p6_hp_iv;
+	private JSpinner p6_atk_iv;
+	private JSpinner p6_def_iv;
+	private JSpinner p6_spatk_iv;
+	private JSpinner p6_spdef_iv;
+	private JSpinner p6_speed_iv;
+	private JSpinner p6_hp_ev;
+	private JSpinner p6_atk_ev;
+	private JSpinner p6_def_ev;
+	private JSpinner p6_spatk_ev;
+	private JSpinner p6_spdef_ev;
+	private JSpinner p6_speed_ev;
 	private JButton btnTest;
 	private JButton btnCancel;
 	private JButton btnFinalize;
@@ -136,6 +138,13 @@ public class TeamBuilderView extends JFrame {
 	public String moves5;
 	public String moves6;
 	TeamBuilderModel model;
+	private JLabel lblItem;
+	private JComboBox p1_item;
+	private JComboBox p2_item;
+	private JComboBox p3_item;
+	private JComboBox p4_item;
+	private JComboBox p5_item;
+	private JComboBox p6_item;
 	/**
 	 * Launch the application.
 	 */
@@ -150,39 +159,6 @@ public class TeamBuilderView extends JFrame {
 				}
 			}
 		});
-	}
-	
-	public void onViewNotify()
-	{
-		model = TeamBuilderModel.getInstance();
-		if (model == null) 
-			return;
-		
-		/*
-		 * update things
-		 */
-		/*
-	    pokeOne = poke1.getText();
-	    pokeTwo = poke2.getText();
-	    pokeThree = poke3.getText();
-	    pokeFour = poke4.getText();
-	    pokeFive = poke5.getText();
-	    pokeSix = poke6.getText();
-		*/
-	    moves1 = model.generateMoves(p1_species.getText());
-		/*moves2 = model.generateMoves(pokeTwo);
-		moves3 = model.generateMoves(pokeThree);
-		moves4 = model.generateMoves(pokeFour);
-		moves5 = model.generateMoves(pokeFive);
-		moves6 = model.generateMoves(pokeSix);
-	    
-		abilities1 = model.generateAbilities(pokeOne);
-		abilities2 = model.generateAbilities(pokeTwo);
-		abilities3 = model.generateAbilities(pokeThree);
-		abilities4 = model.generateAbilities(pokeFour);
-		abilities5 = model.generateAbilities(pokeFive);
-		abilities6 = model.generateAbilities(pokeSix);
-		*/
 	}
 	/**
 	 * Create the frame.
@@ -199,7 +175,7 @@ public class TeamBuilderView extends JFrame {
 		*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 861, 687);
+		setBounds(100, 100, 861, 791);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -263,34 +239,34 @@ public class TeamBuilderView extends JFrame {
 		p1_move4.setBounds(90, 185, 100, 25);
 		contentPane.add(p1_move4);
 		
-		p1_hp_iv = new JTextField(2);
-		p1_hp_iv.setText("31");
-		p1_hp_iv.setBounds(90, 265, 100, 25);
+		p1_hp_iv = new JSpinner();
+		p1_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_hp_iv.setBounds(90, 317, 100, 25);
 		contentPane.add(p1_hp_iv);
 		
-		p1_atk_iv = new JTextField(2);
-		p1_atk_iv.setText("31");
-		p1_atk_iv.setBounds(90, 290, 100, 25);
+		p1_atk_iv = new JSpinner();
+		p1_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_atk_iv.setBounds(90, 342, 100, 25);
 		contentPane.add(p1_atk_iv);
 		
-		p1_def_iv = new JTextField(2);
-		p1_def_iv.setText("31");
-		p1_def_iv.setBounds(90, 315, 100, 25);
+		p1_def_iv = new JSpinner();
+		p1_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_def_iv.setBounds(90, 367, 100, 25);
 		contentPane.add(p1_def_iv);
 		
-		p1_spatk_iv = new JTextField(2);
-		p1_spatk_iv.setText("31");
-		p1_spatk_iv.setBounds(90, 340, 100, 25);
+		p1_spatk_iv = new JSpinner();
+		p1_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_spatk_iv.setBounds(90, 392, 100, 25);
 		contentPane.add(p1_spatk_iv);
 		
-		p1_spdef_iv = new JTextField(2);
-		p1_spdef_iv.setText("31");
-		p1_spdef_iv.setBounds(90, 365, 100, 25);
+		p1_spdef_iv = new JSpinner();
+		p1_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_spdef_iv.setBounds(90, 417, 100, 25);
 		contentPane.add(p1_spdef_iv);
 		
-		p1_speed_iv = new JTextField(2);
-		p1_speed_iv.setText("31");
-		p1_speed_iv.setBounds(90, 390, 100, 25);
+		p1_speed_iv = new JSpinner();
+		p1_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p1_speed_iv.setBounds(90, 442, 100, 25);
 		contentPane.add(p1_speed_iv);
 		
 		JLabel pokelabel1 = new JLabel("Pokemon 1");
@@ -298,41 +274,41 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(pokelabel1);
 		
 		JLabel lblIndividualValuesindividual = new JLabel("Individual Values (Individual Max of 31)");
-		lblIndividualValuesindividual.setBounds(90, 251, 261, 14);
+		lblIndividualValuesindividual.setBounds(90, 291, 261, 14);
 		contentPane.add(lblIndividualValuesindividual);
 		
-		JLabel lblEffortValuesindividual = new JLabel("Effort Values (Individual Max of 252 - Total Max of 510)");
-		lblEffortValuesindividual.setBounds(90, 419, 461, 14);
+		JLabel lblEffortValuesindividual = new JLabel("Effort Values (Individual Max of 252 - Max of 510)");
+		lblEffortValuesindividual.setBounds(90, 471, 461, 14);
 		contentPane.add(lblEffortValuesindividual);
 		
-		p1_hp_ev = new JTextField(2);
-		p1_hp_ev.setText("0");
-		p1_hp_ev.setBounds(90, 435, 100, 25);
+		p1_hp_ev = new JSpinner();
+		p1_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_hp_ev.setBounds(90, 487, 100, 25);
 		contentPane.add(p1_hp_ev);
 		
-		p1_atk_ev = new JTextField(2);
-		p1_atk_ev.setText("0");
-		p1_atk_ev.setBounds(90, 460, 100, 25);
+		p1_atk_ev = new JSpinner();
+		p1_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_atk_ev.setBounds(90, 512, 100, 25);
 		contentPane.add(p1_atk_ev);
 		
-		p1_def_ev = new JTextField(2);
-		p1_def_ev.setText("0");
-		p1_def_ev.setBounds(90, 485, 100, 25);
+		p1_def_ev = new JSpinner();
+		p1_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_def_ev.setBounds(90, 537, 100, 25);
 		contentPane.add(p1_def_ev);
 		
-		p1_spatk_ev = new JTextField(2);
-		p1_spatk_ev.setText("0");
-		p1_spatk_ev.setBounds(90, 510, 100, 25);
+		p1_spatk_ev = new JSpinner();
+		p1_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_spatk_ev.setBounds(90, 562, 100, 25);
 		contentPane.add(p1_spatk_ev);
 		
-		p1_spdef_ev = new JTextField(2);
-		p1_spdef_ev.setText("0");
-		p1_spdef_ev.setBounds(90, 535, 100, 25);
+		p1_spdef_ev = new JSpinner();
+		p1_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_spdef_ev.setBounds(90, 587, 100, 25);
 		contentPane.add(p1_spdef_ev);
 		
-		p1_speed_ev = new JTextField(2);
-		p1_speed_ev.setText("0");
-		p1_speed_ev.setBounds(90, 560, 100, 25);
+		p1_speed_ev = new JSpinner();
+		p1_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p1_speed_ev.setBounds(90, 612, 100, 25);
 		contentPane.add(p1_speed_ev);
 		
 		p1_ability = new JComboBox(new Object[]{});
@@ -361,51 +337,51 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(lblAbility);
 		
 		JLabel lblHp = new JLabel("HP");
-		lblHp.setBounds(5, 270, 46, 14);
+		lblHp.setBounds(5, 322, 46, 14);
 		contentPane.add(lblHp);
 		
 		JLabel lblAttack = new JLabel("Attack");
-		lblAttack.setBounds(5, 295, 46, 14);
+		lblAttack.setBounds(5, 347, 46, 14);
 		contentPane.add(lblAttack);
 		
 		JLabel lblDefense = new JLabel("Defense");
-		lblDefense.setBounds(5, 320, 73, 14);
+		lblDefense.setBounds(5, 372, 73, 14);
 		contentPane.add(lblDefense);
 		
 		JLabel lblSpecialAttack = new JLabel("Special Atk");
-		lblSpecialAttack.setBounds(5, 345, 85, 14);
+		lblSpecialAttack.setBounds(5, 397, 85, 14);
 		contentPane.add(lblSpecialAttack);
 		
 		JLabel lblSepcialDefense = new JLabel("Special Def");
-		lblSepcialDefense.setBounds(5, 370, 85, 14);
+		lblSepcialDefense.setBounds(5, 422, 85, 14);
 		contentPane.add(lblSepcialDefense);
 		
 		JLabel lblSpeed = new JLabel("Speed");
-		lblSpeed.setBounds(5, 395, 46, 14);
+		lblSpeed.setBounds(5, 447, 46, 14);
 		contentPane.add(lblSpeed);
 		
 		JLabel label = new JLabel("Speed");
-		label.setBounds(5, 565, 46, 14);
+		label.setBounds(5, 617, 46, 14);
 		contentPane.add(label);
 		
 		JLabel lblSpecialDef = new JLabel("Special Def");
-		lblSpecialDef.setBounds(5, 540, 85, 14);
+		lblSpecialDef.setBounds(5, 592, 85, 14);
 		contentPane.add(lblSpecialDef);
 		
 		JLabel lblSpecialAtk = new JLabel("Special Atk");
-		lblSpecialAtk.setBounds(5, 515, 85, 14);
+		lblSpecialAtk.setBounds(5, 567, 85, 14);
 		contentPane.add(lblSpecialAtk);
 		
 		JLabel label_3 = new JLabel("Defense");
-		label_3.setBounds(5, 490, 85, 14);
+		label_3.setBounds(5, 542, 85, 14);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("Attack");
-		label_4.setBounds(5, 465, 46, 14);
+		label_4.setBounds(5, 517, 46, 14);
 		contentPane.add(label_4);
 		
 		JLabel label_5 = new JLabel("HP");
-		label_5.setBounds(5, 440, 46, 14);
+		label_5.setBounds(5, 492, 46, 14);
 		contentPane.add(label_5);
 		
 		p2_species = new JTextField(30);
@@ -443,64 +419,64 @@ public class TeamBuilderView extends JFrame {
 		p2_ability.setBounds(220, 215, 100, 25);
 		contentPane.add(p2_ability);
 		
-		p2_hp_iv = new JTextField(2);
-		p2_hp_iv.setText("31");
-		p2_hp_iv.setBounds(220, 265, 100, 25);
+		p2_hp_iv = new JSpinner();
+		p2_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_hp_iv.setBounds(220, 317, 100, 25);
 		contentPane.add(p2_hp_iv);
 		
-		p2_atk_iv = new JTextField(2);
-		p2_atk_iv.setText("31");
-		p2_atk_iv.setBounds(220, 290, 100, 25);
+		p2_atk_iv = new JSpinner();
+		p2_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_atk_iv.setBounds(220, 342, 100, 25);
 		contentPane.add(p2_atk_iv);
 		
-		p2_def_iv = new JTextField(2);
-		p2_def_iv.setText("31");
-		p2_def_iv.setBounds(220, 315, 100, 25);
+		p2_def_iv = new JSpinner();
+		p2_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_def_iv.setBounds(220, 367, 100, 25);
 		contentPane.add(p2_def_iv);
 		
-		p2_spatk_iv = new JTextField(2);
-		p2_spatk_iv.setText("31");
-		p2_spatk_iv.setBounds(220, 340, 100, 25);
+		p2_spatk_iv = new JSpinner();
+		p2_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_spatk_iv.setBounds(220, 392, 100, 25);
 		contentPane.add(p2_spatk_iv);
 		
-		p2_spdef_iv = new JTextField(2);
-		p2_spdef_iv.setText("31");
-		p2_spdef_iv.setBounds(220, 365, 100, 25);
+		p2_spdef_iv = new JSpinner();
+		p2_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_spdef_iv.setBounds(220, 417, 100, 25);
 		contentPane.add(p2_spdef_iv);
 		
-		p2_speed_iv = new JTextField(2);
-		p2_speed_iv.setText("31");
-		p2_speed_iv.setBounds(220, 390, 100, 25);
+		p2_speed_iv = new JSpinner();
+		p2_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p2_speed_iv.setBounds(220, 442, 100, 25);
 		contentPane.add(p2_speed_iv);
 		
-		p2_hp_ev = new JTextField(2);
-		p2_hp_ev.setText("0");
-		p2_hp_ev.setBounds(220, 435, 100, 25);
+		p2_hp_ev = new JSpinner();
+		p2_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_hp_ev.setBounds(220, 487, 100, 25);
 		contentPane.add(p2_hp_ev);
 		
-		p2_atk_ev = new JTextField(2);
-		p2_atk_ev.setText("0");
-		p2_atk_ev.setBounds(220, 460, 100, 25);
+		p2_atk_ev = new JSpinner();
+		p2_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_atk_ev.setBounds(220, 512, 100, 25);
 		contentPane.add(p2_atk_ev);
 		
-		p2_def_ev = new JTextField(2);
-		p2_def_ev.setText("0");
-		p2_def_ev.setBounds(220, 485, 100, 25);
+		p2_def_ev = new JSpinner();
+		p2_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_def_ev.setBounds(220, 537, 100, 25);
 		contentPane.add(p2_def_ev);
 		
-		p2_spatk_ev = new JTextField(2);
-		p2_spatk_ev.setText("0");
-		p2_spatk_ev.setBounds(220, 510, 100, 25);
+		p2_spatk_ev = new JSpinner();
+		p2_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_spatk_ev.setBounds(220, 562, 100, 25);
 		contentPane.add(p2_spatk_ev);
 		
-		p2_spdef_ev = new JTextField(2);
-		p2_spdef_ev.setText("0");
-		p2_spdef_ev.setBounds(220, 535, 100, 25);
+		p2_spdef_ev = new JSpinner();
+		p2_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_spdef_ev.setBounds(220, 587, 100, 25);
 		contentPane.add(p2_spdef_ev);
 		
-		p2_speed_ev = new JTextField(2);
-		p2_speed_ev.setText("0");
-		p2_speed_ev.setBounds(220, 560, 100, 25);
+		p2_speed_ev = new JSpinner();
+		p2_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p2_speed_ev.setBounds(220, 612, 100, 25);
 		contentPane.add(p2_speed_ev);
 		
 		p3_species = new JTextField(30);
@@ -538,64 +514,64 @@ public class TeamBuilderView extends JFrame {
 		p3_ability.setBounds(350, 215, 100, 25);
 		contentPane.add(p3_ability);
 		
-		p3_hp_iv = new JTextField(2);
-		p3_hp_iv.setText("31");
-		p3_hp_iv.setBounds(350, 265, 100, 25);
+		p3_hp_iv = new JSpinner();
+		p3_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_hp_iv.setBounds(350, 317, 100, 25);
 		contentPane.add(p3_hp_iv);
 		
-		p3_atk_iv = new JTextField(2);
-		p3_atk_iv.setText("31");
-		p3_atk_iv.setBounds(350, 290, 100, 25);
+		p3_atk_iv = new JSpinner();
+		p3_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_atk_iv.setBounds(350, 342, 100, 25);
 		contentPane.add(p3_atk_iv);
 		
-		p3_def_iv = new JTextField(2);
-		p3_def_iv.setText("31");
-		p3_def_iv.setBounds(350, 315, 100, 25);
+		p3_def_iv = new JSpinner();
+		p3_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_def_iv.setBounds(350, 367, 100, 25);
 		contentPane.add(p3_def_iv);
 		
-		p3_spatk_iv = new JTextField(2);
-		p3_spatk_iv.setText("31");
-		p3_spatk_iv.setBounds(350, 340, 100, 25);
+		p3_spatk_iv = new JSpinner();
+		p3_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_spatk_iv.setBounds(350, 392, 100, 25);
 		contentPane.add(p3_spatk_iv);
 		
-		p3_spdef_iv = new JTextField(2);
-		p3_spdef_iv.setText("31");
-		p3_spdef_iv.setBounds(350, 365, 100, 25);
+		p3_spdef_iv = new JSpinner();
+		p3_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_spdef_iv.setBounds(350, 417, 100, 25);
 		contentPane.add(p3_spdef_iv);
 		
-		p3_speed_iv = new JTextField(2);
-		p3_speed_iv.setText("31");
-		p3_speed_iv.setBounds(350, 390, 100, 25);
+		p3_speed_iv = new JSpinner();
+		p3_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p3_speed_iv.setBounds(350, 442, 100, 25);
 		contentPane.add(p3_speed_iv);
 		
-		p3_hp_ev = new JTextField(2);
-		p3_hp_ev.setText("0");
-		p3_hp_ev.setBounds(350, 435, 100, 25);
+		p3_hp_ev = new JSpinner();
+		p3_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_hp_ev.setBounds(350, 487, 100, 25);
 		contentPane.add(p3_hp_ev);
 		
-		p3_atk_ev = new JTextField(2);
-		p3_atk_ev.setText("0");
-		p3_atk_ev.setBounds(350, 460, 100, 25);
+		p3_atk_ev = new JSpinner();
+		p3_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_atk_ev.setBounds(350, 512, 100, 25);
 		contentPane.add(p3_atk_ev);
 		
-		p3_def_ev = new JTextField(2);
-		p3_def_ev.setText("0");
-		p3_def_ev.setBounds(350, 485, 100, 25);
+		p3_def_ev = new JSpinner();
+		p3_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_def_ev.setBounds(350, 537, 100, 25);
 		contentPane.add(p3_def_ev);
 		
-		p3_spatk_ev = new JTextField(2);
-		p3_spatk_ev.setText("0");
-		p3_spatk_ev.setBounds(350, 510, 100, 25);
+		p3_spatk_ev = new JSpinner();
+		p3_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_spatk_ev.setBounds(350, 562, 100, 25);
 		contentPane.add(p3_spatk_ev);
 		
-		p3_spdef_ev = new JTextField(2);
-		p3_spdef_ev.setText("0");
-		p3_spdef_ev.setBounds(350, 535, 100, 25);
+		p3_spdef_ev = new JSpinner();
+		p3_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_spdef_ev.setBounds(350, 587, 100, 25);
 		contentPane.add(p3_spdef_ev);
 		
-		p3_speed_ev = new JTextField(2);
-		p3_speed_ev.setText("0");
-		p3_speed_ev.setBounds(350, 560, 100, 25);
+		p3_speed_ev = new JSpinner();
+		p3_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p3_speed_ev.setBounds(350, 612, 100, 25);
 		contentPane.add(p3_speed_ev);
 		
 		p4_species = new JTextField(30);
@@ -633,64 +609,64 @@ public class TeamBuilderView extends JFrame {
 		p4_ability.setBounds(480, 215, 100, 25);
 		contentPane.add(p4_ability);
 		
-		p4_hp_iv = new JTextField(2);
-		p4_hp_iv.setText("31");
-		p4_hp_iv.setBounds(480, 265, 100, 25);
+		p4_hp_iv = new JSpinner();
+		p4_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_hp_iv.setBounds(480, 317, 100, 25);
 		contentPane.add(p4_hp_iv);
 		
-		p4_atk_iv = new JTextField(2);
-		p4_atk_iv.setText("31");
-		p4_atk_iv.setBounds(480, 290, 100, 25);
+		p4_atk_iv = new JSpinner();
+		p4_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_atk_iv.setBounds(480, 342, 100, 25);
 		contentPane.add(p4_atk_iv);
 		
-		p4_def_iv = new JTextField(2);
-		p4_def_iv.setText("31");
-		p4_def_iv.setBounds(480, 315, 100, 25);
+		p4_def_iv = new JSpinner();
+		p4_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_def_iv.setBounds(480, 367, 100, 25);
 		contentPane.add(p4_def_iv);
 		
-		p4_spatk_iv = new JTextField(2);
-		p4_spatk_iv.setText("31");
-		p4_spatk_iv.setBounds(480, 340, 100, 25);
+		p4_spatk_iv = new JSpinner();
+		p4_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_spatk_iv.setBounds(480, 392, 100, 25);
 		contentPane.add(p4_spatk_iv);
 		
-		p4_spdef_iv = new JTextField(2);
-		p4_spdef_iv.setText("31");
-		p4_spdef_iv.setBounds(480, 365, 100, 25);
+		p4_spdef_iv = new JSpinner();
+		p4_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_spdef_iv.setBounds(480, 417, 100, 25);
 		contentPane.add(p4_spdef_iv);
 		
-		p4_speed_iv = new JTextField(2);
-		p4_speed_iv.setText("31");
-		p4_speed_iv.setBounds(480, 390, 100, 25);
+		p4_speed_iv = new JSpinner();
+		p4_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p4_speed_iv.setBounds(480, 442, 100, 25);
 		contentPane.add(p4_speed_iv);
 		
-		p4_hp_ev = new JTextField(2);
-		p4_hp_ev.setText("0");
-		p4_hp_ev.setBounds(480, 435, 100, 25);
+		p4_hp_ev = new JSpinner();
+		p4_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_hp_ev.setBounds(480, 487, 100, 25);
 		contentPane.add(p4_hp_ev);
 		
-		p4_atk_ev = new JTextField(2);
-		p4_atk_ev.setText("0");
-		p4_atk_ev.setBounds(480, 460, 100, 25);
+		p4_atk_ev = new JSpinner();
+		p4_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_atk_ev.setBounds(480, 512, 100, 25);
 		contentPane.add(p4_atk_ev);
 		
-		p4_def_ev = new JTextField(2);
-		p4_def_ev.setText("0");
-		p4_def_ev.setBounds(480, 485, 100, 25);
+		p4_def_ev = new JSpinner();
+		p4_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_def_ev.setBounds(480, 537, 100, 25);
 		contentPane.add(p4_def_ev);
 		
-		p4_spatk_ev = new JTextField(2);
-		p4_spatk_ev.setText("0");
-		p4_spatk_ev.setBounds(480, 510, 100, 25);
+		p4_spatk_ev = new JSpinner();
+		p4_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_spatk_ev.setBounds(480, 562, 100, 25);
 		contentPane.add(p4_spatk_ev);
 		
-		p4_spdef_ev = new JTextField(2);
-		p4_spdef_ev.setText("0");
-		p4_spdef_ev.setBounds(480, 535, 100, 25);
+		p4_spdef_ev = new JSpinner();
+		p4_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_spdef_ev.setBounds(480, 587, 100, 25);
 		contentPane.add(p4_spdef_ev);
 		
-		p4_speed_ev = new JTextField(2);
-		p4_speed_ev.setText("0");
-		p4_speed_ev.setBounds(480, 560, 100, 25);
+		p4_speed_ev = new JSpinner();
+		p4_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p4_speed_ev.setBounds(480, 612, 100, 25);
 		contentPane.add(p4_speed_ev);
 		
 		p5_species = new JTextField(30);
@@ -728,64 +704,64 @@ public class TeamBuilderView extends JFrame {
 		p5_ability.setBounds(610, 215, 100, 25);
 		contentPane.add(p5_ability);
 		
-		p5_hp_iv = new JTextField(2);
-		p5_hp_iv.setText("31");
-		p5_hp_iv.setBounds(610, 265, 100, 25);
+		p5_hp_iv = new JSpinner();
+		p5_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_hp_iv.setBounds(610, 317, 100, 25);
 		contentPane.add(p5_hp_iv);
 		
-		p5_atk_iv = new JTextField(2);
-		p5_atk_iv.setText("31");
-		p5_atk_iv.setBounds(610, 290, 100, 25);
+		p5_atk_iv = new JSpinner();
+		p5_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_atk_iv.setBounds(610, 342, 100, 25);
 		contentPane.add(p5_atk_iv);
 		
-		p5_def_iv = new JTextField(2);
-		p5_def_iv.setText("31");
-		p5_def_iv.setBounds(610, 315, 100, 25);
+		p5_def_iv = new JSpinner();
+		p5_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_def_iv.setBounds(610, 367, 100, 25);
 		contentPane.add(p5_def_iv);
 		
-		p5_spatk_iv = new JTextField(2);
-		p5_spatk_iv.setText("31");
-		p5_spatk_iv.setBounds(610, 340, 100, 25);
+		p5_spatk_iv = new JSpinner();
+		p5_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_spatk_iv.setBounds(610, 392, 100, 25);
 		contentPane.add(p5_spatk_iv);
 		
-		p5_spdef_iv = new JTextField(2);
-		p5_spdef_iv.setText("31");
-		p5_spdef_iv.setBounds(610, 365, 100, 25);
+		p5_spdef_iv = new JSpinner();
+		p5_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_spdef_iv.setBounds(610, 417, 100, 25);
 		contentPane.add(p5_spdef_iv);
 		
-		p5_speed_iv = new JTextField(2);
-		p5_speed_iv.setText("31");
-		p5_speed_iv.setBounds(610, 390, 100, 25);
+		p5_speed_iv = new JSpinner();
+		p5_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p5_speed_iv.setBounds(610, 442, 100, 25);
 		contentPane.add(p5_speed_iv);
 		
-		p5_hp_ev = new JTextField(2);
-		p5_hp_ev.setText("0");
-		p5_hp_ev.setBounds(610, 435, 100, 25);
+		p5_hp_ev = new JSpinner();
+		p5_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_hp_ev.setBounds(610, 487, 100, 25);
 		contentPane.add(p5_hp_ev);
 		
-		p5_atk_ev = new JTextField(2);
-		p5_atk_ev.setText("0");
-		p5_atk_ev.setBounds(610, 460, 100, 25);
+		p5_atk_ev = new JSpinner();
+		p5_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_atk_ev.setBounds(610, 512, 100, 25);
 		contentPane.add(p5_atk_ev);
 		
-		p5_def_ev = new JTextField(2);
-		p5_def_ev.setText("0");
-		p5_def_ev.setBounds(610, 485, 100, 25);
+		p5_def_ev = new JSpinner();
+		p5_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_def_ev.setBounds(610, 537, 100, 25);
 		contentPane.add(p5_def_ev);
 		
-		p5_spatk_ev = new JTextField(2);
-		p5_spatk_ev.setText("0");
-		p5_spatk_ev.setBounds(610, 510, 100, 25);
+		p5_spatk_ev = new JSpinner();
+		p5_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_spatk_ev.setBounds(610, 562, 100, 25);
 		contentPane.add(p5_spatk_ev);
 		
-		p5_spdef_ev = new JTextField(2);
-		p5_spdef_ev.setText("0");
-		p5_spdef_ev.setBounds(610, 535, 100, 25);
+		p5_spdef_ev = new JSpinner();
+		p5_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_spdef_ev.setBounds(610, 587, 100, 25);
 		contentPane.add(p5_spdef_ev);
 		
-		p5_speed_ev = new JTextField(2);
-		p5_speed_ev.setText("0");
-		p5_speed_ev.setBounds(610, 560, 100, 25);
+		p5_speed_ev = new JSpinner();
+		p5_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p5_speed_ev.setBounds(610, 612, 100, 25);
 		contentPane.add(p5_speed_ev);
 		
 		p6_species = new JTextField(30);
@@ -823,88 +799,117 @@ public class TeamBuilderView extends JFrame {
 		p6_ability.setBounds(740, 215, 100, 25);
 		contentPane.add(p6_ability);
 		
-		p6_hp_iv = new JTextField(2);
-		p6_hp_iv.setText("31");
-		p6_hp_iv.setBounds(740, 265, 100, 25);
+		p6_hp_iv = new JSpinner();
+		p6_hp_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_hp_iv.setBounds(740, 317, 100, 25);
 		contentPane.add(p6_hp_iv);
 		
-		p6_atk_iv = new JTextField(2);
-		p6_atk_iv.setText("31");
-		p6_atk_iv.setBounds(740, 290, 100, 25);
+		p6_atk_iv = new JSpinner();
+		p6_atk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_atk_iv.setBounds(740, 342, 100, 25);
 		contentPane.add(p6_atk_iv);
 		
-		p6_def_iv = new JTextField(2);
-		p6_def_iv.setText("31");
-		p6_def_iv.setBounds(740, 315, 100, 25);
+		p6_def_iv = new JSpinner();
+		p6_def_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_def_iv.setBounds(740, 367, 100, 25);
 		contentPane.add(p6_def_iv);
 		
-		p6_spatk_iv = new JTextField(2);
-		p6_spatk_iv.setText("31");
-		p6_spatk_iv.setBounds(740, 340, 100, 25);
+		p6_spatk_iv = new JSpinner();
+		p6_spatk_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_spatk_iv.setBounds(740, 392, 100, 25);
 		contentPane.add(p6_spatk_iv);
 		
-		p6_spdef_iv = new JTextField(2);
-		p6_spdef_iv.setText("31");
-		p6_spdef_iv.setBounds(740, 365, 100, 25);
+		p6_spdef_iv = new JSpinner();
+		p6_spdef_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_spdef_iv.setBounds(740, 417, 100, 25);
 		contentPane.add(p6_spdef_iv);
 		
-		p6_speed_iv = new JTextField(2);
-		p6_speed_iv.setText("31");
-		p6_speed_iv.setBounds(740, 390, 100, 25);
+		p6_speed_iv = new JSpinner();
+		p6_speed_iv.setModel(new SpinnerNumberModel(31, 0, 31, 31));
+		p6_speed_iv.setBounds(740, 442, 100, 25);
 		contentPane.add(p6_speed_iv);
 		
-		p6_hp_ev = new JTextField(2);
-		p6_hp_ev.setText("0");
-		p6_hp_ev.setBounds(740, 435, 100, 25);
+		p6_hp_ev = new JSpinner();
+		p6_hp_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_hp_ev.setBounds(740, 487, 100, 25);
 		contentPane.add(p6_hp_ev);
 		
-		p6_atk_ev = new JTextField(2);
-		p6_atk_ev.setText("0");
-		p6_atk_ev.setBounds(740, 460, 100, 25);
+		p6_atk_ev = new JSpinner();
+		p6_atk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_atk_ev.setBounds(740, 512, 100, 25);
 		contentPane.add(p6_atk_ev);
 		
-		p6_def_ev = new JTextField(2);
-		p6_def_ev.setText("0");
-		p6_def_ev.setBounds(740, 485, 100, 25);
+		p6_def_ev = new JSpinner();
+		p6_def_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_def_ev.setBounds(740, 537, 100, 25);
 		contentPane.add(p6_def_ev);
 		
-		p6_spatk_ev = new JTextField(2);
-		p6_spatk_ev.setText("0");
-		p6_spatk_ev.setBounds(740, 510, 100, 25);
+		p6_spatk_ev = new JSpinner();
+		p6_spatk_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_spatk_ev.setBounds(740, 562, 100, 25);
 		contentPane.add(p6_spatk_ev);
 		
-		p6_spdef_ev = new JTextField(2);
-		p6_spdef_ev.setText("0");
-		p6_spdef_ev.setBounds(740, 535, 100, 25);
+		p6_spdef_ev = new JSpinner();
+		p6_spdef_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_spdef_ev.setBounds(740, 587, 100, 25);
 		contentPane.add(p6_spdef_ev);
 		
-		p6_speed_ev = new JTextField(2);
-		p6_speed_ev.setText("0");
-		p6_speed_ev.setBounds(740, 560, 100, 25);
+		p6_speed_ev = new JSpinner();
+		p6_speed_ev.setModel(new SpinnerNumberModel(0, 0, 252, 4));
+		p6_speed_ev.setBounds(740, 612, 100, 25);
 		contentPane.add(p6_speed_ev);
-		
-		btnRefresh = new JButton("Refresh");
-		btnRefresh.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-        	{
-        		onViewNotify();
-        	}
-        });	
-		btnRefresh.setBounds(610, 634, 100, 25);
-		contentPane.add(btnRefresh);
 		
 		btnFinalize = new JButton("Finalize");
 		btnFinalize.setSize(100, 25);
-		btnFinalize.setLocation(628, 634);
+		btnFinalize.setLocation(630, 740);
 		btnFinalize.addActionListener(new ActionListener()
         {
         	public void actionPerformed(ActionEvent e)
         	{
-        		
+        		// This is the main entry point to the program, will use other classes
+				Object owner = new Object(); //may need to be static?
+				IPokemonTrainer player;
+				IPokemonTrainer computer;
+				ArrayList<Pokemon> playerTeam = new ArrayList<>();
+				ArrayList<Pokemon> computerTeam = new ArrayList<>();
+				
+				//Variables used to create the pokemon
+				int IVs[] = new int[6];
+				int EVs[] = new int[6];
+				Move moves[] = new Move[4];
+				Pokemon member;
+				String species, nickname;
+				int level;
+				Nature nature;
+				String ability, item;
+				
+				//Create 1st Pokemon
+				IVs[0] = (int)p1_hp_iv.getModel().getValue();
+				IVs[1] = (int)p1_atk_iv.getModel().getValue();
+				IVs[2] = (int)p1_def_iv.getModel().getValue();
+				IVs[3] = (int)p1_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p1_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p1_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p1_hp_ev.getModel().getValue();
+				EVs[1] = (int)p1_atk_ev.getModel().getValue();
+				EVs[2] = (int)p1_def_ev.getModel().getValue();
+				EVs[3] = (int)p1_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p1_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p1_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p1_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p1_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p1_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p1_move4.getSelectedItem()));
+				
+				species = p1_species.getText();
+				nickname = p1_nickname.getText();
+				//item = p1_item.getText();
+				
+				//member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
         	}
-        });	
-		btnRefresh.setBounds(516, 634, 100, 25);
+        });
 		contentPane.add(btnFinalize);
 		
 		btnTest = new JButton("Test");
@@ -1018,7 +1023,7 @@ public class TeamBuilderView extends JFrame {
 				closeFrame();
 			}
 		});
-		btnTest.setBounds(90, 634, 100, 25);
+		btnTest.setBounds(90, 740, 100, 25);
 		contentPane.add(btnTest);
 		
 		btnCancel = new JButton("Cancel");
@@ -1028,42 +1033,144 @@ public class TeamBuilderView extends JFrame {
 				closeFrame();
 			}
 		});
-		btnCancel.setBounds(740, 634, 100, 25);
+		btnCancel.setBounds(740, 740, 100, 25);
 		contentPane.add(btnCancel);
 		
 		JLabel naturelbl = new JLabel("Nature");
-		naturelbl.setBounds(5, 604, 85, 14);
+		naturelbl.setBounds(5, 656, 85, 14);
 		contentPane.add(naturelbl);
 		
 		JComboBox p1_nature = new JComboBox(new Object[]{});
 		p1_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p1_nature.setBounds(90, 600, 100, 25);
+		p1_nature.setBounds(90, 652, 100, 25);
 		contentPane.add(p1_nature);
 		
 		JComboBox p2_nature = new JComboBox(new Object[]{});
 		p2_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p2_nature.setBounds(220, 600, 100, 25);
+		p2_nature.setBounds(220, 652, 100, 25);
 		contentPane.add(p2_nature);
 		
 		JComboBox p3_nature = new JComboBox(new Object[]{});
 		p3_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p3_nature.setBounds(350, 600, 100, 25);
+		p3_nature.setBounds(350, 652, 100, 25);
 		contentPane.add(p3_nature);
 		
 		JComboBox p4_nature = new JComboBox(new Object[]{});
 		p4_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p4_nature.setBounds(480, 600, 100, 25);
+		p4_nature.setBounds(480, 652, 100, 25);
 		contentPane.add(p4_nature);
 		
 		JComboBox p5_nature = new JComboBox(new Object[]{});
 		p5_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p5_nature.setBounds(610, 600, 100, 25);
+		p5_nature.setBounds(610, 652, 100, 25);
 		contentPane.add(p5_nature);
 		
 		JComboBox p6_nature = new JComboBox(new Object[]{});
 		p6_nature.setModel(new DefaultComboBoxModel(Nature.values()));
-		p6_nature.setBounds(740, 600, 100, 25);
+		p6_nature.setBounds(740, 652, 100, 25);
 		contentPane.add(p6_nature);
+		
+		JLabel lblLevel = new JLabel("Level");
+		lblLevel.setBounds(5, 682, 85, 14);
+		contentPane.add(lblLevel);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(5, 708, 85, 14);
+		contentPane.add(lblGender);
+		
+		JSpinner p1_level = new JSpinner();
+		p1_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p1_level.setBounds(90, 676, 100, 25);
+		contentPane.add(p1_level);
+		
+		JSpinner p2_level = new JSpinner();
+		p2_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p2_level.setBounds(220, 676, 100, 25);
+		contentPane.add(p2_level);
+		
+		JSpinner p3_level = new JSpinner();
+		p3_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p3_level.setBounds(350, 676, 100, 25);
+		contentPane.add(p3_level);
+		
+		JSpinner p4_level = new JSpinner();
+		p4_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p4_level.setBounds(480, 676, 100, 25);
+		contentPane.add(p4_level);
+		
+		JSpinner p5_level = new JSpinner();
+		p5_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p5_level.setBounds(610, 676, 100, 25);
+		contentPane.add(p5_level);
+		
+		JSpinner p6_level = new JSpinner();
+		p6_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
+		p6_level.setBounds(740, 676, 100, 25);
+		contentPane.add(p6_level);
+		
+		JComboBox p1_gender = new JComboBox(new Object[]{});
+		p1_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p1_gender.setBounds(90, 703, 100, 25);
+		contentPane.add(p1_gender);
+		
+		JComboBox p2_gender = new JComboBox(new Object[]{});
+		p2_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p2_gender.setBounds(220, 703, 100, 25);
+		contentPane.add(p2_gender);
+		
+		JComboBox p3_gender = new JComboBox(new Object[]{});
+		p3_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p3_gender.setBounds(350, 703, 100, 25);
+		contentPane.add(p3_gender);
+		
+		JComboBox p4_gender = new JComboBox(new Object[]{});
+		p4_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p4_gender.setBounds(480, 703, 100, 25);
+		contentPane.add(p4_gender);
+		
+		JComboBox p5_gender = new JComboBox(new Object[]{});
+		p5_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p5_gender.setBounds(610, 703, 100, 25);
+		contentPane.add(p5_gender);
+		
+		JComboBox p6_gender = new JComboBox(new Object[]{});
+		p6_gender.setModel(new DefaultComboBoxModel(Gender.values()));
+		p6_gender.setBounds(740, 703, 100, 25);
+		contentPane.add(p6_gender);
+		
+		lblItem = new JLabel("Item");
+		lblItem.setBounds(5, 246, 46, 14);
+		contentPane.add(lblItem);
+		
+		p1_item = new JComboBox(new Object[]{});
+		p1_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p1_item.setBounds(90, 242, 100, 25);
+		contentPane.add(p1_item);
+		
+		p2_item = new JComboBox(new Object[]{});
+		p2_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p2_item.setBounds(220, 241, 100, 25);
+		contentPane.add(p2_item);
+		
+		p3_item = new JComboBox(new Object[]{});
+		p3_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p3_item.setBounds(350, 241, 100, 25);
+		contentPane.add(p3_item);
+		
+		p4_item = new JComboBox(new Object[]{});
+		p4_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p4_item.setBounds(480, 241, 100, 25);
+		contentPane.add(p4_item);
+		
+		p5_item = new JComboBox(new Object[]{});
+		p5_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p5_item.setBounds(610, 241, 100, 25);
+		contentPane.add(p5_item);
+		
+		p6_item = new JComboBox(new Object[]{});
+		p6_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p6_item.setBounds(740, 241, 100, 25);
+		contentPane.add(p6_item);
 	}
 	
 	private void closeFrame()

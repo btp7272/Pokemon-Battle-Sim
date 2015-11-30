@@ -178,20 +178,24 @@ public class Credits {
 		Credits.getContentPane().add(txtAsdffdsa);
 		txtAsdffdsa.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("This is a non-profit fan-made game. All");
+		JLabel lblNewLabel_6 = new JLabel("This is a non-profit fan-made game.");
 		lblNewLabel_6.setBounds(274, 38, 270, 14);
 		Credits.getContentPane().add(lblNewLabel_6);
 		
-		JLabel lblAsdf = new JLabel("intelectual properties of Pok\u00E9mon\u2122 are owned");
+		JLabel lblAsdf = new JLabel("Intelectual property of ");
 		lblAsdf.setBounds(274, 63, 270, 14);
 		Credits.getContentPane().add(lblAsdf);
 		
-		JLabel lblNewLabel_7 = new JLabel("by Nintendo, Game Freak, and Creatures Inc.");
+		JLabel lblNewLabel_7 = new JLabel("Pok\u00E9mon\u2122 is owned by Nintendo,");
 		lblNewLabel_7.setBounds(274, 87, 270, 14);
 		Credits.getContentPane().add(lblNewLabel_7);
 		
-		JLabel lblPleaseSupportThe = new JLabel("Please support the officail release.");
+		JLabel lblPleaseSupportThe = new JLabel("Game Freak, and Creatures Inc.");
 		lblPleaseSupportThe.setBounds(274, 111, 270, 14);
 		Credits.getContentPane().add(lblPleaseSupportThe);
+		
+		JLabel lblNewLabel_8 = new JLabel("Please support the officail release.");
+		lblNewLabel_8.setBounds(274, 135, 270, 14);
+		Credits.getContentPane().add(lblNewLabel_8);
 	}
 }

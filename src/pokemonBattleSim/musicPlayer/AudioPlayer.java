@@ -49,7 +49,9 @@ public static int stopper;
             audioLine.drain();
             audioLine.close();
             audioStream.close();
-            System.out.println("Playback completed.");             
+            System.out.println("Playback completed.");
+            Thread.currentThread().interrupt();
+            return;
         }
         
         catch (UnsupportedAudioFileException ex) 
@@ -71,11 +73,6 @@ public static int stopper;
         }      
     }
      
-    public static void forceStop()
-    {
-    	Thread.currentThread().interrupt();
-    	return;
-    }
     public static void main(String[] args) 
     {
         /*Random ran = new Random(); 

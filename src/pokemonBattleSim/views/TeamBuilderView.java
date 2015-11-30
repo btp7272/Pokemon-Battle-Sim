@@ -126,8 +126,9 @@ public class TeamBuilderView extends JFrame {
 	private JTextField p6_spdef_ev;
 	private JTextField p6_speed_ev;
 	private JButton btnRefresh;
-	private JButton btnFinalize;
+	private JButton btnTest;
 	private JButton btnCancel;
+	private JButton btnFinalize;
 	public String moves1;
 	public String moves2;
 	public String moves3;
@@ -243,18 +244,22 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p1_nickname);
 		
 		JComboBox p1_move1 = new JComboBox(new Object[]{});
+		p1_move1.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move1.setBounds(90, 95, 100, 25);
 		contentPane.add(p1_move1);
 		
 		JComboBox p1_move2 = new JComboBox(poke1move2List);
+		p1_move2.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move2.setBounds(90, 125, 100, 25);
 		contentPane.add(p1_move2);
 		
 		JComboBox p1_move3 = new JComboBox(new Object[]{});
+		p1_move3.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move3.setBounds(90, 155, 100, 25);
 		contentPane.add(p1_move3);
 		
 		JComboBox p1_move4 = new JComboBox(new Object[]{});
+		p1_move4.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move4.setBounds(90, 185, 100, 25);
 		contentPane.add(p1_move4);
 		
@@ -414,19 +419,22 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p2_move1 = new JComboBox(new Object[]{});
 		p2_move1.setBounds(220, 95, 100, 25);
-		p2_move1.setModel(new DefaultComboBoxModel(new String[] {moves1}));
+		p2_move1.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
 		contentPane.add(p2_move1);
 		
 		JComboBox p2_move2 = new JComboBox(new Object[]{});
 		p2_move2.setBounds(220, 125, 100, 25);
+		p2_move2.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
 		contentPane.add(p2_move2);
 		
 		JComboBox p2_move3 = new JComboBox(new Object[]{});
 		p2_move3.setBounds(220, 155, 100, 25);
+		p2_move3.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
 		contentPane.add(p2_move3);
 		
 		JComboBox p2_move4 = new JComboBox(new Object[]{});
 		p2_move4.setBounds(220, 185, 100, 25);
+		p2_move4.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
 		contentPane.add(p2_move4);
 		
 		JComboBox p2_ability = new JComboBox(new Object[]{});
@@ -504,18 +512,22 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p3_nickname);
 		
 		JComboBox p3_move1 = new JComboBox(new Object[]{});
+		p3_move1.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move1.setBounds(350, 95, 100, 25);
 		contentPane.add(p3_move1);
 		
 		JComboBox p3_move2 = new JComboBox(new Object[]{});
+		p3_move2.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move2.setBounds(350, 125, 100, 25);
 		contentPane.add(p3_move2);
 		
 		JComboBox p3_move3 = new JComboBox(new Object[]{});
+		p3_move3.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move3.setBounds(350, 155, 100, 25);
 		contentPane.add(p3_move3);
 		
 		JComboBox p3_move4 = new JComboBox(new Object[]{});
+		p3_move4.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move4.setBounds(350, 185, 100, 25);
 		contentPane.add(p3_move4);
 		
@@ -594,18 +606,22 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p4_nickname);
 		
 		JComboBox p4_move1 = new JComboBox(new Object[]{});
+		p4_move1.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move1.setBounds(480, 95, 100, 25);
 		contentPane.add(p4_move1);
 		
 		JComboBox p4_move2 = new JComboBox(new Object[]{});
+		p4_move2.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move2.setBounds(480, 125, 100, 25);
 		contentPane.add(p4_move2);
 		
 		JComboBox p4_move3 = new JComboBox(new Object[]{});
+		p4_move3.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move3.setBounds(480, 155, 100, 25);
 		contentPane.add(p4_move3);
 		
 		JComboBox p4_move4 = new JComboBox(new Object[]{});
+		p4_move4.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move4.setBounds(480, 185, 100, 25);
 		contentPane.add(p4_move4);
 		
@@ -861,11 +877,24 @@ public class TeamBuilderView extends JFrame {
         		onViewNotify();
         	}
         });	
-		btnRefresh.setBounds(516, 634, 100, 25);
+		btnRefresh.setBounds(610, 634, 100, 25);
 		contentPane.add(btnRefresh);
 		
 		btnFinalize = new JButton("Finalize");
-		btnFinalize.addActionListener(new ActionListener() {
+		btnFinalize.setSize(100, 25);
+		btnFinalize.setLocation(628, 634);
+		btnFinalize.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+        	{
+        		
+        	}
+        });	
+		btnRefresh.setBounds(516, 634, 100, 25);
+		contentPane.add(btnFinalize);
+		
+		btnTest = new JButton("Test");
+		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				// This is the main entry point to the program, will use other classes
@@ -975,8 +1004,8 @@ public class TeamBuilderView extends JFrame {
 				closeFrame();
 			}
 		});
-		btnFinalize.setBounds(628, 634, 100, 25);
-		contentPane.add(btnFinalize);
+		btnTest.setBounds(90, 634, 100, 25);
+		contentPane.add(btnTest);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -993,26 +1022,32 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(naturelbl);
 		
 		JComboBox p1_nature = new JComboBox(new Object[]{});
+		p1_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p1_nature.setBounds(90, 600, 100, 25);
 		contentPane.add(p1_nature);
 		
 		JComboBox p2_nature = new JComboBox(new Object[]{});
+		p2_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p2_nature.setBounds(220, 600, 100, 25);
 		contentPane.add(p2_nature);
 		
 		JComboBox p3_nature = new JComboBox(new Object[]{});
+		p3_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p3_nature.setBounds(350, 600, 100, 25);
 		contentPane.add(p3_nature);
 		
 		JComboBox p4_nature = new JComboBox(new Object[]{});
+		p4_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p4_nature.setBounds(480, 600, 100, 25);
 		contentPane.add(p4_nature);
 		
 		JComboBox p5_nature = new JComboBox(new Object[]{});
+		p5_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p5_nature.setBounds(610, 600, 100, 25);
 		contentPane.add(p5_nature);
 		
 		JComboBox p6_nature = new JComboBox(new Object[]{});
+		p6_nature.setModel(new DefaultComboBoxModel(Nature.values()));
 		p6_nature.setBounds(740, 600, 100, 25);
 		contentPane.add(p6_nature);
 	}

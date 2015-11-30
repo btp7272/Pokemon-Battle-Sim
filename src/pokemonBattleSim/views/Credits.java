@@ -52,7 +52,7 @@ public class Credits {
 	private void initialize() {
 		Credits = new JFrame();
 		Credits.setTitle("Credits");
-		Credits.setBounds(100, 100, 279, 755);
+		Credits.setBounds(100, 100, 560, 538);
 		Credits.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Credits.getContentPane().setLayout(null);
 		
@@ -99,68 +99,68 @@ public class Credits {
 				Credits.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(164, 682, 89, 23);
+		btnNewButton.setBounds(445, 465, 89, 23);
 		Credits.getContentPane().add(btnNewButton);
 		
 		txtHttpswwwyoutubecomuserglitchxcity = new JTextField();
 		txtHttpswwwyoutubecomuserglitchxcity.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomuserglitchxcity.setText("https://www.youtube.com/user/GlitchxCity");
-		txtHttpswwwyoutubecomuserglitchxcity.setBounds(10, 400, 243, 25);
+		txtHttpswwwyoutubecomuserglitchxcity.setBounds(274, 260, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomuserglitchxcity);
 		txtHttpswwwyoutubecomuserglitchxcity.setColumns(10);
 		
 		txtHttpswwwyoutubecomuserpokeaimmd = new JTextField();
 		txtHttpswwwyoutubecomuserpokeaimmd.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomuserpokeaimmd.setText("https://www.youtube.com/user/pokeaimMD");
-		txtHttpswwwyoutubecomuserpokeaimmd.setBounds(10, 486, 243, 25);
+		txtHttpswwwyoutubecomuserpokeaimmd.setBounds(274, 346, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomuserpokeaimmd);
 		txtHttpswwwyoutubecomuserpokeaimmd.setColumns(10);
 		
 		txtHttpswwwyoutubecomusermv = new JTextField();
 		txtHttpswwwyoutubecomusermv.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomusermv.setText("https://www.youtube.com/user/3MV33");
-		txtHttpswwwyoutubecomusermv.setBounds(10, 547, 243, 25);
+		txtHttpswwwyoutubecomusermv.setBounds(274, 407, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomusermv);
 		txtHttpswwwyoutubecomusermv.setColumns(10);
 		
 		txtHttpwwwpkparaisocom = new JTextField();
 		txtHttpwwwpkparaisocom.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpwwwpkparaisocom.setText("http://www.pkparaiso.com/");
-		txtHttpwwwpkparaisocom.setBounds(10, 633, 243, 25);
+		txtHttpwwwpkparaisocom.setBounds(10, 400, 243, 25);
 		Credits.getContentPane().add(txtHttpwwwpkparaisocom);
 		txtHttpwwwpkparaisocom.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Pok\u00E9mon Models:");
-		lblNewLabel_2.setBounds(78, 583, 175, 14);
+		lblNewLabel_2.setBounds(78, 350, 175, 14);
 		Credits.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Gameplay Input:");
 		lblNewLabel_3.setToolTipText("");
-		lblNewLabel_3.setBounds(76, 436, 102, 14);
+		lblNewLabel_3.setBounds(340, 296, 102, 14);
 		Credits.getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblMusic = new JLabel("Music:");
-		lblMusic.setBounds(107, 350, 102, 14);
+		lblMusic.setBounds(371, 210, 102, 14);
 		Credits.getContentPane().add(lblMusic);
 		
-		JLabel lblMechanicsInformation = new JLabel("Battle Mechanics:");
-		lblMechanicsInformation.setBounds(78, 210, 164, 14);
+		JLabel lblMechanicsInformation = new JLabel("Battle Mechanics Information:");
+		lblMechanicsInformation.setBounds(53, 210, 188, 14);
 		Credits.getContentPane().add(lblMechanicsInformation);
 		
 		JLabel lblPkparaisocom = new JLabel("pkparaiso.com");
-		lblPkparaisocom.setBounds(10, 608, 123, 14);
+		lblPkparaisocom.setBounds(10, 375, 123, 14);
 		Credits.getContentPane().add(lblPkparaisocom);
 		
 		JLabel lblmv = new JLabel("3MV33");
-		lblmv.setBounds(10, 522, 123, 14);
+		lblmv.setBounds(274, 382, 123, 14);
 		Credits.getContentPane().add(lblmv);
 		
 		JLabel lblPokeaimmd = new JLabel("PokeaimMD");
-		lblPokeaimmd.setBounds(10, 461, 123, 14);
+		lblPokeaimmd.setBounds(274, 321, 123, 14);
 		Credits.getContentPane().add(lblPokeaimmd);
 		
 		JLabel lblGlitchxcity = new JLabel("GlitchxCity");
-		lblGlitchxcity.setBounds(10, 375, 102, 14);
+		lblGlitchxcity.setBounds(274, 235, 102, 14);
 		Credits.getContentPane().add(lblGlitchxcity);
 		
 		JLabel lblNewLabel_4 = new JLabel("Bulbapedia");
@@ -177,5 +177,21 @@ public class Credits {
 		txtAsdffdsa.setBounds(10, 314, 243, 25);
 		Credits.getContentPane().add(txtAsdffdsa);
 		txtAsdffdsa.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("This is a non-profit fan-made game.");
+		lblNewLabel_6.setBounds(274, 38, 270, 14);
+		Credits.getContentPane().add(lblNewLabel_6);
+		
+		JLabel lblAsdf = new JLabel("All intelectual properties are owned by");
+		lblAsdf.setBounds(274, 63, 270, 14);
+		Credits.getContentPane().add(lblAsdf);
+		
+		JLabel lblNewLabel_7 = new JLabel("Nintendo, Game Freak, and Creatures Inc.");
+		lblNewLabel_7.setBounds(274, 87, 270, 14);
+		Credits.getContentPane().add(lblNewLabel_7);
+		
+		JLabel lblPleaseSupportThe = new JLabel("Please support the officail release.");
+		lblPleaseSupportThe.setBounds(274, 111, 270, 14);
+		Credits.getContentPane().add(lblPleaseSupportThe);
 	}
 }

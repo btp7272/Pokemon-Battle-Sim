@@ -95,7 +95,9 @@ public class Recieve
 		}
 		if(s.getInstruction().equals("TEST"))
 		{
-			Send.testConnectionHandshake(Test.getInetAddress().getHostAddress());
+			Send.createTestSocket(Test.getInetAddress().getHostAddress());
+			Send.testConnectionHandshake();
+			Send.closeTestSocket();
 			return "Test 1 Valid";
 		}
 		else if(s.getInstruction().equals("Test1"))

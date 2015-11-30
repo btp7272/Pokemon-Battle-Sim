@@ -145,6 +145,7 @@ public class Connect {
 							btnBuildYourTeam.setVisible(true);
 							lblConnectionSuccessful.setVisible(true);
 							Recieve.CloseTest();
+							Send.closeTestSocket();
 						}
 					}
 		 		    catch (ClassNotFoundException e) 

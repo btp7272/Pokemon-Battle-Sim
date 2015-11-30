@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
@@ -85,9 +87,9 @@ public class IPAddress {
 				TeamBuilderView.startTeam();
 			}
 		});
-		Recieve.CreateTest();
+		ServerSocket Test = Recieve.CreateServer();
 		Timer timer = new Timer();
-		Recieve.createSocketTest(Recieve.IP);
+		Socket testSocket = Recieve.createSocket(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
@@ -95,12 +97,12 @@ public class IPAddress {
 	 	    {
 	 		    try 
 	 		    {
-					if(Recieve.getTestConnection().equals("Test 1 Valid"))
+					if(Recieve.getTestConnection(Test, testSocket).equals("Test 1 Valid"))
 					{
 						btnNewButton_1.setText("Connection Recieved!");
 						btnNewButton_1.setEnabled(true);
-						Recieve.CloseTest();
-						Recieve.closeSocketTest();
+						Recieve.CloseServer(Test);
+						Recieve.closeSocket(testSocket);
 					}
 				} 
 	 		    catch (ClassNotFoundException e) 

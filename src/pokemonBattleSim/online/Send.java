@@ -7,86 +7,16 @@ import java.net.*;
 import java.util.ArrayList;
 
 public class Send 
-{
-	static Socket opponent = null;  
-    static ObjectOutputStream out = null;
+{  
     public static boolean Online = false;
-    static ObjectOutputStream test = null;
-    static Socket testSocket = null;
-    static Socket socket = null;
+    static Socket sock;
     public static String IPAddress;
-    
-    public static void closeTestObjectOutputStream()
-    {
-    	try {
-			test.close();
-		} catch (IOException e) {
-			System.err.println(e);
-		}
-    }
-    public static void createTestObjectOutputStream(OutputStream s)
-    {
-    	try 
-		{
-			ObjectOutputStream test = new ObjectOutputStream(s);
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		}
-    }
-    
-    public static void createTestSocket(String ip)
-	{
-		try 
-		{
-            testSocket = new Socket(ip, 6943);
-        } 
-		catch (UnknownHostException e) 
-		{
-            System.err.println("Don't know about host: opponent");
-        } 
-		catch (IOException e) 
-		{
-            System.err.println("Couldn't get I/O for the connection to: opponent");
-        }
-	}
-    
-    public static void closeTestSocket() throws IOException
-    {
-    	try
-    	{
-    		testSocket.close();
-    	}
-    	catch (UnknownHostException e) 
-		{
-            System.err.println("Don't know about host: opponent");
-        } 
-    }
-    
-    public static void closeSocket()
-    {
-    	try
-    	{
-    		opponent.close();
-    		out.close();
-    	}
-    	catch (UnknownHostException e) 
-		{
-            System.err.println("Don't know about host: opponent");
-        } 
-		catch (IOException e) 
-		{
-            System.err.println("Couldn't get I/O for the connection to: opponent");
-        }
-    }
     
 	public static Socket createSocket(String ip)
 	{
 		try 
 		{
-            opponent = new Socket(ip, 6943);
-            out = new ObjectOutputStream(opponent.getOutputStream());
+            sock = new Socket(ip, 6943);
         } 
 		catch (UnknownHostException e) 
 		{
@@ -96,37 +26,44 @@ public class Send
 		{
             System.err.println("Couldn't get I/O for the connection to: opponent");
         }
-		return opponent;
+		return sock;
 	}
 	
-	public static boolean testConnection() throws IOException
+	public static void testConnection(String IP) throws IOException
 	{
-		instructionPacket s = new instructionPacket("TEST1",null);
-		createTestObjectOutputStream(testSocket.getOutputStream());
-		test.writeObject(s);
-		test.flush();
-		closeTestObjectOutputStream();
-		testSocket.close();
-		return true;
+		Recieve.IP = IP;
+		Socket socket = createSocket(IP);
+		instructionPacket s = new instructionPacket(IP,"TEST",null);
+		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+		out.writeObject(s);
+		out.flush();
+		out.close();
+		socket.close();
 	}
 	
-	public static boolean testConnectionHandshake() throws IOException
+	public static void testConnectionHandshake(String IP) throws IOException
 	{
-		instructionPacket s = new instructionPacket("TEST1",null);
-		createTestObjectOutputStream(testSocket.getOutputStream());
-		test.writeObject(s);
-		test.flush();
-		closeTestObjectOutputStream();
-		return true;
+		Recieve.IP = IP;
+		Socket socket = createSocket(IP);
+		instructionPacket s = new instructionPacket(IP,"TEST1",null);
+		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+		out.writeObject(s);
+		out.flush();
+		out.close();
+		socket.close();
 	}
 	
-	public static void sendPacket(String s, Object o)
+	public static void sendPacket(String IP, String s, Object o) throws IOException
 	{
-		instructionPacket packet = new instructionPacket(s,o);
+		Socket socket = createSocket(IP);
+		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+		instructionPacket packet = new instructionPacket(IP,s,o);
 		try
 		{
 			out.writeObject(packet);
 			out.flush();
+			out.close();
+			socket.close();
 		}
 		catch (IOException e) 
 		{
@@ -136,11 +73,5 @@ public class Send
 	public static String getIPAddress()
 	{
 		return IPAddress;
-	}
-	public static void setIPAddress() throws IOException
-	{
-		createTestSocket(IPAddress);
-		testConnection();
-		closeTestSocket();
 	}
 }

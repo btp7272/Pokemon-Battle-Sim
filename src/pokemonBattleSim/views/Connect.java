@@ -10,6 +10,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
@@ -91,7 +93,42 @@ public class Connect {
 				try 
 				{
 					Send.IPAddress = IPAddress.getText();
-					Send.setIPAddress();
+					Send.testConnection(IPAddress.getText());
+					ServerSocket server = Recieve.CreateServer();
+					Timer timer = new Timer();
+					Socket socket = Recieve.createSocket(IPAddress.getText());
+				    class SetTimer extends TimerTask
+				    {
+				 	    @Override
+				 	    public void run()
+				 	    {
+				 	    	while(true)
+				 	    	{
+					 		    try 
+					 		    {
+									if(Recieve.getTestConnection(server,socket).equals("HandShake Complete"))
+									{
+										btnBuildYourTeam.setVisible(true);
+										lblConnectionSuccessful.setVisible(true);
+										server.close();
+										socket.close();
+										break;
+									}
+								}
+					 		    catch (ClassNotFoundException e) 
+					 		    {
+									System.err.println(e);
+								}
+					 		    catch (IOException e) 
+					 		    {
+									System.err.println(e);
+								}
+				 	    	}
+				 	    }
+				    }
+				    TimerTask task = new SetTimer();
+				    timer.schedule(task, 0, 5);
+					
 				} 
 				catch (IOException e) 
 				{
@@ -130,40 +167,6 @@ public class Connect {
 				TeamBuilderView.startTeam();
 			}
 		});
-		Recieve.CreateTest();
-		Timer timer = new Timer();
-		Recieve.createSocketTest(IPAddress.getText());
-	    class SetTimer extends TimerTask
-	    {
-	 	    @Override
-	 	    public void run()
-	 	    {
-	 	    	while(true)
-	 	    	{
-		 		    try 
-		 		    {
-						if(Recieve.getTestConnection().equals("HandShake Complete"))
-						{
-							btnBuildYourTeam.setVisible(true);
-							lblConnectionSuccessful.setVisible(true);
-							Recieve.CloseTest();
-							Send.closeTestSocket();
-							Recieve.closeSocketTest();
-						}
-					}
-		 		    catch (ClassNotFoundException e) 
-		 		    {
-						System.err.println(e);
-					}
-		 		    catch (IOException e) 
-		 		    {
-						System.err.println(e);
-					}
-	 	    	}
-	 	    }
-	    }
-	    TimerTask task = new SetTimer();
-	    timer.schedule(task, 0, 5);
 		
 		lblConnectionSuccessful = new JLabel("Connection Successful!");
 		lblConnectionSuccessful.setVisible(false);

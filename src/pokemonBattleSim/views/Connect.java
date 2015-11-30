@@ -90,6 +90,7 @@ public class Connect {
 			public void actionPerformed(ActionEvent arg0) {
 				try 
 				{
+					Send.IPAddress = IPAddress.getText();
 					Send.setIPAddress();
 				} 
 				catch (IOException e) 
@@ -131,6 +132,7 @@ public class Connect {
 		});
 		Recieve.CreateTest();
 		Timer timer = new Timer();
+		Recieve.createSocketTest(IPAddress.getText());
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
@@ -146,6 +148,7 @@ public class Connect {
 							lblConnectionSuccessful.setVisible(true);
 							Recieve.CloseTest();
 							Send.closeTestSocket();
+							Recieve.closeSocketTest();
 						}
 					}
 		 		    catch (ClassNotFoundException e) 

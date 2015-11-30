@@ -15,7 +15,32 @@ public class Recieve
 	static ObjectInputStream input;
 	static PrintStream print;
 	static Socket read = null;
-       
+	public static String IP = null;
+    
+	public static void closeSocketTest()
+	{
+		try
+		{
+			socketTest.close();
+		}
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+	
+	public static void createSocketTest(String ip)
+	{
+		try
+		{
+			socketTest = new Socket(ip, 6943);
+		}
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+	
 	public static void CloseServer()
 	{
 		try
@@ -68,7 +93,8 @@ public class Recieve
 	{
 		try
 		{
-			socketTest = Test.accept();
+			while(socketTest == null)
+				socketTest = Test.accept();
 		}
 		catch (IOException e)
 		{
@@ -95,7 +121,7 @@ public class Recieve
 		}
 		if(s.getInstruction().equals("TEST"))
 		{
-			Send.createTestSocket(Test.getInetAddress().getHostAddress());
+			Send.createTestSocket(IP = Test.getInetAddress().getHostAddress());
 			Send.testConnectionHandshake();
 			Send.closeTestSocket();
 			return "Test 1 Valid";

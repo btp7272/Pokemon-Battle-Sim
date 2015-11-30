@@ -16,11 +16,31 @@ public class Send
     static Socket socket = null;
     public static String IPAddress;
     
+    public static void closeTestObjectOutputStream()
+    {
+    	try {
+			test.close();
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+    }
+    public static void createTestObjectOutputStream(OutputStream s)
+    {
+    	try 
+		{
+			ObjectOutputStream test = new ObjectOutputStream(s);
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+    }
+    
     public static void createTestSocket(String ip)
 	{
 		try 
 		{
-            testSocket = new Socket(ip, 6944);
+            testSocket = new Socket(ip, 6943);
         } 
 		catch (UnknownHostException e) 
 		{
@@ -82,16 +102,10 @@ public class Send
 	public static boolean testConnection() throws IOException
 	{
 		instructionPacket s = new instructionPacket("TEST1",null);
-		try 
-		{
-			ObjectOutputStream test = new ObjectOutputStream(testSocket.getOutputStream());
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		}
+		createTestObjectOutputStream(testSocket.getOutputStream());
 		test.writeObject(s);
 		test.flush();
+		closeTestObjectOutputStream();
 		testSocket.close();
 		return true;
 	}
@@ -99,16 +113,10 @@ public class Send
 	public static boolean testConnectionHandshake() throws IOException
 	{
 		instructionPacket s = new instructionPacket("TEST1",null);
-		try 
-		{
-			ObjectOutputStream test = new ObjectOutputStream(testSocket.getOutputStream());
-		} 
-		catch (IOException e) 
-		{
-			System.err.println(e);
-		}
+		createTestObjectOutputStream(testSocket.getOutputStream());
 		test.writeObject(s);
 		test.flush();
+		closeTestObjectOutputStream();
 		return true;
 	}
 	
@@ -131,7 +139,6 @@ public class Send
 	}
 	public static void setIPAddress() throws IOException
 	{
-		IPAddress = Connect.IPAddress.getText();
 		createTestSocket(IPAddress);
 		testConnection();
 		closeTestSocket();

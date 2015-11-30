@@ -87,6 +87,7 @@ public class IPAddress {
 		});
 		Recieve.CreateTest();
 		Timer timer = new Timer();
+		Recieve.createSocketTest(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
@@ -99,6 +100,7 @@ public class IPAddress {
 						btnNewButton_1.setText("Connection Recieved!");
 						btnNewButton_1.setEnabled(true);
 						Recieve.CloseTest();
+						Recieve.closeSocketTest();
 					}
 				} 
 	 		    catch (ClassNotFoundException e) 

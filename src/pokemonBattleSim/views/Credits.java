@@ -82,7 +82,7 @@ public class Credits {
 		Credits.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblSpecialThanks = new JLabel("Special Thanks");
-		lblSpecialThanks.setBounds(81, 184, 133, 15);
+		lblSpecialThanks.setBounds(207, 183, 133, 15);
 		lblSpecialThanks.setFont(new Font("Tahoma", Font.BOLD, 12));
 		Credits.getContentPane().add(lblSpecialThanks);
 		
@@ -126,12 +126,12 @@ public class Credits {
 		txtHttpwwwpkparaisocom = new JTextField();
 		txtHttpwwwpkparaisocom.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpwwwpkparaisocom.setText("http://www.pkparaiso.com/");
-		txtHttpwwwpkparaisocom.setBounds(10, 400, 243, 25);
+		txtHttpwwwpkparaisocom.setBounds(10, 407, 243, 25);
 		Credits.getContentPane().add(txtHttpwwwpkparaisocom);
 		txtHttpwwwpkparaisocom.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Pok\u00E9mon Models:");
-		lblNewLabel_2.setBounds(78, 350, 175, 14);
+		lblNewLabel_2.setBounds(78, 352, 175, 14);
 		Credits.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Gameplay Input:");
@@ -148,7 +148,7 @@ public class Credits {
 		Credits.getContentPane().add(lblMechanicsInformation);
 		
 		JLabel lblPkparaisocom = new JLabel("pkparaiso.com");
-		lblPkparaisocom.setBounds(10, 375, 123, 14);
+		lblPkparaisocom.setBounds(10, 382, 123, 14);
 		Credits.getContentPane().add(lblPkparaisocom);
 		
 		JLabel lblmv = new JLabel("3MV33");
@@ -174,7 +174,7 @@ public class Credits {
 		txtAsdffdsa = new JTextField();
 		txtAsdffdsa.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAsdffdsa.setText("http://www.smogon.com/");
-		txtAsdffdsa.setBounds(10, 314, 243, 25);
+		txtAsdffdsa.setBounds(10, 315, 243, 25);
 		Credits.getContentPane().add(txtAsdffdsa);
 		txtAsdffdsa.setColumns(10);
 		

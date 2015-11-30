@@ -140,8 +140,8 @@ public class BattleView extends JFrame implements IView{
 		// The syntax for lambda expressions [parameter names] -> { any code }
 		musicPlayerStopButton.addActionListener(e -> 
 		{
-			// TODO Add logic to stop music
-			displayPopupMessage("Stop Music button has been pushed");
+			AudioPlayer.stopper = 1;
+			System.out.println("Playback forcefully stopped.");
 		});
 		
 		// set layouts

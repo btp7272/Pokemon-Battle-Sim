@@ -19,7 +19,7 @@ import java.util.*;
  *
  */
 public class AudioPlayer {
- 
+public static int stopper; 
     // size of the byte buffer used to read/write the audio stream
     private static final int BUFFER_SIZE = 4096;
      
@@ -30,6 +30,7 @@ public class AudioPlayer {
     public void play(String audioFilePath) {
         File audioFile = new File(audioFilePath);
         try {
+        	stopper = 0;
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             AudioFormat format = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
@@ -42,6 +43,8 @@ public class AudioPlayer {
             while ((bytesRead = audioStream.read(bytesBuffer)) != -1) 
             {
                 audioLine.write(bytesBuffer, 0, bytesRead);
+                if (stopper == 1)
+                	break;
             }
             audioLine.drain();
             audioLine.close();
@@ -68,6 +71,11 @@ public class AudioPlayer {
         }      
     }
      
+    public static void forceStop()
+    {
+    	Thread.currentThread().interrupt();
+    	return;
+    }
     public static void main(String[] args) 
     {
         /*Random ran = new Random(); 

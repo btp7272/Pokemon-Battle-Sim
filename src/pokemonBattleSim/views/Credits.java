@@ -20,7 +20,6 @@ public class Credits {
 	private JTextField txtHttpswwwyoutubecomuserglitchxcity;
 	private JTextField txtHttpswwwyoutubecomuserpokeaimmd;
 	private JTextField txtHttpswwwyoutubecomusermv;
-	private JTextField txtI;
 	private JTextField txtHttpwwwpkparaisocom;
 
 	/**
@@ -52,7 +51,7 @@ public class Credits {
 	private void initialize() {
 		Credits = new JFrame();
 		Credits.setTitle("Credits");
-		Credits.setBounds(100, 100, 279, 615);
+		Credits.setBounds(100, 100, 279, 709);
 		Credits.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Credits.getContentPane().setLayout(null);
 		
@@ -99,59 +98,68 @@ public class Credits {
 				Credits.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(164, 542, 89, 23);
+		btnNewButton.setBounds(164, 607, 89, 23);
 		Credits.getContentPane().add(btnNewButton);
 		
 		txtHttpswwwyoutubecomuserglitchxcity = new JTextField();
 		txtHttpswwwyoutubecomuserglitchxcity.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomuserglitchxcity.setText("https://www.youtube.com/user/GlitchxCity");
-		txtHttpswwwyoutubecomuserglitchxcity.setBounds(10, 304, 243, 25);
+		txtHttpswwwyoutubecomuserglitchxcity.setBounds(10, 327, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomuserglitchxcity);
 		txtHttpswwwyoutubecomuserglitchxcity.setColumns(10);
 		
 		txtHttpswwwyoutubecomuserpokeaimmd = new JTextField();
 		txtHttpswwwyoutubecomuserpokeaimmd.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomuserpokeaimmd.setText("https://www.youtube.com/user/pokeaimMD");
-		txtHttpswwwyoutubecomuserpokeaimmd.setBounds(10, 362, 243, 25);
+		txtHttpswwwyoutubecomuserpokeaimmd.setBounds(10, 413, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomuserpokeaimmd);
 		txtHttpswwwyoutubecomuserpokeaimmd.setColumns(10);
 		
 		txtHttpswwwyoutubecomusermv = new JTextField();
 		txtHttpswwwyoutubecomusermv.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpswwwyoutubecomusermv.setText("https://www.youtube.com/user/3MV33");
-		txtHttpswwwyoutubecomusermv.setBounds(10, 398, 243, 25);
+		txtHttpswwwyoutubecomusermv.setBounds(10, 474, 243, 25);
 		Credits.getContentPane().add(txtHttpswwwyoutubecomusermv);
 		txtHttpswwwyoutubecomusermv.setColumns(10);
-		
-		txtI = new JTextField();
-		txtI.setText("https://www.youtube.com/user/3MV33");
-		txtI.setHorizontalAlignment(SwingConstants.CENTER);
-		txtI.setBounds(10, 434, 243, 25);
-		Credits.getContentPane().add(txtI);
-		txtI.setColumns(10);
 		
 		txtHttpwwwpkparaisocom = new JTextField();
 		txtHttpwwwpkparaisocom.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHttpwwwpkparaisocom.setText("http://www.pkparaiso.com/");
-		txtHttpwwwpkparaisocom.setBounds(10, 495, 243, 25);
+		txtHttpwwwpkparaisocom.setBounds(10, 560, 243, 25);
 		Credits.getContentPane().add(txtHttpwwwpkparaisocom);
 		txtHttpwwwpkparaisocom.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Pok\u00E9mon models");
-		lblNewLabel_2.setBounds(10, 470, 102, 14);
+		JLabel lblNewLabel_2 = new JLabel("Pok\u00E9mon Models:");
+		lblNewLabel_2.setBounds(78, 510, 175, 14);
 		Credits.getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Gameplay Input");
+		JLabel lblNewLabel_3 = new JLabel("Gameplay Input:");
 		lblNewLabel_3.setToolTipText("");
-		lblNewLabel_3.setBounds(10, 340, 102, 14);
+		lblNewLabel_3.setBounds(78, 363, 102, 14);
 		Credits.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblMusic = new JLabel("Music");
-		lblMusic.setBounds(10, 279, 46, 14);
+		JLabel lblMusic = new JLabel("Music:");
+		lblMusic.setBounds(10, 279, 102, 14);
 		Credits.getContentPane().add(lblMusic);
 		
-		JLabel lblMechanicsInformation = new JLabel("Mechanics Information");
-		lblMechanicsInformation.setBounds(10, 218, 164, 14);
+		JLabel lblMechanicsInformation = new JLabel("Mechanics Information:");
+		lblMechanicsInformation.setBounds(68, 218, 164, 14);
 		Credits.getContentPane().add(lblMechanicsInformation);
+		
+		JLabel lblPkparaisocom = new JLabel("pkparaiso.com");
+		lblPkparaisocom.setBounds(10, 535, 123, 14);
+		Credits.getContentPane().add(lblPkparaisocom);
+		
+		JLabel lblmv = new JLabel("3MV33");
+		lblmv.setBounds(10, 449, 123, 14);
+		Credits.getContentPane().add(lblmv);
+		
+		JLabel lblPokeaimmd = new JLabel("pokeaimMD");
+		lblPokeaimmd.setBounds(10, 388, 123, 14);
+		Credits.getContentPane().add(lblPokeaimmd);
+		
+		JLabel lblGlitchxcity = new JLabel("GlitchxCity");
+		lblGlitchxcity.setBounds(10, 302, 102, 14);
+		Credits.getContentPane().add(lblGlitchxcity);
 	}
 }

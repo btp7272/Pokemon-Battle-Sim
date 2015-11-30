@@ -135,22 +135,25 @@ public class Connect {
 	 	    @Override
 	 	    public void run()
 	 	    {
-	 		    try 
-	 		    {
-					if(Recieve.getTestConnection().equals("HandShake Complete"))
-					{
-						btnBuildYourTeam.setVisible(true);
-						lblConnectionSuccessful.setVisible(true);
+	 	    	while(true)
+	 	    	{
+		 		    try 
+		 		    {
+						if(Recieve.getTestConnection().equals("HandShake Complete"))
+						{
+							btnBuildYourTeam.setVisible(true);
+							lblConnectionSuccessful.setVisible(true);
+						}
 					}
-				}
-	 		    catch (ClassNotFoundException e) 
-	 		    {
-					System.err.println(e);
-				}
-	 		    catch (IOException e) 
-	 		    {
-					System.err.println(e);
-				}
+		 		    catch (ClassNotFoundException e) 
+		 		    {
+						System.err.println(e);
+					}
+		 		    catch (IOException e) 
+		 		    {
+						System.err.println(e);
+					}
+	 	    	}
 	 	    }
 	    }
 	    TimerTask task = new SetTimer();

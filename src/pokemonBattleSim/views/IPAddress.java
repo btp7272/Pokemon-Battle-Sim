@@ -91,27 +91,30 @@ public class IPAddress {
 	 	    @Override
 	 	    public void run()
 	 	    {
-	 		    try 
-	 		    {
-					if(Recieve.getTestConnection().equals("Test 1 Valid"))
-					{
-						btnNewButton_1.setText("Connection Recieved!");
-						btnNewButton_1.setEnabled(true);
+	 	    	while(true)
+	 	    	{
+		 		    try 
+		 		    {
+						if(Recieve.getTestConnection().equals("Test 1 Valid"))
+						{
+							btnNewButton_1.setText("Connection Recieved!");
+							btnNewButton_1.setEnabled(true);
+							Recieve.CloseTest();
+						}
+					} 
+		 		    catch (ClassNotFoundException e) 
+		 		    {
+						System.err.println(e);
+					} 
+		 		    catch (IOException e) 
+		 		    {
+						System.err.println(e);
 					}
-				} 
-	 		    catch (ClassNotFoundException e) 
-	 		    {
-					System.err.println(e);
-				} 
-	 		    catch (IOException e) 
-	 		    {
-					System.err.println(e);
-				}
-	 		    
+	 	    	}
 	 	    }
 	    }
 	    TimerTask task = new SetTimer();
-	    timer.schedule(task, 0, 5);
+	    timer.schedule(task, 1000, 1000);
 	    
 		btnNewButton_1.setBounds(10, 59, 172, 23);
 		frmHello.getContentPane().add(btnNewButton_1);

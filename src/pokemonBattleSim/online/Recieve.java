@@ -28,6 +28,18 @@ public class Recieve
 	    }
 	}
 	
+	public static void CloseTest()
+	{
+		try
+		{
+			Test.close();
+		}
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+	
 	public static void CreateServer()
 	{
 		try 

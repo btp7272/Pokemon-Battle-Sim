@@ -130,7 +130,6 @@ public class OnlineBattleModel implements IBattleModel
 	 		    	IPokemon recievedPokemon;
 		 		    switch(recievedData.getInstruction())
 		 		    {
-		 		    
 		 		  		case "Swap":
 		 		  			recievedPokemon = (IPokemon) recievedData.getObject();
 		 		  			if(playerOne.getTrainerID() == recievedPokemon.getPlayerID())

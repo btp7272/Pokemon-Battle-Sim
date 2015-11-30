@@ -129,6 +129,7 @@ public class Connect {
 				TeamBuilderView.startTeam();
 			}
 		});
+		Recieve.CreateTest();
 		Timer timer = new Timer();
 	    class SetTimer extends TimerTask
 	    {
@@ -143,6 +144,7 @@ public class Connect {
 						{
 							btnBuildYourTeam.setVisible(true);
 							lblConnectionSuccessful.setVisible(true);
+							Recieve.CloseTest();
 						}
 					}
 		 		    catch (ClassNotFoundException e) 

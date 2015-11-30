@@ -52,17 +52,20 @@ public class Recieve
         }
 	}
 	
+	public static void CreateTest()
+	{
+		try 
+        {
+           Test= new ServerSocket(6943);
+        }
+        catch (IOException e) 
+        {
+           System.out.println(e);
+        }
+	}
+	
 	public static String getTestConnection() throws IOException, ClassNotFoundException
 	{
-		try
-		{
-			Test = new ServerSocket(6943);
-		}
-		catch (IOException e)
-		{
-			System.err.println(e);
-		}
-		
 		try
 		{
 			socketTest = Test.accept();

@@ -85,36 +85,34 @@ public class IPAddress {
 				TeamBuilderView.startTeam();
 			}
 		});
+		Recieve.CreateTest();
 		Timer timer = new Timer();
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
 	 	    public void run()
 	 	    {
-	 	    	while(true)
-	 	    	{
-		 		    try 
-		 		    {
-						if(Recieve.getTestConnection().equals("Test 1 Valid"))
-						{
-							btnNewButton_1.setText("Connection Recieved!");
-							btnNewButton_1.setEnabled(true);
-							Recieve.CloseTest();
-						}
-					} 
-		 		    catch (ClassNotFoundException e) 
-		 		    {
-						System.err.println(e);
-					} 
-		 		    catch (IOException e) 
-		 		    {
-						System.err.println(e);
+	 		    try 
+	 		    {
+					if(Recieve.getTestConnection().equals("Test 1 Valid"))
+					{
+						btnNewButton_1.setText("Connection Recieved!");
+						btnNewButton_1.setEnabled(true);
+						Recieve.CloseTest();
 					}
-	 	    	}
+				} 
+	 		    catch (ClassNotFoundException e) 
+	 		    {
+					System.err.println(e);
+				} 
+	 		    catch (IOException e) 
+	 		    {
+					System.err.println(e);
+				}
 	 	    }
 	    }
 	    TimerTask task = new SetTimer();
-	    timer.schedule(task, 1000, 1000);
+	    timer.schedule(task, 100, 1000);
 	    
 		btnNewButton_1.setBounds(10, 59, 172, 23);
 		frmHello.getContentPane().add(btnNewButton_1);

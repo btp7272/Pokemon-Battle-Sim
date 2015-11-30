@@ -178,15 +178,15 @@ public class Credits {
 		Credits.getContentPane().add(txtAsdffdsa);
 		txtAsdffdsa.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("This is a non-profit fan-made game.");
+		JLabel lblNewLabel_6 = new JLabel("This is a non-profit fan-made game. All");
 		lblNewLabel_6.setBounds(274, 38, 270, 14);
 		Credits.getContentPane().add(lblNewLabel_6);
 		
-		JLabel lblAsdf = new JLabel("All intelectual properties are owned by");
+		JLabel lblAsdf = new JLabel("intelectual properties of Pok\u00E9mon\u2122 are owned");
 		lblAsdf.setBounds(274, 63, 270, 14);
 		Credits.getContentPane().add(lblAsdf);
 		
-		JLabel lblNewLabel_7 = new JLabel("Nintendo, Game Freak, and Creatures Inc.");
+		JLabel lblNewLabel_7 = new JLabel("by Nintendo, Game Freak, and Creatures Inc.");
 		lblNewLabel_7.setBounds(274, 87, 270, 14);
 		Credits.getContentPane().add(lblNewLabel_7);
 		

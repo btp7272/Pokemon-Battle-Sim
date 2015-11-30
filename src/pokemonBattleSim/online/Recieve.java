@@ -10,7 +10,7 @@ public class Recieve
 	static ServerSocket Server = null;
 	static ServerSocket Test = null;
 	static Socket socketTest = null;
-	static DataInputStream testIn = null;
+	static ObjectInputStream testIn = null;
 	static String line;
 	static ObjectInputStream input;
 	static PrintStream print;
@@ -32,7 +32,7 @@ public class Recieve
 	{
 		try 
         {
-           Server = new ServerSocket(8000);
+           Server = new ServerSocket(6943);
         }
         catch (IOException e) 
         {
@@ -40,11 +40,11 @@ public class Recieve
         }
 	}
 	
-	public static boolean getTestConnection()
+	public static String getTestConnection() throws IOException, ClassNotFoundException
 	{
 		try
 		{
-			Test = new ServerSocket(8000);
+			Test = new ServerSocket(6943);
 		}
 		catch (IOException e)
 		{
@@ -62,27 +62,32 @@ public class Recieve
 		
 		try 
 		{
-			testIn = new DataInputStream(socketTest.getInputStream());
+			testIn = new ObjectInputStream(socketTest.getInputStream());
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
 		
-		String s = "";
+		instructionPacket s = null;
 		try 
 		{
-			s = testIn.readUTF();
+			s = (instructionPacket)testIn.readObject();
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
-		if(s == "TEST")
+		if(s.getInstruction().equals("TEST"))
 		{
-			return true;
+			Send.testConnectionHandshake(Test.getInetAddress().getHostAddress());
+			return "Test 1 Valid";
 		}
-		return false;
+		else if(s.getInstruction().equals("Test1"))
+		{
+			return "HandShake Complete";
+		}
+		return "Inconclusive";
 	}
 	
 	public static String getIPAddress()

@@ -11,7 +11,7 @@ public class Send
 	static Socket opponent = null;  
     static ObjectOutputStream out = null;
     public static boolean Online = false;
-    static DataOutputStream test = null;
+    static ObjectOutputStream test = null;
     static Socket testSocket = null;
     static Socket socket = null;
     public static String IPAddress;
@@ -37,7 +37,7 @@ public class Send
 	{
 		try 
 		{
-            opponent = new Socket(ip, 8000);
+            opponent = new Socket(ip, 6943);
             out = new ObjectOutputStream(opponent.getOutputStream());
         } 
 		catch (UnknownHostException e) 
@@ -53,10 +53,10 @@ public class Send
 	
 	public static boolean testConnection(String ip) throws IOException
 	{
-		String s = "TEST";
+		instructionPacket s = new instructionPacket("TEST1",null);
 		try 
 		{
-			Socket testSocket = new Socket(ip, 8000);
+			Socket testSocket = new Socket(ip, 6943);
 		}
 		catch (IOException e) 
 		{
@@ -64,13 +64,37 @@ public class Send
 		}
 		try 
 		{
-			DataOutputStream test = new DataOutputStream(testSocket.getOutputStream());
+			ObjectOutputStream test = new ObjectOutputStream(testSocket.getOutputStream());
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
-		test.writeBytes(s);
+		test.writeObject(s);
+		test.flush();
+		return true;
+	}
+	
+	public static boolean testConnectionHandshake(String ip) throws IOException
+	{
+		instructionPacket s = new instructionPacket("TEST1",null);
+		try 
+		{
+			Socket testSocket = new Socket(ip, 6943);
+		}
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		try 
+		{
+			ObjectOutputStream test = new ObjectOutputStream(testSocket.getOutputStream());
+		} 
+		catch (IOException e) 
+		{
+			System.err.println(e);
+		}
+		test.writeObject(s);
 		test.flush();
 		return true;
 	}

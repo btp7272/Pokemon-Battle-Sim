@@ -859,183 +859,6 @@ public class TeamBuilderView extends JFrame {
 		p6_speed_ev.setBounds(740, 612, 100, 25);
 		contentPane.add(p6_speed_ev);
 		
-		btnFinalize = new JButton("Finalize");
-		btnFinalize.setSize(100, 25);
-		btnFinalize.setLocation(630, 740);
-		btnFinalize.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-        	{
-        		// This is the main entry point to the program, will use other classes
-				Object owner = new Object(); //may need to be static?
-				IPokemonTrainer player;
-				IPokemonTrainer computer;
-				ArrayList<Pokemon> playerTeam = new ArrayList<>();
-				ArrayList<Pokemon> computerTeam = new ArrayList<>();
-				
-				//Variables used to create the pokemon
-				int IVs[] = new int[6];
-				int EVs[] = new int[6];
-				Move moves[] = new Move[4];
-				Pokemon member;
-				String species, nickname;
-				int level;
-				Nature nature;
-				String ability, item;
-				
-				//Create 1st Pokemon
-				IVs[0] = (int)p1_hp_iv.getModel().getValue();
-				IVs[1] = (int)p1_atk_iv.getModel().getValue();
-				IVs[2] = (int)p1_def_iv.getModel().getValue();
-				IVs[3] = (int)p1_spatk_iv.getModel().getValue();
-				IVs[4] = (int)p1_spdef_iv.getModel().getValue();
-				IVs[5] = (int)p1_speed_iv.getModel().getValue();
-				
-				EVs[0] = (int)p1_hp_ev.getModel().getValue();
-				EVs[1] = (int)p1_atk_ev.getModel().getValue();
-				EVs[2] = (int)p1_def_ev.getModel().getValue();
-				EVs[3] = (int)p1_spatk_ev.getModel().getValue();
-				EVs[4] = (int)p1_spdef_ev.getModel().getValue();
-				EVs[5] = (int)p1_speed_ev.getModel().getValue();
-				
-				moves[0] = new Move(MoveMap.moveMap.get((String)p1_move1.getSelectedItem()));
-				moves[1] = new Move(MoveMap.moveMap.get((String)p1_move2.getSelectedItem()));
-				moves[2] = new Move(MoveMap.moveMap.get((String)p1_move3.getSelectedItem()));
-				moves[3] = new Move(MoveMap.moveMap.get((String)p1_move4.getSelectedItem()));
-				
-				species = p1_species.getText();
-				nickname = p1_nickname.getText();
-				//item = p1_item.getText();
-				
-				//member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
-        	}
-        });
-		contentPane.add(btnFinalize);
-		
-		btnTest = new JButton("Test");
-		btnTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				// This is the main entry point to the program, will use other classes
-				Object owner = new Object(); //may need to be static?
-				IPokemonTrainer player;
-				IPokemonTrainer computer;
-				ArrayList<Pokemon> playerTeam = new ArrayList<>();
-				ArrayList<Pokemon> computerTeam = new ArrayList<>();
-				
-				//CREATE CHARIZARD
-				Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
-				int IVs[] = {31,0,31,31,31,31};
-				int EVs[] = {96,0,0,196,0,216};
-				
-				Move[] moves = {new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Giga Drain")),new Move(MoveMap.moveMap.get("Focus Blast")),new Move(MoveMap.moveMap.get("Roost"))};
-				Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
-				//member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
-				member.setPlayerID(0);
-				member.setBenchPosition(1);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
-				member.setPlayerID(1);
-				member.setBenchPosition(1);
-				computerTeam.add(member);
-				
-				//CREATE TYRANITAR
-				int IVs2[] = {31,31,31,31,31,31};
-				int EVs2[] = {0,252,0,0,4,252};
-				Move[] moves2 = {new Move(MoveMap.moveMap.get("Crunch")),new Move(MoveMap.moveMap.get("Bullet Seed")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Earthquake"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
-				//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
-				member.setPlayerID(0);
-				member.setBenchPosition(2);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
-				member.setPlayerID(1);
-				member.setBenchPosition(2);
-				computerTeam.add(member);
-				
-				//CREATE SLOWBRO
-				int EVs3[] = {248,0,200,0,52,8};
-				Move[] moves3 = {new Move(MoveMap.moveMap.get("Shadow Ball")),new Move(MoveMap.moveMap.get("Scald")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Slack Off"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
-				member.setPlayerID(0);
-				member.setBenchPosition(3);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
-				member.setPlayerID(1);
-				member.setBenchPosition(3);
-				computerTeam.add(member);
-				
-				//CREATE FERROTHRON
-				int IVs4[] = {31,31,31,31,31,0};
-				int EVs4[] = {248,0,200,0,52,8};
-				Move[] moves4 = {new Move(MoveMap.moveMap.get("Thunder Wave")),new Move(MoveMap.moveMap.get("Will-O-Wisp")),new Move(MoveMap.moveMap.get("Toxic")),new Move(MoveMap.moveMap.get("Thunder"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
-				member.setNonVolatileStatus(new StatusContainer(-1,0,"Toxic Poison",null));
-				member.setPlayerID(0);
-				member.setBenchPosition(4);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
-				member.setPlayerID(1);
-				member.setBenchPosition(4);
-				computerTeam.add(member);
-				
-				//CREATE LATIOS
-				int EVs5[] = {0,0,0,252,4,252};
-				Move[] moves5 = {new Move(MoveMap.moveMap.get("Draco Meteor")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Recover")),new Move(MoveMap.moveMap.get("Defog"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
-				member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
-				member.setPlayerID(0);
-				member.setBenchPosition(5);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
-				member.setPlayerID(1);
-				member.setBenchPosition(5);
-				computerTeam.add(member);
-				
-				//CREATE GLISCOR
-				int EVs6[] = {244,40,8,0,96,120};
-				Move[] moves6 = {new Move(MoveMap.moveMap.get("Swords Dance")),new Move(MoveMap.moveMap.get("Earthquake")),new Move(MoveMap.moveMap.get("Knock Off")),new Move(MoveMap.moveMap.get("Roost"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
-				member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
-				member.setPlayerID(0);
-				member.setBenchPosition(6);
-				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
-				member.setPlayerID(1);
-				member.setBenchPosition(6);
-				computerTeam.add(member);
-				
-				player = new PokemonTrainer(playerTeam);
-				computer = new PokemonTrainer(computerTeam);
-				
-				Timer timer = new Timer();
-				try {
-					BattleModel.CreateInstance(owner, player, computer);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				BattleModel model = BattleModel.getInstance();
-				BattleView view = new BattleView(player.getTrainerID());
-				BattleController controller = new BattleController(view,model, player.getTrainerID());
-				
-				view.setVisible(true);
-				closeFrame();
-			}
-		});
-		btnTest.setBounds(90, 740, 100, 25);
-		contentPane.add(btnTest);
-		
-		btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MainMenu.startup();
-				closeFrame();
-			}
-		});
-		btnCancel.setBounds(740, 740, 100, 25);
-		contentPane.add(btnCancel);
-		
 		JLabel naturelbl = new JLabel("Nature");
 		naturelbl.setBounds(5, 656, 85, 14);
 		contentPane.add(naturelbl);
@@ -1171,6 +994,588 @@ public class TeamBuilderView extends JFrame {
 		p6_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
 		p6_item.setBounds(740, 241, 100, 25);
 		contentPane.add(p6_item);
+		
+		btnFinalize = new JButton("Finalize");
+		btnFinalize.setSize(100, 25);
+		btnFinalize.setLocation(630, 740);
+		btnFinalize.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+        	{
+        		// This is the main entry point to the program, will use other classes
+				Object owner = new Object(); //may need to be static?
+				IPokemonTrainer player;
+				IPokemonTrainer computer;
+				ArrayList<Pokemon> playerTeam = new ArrayList<>();
+				ArrayList<Pokemon> computerTeam = new ArrayList<>();
+				
+				//Variables used to create the pokemon
+				int IVs[] = new int[6];
+				int EVs[] = new int[6];
+				Move moves[] = new Move[4];
+				Pokemon member;
+				String species, nickname;
+				int level;
+				Nature nature;
+				Gender gender;
+				String ability, item;
+				
+				/**
+				 * Create player team
+				 */
+				
+				//Create 1st Pokemon
+				IVs[0] = (int)p1_hp_iv.getModel().getValue();
+				IVs[1] = (int)p1_atk_iv.getModel().getValue();
+				IVs[2] = (int)p1_def_iv.getModel().getValue();
+				IVs[3] = (int)p1_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p1_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p1_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p1_hp_ev.getModel().getValue();
+				EVs[1] = (int)p1_atk_ev.getModel().getValue();
+				EVs[2] = (int)p1_def_ev.getModel().getValue();
+				EVs[3] = (int)p1_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p1_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p1_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p1_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p1_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p1_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p1_move4.getSelectedItem()));
+				
+				species = p1_species.getText();
+				nickname = p1_nickname.getText();
+				item = (String)p1_item.getSelectedItem();
+				ability = (String)p1_ability.getSelectedItem();
+				level = (int)p1_level.getModel().getValue();
+				nature = (Nature)p1_nature.getSelectedItem();
+				gender = (Gender)p1_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setBenchPosition(0);
+				member.setGender(gender);
+				playerTeam.add(member);
+				
+				//Create 2nd Pokemon
+				IVs[0] = (int)p2_hp_iv.getModel().getValue();
+				IVs[1] = (int)p2_atk_iv.getModel().getValue();
+				IVs[2] = (int)p2_def_iv.getModel().getValue();
+				IVs[3] = (int)p2_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p2_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p2_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p2_hp_ev.getModel().getValue();
+				EVs[1] = (int)p2_atk_ev.getModel().getValue();
+				EVs[2] = (int)p2_def_ev.getModel().getValue();
+				EVs[3] = (int)p2_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p2_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p2_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p2_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p2_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p2_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p2_move4.getSelectedItem()));
+				
+				species = p2_species.getText();
+				nickname = p2_nickname.getText();
+				item = (String)p2_item.getSelectedItem();
+				ability = (String)p2_ability.getSelectedItem();
+				level = (int)p2_level.getModel().getValue();
+				nature = (Nature)p2_nature.getSelectedItem();
+				gender = (Gender)p2_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setBenchPosition(1);
+				member.setGender(gender);
+				playerTeam.add(member);
+				
+				//Create 3rd Pokemon
+				IVs[0] = (int)p3_hp_iv.getModel().getValue();
+				IVs[1] = (int)p3_atk_iv.getModel().getValue();
+				IVs[2] = (int)p3_def_iv.getModel().getValue();
+				IVs[3] = (int)p3_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p3_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p3_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p3_hp_ev.getModel().getValue();
+				EVs[1] = (int)p3_atk_ev.getModel().getValue();
+				EVs[2] = (int)p3_def_ev.getModel().getValue();
+				EVs[3] = (int)p3_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p3_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p3_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p3_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p3_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p3_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p3_move4.getSelectedItem()));
+				
+				species = p3_species.getText();
+				nickname = p3_nickname.getText();
+				item = (String)p3_item.getSelectedItem();
+				ability = (String)p3_ability.getSelectedItem();
+				level = (int)p3_level.getModel().getValue();
+				nature = (Nature)p3_nature.getSelectedItem();
+				gender = (Gender)p3_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setBenchPosition(2);
+				member.setGender(gender);
+				playerTeam.add(member);
+				
+				//Create 4th Pokemon
+				IVs[0] = (int)p4_hp_iv.getModel().getValue();
+				IVs[1] = (int)p4_atk_iv.getModel().getValue();
+				IVs[2] = (int)p4_def_iv.getModel().getValue();
+				IVs[3] = (int)p4_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p4_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p4_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p4_hp_ev.getModel().getValue();
+				EVs[1] = (int)p4_atk_ev.getModel().getValue();
+				EVs[2] = (int)p4_def_ev.getModel().getValue();
+				EVs[3] = (int)p4_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p4_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p4_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p4_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p4_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p4_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p4_move4.getSelectedItem()));
+				
+				species = p4_species.getText();
+				nickname = p4_nickname.getText();
+				item = (String)p4_item.getSelectedItem();
+				ability = (String)p4_ability.getSelectedItem();
+				level = (int)p4_level.getModel().getValue();
+				nature = (Nature)p4_nature.getSelectedItem();
+				gender = (Gender)p4_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setBenchPosition(3);
+				member.setGender(gender);
+				playerTeam.add(member);
+				
+				//Create 5th Pokemon
+				IVs[0] = (int)p5_hp_iv.getModel().getValue();
+				IVs[1] = (int)p5_atk_iv.getModel().getValue();
+				IVs[2] = (int)p5_def_iv.getModel().getValue();
+				IVs[3] = (int)p5_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p5_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p5_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p5_hp_ev.getModel().getValue();
+				EVs[1] = (int)p5_atk_ev.getModel().getValue();
+				EVs[2] = (int)p5_def_ev.getModel().getValue();
+				EVs[3] = (int)p5_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p5_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p5_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p5_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p5_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p5_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p5_move4.getSelectedItem()));
+				
+				species = p5_species.getText();
+				nickname = p5_nickname.getText();
+				item = (String)p5_item.getSelectedItem();
+				ability = (String)p5_ability.getSelectedItem();
+				level = (int)p5_level.getModel().getValue();
+				nature = (Nature)p5_nature.getSelectedItem();
+				gender = (Gender)p5_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setGender(gender);
+				member.setBenchPosition(4);
+				playerTeam.add(member);
+				
+				//Create 6th Pokemon
+				IVs[0] = (int)p6_hp_iv.getModel().getValue();
+				IVs[1] = (int)p6_atk_iv.getModel().getValue();
+				IVs[2] = (int)p6_def_iv.getModel().getValue();
+				IVs[3] = (int)p6_spatk_iv.getModel().getValue();
+				IVs[4] = (int)p6_spdef_iv.getModel().getValue();
+				IVs[5] = (int)p6_speed_iv.getModel().getValue();
+				
+				EVs[0] = (int)p6_hp_ev.getModel().getValue();
+				EVs[1] = (int)p6_atk_ev.getModel().getValue();
+				EVs[2] = (int)p6_def_ev.getModel().getValue();
+				EVs[3] = (int)p6_spatk_ev.getModel().getValue();
+				EVs[4] = (int)p6_spdef_ev.getModel().getValue();
+				EVs[5] = (int)p6_speed_ev.getModel().getValue();
+				
+				moves[0] = new Move(MoveMap.moveMap.get((String)p6_move1.getSelectedItem()));
+				moves[1] = new Move(MoveMap.moveMap.get((String)p6_move2.getSelectedItem()));
+				moves[2] = new Move(MoveMap.moveMap.get((String)p6_move3.getSelectedItem()));
+				moves[3] = new Move(MoveMap.moveMap.get((String)p6_move4.getSelectedItem()));
+				
+				species = p6_species.getText();
+				nickname = p6_nickname.getText();
+				item = (String)p6_item.getSelectedItem();
+				ability = (String)p6_ability.getSelectedItem();
+				level = (int)p6_level.getModel().getValue();
+				nature = (Nature)p6_nature.getSelectedItem();
+				gender = (Gender)p6_gender.getSelectedItem();
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(0);
+				member.setGender(gender);
+				member.setBenchPosition(5);
+				playerTeam.add(member);
+				
+				/**
+				 * Create computer team (Red's Team)
+				 */
+				//Espeon
+				IVs[0] = 31;
+				IVs[1] = 0;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 4;
+				EVs[1] = 0;
+				EVs[2] = 0;
+				EVs[3] = 252;
+				EVs[4] = 0;
+				EVs[5] = 252;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Sunny Day"));
+				moves[1] = new Move(MoveMap.moveMap.get("Morning Sun"));
+				moves[2] = new Move(MoveMap.moveMap.get("Flamethrower"));
+				moves[3] = new Move(MoveMap.moveMap.get("Psyshock"));
+				
+				species = "Espeon";
+				nickname = "Espeon";
+				item = "Heat Rock";
+				ability = "Magic Bounce";
+				level = 100;
+				nature = Nature.Timid;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(0);
+				member.setGender(Gender.FEMALE);
+				computerTeam.add(member);
+				
+				//Snorlax
+				IVs[0] = 31;
+				IVs[1] = 31;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 208;
+				EVs[1] = 0;
+				EVs[2] = 124;
+				EVs[3] = 0;
+				EVs[4] = 0;
+				EVs[5] = 176;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Sleep Talk"));
+				moves[1] = new Move(MoveMap.moveMap.get("Rest"));
+				moves[2] = new Move(MoveMap.moveMap.get("Whirlwind"));
+				moves[3] = new Move(MoveMap.moveMap.get("Return"));
+				
+				species = "Snorlax";
+				nickname = "Snorlax";
+				item = "Leftovers";
+				ability = "Thick Fat";
+				level = 100;
+				nature = Nature.Careful;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(1);
+				member.setGender(Gender.MALE);
+				computerTeam.add(member);
+				
+				//Blastoise
+				IVs[0] = 31;
+				IVs[1] = 0;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 252;
+				EVs[1] = 0;
+				EVs[2] = 252;
+				EVs[3] = 4;
+				EVs[4] = 0;
+				EVs[5] = 0;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Toxic"));
+				moves[1] = new Move(MoveMap.moveMap.get("Roar"));
+				moves[2] = new Move(MoveMap.moveMap.get("Rapid Spin"));
+				moves[3] = new Move(MoveMap.moveMap.get("Scald"));
+				
+				species = "Blastoise";
+				nickname = "Blastoise";
+				item = "Leftovers";
+				ability = "Rain Dish";
+				level = 100;
+				nature = Nature.Bold;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(2);
+				member.setGender(Gender.MALE);
+				computerTeam.add(member);
+				
+				//Charizard
+				IVs[0] = 31;
+				IVs[1] = 0;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 4;
+				EVs[1] = 0;
+				EVs[2] = 0;
+				EVs[3] = 252;
+				EVs[4] = 0;
+				EVs[5] = 252;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Focus Blast"));
+				moves[1] = new Move(MoveMap.moveMap.get("Fire Blast"));
+				moves[2] = new Move(MoveMap.moveMap.get("Solar Beam"));
+				moves[3] = new Move(MoveMap.moveMap.get("Ice Beam"));
+				
+				species = "Mega Charizard Y";
+				nickname = "Charizard";
+				item = "Charizardite-Y";
+				ability = "Drought";
+				level = 100;
+				nature = Nature.Timid;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(3);
+				member.setGender(Gender.FEMALE);
+				computerTeam.add(member);
+				
+				//Venusaur
+				IVs[0] = 31;
+				IVs[1] = 31;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 140;
+				EVs[1] = 252;
+				EVs[2] = 0;
+				EVs[3] = 0;
+				EVs[4] = 0;
+				EVs[5] = 116;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Sleep Powder"));
+				moves[1] = new Move(MoveMap.moveMap.get("Swords Dance"));
+				moves[2] = new Move(MoveMap.moveMap.get("Seed Bomb"));
+				moves[3] = new Move(MoveMap.moveMap.get("Earthquake"));
+				
+				species = "Venusaur";
+				nickname = "Venusaur";
+				item = "Black Sludge";
+				ability = "Chlorophyll";
+				level = 100;
+				nature = Nature.Adamant;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(4);
+				member.setGender(Gender.FEMALE);
+				computerTeam.add(member);
+				
+				//Pikachu
+				IVs[0] = 31;
+				IVs[1] = 31;
+				IVs[2] = 31;
+				IVs[3] = 31;
+				IVs[4] = 31;
+				IVs[5] = 31;
+				
+				EVs[0] = 0;
+				EVs[1] = 4;
+				EVs[2] = 0;
+				EVs[3] = 252;
+				EVs[4] = 0;
+				EVs[5] = 252;
+				
+				moves[0] = new Move(MoveMap.moveMap.get("Substitute"));
+				moves[1] = new Move(MoveMap.moveMap.get("Thunderbolt"));
+				moves[2] = new Move(MoveMap.moveMap.get("Encore"));
+				moves[3] = new Move(MoveMap.moveMap.get("Icicle Crash"));
+				
+				species = "Pikachu";
+				nickname = "Axe";
+				item = "Light Ball";
+				ability = "Lightningrod";
+				level = 100;
+				nature = Nature.Timid;
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get(species),nickname,moves,IVs,EVs,level,nature, new AbilityContainer(ability), new ItemContainer(item));
+				member.setPlayerID(1);
+				member.setBenchPosition(5);
+				member.setGender(Gender.MALE);
+				computerTeam.add(member);
+				
+				/**
+				 * Start the battle
+				 */
+				
+				player = new PokemonTrainer(playerTeam);
+				computer = new PokemonTrainer(computerTeam);
+				
+				Timer timer = new Timer();
+				try {
+					BattleModel.CreateInstance(owner, player, computer);
+				} catch (Exception ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+				BattleModel model = BattleModel.getInstance();
+				BattleView view = new BattleView(player.getTrainerID());
+				BattleController controller = new BattleController(view, model, player.getTrainerID());
+				
+				view.setVisible(true);
+				closeFrame();
+        	}
+        });
+		contentPane.add(btnFinalize);
+		
+		btnTest = new JButton("Test");
+		btnTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// This is the main entry point to the program, will use other classes
+				Object owner = new Object(); //may need to be static?
+				IPokemonTrainer player;
+				IPokemonTrainer computer;
+				ArrayList<Pokemon> playerTeam = new ArrayList<>();
+				ArrayList<Pokemon> computerTeam = new ArrayList<>();
+				
+				//CREATE CHARIZARD
+				Map<Integer,ArrayList<String>> moveMap = new HashMap<>();
+				int IVs[] = {31,0,31,31,31,31};
+				int EVs[] = {96,0,0,196,0,216};
+				
+				Move[] moves = {new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Giga Drain")),new Move(MoveMap.moveMap.get("Focus Blast")),new Move(MoveMap.moveMap.get("Roost"))};
+				Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
+				//member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
+				member.setPlayerID(0);
+				member.setBenchPosition(1);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
+				member.setPlayerID(1);
+				member.setBenchPosition(1);
+				computerTeam.add(member);
+				
+				//CREATE TYRANITAR
+				int IVs2[] = {31,31,31,31,31,31};
+				int EVs2[] = {0,252,0,0,4,252};
+				Move[] moves2 = {new Move(MoveMap.moveMap.get("Crunch")),new Move(MoveMap.moveMap.get("Bullet Seed")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Earthquake"))};
+				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+				//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
+				member.setPlayerID(0);
+				member.setBenchPosition(2);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+				member.setPlayerID(1);
+				member.setBenchPosition(2);
+				computerTeam.add(member);
+				
+				//CREATE SLOWBRO
+				int EVs3[] = {248,0,200,0,52,8};
+				Move[] moves3 = {new Move(MoveMap.moveMap.get("Shadow Ball")),new Move(MoveMap.moveMap.get("Scald")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Slack Off"))};
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
+				member.setPlayerID(0);
+				member.setBenchPosition(3);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
+				member.setPlayerID(1);
+				member.setBenchPosition(3);
+				computerTeam.add(member);
+				
+				//CREATE FERROTHRON
+				int IVs4[] = {31,31,31,31,31,0};
+				int EVs4[] = {248,0,200,0,52,8};
+				Move[] moves4 = {new Move(MoveMap.moveMap.get("Thunder Wave")),new Move(MoveMap.moveMap.get("Will-O-Wisp")),new Move(MoveMap.moveMap.get("Toxic")),new Move(MoveMap.moveMap.get("Thunder"))};
+				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
+				member.setNonVolatileStatus(new StatusContainer(-1,0,"Toxic Poison",null));
+				member.setPlayerID(0);
+				member.setBenchPosition(4);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
+				member.setPlayerID(1);
+				member.setBenchPosition(4);
+				computerTeam.add(member);
+				
+				//CREATE LATIOS
+				int EVs5[] = {0,0,0,252,4,252};
+				Move[] moves5 = {new Move(MoveMap.moveMap.get("Draco Meteor")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Recover")),new Move(MoveMap.moveMap.get("Defog"))};
+				member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
+				member.setNonVolatileStatus(new StatusContainer(member.getMaxSpeed(),100,"Paralysis",null));
+				member.setPlayerID(0);
+				member.setBenchPosition(5);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Latios"),"Paralyzed",moves5,IVs,EVs5,100,Nature.Timid, new AbilityContainer("Contrary"), new ItemContainer("None"));
+				member.setPlayerID(1);
+				member.setBenchPosition(5);
+				computerTeam.add(member);
+				
+				//CREATE GLISCOR
+				int EVs6[] = {244,40,8,0,96,120};
+				Move[] moves6 = {new Move(MoveMap.moveMap.get("Swords Dance")),new Move(MoveMap.moveMap.get("Earthquake")),new Move(MoveMap.moveMap.get("Knock Off")),new Move(MoveMap.moveMap.get("Roost"))};
+				member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
+				member.setNonVolatileStatus(new StatusContainer(-1,50,"Poison",null));
+				member.setPlayerID(0);
+				member.setBenchPosition(6);
+				playerTeam.add(member);
+				member = new Pokemon(SpeciesMap.speciesMap.get("Gliscor"),"Poisoned",moves6,IVs2,EVs6,100,Nature.Careful, new AbilityContainer("Mold Breaker"), new ItemContainer("Life Orb"));
+				member.setPlayerID(1);
+				member.setBenchPosition(6);
+				computerTeam.add(member);
+				
+				player = new PokemonTrainer(playerTeam);
+				computer = new PokemonTrainer(computerTeam);
+				
+				Timer timer = new Timer();
+				try {
+					BattleModel.CreateInstance(owner, player, computer);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				BattleModel model = BattleModel.getInstance();
+				BattleView view = new BattleView(player.getTrainerID());
+				BattleController controller = new BattleController(view,model, player.getTrainerID());
+				
+				view.setVisible(true);
+				closeFrame();
+			}
+		});
+		btnTest.setBounds(90, 740, 100, 25);
+		contentPane.add(btnTest);
+		
+		btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainMenu.startup();
+				closeFrame();
+			}
+		});
+		btnCancel.setBounds(740, 740, 100, 25);
+		contentPane.add(btnCancel);
 	}
 	
 	private void closeFrame()

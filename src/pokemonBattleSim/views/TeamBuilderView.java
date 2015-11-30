@@ -336,6 +336,7 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p1_speed_ev);
 		
 		p1_ability = new JComboBox(new Object[]{});
+		p1_ability.setModel(new DefaultComboBoxModel(new String[] {"Adaptability", "Aerilate", "Aftermath", "Air Lock", "Analytic", "Anger Point", "Anticipation", "Arena Trap", "Aroma Veil", "Aura Break"}));
 		p1_ability.setBounds(90, 215, 100, 25);
 		contentPane.add(p1_ability);
 		
@@ -438,6 +439,7 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p2_move4);
 		
 		JComboBox p2_ability = new JComboBox(new Object[]{});
+		p2_ability.setModel(new DefaultComboBoxModel(new String[] {"Rain Dish", "Rattled", "Reckless", "Refrigerate", "Regenerator", "Rivalry", "Rock Head", "Rough Skin", "Run Away"}));
 		p2_ability.setBounds(220, 215, 100, 25);
 		contentPane.add(p2_ability);
 		
@@ -532,6 +534,7 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p3_move4);
 		
 		JComboBox p3_ability = new JComboBox(new Object[]{});
+		p3_ability.setModel(new DefaultComboBoxModel(new String[] {"Harvest", "Healer", "Heatproof", "Heavy Metal", "Honey Gather", "Huge Power", "Hustle", "Hydration", "Hyper Cutter"}));
 		p3_ability.setBounds(350, 215, 100, 25);
 		contentPane.add(p3_ability);
 		
@@ -626,6 +629,7 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p4_move4);
 		
 		JComboBox p4_ability = new JComboBox(new Object[]{});
+		p4_ability.setModel(new DefaultComboBoxModel(new String[] {"Damp", "Dark Aura", "Defeatist", "Defiant", "Desolate Land", "Download", "Drizzle", "Drought", "Dry Skin"}));
 		p4_ability.setBounds(480, 215, 100, 25);
 		contentPane.add(p4_ability);
 		
@@ -700,22 +704,27 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p5_nickname);
 		
 		JComboBox p5_move1 = new JComboBox(new Object[]{});
+		p5_move1.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move1.setBounds(610, 95, 100, 25);
 		contentPane.add(p5_move1);
 		
 		JComboBox p5_move2 = new JComboBox(new Object[]{});
+		p5_move2.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move2.setBounds(610, 125, 100, 25);
 		contentPane.add(p5_move2);
 		
 		JComboBox p5_move3 = new JComboBox(new Object[]{});
+		p5_move3.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move3.setBounds(610, 155, 100, 25);
 		contentPane.add(p5_move3);
 		
 		JComboBox p5_move4 = new JComboBox(new Object[]{});
+		p5_move4.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move4.setBounds(610, 185, 100, 25);
 		contentPane.add(p5_move4);
 		
 		JComboBox p5_ability = new JComboBox(new Object[]{});
+		p5_ability.setModel(new DefaultComboBoxModel(new String[] {"Cheek Pouch", "Chlorophyll", "Clear Body", "Cloud Nine", "Color Change", "Competitive", "Compound Eyes", "Contrary", "Cursed Body", "Cute Charm"}));
 		p5_ability.setBounds(610, 215, 100, 25);
 		contentPane.add(p5_ability);
 		
@@ -790,22 +799,27 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p6_nickname);
 		
 		JComboBox p6_move1 = new JComboBox(new Object[]{});
+		p6_move1.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move1.setBounds(740, 95, 100, 25);
 		contentPane.add(p6_move1);
 		
 		JComboBox p6_move2 = new JComboBox(new Object[]{});
+		p6_move2.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move2.setBounds(740, 125, 100, 25);
 		contentPane.add(p6_move2);
 		
 		JComboBox p6_move3 = new JComboBox(new Object[]{});
+		p6_move3.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move3.setBounds(740, 155, 100, 25);
 		contentPane.add(p6_move3);
 		
 		JComboBox p6_move4 = new JComboBox(new Object[]{});
+		p6_move4.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move4.setBounds(740, 185, 100, 25);
 		contentPane.add(p6_move4);
 		
 		JComboBox p6_ability = new JComboBox(new Object[]{});
+		p6_ability.setModel(new DefaultComboBoxModel(new String[] {"Sand Force", "Sand Rush", "Sand Stream", "Sand Veil", "Sap Sipper", "Scrappy", "Serene Grace", "Shadow Tag", "Shed Skin", "Sheer Force", "Shell Armor", "Shield Dust", "Simple", "Skill Link", "Slow Start", "Sniper", "Snow Cloak", "Snow Warning", "Solar Power", "Solid Rock", "Soundproof", "Speed Boost", "Stall", "Stance Change", "Static", "Steadfast", "Stench", "Sticky Hold", "Storm Drain", "Strong Jaw", "Sturdy", "Suction Cups", "Super Luck", "Swarm", "Sweet Veil", "Swift Swim", "Symbiosis", "Synchronize"}));
 		p6_ability.setBounds(740, 215, 100, 25);
 		contentPane.add(p6_ability);
 		

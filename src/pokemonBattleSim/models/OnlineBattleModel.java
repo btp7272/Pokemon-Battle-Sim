@@ -116,6 +116,11 @@ public class OnlineBattleModel implements IBattleModel
 	 	    @Override
 	 	    public void run()
 	 	    {
+	 	    	if(isGameover)
+	 	    	{
+	 	    		timer.cancel();
+	 	    		return;
+	 	    	}
 	 		    recievedData = (instructionPacket)Recieve.Listen();
 	 		    if(recievedData == null){
 	 			    return;
@@ -162,6 +167,7 @@ public class OnlineBattleModel implements IBattleModel
 		 		    notifyView();
 	 		    }
 	 	    }
+	 	    
 	    }
 	    TimerTask task = new SetTimer();
 	    timer.schedule(task, 0, 5);

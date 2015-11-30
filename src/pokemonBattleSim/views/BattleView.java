@@ -42,6 +42,7 @@ public class BattleView extends JFrame implements IView{
 	private ArrayList<ActionListener> pokemonButtonListeners;
 	
 	//private JPanel battlePanel;
+	private JPanel musicPlayerPanel;
 	private JPanel pokemonDataPanel;
 	private JPanel pokemonDisplayPanel;
 	private JPanel moveQueuePanel;
@@ -49,11 +50,14 @@ public class BattleView extends JFrame implements IView{
 	private JPanel teamListPanel;
 	
 	private BoxLayout battleLayout;
+	private GridLayout musicPlayerLayout;
 	private GridLayout pokemonDataLayout;
 	private GridLayout pokemonDisplayLayout;
 	private FlowLayout moveQueueLayout;
 	private GridLayout moveListLayout;
 	private GridLayout teamListLayout;
+	
+	private JButton musicPlayerStopButton;
 	
 	private JPanel playerOnePokemonData;
 	private JPanel playerTwoPokemonData;
@@ -87,6 +91,7 @@ public class BattleView extends JFrame implements IView{
 		
 		// Initialize all components
 		//battlePanel = 			new JPanel();
+		musicPlayerPanel = 		new JPanel();
 		pokemonDataPanel = 		new JPanel();
 		pokemonDisplayPanel = 	new JPanel();
 		moveQueuePanel = 		new JPanel();
@@ -94,6 +99,7 @@ public class BattleView extends JFrame implements IView{
 		teamListPanel =			new JPanel();
 		
 		battleLayout = 			new BoxLayout(this.getContentPane(),BoxLayout.Y_AXIS);
+		musicPlayerLayout =		new GridLayout(1,2);
 		pokemonDataLayout = 	new GridLayout(1,2);
 		pokemonDisplayLayout = 	new GridLayout(1,2);
 		moveQueueLayout = 		new FlowLayout();
@@ -126,8 +132,21 @@ public class BattleView extends JFrame implements IView{
 			pokemonButtons.add(new JButton("Pokemon "+i));
 		}
 		
+		musicPlayerStopButton = new JButton("Stop Music");
+		
+		// IMPORTANT: this uses a lambda expression to handle the event.
+		// Essentially, this replaces creating a new class or anonymous object to handle the event.
+		// This lambda expression is for ActionListener, which takes and ActionEvent e (arbitrarily named)
+		// The syntax for lambda expressions [parameter names] -> { any code }
+		musicPlayerStopButton.addActionListener(e -> 
+		{
+			// TODO Add logic to stop music
+			displayPopupMessage("Stop Music button has been pushed");
+		});
+		
 		// set layouts
 		this.setLayout(battleLayout);
+		musicPlayerPanel.setLayout(musicPlayerLayout);
 		pokemonDataPanel.setLayout(pokemonDataLayout);
 		pokemonDisplayPanel.setLayout(pokemonDisplayLayout);
 		moveQueuePanel.setLayout(moveQueueLayout);
@@ -138,6 +157,8 @@ public class BattleView extends JFrame implements IView{
 		playerTwoPokemonData.setLayout(playerTwoPokemonDataLayout);
 		
 		// build hierarchy
+		musicPlayerPanel.add(musicPlayerStopButton);
+		
 		playerOnePokemonData.add(playerOnePokemonName);
 		playerOnePokemonData.add(playerOnePokemonHP);
 		playerTwoPokemonData.add(playerTwoPokemonName);
@@ -166,6 +187,7 @@ public class BattleView extends JFrame implements IView{
 			teamListPanel.add(btn);
 		}
 		
+		this.add(musicPlayerPanel);
 		this.add(pokemonDataPanel);
 		this.add(pokemonDisplayPanel);
 		this.add(moveQueuePanel);
@@ -235,6 +257,11 @@ public class BattleView extends JFrame implements IView{
 		this.setMoveButtonData(model.getMoveData(playerID));
 		this.setPokemonButtonData(model);
 		repaint();
+	}
+	
+	public void addMusicPlayerStopButtonListener(ActionListener listener)
+	{
+		musicPlayerStopButton.addActionListener(listener);
 	}
 	
 	public void setPlayerOnePokemonName(String name)

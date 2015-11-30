@@ -151,7 +151,10 @@ public class OnlineBattleModel implements IBattleModel
 		 		  			break;
 		 		  		case "gameover":
 		 		  			if((boolean)recievedData.getObject() == true)
+		 		  			{
+		 		  				timer.cancel();
 		 		  				gameover();
+		 		  			}
 		 		  			break;
 		 		  		default:
 		 		  			return;

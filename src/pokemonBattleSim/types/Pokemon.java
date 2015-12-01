@@ -681,6 +681,7 @@ public class Pokemon implements IPokemon
 	{
 		for(int i = 1; i < 5; i++)
 			this.getMove(i).setPower(MoveMap.moveMap.get(this.getMove(i).getName()).getPower());
+		this.lastMoveUsed = null;
 	}
 
 	@Override

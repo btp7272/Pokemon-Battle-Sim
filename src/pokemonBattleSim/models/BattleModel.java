@@ -535,7 +535,6 @@ public class BattleModel implements IBattleModel {
 			return;
 		}
 		
-		attacker.setLastMoveUsed(move);
 		
 		if(Event.statusVolatileEvent(attacker, EventType.PRE_ATTACK, move))
 		{
@@ -600,6 +599,7 @@ public class BattleModel implements IBattleModel {
 			}
 		}
 		
+		attacker.setLastMoveUsed(move);
 		
 		// log the move
 		synchronized (log)

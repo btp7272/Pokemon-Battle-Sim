@@ -665,5 +665,33 @@ public class MoveEffectMap
 				   return 1;
 			   }
 		});
+		
+		effectMap.put("Taunt", new IMoveEffect()
+		{
+			   EventType trigger = EventType.POST_ATTACK;
+			   String name = "Taunt";
+			   String description = "The target cannot use status moves for three turns.";
+			   public EventType getEventTrigger(){return trigger;}
+			   public String getName(){return name;}
+			   public String getDescription(){return description;}
+			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
+			   { 
+				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+				  
+				  if(opponent.getLastMoveUsed() == null)
+				  {
+					  System.out.println("but it failed!");
+					  return 1;
+				  }
+				  
+				  opponent.addVolatileStatus(new StatusContainer(-1,-1,"Taunt",opponent.getLastMoveUsed()));
+				  System.out.println(opponent.getNickName()+" fell for the Taunt!");
+				  return 1;
+			   }
+			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
+			   {
+				   return 1;
+			   }
+		});
 	}
 }

@@ -82,7 +82,6 @@ public class BattleView extends JFrame implements IView{
 	private ArrayList<JButton> moveButtons;
 	private ArrayList<JButton> pokemonButtons;
 	
-	private static int musicBool;
 	
 	public BattleView(int playerID) throws HeadlessException 
 	{
@@ -147,18 +146,18 @@ public class BattleView extends JFrame implements IView{
 		// The syntax for lambda expressions [parameter names] -> { any code }
 		musicPlayerStopButton.addActionListener(e -> 
 		{
-			if(musicBool == 0)
+			if(AudioPlayer.musicBool == 0)
 			{
 				AudioPlayer.stopper = 1;
 				System.out.println("Playback forcefully stopped.");
 				musicPlayerStopButton.setText("New Song");
-				musicBool = 1;
+				AudioPlayer.musicBool = 1;
 			}
 			else
 			{
 				StartMusic();
 				musicPlayerStopButton.setText("Stop Music");
-				musicBool = 0;
+				AudioPlayer.musicBool = 0;
 			}
 		});
 		
@@ -225,7 +224,7 @@ public class BattleView extends JFrame implements IView{
 				AudioPlayer player = new AudioPlayer();
 				Random ran = new Random(); 
 		        int songID = ran.nextInt(12);
-		        musicBool = 0;
+		        AudioPlayer.musicBool = 0;
 		        String resource;
 		        if (songID == 0)
 		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();
@@ -298,6 +297,7 @@ public class BattleView extends JFrame implements IView{
 			AudioPlayer player = new AudioPlayer();
 			Random ran = new Random(); 
 	        int songID = ran.nextInt(12);
+	        AudioPlayer.stopper = 0;
 	        String resource;
 	        if (songID == 0)
 	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();

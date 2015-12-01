@@ -57,7 +57,7 @@ public class IPAddress {
 	 */
 	private void initialize() {
 		frmHello = new JFrame();
-		frmHello.setTitle("Your IP Address");
+		frmHello.setTitle("Pokémon Rush");
 		frmHello.setBounds(100, 100, 313, 141);
 		frmHello.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHello.getContentPane().setLayout(null);

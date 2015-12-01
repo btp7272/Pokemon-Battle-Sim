@@ -48,7 +48,7 @@ public class HowToPlay
 	
 	private void initialize() {
 		HTP = new JFrame();
-		HTP.setTitle("How To Play");
+		HTP.setTitle("Pokémon Rush");
 		HTP.setBounds(100, 100, 620, 508);
 		HTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

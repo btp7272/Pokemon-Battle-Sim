@@ -85,12 +85,12 @@ public class MoveEffectMap
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10 * sereneGraceMultiplier,"Burn",null));
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
-					  System.out.println(opponent.getNickName()+" was burnt with a degree of "+ 10 * sereneGraceMultiplier +"!");
+					  model.addLogItem(opponent.getNickName()+" was burnt with a degree of "+ 10 * sereneGraceMultiplier +"!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(10 * sereneGraceMultiplier, false);
-					  System.out.println(opponent.getNickName()+" was burnt more with a degree of "+ 10 * sereneGraceMultiplier +"!");
+					  model.addLogItem(opponent.getNickName()+" was burnt more with a degree of "+ 10 * sereneGraceMultiplier +"!");
 				  }
 				  
 				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
@@ -123,12 +123,12 @@ public class MoveEffectMap
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30 * sereneGraceMultiplier,"Burn",null));
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
-					  System.out.println(opponent.getNickName()+" was burnt!");
+					  model.addLogItem(opponent.getNickName()+" was burnt!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(30 * sereneGraceMultiplier, false);
-					  System.out.println(opponent.getNickName()+" was burnt more with a degree of "+ 30 * sereneGraceMultiplier +"!");
+					  model.addLogItem(opponent.getNickName()+" was burnt more with a degree of "+ 30 * sereneGraceMultiplier +"!");
 				  }
 				  
 				  return 1;
@@ -243,7 +243,7 @@ public class MoveEffectMap
 							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
 				   	}
-				   	System.out.println("It hit "+timesExecuted+" times!");
+				   	model.addLogItem("It hit "+timesExecuted+" times!");
 				  return 1;
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
@@ -267,16 +267,16 @@ public class MoveEffectMap
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.ELECTRIC)))
 					  {
 						  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxSpeed(),100,"Paralysis",null));
-						  System.out.println(opponent.getNickName()+" was paralyzed fully!");
+						  model.addLogItem(opponent.getNickName()+" was paralyzed fully!");
 					  }
 					  else if(opponent.hasNonVolatileStatus("Paralysis"))
 					  {
 						  opponent.getNonVolatileStatusContainer().addToDegree(100, false);
-						  System.out.println(opponent.getNickName()+" was paralyzed fully again!");
+						  model.addLogItem(opponent.getNickName()+" was paralyzed fully again!");
 					  }
 					  else
 					  {
-						  System.out.println("The move failed!");
+						  model.addLogItem("The move failed!");
 					  }
 					  
 				  return 1;
@@ -302,16 +302,16 @@ public class MoveEffectMap
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.FIRE)))
 					  {
 						  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),100,"Burn",null));
-						  System.out.println(opponent.getNickName()+" was burnt fully!");
+						  model.addLogItem(opponent.getNickName()+" was burnt fully!");
 					  }
 					  else if(opponent.hasNonVolatileStatus("Burn"))
 					  {
 						  opponent.getNonVolatileStatusContainer().addToDegree(100, false);
-						  System.out.println(opponent.getNickName()+" was burnt fully again!");
+						  model.addLogItem(opponent.getNickName()+" was burnt fully again!");
 					  }
 					  else
 					  {
-						  System.out.println("The move failed!");
+						  model.addLogItem("The move failed!");
 					  }
 					  
 				  return 1;
@@ -337,16 +337,16 @@ public class MoveEffectMap
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.POISON)))
 					  {
 						  opponent.setNonVolatileStatus(new StatusContainer(-1,1,"Toxic Poison",null));
-						  System.out.println(opponent.getNickName()+" was badly poisoned!");
+						  model.addLogItem(opponent.getNickName()+" was badly poisoned!");
 					  }
 					  else if(opponent.hasNonVolatileStatus("Toxic Poison"))
 					  {
 						  opponent.getNonVolatileStatusContainer().addToDegree(10, false);
-						  System.out.println(opponent.getNickName()+" was poisoned even more!");
+						  model.addLogItem(opponent.getNickName()+" was poisoned even more!");
 					  }
 					  else
 					  {
-						  System.out.println("The move failed!");
+						  model.addLogItem("The move failed!");
 					  }
 					  
 				  return 1;
@@ -557,7 +557,7 @@ public class MoveEffectMap
 			   { 
 				   if(attacker.getAtkModifier() == 6 || attacker.getHP() <= attacker.getMaxHP() / 2)
 				   {
-					   System.out.println("But it failed!");
+					   model.addLogItem("But it failed!");
 					   return 1;
 				   }
 				   
@@ -674,12 +674,12 @@ public class MoveEffectMap
 				  
 				  if(opponent.getLastMoveUsed() == null)
 				  {
-					  System.out.println("but it failed!");
+					  model.addLogItem("but it failed!");
 					  return 1;
 				  }
 				  
 				  opponent.addVolatileStatus(new StatusContainer(-1,-1,"Taunt",opponent.getLastMoveUsed()));
-				  System.out.println(opponent.getNickName()+" fell for the Taunt!");
+				  model.addLogItem(opponent.getNickName()+" fell for the Taunt!");
 				  return 1;
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)

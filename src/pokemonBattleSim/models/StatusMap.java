@@ -58,20 +58,20 @@ public class StatusMap
 							   }
 							  
 							   wielder.getVolatileStatus("Confusion").addToDegree(-25, false);
-							   System.out.println(wielder.getNickName()+" snapped a little out of confusion!");
+							   model.addLogItem(wielder.getNickName()+" snapped a little out of confusion!");
 							   if(wielder.getVolatileStatus("Confusion").getDegree() == 0)
 							   {
 								   wielder.removeVolatileStatus("Confusion");
-								   System.out.println(wielder.getNickName()+" is confused no more!");
+								   model.addLogItem(wielder.getNickName()+" is confused no more!");
 								   timer.cancel();
 							   }
 							   else if(wielder.getVolatileStatus("Confusion").getDegree() >= 60)
 							   {
-								   System.out.println(wielder.getNickName()+" will still hit itself!");
+								   model.addLogItem(wielder.getNickName()+" will still hit itself!");
 							   }
 							   else 
 							   {
-								   System.out.println(wielder.getNickName()+" will no longer hit itself!");
+								   model.addLogItem(wielder.getNickName()+" will no longer hit itself!");
 							   }
 							   return;
 						   }
@@ -93,11 +93,11 @@ public class StatusMap
 				        denomenator = 250 * wielder.getDef();
 				        damage = (numerator / denomenator) + 2;
 				        wielder.changeHP((int)damage);
-				        System.out.println(wielder.getNickName()+" hit itself in confusion!");
+				        model.addLogItem(wielder.getNickName()+" hit itself in confusion!");
 					}
 					else
 					{
-						System.out.println(wielder.getNickName()+" is too confused to attack!");
+						model.addLogItem(wielder.getNickName()+" is too confused to attack!");
 					}
 					return 1;
 				}
@@ -158,7 +158,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
-				    System.out.println(wielder.getSpeciesName()+" is prevented from healing!");
+				    model.addLogItem(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
 		});
@@ -212,7 +212,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
-				    System.out.println(wielder.getSpeciesName()+" is prevented from healing!");
+				    model.addLogItem(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
 		});
@@ -498,7 +498,7 @@ public class StatusMap
 				    }
 				    else
 				    {
-				    	System.out.println(wielder.getSpeciesName()+" protected itself!");
+				    	model.addLogItem(wielder.getSpeciesName()+" protected itself!");
 				    }
 					return 1;
 				}
@@ -549,7 +549,7 @@ public class StatusMap
 						   }
 						   
 						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   System.out.println(wielder.getNickName()+" is hurt by its burn!");
+						   model.addLogItem(wielder.getNickName()+" is hurt by its burn!");
 						   
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
@@ -557,11 +557,11 @@ public class StatusMap
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer("Healthy"));
 							   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
-							   System.out.println(wielder.getNickName()+" is burnt no more!");
+							   model.addLogItem(wielder.getNickName()+" is burnt no more!");
 							   return;
 						   }
 						   
-						   System.out.println(wielder.getNickName()+"'s burn healed a little!");
+						   model.addLogItem(wielder.getNickName()+"'s burn healed a little!");
 						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
 								   - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) 
 								   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
@@ -634,23 +634,23 @@ public class StatusMap
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   wielder.setMaxSpeed(wielder.getNonVolatileStatusContainer().getOriginalStat());
-							   System.out.println(wielder.getNickName()+" is paralyzed no more!");
+							   model.addLogItem(wielder.getNickName()+" is paralyzed no more!");
 							   return;
 						   }
 						   
 						   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
 								   - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) 
 								   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   System.out.println(wielder.getNickName()+"'s paralysis healed a little!");
+						   model.addLogItem(wielder.getNickName()+"'s paralysis healed a little!");
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() < 80)
 						   {
-							   System.out.println(wielder.getNickName()+" is able to break through its paralysis!");
+							   model.addLogItem(wielder.getNickName()+" is able to break through its paralysis!");
 							   return;
 						   }
 						   else if(wielder.getNonVolatileStatusContainer().getDegree() >= 80)
 						   {
-							   System.out.println(wielder.getNickName()+" is still too paralyzed to attack!");
+							   model.addLogItem(wielder.getNickName()+" is still too paralyzed to attack!");
 							   return;
 						   }
 						   
@@ -719,18 +719,18 @@ public class StatusMap
 						   }
 						   
 						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   System.out.println(wielder.getNickName()+" was hurt by poison!");
+						   model.addLogItem(wielder.getNickName()+" was hurt by poison!");
 						   
 						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
-							   System.out.println(wielder.getNickName()+" is no longer poisoned!");
+							   model.addLogItem(wielder.getNickName()+" is no longer poisoned!");
 							   return;
 						   }
 						   
-						   System.out.println(wielder.getNickName()+"'s poisoning healed a little!");
+						   model.addLogItem(wielder.getNickName()+"'s poisoning healed a little!");
 						   return;
 					   }
 				   }
@@ -788,8 +788,8 @@ public class StatusMap
 						   
 						   wielder.changeHP((int)( ((double)(wielder.getMaxHP()/2)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   wielder.getNonVolatileStatusContainer().addToDegree(5, false);
-						   System.out.println(wielder.getNickName()+" was hurt by poison!");
-						   System.out.println(wielder.getNickName()+"'s poisoning got worse!");
+						   model.addLogItem(wielder.getNickName()+" was hurt by poison!");
+						   model.addLogItem(wielder.getNickName()+"'s poisoning got worse!");
 						   return;
 					   }
 				   }
@@ -842,23 +842,23 @@ public class StatusMap
 						   }
 						   
 						   wielder.getNonVolatileStatusContainer().addToDegree(-5, false);
-						   System.out.println(wielder.getNickName()+" thawed a little!");
+						   model.addLogItem(wielder.getNickName()+" thawed a little!");
 						   
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
-							   System.out.println(wielder.getNickName()+" is completely thawed!");
+							   model.addLogItem(wielder.getNickName()+" is completely thawed!");
 							   return;
 						   }
 						   else if(wielder.getNonVolatileStatusContainer().getDegree() < 50)
 						   {
-							   System.out.println(wielder.getNickName()+" is thawed enough to attack!");
+							   model.addLogItem(wielder.getNickName()+" is thawed enough to attack!");
 							   return;
 						   }
 						   else if(wielder.getNonVolatileStatusContainer().getDegree() >= 50)
 						   {
-							   System.out.println(wielder.getNickName()+" is too frozen to attack!");
+							   model.addLogItem(wielder.getNickName()+" is too frozen to attack!");
 							   return;
 						   }
 						   return;
@@ -870,7 +870,7 @@ public class StatusMap
 					   TimerTask task = new SetTimer();
 				   	   timer.schedule(task, 10000, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
-				   	   System.out.println(wielder.getNickName()+" is frozen!");
+				   	   model.addLogItem(wielder.getNickName()+" is frozen!");
 				   }
 
 				   return 1;
@@ -897,7 +897,7 @@ public class StatusMap
 					   {
 						   timer.cancel();
 						   wielder.removeVolatileStatus("Taunt");
-						   System.out.println(wielder.getNickName()+" Taunt ended!");
+						   model.addLogItem(wielder.getNickName()+" Taunt ended!");
 						   return;
 					   }
 			     	}
@@ -938,7 +938,7 @@ public class StatusMap
 					{
 						if(moveUsed.getCategory() == Attribute.STATUS)
 						{
-							System.out.println(wielder.getNickName()+" can't use "+moveUsed.getName()+" after the taunt!");
+							model.addLogItem(wielder.getNickName()+" can't use "+moveUsed.getName()+" after the taunt!");
 						}
 						else
 						{

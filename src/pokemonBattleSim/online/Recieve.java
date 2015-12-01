@@ -83,8 +83,7 @@ public class Recieve
 		try
 		{
 			while(read == null)
-				read = Test.accept();
-			Test.close();
+			read = Test.accept();
 		}
 		catch (IOException e)
 		{

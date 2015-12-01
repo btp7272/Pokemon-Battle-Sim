@@ -87,13 +87,14 @@ public class IPAddress {
 				TeamBuilderView.startTeam();
 			}
 		});
-		Socket socket = Recieve.createSocket(Recieve.IP);
+
 		Timer timer = new Timer();
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
 	 	    public void run()
 	 	    {
+	 			Socket socket = Recieve.createSocket(Recieve.IP);
 	 		    try 
 	 		    {
 					if(Recieve.getTestConnection(socket).equals("Test 1 Valid"))

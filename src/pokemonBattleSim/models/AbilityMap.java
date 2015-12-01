@@ -20,10 +20,6 @@ public class AbilityMap
 	public static Map < String, IAbility > abilityMap = new HashMap<>();
 	public static int[] statChangeQueue = new int[5];
 	private static IBattleModel model = BattleModel.getInstance();
-	{
-		if(Send.Online == true)
-			model = OnlineBattleModel.getInstance();
-	}
 	public enum Stat
 	{
 		ATTACK(0),

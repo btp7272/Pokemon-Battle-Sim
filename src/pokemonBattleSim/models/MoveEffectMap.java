@@ -23,10 +23,6 @@ public class MoveEffectMap
 {
 	public static Map < String, IMoveEffect > effectMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
-	{
-		if(Send.Online == true)
-			model = OnlineBattleModel.getInstance();
-	}
 	public static int sereneGraceMultiplier = 1;
 	
 	

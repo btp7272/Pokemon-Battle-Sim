@@ -14,10 +14,6 @@ public class ItemMap
 {
 	public static Map < String, IItem > itemMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
-	{
-		if(Send.Online == true)
-			model = OnlineBattleModel.getInstance();
-	}
 	
 	static
 	{

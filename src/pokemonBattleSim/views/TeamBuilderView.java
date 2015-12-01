@@ -18,6 +18,7 @@ import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Nature;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
+import pokemonBattleSim.types.Species;
 import pokemonBattleSim.types.StatusContainer;
 import pokemonBattleSim.controllers.AIController;
 import pokemonBattleSim.controllers.BattleController;
@@ -32,6 +33,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -44,7 +46,7 @@ import pokemonBattleSim.types.Gender;
 public class TeamBuilderView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField p1_species;
+	private JComboBox p1_species;
 	private JTextField p1_nickname;
 	private JSpinner p1_hp_iv;
 	private JSpinner p1_atk_iv;
@@ -210,8 +212,16 @@ public class TeamBuilderView extends JFrame {
 		label_7.setBounds(5, 55, 100, 25);
 		contentPane.add(label_7);
 		
-		p1_species = new JTextField(30);
-		p1_species.setToolTipText("Pokemon");
+		p1_species = new JComboBox(new Object[]{});
+		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
+		int i = 0;
+		for(Species poke : SpeciesMap.speciesMap.values())
+		{
+			speciesList[i] = poke.getName();
+			i++;
+		}
+		Arrays.sort(speciesList);
+		p1_species.setModel(new DefaultComboBoxModel(speciesList));
 		p1_species.setBounds(90, 25, 100, 25);
 		contentPane.add(p1_species);
 		
@@ -1045,7 +1055,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p1_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p1_move4.getSelectedItem()));
 				
-				species = p1_species.getText();
+				species = p1_species.getSelectedItem().toString();
 				nickname = p1_nickname.getText();
 				item = (String)p1_item.getSelectedItem();
 				ability = (String)p1_ability.getSelectedItem();
@@ -1453,6 +1463,9 @@ public class TeamBuilderView extends JFrame {
         	}
         });
 		contentPane.add(btnFinalize);
+		
+		
+		
 		
 		btnTest = new JButton("Test");
 		btnTest.addActionListener(new ActionListener() {

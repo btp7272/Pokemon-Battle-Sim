@@ -79,17 +79,25 @@ public class MoveEffectMap
 				  }
 				  
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
+				  System.out.println("FLAG1");
 				  
 				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
 				  {
+					  System.out.println("FLAG5");
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),10 * sereneGraceMultiplier,"Burn",null));
+					  System.out.println("FLAG6");
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
+					  System.out.println("FLAG7");
 					  model.addLogItem(opponent.getNickName()+" was burnt with a degree of "+ 10 * sereneGraceMultiplier +"!");
+					  System.out.println("FLAG8");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
+					  System.out.println("FLAG2");
 					  opponent.getNonVolatileStatusContainer().addToDegree(10 * sereneGraceMultiplier, false);
+					  System.out.println("FLAG3");
 					  model.addLogItem(opponent.getNickName()+" was burnt more !");
+					  System.out.println("FLAG4");
 				  }
 				  
 				  return 1;

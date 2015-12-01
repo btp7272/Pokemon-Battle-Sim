@@ -116,7 +116,7 @@ public class OnlineBattleModel implements IBattleModel
 	public void Listen()
 	{
 		Timer timer = new Timer();
-		Server = Recieve.CreateServer();
+		//Server = Recieve.CreateServer();
 		socket = Recieve.createSocket(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {

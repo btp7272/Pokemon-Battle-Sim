@@ -13,8 +13,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import javax.swing.JScrollPane;
 import java.awt.TextArea;
+
+import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
 
 public class HowToPlay 
 {
@@ -45,10 +53,13 @@ public class HowToPlay
 	
 	private void initialize() {
 		HTP = new JFrame();
+
 		HTP.setTitle("How To Play");
 		HTP.setBounds(100, 100, 709, 750);
+
+		HTP.setTitle("Pokémon Rush");
+		HTP.setBounds(100, 100, 620, 508);
 		HTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		HTP.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -57,6 +68,7 @@ public class HowToPlay
 				HTP.setVisible(false);
 			}
 		});
+
 		btnNewButton.setBounds(614, 699, 89, 23);
 		HTP.getContentPane().add(btnNewButton);
 		

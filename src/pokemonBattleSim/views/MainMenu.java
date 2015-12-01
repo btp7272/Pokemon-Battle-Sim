@@ -48,7 +48,7 @@ public class MainMenu extends JFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public void StartMainMusic()
+	public static void StartMainMusic()
 	{
 	new Thread() {
 		@Override

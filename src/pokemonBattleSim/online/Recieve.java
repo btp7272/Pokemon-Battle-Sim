@@ -63,18 +63,9 @@ public class Recieve
 	    }
 	}
 
-	public static ServerSocket CreateServer()
+	public static ServerSocket CreateServer() throws IOException
 	{
-		ServerSocket Server = null;
-		try 
-        {
-           Server = new ServerSocket(6943);
-        }
-        catch (IOException e) 
-        {
-           System.out.println(e);
-        }
-		return Server;
+		return new ServerSocket(6943);
 	}
 	
 	public static String getTestConnection(Socket read) throws IOException, ClassNotFoundException

@@ -58,7 +58,7 @@ public class Connect {
 	 */
 	private void initialize() {
 		frmConnect = new JFrame();
-		frmConnect.setTitle("Connect");
+		frmConnect.setTitle("Pokémon Rush");
 		frmConnect.setBounds(100, 100, 506, 137);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();

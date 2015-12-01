@@ -51,7 +51,7 @@ public class Credits {
 	 */
 	private void initialize() {
 		Credits = new JFrame();
-		Credits.setTitle("Credits");
+		Credits.setTitle("Pokémon Rush");
 		Credits.setBounds(100, 100, 560, 538);
 		Credits.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Credits.getContentPane().setLayout(null);

@@ -77,12 +77,14 @@ public class Recieve
 		return Server;
 	}
 	
-	public static String getTestConnection(ServerSocket Server, Socket read) throws IOException, ClassNotFoundException
+	public static String getTestConnection(Socket read) throws IOException, ClassNotFoundException
 	{
+		ServerSocket Test = Recieve.CreateServer();
 		try
 		{
 			while(read == null)
-				read = Server.accept();
+				read = Test.accept();
+				Test.close();
 		}
 		catch (IOException e)
 		{
@@ -92,6 +94,7 @@ public class Recieve
 		try 
 		{
 			inpu = new DataInputStream(read.getInputStream());
+			read.close();
 		} 
 		catch (IOException e) 
 		{
@@ -110,7 +113,7 @@ public class Recieve
 		}
 		if(s.equals("TEST"))
 		{
-			Send.testConnectionHandshake(IP = Server.getInetAddress().getHostAddress());
+			Send.testConnectionHandshake(IP = Test.getInetAddress().getHostAddress());
 			System.out.println("Test 1 Valid");
 			return "Test 1 Valid";
 		}

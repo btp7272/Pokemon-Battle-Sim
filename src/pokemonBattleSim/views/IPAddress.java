@@ -87,9 +87,8 @@ public class IPAddress {
 				TeamBuilderView.startTeam();
 			}
 		});
-		ServerSocket Test = Recieve.CreateServer();
+		Socket socket = Recieve.createSocket(Recieve.IP);
 		Timer timer = new Timer();
-		Socket testSocket = Recieve.createSocket(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
@@ -97,12 +96,10 @@ public class IPAddress {
 	 	    {
 	 		    try 
 	 		    {
-					if(Recieve.getTestConnection(Test, testSocket).equals("Test 1 Valid"))
+					if(Recieve.getTestConnection(socket).equals("Test 1 Valid"))
 					{
 						btnNewButton_1.setText("Connection Recieved!");
 						btnNewButton_1.setEnabled(true);
-						Recieve.CloseServer(Test);
-						Recieve.closeSocket(testSocket);
 					}
 				} 
 	 		    catch (ClassNotFoundException e) 

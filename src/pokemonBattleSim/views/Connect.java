@@ -94,7 +94,6 @@ public class Connect {
 				{
 					Send.IPAddress = IPAddress.getText();
 					Send.testConnection(IPAddress.getText());
-					ServerSocket server = Recieve.CreateServer();
 					Timer timer = new Timer();
 					Socket socket = Recieve.createSocket(IPAddress.getText());
 				    class SetTimer extends TimerTask
@@ -106,12 +105,10 @@ public class Connect {
 				 	    	{
 					 		    try 
 					 		    {
-									if(Recieve.getTestConnection(server,socket).equals("HandShake Complete"))
+									if(Recieve.getTestConnection(socket).equals("HandShake Complete"))
 									{
 										btnBuildYourTeam.setVisible(true);
 										lblConnectionSuccessful.setVisible(true);
-										server.close();
-										socket.close();
 										break;
 									}
 								}

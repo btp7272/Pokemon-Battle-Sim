@@ -101,6 +101,7 @@ public class BattleModel implements IBattleModel {
 	public void addLogItem (String item)
 	{
 		if (item != null) log.push(item + "\n");
+		notifyView();
 	}
 		
 	/**

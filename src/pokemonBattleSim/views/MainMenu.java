@@ -10,6 +10,9 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -54,10 +57,15 @@ public class MainMenu extends JFrame {
 		@Override
 		public void run() {
 			AudioPlayer player = new AudioPlayer();
-	        String resource;
-	        resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/JohtoRoute47.wav").getFile();
-			System.out.println(resource);
-			player.play(resource);
+	        URL resource = null;
+	        System.err.println("Loading File");
+	        resource = getClass().getResource("/pokemonBattleSim/resources/soundtrack/JohtoRoute47.wav");
+	        if (resource != null){
+	        	player.play(resource);
+	        } else 
+	        {
+	        	System.err.println("Null File");
+	        }
 		}
 	}.start();
 	}

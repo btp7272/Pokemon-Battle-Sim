@@ -38,6 +38,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -212,9 +215,9 @@ public class TeamBuilderView extends JFrame {
 		@Override
 		public void run() {
 			AudioPlayer player = new AudioPlayer();
-	        String resource;
-	        resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYAnistarCity.wav").getFile();
-			System.out.println(resource);
+	        URL resource = null;
+	        resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYAnistarCity.wav");	       
+	        if (resource != null)
 			player.play(resource);
 		}
 	}.start();

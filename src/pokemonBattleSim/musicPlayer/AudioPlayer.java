@@ -2,7 +2,9 @@ package pokemonBattleSim.musicPlayer;
 
 import java.io.File;
 import java.io.IOException;
- 
+import java.io.InputStream;
+import java.net.URL;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -29,11 +31,13 @@ public static int musicBool;
      * Play a given audio file.
      * @param audioFilePath Path of the audio file.
      */
-    public void play(String audioFilePath) {
-        File audioFile = new File(audioFilePath);
+    public void play(URL audioFilePath) {
+    	//audioFilePath = audioFilePath.toLowerCase();
+    	System.err.println(audioFilePath);
+        //File audioFile = new File(audioFilePath);
         try {
         	stopper = 0;
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFilePath);
             AudioFormat format = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
             SourceDataLine audioLine = (SourceDataLine) AudioSystem.getLine(info);

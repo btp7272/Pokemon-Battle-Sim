@@ -11,6 +11,9 @@ import java.awt.HeadlessException;
 import java.awt.TextArea;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 
 //import java.util.ArrayList;
@@ -225,32 +228,33 @@ public class BattleView extends JFrame implements IView{
 				Random ran = new Random(); 
 		        int songID = ran.nextInt(12);
 		        AudioPlayer.musicBool = 0;
-		        String resource;
+		        URL resource = null;
 		        if (songID == 0)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav");
 		        else if (songID == 1)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrainV2.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrainV2.wav");
 		        else if (songID == 2)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav");
 		        else if (songID == 3)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav");
 		        else if (songID == 4)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav");
 		        else if (songID == 5)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav");
 		        else if (songID == 6)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav");
 		        else if (songID == 7)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/SilphCo.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/SilphCo.wav");
 		        else if (songID == 8)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav");
 		        else if (songID == 9)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamPlasma.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamPlasma.wav");
 		        else if (songID == 10)
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYKantoWildBattleCut.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYKantoWildBattleCut.wav");
 		        else //songID is 11
-		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav").getFile();
+		        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav");
 				System.out.println(resource);
+		        if (resource != null)
 				player.play(resource);
 			}
 		}.start();
@@ -299,32 +303,33 @@ public class BattleView extends JFrame implements IView{
 			Random ran = new Random(); 
 	        int songID = ran.nextInt(12);
 	        AudioPlayer.stopper = 0;
-	        String resource;
+	        URL resource = null;
 	        if (songID == 0)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/DiamondAndPearlCyrusBattleCut.wav");
 	        else if (songID == 1)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrainV2.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennBattleFrontierBrainV2.wav");
 	        else if (songID == 2)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/HoennWeatherTrioV2Cut.wav");
 	        else if (songID == 3)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MtPyreSummit.wav");
 	        else if (songID == 4)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonAegisCave.wav");
 	        else if (songID == 5)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/MysteryDungeonHiddenHighland.wav");
 	        else if (songID == 6)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/ShoalCaveV2.wav");
 	        else if (songID == 7)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/SilphCo.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/SilphCo.wav");
 	        else if (songID == 8)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamMagmaAndAquaBossBattleV2.wav");
 	        else if (songID == 9)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamPlasma.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/TeamPlasma.wav");
 	        else if (songID == 10)
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYKantoWildBattleCut.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYKantoWildBattleCut.wav");
 	        else //songID is 11
-	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav").getFile();
+	        	resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYSnowbelleCity.wav");
 			System.out.println(resource);
+	        if (resource != null)
 			player.play(resource);
 		}
 	}.start();
@@ -401,12 +406,17 @@ public class BattleView extends JFrame implements IView{
 			resource = resource.substring(7);
 			resource = resource.concat("-primal");
 		}
-		playerOnePokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
+
+		resource = resource.toLowerCase();
+		URL imageUrl = getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif");
+		System.err.println(resource + ": " + imageUrl);
+		playerOnePokemonDisplayImage = new ImageIcon(imageUrl);
 		playerOnePokemonDisplayLabel.setIcon(playerOnePokemonDisplayImage);
 	}
 	
 	public void setPlayerTwoPokemonDisplayImage(String resource)
 	{
+		//resource = resource.toLowerCase();
 		//resource = "Pikachu";
 		if(resource.contains("Mega ") && ( resource.contains(" Y") || resource.contains(" X") ))
 		{
@@ -439,7 +449,10 @@ public class BattleView extends JFrame implements IView{
 			resource = resource.substring(7);
 			resource = resource.concat("-primal");
 		}
-		playerTwoPokemonDisplayImage = new ImageIcon(this.getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif"));
+		resource = resource.toLowerCase();
+		URL imageUrl = getClass().getResource("/pokemonBattleSim/resources/images/"+resource+".gif");
+		System.err.println(resource + ": " + imageUrl);
+		playerTwoPokemonDisplayImage = new ImageIcon(imageUrl);
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 	}
 	

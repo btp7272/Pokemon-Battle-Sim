@@ -109,6 +109,7 @@ public class Connect {
 									{
 										btnBuildYourTeam.setVisible(true);
 										lblConnectionSuccessful.setVisible(true);
+										socket.close();
 										break;
 									}
 								}

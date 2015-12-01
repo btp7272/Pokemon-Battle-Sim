@@ -84,7 +84,7 @@ public class Recieve
 		{
 			while(read == null)
 				read = Test.accept();
-				Test.close();
+			Test.close();
 		}
 		catch (IOException e)
 		{
@@ -94,7 +94,6 @@ public class Recieve
 		try 
 		{
 			inpu = new DataInputStream(read.getInputStream());
-			read.close();
 		} 
 		catch (IOException e) 
 		{

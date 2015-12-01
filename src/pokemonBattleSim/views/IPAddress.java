@@ -100,6 +100,7 @@ public class IPAddress {
 					{
 						btnNewButton_1.setText("Connection Recieved!");
 						btnNewButton_1.setEnabled(true);
+						socket.close();
 					}
 				} 
 	 		    catch (ClassNotFoundException e) 

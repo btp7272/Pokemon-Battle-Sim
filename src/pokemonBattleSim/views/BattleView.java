@@ -285,8 +285,6 @@ public class BattleView extends JFrame implements IView{
 			else
 				message = "Game Over\nLOSER!!";
 			this.displayPopupMessage(message);
-			AudioPlayer.stopper = 1;
-			MainMenu.startup();
 			this.setVisible(false);
 		}
 		repaint();

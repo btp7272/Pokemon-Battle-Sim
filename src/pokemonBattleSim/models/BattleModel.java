@@ -1,6 +1,7 @@
 package pokemonBattleSim.models;
 
 import pokemonBattleSim.formulas.Formula;
+import pokemonBattleSim.musicPlayer.AudioPlayer;
 import pokemonBattleSim.types.Attribute;
 import pokemonBattleSim.types.Event;
 import pokemonBattleSim.types.EventType;
@@ -11,6 +12,7 @@ import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.Weather;
 import pokemonBattleSim.views.IView;
+import pokemonBattleSim.views.MainMenu;
 
 import static pokemonBattleSim.formulas.Formula.*;
 
@@ -656,6 +658,18 @@ public class BattleModel implements IBattleModel {
 			}
 			if (availablePokemon == 0)
 			{
+				AudioPlayer.stopper = 1;
+				AudioPlayer.musicBool = 1;
+				try
+				{
+					Thread.sleep(500);
+				}
+				catch (InterruptedException e)
+				{
+					System.err.println(e);
+				}
+				MainMenu.startup();
+				MainMenu.StartMainMusic();
 				gameover();
 			}
 		}
@@ -675,6 +689,18 @@ public class BattleModel implements IBattleModel {
 			}
 			if (availablePokemon == 0)
 			{
+				AudioPlayer.stopper = 1;
+				AudioPlayer.musicBool = 1;
+				try
+				{
+					Thread.sleep(500);
+				}
+				catch (InterruptedException e)
+				{
+					System.err.println(e);
+				}
+				MainMenu.startup();
+				MainMenu.StartMainMusic();
 				gameover();
 			}
 		}

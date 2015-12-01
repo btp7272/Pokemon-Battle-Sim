@@ -278,7 +278,15 @@ public class BattleView extends JFrame implements IView{
 		this.setPokemonButtonData(model);
 		this.setLogAreaData(model.getLogData(), 7);
 		
-		if (model.isGameover()) this.displayPopupMessage("GAME OVER");
+		if (model.isGameover()) 	
+		{
+			String message = "";
+			if (model.getPlayerAvailablePokemon(playerID).contains(true))
+				message = "Game Over\nYOU WIN!!";
+			else
+				message = "Game Over\nLOSER!!";
+			this.displayPopupMessage(message);
+		}
 		repaint();
 	}
 	

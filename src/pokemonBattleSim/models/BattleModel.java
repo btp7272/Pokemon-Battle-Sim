@@ -98,6 +98,11 @@ public class BattleModel implements IBattleModel {
 		timer.schedule(new DelayTask(playerTwo), 0);
 	}
 	
+	public void addLogItem (String item)
+	{
+		if (item != null) log.push(item + "\n");
+	}
+		
 	/**
 	 * will run when game ends automatically, clean up resources
 	 */
@@ -700,7 +705,7 @@ public class BattleModel implements IBattleModel {
 			this.id = id;
 			this.activePeriod = activePeriod;
 			this.inactivePeriod = inactivePeriod;
-			this.valid = true;
+			this.valid = true; 
 		}
 	
 		public final int getID ()
@@ -826,6 +831,7 @@ public class BattleModel implements IBattleModel {
 				if (playerOneActive || playerTwoActive){
 					//System.out.println("[Executing SWAP] source: " + playerOneActive + " target: " + playerTwoActive + " result: failed");
 					System.out.println("busy");
+					addLogItem("Can't swap while being attacked!");
 					return;
 				}
 				System.out.println("[Executing SWAP] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " result: swapped to " + swapIndex);
@@ -838,11 +844,13 @@ public class BattleModel implements IBattleModel {
 				if (this.source.getTrainerID() == playerOne.getTrainerID())
 				{
 					playerOneTasks.clear();
+					log.push("Player One swapped " + playerOne.getActiveTeamMember().getNickName() + " with " + playerOne.getPokemonTeamMember(swapIndex).getNickName() + "\n");
 					response = playerOne.setActiveTeamMember(swapIndex);
 				}
 				else if (this.source.getTrainerID() == playerTwo.getTrainerID())
 				{
 					playerTwoTasks.clear();
+					log.push("Player Two swapped " + playerTwo.getActiveTeamMember().getNickName() + " with " + playerTwo.getPokemonTeamMember(swapIndex).getNickName() + "\n");
 					response = playerTwo.setActiveTeamMember(swapIndex);
 				}
 				if (response == false)

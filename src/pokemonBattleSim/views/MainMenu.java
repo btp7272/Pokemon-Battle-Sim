@@ -66,7 +66,7 @@ public class MainMenu extends JFrame {
 		
 		frmPokemonBattleSim = new JFrame();
 		frmPokemonBattleSim.setTitle("Pok\u00E9mon Rush");
-		frmPokemonBattleSim.setBounds(100, 100, 399, 444);
+		frmPokemonBattleSim.setBounds(100, 100, 399, 522);
 		frmPokemonBattleSim.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPokemonBattleSim.getContentPane().setLayout(null);
 		if(AudioPlayer.musicBool == 0)
@@ -150,7 +150,7 @@ public class MainMenu extends JFrame {
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Credits");
-		btnNewButton_4.setBounds(86, 328, 204, 65);
+		btnNewButton_4.setBounds(86, 406, 204, 65);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Credits ncrd = new Credits();
@@ -165,5 +165,16 @@ public class MainMenu extends JFrame {
 		lblPokemonBattleSim.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblPokemonBattleSim.setBounds(86, 45, 287, 37);
 		frmPokemonBattleSim.getContentPane().add(lblPokemonBattleSim);
+		
+		JButton btnHowToPlay = new JButton("How To Play");
+		btnHowToPlay.setBounds(86, 329, 204, 65);
+		btnHowToPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				HowToPlay htp = new HowToPlay();
+				htp.NewHTP();
+				frmPokemonBattleSim.setVisible(false);
+			}
+		});
+		frmPokemonBattleSim.getContentPane().add(btnHowToPlay);
 	}
 }

@@ -16,6 +16,7 @@ public interface IBattleModel {
 	public boolean DeregisterAction ( int playerID, int index );
 	
 	// Methods for View: Data Retrieval
+	public void addLogItem (String item);
 	public ArrayList<Boolean> getPlayerAvailablePokemon ( int playerID );
 	public ArrayList<Boolean> getOpponentAvailablePokemon ( int playerID );
 	public String getPlayerPokemonSpeciesName ( int playerID, int index );

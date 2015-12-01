@@ -98,7 +98,7 @@ public class BattleModel implements IBattleModel {
 		timer.schedule(new DelayTask(playerTwo), 0);
 	}
 	
-	public void addLogItem (String item)
+	public synchronized void addLogItem (String item)
 	{
 		if (item != null) log.push(item + "\n");
 		notifyView();
@@ -133,7 +133,7 @@ public class BattleModel implements IBattleModel {
 	 * @return a Stack of 5 elements or fewer
 	 */
 	@Override
-	public Iterable<String> getLogData ()
+	public synchronized Iterable<String> getLogData ()
 	{
 		Deque<String> output = new ArrayDeque<>();
 		synchronized (log)

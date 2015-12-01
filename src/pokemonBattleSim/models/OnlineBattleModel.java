@@ -179,6 +179,11 @@ public class OnlineBattleModel implements IBattleModel
 	    timer.schedule(task, 0, 5);
 	    return;
 	}
+	public synchronized void addLogItem (String item)
+	{
+		if (item != null) log.push(item + "\n");
+		notifyView();
+	}
 	
 	/**
 	 * will run when game ends automatically, clean up resources

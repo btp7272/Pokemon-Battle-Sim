@@ -1,6 +1,8 @@
 package pokemonBattleSim.online;
 
-public class instructionPacket {
+import java.io.Serializable;
+
+public class instructionPacket implements Serializable {
 	static String IPAddress=null;
 	static String instruction=null;
 	static Object object=null;

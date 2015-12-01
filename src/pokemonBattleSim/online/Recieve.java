@@ -39,11 +39,10 @@ public class Recieve
 
 	public static Socket createSocket(String IP)
 	{
-		byte [] b = IP.getBytes();
 		Socket Server = null;
 		try 
         {
-           Server = new Socket(InetAddress.getByAddress(b), 6943);
+           Server = new Socket(IP, 6943);
         }
         catch (IOException e) 
         {

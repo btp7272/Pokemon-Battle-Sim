@@ -14,10 +14,9 @@ public class Send implements Serializable
     
 	public static Socket createSocket(String ip)
 	{
-		byte [] b = ip.getBytes();
 		try 
 		{
-            sock = new Socket(InetAddress.getByName(ip), 6943);
+            sock = new Socket(ip, 6943);
         } 
 		catch (UnknownHostException e) 
 		{

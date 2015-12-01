@@ -102,6 +102,11 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) 
 			{
 				AudioPlayer.stopper = 1;
+				try {
+					Thread.sleep(500);
+				}catch (InterruptedException f){
+					f.printStackTrace();
+				}
 				System.out.println("Playback forcefully stopped.");
 				btnNewButton_1.setText("Restart Music");
 				AudioPlayer.musicBool = 0;
@@ -119,10 +124,6 @@ public class MainMenu extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				AudioPlayer.stopper = 1;
-				System.out.println("Playback forcefully stopped.");
-				btnNewButton_1.setText("Restart Music");
-				AudioPlayer.musicBool = 0;
 				Send.Online = true;
 				IPAddress na = new IPAddress();
 				na.NewAddress();
@@ -138,10 +139,6 @@ public class MainMenu extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				AudioPlayer.stopper = 1;
-				System.out.println("Playback forcefully stopped.");
-				btnNewButton_1.setText("Restart Music");
-				AudioPlayer.musicBool = 0;
 				Send.Online = true;
 				Connect nc = new Connect();
 				nc.NewConnection();

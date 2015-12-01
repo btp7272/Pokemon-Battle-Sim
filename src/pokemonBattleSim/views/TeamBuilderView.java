@@ -14,6 +14,7 @@ import pokemonBattleSim.models.SpeciesMap;
 import pokemonBattleSim.models.AbilityMap;
 import pokemonBattleSim.models.ItemMap;
 import pokemonBattleSim.models.TeamBuilderModel;
+import pokemonBattleSim.musicPlayer.AudioPlayer;
 import pokemonBattleSim.types.AbilityContainer;
 import pokemonBattleSim.types.IPokemonTrainer;
 import pokemonBattleSim.types.ItemContainer;
@@ -203,11 +204,37 @@ public class TeamBuilderView extends JFrame {
 			}
 		});
 	}
+	
+	public void StartBuilderMusic()
+	{
+	new Thread() {
+		@Override
+		public void run() {
+			AudioPlayer player = new AudioPlayer();
+	        String resource;
+	        resource = this.getClass().getResource("/pokemonBattleSim/resources/soundtrack/XAndYAnistarCity.wav").getFile();
+			System.out.println(resource);
+			player.play(resource);
+		}
+	}.start();
+	}
+
 	/**
 	 * Create the frame.
 	 */
 	public TeamBuilderView() {
-	
+		
+		//stops team builder music
+		AudioPlayer.stopper = 1;
+		AudioPlayer.musicBool = 0;
+		try {
+			Thread.sleep(500);
+		}catch (InterruptedException f){
+			f.printStackTrace();
+		}
+		StartBuilderMusic();
+		AudioPlayer.musicBool = 1;
+		
 		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
 		int i = 0;
 		for(String poke : SpeciesMap.speciesMap.keySet())
@@ -1077,6 +1104,7 @@ public class TeamBuilderView extends JFrame {
         {
         	public void actionPerformed(ActionEvent e)
         	{
+        		
         		if(!testValidity())
         			return;
         		// This is the main entry point to the program, will use other classes
@@ -1539,6 +1567,16 @@ public class TeamBuilderView extends JFrame {
 		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				//stops team builder music
+				AudioPlayer.stopper = 1;
+				try {
+					Thread.sleep(500);
+				}catch (InterruptedException f){
+					f.printStackTrace();
+				}
+				AudioPlayer.musicBool = 0;
+
+				
 				// This is the main entry point to the program, will use other classes
 				Object owner = new Object(); //may need to be static?
 				IPokemonTrainer player;
@@ -1654,12 +1692,39 @@ public class TeamBuilderView extends JFrame {
 		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				AudioPlayer.stopper = 1;
+				try {
+					Thread.sleep(500);
+				}catch (InterruptedException f){
+					f.printStackTrace();
+				}
+				AudioPlayer.musicBool = 0;
 				MainMenu.startup();
 				closeFrame();
 			}
 		});
 		btnCancel.setBounds(740, 740, 100, 25);
 		contentPane.add(btnCancel);
+		
+		JButton btnNewButton = new JButton("Music/OFF");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (AudioPlayer.musicBool == 1)
+				{
+					AudioPlayer.stopper = 1;
+					System.out.println("Playback forcefully stopped.");
+					AudioPlayer.musicBool = 0;
+				}
+				else
+				{
+					AudioPlayer.stopper = 0;
+					AudioPlayer.musicBool = 1;
+					StartBuilderMusic();		
+				}
+			}
+		});
+		btnNewButton.setBounds(220, 739, 100, 27);
+		contentPane.add(btnNewButton);
 	}
 	
 	private void closeFrame()
@@ -2210,6 +2275,8 @@ public class TeamBuilderView extends JFrame {
 		else
 			return true;
 	}
+	
+	
 	public boolean testValidity()
 	{
 		if(checkPokemon())

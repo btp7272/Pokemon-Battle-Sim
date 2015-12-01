@@ -41,6 +41,7 @@ public class AbilityMap
 	
 	static
 	{
+		    //if (model == null) model = Battleif (model == null) model = BattleModel.getInstance(); model.getInstance();
 			abilityMap.put("Intimidate", new IAbility()
 			{
 				   EventType trigger = EventType.ENTRY;
@@ -51,7 +52,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
 				   { 
-					   model.addLogItem(wielder.getNickName() + "'s Intimidate");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Intimidate");
 					   statChangeQueue[Stat.ATTACK.getMask()] = -1;
 					   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,opponent,wielder,field,attacker,defender,moveUsed))
 					   {
@@ -77,7 +78,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   model.addLogItem(wielder.getNickName() + "'s Simple");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Simple");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
 						   wielder.changeAtk(2 * statChangeQueue[Stat.ATTACK.getMask()]);
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] != 0)
@@ -133,8 +134,8 @@ public class AbilityMap
 					   
 					   if(negativeAttempt)
 					   {
-						   model.addLogItem(wielder.getNickName() + "'s Clear Body");
-						   model.addLogItem(opponent.getNickName() + "'s Clear Body prevented negative stat changes");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Clear Body");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(opponent.getNickName() + "'s Clear Body prevented negative stat changes");
 					   }
 					   return 1;
 				   }
@@ -150,7 +151,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   model.addLogItem(wielder.getNickName() + "'s Contrary");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Contrary");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
 						   wielder.changeAtk(- statChangeQueue[Stat.ATTACK.getMask()]);
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] != 0)
@@ -188,7 +189,7 @@ public class AbilityMap
 			   		 else if(field.getWeather() == Weather.INTENSE_SUN_NO_EFFECT)
 			   			 return 1;
 					 
-					 model.addLogItem(wielder.getNickName() + "'s Drizzle");
+					 if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Drizzle");
 					 if(opponent.getAbility().getName().equals("Cloud Nine"))
 						 field.setWeather(Weather.RAIN_NO_EFFECT);
 					 else
@@ -219,8 +220,8 @@ public class AbilityMap
 						   return 1;
 					   else if(field.getWeather() == Weather.INTENSE_SUN_NO_EFFECT)
 						   return 1;
-					   
-					   model.addLogItem(wielder.getNickName() + "'s Drought");
+
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Drought");
 					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.SUN_NO_EFFECT);
 						 else
@@ -244,7 +245,7 @@ public class AbilityMap
 					   else if(field.getWeather() == Weather.INTENSE_SUN_NO_EFFECT)
 						   return 1;
 					   
-					   model.addLogItem(wielder.getNickName() + "'s Desolate Land");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Desolate Land");
 					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.INTENSE_SUN_NO_EFFECT);
 						 else
@@ -268,7 +269,7 @@ public class AbilityMap
 					   else if(field.getWeather() == Weather.HEAVY_RAIN_NO_EFFECT)
 						   return 1;
 					   
-					   model.addLogItem(wielder.getNickName() + "'s Primordial Sea");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Primordial Sea");
 					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.HEAVY_RAIN_NO_EFFECT);
 						 else
@@ -300,7 +301,7 @@ public class AbilityMap
 					   else if(field.getWeather() == Weather.SANDSTORM_NO_EFFECT)
 						   return 1;
 					   
-					   model.addLogItem(wielder.getNickName() + "'s Sand Stream");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Sand Stream");
 					   if(opponent.getAbility().getName().equals("Cloud Nine"))
 							 field.setWeather(Weather.SANDSTORM_NO_EFFECT);
 						 else
@@ -321,9 +322,9 @@ public class AbilityMap
 				   { 
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
-						   model.addLogItem(wielder.getNickName() + "'s Mummy");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Mummy");
 						   opponent.setAbility(new AbilityContainer("Mummy"));
-						   model.addLogItem(opponent.getNickName() + "'s Mummy");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(opponent.getNickName() + "'s Mummy");
 					   }
 					   return 1;
 				   }
@@ -341,7 +342,7 @@ public class AbilityMap
 				   { 
 					   if(moveUsed.getCategory().getMask() == Attribute.PHYSICAL.getMask())
 					   {
-						   model.addLogItem(wielder.getNickName() + "'s Iron Barbs");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Iron Barbs");
 					   }
 					   return 1;
 				   }
@@ -388,7 +389,7 @@ public class AbilityMap
 				   { 
 					   if(moveUsed.getType() == Type.GROUND && wielder == defender)
 					   {
-						   model.addLogItem(wielder.getNickName()+" 's Levitate");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName()+" 's Levitate");
 						   Formula.ability *= 0; 
 					   }
 					   return 1;
@@ -405,7 +406,7 @@ public class AbilityMap
 				   public String getDescription(){return description;}
 				   public double run (IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed) 
 				   { 
-					   model.addLogItem(wielder.getNickName() + "'s Cloud Nine");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Cloud Nine");
 					   if(field.getWeather() == Weather.NONE)
 						   return 1;
 					   
@@ -421,7 +422,7 @@ public class AbilityMap
 						   field.setWeather(Weather.HAIL_NO_EFFECT);
 					   else if (field.getWeather() == Weather.SANDSTORM)
 						   field.setWeather(Weather.SANDSTORM_NO_EFFECT);
-					   model.addLogItem("The effects of weather dissapeared");
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem("The effects of weather dissapeared");
 					   return 1;
 				   }
 			});
@@ -505,6 +506,7 @@ public class AbilityMap
 						   @Override
 						   public void run()
 						   {
+							   if (model == null) model = BattleModel.getInstance(); 
 							   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 							   {
 								   timer.cancel();
@@ -533,7 +535,7 @@ public class AbilityMap
 					   if(Formula.isSuperEffective(wielder, moveUsed))
 					   {
 						   Formula.ability *= ( 3.0 / 4);
-						   model.addLogItem(wielder.getNickName()+"'s Solid Rock!");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName()+"'s Solid Rock!");
 					   }
 						   
 					   return 1;
@@ -588,7 +590,7 @@ public class AbilityMap
 									Event.itemPrimaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 									Event.itemSecondaryEffectEvent(defender, EventType.POST_ATTACK, moveUsed);
 								}
-								model.addLogItem("It hit 5 times!");
+								if (model == null) model = BattleModel.getInstance(); model.addLogItem("It hit 5 times!");
 							}
 					   }
 					   
@@ -913,7 +915,7 @@ public class AbilityMap
 						   }
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
-						   model.addLogItem(wielder.getNickName()+"'s Volt Absorb");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName()+"'s Volt Absorb");
 					   }
 						   
 					   return 1;
@@ -938,7 +940,7 @@ public class AbilityMap
 						   }
 						   wielder.changeHP(- wielder.getMaxHP() / 4);
 						   Formula.ability *= 0;
-						   model.addLogItem(wielder.getNickName()+"'s Water Absorb");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName()+"'s Water Absorb");
 					   }
 						   
 					   return 1;
@@ -963,8 +965,8 @@ public class AbilityMap
 							   if(wielder.getMove(i).getType() == Type.FIRE)
 								   wielder.getMove(i).setPower((int)(wielder.getMove(i).getPower() * 1.5));
 						   Formula.ability *= 0;
-						   model.addLogItem(wielder.getNickName()+"'s Flash Fire");
-						   model.addLogItem("Fire moves were powered up!");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName()+"'s Flash Fire");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem("Fire moves were powered up!");
 						   wielder.getAbility().setActiveStatus(true);
 					   }
 						   

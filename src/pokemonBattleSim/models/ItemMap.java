@@ -49,6 +49,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
@@ -82,6 +83,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getHP() <= holder.getMaxHP() / 4)
 				   {
 					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
@@ -118,6 +120,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
@@ -150,6 +153,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getHP() <= holder.getMaxHP() / 2)
 				   {
 					   if(Event.statusVolatileEvent(holder, EventType.HEAL, moveUsed))
@@ -184,6 +188,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.DARK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -210,6 +215,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.FIRE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -236,6 +242,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.WATER && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -262,6 +269,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.ELECTRIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -289,6 +297,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.GRASS && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -315,6 +324,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.ICE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -341,6 +351,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.FIGHTING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -367,6 +378,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.GROUND && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -393,6 +405,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.FLYING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -419,6 +432,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.PSYCHIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -445,6 +459,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.BUG && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -471,6 +486,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.ROCK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -497,6 +513,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.DRAGON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -523,6 +540,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.STEEL && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -550,6 +568,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.GHOST && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -576,6 +595,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.POISON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -602,6 +622,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.FAIRY && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
@@ -630,6 +651,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getType() == Type.NORMAL && moveUsed.getCategory() != Attribute.STATUS)
 					   Formula.item *= 1.2;
 				   return 1;
@@ -652,11 +674,13 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   Formula.item *= 1.3;
 				   return 1.3;
 			   }
 			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
 			   {
+					  if (model == null) model = BattleModel.getInstance();
 				   holder.changeHP(holder.getMaxHP() / 10);
 				   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   return 1;
@@ -675,6 +699,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getItemContainer().getActiveStatus() == false)
 				   {
 					   holder.getItemContainer().setForcedMove(moveUsed);
@@ -764,6 +789,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(holder.getItemContainer().getActiveStatus() == false)
 				   {
 					   holder.getItemContainer().setForcedMove(moveUsed);
@@ -853,6 +879,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -906,6 +933,7 @@ public class ItemMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon holder, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getCategory() == Attribute.STATUS)
 				   {
 					   model.addLogItem(holder.getNickName()+" cannot use status moves because its wear an Assault Vest!");
@@ -953,6 +981,7 @@ public class ItemMap
 			   }
 			   public double runSecondaryEffect(IPokemon holder, Move moveUsed)
 			   {
+					  if (model == null) model = BattleModel.getInstance();
 				   if(moveUsed.getCategory() == Attribute.SPECIAL)
 					   Formula.item = (1 / 1.5);
 				   return 1;

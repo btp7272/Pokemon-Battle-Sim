@@ -38,6 +38,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				  if(Event.statusVolatileEvent(attacker, EventType.HEAL, moveUsed))
 				  {
 					  //runPrimaryEffectevent automatic
@@ -70,11 +71,13 @@ public class MoveEffectMap
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				  if(Event.statusVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
 				  {
 					  //runPrimaryEffectevent automatic
 					  return 0;
 				  }
+				  if (model == null) model = BattleModel.getInstance();
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 				  
 				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
@@ -108,11 +111,14 @@ public class MoveEffectMap
 			   }
 			   public double runSecondaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				  if(Event.statusVolatileEvent(attacker, EventType.PRE_STATUS_CHANGE, moveUsed))
 				  {
 					  //run method automatic
 					  return 0;
 				  }
+
+				  if (model == null) model = BattleModel.getInstance();
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 
 				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
@@ -142,6 +148,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   {  
+					  if (model == null) model = BattleModel.getInstance();
 				  Timer timer = new Timer();
 				  class SetTimer extends TimerTask
 				  {
@@ -199,6 +206,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				  if(Event.statusVolatileEvent(attacker, EventType.HEAL, moveUsed))
 				  {
 					  //runPrimaryEffectevent automatic
@@ -223,6 +231,8 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+
+					  if (model == null) model = BattleModel.getInstance();
 				   	IPokemon defender = model.getOpponentPokemon(attacker.getPlayerID());
 				   	Random gen = new Random();
 				   	int timesExecuted = gen.nextInt(5 - 2) + 2;
@@ -258,6 +268,8 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+
+					  if (model == null) model = BattleModel.getInstance();
 					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 					  
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.ELECTRIC)))
@@ -293,6 +305,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.FIRE)))
@@ -328,6 +341,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 					  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 
 					  if(!(opponent.hasNonVolatileStatus()) && !(opponent.isType(Type.POISON)))
@@ -363,6 +377,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = -2;
 				   
 				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
@@ -393,6 +408,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = -2;
 				   
 				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
@@ -423,6 +439,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 1;
 				   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 1;
 				   
@@ -457,6 +474,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 2;
 				   
 				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
@@ -487,6 +505,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 1;
 				   AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] = 1;
 				   
@@ -521,6 +540,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 3;
 				   
 				   if(Event.abilityEvent(EventType.STATISTIC_CHANGE,attacker,null,null,null,null,null))
@@ -551,6 +571,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(attacker.getAtkModifier() == 6 || attacker.getHP() <= attacker.getMaxHP() / 2)
 				   {
 					   model.addLogItem("But it failed!");
@@ -589,6 +610,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+					  if (model == null) model = BattleModel.getInstance();
 				   if(! (attacker.isType(Type.GHOST)) )
 				   {
 					   
@@ -644,6 +666,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+				  if (model == null) model = BattleModel.getInstance();
 				  attacker.changeHP(moveUsed.getMoveEffectContainer().getDamageDelt() / 4);
 				  Event.abilityEvent(EventType.HP_CHANGE, attacker, null, null, null, null, null);
 				  Event.itemPrimaryEffectEvent(attacker, EventType.HP_CHANGE, moveUsed);
@@ -666,6 +689,7 @@ public class MoveEffectMap
 			   public String getDescription(){return description;}
 			   public double runPrimaryEffect(IPokemon attacker, Move moveUsed)
 			   { 
+				  if (model == null) model = BattleModel.getInstance();
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 				  
 				  if(opponent.getLastMoveUsed() == null)

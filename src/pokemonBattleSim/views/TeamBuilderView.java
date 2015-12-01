@@ -1642,7 +1642,7 @@ public class TeamBuilderView extends JFrame {
 				BattleModel model = BattleModel.getInstance();
 				BattleView view = new BattleView(player.getTrainerID());
 				BattleController controller = new BattleController(view,model, player.getTrainerID());
-				AIController AIcontroller = new AIController(model, computer.getTrainerID());
+				//AIController AIcontroller = new AIController(model, computer.getTrainerID());
 				
 				view.setVisible(true);
 				closeFrame();

@@ -26,6 +26,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 					return 1;
 				}
 		});
@@ -46,6 +47,7 @@ public class StatusMap
 						   @Override
 						   public void run()
 						   {
+								  if (model == null) model = BattleModel.getInstance();
 							   if(!model.getPlayerPokemon(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 							   {
 								   timer.cancel();
@@ -114,6 +116,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -154,6 +157,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				    model.addLogItem(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
@@ -171,6 +175,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -208,6 +213,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				    model.addLogItem(wielder.getSpeciesName()+" is prevented from healing!");
 					return 1;
 				}
@@ -223,6 +229,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				    if(wielder.getVolatileStatus("Flinch").getDegreeResetStatus())
 				    {
 				    	//push dead space to the opponent's queue
@@ -242,6 +249,7 @@ public class StatusMap
 					
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 					Timer timer = new Timer();
 					class SetTimer extends TimerTask
 					{
@@ -343,6 +351,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 					Timer timer = new Timer();
 					class SetTimer extends TimerTask
 					{
@@ -380,6 +389,7 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
@@ -513,6 +523,7 @@ public class StatusMap
 				
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -593,6 +604,7 @@ public class StatusMap
 				
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -684,6 +696,7 @@ public class StatusMap
 				
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -755,6 +768,7 @@ public class StatusMap
 				
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -814,6 +828,7 @@ public class StatusMap
 				
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 				   Timer timer = new Timer();
 				   class SetTimer extends TimerTask
 				   {
@@ -885,6 +900,7 @@ public class StatusMap
 					
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
+					  if (model == null) model = BattleModel.getInstance();
 					Timer timer = new Timer();
 					class SetTimer extends TimerTask
 					{

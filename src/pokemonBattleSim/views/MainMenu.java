@@ -65,7 +65,7 @@ public class MainMenu extends JFrame {
 	private void initialize() {
 		
 		frmPokemonBattleSim = new JFrame();
-		frmPokemonBattleSim.setTitle("Pokémon Rush");
+		frmPokemonBattleSim.setTitle("Pok\u00E9mon Rush");
 		frmPokemonBattleSim.setBounds(100, 100, 399, 444);
 		frmPokemonBattleSim.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPokemonBattleSim.getContentPane().setLayout(null);
@@ -161,7 +161,7 @@ public class MainMenu extends JFrame {
 		btnNewButton_4.setIcon(null);
 		frmPokemonBattleSim.getContentPane().add(btnNewButton_4);
 		
-		JLabel lblPokemonBattleSim = new JLabel("Pokémon Rush");
+		JLabel lblPokemonBattleSim = new JLabel("Pok\u00E9mon Rush");
 		lblPokemonBattleSim.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblPokemonBattleSim.setBounds(86, 45, 287, 37);
 		frmPokemonBattleSim.getContentPane().add(lblPokemonBattleSim);

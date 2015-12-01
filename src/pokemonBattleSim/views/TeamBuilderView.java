@@ -189,6 +189,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p4_level;
 	private JSpinner p5_level;
 	private JSpinner p6_level;
+	private JButton btnNewButton;
 	/**
 	 * Launch the application.
 	 */
@@ -224,6 +225,7 @@ public class TeamBuilderView extends JFrame {
 	 * Create the frame.
 	 */
 	public TeamBuilderView() {
+		AudioPlayer.musicBool = 1;
 		StartBuilderMusic();
 		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
 		int i = 0;
@@ -1703,6 +1705,26 @@ public class TeamBuilderView extends JFrame {
 		});
 		btnCancel.setBounds(740, 740, 100, 25);
 		contentPane.add(btnCancel);
+		
+		btnNewButton = new JButton("Music/OFF");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (AudioPlayer.musicBool == 1)
+				{
+					AudioPlayer.stopper = 1;
+					System.out.println("Playback forcefully stopped.");
+					AudioPlayer.musicBool = 0;
+				}
+				else
+				{
+					AudioPlayer.stopper = 0;
+					AudioPlayer.musicBool = 1;
+					StartBuilderMusic();		
+				}	
+			}
+		});
+		btnNewButton.setBounds(220, 739, 100, 26);
+		contentPane.add(btnNewButton);
 	}
 	
 	private void closeFrame()

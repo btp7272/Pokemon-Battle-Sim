@@ -228,6 +228,7 @@ public class TeamBuilderView extends JFrame {
 	 * Create the frame.
 	 */
 	public TeamBuilderView() {
+		setTitle("Pokémon Rush");
 		AudioPlayer.musicBool = 1;
 		StartBuilderMusic();
 		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
@@ -273,27 +274,27 @@ public class TeamBuilderView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel pokelabel2 = new JLabel("Pokemon 2");
+		JLabel pokelabel2 = new JLabel("Pok\u00E9mon 2");
 		pokelabel2.setBounds(220, 5, 100, 25);
 		contentPane.add(pokelabel2);
 		
-		JLabel pokelabel3 = new JLabel("Pokemon 3");
+		JLabel pokelabel3 = new JLabel("Pok\u00E9mon 3");
 		pokelabel3.setBounds(350, 5, 100, 25);
 		contentPane.add(pokelabel3);
 		
-		JLabel pokelabel4 = new JLabel("Pokemon 4");
+		JLabel pokelabel4 = new JLabel("Pok\u00E9mon 4");
 		pokelabel4.setBounds(480, 5, 100, 25);
 		contentPane.add(pokelabel4);
 		
-		JLabel pokelabel5 = new JLabel("Pokemon 5");
+		JLabel pokelabel5 = new JLabel("Pok\u00E9mon 5");
 		pokelabel5.setBounds(610, 5, 100, 25);
 		contentPane.add(pokelabel5);
 		
-		JLabel pokelabel6 = new JLabel("Pokemon 6");
+		JLabel pokelabel6 = new JLabel("Pok\u00E9mon 6");
 		pokelabel6.setBounds(740, 5, 100, 25);
 		contentPane.add(pokelabel6);
 		
-		JLabel label_6 = new JLabel("Pokemon");
+		JLabel label_6 = new JLabel("Pok\u00E9mon");
 		label_6.setBounds(5, 25, 100, 25);
 		contentPane.add(label_6);
 		
@@ -361,7 +362,7 @@ public class TeamBuilderView extends JFrame {
 		p1_speed_iv.setBounds(90, 442, 100, 25);
 		contentPane.add(p1_speed_iv);
 		
-		JLabel pokelabel1 = new JLabel("Pokemon 1");
+		JLabel pokelabel1 = new JLabel("Pok\u00E9mon1");
 		pokelabel1.setBounds(90, 5, 100, 25);
 		contentPane.add(pokelabel1);
 		
@@ -1735,38 +1736,38 @@ public class TeamBuilderView extends JFrame {
 		this.setVisible(false);
 	}
 	/*
-	 * Check Pokemone names for validity, check for doubles
+	 * Check Pokemon names for validity, check for doubles
 	 */
 	public boolean checkPokemon()
 	{
 		if(SpeciesMap.speciesMap.get(p1_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 1 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 1 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(SpeciesMap.speciesMap.get(p2_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 2 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 2 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(SpeciesMap.speciesMap.get(p3_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 3 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 3 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(SpeciesMap.speciesMap.get(p4_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 4 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 4 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(SpeciesMap.speciesMap.get(p5_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 5 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 5 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(SpeciesMap.speciesMap.get(p6_species.getSelectedItem()) == null)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 6 is not a valid Pokemon");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 6 is not a valid Pok\u00E9mon");
 			return false;
 		}
 		else if(p1_species.getSelectedItem().equals(p2_species.getSelectedItem())  ||
@@ -1786,7 +1787,7 @@ public class TeamBuilderView extends JFrame {
 				p5_species.getSelectedItem().equals(p6_species.getSelectedItem())
 				)
 		{
-			JOptionPane.showMessageDialog(null, "You cannot have two of the same Pokemon on your team");
+			JOptionPane.showMessageDialog(null, "You cannot have two of the same Pok\u00E9mon on your team");
 			return false;
 		}
 		else
@@ -1807,7 +1808,7 @@ public class TeamBuilderView extends JFrame {
 				p1_move3.getSelectedItem().equals(p1_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 1 may not have two of the same moves");
 			return false;
 		}
 		else if 
@@ -1820,7 +1821,7 @@ public class TeamBuilderView extends JFrame {
 				p2_move3.getSelectedItem().equals(p2_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 2 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 2 may not have two of the same moves");
 			return false;
 		}
 		else if 
@@ -1833,7 +1834,7 @@ public class TeamBuilderView extends JFrame {
 				p3_move3.getSelectedItem().equals(p3_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 3 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 3 may not have two of the same moves");
 			return false;
 		}
 		else if 
@@ -1846,7 +1847,7 @@ public class TeamBuilderView extends JFrame {
 				p4_move3.getSelectedItem().equals(p4_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 4 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 4 may not have two of the same moves");
 			return false;
 		}
 		else if 
@@ -1859,7 +1860,7 @@ public class TeamBuilderView extends JFrame {
 				p5_move3.getSelectedItem().equals(p5_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 5 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 5 may not have two of the same moves");
 			return false;
 		}
 		else if 
@@ -1872,7 +1873,7 @@ public class TeamBuilderView extends JFrame {
 				p6_move3.getSelectedItem().equals(p6_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 6 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pok\u00E9mon 6 may not have two of the same moves");
 			return false;
 		}
 		else
@@ -1893,7 +1894,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_iv.getModel().getValue() > 31  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 1 is over 31");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 1 is over 31");
 			return false;
 		}
 		else if(
@@ -1905,7 +1906,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 1 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 1 is less than 0");
 			return false;
 		}
 		else if(
@@ -1917,7 +1918,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_iv.getModel().getValue() > 31  
 			)
 			{
-				JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 2 is over 31");
+				JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 2 is over 31");
 				return false;
 			}
 			else if(
@@ -1929,7 +1930,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_iv.getModel().getValue() < 0   
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 2 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 2 is less than 0");
 			return false;
 		}
 		else if(
@@ -1941,7 +1942,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_iv.getModel().getValue() > 31  
 				)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 3 is over 31");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 3 is over 31");
 			return false;
 		}
 		else if(
@@ -1953,7 +1954,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 3 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 3 is less than 0");
 			return false;
 		}
 		else if(
@@ -1965,7 +1966,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_iv.getModel().getValue() > 31  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 4 is over 31");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 4 is over 31");
 			return false;
 		}
 		else if(
@@ -1977,7 +1978,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 4 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 4 is less than 0");
 			return false;
 		}
 		else if(
@@ -1989,7 +1990,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_iv.getModel().getValue() > 31  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 5 is over 31");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 5 is over 31");
 			return false;
 		}
 		else if(
@@ -2001,7 +2002,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 5 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 5 is less than 0");
 			return false;
 		}
 		else if(
@@ -2013,7 +2014,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_iv.getModel().getValue() > 31  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 6 is over 31");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 6 is over 31");
 			return false;
 		}
 		else if(
@@ -2025,7 +2026,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 6 is less than 0");
+			JOptionPane.showMessageDialog(null, "The value of an IV for Pok\u00E9mon 6 is less than 0");
 			return false;
 		}
 		//Calculate EV Validity
@@ -2038,7 +2039,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_ev.getModel().getValue() > 252  
 				)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 1 is over 252");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 1 is over 252");
 			return false;
 		}
 		else if(
@@ -2050,7 +2051,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_ev.getModel().getValue() < 0    
 			)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 1 is less than 0");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 1 is less than 0");
 			return false;
 		}
 		else if(
@@ -2062,7 +2063,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 1 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 1 add up to a value over 510");
 			return false;
 		}
 		else if(
@@ -2074,7 +2075,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_ev.getModel().getValue() > 252  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 2 is over 252");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 2 is over 252");
 			return false;
 		}
 		else if(
@@ -2086,7 +2087,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_ev.getModel().getValue() < 0    
 				)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 2 is less than 0");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 2 is less than 0");
 			return false;
 		}
 		else if(
@@ -2098,7 +2099,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_ev.getModel().getValue() > 510
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 2 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 2 add up to a value over 510");
 			return false;
 		}
 		else if(
@@ -2110,7 +2111,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_ev.getModel().getValue() > 252  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 3 is over 252");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 3 is over 252");
 			return false;
 		}
 		else if(
@@ -2122,7 +2123,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_ev.getModel().getValue() < 0    
 				)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 3 is less than 0");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 3 is less than 0");
 			return false;
 		}
 		else if(
@@ -2134,7 +2135,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 3 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 3 add up to a value over 510");
 			return false;
 		}
 		else if(
@@ -2146,7 +2147,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_ev.getModel().getValue() > 252  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 4 is over 252");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 4 is over 252");
 			return false;
 		}
 		else if(
@@ -2158,7 +2159,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_ev.getModel().getValue() < 0    
 				)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 4 is less than 0");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 4 is less than 0");
 			return false;
 		}
 		else if(
@@ -2170,7 +2171,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 4 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 4 add up to a value over 510");
 			return false;
 		}
 		else if(
@@ -2182,7 +2183,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_ev.getModel().getValue() > 252  
 			)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 5 is over 252");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 5 is over 252");
 			return false;
 		}
 		else if(
@@ -2194,7 +2195,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_ev.getModel().getValue() < 0    
 				)
 		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 5 is less than 0");
+			JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 5 is less than 0");
 			return false;
 		}
 		else if(
@@ -2206,7 +2207,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 5 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 5 add up to a value over 510");
 			return false;
 		}
 		else if(
@@ -2218,7 +2219,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_ev.getModel().getValue() > 252  
 				)
 			{
-				JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 6 is over 252");
+				JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 6 is over 252");
 				return false;
 			}
 			else if(
@@ -2230,7 +2231,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_ev.getModel().getValue() < 0    
 					)
 			{
-				JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 6 is less than 0");
+				JOptionPane.showMessageDialog(null, "An Effort Value for Pok\u00E9mon 6 is less than 0");
 				return false;
 			}
 			else if(
@@ -2242,37 +2243,37 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 6 add up to a value over 510");
+			JOptionPane.showMessageDialog(null, "Effort Values for Pok\u00E9mon 6 add up to a value over 510");
 			return false;
 		}
 			else if((int)p1_level.getModel().getValue() < 1 || (int)p1_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 1 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 1 must be between levels 1 and 100");
 				return false;
 			}
 			else if((int)p2_level.getModel().getValue() < 1 || (int)p2_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 2 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 2 must be between levels 1 and 100");
 				return false;
 			}
 			else if((int)p3_level.getModel().getValue() < 1 || (int)p3_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 3 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 3 must be between levels 1 and 100");
 				return false;
 			}
 			else if((int)p4_level.getModel().getValue() < 1 || (int)p4_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 4 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 4 must be between levels 1 and 100");
 				return false;
 			}
 			else if((int)p5_level.getModel().getValue() < 1 || (int)p5_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 5 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 5 must be between levels 1 and 100");
 				return false;
 			}
 			else if((int)p6_level.getModel().getValue() < 1 || (int)p6_level.getModel().getValue() > 100)
 			{
-				JOptionPane.showMessageDialog(null, "Pokemon 6 must be between levels 1 and 100");
+				JOptionPane.showMessageDialog(null, "Pok\u00E9mon 6 must be between levels 1 and 100");
 				return false;
 			}
 		else

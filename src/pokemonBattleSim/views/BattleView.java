@@ -89,6 +89,7 @@ public class BattleView extends JFrame implements IView{
 	public BattleView(int playerID) throws HeadlessException 
 	{
 		super();
+		setTitle("Pokémon Rush");
 		this.playerID = playerID;
 		this.moveButtonListeners = new ArrayList<>();
 		this.queueButtonListeners = new ArrayList<>();
@@ -165,7 +166,7 @@ public class BattleView extends JFrame implements IView{
 		});
 		
 		// set layouts
-		this.setLayout(battleLayout);
+		getContentPane().setLayout(battleLayout);
 		musicPlayerPanel.setLayout(musicPlayerLayout);
 		pokemonDataPanel.setLayout(pokemonDataLayout);
 		pokemonDisplayPanel.setLayout(pokemonDisplayLayout);
@@ -208,12 +209,12 @@ public class BattleView extends JFrame implements IView{
 			teamListPanel.add(btn);
 		}
 		
-		this.add(musicPlayerPanel);
-		this.add(pokemonDataPanel);
-		this.add(pokemonDisplayPanel);
-		this.add(moveQueuePanel);
-		this.add(moveListPanel);
-		this.add(teamListPanel);
+		getContentPane().add(musicPlayerPanel);
+		getContentPane().add(pokemonDataPanel);
+		getContentPane().add(pokemonDisplayPanel);
+		getContentPane().add(moveQueuePanel);
+		getContentPane().add(moveListPanel);
+		getContentPane().add(teamListPanel);
 		
 		// set close operation and add the completed panel
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

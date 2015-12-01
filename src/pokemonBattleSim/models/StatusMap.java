@@ -807,7 +807,7 @@ public class StatusMap
 				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
-				   	   timer.schedule(task, 0, 10000);
+				   	   timer.schedule(task, 10000, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   }
 					   

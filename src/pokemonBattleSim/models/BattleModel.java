@@ -115,7 +115,7 @@ public class BattleModel implements IBattleModel {
 		isGameover = true;
 	}
 	
-		/*
+	/*
 	 * Methods for View
 	 */
 	
@@ -638,7 +638,7 @@ public class BattleModel implements IBattleModel {
 		// log the move
 		synchronized (log)
 		{
-			log.push(attacker.getSpeciesName() + " used " + move.getName() + " on " + defender.getSpeciesName() + "\n");
+			addLogItem(attacker.getNickName() + " used " + move.getName());
 		}
 		
 		// check for fainting

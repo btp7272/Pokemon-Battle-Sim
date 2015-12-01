@@ -1077,6 +1077,8 @@ public class TeamBuilderView extends JFrame {
         {
         	public void actionPerformed(ActionEvent e)
         	{
+        		if(!testValidity())
+        			return;
         		// This is the main entry point to the program, will use other classes
 				Object owner = new Object(); //may need to be static?
 				IPokemonTrainer player;
@@ -1802,7 +1804,7 @@ public class TeamBuilderView extends JFrame {
 				p6_move3.getSelectedItem().equals(p6_move4.getSelectedItem())
 			)
 		{
-			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
+			JOptionPane.showMessageDialog(null, "Pokemon 6 may not have two of the same moves");
 			return false;
 		}
 		else

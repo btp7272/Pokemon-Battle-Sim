@@ -36,8 +36,8 @@ public class Send implements Serializable
 		String s = "TEST";
 		System.out.println("Online Test 1");
 		//instructionPacket s = new instructionPacket(IP,"TEST",null);
-		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-		out.writeObject(s);
+		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+		out.writeBytes(s);
 		out.flush();
 		out.close();
 		socket.close();
@@ -50,8 +50,8 @@ public class Send implements Serializable
 		String s = "TEST1";
 		System.out.println("Online Handshake");
 		//instructionPacket s = new instructionPacket(IP,"TEST1",null);
-		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-		out.writeObject(s);
+		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+		out.writeBytes(s);;
 		out.flush();
 		out.close();
 		socket.close();

@@ -88,10 +88,10 @@ public class Recieve
 		{
 			System.err.println(e);
 		}
-		
+		DataInputStream inpu=null;
 		try 
 		{
-			input = new ObjectInputStream(read.getInputStream());
+			inpu = new DataInputStream(read.getInputStream());
 		} 
 		catch (IOException e) 
 		{
@@ -101,10 +101,10 @@ public class Recieve
 		String s = null;
 		try 
 		{
-			s = (String)input.readObject();
+			s = (String)inpu.readUTF();
 			closeObjectStream();
-		} 
-		catch (IOException e) 
+		}
+		catch (IOException e)
 		{
 			System.err.println(e);
 		}

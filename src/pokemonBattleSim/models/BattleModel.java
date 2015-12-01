@@ -16,6 +16,7 @@ import static pokemonBattleSim.formulas.Formula.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
@@ -126,14 +127,14 @@ public class BattleModel implements IBattleModel {
 	 * @return a Stack of 5 elements or fewer
 	 */
 	@Override
-	public ArrayList<String> getLogData ()
+	public Iterable<String> getLogData ()
 	{
-		ArrayList<String> output = new ArrayList<>();
+		Deque<String> output = new ArrayDeque<>();
 		synchronized (log)
 		{
 			for ( String logMessage : log)
 			{
-				output.add(logMessage);
+				output.push(logMessage);
 			}
 		}
 		return output;
@@ -625,7 +626,7 @@ public class BattleModel implements IBattleModel {
 		// log the move
 		synchronized (log)
 		{
-			log.push(attacker.getSpeciesName() + " used " + move.toString() + " on " + defender.getSpeciesName() + "\n");
+			log.push(attacker.getSpeciesName() + " used " + move.getName() + " on " + defender.getSpeciesName() + "\n");
 		}
 		
 		// check for fainting

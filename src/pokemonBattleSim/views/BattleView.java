@@ -4,9 +4,11 @@ import java.awt.Color;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.TextArea;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.*;
@@ -72,6 +74,7 @@ public class BattleView extends JFrame implements IView{
 	
 	private JLabel playerOnePokemonDisplayLabel;
 	private JLabel playerTwoPokemonDisplayLabel;
+	private TextArea logArea;
 	
 	private ImageIcon playerOnePokemonDisplayImage;
 	private ImageIcon playerTwoPokemonDisplayImage;
@@ -111,7 +114,7 @@ public class BattleView extends JFrame implements IView{
 		playerTwoPokemonData = 	new JPanel();
 		
 		playerOnePokemonDataLayout = 	new GridLayout(1,2);
-		playerTwoPokemonDataLayout = 	new GridLayout(1,2);
+		playerTwoPokemonDataLayout = 	new GridLayout(1,3);
 		
 		playerOnePokemonName = 			new JLabel("Player 1 Pokemon:");
 		playerTwoPokemonName = 			new JLabel("Player 2 Pokemon:");
@@ -120,6 +123,9 @@ public class BattleView extends JFrame implements IView{
 		
 		playerOnePokemonDisplayLabel = 	new JLabel();
 		playerTwoPokemonDisplayLabel = 	new JLabel();
+		logArea = new TextArea();
+		Font logfont = new Font("Verdana", Font.BOLD, 10);
+		logArea.setFont(logfont);
 		
 		playerOnePokemonDisplayImage = 	new ImageIcon();
 		playerTwoPokemonDisplayImage = 	new ImageIcon();
@@ -187,6 +193,7 @@ public class BattleView extends JFrame implements IView{
 		playerTwoPokemonDisplayLabel.setIcon(playerTwoPokemonDisplayImage);
 		
 		pokemonDisplayPanel.add(playerOnePokemonDisplayLabel);
+		pokemonDisplayPanel.add(logArea);
 		pokemonDisplayPanel.add(playerTwoPokemonDisplayLabel);
 		
 		for ( JButton btn : moveButtons)
@@ -269,10 +276,12 @@ public class BattleView extends JFrame implements IView{
 		this.setMoveQueueData(model.getTasks(playerID));
 		this.setMoveButtonData(model.getMoveData(playerID));
 		this.setPokemonButtonData(model);
+		this.setLogAreaData(model.getLogData(), 7);
 		
 		if (model.isGameover()) this.displayPopupMessage("GAME OVER");
 		repaint();
 	}
+	
 	public void StartMusic()
 	{
 	new Thread() {
@@ -315,6 +324,18 @@ public class BattleView extends JFrame implements IView{
 	public void addMusicPlayerStopButtonListener(ActionListener listener)
 	{
 		musicPlayerStopButton.addActionListener(listener);
+	}
+	
+	public void setLogAreaData (Iterable<String> messages, int numMessages)
+	{
+		String text = "";
+		for (String logItem : messages)
+		{
+			text += logItem;
+			if (--numMessages <= 0)
+				break;
+		}
+		logArea.setText(text);
 	}
 	
 	public void setPlayerOnePokemonName(String name)

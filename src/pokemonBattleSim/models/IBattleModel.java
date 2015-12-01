@@ -1,6 +1,7 @@
 package pokemonBattleSim.models;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import pokemonBattleSim.types.IField;
 import pokemonBattleSim.types.IPokemon;
@@ -31,7 +32,7 @@ public interface IBattleModel {
 	public IPokemon getOpponentPokemon ( int playerID );
 	public IField getField();
 	public ArrayList<String> getMoveData ( int playerID );
-	public ArrayList<String> getLogData ();
+	public Iterable<String> getLogData ();
 	public ArrayList<QueuedAction> getTasks ( int playerID );
 	public boolean isGameover();
 	

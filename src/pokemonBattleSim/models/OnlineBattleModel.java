@@ -212,9 +212,9 @@ public class OnlineBattleModel implements IBattleModel
 	 * @return a Stack of 5 elements or fewer
 	 */
 	@Override
-	public ArrayList<String> getLogData ()
+	public Stack<String> getLogData ()
 	{
-		ArrayList<String> output = new ArrayList<>();
+		Stack<String> output = new Stack<>();
 		synchronized (log)
 		{
 			for ( String logMessage : log)

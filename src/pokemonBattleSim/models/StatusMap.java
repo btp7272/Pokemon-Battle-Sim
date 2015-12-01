@@ -44,13 +44,56 @@ public class StatusMap
 				public String getDescription(){return description;}
 				public double run (IPokemon wielder,  Move moveUsed)
 				{
-					double damage;
-			        double numerator, denomenator;
-			        numerator = ( ( 2 * wielder.getLevel() ) + 10  ); 
-			        numerator = numerator * wielder.getAtk() * 40;
-			        denomenator = 250 * wielder.getDef();
-			        damage = (numerator / denomenator) + 2;
-			        wielder.changeHP((int)damage);
+					Timer timer = new Timer();
+					   class SetTimer extends TimerTask
+					   {
+						   @Override
+						   public void run()
+						   {
+							   if(!model.getPlayerPokemon(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
+							   {
+								   timer.cancel();
+								   wielder.removeVolatileStatus("Confusion");
+								   return;
+							   }
+							  
+							   wielder.getVolatileStatus("Confusion").addToDegree(-10, false);
+							   System.out.println(wielder.getNickName()+" snapped a little out of confusion!");
+							   if(wielder.getVolatileStatus("Confusion").getDegree() == 0)
+							   {
+								   wielder.removeVolatileStatus("Confusion");
+								   System.out.println(wielder.getNickName()+" is confused no more!");
+								   timer.cancel();
+							   }
+							   else if(wielder.getVolatileStatus("Confusion").getDegree() >= 60)
+							   {
+								   System.out.println(wielder.getNickName()+" will still hit itself!");
+							   }
+							   else 
+							   {
+								   System.out.println(wielder.getNickName()+" will no longer hit itself!");
+							   }
+							   return;
+						   }
+					   }
+					
+					 if(wielder.getVolatileStatus("Confusion").getActiveStatus() == false)
+					 {
+						   TimerTask task = new SetTimer();
+						   timer.schedule(task, 10000, 10000);
+						   wielder.getVolatileStatus("Confusion").setActiveStatus(true);
+					 }
+					
+					if(wielder.getVolatileStatus("Confusion").getDegree() >= 60)
+					{
+						double damage;
+				        double numerator, denomenator;
+				        numerator = ( ( 2 * wielder.getLevel() ) + 10  ); 
+				        numerator = numerator * wielder.getAtk() * 40;
+				        denomenator = 250 * wielder.getDef();
+				        damage = (numerator / denomenator) + 2;
+				        wielder.changeHP((int)damage);
+					}
 					return 1;
 				}
 		});
@@ -282,7 +325,8 @@ public class StatusMap
 				EventType trigger = EventType.PRE_ATTACK;
 				String name = "Protection";
 				String description = "A Pokémon that uses Protect or Detect will be impervious to attacks and negative status moves targeting them that turn except; "
-						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, the Pokémon's protection is removed for the rest of the turn.";
+						+ "if the protected Pokémon is hit by Feint or Shadow Force, which can both hit through protection, "
+						+ "the Pokémon's protection is removed for the rest of the turn.";
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
@@ -342,7 +386,8 @@ public class StatusMap
 		{
 				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Burn";
-				String description = "The burn condition halves damage dealt by a Pokémon's physical moves (except for Pokémon with the Guts Ability, where this condition raises Attack by 50%). "
+				String description = "The burn condition halves damage dealt by a Pokémon's physical moves (except for Pokémon with the Guts Ability, "
+						+ "where this condition raises Attack by 50%). "
 						+ "Additionally, at the end of a turn, the Pokémon loses 1/8 its maximum hit points.";
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
@@ -356,6 +401,12 @@ public class StatusMap
 					   @Override
 					   public void run()
 					   {
+						   if(!wielder.hasNonVolatileStatus("Burn"))
+						   {
+							   timer.cancel();
+							   return;
+						   }
+						   
 						   if(wielder.getHP() == 0)
 						   {
 							   timer.cancel();
@@ -366,21 +417,32 @@ public class StatusMap
 						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+							   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+							   {
+								   timer.cancel();
+								   wielder.setNonVolatileStatus(new StatusContainer("Healthy"));
+								   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
+							   }
 							   return;
 						   }
 						   
+						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
+						   System.out.println(wielder.getNickName()+" is hurt by its burn!");
+						   
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer("Healthy"));
 							   wielder.setMaxAtk(wielder.getNonVolatileStatusContainer().getOriginalStat());
+							   System.out.println(wielder.getNickName()+" is burnt no more!");
 							   return;
 						   }
-						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
-						   System.out.println(wielder.getNickName()+" is hurt by its burn!");
+						   
 						   System.out.println(wielder.getNickName()+"'s burn healed a little!");
+						   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
+								   - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) 
+								   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   return;
 					   }
 				   }
@@ -391,6 +453,9 @@ public class StatusMap
 				   	   timer.schedule(task, 0, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxAtk());
+				   	   wielder.setMaxAtk((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
+							   - (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/2) 
+							   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 				   }
 					   
 				   return 1;
@@ -402,7 +467,8 @@ public class StatusMap
 				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Paralysis";
 				String description = "The paralysis condition causes a Pokémon to be unable to attack if 100% paralyzed. "
-						+ "Additionally, its Speed is reduced to 25% of its previous value (except for Pokémon with the Quick Feet Ability, where this condition raises the Speed by 50%).";
+						+ "Additionally, its Speed is reduced to 25% of its previous value (except for Pokémon with the "
+						+ "Quick Feet Ability, where this condition raises the Speed by 50%).";
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
@@ -415,6 +481,12 @@ public class StatusMap
 					   @Override
 					   public void run()
 					   {
+						   if(!wielder.hasNonVolatileStatus("Paralysis"))
+						   {
+							   timer.cancel();
+							   return;
+						   }
+						   
 						   if(wielder.getHP() == 0)
 						   {
 							   timer.cancel();
@@ -425,19 +497,41 @@ public class StatusMap
 						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+							   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+							   {
+								   timer.cancel();
+								   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+								   wielder.setMaxSpeed(wielder.getNonVolatileStatusContainer().getOriginalStat());
+							   }
 							   return;
 						   }
 						   
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
 						   {
 							   timer.cancel();
 							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
 							   wielder.setMaxSpeed(wielder.getNonVolatileStatusContainer().getOriginalStat());
+							   System.out.println(wielder.getNickName()+" is paralyzed no more!");
 							   return;
 						   }
-						   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   
+						   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
+								   - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) 
+								   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 						   System.out.println(wielder.getNickName()+"'s paralysis healed a little!");
+						   
+						   if(wielder.getNonVolatileStatusContainer().getDegree() < 80)
+						   {
+							   System.out.println(wielder.getNickName()+" is able to break through its paralysis!");
+							   return;
+						   }
+						   else if(wielder.getNonVolatileStatusContainer().getDegree() >= 80)
+						   {
+							   System.out.println(wielder.getNickName()+" is still too paralyzed to attack!");
+							   return;
+						   }
+						   
 						   return;
 					   }
 				   }
@@ -445,9 +539,12 @@ public class StatusMap
 				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
 				   {
 					   TimerTask task = new SetTimer();
-				   	   timer.schedule(task, 0, 10000);
+				   	   timer.schedule(task, 10000, 10000);
 				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
 				   	   wielder.getNonVolatileStatusContainer().setOriginalStat(wielder.getMaxSpeed());
+				   	   wielder.setMaxSpeed((int)( (double)wielder.getNonVolatileStatusContainer().getOriginalStat() 
+				   			   - 3 * (((double)wielder.getNonVolatileStatusContainer().getOriginalStat())/4) 
+				   			   * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
 				   }
 					   
 				   return 1;
@@ -459,8 +556,10 @@ public class StatusMap
 				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Poison";
 				String description = "The poison condition causes a Pokémon to lose 1/8 of its maximum hit points every turn."
-						+ "Normally Steel- and Poison-type Pokémon and Pokémon with the Immunity Ability cannot be poisoned; however, if a Pokémon is poisoned then has its type changed to Steel or Poison or its "
-						+ "Ability changed to Immunity, the poison will remain. A Pokémon with the Poison Heal Ability will gradually recover health instead when poisoned.";
+						+ "Normally Steel- and Poison-type Pokémon and Pokémon with the Immunity Ability cannot be poisoned; "
+						+ "however, if a Pokémon is poisoned then has its type changed to Steel or Poison or its "
+						+ "Ability changed to Immunity, the poison will remain. A Pokémon with the Poison Heal Ability will "
+						+ "gradually recover health instead when poisoned.";
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
 				public String getDescription(){return description;}
@@ -473,6 +572,12 @@ public class StatusMap
 					   @Override
 					   public void run()
 					   {
+						   if(!wielder.hasNonVolatileStatus("Poison"))
+						   {
+							   timer.cancel();
+							   return;
+						   }
+						   
 						   if(wielder.getHP() == 0)
 						   {
 							   timer.cancel();
@@ -483,19 +588,26 @@ public class StatusMap
 						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
-							   return;
-						   }
-						   
-						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
-						   {
-							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+							   {
+								   timer.cancel();
+								   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   }
 							   return;
 						   }
 						   
 						   wielder.changeHP((int)(((double)(wielder.getMaxHP()/8)) * ((double)wielder.getNonVolatileStatusContainer().getDegree()/100)) );
-						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
 						   System.out.println(wielder.getNickName()+" was hurt by poison!");
+						   
+						   wielder.getNonVolatileStatusContainer().addToDegree(-10, false);
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   System.out.println(wielder.getNickName()+" is no longer poisoned!");
+							   return;
+						   }
+						   
 						   System.out.println(wielder.getNickName()+"'s poisoning healed a little!");
 						   return;
 					   }
@@ -516,7 +628,8 @@ public class StatusMap
 		{
 				EventType trigger = EventType.POST_STATUS_CHANGE;
 				String name = "Toxic Poison";
-				String description = "The badly poison condition causes a Pokémon to lose 1/2 of its maximum hit points multiplied by the degree of the status (a percent) every turn."
+				String description = "The badly poison condition causes a Pokémon to lose 1/2 of its maximum hit points multiplied "
+						+ "by the degree of the status (a percent) every turn."
 						+ "The degree of the status increases over time.";
 				public EventType getEventTrigger(){return trigger;}
 				public String getName(){return name;}					
@@ -530,6 +643,12 @@ public class StatusMap
 					   @Override
 					   public void run()
 					   {
+						   if(!wielder.hasNonVolatileStatus("Toxic Poison"))
+						   {
+							   timer.cancel();
+							   return;
+						   }
+						   
 						   if(wielder.getHP() == 0)
 						   {
 							   timer.cancel();
@@ -540,14 +659,8 @@ public class StatusMap
 						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
 						   {
 							   timer.cancel();
-							   wielder.getNonVolatileStatusContainer().setDegree(0);
-							   return;
-						   }
-						   
-						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
-						   {
-							   timer.cancel();
-							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   wielder.getNonVolatileStatusContainer().setDegree(1);
+							   wielder.getNonVolatileStatusContainer().setActiveStatus(false);
 							   return;
 						   }
 						   
@@ -567,6 +680,79 @@ public class StatusMap
 				   }
 					   
 				   return 1;
+				}
+		});
+		
+		statusMap.put("Frozen", new IStatus()
+		{
+				EventType trigger = EventType.POST_STATUS_CHANGE;
+				String name = "Frozen";
+				String description = "The freeze condition causes a Pokémon to be unable to make a move. "
+						+ "Damaging Fire-type moves used on a frozen Pokémon will remove the freeze status."
+						+ "Ice-type Pokémon cannot be frozen by any method.";
+				public EventType getEventTrigger(){return trigger;}
+				public String getName(){return name;}					
+				public String getDescription(){return description;}
+				
+				public double run (IPokemon wielder,  Move moveUsed)
+				{
+				   Timer timer = new Timer();
+				   class SetTimer extends TimerTask
+				   {
+					   @Override
+					   public void run()
+					   {						
+						   if(!wielder.hasNonVolatileStatus("Frozen"))
+						   {
+							   timer.cancel();
+							   return;
+						   }
+						   
+						   if(!model.getPlayerPokemonSpeciesName(wielder.getPlayerID()).equals(wielder.getSpeciesName()))
+						   {
+							   wielder.getNonVolatileStatusContainer().addToDegree(-5,false);
+							   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+							   {
+								   timer.cancel();
+								   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   }
+							   return;
+						   }
+						   
+						   wielder.getNonVolatileStatusContainer().addToDegree(-5, false);
+						   System.out.println(wielder.getNickName()+" thawed a little!");
+						   
+						   if(wielder.getNonVolatileStatusContainer().getDegree() == 0)
+						   {
+							   timer.cancel();
+							   wielder.setNonVolatileStatus(new StatusContainer(-1,-1,"Healthy",null));
+							   System.out.println(wielder.getNickName()+" is completely thawed!");
+							   return;
+						   }
+						   else if(wielder.getNonVolatileStatusContainer().getDegree() < 50)
+						   {
+							   System.out.println(wielder.getNickName()+" is thawed enough to attack!");
+							   return;
+						   }
+						   else if(wielder.getNonVolatileStatusContainer().getDegree() >= 50)
+						   {
+							   System.out.println(wielder.getNickName()+" is too frozen to attack!");
+							   return;
+						   }
+						   return;
+					   }
+				   }
+				   
+				   if(wielder.getNonVolatileStatusContainer().getActiveStatus() == false)
+				   {
+					   TimerTask task = new SetTimer();
+				   	   timer.schedule(task, 10000, 10000);
+				   	   wielder.getNonVolatileStatusContainer().setActiveStatus(true);
+				   	   System.out.println(wielder.getNickName()+" is frozen!");
+				   }
+
+				   return 1;
+					   
 				}
 		});
 	}

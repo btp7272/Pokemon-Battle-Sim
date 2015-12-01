@@ -427,7 +427,7 @@ public class BattleModel implements IBattleModel {
 			}
 		}
 		else return false; // playerID doesn't match anyone
-		notifyView();
+		if (!isGameover()) notifyView();
 		return true;
 	}
 
@@ -483,7 +483,7 @@ public class BattleModel implements IBattleModel {
 			}
 		}
 		else return false; // playerID doesn't match anyone
-		notifyView();
+		if (!isGameover()) notifyView();
 		return true;
 	}
 	
@@ -529,7 +529,8 @@ public class BattleModel implements IBattleModel {
 		}
 		else return false;
 		
-		notifyView();
+
+		if (!isGameover()) notifyView();
 		return true;
 	}
 	
@@ -673,7 +674,8 @@ public class BattleModel implements IBattleModel {
 		}
 		
 		}} // synchronized (playerOne),(playerTwo)
-		notifyView();
+
+		if (!isGameover()) notifyView();
 	}
 
 	/** 
@@ -797,7 +799,7 @@ public class BattleModel implements IBattleModel {
 		@Override
 		public void execute() {
 			executeMove(source, target, move);
-			notifyView();
+			if (!isGameover()) notifyView();
 		}
 
 		@Override

@@ -1551,14 +1551,14 @@ public class TeamBuilderView extends JFrame {
 				int IVs[] = {31,0,31,31,31,31};
 				int EVs[] = {96,0,0,196,0,216};
 				
-				Move[] moves = {new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Giga Drain")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Roost"))};
+				Move[] moves = {new Move(MoveMap.moveMap.get("Bullet Seed")),new Move(MoveMap.moveMap.get("Giga Drain")),new Move(MoveMap.moveMap.get("Thunder Wave")),new Move(MoveMap.moveMap.get("Roost"))};
 				Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("None"));
 				member.addVolatileStatus(new StatusContainer(-1,-1,"Taunt",member.getMove(2)));
 				member.setPlayerID(0);
 				member.setBenchPosition(1);
 				playerTeam.add(member);
 				
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mew"),"Meow",moves,IVs,EVs,100,Nature.Bold, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mew"),"Meow",moves,IVs,EVs,100,Nature.Bold, new AbilityContainer("Sand Stream"), new ItemContainer("None"));
 				member.setPlayerID(1);
 				member.setBenchPosition(1);
 				computerTeam.add(member);
@@ -1567,7 +1567,7 @@ public class TeamBuilderView extends JFrame {
 				int IVs2[] = {31,31,31,31,31,31};
 				int EVs2[] = {0,252,0,0,4,252};
 				Move[] moves2 = {new Move(MoveMap.moveMap.get("Crunch")),new Move(MoveMap.moveMap.get("Bullet Seed")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Earthquake"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
+				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Drizzle"), new ItemContainer("None"));
 				//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 				member.setPlayerID(0);
 				member.setBenchPosition(2);
@@ -1580,7 +1580,7 @@ public class TeamBuilderView extends JFrame {
 				//CREATE SLOWBRO
 				int EVs3[] = {248,0,200,0,52,8};
 				Move[] moves3 = {new Move(MoveMap.moveMap.get("Shadow Ball")),new Move(MoveMap.moveMap.get("Scald")),new Move(MoveMap.moveMap.get("Psyshock")),new Move(MoveMap.moveMap.get("Slack Off"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Sheer Force"), new ItemContainer("Life Orb"));
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Slowbro"),"LO Sheer Force",moves3,IVs,EVs3,100,Nature.Bold, new AbilityContainer("Drizzle"), new ItemContainer("Life Orb"));
 				member.setPlayerID(0);
 				member.setBenchPosition(3);
 				playerTeam.add(member);

@@ -233,21 +233,15 @@ public class MoveEffectMap
 				   	
 				   	for(int i = 0; i < timesExecuted; i++)
 				   	{
-					    if(Event.abilityEvent(EventType.PRE_ATTACK, defender, attacker, model.getField(), attacker, defender, moveUsed))
-						{
-							//runPrimaryEffectmethod automatically executed
-						}
-						else
-						{
 							int damage = Formula.calcDamage(attacker, defender, moveUsed, model.getField());
 							damage = defender.changeHP(damage);
-							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, model.getField(), attacker, defender, moveUsed);
+							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, model.getField(), attacker, defender, moveUsed);Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, model.getField(), attacker, defender, moveUsed);
 							moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
 							Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
-						}
 				   	}
 				   	System.out.println("It hit "+timesExecuted+" times!");
 				  return 1;

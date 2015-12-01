@@ -57,7 +57,7 @@ public class StatusMap
 								   return;
 							   }
 							  
-							   wielder.getVolatileStatus("Confusion").addToDegree(-10, false);
+							   wielder.getVolatileStatus("Confusion").addToDegree(-25, false);
 							   System.out.println(wielder.getNickName()+" snapped a little out of confusion!");
 							   if(wielder.getVolatileStatus("Confusion").getDegree() == 0)
 							   {
@@ -93,6 +93,11 @@ public class StatusMap
 				        denomenator = 250 * wielder.getDef();
 				        damage = (numerator / denomenator) + 2;
 				        wielder.changeHP((int)damage);
+				        System.out.println(wielder.getNickName()+" hit itself in confusion!");
+					}
+					else
+					{
+						System.out.println(wielder.getNickName()+" is too confused to attack!");
 					}
 					return 1;
 				}
@@ -266,7 +271,10 @@ public class StatusMap
 					if(Event.itemPrimaryEffectEvent(wielder, EventType.PRE_ATTACK, move))
 					{
 						//run method automatically executed
-						Event.itemSecondaryEffectEvent(wielder, EventType.PRE_ATTACK, move);
+					}
+					else if(Event.itemSecondaryEffectEvent(wielder, EventType.PRE_ATTACK, move))
+					{
+						//run method automatically executed
 					}
 					else if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
 					{
@@ -308,6 +316,8 @@ public class StatusMap
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
 							Event.abilityEvent(EventType.HP_CHANGE, defender, wielder, model.getField(), wielder, defender, move);
+							Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, move);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, move);
 							//check for ability event of the defender
 							Event.statusVolatileEvent(wielder, EventType.POST_ATTACK, move);
 							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
@@ -377,49 +387,119 @@ public class StatusMap
 				    if(moveUsed.getName().equals("Feint") || moveUsed.getName().equals("Shadow Force"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
+				    	//check for ability event of the attacker
 						if(Event.abilityEvent(EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
-						//check for ability event of the defender
-						else if(Event.abilityEvent(EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						//check for move event of the attacker
+						else if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
 						{
 							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
 						}
 						else
 						{
-							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
-							wielder.changeHP(damage);
-							//check for ability even of the defender
-							Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
-							//check for ability event of the defender
-							Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(wielder, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								else
+								{
+									Event.abilityEvent(EventType.PRE_DAMAGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
+							else
+							{
+								int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+								damage = wielder.changeHP(damage);
+								//check for ability even of the wielder
+								Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+								Event.itemPrimaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								Event.itemSecondaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								//check for ability event of the defender
+								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, moveUsed);
+								Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+								Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(wielder, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(wielder, EventType.POST_ATTACK, moveUsed);
+							}
 						}
 				    }
 				    else if(moveUsed.getName().equals("Hyperspace Fury"))
 				    {
 				    	IPokemon attacker = model.getOpponentPokemon(wielder.getPlayerID());
+				    	//check for ability event of the attacker
 						if(Event.abilityEvent(EventType.PRE_ATTACK, attacker, wielder, model.getField(), attacker, wielder, moveUsed))
 						{
 							//run method automatically executed
 						}
-						//check for ability event of the defender
-						else if(Event.abilityEvent(EventType.PRE_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed))
+						//check for move event of the attacker
+						else if(Event.movePrimaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed))
 						{
 							//run method automatically executed
+							Event.moveSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, moveUsed);
 						}
 						else
 						{
-							int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
-							wielder.changeHP(damage);
-							//check for ability even of the defender
-							Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
-							//check for ability event of the defender
-							Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+							if(moveUsed.getCategory() == Attribute.STATUS)
+							{
+								if(Event.statusVolatileEvent(wielder, EventType.PRE_STATUS_CHANGE, moveUsed))
+								{
+									  //run method automatic
+								}
+								else
+								{
+									Event.abilityEvent(EventType.PRE_DAMAGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+									Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+									Event.itemPrimaryEffectEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusVolatileEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+									Event.statusNonVolatileEvent(wielder, EventType.POST_STATUS_CHANGE, moveUsed);
+								}
+							}
+							else
+							{
+								int damage = Formula.calcDamage(attacker, wielder, moveUsed, model.getField());
+								damage = wielder.changeHP(damage);
+								//check for ability even of the defender
+								Event.abilityEvent(EventType.HP_CHANGE, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+								Event.itemPrimaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								Event.itemSecondaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								Event.itemPrimaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								Event.itemSecondaryEffectEvent(wielder, EventType.HP_CHANGE, moveUsed);
+								//check for ability event of the defender
+								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
+								Event.abilityEvent(EventType.POST_ATTACK, wielder, attacker, model.getField(), attacker, wielder, moveUsed);
+								moveUsed.getMoveEffectContainer().updateMoveEffectContainer(attacker, damage);
+								Event.movePrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.moveSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(attacker, EventType.POST_ATTACK, moveUsed);
+								Event.itemPrimaryEffectEvent(wielder, EventType.POST_ATTACK, moveUsed);
+								Event.itemSecondaryEffectEvent(wielder, EventType.POST_ATTACK, moveUsed);
+							}
 						}
 				    }
 				    else
+				    {
 				    	System.out.println(wielder.getSpeciesName()+" protected itself!");
+				    }
 					return 1;
 				}
 		});
@@ -834,7 +914,10 @@ public class StatusMap
 					if(Event.itemPrimaryEffectEvent(wielder, EventType.PRE_ATTACK, moveUsed))
 					{
 						//run method automatically executed
-						Event.itemSecondaryEffectEvent(wielder, EventType.PRE_ATTACK, moveUsed);
+					}
+					else if(Event.itemSecondaryEffectEvent(wielder, EventType.PRE_ATTACK, moveUsed))
+					{
+						//run method automatically executed
 					}
 					else if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, moveUsed))
 					{
@@ -863,6 +946,8 @@ public class StatusMap
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
 							Event.abilityEvent(EventType.HP_CHANGE, defender, wielder, model.getField(), wielder, defender, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 							//check for ability event of the defender
 							Event.statusVolatileEvent(wielder, EventType.POST_ATTACK, moveUsed);
 							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);

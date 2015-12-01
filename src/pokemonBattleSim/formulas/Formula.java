@@ -291,9 +291,9 @@ public class Formula
 	        //Ability event of the attacker cannot happen
 	        Event.abilityEvent(EventType.PRE_DAMAGE,defender,attacker,field,attacker,defender,m);
 	        Event.itemPrimaryEffectEvent(attacker, EventType.PRE_DAMAGE, m);
-	        //Secondary effects of attacker's item is negated
+	        Event.itemSecondaryEffectEvent(attacker, EventType.PRE_DAMAGE, m);
 	        Event.itemPrimaryEffectEvent(defender, EventType.PRE_DAMAGE, m);
-	        //Secondary effects of defender's item is negated
+	        Event.itemSecondaryEffectEvent(defender, EventType.PRE_DAMAGE, m);
 	        
 	        if(Event.moveHasSecondaryEffect(EventType.POST_ATTACK, m))
 	        {

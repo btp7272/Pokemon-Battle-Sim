@@ -126,6 +126,7 @@ public class App {
 //			e.printStackTrace();
 //		}
 //		BattleModel model = BattleModel.getInstance();
+		System.setProperty("java.net.preferIPv4Stack" , "true");
 		MainMenu.startup();
 		
 		//BattleView view = new BattleView(player.getTrainerID());

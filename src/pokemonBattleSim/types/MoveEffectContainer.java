@@ -17,6 +17,12 @@ public class MoveEffectContainer
 	public void setDamgeDelt(int dmg){ damageDelt = dmg; }
 	public void calcConsecutiveTurns(IPokemon poke)
 	{ 
+		if(poke.getLastMoveUsed() == null)
+		{
+			consecutiveTurns = 1;
+			return;
+		}
+			
 		if(poke.getLastMoveUsed().getName().equals(moveName))
 			consecutiveTurns++;
 		else

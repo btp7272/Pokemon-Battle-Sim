@@ -542,8 +542,19 @@ public class BattleModel implements IBattleModel {
 		{
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
-		attacker.setLastMoveUsed(move);
 		// calculate and apply the damage
+		
+		//check for frozen and paralysis status
+		if(attacker.hasNonVolatileStatus("Frozen") && attacker.getNonVolatileStatusContainer().getDegree() >= 50)
+		{
+			System.out.println(attacker.getNickName()+" is frozen solid!");
+			return;
+		}
+		if(attacker.hasNonVolatileStatus("Paralysis") && attacker.getNonVolatileStatusContainer().getDegree() >= 80)
+		{
+			System.out.println(attacker.getNickName()+" is too paralyzed to attack!");
+			return;
+		}
 		
 		
 		if(Event.statusVolatileEvent(attacker, EventType.PRE_ATTACK, move))
@@ -609,6 +620,7 @@ public class BattleModel implements IBattleModel {
 			}
 		}
 		
+		attacker.setLastMoveUsed(move);
 		
 		// log the move
 		synchronized (log)

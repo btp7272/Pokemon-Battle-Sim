@@ -39,6 +39,10 @@ public class StatusContainer
 		{
 			this.degree = 100;
 		}
+		else if(degree < 0)
+		{
+			this.degree = 0;
+		}
 	}
 	
 	public void setName(String nm){ this.name = nm; }

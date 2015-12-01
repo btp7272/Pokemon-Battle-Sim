@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 import pokemonBattleSim.online.*;
+import pokemonBattleSim.types.IPokemon;
+
 import javax.swing.JMenuBar;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
@@ -15,6 +17,11 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
@@ -60,8 +67,10 @@ public class IPAddress {
 		frmHello.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Cancel");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				MainMenu.startup();
 				frmHello.setVisible(false);
 			}
@@ -71,6 +80,44 @@ public class IPAddress {
 		
 		JButton btnNewButton_1 = new JButton("Waiting for connection...");
 		btnNewButton_1.setEnabled(false);
+		btnNewButton_1.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				TeamBuilderView.startTeam();
+			}
+		});
+		ServerSocket Test = Recieve.CreateServer();
+		Timer timer = new Timer();
+		Socket testSocket = Recieve.createSocket(Recieve.IP);
+	    class SetTimer extends TimerTask
+	    {
+	 	    @Override
+	 	    public void run()
+	 	    {
+	 		    try 
+	 		    {
+					if(Recieve.getTestConnection(Test, testSocket).equals("Test 1 Valid"))
+					{
+						btnNewButton_1.setText("Connection Recieved!");
+						btnNewButton_1.setEnabled(true);
+						Recieve.CloseServer(Test);
+						Recieve.closeSocket(testSocket);
+					}
+				} 
+	 		    catch (ClassNotFoundException e) 
+	 		    {
+					System.err.println(e);
+				} 
+	 		    catch (IOException e) 
+	 		    {
+					System.err.println(e);
+				}
+	 	    }
+	    }
+	    TimerTask task = new SetTimer();
+	    timer.schedule(task, 100, 1000);
+	    
 		btnNewButton_1.setBounds(10, 59, 172, 23);
 		frmHello.getContentPane().add(btnNewButton_1);
 	}

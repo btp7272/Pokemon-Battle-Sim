@@ -17,6 +17,9 @@ import pokemonBattleSim.views.Connect;
 
 import static pokemonBattleSim.formulas.Formula.*;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,6 +37,8 @@ public class OnlineBattleModel implements IBattleModel
 	static OnlineBattleModel model;
 	static Object owner;
 	static instructionPacket recievedData;
+	static ServerSocket Server;
+	static Socket socket;
 	static IField field = new IField() {
 		
 		private Weather weatherCondition;
@@ -111,12 +116,19 @@ public class OnlineBattleModel implements IBattleModel
 	public void Listen()
 	{
 		Timer timer = new Timer();
+		Server = Recieve.CreateServer();
+		socket = Recieve.createSocket(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {
 	 	    @Override
 	 	    public void run()
 	 	    {
-	 		    recievedData = (instructionPacket)Recieve.Listen();
+	 	    	if(isGameover)
+	 	    	{
+	 	    		timer.cancel();
+	 	    		return;
+	 	    	}
+	 		    recievedData = (instructionPacket)Recieve.Listen(Server, socket);
 	 		    if(recievedData == null){
 	 			    return;
 	 		    }
@@ -125,7 +137,6 @@ public class OnlineBattleModel implements IBattleModel
 	 		    	IPokemon recievedPokemon;
 		 		    switch(recievedData.getInstruction())
 		 		    {
-		 		    
 		 		  		case "Swap":
 		 		  			recievedPokemon = (IPokemon) recievedData.getObject();
 		 		  			if(playerOne.getTrainerID() == recievedPokemon.getPlayerID())
@@ -151,7 +162,10 @@ public class OnlineBattleModel implements IBattleModel
 		 		  			break;
 		 		  		case "gameover":
 		 		  			if((boolean)recievedData.getObject() == true)
+		 		  			{
+		 		  				timer.cancel();
 		 		  				gameover();
+		 		  			}
 		 		  			break;
 		 		  		default:
 		 		  			return;
@@ -159,6 +173,7 @@ public class OnlineBattleModel implements IBattleModel
 		 		    notifyView();
 	 		    }
 	 	    }
+	 	    
 	    }
 	    TimerTask task = new SetTimer();
 	    timer.schedule(task, 0, 5);
@@ -174,9 +189,8 @@ public class OnlineBattleModel implements IBattleModel
 		if (isGameover()) 
 			return;
 		isGameover = true;
-		Send.closeSocket();
-		Recieve.CloseServer();
-		
+		Recieve.closeSocket(socket);
+		Recieve.CloseServer(Server);
 	}
 	
 		/*
@@ -603,15 +617,27 @@ public class OnlineBattleModel implements IBattleModel
 	 * Methods and Types for the Model
 	 */
 	
-	public void executeMove(IPokemonTrainer source, IPokemonTrainer target, Move move) {
+	public void executeMove(IPokemonTrainer source, IPokemonTrainer target, Move move) throws IOException {
 		//System.out.println("[Executing Move] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " move: " + move.getName());
 		synchronized (playerOne) { synchronized (playerTwo)
 		{
 		IPokemon attacker = source.getActiveTeamMember();
 		IPokemon defender = target.getActiveTeamMember();
-		attacker.setLastMoveUsed(move);
 		// calculate and apply the damage
 		
+		//check for frozen and paralysis status
+		if(attacker.hasNonVolatileStatus("Frozen") && attacker.getNonVolatileStatusContainer().getDegree() >= 50)
+		{
+			System.out.println(attacker.getNickName()+" is frozen solid!");
+			return;
+		}
+		if(attacker.hasNonVolatileStatus("Paralysis") && attacker.getNonVolatileStatusContainer().getDegree() >= 80)
+		{
+			System.out.println(attacker.getNickName()+" is too paralyzed to attack!");
+			return;
+		}
+		
+		attacker.setLastMoveUsed(move);
 		
 		if(Event.statusVolatileEvent(attacker, EventType.PRE_ATTACK, move))
 		{
@@ -676,8 +702,8 @@ public class OnlineBattleModel implements IBattleModel
 			}
 		}
 		
-		Send.sendPacket("Attack", attacker);
-		Send.sendPacket("Defend", defender);
+		Send.sendPacket(Recieve.IP,"Attack", attacker);
+		Send.sendPacket(Recieve.IP,"Defend", defender);
 		
 		// log the move
 		synchronized (log)
@@ -698,7 +724,7 @@ public class OnlineBattleModel implements IBattleModel
 			}
 			if (availablePokemon == 0)
 			{
-				Send.sendPacket("gameover", isGameover);
+				Send.sendPacket(Recieve.IP,"gameover", isGameover);
 				gameover();
 			}
 		}
@@ -715,7 +741,7 @@ public class OnlineBattleModel implements IBattleModel
 			}
 			if (availablePokemon == 0)
 			{
-				Send.sendPacket("gameover", isGameover);
+				Send.sendPacket(Recieve.IP,"gameover", isGameover);
 				gameover();
 			}
 		}
@@ -842,7 +868,14 @@ public class OnlineBattleModel implements IBattleModel
 		
 		@Override
 		public void execute() {
-			executeMove(source, target, move);
+			try 
+			{
+				executeMove(source, target, move);
+			} 
+			catch (IOException e) 
+			{
+				System.err.println(e);
+			}
 			notifyView();
 		}
 
@@ -887,7 +920,14 @@ public class OnlineBattleModel implements IBattleModel
 				this.source.setActiveTeamMember(swapIndex);
 				Event.abilityEvent(EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here
-				Send.sendPacket("Swap", this.source.getActiveTeamMember());
+				try 
+				{
+					Send.sendPacket(Recieve.IP,"Swap", this.source.getActiveTeamMember());
+				} 
+				catch (IOException e) 
+				{
+					System.err.println(e);
+				}
 			}}
 		}
 		

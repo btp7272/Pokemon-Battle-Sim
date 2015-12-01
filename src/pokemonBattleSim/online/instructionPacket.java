@@ -1,11 +1,13 @@
 package pokemonBattleSim.online;
 
 public class instructionPacket {
+	static String IPAddress=null;
 	static String instruction=null;
 	static Object object=null;
 	
-	public instructionPacket(String s, Object o)
+	public instructionPacket(String IP, String s, Object o)
 	{
+		IPAddress = IP;
 		object = o;
 		instruction = s;
 	}

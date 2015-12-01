@@ -7,16 +7,25 @@ import pokemonBattleSim.types.*;
 
 public class Recieve 
 {
-	static ServerSocket Server = null;
-	static ServerSocket Test = null;
-	static Socket socketTest = null;
-	static DataInputStream testIn = null;
-	static String line;
-	static ObjectInputStream input;
-	static PrintStream print;
 	static Socket read = null;
-       
-	public static void CloseServer()
+	static ObjectInputStream input;
+	static String line;
+	static PrintStream print;
+	public static String IP = null;
+	
+	public static void closeObjectStream()
+	{
+		try
+		{
+			input.close();
+		}
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+	
+	public static void closeSocket(Socket Server)
 	{
 		try
 		{
@@ -27,33 +36,53 @@ public class Recieve
 	       System.out.println(e);
 	    }
 	}
-	
-	public static void CreateServer()
+
+	public static Socket createSocket(String IP)
 	{
+		Socket Server = null;
 		try 
         {
-           Server = new ServerSocket(8000);
+           Server = new Socket(IP, 6943);
         }
         catch (IOException e) 
         {
            System.out.println(e);
         }
+		return Server;
 	}
 	
-	public static boolean getTestConnection()
+	public static void CloseServer(ServerSocket Server)
 	{
 		try
 		{
-			Test = new ServerSocket(8000);
+			Server.close();
 		}
-		catch (IOException e)
-		{
-			System.err.println(e);
-		}
-		
+		catch (IOException e) 
+        {
+	       System.out.println(e);
+	    }
+	}
+
+	public static ServerSocket CreateServer()
+	{
+		ServerSocket Server = null;
+		try 
+        {
+           Server = new ServerSocket(6943);
+        }
+        catch (IOException e) 
+        {
+           System.out.println(e);
+        }
+		return Server;
+	}
+	
+	public static String getTestConnection(ServerSocket Server, Socket read) throws IOException, ClassNotFoundException
+	{
 		try
 		{
-			socketTest = Test.accept();
+			while(read == null)
+				read = Server.accept();
 		}
 		catch (IOException e)
 		{
@@ -62,27 +91,33 @@ public class Recieve
 		
 		try 
 		{
-			testIn = new DataInputStream(socketTest.getInputStream());
+			input = new ObjectInputStream(read.getInputStream());
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
 		
-		String s = "";
+		instructionPacket s = null;
 		try 
 		{
-			s = testIn.readUTF();
+			s = (instructionPacket)input.readObject();
+			closeObjectStream();
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
-		if(s == "TEST")
+		if(s.getInstruction().equals("TEST"))
 		{
-			return true;
+			Send.testConnectionHandshake(IP = Server.getInetAddress().getHostAddress());
+			return "Test 1 Valid";
 		}
-		return false;
+		else if(s.getInstruction().equals("TEST1"))
+		{
+			return "HandShake Complete";
+		}
+		return "Inconclusive";
 	}
 	
 	public static String getIPAddress()
@@ -118,7 +153,7 @@ public class Recieve
 		return ip;
 	}
 	
-	public static instructionPacket Listen()
+	public static instructionPacket Listen(ServerSocket Server, Socket read)
 	{
 		try 
 	    {
@@ -133,6 +168,7 @@ public class Recieve
 		try 
 		{
 			packet = (instructionPacket) input.readObject();
+			closeObjectStream();
 		} 
 		catch (IOException e) 
 		{

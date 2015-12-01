@@ -176,7 +176,7 @@ public class TeamBuilderView extends JFrame {
 		*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 861, 791);
+		setBounds(100, 100, 860, 816);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -1471,8 +1471,8 @@ public class TeamBuilderView extends JFrame {
 				int EVs[] = {96,0,0,196,0,216};
 				
 				Move[] moves = {new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Giga Drain")),new Move(MoveMap.moveMap.get("Focus Blast")),new Move(MoveMap.moveMap.get("Roost"))};
-				Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
-				//member.addVolatileStatus(new StatusContainer(-1,100,"Confusion",null));
+				Pokemon member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("None"));
+				member.addVolatileStatus(new StatusContainer(-1,-1,"Taunt",member.getMove(2)));
 				member.setPlayerID(0);
 				member.setBenchPosition(1);
 				playerTeam.add(member);

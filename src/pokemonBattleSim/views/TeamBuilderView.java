@@ -19,6 +19,7 @@ import pokemonBattleSim.types.Nature;
 import pokemonBattleSim.types.Pokemon;
 import pokemonBattleSim.types.PokemonTrainer;
 import pokemonBattleSim.types.StatusContainer;
+import pokemonBattleSim.controllers.AIController;
 import pokemonBattleSim.controllers.BattleController;
 
 import javax.swing.JLabel;
@@ -1446,7 +1447,7 @@ public class TeamBuilderView extends JFrame {
 				BattleModel model = BattleModel.getInstance();
 				BattleView view = new BattleView(player.getTrainerID());
 				BattleController controller = new BattleController(view, model, player.getTrainerID());
-				
+				AIController AIcontroller = new AIController(model, computer.getTrainerID());
 				view.setVisible(true);
 				closeFrame();
         	}
@@ -1475,7 +1476,8 @@ public class TeamBuilderView extends JFrame {
 				member.setPlayerID(0);
 				member.setBenchPosition(1);
 				playerTeam.add(member);
-				member = new Pokemon(SpeciesMap.speciesMap.get("Mega Charizard Y"),"Charizard",moves,IVs,EVs,100,Nature.Modest, new AbilityContainer("Drought"), new ItemContainer("Choice Specs"));
+				
+				member = new Pokemon(SpeciesMap.speciesMap.get("Mew"),"Meow",moves,IVs,EVs,100,Nature.Bold, new AbilityContainer("Serene Grace"), new ItemContainer("None"));
 				member.setPlayerID(1);
 				member.setBenchPosition(1);
 				computerTeam.add(member);
@@ -1559,6 +1561,7 @@ public class TeamBuilderView extends JFrame {
 				BattleModel model = BattleModel.getInstance();
 				BattleView view = new BattleView(player.getTrainerID());
 				BattleController controller = new BattleController(view,model, player.getTrainerID());
+				AIController AIcontroller = new AIController(model, computer.getTrainerID());
 				
 				view.setVisible(true);
 				closeFrame();

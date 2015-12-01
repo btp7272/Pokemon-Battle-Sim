@@ -388,6 +388,10 @@ public class BattleModel implements IBattleModel {
 			if (isGameover) return false; // game is already over
 		}
 		
+		if (getPlayerPokemonHP(playerID) == 0 || getOpponentPokemonHP(playerID) == 0) {
+			System.out.println("Cannot register move against/using fainted pokemon");
+			return false;
+		}
 		if (playerID != this.playerOne.getTrainerID() && playerID != this.playerTwo.getTrainerID() )
 			throw new IllegalArgumentException ("playerID does not match active players");
 		
@@ -426,6 +430,23 @@ public class BattleModel implements IBattleModel {
 		return true;
 	}
 
+
+	@Override
+	public synchronized boolean RegisterMove ( int playerID, int moveIndex, int activePeriod, int inactivePeriod )
+	{
+		String move;
+		if (playerID == playerOne.getTrainerID())
+		{
+			move = playerOne.getActiveTeamMember().getMove(moveIndex).getName();
+		} 
+		else if (playerID == playerTwo.getTrainerID())
+		{
+			move = playerTwo.getActiveTeamMember().getMove(moveIndex).getName();
+		}
+		else return false;
+		return RegisterMove(playerID, move, activePeriod, inactivePeriod);
+	}
+	
 	public synchronized boolean RegisterSwap ( int playerID, int swapIndex )
 	{
 		synchronized (isGameoverLock)
@@ -598,6 +619,8 @@ public class BattleModel implements IBattleModel {
 		// check for fainting
 		if (attacker.getHP() <=0 )
 		{
+			playerOneTasks.clear();
+			playerTwoTasks.clear();
 			Event.abilityEvent(EventType.KO, attacker, defender, field, attacker, defender, move);
 			Event.abilityEvent(EventType.KO, defender, attacker, field, attacker, defender, move);
 			int availablePokemon = 0;
@@ -614,12 +637,15 @@ public class BattleModel implements IBattleModel {
 		
 		if (defender.getHP() <=0 )
 		{
+			playerOneTasks.clear();
+			playerTwoTasks.clear();
 			Event.abilityEvent(EventType.KO, defender, attacker, field, attacker, defender, move);
 			Event.abilityEvent(EventType.KO, attacker, defender, field, attacker, defender, move);
+			
 			int availablePokemon = 0;
 			for (int i = 0; i < 6; i++)
 			{
-				if (source.getPokemonTeamMember(i).getHP() > 0)
+				if (target.getPokemonTeamMember(i).getHP() > 0)
 					availablePokemon++;
 			}
 			if (availablePokemon == 0)
@@ -674,8 +700,11 @@ public class BattleModel implements IBattleModel {
 		{
 			if (!this.valid) return;
 			if (isGameover()) return;
+			System.out.println("attempting "+this.toString());
 			execute();
+			System.out.println("executed "+this.toString());
 			remove();
+			System.out.println("removed "+this.toString());
 			notifyView();
 		}
 		
@@ -776,22 +805,31 @@ public class BattleModel implements IBattleModel {
 			{	
 				if (playerOneActive || playerTwoActive){
 					//System.out.println("[Executing SWAP] source: " + playerOneActive + " target: " + playerTwoActive + " result: failed");
+					System.out.println("busy");
 					return;
 				}
-				//System.out.println("[Executing SWAP] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " result: swapped to " + swapIndex);
-				if (this.source.getTrainerID() == playerOne.getTrainerID())
-				{
-					playerOneTasks.clear();
-				}
-				else if (this.source.getTrainerID() == playerTwo.getTrainerID())
-				{
-					playerTwoTasks.clear();
-				}
+				System.out.println("[Executing SWAP] source: " + source.getTrainerID() + " target: " + target.getTrainerID() + " result: swapped to " + swapIndex);
+				
 				Event.abilityEvent(EventType.EXIT, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				model.getPlayerPokemon(this.source.getTrainerID()).resetVolatileStatus();
 				model.getPlayerPokemon(this.source.getTrainerID()).getItemContainer().resetItemStats();
 				model.getPlayerPokemon(this.source.getTrainerID()).resetMoves();
-				this.source.setActiveTeamMember(swapIndex);
+				boolean response = false;
+				if (this.source.getTrainerID() == playerOne.getTrainerID())
+				{
+					playerOneTasks.clear();
+					response = playerOne.setActiveTeamMember(swapIndex);
+				}
+				else if (this.source.getTrainerID() == playerTwo.getTrainerID())
+				{
+					playerTwoTasks.clear();
+					response = playerTwo.setActiveTeamMember(swapIndex);
+				}
+				if (response == false)
+				{
+					System.out.println("response: " + response);
+					System.out.println(source.getPokemonTeamMember(swapIndex).getNickName());
+				}
 				Event.abilityEvent(EventType.ENTRY, model.getPlayerPokemon(this.source.getTrainerID()), model.getOpponentPokemon(this.source.getTrainerID()), field, null, null, null);
 				this.source.getActiveTeamMember().activeNonVolatileStatus(); //here
 			}}

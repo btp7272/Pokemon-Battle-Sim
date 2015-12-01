@@ -66,7 +66,7 @@ public class PokemonTrainer implements IPokemonTrainer
 		if (index < 0 || index >= this.team.size())
 			throw new IllegalArgumentException ("index must be between 0-6");
 		
-		if (this.team.get(0).getHP() <= 0)
+		if (this.team.get(index).getHP() <= 0)
 			return false;
 		
 		this.activePokemon = index;

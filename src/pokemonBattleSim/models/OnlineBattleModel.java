@@ -498,6 +498,22 @@ public class OnlineBattleModel implements IBattleModel
 		return true;
 	}
 
+	@Override
+	public synchronized boolean RegisterMove ( int playerID, int moveIndex, int activePeriod, int inactivePeriod )
+	{
+		String move;
+		if (playerID == playerOne.getTrainerID())
+		{
+			move = playerOne.getActiveTeamMember().getMove(moveIndex).getName();
+		} 
+		else if (playerID == playerTwo.getTrainerID())
+		{
+			move = playerOne.getActiveTeamMember().getMove(moveIndex).getName();
+		}
+		else return false;
+		return RegisterMove(playerID, move, activePeriod, inactivePeriod);
+	}
+	
 	public synchronized boolean RegisterSwap ( int playerID, int swapIndex )
 	{
 		synchronized (isGameoverLock)

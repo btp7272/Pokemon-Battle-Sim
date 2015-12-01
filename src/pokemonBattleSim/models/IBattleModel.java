@@ -10,6 +10,7 @@ import pokemonBattleSim.views.IView;
 public interface IBattleModel {
 	// Methods for Controller: Registering actions
 	public boolean RegisterMove ( int playerID, String moveName, int activePeriod, int inactivePeriod );
+	public boolean RegisterMove ( int playerID, int moveIndex, int activePeriod, int inactivePeriod );
 	public boolean RegisterSwap ( int playerID, int swapIndex );
 	public boolean DeregisterAction ( int playerID, int index );
 	

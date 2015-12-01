@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-public class Send 
+public class Send implements Serializable
 {  
     public static boolean Online = false;
     static Socket sock;

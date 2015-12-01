@@ -1644,6 +1644,8 @@ public class TeamBuilderView extends JFrame {
 				AIController AIcontroller = new AIController(model, computer.getTrainerID());
 				view.setVisible(true);
 				closeFrame();
+				System.out.println(player.getTrainerID());
+				System.out.println(computer.getTrainerID());
         	}
         });
 		contentPane.add(btnFinalize);

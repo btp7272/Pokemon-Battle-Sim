@@ -19,7 +19,9 @@ import java.util.*;
  *
  */
 public class AudioPlayer {
-public static int stopper; 
+public static int stopper;
+public static int prevSong;
+public static int musicBool;
     // size of the byte buffer used to read/write the audio stream
     private static final int BUFFER_SIZE = 4096;
      

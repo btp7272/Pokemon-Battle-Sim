@@ -98,25 +98,28 @@ public class Recieve
 			System.err.println(e);
 		}
 		
-		instructionPacket s = null;
+		String s = null;
 		try 
 		{
-			s = (instructionPacket)input.readObject();
+			s = (String)input.readObject();
 			closeObjectStream();
 		} 
 		catch (IOException e) 
 		{
 			System.err.println(e);
 		}
-		if(s.getInstruction().equals("TEST"))
+		if(s.equals("TEST"))
 		{
 			Send.testConnectionHandshake(IP = Server.getInetAddress().getHostAddress());
+			System.out.println("Test 1 Valid");
 			return "Test 1 Valid";
 		}
-		else if(s.getInstruction().equals("TEST1"))
+		else if(s.equals("TEST1"))
 		{
+			System.out.println("HandShake Complete");
 			return "HandShake Complete";
 		}
+		System.out.println("Inconclusive");
 		return "Inconclusive";
 	}
 	
@@ -169,7 +172,8 @@ public class Recieve
 		{
 			packet = (instructionPacket) input.readObject();
 			closeObjectStream();
-		} 
+			read.close();
+		}
 		catch (IOException e) 
 		{
 			System.err.println(e);

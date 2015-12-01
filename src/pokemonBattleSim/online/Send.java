@@ -33,7 +33,9 @@ public class Send implements Serializable
 	{
 		Recieve.IP = IP;
 		Socket socket = createSocket(IP);
-		instructionPacket s = new instructionPacket(IP,"TEST",null);
+		String s = "TEST";
+		System.out.println("Online Test 1");
+		//instructionPacket s = new instructionPacket(IP,"TEST",null);
 		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 		out.writeObject(s);
 		out.flush();
@@ -45,7 +47,9 @@ public class Send implements Serializable
 	{
 		Recieve.IP = IP;
 		Socket socket = createSocket(IP);
-		instructionPacket s = new instructionPacket(IP,"TEST1",null);
+		String s = "TEST1";
+		System.out.println("Online Handshake");
+		//instructionPacket s = new instructionPacket(IP,"TEST1",null);
 		ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 		out.writeObject(s);
 		out.flush();

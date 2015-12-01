@@ -646,7 +646,10 @@ public class OnlineBattleModel implements IBattleModel
 		else if(Event.itemPrimaryEffectEvent(attacker, EventType.PRE_ATTACK, move))
 		{
 			//run method automatically executed
-			Event.itemSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, move);
+		}
+		else if(Event.itemSecondaryEffectEvent(attacker, EventType.PRE_ATTACK, move))
+		{
+			//run method automatically executed
 		}
 		else if(Event.statusVolatileEvent(defender, EventType.PRE_ATTACK, move))
 		{
@@ -688,6 +691,8 @@ public class OnlineBattleModel implements IBattleModel
 				damage = defender.changeHP(damage);
 				//check for ability even of the defender
 				Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, move);
+				Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, move);
+				Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, move);
 				//check for ability event of the defender
 				Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, move);
 				//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);

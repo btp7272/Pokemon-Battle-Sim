@@ -97,7 +97,7 @@ public class Event
 		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)
 			return false;
 		
-		if(holder.getItem().getEventTrigger().getMask() == type.getMask())
+		if(holder.getItem().getPrimaryEventTrigger().getMask() == type.getMask())
 		{
 			holder.getItem().runPrimaryEffect(holder,moveUsed);
 			return true;
@@ -111,7 +111,7 @@ public class Event
 		if(ItemMap.itemMap.get(holder.getItemContainer().getName()) == null)
 			return false;
 		
-		if(holder.getItem().getEventTrigger().getMask() == type.getMask())
+		if(holder.getItem().getSecondaryEventTrigger().getMask() == type.getMask())
 		{
 			holder.getItem().runSecondaryEffect(holder,moveUsed);
 			return true;

@@ -582,6 +582,8 @@ public class AbilityMap
 									defender.changeHP(damage);
 									//check for ability even of the defender
 									Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 									//check for ability event of the defender
 									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
@@ -630,6 +632,8 @@ public class AbilityMap
 									damage = defender.changeHP(damage);
 									//check for ability even of the defender
 									Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+									Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+									Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 									//check for ability event of the defender
 									Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 									Event.abilityEvent(EventType.POST_ATTACK, defender, attacker, field, attacker, defender, moveUsed);
@@ -689,6 +693,8 @@ public class AbilityMap
 								damage = defender.changeHP(damage);
 								//check for ability even of the defender
 								Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+								Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+								Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 								//check for ability event of the defender
 								Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 								//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
@@ -751,6 +757,8 @@ public class AbilityMap
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
 							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 							//check for ability event of the defender
 							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
@@ -810,6 +818,8 @@ public class AbilityMap
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
 							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 							//check for ability event of the defender
 							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);
@@ -870,6 +880,8 @@ public class AbilityMap
 							damage = defender.changeHP(damage);
 							//check for ability even of the defender
 							Event.abilityEvent(EventType.HP_CHANGE, defender, attacker, field, attacker, defender, moveUsed);
+							Event.itemPrimaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
+							Event.itemSecondaryEffectEvent(defender, EventType.HP_CHANGE, moveUsed);
 							//check for ability event of the defender
 							Event.statusVolatileEvent(attacker, EventType.POST_ATTACK, moveUsed);
 							//Event.statusVolatileEvent(defender, EventType.POST_ATTACK, move);

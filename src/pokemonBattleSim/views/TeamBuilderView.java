@@ -1512,7 +1512,7 @@ public class TeamBuilderView extends JFrame {
 				int IVs4[] = {31,31,31,31,31,0};
 				int EVs4[] = {248,0,200,0,52,8};
 				Move[] moves4 = {new Move(MoveMap.moveMap.get("Thunder Wave")),new Move(MoveMap.moveMap.get("Will-O-Wisp")),new Move(MoveMap.moveMap.get("Toxic")),new Move(MoveMap.moveMap.get("Thunder"))};
-				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("None"));
+				member = new Pokemon(SpeciesMap.speciesMap.get("Ferrothorn"),"Toxic Poisoned",moves4,IVs4,EVs4,100,Nature.Relaxed, new AbilityContainer("Iron Barbs"), new ItemContainer("Assault Vest"));
 				member.setNonVolatileStatus(new StatusContainer(-1,0,"Toxic Poison",null));
 				member.setPlayerID(0);
 				member.setBenchPosition(4);

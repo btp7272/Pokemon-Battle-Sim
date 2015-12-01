@@ -182,12 +182,6 @@ public class TeamBuilderView extends JFrame {
 	private JComboBox p6_move3;
 	private JComboBox p6_move4;
 	private JComboBox p6_ability;
-	private JSpinner p1_level;
-	private JSpinner p2_level;
-	private JSpinner p3_level;
-	private JSpinner p4_level;
-	private JSpinner p5_level;
-	private JSpinner p6_level;
 	
 	/**
 	 * Launch the application.
@@ -290,12 +284,13 @@ public class TeamBuilderView extends JFrame {
 		p1_nickname.setBounds(90, 55, 100, 25);
 		contentPane.add(p1_nickname);
 		
+<<<<<<< HEAD
 		p1_move1 = new JComboBox(new Object[]{});
 		p1_move1.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move1.setBounds(90, 95, 100, 25);
 		contentPane.add(p1_move1);
 		
-		p1_move2 = new JComboBox(new Object[]{});
+		p1_move2 = new JComboBox(poke1move2List);
 		p1_move2.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move2.setBounds(90, 125, 100, 25);
 		contentPane.add(p1_move2);
@@ -307,6 +302,7 @@ public class TeamBuilderView extends JFrame {
 		
 		p1_move4 = new JComboBox(new Object[]{});
 		p1_move4.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
+=======
 		JComboBox p1_move1 = new JComboBox(new Object[]{});
 		p1_move1.setModel(new DefaultComboBoxModel(moveList));
 		p1_move1.setBounds(90, 95, 100, 25);
@@ -324,6 +320,7 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p1_move4 = new JComboBox(new Object[]{});
 		p1_move4.setModel(new DefaultComboBoxModel(moveList));
+>>>>>>> origin/master
 		p1_move4.setBounds(90, 185, 100, 25);
 		contentPane.add(p1_move4);
 		
@@ -503,11 +500,13 @@ public class TeamBuilderView extends JFrame {
 		p2_move4.setModel(new DefaultComboBoxModel(moveList));
 		contentPane.add(p2_move4);
 		
+<<<<<<< HEAD
 		p2_ability = new JComboBox(new Object[]{});
 		p2_ability.setModel(new DefaultComboBoxModel(new String[] {"Rain Dish", "Rattled", "Reckless", "Refrigerate", "Regenerator", "Rivalry", "Rock Head", "Rough Skin", "Run Away"}));
+=======
 		JComboBox p2_ability = new JComboBox(new Object[]{});
 		p2_ability.setModel(new DefaultComboBoxModel(abilityList));
-
+>>>>>>> origin/master
 		p2_ability.setBounds(220, 215, 100, 25);
 		contentPane.add(p2_ability);
 		
@@ -582,6 +581,7 @@ public class TeamBuilderView extends JFrame {
 		p3_nickname.setBounds(350, 55, 100, 25);
 		contentPane.add(p3_nickname);
 		
+<<<<<<< HEAD
 		p3_move1 = new JComboBox(new Object[]{});
 		p3_move1.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move1.setBounds(350, 95, 100, 25);
@@ -604,6 +604,7 @@ public class TeamBuilderView extends JFrame {
 		
 		p3_ability = new JComboBox(new Object[]{});
 		p3_ability.setModel(new DefaultComboBoxModel(new String[] {"Harvest", "Healer", "Heatproof", "Heavy Metal", "Honey Gather", "Huge Power", "Hustle", "Hydration", "Hyper Cutter"}));
+=======
 		JComboBox p3_move1 = new JComboBox(new Object[]{});
 		p3_move1.setModel(new DefaultComboBoxModel(moveList));
 		p3_move1.setBounds(350, 95, 100, 25);
@@ -626,6 +627,7 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p3_ability = new JComboBox(new Object[]{});
 		p3_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p3_ability.setBounds(350, 215, 100, 25);
 		contentPane.add(p3_ability);
 		
@@ -700,6 +702,7 @@ public class TeamBuilderView extends JFrame {
 		p4_nickname.setBounds(480, 55, 100, 25);
 		contentPane.add(p4_nickname);
 		
+<<<<<<< HEAD
 		p4_move1 = new JComboBox(new Object[]{});
 		p4_move1.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move1.setBounds(480, 95, 100, 25);
@@ -722,6 +725,7 @@ public class TeamBuilderView extends JFrame {
 		
 		p4_ability = new JComboBox(new Object[]{});
 		p4_ability.setModel(new DefaultComboBoxModel(new String[] {"Damp", "Dark Aura", "Defeatist", "Defiant", "Desolate Land", "Download", "Drizzle", "Drought", "Dry Skin"}));
+=======
 		JComboBox p4_move1 = new JComboBox(new Object[]{});
 		p4_move1.setModel(new DefaultComboBoxModel(moveList));
 		p4_move1.setBounds(480, 95, 100, 25);
@@ -744,6 +748,7 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p4_ability = new JComboBox(new Object[]{});
 		p4_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p4_ability.setBounds(480, 215, 100, 25);
 		contentPane.add(p4_ability);
 		
@@ -818,6 +823,7 @@ public class TeamBuilderView extends JFrame {
 		p5_nickname.setBounds(610, 55, 100, 25);
 		contentPane.add(p5_nickname);
 		
+<<<<<<< HEAD
 		p5_move1 = new JComboBox(new Object[]{});
 		p5_move1.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move1.setBounds(610, 95, 100, 25);
@@ -840,7 +846,7 @@ public class TeamBuilderView extends JFrame {
 		
 		p5_ability = new JComboBox(new Object[]{});
 		p5_ability.setModel(new DefaultComboBoxModel(new String[] {"Cheek Pouch", "Chlorophyll", "Clear Body", "Cloud Nine", "Color Change", "Competitive", "Compound Eyes", "Contrary", "Cursed Body", "Cute Charm"}));
-
+=======
 		JComboBox p5_move1 = new JComboBox(new Object[]{});
 		p5_move1.setModel(new DefaultComboBoxModel(moveList));
 		p5_move1.setBounds(610, 95, 100, 25);
@@ -863,6 +869,7 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p5_ability = new JComboBox(new Object[]{});
 		p5_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p5_ability.setBounds(610, 215, 100, 25);
 		contentPane.add(p5_ability);
 		
@@ -937,7 +944,7 @@ public class TeamBuilderView extends JFrame {
 		p6_nickname.setBounds(740, 55, 100, 25);
 		contentPane.add(p6_nickname);
 		
-
+<<<<<<< HEAD
 		p6_move1 = new JComboBox(new Object[]{});
 		p6_move1.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move1.setBounds(740, 95, 100, 25);
@@ -960,7 +967,7 @@ public class TeamBuilderView extends JFrame {
 		
 		p6_ability = new JComboBox(new Object[]{});
 		p6_ability.setModel(new DefaultComboBoxModel(new String[] {"Sand Force", "Sand Rush", "Sand Stream", "Sand Veil", "Sap Sipper", "Scrappy", "Serene Grace", "Shadow Tag", "Shed Skin", "Sheer Force", "Shell Armor", "Shield Dust", "Simple", "Skill Link", "Slow Start", "Sniper", "Snow Cloak", "Snow Warning", "Solar Power", "Solid Rock", "Soundproof", "Speed Boost", "Stall", "Stance Change", "Static", "Steadfast", "Stench", "Sticky Hold", "Storm Drain", "Strong Jaw", "Sturdy", "Suction Cups", "Super Luck", "Swarm", "Sweet Veil", "Swift Swim", "Symbiosis", "Synchronize"}));
-
+=======
 		JComboBox p6_move1 = new JComboBox(new Object[]{});
 		p6_move1.setModel(new DefaultComboBoxModel(moveList));
 		p6_move1.setBounds(740, 95, 100, 25);
@@ -983,6 +990,7 @@ public class TeamBuilderView extends JFrame {
 		
 		JComboBox p6_ability = new JComboBox(new Object[]{});
 		p6_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p6_ability.setBounds(740, 215, 100, 25);
 		contentPane.add(p6_ability);
 		
@@ -1088,32 +1096,32 @@ public class TeamBuilderView extends JFrame {
 		lblGender.setBounds(5, 708, 85, 14);
 		contentPane.add(lblGender);
 		
-		p1_level = new JSpinner();
+		JSpinner p1_level = new JSpinner();
 		p1_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p1_level.setBounds(90, 676, 100, 25);
 		contentPane.add(p1_level);
 		
-		p2_level = new JSpinner();
+		JSpinner p2_level = new JSpinner();
 		p2_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p2_level.setBounds(220, 676, 100, 25);
 		contentPane.add(p2_level);
 		
-		p3_level = new JSpinner();
+		JSpinner p3_level = new JSpinner();
 		p3_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p3_level.setBounds(350, 676, 100, 25);
 		contentPane.add(p3_level);
 		
-		p4_level = new JSpinner();
+		JSpinner p4_level = new JSpinner();
 		p4_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p4_level.setBounds(480, 676, 100, 25);
 		contentPane.add(p4_level);
 		
-		p5_level = new JSpinner();
+		JSpinner p5_level = new JSpinner();
 		p5_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p5_level.setBounds(610, 676, 100, 25);
 		contentPane.add(p5_level);
 		
-		p6_level = new JSpinner();
+		JSpinner p6_level = new JSpinner();
 		p6_level.setModel(new SpinnerNumberModel(100, 1, 100, 50));
 		p6_level.setBounds(740, 676, 100, 25);
 		contentPane.add(p6_level);
@@ -1189,8 +1197,6 @@ public class TeamBuilderView extends JFrame {
         {
         	public void actionPerformed(ActionEvent e)
         	{
-        		if(!testValidity())
-        			return;
         		// This is the main entry point to the program, will use other classes
 				Object owner = new Object(); //may need to be static?
 				IPokemonTrainer player;
@@ -1785,32 +1791,32 @@ public class TeamBuilderView extends JFrame {
 		if(SpeciesMap.speciesMap.get(p1_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 1 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(SpeciesMap.speciesMap.get(p2_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 2 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(SpeciesMap.speciesMap.get(p3_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 3 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(SpeciesMap.speciesMap.get(p4_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 4 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(SpeciesMap.speciesMap.get(p5_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 5 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(SpeciesMap.speciesMap.get(p6_species.getSelectedItem()) == null)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 6 is not a valid Pokemon");
-			return false;
+			return true;
 		}
 		else if(p1_species.getSelectedItem().equals(p2_species.getSelectedItem())  ||
 				p1_species.getSelectedItem().equals(p3_species.getSelectedItem())  ||
@@ -1829,97 +1835,96 @@ public class TeamBuilderView extends JFrame {
 				p5_species.getSelectedItem().equals(p6_species.getSelectedItem())
 				)
 		{
-			JOptionPane.showMessageDialog(null, "You cannot have two of the same Pokemon on your team");
-			return false;
+			JOptionPane.showMessageDialog(null, "You ccannot have two of the same Pokemon on your team");
+			return true;
 		}
 		else
-			return true;
+			return false;
 	}
-	
 	/*
 	 * Check Move validity
 	 */
 	public boolean checkMoves()
 	{
 		if (	
-				p1_move1.getSelectedItem().equals(p1_move2.getSelectedItem())  ||
-				p1_move1.getSelectedItem().equals(p1_move3.getSelectedItem())  ||
-				p1_move1.getSelectedItem().equals(p1_move4.getSelectedItem())  ||
-				p1_move2.getSelectedItem().equals(p1_move3.getSelectedItem())  ||
-				p1_move2.getSelectedItem().equals(p1_move4.getSelectedItem())  ||
-				p1_move3.getSelectedItem().equals(p1_move4.getSelectedItem())
+				p1_move1.equals(p1_move2)  ||
+				p1_move1.equals(p1_move3)  ||
+				p1_move1.equals(p1_move4)  ||
+				p1_move2.equals(p1_move3)  ||
+				p1_move2.equals(p1_move4)  ||
+				p1_move3.equals(p1_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else if 
 			(	
-				p2_move1.getSelectedItem().equals(p2_move2.getSelectedItem())  ||
-				p2_move1.getSelectedItem().equals(p2_move3.getSelectedItem())  ||
-				p2_move1.getSelectedItem().equals(p2_move4.getSelectedItem())  ||
-				p2_move2.getSelectedItem().equals(p2_move3.getSelectedItem())  ||
-				p2_move2.getSelectedItem().equals(p2_move4.getSelectedItem())  ||
-				p2_move3.getSelectedItem().equals(p2_move4.getSelectedItem())
+				p2_move1.equals(p2_move2)  ||
+				p2_move1.equals(p2_move3)  ||
+				p2_move1.equals(p2_move4)  ||
+				p2_move2.equals(p2_move3)  ||
+				p2_move2.equals(p2_move4)  ||
+				p2_move3.equals(p2_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 2 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else if 
 			(	
-				p3_move1.getSelectedItem().equals(p3_move2.getSelectedItem())  ||
-				p3_move1.getSelectedItem().equals(p3_move3.getSelectedItem())  ||
-				p3_move1.getSelectedItem().equals(p3_move4.getSelectedItem())  ||
-				p3_move2.getSelectedItem().equals(p3_move3.getSelectedItem())  ||
-				p3_move2.getSelectedItem().equals(p3_move4.getSelectedItem())  ||
-				p3_move3.getSelectedItem().equals(p3_move4.getSelectedItem())
+				p3_move1.equals(p3_move2)  ||
+				p3_move1.equals(p3_move3)  ||
+				p3_move1.equals(p3_move4)  ||
+				p3_move2.equals(p3_move3)  ||
+				p3_move2.equals(p3_move4)  ||
+				p3_move3.equals(p3_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 3 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else if 
 			(	
-				p4_move1.getSelectedItem().equals(p4_move2.getSelectedItem())  ||
-				p4_move1.getSelectedItem().equals(p4_move3.getSelectedItem())  ||
-				p4_move1.getSelectedItem().equals(p4_move4.getSelectedItem())  ||
-				p4_move2.getSelectedItem().equals(p4_move3.getSelectedItem())  ||
-				p4_move2.getSelectedItem().equals(p4_move4.getSelectedItem())  ||
-				p4_move3.getSelectedItem().equals(p4_move4.getSelectedItem())
+				p4_move1.equals(p4_move2)  ||
+				p4_move1.equals(p4_move3)  ||
+				p4_move1.equals(p4_move4)  ||
+				p4_move2.equals(p4_move3)  ||
+				p4_move2.equals(p4_move4)  ||
+				p4_move3.equals(p4_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 4 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else if 
 			(	
-				p5_move1.getSelectedItem().equals(p5_move2.getSelectedItem())  ||
-				p5_move1.getSelectedItem().equals(p5_move3.getSelectedItem())  ||
-				p5_move1.getSelectedItem().equals(p5_move4.getSelectedItem())  ||
-				p5_move2.getSelectedItem().equals(p5_move3.getSelectedItem())  ||
-				p5_move2.getSelectedItem().equals(p5_move4.getSelectedItem())  ||
-				p5_move3.getSelectedItem().equals(p5_move4.getSelectedItem())
+				p5_move1.equals(p5_move2)  ||
+				p5_move1.equals(p5_move3)  ||
+				p5_move1.equals(p5_move4)  ||
+				p5_move2.equals(p5_move3)  ||
+				p5_move2.equals(p5_move4)  ||
+				p5_move3.equals(p5_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 5 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else if 
 			(	
-				p6_move1.getSelectedItem().equals(p6_move2.getSelectedItem())  ||
-				p6_move1.getSelectedItem().equals(p6_move3.getSelectedItem())  ||
-				p6_move1.getSelectedItem().equals(p6_move4.getSelectedItem())  ||
-				p6_move2.getSelectedItem().equals(p6_move3.getSelectedItem())  ||
-				p6_move2.getSelectedItem().equals(p6_move4.getSelectedItem())  ||
-				p6_move3.getSelectedItem().equals(p6_move4.getSelectedItem())
+				p6_move1.equals(p6_move2)  ||
+				p6_move1.equals(p6_move3)  ||
+				p6_move1.equals(p6_move4)  ||
+				p6_move2.equals(p6_move3)  ||
+				p6_move2.equals(p6_move4)  ||
+				p6_move3.equals(p6_move4)
 			)
 		{
 			JOptionPane.showMessageDialog(null, "Pokemon 1 may not have two of the same moves");
-			return false;
+			return true;
 		}
 		else
-			return true;
+			return false;
 	}
 	/*
 	 * Check IV and EV value functions 
@@ -1933,13 +1938,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_def_iv.getModel().getValue() > 31  ||
 				(int)p1_spatk_iv.getModel().getValue() > 31  ||
 				(int)p1_spdef_iv.getModel().getValue() > 31  ||
-				(int)p1_speed_iv.getModel().getValue() > 31  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 1 is over 31");
-			return false;
-		}
-		else if(
+				(int)p1_speed_iv.getModel().getValue() > 31  ||
 				(int)p1_hp_iv.getModel().getValue() < 0  ||
 				(int)p1_atk_iv.getModel().getValue() < 0  ||
 				(int)p1_def_iv.getModel().getValue() < 0  ||
@@ -1948,8 +1947,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 1 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 1 are invalid");
+			return true;
 		}
 		else if(
 				(int)p2_hp_iv.getModel().getValue() > 31  ||
@@ -1957,13 +1956,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_def_iv.getModel().getValue() > 31  ||
 				(int)p2_spatk_iv.getModel().getValue() > 31  ||
 				(int)p2_spdef_iv.getModel().getValue() > 31  ||
-				(int)p2_speed_iv.getModel().getValue() > 31  
-			)
-			{
-				JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 2 is over 31");
-				return false;
-			}
-			else if(
+				(int)p2_speed_iv.getModel().getValue() > 31  ||
 				(int)p2_hp_iv.getModel().getValue() < 0  ||
 				(int)p2_atk_iv.getModel().getValue() < 0  ||
 				(int)p2_def_iv.getModel().getValue() < 0  ||
@@ -1972,8 +1965,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_speed_iv.getModel().getValue() < 0   
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 2 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 2 are invalid");
+			return true;
 		}
 		else if(
 				(int)p3_hp_iv.getModel().getValue() > 31  ||
@@ -1981,13 +1974,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_def_iv.getModel().getValue() > 31  ||
 				(int)p3_spatk_iv.getModel().getValue() > 31  ||
 				(int)p3_spdef_iv.getModel().getValue() > 31  ||
-				(int)p3_speed_iv.getModel().getValue() > 31  
-				)
-		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 3 is over 31");
-			return false;
-		}
-		else if(
+				(int)p3_speed_iv.getModel().getValue() > 31  ||
 				(int)p3_hp_iv.getModel().getValue() < 0  ||
 				(int)p3_atk_iv.getModel().getValue() < 0  ||
 				(int)p3_def_iv.getModel().getValue() < 0  ||
@@ -1996,8 +1983,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 3 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 3 are invalid");
+			return true;
 		}
 		else if(
 				(int)p4_hp_iv.getModel().getValue() > 31  ||
@@ -2005,13 +1992,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_def_iv.getModel().getValue() > 31  ||
 				(int)p4_spatk_iv.getModel().getValue() > 31  ||
 				(int)p4_spdef_iv.getModel().getValue() > 31  ||
-				(int)p4_speed_iv.getModel().getValue() > 31  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 4 is over 31");
-			return false;
-		}
-		else if(
+				(int)p4_speed_iv.getModel().getValue() > 31  ||
 				(int)p4_hp_iv.getModel().getValue() < 0  ||
 				(int)p4_atk_iv.getModel().getValue() < 0  ||
 				(int)p4_def_iv.getModel().getValue() < 0  ||
@@ -2020,8 +2001,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 4 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 4 are invalid");
+			return true;
 		}
 		else if(
 				(int)p5_hp_iv.getModel().getValue() > 31  ||
@@ -2029,13 +2010,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_def_iv.getModel().getValue() > 31  ||
 				(int)p5_spatk_iv.getModel().getValue() > 31  ||
 				(int)p5_spdef_iv.getModel().getValue() > 31  ||
-				(int)p5_speed_iv.getModel().getValue() > 31  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 5 is over 31");
-			return false;
-		}
-		else if(
+				(int)p5_speed_iv.getModel().getValue() > 31  ||
 				(int)p5_hp_iv.getModel().getValue() < 0  ||
 				(int)p5_atk_iv.getModel().getValue() < 0  ||
 				(int)p5_def_iv.getModel().getValue() < 0  ||
@@ -2044,8 +2019,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 5 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 5 are invalid");
+			return true;
 		}
 		else if(
 				(int)p6_hp_iv.getModel().getValue() > 31  ||
@@ -2053,13 +2028,7 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_def_iv.getModel().getValue() > 31  ||
 				(int)p6_spatk_iv.getModel().getValue() > 31  ||
 				(int)p6_spdef_iv.getModel().getValue() > 31  ||
-				(int)p6_speed_iv.getModel().getValue() > 31  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 6 is over 31");
-			return false;
-		}
-		else if(
+				(int)p6_speed_iv.getModel().getValue() > 31  ||
 				(int)p6_hp_iv.getModel().getValue() < 0  ||
 				(int)p6_atk_iv.getModel().getValue() < 0  ||
 				(int)p6_def_iv.getModel().getValue() < 0  ||
@@ -2068,8 +2037,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_iv.getModel().getValue() < 0
 			)
 		{
-			JOptionPane.showMessageDialog(null, "The value of an IV for Pokemon 6 is less than 0");
-			return false;
+			JOptionPane.showMessageDialog(null, "Individual Values for Pokemon 6 are invalid");
+			return true;
 		}
 		//Calculate EV Validity
 		else if(
@@ -2078,25 +2047,13 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_def_ev.getModel().getValue() > 252  ||
 				(int)p1_spatk_ev.getModel().getValue() > 252  ||
 				(int)p1_spdef_ev.getModel().getValue() > 252  ||
-				(int)p1_speed_ev.getModel().getValue() > 252  
-				)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 1 is over 252");
-			return false;
-		}
-		else if(
+				(int)p1_speed_ev.getModel().getValue() > 252  ||
 				(int)p1_hp_ev.getModel().getValue() < 0    ||
 				(int)p1_atk_ev.getModel().getValue() < 0    ||
 				(int)p1_def_ev.getModel().getValue() < 0    ||
 				(int)p1_spatk_ev.getModel().getValue() < 0    ||
 				(int)p1_spdef_ev.getModel().getValue() < 0    ||
-				(int)p1_speed_ev.getModel().getValue() < 0    
-			)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 1 is less than 0");
-			return false;
-		}
-		else if(
+				(int)p1_speed_ev.getModel().getValue() < 0    ||
 				(int)p1_hp_ev.getModel().getValue() +
 				(int)p1_atk_ev.getModel().getValue() +
 				(int)p1_def_ev.getModel().getValue() +
@@ -2105,8 +2062,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p1_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 1 add up to a value over 510");
-			return false;
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 1 are invalid");
+			return true;
 		}
 		else if(
 				(int)p2_hp_ev.getModel().getValue() > 252  ||
@@ -2114,35 +2071,23 @@ public class TeamBuilderView extends JFrame {
 				(int)p2_def_ev.getModel().getValue() > 252  ||
 				(int)p2_spatk_ev.getModel().getValue() > 252  ||
 				(int)p2_spdef_ev.getModel().getValue() > 252  ||
-				(int)p2_speed_ev.getModel().getValue() > 252  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 2 is over 252");
-			return false;
-		}
-		else if(
+				(int)p2_speed_ev.getModel().getValue() > 252  ||
 				(int)p2_hp_ev.getModel().getValue() < 0    ||
 				(int)p2_atk_ev.getModel().getValue() < 0    ||
 				(int)p2_def_ev.getModel().getValue() < 0    ||
 				(int)p2_spatk_ev.getModel().getValue() < 0    ||
 				(int)p2_spdef_ev.getModel().getValue() < 0    ||
-				(int)p2_speed_ev.getModel().getValue() < 0    
-				)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 2 is less than 0");
-			return false;
-		}
-		else if(
+				(int)p2_speed_ev.getModel().getValue() < 0    ||
 				(int)p2_hp_ev.getModel().getValue() +
 				(int)p2_atk_ev.getModel().getValue() +
 				(int)p2_def_ev.getModel().getValue() +
 				(int)p2_spatk_ev.getModel().getValue() +
 				(int)p2_spdef_ev.getModel().getValue() +
 				(int)p2_speed_ev.getModel().getValue() > 510
-			)
+				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 2 add up to a value over 510");
-			return false;
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 2 are invalid");
+			return true;
 		}
 		else if(
 				(int)p3_hp_ev.getModel().getValue() > 252  ||
@@ -2150,25 +2095,13 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_def_ev.getModel().getValue() > 252  ||
 				(int)p3_spatk_ev.getModel().getValue() > 252  ||
 				(int)p3_spdef_ev.getModel().getValue() > 252  ||
-				(int)p3_speed_ev.getModel().getValue() > 252  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 3 is over 252");
-			return false;
-		}
-		else if(
+				(int)p3_speed_ev.getModel().getValue() > 252  ||
 				(int)p3_hp_ev.getModel().getValue() < 0    ||
 				(int)p3_atk_ev.getModel().getValue() < 0    ||
 				(int)p3_def_ev.getModel().getValue() < 0    ||
 				(int)p3_spatk_ev.getModel().getValue() < 0    ||
 				(int)p3_spdef_ev.getModel().getValue() < 0    ||
-				(int)p3_speed_ev.getModel().getValue() < 0    
-				)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 3 is less than 0");
-			return false;
-		}
-		else if(
+				(int)p3_speed_ev.getModel().getValue() < 0    ||
 				(int)p3_hp_ev.getModel().getValue() +
 				(int)p3_atk_ev.getModel().getValue() +
 				(int)p3_def_ev.getModel().getValue() +
@@ -2177,8 +2110,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p3_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 3 add up to a value over 510");
-			return false;
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 3 are invalid");
+			return true;
 		}
 		else if(
 				(int)p4_hp_ev.getModel().getValue() > 252  ||
@@ -2186,25 +2119,13 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_def_ev.getModel().getValue() > 252  ||
 				(int)p4_spatk_ev.getModel().getValue() > 252  ||
 				(int)p4_spdef_ev.getModel().getValue() > 252  ||
-				(int)p4_speed_ev.getModel().getValue() > 252  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 4 is over 252");
-			return false;
-		}
-		else if(
+				(int)p4_speed_ev.getModel().getValue() > 252  ||
 				(int)p4_hp_ev.getModel().getValue() < 0    ||
 				(int)p4_atk_ev.getModel().getValue() < 0    ||
 				(int)p4_def_ev.getModel().getValue() < 0    ||
 				(int)p4_spatk_ev.getModel().getValue() < 0    ||
 				(int)p4_spdef_ev.getModel().getValue() < 0    ||
-				(int)p4_speed_ev.getModel().getValue() < 0    
-				)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 4 is less than 0");
-			return false;
-		}
-		else if(
+				(int)p4_speed_ev.getModel().getValue() < 0    ||
 				(int)p4_hp_ev.getModel().getValue() +
 				(int)p4_atk_ev.getModel().getValue() +
 				(int)p4_def_ev.getModel().getValue() +
@@ -2213,8 +2134,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p4_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 4 add up to a value over 510");
-			return false;
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 4 are invalid");
+			return true;
 		}
 		else if(
 				(int)p5_hp_ev.getModel().getValue() > 252  ||
@@ -2222,25 +2143,13 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_def_ev.getModel().getValue() > 252  ||
 				(int)p5_spatk_ev.getModel().getValue() > 252  ||
 				(int)p5_spdef_ev.getModel().getValue() > 252  ||
-				(int)p5_speed_ev.getModel().getValue() > 252  
-			)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 5 is over 252");
-			return false;
-		}
-		else if(
+				(int)p5_speed_ev.getModel().getValue() > 252  ||
 				(int)p5_hp_ev.getModel().getValue() < 0    ||
 				(int)p5_atk_ev.getModel().getValue() < 0    ||
 				(int)p5_def_ev.getModel().getValue() < 0    ||
 				(int)p5_spatk_ev.getModel().getValue() < 0    ||
 				(int)p5_spdef_ev.getModel().getValue() < 0    ||
-				(int)p5_speed_ev.getModel().getValue() < 0    
-				)
-		{
-			JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 5 is less than 0");
-			return false;
-		}
-		else if(
+				(int)p5_speed_ev.getModel().getValue() < 0    ||
 				(int)p5_hp_ev.getModel().getValue() +
 				(int)p5_atk_ev.getModel().getValue() +
 				(int)p5_def_ev.getModel().getValue() +
@@ -2249,8 +2158,8 @@ public class TeamBuilderView extends JFrame {
 				(int)p5_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 5 add up to a value over 510");
-			return false;
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 5 are invalid");
+			return true;
 		}
 		else if(
 				(int)p6_hp_ev.getModel().getValue() > 252  ||
@@ -2258,25 +2167,13 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_def_ev.getModel().getValue() > 252  ||
 				(int)p6_spatk_ev.getModel().getValue() > 252  ||
 				(int)p6_spdef_ev.getModel().getValue() > 252  ||
-				(int)p6_speed_ev.getModel().getValue() > 252  
-				)
-			{
-				JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 6 is over 252");
-				return false;
-			}
-			else if(
+				(int)p6_speed_ev.getModel().getValue() > 252  ||
 				(int)p6_hp_ev.getModel().getValue() < 0    ||
 				(int)p6_atk_ev.getModel().getValue() < 0    ||
 				(int)p6_def_ev.getModel().getValue() < 0    ||
 				(int)p6_spatk_ev.getModel().getValue() < 0    ||
 				(int)p6_spdef_ev.getModel().getValue() < 0    ||
-				(int)p6_speed_ev.getModel().getValue() < 0    
-					)
-			{
-				JOptionPane.showMessageDialog(null, "An Effort Value for Pokemon 6 is less than 0");
-				return false;
-			}
-			else if(
+				(int)p6_speed_ev.getModel().getValue() < 0    ||
 				(int)p6_hp_ev.getModel().getValue() +
 				(int)p6_atk_ev.getModel().getValue() +
 				(int)p6_def_ev.getModel().getValue() +
@@ -2285,55 +2182,10 @@ public class TeamBuilderView extends JFrame {
 				(int)p6_speed_ev.getModel().getValue() > 510
 				)
 		{
-			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 6 add up to a value over 510");
-			return false;
-		}
-			else if((int)p1_level.getModel().getValue() < 1 || (int)p1_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 1 must be between levels 1 and 100");
-				return false;
-			}
-			else if((int)p2_level.getModel().getValue() < 1 || (int)p2_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 2 must be between levels 1 and 100");
-				return false;
-			}
-			else if((int)p3_level.getModel().getValue() < 1 || (int)p3_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 3 must be between levels 1 and 100");
-				return false;
-			}
-			else if((int)p4_level.getModel().getValue() < 1 || (int)p4_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 4 must be between levels 1 and 100");
-				return false;
-			}
-			else if((int)p5_level.getModel().getValue() < 1 || (int)p5_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 5 must be between levels 1 and 100");
-				return false;
-			}
-			else if((int)p6_level.getModel().getValue() < 1 || (int)p6_level.getModel().getValue() > 100)
-			{
-				JOptionPane.showMessageDialog(null, "Pokemon 6 must be between levels 1 and 100");
-				return false;
-			}
-		else
+			JOptionPane.showMessageDialog(null, "Effort Values for Pokemone 6 are invalid");
 			return true;
-	}
-	public boolean testValidity()
-	{
-		if(checkPokemon())
-		{
-			if(checkMoves())
-			{
-				if(checkSums())
-				{
-					return true;
-				}
-			}
-			
 		}
-		return false;
+		else
+			return false;
 	}
 }

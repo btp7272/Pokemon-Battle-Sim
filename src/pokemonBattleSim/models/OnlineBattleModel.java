@@ -198,13 +198,8 @@ public class OnlineBattleModel implements IBattleModel
 		Recieve.CloseServer(Server);
 	}
 	
-	public void addLogItem (String item)
-	{
-		if (item != null) log.push(item + "\n");
-		notifyView();
-	}
 	
-		/*
+	/*
 	 * Methods for View
 	 */
 	

@@ -36,7 +36,6 @@ public interface IBattleModel {
 	public Iterable<String> getLogData ();
 	public ArrayList<QueuedAction> getTasks ( int playerID );
 	public boolean isGameover();
-	public void addLogItem (String item);
 	
 	// Methods for View: Notification
 	public void registerView(IView view);

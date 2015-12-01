@@ -9,7 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.models.MoveMap;
+import pokemonBattleSim.models.MoveEffectMap;
 import pokemonBattleSim.models.SpeciesMap;
+import pokemonBattleSim.models.AbilityMap;
+import pokemonBattleSim.models.ItemMap;
 import pokemonBattleSim.models.TeamBuilderModel;
 import pokemonBattleSim.types.AbilityContainer;
 import pokemonBattleSim.types.IPokemonTrainer;
@@ -63,7 +66,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p1_spdef_ev;
 	private JSpinner p1_speed_ev;
 	private JComboBox p1_ability;
-	private JTextField p2_species;
+	private JComboBox p2_species;
 	private JTextField p2_nickname;
 	private JSpinner p2_hp_iv;
 	private JSpinner p2_atk_iv;
@@ -77,7 +80,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p2_spatk_ev;
 	private JSpinner p2_spdef_ev;
 	private JSpinner p2_speed_ev;
-	private JTextField p3_species;
+	private JComboBox p3_species;
 	private JTextField p3_nickname;
 	private JSpinner p3_hp_iv;
 	private JSpinner p3_atk_iv;
@@ -91,7 +94,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p3_spatk_ev;
 	private JSpinner p3_spdef_ev;
 	private JSpinner p3_speed_ev;
-	private JTextField p4_species;
+	private JComboBox p4_species;
 	private JTextField p4_nickname;
 	private JSpinner p4_hp_iv;
 	private JSpinner p4_atk_iv;
@@ -105,7 +108,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p4_spatk_ev;
 	private JSpinner p4_spdef_ev;
 	private JSpinner p4_speed_ev;
-	private JTextField p5_species;
+	private JComboBox p5_species;
 	private JTextField p5_nickname;
 	private JSpinner p5_hp_iv;
 	private JSpinner p5_atk_iv;
@@ -119,7 +122,7 @@ public class TeamBuilderView extends JFrame {
 	private JSpinner p5_spatk_ev;
 	private JSpinner p5_spdef_ev;
 	private JSpinner p5_speed_ev;
-	private JTextField p6_species;
+	private JComboBox p6_species;
 	private JTextField p6_nickname;
 	private JSpinner p6_hp_iv;
 	private JSpinner p6_atk_iv;
@@ -199,15 +202,42 @@ public class TeamBuilderView extends JFrame {
 	 * Create the frame.
 	 */
 	public TeamBuilderView() {
-		String[] poke1move2List = {moves1};
-		/*
-		moves1 = model.generateMoves(pokeOne);
-		moves2 = model.generateMoves(pokeTwo);
-		moves3 = model.generateMoves(pokeThree);
-		moves4 = model.generateMoves(pokeFour);
-		moves5 = model.generateMoves(pokeFive);
-		moves6 = model.generateMoves(pokeSix);
-		*/
+	
+		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
+		int i = 0;
+		for(String poke : SpeciesMap.speciesMap.keySet())
+		{
+			speciesList[i] = poke;
+			i++;
+		}
+		Arrays.sort(speciesList);
+		
+		String[] abilityList = new String[AbilityMap.abilityMap.size()];
+		i = 0;
+		for(String abil : AbilityMap.abilityMap.keySet())
+		{
+			abilityList[i] = abil;
+			i++;
+		}
+		Arrays.sort(abilityList);
+		
+		String[] itemList = new String[ItemMap.itemMap.size()];
+		i = 0;
+		for(String item : ItemMap.itemMap.keySet())
+		{
+			itemList[i] = item;
+			i++;
+		}
+		Arrays.sort(itemList);
+		
+		String[] moveList = new String[MoveEffectMap.effectMap.size()];
+		i = 0;
+		for(String move : MoveEffectMap.effectMap.keySet())
+		{
+			moveList[i] = move;
+			i++;
+		}
+		Arrays.sort(moveList);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 860, 816);
@@ -245,14 +275,6 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(label_7);
 		
 		p1_species = new JComboBox(new Object[]{});
-		String[] speciesList = new String[SpeciesMap.speciesMap.size()];
-		int i = 0;
-		for(Species poke : SpeciesMap.speciesMap.values())
-		{
-			speciesList[i] = poke.getName();
-			i++;
-		}
-		Arrays.sort(speciesList);
 		p1_species.setModel(new DefaultComboBoxModel(speciesList));
 		p1_species.setBounds(90, 25, 100, 25);
 		contentPane.add(p1_species);
@@ -262,6 +284,7 @@ public class TeamBuilderView extends JFrame {
 		p1_nickname.setBounds(90, 55, 100, 25);
 		contentPane.add(p1_nickname);
 		
+<<<<<<< HEAD
 		p1_move1 = new JComboBox(new Object[]{});
 		p1_move1.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
 		p1_move1.setBounds(90, 95, 100, 25);
@@ -279,6 +302,25 @@ public class TeamBuilderView extends JFrame {
 		
 		p1_move4 = new JComboBox(new Object[]{});
 		p1_move4.setModel(new DefaultComboBoxModel(new String[] {"Agility", "Ally Switch", "Amnesia", "Barrier", "Calm Mind", "Confusion", "Cosmic Power", "Dream Eater", "Extrasensory", "Future Sight", "Gravity", "Guard Split", "Guard Swap", "Heal Block", "Heal Pulse", "Healing Wish", "Heart Stamp", "Heart Swap", "Hypnosis", "Imprison", "Kinesis", "Light Screen", "Lunar Dance", "Luster Purge"}));
+=======
+		JComboBox p1_move1 = new JComboBox(new Object[]{});
+		p1_move1.setModel(new DefaultComboBoxModel(moveList));
+		p1_move1.setBounds(90, 95, 100, 25);
+		contentPane.add(p1_move1);
+		
+		JComboBox p1_move2 = new JComboBox(new Object[]{});
+		p1_move2.setModel(new DefaultComboBoxModel(moveList));
+		p1_move2.setBounds(90, 125, 100, 25);
+		contentPane.add(p1_move2);
+		
+		JComboBox p1_move3 = new JComboBox(new Object[]{});
+		p1_move3.setModel(new DefaultComboBoxModel(moveList));
+		p1_move3.setBounds(90, 155, 100, 25);
+		contentPane.add(p1_move3);
+		
+		JComboBox p1_move4 = new JComboBox(new Object[]{});
+		p1_move4.setModel(new DefaultComboBoxModel(moveList));
+>>>>>>> origin/master
 		p1_move4.setBounds(90, 185, 100, 25);
 		contentPane.add(p1_move4);
 		
@@ -355,7 +397,7 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(p1_speed_ev);
 		
 		p1_ability = new JComboBox(new Object[]{});
-		p1_ability.setModel(new DefaultComboBoxModel(new String[] {"Adaptability", "Aerilate", "Aftermath", "Air Lock", "Analytic", "Anger Point", "Anticipation", "Arena Trap", "Aroma Veil", "Aura Break"}));
+		p1_ability.setModel(new DefaultComboBoxModel(abilityList));
 		p1_ability.setBounds(90, 215, 100, 25);
 		contentPane.add(p1_ability);
 		
@@ -427,7 +469,8 @@ public class TeamBuilderView extends JFrame {
 		label_5.setBounds(5, 492, 46, 14);
 		contentPane.add(label_5);
 		
-		p2_species = new JTextField(30);
+		p2_species = new JComboBox(new Object[]{});
+		p2_species.setModel(new DefaultComboBoxModel(speciesList));
 		p2_species.setToolTipText("Pokemon");
 		p2_species.setBounds(220, 25, 100, 25);
 		contentPane.add(p2_species);
@@ -439,26 +482,31 @@ public class TeamBuilderView extends JFrame {
 		
 		p2_move1 = new JComboBox(new Object[]{});
 		p2_move1.setBounds(220, 95, 100, 25);
-		p2_move1.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
+		p2_move1.setModel(new DefaultComboBoxModel(moveList));
 		contentPane.add(p2_move1);
 		
 		p2_move2 = new JComboBox(new Object[]{});
 		p2_move2.setBounds(220, 125, 100, 25);
-		p2_move2.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
+		p2_move2.setModel(new DefaultComboBoxModel(moveList));
 		contentPane.add(p2_move2);
 		
 		p2_move3 = new JComboBox(new Object[]{});
 		p2_move3.setBounds(220, 155, 100, 25);
-		p2_move3.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
+		p2_move3.setModel(new DefaultComboBoxModel(moveList));
 		contentPane.add(p2_move3);
 		
 		p2_move4 = new JComboBox(new Object[]{});
 		p2_move4.setBounds(220, 185, 100, 25);
-		p2_move4.setModel(new DefaultComboBoxModel(new String[] {"Arm Thrust", "Aura Sphere", "Brick Break", "Bulk Up", "Circle Throw", "Close Combat", "Counter", "Cross Chop", "Detect", "Double Kick", "Drain Punch", "DynamicPunch", "Final Gambit", "Focus Blast", "Focus Punch", "Force Palm", "Hammer Arm", "Hi Jump Kick", "Jump Kick", "Karate Chop", "Low Kick", "Low Sweep"}));
+		p2_move4.setModel(new DefaultComboBoxModel(moveList));
 		contentPane.add(p2_move4);
 		
+<<<<<<< HEAD
 		p2_ability = new JComboBox(new Object[]{});
 		p2_ability.setModel(new DefaultComboBoxModel(new String[] {"Rain Dish", "Rattled", "Reckless", "Refrigerate", "Regenerator", "Rivalry", "Rock Head", "Rough Skin", "Run Away"}));
+=======
+		JComboBox p2_ability = new JComboBox(new Object[]{});
+		p2_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p2_ability.setBounds(220, 215, 100, 25);
 		contentPane.add(p2_ability);
 		
@@ -522,7 +570,8 @@ public class TeamBuilderView extends JFrame {
 		p2_speed_ev.setBounds(220, 612, 100, 25);
 		contentPane.add(p2_speed_ev);
 		
-		p3_species = new JTextField(30);
+		p3_species = new JComboBox(new Object[]{});
+		p3_species.setModel(new DefaultComboBoxModel(speciesList));
 		p3_species.setToolTipText("Pokemon");
 		p3_species.setBounds(350, 25, 100, 25);
 		contentPane.add(p3_species);
@@ -532,6 +581,7 @@ public class TeamBuilderView extends JFrame {
 		p3_nickname.setBounds(350, 55, 100, 25);
 		contentPane.add(p3_nickname);
 		
+<<<<<<< HEAD
 		p3_move1 = new JComboBox(new Object[]{});
 		p3_move1.setModel(new DefaultComboBoxModel(new String[] {"Absorb", "Aromatherapy", "Bullet Seed", "Cotton Guard", "Cotton Spore", "Energy Ball", "Frenzy Plant", "Giga Drain", "Grass Knot", "Grass Pledge", "GrassWhistle", "Horn Leech", "Ingrain", "Leaf Blade", "Leaf Storm", "Leaf Tornado", "Leech Seed"}));
 		p3_move1.setBounds(350, 95, 100, 25);
@@ -554,6 +604,30 @@ public class TeamBuilderView extends JFrame {
 		
 		p3_ability = new JComboBox(new Object[]{});
 		p3_ability.setModel(new DefaultComboBoxModel(new String[] {"Harvest", "Healer", "Heatproof", "Heavy Metal", "Honey Gather", "Huge Power", "Hustle", "Hydration", "Hyper Cutter"}));
+=======
+		JComboBox p3_move1 = new JComboBox(new Object[]{});
+		p3_move1.setModel(new DefaultComboBoxModel(moveList));
+		p3_move1.setBounds(350, 95, 100, 25);
+		contentPane.add(p3_move1);
+		
+		JComboBox p3_move2 = new JComboBox(new Object[]{});
+		p3_move2.setModel(new DefaultComboBoxModel(moveList));
+		p3_move2.setBounds(350, 125, 100, 25);
+		contentPane.add(p3_move2);
+		
+		JComboBox p3_move3 = new JComboBox(new Object[]{});
+		p3_move3.setModel(new DefaultComboBoxModel(moveList));
+		p3_move3.setBounds(350, 155, 100, 25);
+		contentPane.add(p3_move3);
+		
+		JComboBox p3_move4 = new JComboBox(new Object[]{});
+		p3_move4.setModel(new DefaultComboBoxModel(moveList));
+		p3_move4.setBounds(350, 185, 100, 25);
+		contentPane.add(p3_move4);
+		
+		JComboBox p3_ability = new JComboBox(new Object[]{});
+		p3_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p3_ability.setBounds(350, 215, 100, 25);
 		contentPane.add(p3_ability);
 		
@@ -617,7 +691,8 @@ public class TeamBuilderView extends JFrame {
 		p3_speed_ev.setBounds(350, 612, 100, 25);
 		contentPane.add(p3_speed_ev);
 		
-		p4_species = new JTextField(30);
+		p4_species = new JComboBox(new Object[]{});
+		p4_species.setModel(new DefaultComboBoxModel(speciesList));
 		p4_species.setToolTipText("Pokemon");
 		p4_species.setBounds(480, 25, 100, 25);
 		contentPane.add(p4_species);
@@ -627,6 +702,7 @@ public class TeamBuilderView extends JFrame {
 		p4_nickname.setBounds(480, 55, 100, 25);
 		contentPane.add(p4_nickname);
 		
+<<<<<<< HEAD
 		p4_move1 = new JComboBox(new Object[]{});
 		p4_move1.setModel(new DefaultComboBoxModel(new String[] {"Draco Meteor", "Dragon Claw", "Dragon Dance", "Dragon Pulse", "Dragon Rage", "Dragon Rush", "Dragon Tail", "DragonBreath", "Dual Chop"}));
 		p4_move1.setBounds(480, 95, 100, 25);
@@ -649,6 +725,30 @@ public class TeamBuilderView extends JFrame {
 		
 		p4_ability = new JComboBox(new Object[]{});
 		p4_ability.setModel(new DefaultComboBoxModel(new String[] {"Damp", "Dark Aura", "Defeatist", "Defiant", "Desolate Land", "Download", "Drizzle", "Drought", "Dry Skin"}));
+=======
+		JComboBox p4_move1 = new JComboBox(new Object[]{});
+		p4_move1.setModel(new DefaultComboBoxModel(moveList));
+		p4_move1.setBounds(480, 95, 100, 25);
+		contentPane.add(p4_move1);
+		
+		JComboBox p4_move2 = new JComboBox(new Object[]{});
+		p4_move2.setModel(new DefaultComboBoxModel(moveList));
+		p4_move2.setBounds(480, 125, 100, 25);
+		contentPane.add(p4_move2);
+		
+		JComboBox p4_move3 = new JComboBox(new Object[]{});
+		p4_move3.setModel(new DefaultComboBoxModel(moveList));
+		p4_move3.setBounds(480, 155, 100, 25);
+		contentPane.add(p4_move3);
+		
+		JComboBox p4_move4 = new JComboBox(new Object[]{});
+		p4_move4.setModel(new DefaultComboBoxModel(moveList));
+		p4_move4.setBounds(480, 185, 100, 25);
+		contentPane.add(p4_move4);
+		
+		JComboBox p4_ability = new JComboBox(new Object[]{});
+		p4_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p4_ability.setBounds(480, 215, 100, 25);
 		contentPane.add(p4_ability);
 		
@@ -712,7 +812,8 @@ public class TeamBuilderView extends JFrame {
 		p4_speed_ev.setBounds(480, 612, 100, 25);
 		contentPane.add(p4_speed_ev);
 		
-		p5_species = new JTextField(30);
+		p5_species = new JComboBox(new Object[]{});
+		p5_species.setModel(new DefaultComboBoxModel(speciesList));
 		p5_species.setToolTipText("Pokemon");
 		p5_species.setBounds(610, 25, 100, 25);
 		contentPane.add(p5_species);
@@ -722,6 +823,7 @@ public class TeamBuilderView extends JFrame {
 		p5_nickname.setBounds(610, 55, 100, 25);
 		contentPane.add(p5_nickname);
 		
+<<<<<<< HEAD
 		p5_move1 = new JComboBox(new Object[]{});
 		p5_move1.setModel(new DefaultComboBoxModel(new String[] {"Blast Burn", "Blaze Kick", "Blue Flare", "Ember", "Eruption", "Fiery Dance", "Fire Blast", "Fire Fang", "Fire Pledge", "Fire Punch", "Fire Spin", "Flame Burst", "Flame Charge", "Flame Wheel", "Flamethrower", "Flare Blitz", "Fusion Flare", "Heat Crash", "Heat Wave", "Incinerate", "Inferno", "Lava Plume"}));
 		p5_move1.setBounds(610, 95, 100, 25);
@@ -744,6 +846,30 @@ public class TeamBuilderView extends JFrame {
 		
 		p5_ability = new JComboBox(new Object[]{});
 		p5_ability.setModel(new DefaultComboBoxModel(new String[] {"Cheek Pouch", "Chlorophyll", "Clear Body", "Cloud Nine", "Color Change", "Competitive", "Compound Eyes", "Contrary", "Cursed Body", "Cute Charm"}));
+=======
+		JComboBox p5_move1 = new JComboBox(new Object[]{});
+		p5_move1.setModel(new DefaultComboBoxModel(moveList));
+		p5_move1.setBounds(610, 95, 100, 25);
+		contentPane.add(p5_move1);
+		
+		JComboBox p5_move2 = new JComboBox(new Object[]{});
+		p5_move2.setModel(new DefaultComboBoxModel(moveList));
+		p5_move2.setBounds(610, 125, 100, 25);
+		contentPane.add(p5_move2);
+		
+		JComboBox p5_move3 = new JComboBox(new Object[]{});
+		p5_move3.setModel(new DefaultComboBoxModel(moveList));
+		p5_move3.setBounds(610, 155, 100, 25);
+		contentPane.add(p5_move3);
+		
+		JComboBox p5_move4 = new JComboBox(new Object[]{});
+		p5_move4.setModel(new DefaultComboBoxModel(moveList));
+		p5_move4.setBounds(610, 185, 100, 25);
+		contentPane.add(p5_move4);
+		
+		JComboBox p5_ability = new JComboBox(new Object[]{});
+		p5_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p5_ability.setBounds(610, 215, 100, 25);
 		contentPane.add(p5_ability);
 		
@@ -807,7 +933,8 @@ public class TeamBuilderView extends JFrame {
 		p5_speed_ev.setBounds(610, 612, 100, 25);
 		contentPane.add(p5_speed_ev);
 		
-		p6_species = new JTextField(30);
+		p6_species = new JComboBox(new Object[]{});
+		p6_species.setModel(new DefaultComboBoxModel(speciesList));
 		p6_species.setToolTipText("Pokemon");
 		p6_species.setBounds(740, 25, 100, 25);
 		contentPane.add(p6_species);
@@ -817,6 +944,7 @@ public class TeamBuilderView extends JFrame {
 		p6_nickname.setBounds(740, 55, 100, 25);
 		contentPane.add(p6_nickname);
 		
+<<<<<<< HEAD
 		p6_move1 = new JComboBox(new Object[]{});
 		p6_move1.setModel(new DefaultComboBoxModel(new String[] {"Aurora Beam", "Avalanche", "Blizzard", "Freeze Shock", "Frost Breath", "Glaciate", "Hail", "Haze", "Ice Ball", "Ice Beam", "Ice Burn", "Ice Fang", "Ice Punch", "Ice Shard", "Icicle Crash", "Icicle Spear", "Icy Wind"}));
 		p6_move1.setBounds(740, 95, 100, 25);
@@ -839,6 +967,30 @@ public class TeamBuilderView extends JFrame {
 		
 		p6_ability = new JComboBox(new Object[]{});
 		p6_ability.setModel(new DefaultComboBoxModel(new String[] {"Sand Force", "Sand Rush", "Sand Stream", "Sand Veil", "Sap Sipper", "Scrappy", "Serene Grace", "Shadow Tag", "Shed Skin", "Sheer Force", "Shell Armor", "Shield Dust", "Simple", "Skill Link", "Slow Start", "Sniper", "Snow Cloak", "Snow Warning", "Solar Power", "Solid Rock", "Soundproof", "Speed Boost", "Stall", "Stance Change", "Static", "Steadfast", "Stench", "Sticky Hold", "Storm Drain", "Strong Jaw", "Sturdy", "Suction Cups", "Super Luck", "Swarm", "Sweet Veil", "Swift Swim", "Symbiosis", "Synchronize"}));
+=======
+		JComboBox p6_move1 = new JComboBox(new Object[]{});
+		p6_move1.setModel(new DefaultComboBoxModel(moveList));
+		p6_move1.setBounds(740, 95, 100, 25);
+		contentPane.add(p6_move1);
+		
+		JComboBox p6_move2 = new JComboBox(new Object[]{});
+		p6_move2.setModel(new DefaultComboBoxModel(moveList));
+		p6_move2.setBounds(740, 125, 100, 25);
+		contentPane.add(p6_move2);
+		
+		JComboBox p6_move3 = new JComboBox(new Object[]{});
+		p6_move3.setModel(new DefaultComboBoxModel(moveList));
+		p6_move3.setBounds(740, 155, 100, 25);
+		contentPane.add(p6_move3);
+		
+		JComboBox p6_move4 = new JComboBox(new Object[]{});
+		p6_move4.setModel(new DefaultComboBoxModel(moveList));
+		p6_move4.setBounds(740, 185, 100, 25);
+		contentPane.add(p6_move4);
+		
+		JComboBox p6_ability = new JComboBox(new Object[]{});
+		p6_ability.setModel(new DefaultComboBoxModel(abilityList));
+>>>>>>> origin/master
 		p6_ability.setBounds(740, 215, 100, 25);
 		contentPane.add(p6_ability);
 		
@@ -1009,32 +1161,32 @@ public class TeamBuilderView extends JFrame {
 		contentPane.add(lblItem);
 		
 		p1_item = new JComboBox(new Object[]{});
-		p1_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p1_item.setModel(new DefaultComboBoxModel(itemList));
 		p1_item.setBounds(90, 242, 100, 25);
 		contentPane.add(p1_item);
 		
 		p2_item = new JComboBox(new Object[]{});
-		p2_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p2_item.setModel(new DefaultComboBoxModel(itemList));
 		p2_item.setBounds(220, 241, 100, 25);
 		contentPane.add(p2_item);
 		
 		p3_item = new JComboBox(new Object[]{});
-		p3_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p3_item.setModel(new DefaultComboBoxModel(itemList));
 		p3_item.setBounds(350, 241, 100, 25);
 		contentPane.add(p3_item);
 		
 		p4_item = new JComboBox(new Object[]{});
-		p4_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p4_item.setModel(new DefaultComboBoxModel(itemList));
 		p4_item.setBounds(480, 241, 100, 25);
 		contentPane.add(p4_item);
 		
 		p5_item = new JComboBox(new Object[]{});
-		p5_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p5_item.setModel(new DefaultComboBoxModel(itemList));
 		p5_item.setBounds(610, 241, 100, 25);
 		contentPane.add(p5_item);
 		
 		p6_item = new JComboBox(new Object[]{});
-		p6_item.setModel(new DefaultComboBoxModel(new String[] {"Abomasite", "Absolite", "Absorb Bulb", "Adamant Orb", "Aggronite", "Aguav Berry", "Air Balloon", "Alakazite", "Altaianite", "Ampharosite", "Apicot Berry", "Asper Berry", "Assault Vest", "Audinite", "Babiri Berry", "Banettie", "Beedrillite", "Berry", "Berry Juice", "Berserk Gene", "Big Root", "Binding Band", "Black Belt", "Black Sludge", "Black Glasses", "Blastoisinite", "Blazikenite", "Blue Orb", "Bright Powder", "Bug Gem", "Burn Drive", "Cameruptite", "Cell Battery", "Charcoal", "Charizardite X", "Charizardite Y", "Charti Berry", "Cheri Berry", "Chesto Berry", "Chilan Berry", "Chill Drive", "Choice Band", "Choice Scarf", "Choice Specs", "Chople Berry", "Cleanse Tag", "Coba Berry", "Colbur Berry", "Custap Berry", "Damp Rock", "Dark Gem", "Deep Sea Scale", "Deep Sea Tooth", "Destiny Knot", "Diancite", "Douse Drive", "Draco Plate", "Dragon Fang", "Dragon Gem", "Dread Plate", "Earth Plate", "Eject Button", "Electric Gem", "Enigma Berry", "Eviolite", "Expert Belt", "Fairy Gem", "Figy Berry", "Fire Gem", "Fist Plate", "Flame Orb", "Flame Plate", "Float Stone", "Flying Gem", "Focus Band", "Focus Sash", "Full Incense", "Galladite", "Ganlon Beryy", "Garchompite", "Gardevorite", "Gengarite", "Ghost Gem", "Glalite", "Glalitite", "Gold Berry", "Grass Gem", "Grip Claw", "Griseous Orb", "Ground Gem", "Gyaradosite", "Haban Berry", "Hard Stone", "Heat Rock", "Heracronite", "Houndoominite", "Iapapa Berry", "Ice Berry", "Ice Gem", "Icicle Plate", "Icy Rock", "Insect Plate", "Iron Ball", "Jaboca Berry", "Kangaskhanite", "Kasib Berry", "Bebia Berry", "Kee Berry", "Kelpsy Berry", "King's Rock", "Lagging Tail", "Lansat Berry", "Latiasite", "Latiosite", "Lax Incense", "Leftovers", "Leppa Berry", "Liechi Berry", "Life Orb", "Light Ball", "Light Clay", "Lopunnite", "Lucarionite", "Lucky Punch", "Lum Berry", "Luminous Moss", "Lustrious Orb", "Macho Brace", "Magmarizer", "Magnet", "Mago Berry", "Mail", "Manectite", "Maranga Berry", "Mawilite", "Meadow Plate", "Medichamite", "Mental Herb", "Metagrossite", "Metal Coal", "Metal Powder", "Metronome", "Mewtwonite X", "Mewtwonite Y", "Micle Berry", "Mind Plate", "Mint Berry", "Miracle Berry", "Miracle Seed", "Muscle Band", "Mystery Berry", "Mystic Water"}));
+		p6_item.setModel(new DefaultComboBoxModel(itemList));
 		p6_item.setBounds(740, 241, 100, 25);
 		contentPane.add(p6_item);
 		
@@ -1121,7 +1273,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p2_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p2_move4.getSelectedItem()));
 				
-				species = p2_species.getText();
+				species = (String)p2_species.getSelectedItem();
 				nickname = p2_nickname.getText();
 				item = (String)p2_item.getSelectedItem();
 				ability = (String)p2_ability.getSelectedItem();
@@ -1155,7 +1307,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p3_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p3_move4.getSelectedItem()));
 				
-				species = p3_species.getText();
+				species = (String)p3_species.getSelectedItem();
 				nickname = p3_nickname.getText();
 				item = (String)p3_item.getSelectedItem();
 				ability = (String)p3_ability.getSelectedItem();
@@ -1189,7 +1341,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p4_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p4_move4.getSelectedItem()));
 				
-				species = p4_species.getText();
+				species = (String)p4_species.getSelectedItem();
 				nickname = p4_nickname.getText();
 				item = (String)p4_item.getSelectedItem();
 				ability = (String)p4_ability.getSelectedItem();
@@ -1223,7 +1375,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p5_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p5_move4.getSelectedItem()));
 				
-				species = p5_species.getText();
+				species = (String)p5_species.getSelectedItem();
 				nickname = p5_nickname.getText();
 				item = (String)p5_item.getSelectedItem();
 				ability = (String)p5_ability.getSelectedItem();
@@ -1257,7 +1409,7 @@ public class TeamBuilderView extends JFrame {
 				moves[2] = new Move(MoveMap.moveMap.get((String)p6_move3.getSelectedItem()));
 				moves[3] = new Move(MoveMap.moveMap.get((String)p6_move4.getSelectedItem()));
 				
-				species = p6_species.getText();
+				species = (String)p6_species.getSelectedItem();
 				nickname = p6_nickname.getText();
 				item = (String)p6_item.getSelectedItem();
 				ability = (String)p6_ability.getSelectedItem();

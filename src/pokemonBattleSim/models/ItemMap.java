@@ -61,7 +61,7 @@ public class ItemMap
 						   return 0;
 					   }
 					   holder.changeHP(- holder.getMaxHP() / 4);
-					   System.out.println(holder.getNickName()+" ate it's Sitrus Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Sitrus Berry!");
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
@@ -97,7 +97,7 @@ public class ItemMap
 					   else
 					   {
 						   holder.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
-						   System.out.println(holder.getNickName()+" ate it's Liechi Berry!");
+						   model.addLogItem(holder.getNickName()+" ate it's Liechi Berry!");
 						   holder.setItem(new ItemContainer("None"));
 						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 					   }
@@ -130,7 +130,7 @@ public class ItemMap
 						   return 0;
 					   }
 					   holder.changeHP(- 10);
-					   System.out.println(holder.getNickName()+" ate it's Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Berry!");
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
@@ -162,7 +162,7 @@ public class ItemMap
 						   return 0;
 					   }
 					   holder.changeHP(- 20);
-					   System.out.println(holder.getNickName()+" drank it's Berry Juice!");
+					   model.addLogItem(holder.getNickName()+" drank it's Berry Juice!");
 					   holder.setItem(new ItemContainer("None"));
 					   Event.abilityEvent(EventType.HP_CHANGE, holder, null, null, null, null, null);
 				   }
@@ -191,7 +191,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.DARK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Colbur Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Colbur Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -217,7 +217,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.FIRE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Occa Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Occa Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -243,7 +243,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.WATER && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Passho Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Passho Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -269,7 +269,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.ELECTRIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Wacon Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Wacon Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -296,7 +296,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.GRASS && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Rindo Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Rindo Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -322,7 +322,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.ICE && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Yache Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Yache Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -348,7 +348,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.FIGHTING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Chople Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Chople Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -374,7 +374,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.GROUND && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's sHUCA Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's sHUCA Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -400,7 +400,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.FLYING && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Coba Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Coba Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -426,7 +426,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.PSYCHIC && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Payapa Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Payapa Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -452,7 +452,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.BUG && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Tanga Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Tanga Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -478,7 +478,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.ROCK && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Charti Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Charti Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -504,7 +504,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.DRAGON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Haban Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Haban Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -530,7 +530,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.STEEL && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Babiri Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Babiri Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -557,7 +557,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.GHOST && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Kasib Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Kasib Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -583,7 +583,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.POISON && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Kebia Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Kebia Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -609,7 +609,7 @@ public class ItemMap
 				   if(moveUsed.getType() == Type.FAIRY && moveUsed.getCategory() != Attribute.STATUS && Formula.isSuperEffective(holder, moveUsed))
 				   {
 					   Formula.item *= 0.5;
-					   System.out.println(holder.getNickName()+" ate it's Roseli Berry!");
+					   model.addLogItem(holder.getNickName()+" ate it's Roseli Berry!");
 					   holder.setItem(new ItemContainer("None"));
 				   }
 				   return 1;
@@ -912,7 +912,7 @@ public class ItemMap
 			   { 
 				   if(moveUsed.getCategory() == Attribute.STATUS)
 				   {
-					   System.out.println(holder.getNickName()+" cannot use status moves because its wear an Assault Vest!");
+					   model.addLogItem(holder.getNickName()+" cannot use status moves because its wear an Assault Vest!");
 					   return 0;
 				   }
 				   

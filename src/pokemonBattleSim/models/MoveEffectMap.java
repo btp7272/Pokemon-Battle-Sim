@@ -77,7 +77,7 @@ public class MoveEffectMap
 					  //runPrimaryEffectevent automatic
 					  return 0;
 				  }
-				  if (model == null) model = BattleModel.getInstance();
+				  
 				  IPokemon opponent = model.getOpponentPokemon(attacker.getPlayerID());
 				  
 				  if(!opponent.hasNonVolatileStatus() && !opponent.isType(Type.FIRE))
@@ -89,10 +89,9 @@ public class MoveEffectMap
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(10 * sereneGraceMultiplier, false);
-					  model.addLogItem(opponent.getNickName()+" was burnt more with a degree of "+ 10 * sereneGraceMultiplier +"!");
+					  model.addLogItem(opponent.getNickName()+" was burnt more !");
 				  }
 				  
-				  Event.statusNonVolatileEvent(attacker, EventType.POST_STATUS_CHANGE, moveUsed);
 				  return 1;
 			   }
 		});
@@ -125,12 +124,12 @@ public class MoveEffectMap
 				  {
 					  opponent.setNonVolatileStatus(new StatusContainer(opponent.getMaxAtk(),30 * sereneGraceMultiplier,"Burn",null));
 					  Event.statusNonVolatileEvent(opponent, EventType.POST_STATUS_CHANGE, moveUsed);
-					  model.addLogItem(opponent.getNickName()+" was burnt!");
+					  model.addLogItem(opponent.getNickName()+" was burnt with a degree of "+ 30 * sereneGraceMultiplier +"!");
 				  }
 				  else if(opponent.hasNonVolatileStatus("Burn"))
 				  {
 					  opponent.getNonVolatileStatusContainer().addToDegree(30 * sereneGraceMultiplier, false);
-					  model.addLogItem(opponent.getNickName()+" was burnt more with a degree of "+ 30 * sereneGraceMultiplier +"!");
+					  model.addLogItem(opponent.getNickName()+" was burnt more !");
 				  }
 				  
 				  return 1;

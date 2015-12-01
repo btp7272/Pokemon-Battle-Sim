@@ -1566,7 +1566,7 @@ public class TeamBuilderView extends JFrame {
 				//CREATE TYRANITAR
 				int IVs2[] = {31,31,31,31,31,31};
 				int EVs2[] = {0,252,0,0,4,252};
-				Move[] moves2 = {new Move(MoveMap.moveMap.get("Crunch")),new Move(MoveMap.moveMap.get("Bullet Seed")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Earthquake"))};
+				Move[] moves2 = {new Move(MoveMap.moveMap.get("Crunch")),new Move(MoveMap.moveMap.get("Flamethrower")),new Move(MoveMap.moveMap.get("Scald")),new Move(MoveMap.moveMap.get("Earthquake"))};
 				member = new Pokemon(SpeciesMap.speciesMap.get("Tyranitar"),"Serene Grace",moves2,IVs2,EVs2,100,Nature.Jolly, new AbilityContainer("Drizzle"), new ItemContainer("None"));
 				//member.setNonVolatileStatus(new StatusContainer(member.getMaxAtk(),100,"Burn",null));
 				member.setPlayerID(0);

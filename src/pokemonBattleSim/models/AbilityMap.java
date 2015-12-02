@@ -62,6 +62,7 @@ public class AbilityMap
 					   else
 					   {
 						   opponent.changeAtk(statChangeQueue[Stat.ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(statChangeQueue[Stat.ATTACK.getMask()],opponent));
 						   statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   return 1;
 					   }
@@ -80,15 +81,30 @@ public class AbilityMap
 				   { 
 					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Simple");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
+					   {
 						   wielder.changeAtk(2 * statChangeQueue[Stat.ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(2 * statChangeQueue[Stat.ATTACK.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] != 0)
+					   {
 						   wielder.changeDef(2 * statChangeQueue[Stat.DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printDefChange(2 * statChangeQueue[Stat.DEFENSE.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] != 0)
+					   {
 						   wielder.changeSpAtk(2 * statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(2 * statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] != 0)
+					   {
 						   wielder.changeSpDef(2 * statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpDefChange(2 * statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPEED.getMask()] != 0)
+					   {
 						   wielder.changeSpeed(2 * statChangeQueue[Stat.SPEED.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(2 * statChangeQueue[Stat.SPEED.getMask()],wielder));
+					   }
 					   return 1;
 				   }
 			});
@@ -112,23 +128,38 @@ public class AbilityMap
 					   boolean negativeAttempt = false;
 					   
 					   if(statChangeQueue[Stat.ATTACK.getMask()] > -1)
+					   {
 						   wielder.changeAtk(statChangeQueue[Stat.ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(statChangeQueue[Stat.ATTACK.getMask()],wielder));
+					   }
 					   else
 						   negativeAttempt = true;
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] > -1)
+					   {
 						   wielder.changeDef(statChangeQueue[Stat.DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printDefChange(statChangeQueue[Stat.DEFENSE.getMask()],wielder));
+					   }
 					   else
 						   negativeAttempt = true;
 					   if(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] > -1)
+					   {
 						   wielder.changeSpAtk(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],wielder));
+					   }
 					   else
 						   negativeAttempt = true;
 					   if(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] > -1)
+					   {
 						   wielder.changeSpDef(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpDefChange(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()],wielder));
+					   }
 					   else
 						   negativeAttempt = true;
 					   if(statChangeQueue[Stat.SPEED.getMask()] > -1)
+					   {
 						   wielder.changeSpeed(statChangeQueue[Stat.SPEED.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(statChangeQueue[Stat.SPEED.getMask()],wielder));
+					   }
 					   else
 						   negativeAttempt = true;
 					   
@@ -153,15 +184,30 @@ public class AbilityMap
 				   { 
 					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(wielder.getNickName() + "'s Contrary");
 					   if(statChangeQueue[Stat.ATTACK.getMask()] != 0)
+					   {
 						   wielder.changeAtk(- statChangeQueue[Stat.ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(- statChangeQueue[Stat.ATTACK.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.DEFENSE.getMask()] != 0)
+					   {
 						   wielder.changeDef(- statChangeQueue[Stat.DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printDefChange(- statChangeQueue[Stat.DEFENSE.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] != 0)
+					   {
 						   wielder.changeSpAtk(- statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(- statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] != 0)
+					   {
 						   wielder.changeSpDef(- statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpDefChange(- statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()],wielder));
+					   }
 					   if(statChangeQueue[Stat.SPEED.getMask()] != 0)
+					   {
 						   wielder.changeSpeed(- statChangeQueue[Stat.SPEED.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(- statChangeQueue[Stat.SPEED.getMask()],wielder));
+					   }
 					   return 1;
 				   }
 			});
@@ -513,7 +559,10 @@ public class AbilityMap
 								   return;
 							   }
 							   if(wielder.getSpeedModifier() != 6)
+							   {
 								   wielder.changeSpeed(1);
+								   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(statChangeQueue[Stat.SPEED.getMask()],wielder));
+							   }
 						   }
 					   }
 					   TimerTask task = new SetTimer();

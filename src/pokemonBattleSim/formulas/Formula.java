@@ -4,6 +4,8 @@ package pokemonBattleSim.formulas;
  * Formula calculator 
  */
 import java.util.*;
+
+import pokemonBattleSim.models.BattleModel;
 import pokemonBattleSim.types.*;
 import java.lang.Math;
 
@@ -388,6 +390,311 @@ public class Formula
 	        
 	        return (stab * type * roll * weather * ability * item);
 	    }
+	   
+	   public static String printAtkChange(int change, IPokemon target)
+		{
+			String message;
+
+			if(target.getAtkModifier() == 6 && change > 0)
+			{
+				message = new String(target.getNickName()+"'s attack won't go any higher!");
+				return message;
+			}
+			else if(target.getAtkModifier() + change >= 6)
+			{
+				message = new String(target.getNickName()+"'s attack is maxed out!");
+				return message;
+			}
+			else if(target.getAtkModifier() == -6 && change < 0)
+			{
+				message = new String(target.getNickName()+"'s attack won't go any lower!");
+				return message;
+			}
+			else if(target.getAtkModifier() + change <= -6)
+			{
+				message = new String(target.getNickName()+"'s attack has hit rock bottom!");
+				return message;
+			}
+			
+			if(change >= 3)
+			{
+				message = new String(target.getNickName()+"'s attack rose drastically!");
+				return message;
+			}
+			else if(change == 2)
+			{
+				message = new String(target.getNickName()+"'s attack rose sharply!");
+				return message;
+			}
+			
+			else if(change == 1)
+			{
+				message = new String(target.getNickName()+"'s attack rose!");
+				return message;
+			}
+			else if(change <= -3)
+			{
+				message = new String(target.getNickName()+"'s attack severely fell!");
+				return message;
+			}
+			else if(change == -2)
+			{
+				message = new String(target.getNickName()+"'s attack harshly fell!");
+				return message;
+			}
+			
+			else if(change == -1)
+			{
+				message = new String(target.getNickName()+"'s attack fell!");
+				return message;
+			}
+			
+			return "";
+		}
+		
+		public static String printDefChange(int change, IPokemon target)
+		{
+			String message;
+
+			if(target.getDefModifier() == 6 && change > 0)
+			{
+				message = new String(target.getNickName()+"'s defense won't go any higher!");
+				return message;
+			}
+			else if(target.getDefModifier() + change >= 6)
+			{
+				message = new String(target.getNickName()+"'s defense is maxed out!");
+				return message;
+			}
+			else if(target.getDefModifier() == -6 && change < 0)
+			{
+				message = new String(target.getNickName()+"'s defense won't go any lower!");
+				return message;
+			}
+			else if(target.getDefModifier() + change <= -6)
+			{
+				message = new String(target.getNickName()+"'s defense has hit rock bottom!");
+				return message;
+			}
+			
+			if(change >= 3)
+			{
+				message = new String(target.getNickName()+"'s defense rose drastically!");
+				return message;
+			}
+			else if(change == 2)
+			{
+				message = new String(target.getNickName()+"'s defense rose sharply!");
+				return message;
+			}
+			
+			else if(change == 1)
+			{
+				message = new String(target.getNickName()+"'s defense rose!");
+				return message;
+			}
+			else if(change <= -3)
+			{
+				message = new String(target.getNickName()+"'s defense severely fell!");
+				return message;
+			}
+			else if(change == -2)
+			{
+				message = new String(target.getNickName()+"'s defense harshly fell!");
+				return message;
+			}
+			
+			else if(change == -1)
+			{
+				message = new String(target.getNickName()+"'s defense fell!");
+				return message;
+			}
+			
+			return "";
+		}
+		
+		public static String printSpAtkChange(int change, IPokemon target)
+		{
+			String message;
+
+			if(target.getSpAtkModifier() == 6 && change > 0)
+			{
+				message = new String(target.getNickName()+"'s special attack won't go any higher!");
+				return message;
+			}
+			else if(target.getSpAtkModifier() + change >= 6)
+			{
+				message = new String(target.getNickName()+"'s special attack is maxed out!");
+				return message;
+			}
+			else if(target.getSpAtkModifier() == -6 && change < 0)
+			{
+				message = new String(target.getNickName()+"'s special attack won't go any lower!");
+				return message;
+			}
+			else if(target.getSpAtkModifier() + change <= -6)
+			{
+				message = new String(target.getNickName()+"'s special attack has hit rock bottom!");
+				return message;
+			}
+			
+			if(change >= 3)
+			{
+				message = new String(target.getNickName()+"'s special attack rose drastically!");
+				return message;
+			}
+			else if(change == 2)
+			{
+				message = new String(target.getNickName()+"'s special attack rose sharply!");
+				return message;
+			}
+			
+			else if(change == 1)
+			{
+				message = new String(target.getNickName()+"'s special attack rose!");
+				return message;
+			}
+			else if(change <= -3)
+			{
+				message = new String(target.getNickName()+"'s special attack severely fell!");
+				return message;
+			}
+			else if(change == -2)
+			{
+				message = new String(target.getNickName()+"'s special attack harshly fell!");
+				return message;
+			}
+			
+			else if(change == -1)
+			{
+				message = new String(target.getNickName()+"'s special attack fell!");
+				return message;
+			}
+			
+			return "";
+		}
+		
+		public static String printSpDefChange(int change, IPokemon target)
+		{
+			String message;
+
+			if(target.getSpDefModifier() == 6 && change > 0)
+			{
+				message = new String(target.getNickName()+"'s special defense won't go any higher!");
+				return message;
+			}
+			else if(target.getSpDefModifier() + change >= 6)
+			{
+				message = new String(target.getNickName()+"'s special defense is maxed out!");
+				return message;
+			}
+			else if(target.getSpDefModifier() == -6 && change < 0)
+			{
+				message = new String(target.getNickName()+"'s special defense won't go any lower!");
+				return message;
+			}
+			else if(target.getSpDefModifier() + change <= -6)
+			{
+				message = new String(target.getNickName()+"'s special defense has hit rock bottom!");
+				return message;
+			}
+			
+			if(change >= 3)
+			{
+				message = new String(target.getNickName()+"'s special defense rose drastically!");
+				return message;
+			}
+			else if(change == 2)
+			{
+				message = new String(target.getNickName()+"'s special defense rose sharply!");
+				return message;
+			}
+			
+			else if(change == 1)
+			{
+				message = new String(target.getNickName()+"'s special defense rose!");
+				return message;
+			}
+			else if(change <= -3)
+			{
+				message = new String(target.getNickName()+"'s special defense severely fell!");
+				return message;
+			}
+			else if(change == -2)
+			{
+				message = new String(target.getNickName()+"'s special defense harshly fell!");
+				return message;
+			}
+			
+			else if(change == -1)
+			{
+				message = new String(target.getNickName()+"'s special defense fell!");
+				return message;
+			}
+			
+			return "";
+		}
+		
+		public static String printSpeedChange(int change, IPokemon target)
+		{
+			String message;
+
+			if(target.getSpeedModifier() == 6 && change > 0)
+			{
+				message = new String(target.getNickName()+"'s speed won't go any higher!");
+				return message;
+			}
+			else if(target.getSpeedModifier() + change >= 6)
+			{
+				message = new String(target.getNickName()+"'s speed is maxed out!");
+				return message;
+			}
+			else if(target.getSpeedModifier() == -6 && change < 0)
+			{
+				message = new String(target.getNickName()+"'s speed won't go any lower!");
+				return message;
+			}
+			else if(target.getSpeedModifier() + change <= -6)
+			{
+				message = new String(target.getNickName()+"'s speed has hit rock bottom!");
+				return message;
+			}
+			
+			if(change >= 3)
+			{
+				message = new String(target.getNickName()+"'s speed rose drastically!");
+				return message;
+			}
+			else if(change == 2)
+			{
+				message = new String(target.getNickName()+"'s speed rose sharply!");
+				return message;
+			}
+			
+			else if(change == 1)
+			{
+				message = new String(target.getNickName()+"'s speed rose!");
+				return message;
+			}
+			else if(change <= -3)
+			{
+				message = new String(target.getNickName()+"'s speed severely fell!");
+				return message;
+			}
+			else if(change == -2)
+			{
+				message = new String(target.getNickName()+"'s speed harshly fell!");
+				return message;
+			}
+			
+			else if(change == -1)
+			{
+				message = new String(target.getNickName()+"'s speed fell!");
+				return message;
+			}
+			
+			return "";
+		}
     
 } // end class
 

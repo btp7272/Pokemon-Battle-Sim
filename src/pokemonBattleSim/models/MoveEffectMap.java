@@ -387,6 +387,7 @@ public class MoveEffectMap
 				   else
 				   {
 					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
 					   return 1;
 				   }
@@ -418,6 +419,7 @@ public class MoveEffectMap
 				   else
 				   {
 					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
 					   return 1;
 				   }
@@ -452,6 +454,8 @@ public class MoveEffectMap
 				   {
 					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
 					   attacker.changeSpeed(AbilityMap.statChangeQueue[Stat.SPEED.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()],attacker));
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(AbilityMap.statChangeQueue[Stat.SPEED.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 					   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;
 					   return 1;
@@ -484,6 +488,7 @@ public class MoveEffectMap
 				   else
 				   {
 					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 					   return 1;
 				   }
@@ -518,6 +523,8 @@ public class MoveEffectMap
 				   {
 					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
 					   attacker.changeSpDef(AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],attacker));
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpDefChange(AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
 					   AbilityMap.statChangeQueue[Stat.SPECIAL_DEFENSE.getMask()] = 0;
 					   return 1;
@@ -550,6 +557,7 @@ public class MoveEffectMap
 				   else
 				   {
 					   attacker.changeSpAtk(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpAtkChange(AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.SPECIAL_ATTACK.getMask()] = 0;
 					   return 1;
 				   }
@@ -588,6 +596,7 @@ public class MoveEffectMap
 				   else
 				   {
 					   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
+					   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()],attacker));
 					   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 					   return 1;
 				   }
@@ -629,6 +638,9 @@ public class MoveEffectMap
 						   attacker.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
 						   attacker.changeDef(AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()]);
 						   attacker.changeSpeed(AbilityMap.statChangeQueue[Stat.SPEED.getMask()]);
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()],attacker));
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printDefChange(AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()],attacker));
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printSpeedChange(AbilityMap.statChangeQueue[Stat.SPEED.getMask()],attacker));
 						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 						   AbilityMap.statChangeQueue[Stat.DEFENSE.getMask()] = 0;
 						   AbilityMap.statChangeQueue[Stat.SPEED.getMask()] = 0;

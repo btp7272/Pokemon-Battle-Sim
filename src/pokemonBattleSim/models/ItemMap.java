@@ -96,6 +96,7 @@ public class ItemMap
 					   {
 						   holder.changeAtk(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()]);
 						   model.addLogItem(holder.getNickName()+" ate it's Liechi Berry!");
+						   if (model == null) model = BattleModel.getInstance(); model.addLogItem(Formula.printAtkChange(AbilityMap.statChangeQueue[Stat.ATTACK.getMask()],holder));
 						   holder.setItem(new ItemContainer("None"));
 						   AbilityMap.statChangeQueue[Stat.ATTACK.getMask()] = 0;
 					   }

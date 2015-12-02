@@ -69,7 +69,7 @@ public class HowToPlay
 			}
 		});
 
-		btnNewButton.setBounds(614, 699, 89, 23);
+		btnNewButton.setBounds(0, 0, 89, 23);
 		HTP.getContentPane().add(btnNewButton);
 		
 		JLabel lblBuildingYour = new JLabel("Building Your Team");

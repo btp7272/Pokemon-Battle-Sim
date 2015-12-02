@@ -1155,6 +1155,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = p1_species.getSelectedItem().toString();
 				nickname = p1_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p1_item.getSelectedItem();
 				ability = (String)p1_ability.getSelectedItem();
 				level = (int)p1_level.getModel().getValue();
@@ -1189,6 +1190,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = (String)p2_species.getSelectedItem();
 				nickname = p2_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p2_item.getSelectedItem();
 				ability = (String)p2_ability.getSelectedItem();
 				level = (int)p2_level.getModel().getValue();
@@ -1223,6 +1225,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = (String)p3_species.getSelectedItem();
 				nickname = p3_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p3_item.getSelectedItem();
 				ability = (String)p3_ability.getSelectedItem();
 				level = (int)p3_level.getModel().getValue();
@@ -1257,6 +1260,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = (String)p4_species.getSelectedItem();
 				nickname = p4_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p4_item.getSelectedItem();
 				ability = (String)p4_ability.getSelectedItem();
 				level = (int)p4_level.getModel().getValue();
@@ -1291,6 +1295,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = (String)p5_species.getSelectedItem();
 				nickname = p5_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p5_item.getSelectedItem();
 				ability = (String)p5_ability.getSelectedItem();
 				level = (int)p5_level.getModel().getValue();
@@ -1325,6 +1330,7 @@ public class TeamBuilderView extends JFrame {
 				
 				species = (String)p6_species.getSelectedItem();
 				nickname = p6_nickname.getText();
+				if(nickname.equals("")) nickname = species;
 				item = (String)p6_item.getSelectedItem();
 				ability = (String)p6_ability.getSelectedItem();
 				level = (int)p6_level.getModel().getValue();
@@ -1558,8 +1564,6 @@ public class TeamBuilderView extends JFrame {
 				AIController AIcontroller = new AIController(model, computer.getTrainerID());
 				view.setVisible(true);
 				closeFrame();
-				System.out.println(player.getTrainerID());
-				System.out.println(computer.getTrainerID());
         	}
         });
 		contentPane.add(btnFinalize);

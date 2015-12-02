@@ -55,7 +55,7 @@ public class StatusMap
 								   return;
 							   }
 							  
-							   wielder.getVolatileStatus("Confusion").addToDegree(-25, false);
+							   wielder.getVolatileStatus("Confusion").addToDegree(-35, false);
 							   model.addLogItem(wielder.getNickName()+" snapped a little out of confusion!");
 							   if(wielder.getVolatileStatus("Confusion").getDegree() == 0)
 							   {
@@ -63,7 +63,7 @@ public class StatusMap
 								   model.addLogItem(wielder.getNickName()+" is confused no more!");
 								   timer.cancel();
 							   }
-							   else if(wielder.getVolatileStatus("Confusion").getDegree() >= 60)
+							   else if(wielder.getVolatileStatus("Confusion").getDegree() >= 65)
 							   {
 								   model.addLogItem(wielder.getNickName()+" will still hit itself!");
 							   }
@@ -82,7 +82,7 @@ public class StatusMap
 						   wielder.getVolatileStatus("Confusion").setActiveStatus(true);
 					 }
 					
-					if(wielder.getVolatileStatus("Confusion").getDegree() >= 60)
+					if(wielder.getVolatileStatus("Confusion").getDegree() >= 65)
 					{
 						double damage;
 				        double numerator, denomenator;

@@ -113,10 +113,10 @@ public class OnlineBattleModel implements IBattleModel
 		timer.schedule(new DelayTask(playerTwo), 0);
 	}
 	
-	public void Listen()
+	public void Listen() throws IOException
 	{
 		Timer timer = new Timer();
-		//Server = Recieve.CreateServer();
+		Server = Recieve.CreateServer();
 		socket = Recieve.createSocket(Recieve.IP);
 	    class SetTimer extends TimerTask
 	    {

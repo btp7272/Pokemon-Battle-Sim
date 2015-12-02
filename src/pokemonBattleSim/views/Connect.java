@@ -101,11 +101,21 @@ public class Connect {
 				 	    @Override
 				 	    public void run()
 				 	    {
+				 	    	ServerSocket test=null;
+							try 
+							{
+								test = Recieve.CreateServer();
+							}
+							catch (IOException e1) 
+							{
+								System.err.println(e1);
+							}
 				 	    	while(true)
 				 	    	{
+				 	    		
 					 		    try 
 					 		    {
-									if(Recieve.getTestConnection(socket).equals("HandShake Complete"))
+									if(Recieve.getTestConnection(test, socket).equals("HandShake Complete"))
 									{
 										btnBuildYourTeam.setVisible(true);
 										lblConnectionSuccessful.setVisible(true);

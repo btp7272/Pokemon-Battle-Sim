@@ -68,13 +68,13 @@ public class Recieve
 		return new ServerSocket(6943);
 	}
 	
-	public static String getTestConnection(Socket read) throws IOException, ClassNotFoundException
+	public static String getTestConnection(ServerSocket Test, Socket read) throws IOException, ClassNotFoundException
 	{
-		ServerSocket Test = Recieve.CreateServer();
 		try
 		{
 			while(read == null)
 			read = Test.accept();
+			Test.close();
 		}
 		catch (IOException e)
 		{

@@ -94,9 +94,18 @@ public class IPAddress {
 	 	    @Override
 	 	    public void run()
 	 	    {
+	 	    	ServerSocket test=null;
+				try 
+				{
+					test = Recieve.CreateServer();
+				}
+				catch (IOException e1) 
+				{
+					System.err.println(e1);
+				}
 	 		    try 
 	 		    {
-					if(Recieve.getTestConnection(socket).equals("Test 1 Valid"))
+					if(Recieve.getTestConnection(test,socket).equals("Test 1 Valid"))
 					{
 						btnNewButton_1.setText("Connection Recieved!");
 						btnNewButton_1.setEnabled(true);

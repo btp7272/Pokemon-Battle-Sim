@@ -9,24 +9,11 @@ import java.util.ArrayList;
 public class Send implements Serializable
 {  
     public static boolean Online = false;
-    static Socket sock;
     public static String IPAddress;
     
-	public static Socket createSocket(String ip)
+	public static Socket createSocket(String ip) throws UnknownHostException, IOException
 	{
-		try 
-		{
-            sock = new Socket(ip, 6943);
-        } 
-		catch (UnknownHostException e) 
-		{
-            System.err.println("Don't know about host: opponent");
-        } 
-		catch (IOException e) 
-		{
-            System.err.println("Couldn't get I/O for the connection to: opponent");
-        }
-		return sock;
+     	return new Socket(ip, 6943);
 	}
 	
 	public static void testConnection(String IP) throws IOException

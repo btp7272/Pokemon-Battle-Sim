@@ -40,34 +40,6 @@ public class TeamBuilderModel {
 	}
 	
 	
-	public String generateAbilities(String poke)
-	{
-		Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(poke));
-		String abilities = new String();
-		
-		/*
-		 * Retrieve list of valid abilities in form ability, ability, ability
-		 */
-		//temp move set
-		abilities = "Drizzle, Drought, Forecast";
-		return abilities;
-	}
-	
-	public String generateMoves(String poke)
-	{
-		Pokemon temp = new Pokemon(SpeciesMap.speciesMap.get(poke));
-		String moves = new String();  
-		
-		/*
-		 * Retrieve list of valid moves in form move, move, move
-		 */
-		
-		//Temporary move set
-		moves = "Tackle, Flamethrower, Thunderbolt";
-		return moves;
-	}
-	
-	
 
 
 	/*

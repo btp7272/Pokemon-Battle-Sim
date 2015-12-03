@@ -6,9 +6,11 @@ import pokemonBattleSim.types.Move;
 import pokemonBattleSim.types.Type;
 
 /*
- * Name, type, attribute, contest, PP, power, accuracy
+ * Name, type, attribute, contest, pokepower(number of times it can be used), power, accuracy
+ *
+ *
+ * Map used to hold moves and their types used for damage calculator. 
  */
-
 public class MoveMap
 {	public static Map < String, Move > moveMap = new HashMap<>();
 	static

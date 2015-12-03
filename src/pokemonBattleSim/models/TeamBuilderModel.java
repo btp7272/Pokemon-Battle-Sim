@@ -29,6 +29,9 @@ public class TeamBuilderModel {
 		return Team;
 	}
 	
+	/*
+	 * Notify the any views of a change that has occured.
+	 */
 	public void notifyView()
 	{
 		for (IView view : this.views)

@@ -2,6 +2,10 @@ package pokemonBattleSim.types;
 
 public class ItemContainer 
 {
+	/*
+	 * Container object to hold a pokemons held item and their effects. 
+	 */
+	
 	private String itemName;
 	private Move forcedMove;
 	private boolean active;

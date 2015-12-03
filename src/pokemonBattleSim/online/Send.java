@@ -16,6 +16,9 @@ public class Send implements Serializable
      	return new Socket(ip, 6943);
 	}
 	
+	/*
+	 * Send a test connection
+	 */
 	public static void testConnection(String IP) throws IOException
 	{
 		Recieve.IP = IP;
@@ -30,6 +33,9 @@ public class Send implements Serializable
 		socket.close();
 	}
 	
+	/*
+	 * Send connection handshake
+	 */
 	public static void testConnectionHandshake(String IP) throws IOException
 	{
 		Recieve.IP = IP;
@@ -44,6 +50,9 @@ public class Send implements Serializable
 		socket.close();
 	}
 	
+	/*
+	 * Send a generic packet
+	 */
 	public static void sendPacket(String IP, String s, Object o) throws IOException
 	{
 		Socket socket = createSocket(IP);

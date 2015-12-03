@@ -7,6 +7,10 @@ import pokemonBattleSim.models.StatusMap;
 
 public class Event 
 {
+	/*
+	 * This class is used to run events in the Event class and battlemodel
+	 */
+	
 	public static Boolean abilityEvent(EventType type, IPokemon wielder, IPokemon opponent, IField field, IPokemon attacker, IPokemon defender, Move moveUsed)
 	{
 		if(AbilityMap.abilityMap.get(wielder.getAbility().getName()) == null)

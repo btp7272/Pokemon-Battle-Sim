@@ -133,7 +133,7 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) 
 			{
 				Send.Online = true;
-				IPAddress na = new IPAddress();
+				HostGame na = new HostGame();
 				na.NewAddress();
 				frmPokemonBattleSim.setVisible(false);
 			}

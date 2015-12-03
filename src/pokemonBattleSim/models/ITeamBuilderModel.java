@@ -15,7 +15,5 @@ public interface ITeamBuilderModel
 	public String generateMoves(Pokemon poke);
 	public String generateAbilities(Pokemon poke);
 	
-	//Methods for View
-	
 	
 }

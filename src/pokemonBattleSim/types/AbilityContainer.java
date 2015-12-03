@@ -2,6 +2,9 @@ package pokemonBattleSim.types;
 
 public class AbilityContainer 
 {
+	/*
+	 * Holds a pokemons ability, originial stats for resetting, and a boolean to determine if their ability is active
+	 */
 	private String name;
 	private int[] originalStats;
 	private boolean active;

@@ -2,6 +2,9 @@ package pokemonBattleSim.types;
 
 public class Move 
 {
+	/*
+	 * Constructor for move objects, ecludes their runable methods.
+	 */
 	private String name;
 	private Type type = null;
 	private Attribute category = null;

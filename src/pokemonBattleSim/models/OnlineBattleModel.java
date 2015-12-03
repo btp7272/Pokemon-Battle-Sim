@@ -32,6 +32,10 @@ import java.util.TimerTask;
 public class OnlineBattleModel implements IBattleModel
 {
 	/*
+	 * Exact same as BattleModel, but whenever a move or swap occurs it sends data to other computer
+	 */
+	
+	/*
 	 * Singleton static methods
 	 */
 	static OnlineBattleModel model;

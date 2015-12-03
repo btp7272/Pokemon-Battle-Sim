@@ -1695,7 +1695,7 @@ public class TeamBuilderView extends JFrame {
 			}
 		});
 		btnTest.setBounds(90, 740, 100, 25);
-		//contentPane.add(btnTest);
+		contentPane.add(btnTest);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {

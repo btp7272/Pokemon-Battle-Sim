@@ -22,7 +22,9 @@ import java.awt.Toolkit;
 import pokemonBattleSim.online.*;
 
 public class Connect {
-
+/*
+ * View for connecting to another host online
+ */
 	private JFrame frmConnect;
 	public static JTextField IPAddress;
 	private JButton btnNewButton;
@@ -92,6 +94,9 @@ public class Connect {
 			public void actionPerformed(ActionEvent arg0) {
 				try 
 				{
+					/*
+					 * Attempts to send test packet, then recieve response. If response is recieved, activates button to go to teambuilder.
+					 */
 					Send.IPAddress = IPAddress.getText();
 					Send.testConnection(IPAddress.getText());
 					Timer timer = new Timer();

@@ -12,6 +12,9 @@ import pokemonBattleSim.types.*;
 
 public class ItemMap 
 {
+	/*
+	 * This class is similar to Ability map, where it maps items and contains runnables for how they affect pokemon.
+	 */
 	public static Map < String, IItem > itemMap = new HashMap<>();
 	private static IBattleModel model = BattleModel.getInstance();
 	

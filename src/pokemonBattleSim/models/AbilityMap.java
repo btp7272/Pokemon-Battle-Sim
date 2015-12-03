@@ -17,6 +17,11 @@ import pokemonBattleSim.online.*;
 
 public class AbilityMap
 {
+	/*
+	 * This class is used to design individual abilities and map them so they can be called easily
+	 * 
+	 * Each map entry contains a runnable method that performs whatever stat changes and effects abilities have.
+	 */
 	public static Map < String, IAbility > abilityMap = new HashMap<>();
 	public static int[] statChangeQueue = new int[5];
 	private static IBattleModel model = BattleModel.getInstance();

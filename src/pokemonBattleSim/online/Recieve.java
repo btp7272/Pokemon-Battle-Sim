@@ -68,6 +68,11 @@ public class Recieve
 		return new ServerSocket(6943);
 	}
 	
+	/*
+	 * Receive a test connection, Listens for a new incoming packet, accepts it
+	 * if it's a first incoming test, sends a reply handshake
+	 * if it's a handshake, returns valid to start interactions.
+	 */
 	public static String getTestConnection(ServerSocket Test, Socket read) throws IOException, ClassNotFoundException
 	{
 		try
@@ -115,6 +120,9 @@ public class Recieve
 		return "Inconclusive";
 	}
 	
+	/*
+	 * Retrieve IP Address from webiste to display on hosting page
+	 */
 	public static String getIPAddress()
 	{
 		URL whatismyip = null;
@@ -148,6 +156,9 @@ public class Recieve
 		return ip;
 	}
 	
+	/*
+	 * Listen for a connection and return the packet.
+	 */
 	public static instructionPacket Listen(ServerSocket Server, Socket read)
 	{
 		try 

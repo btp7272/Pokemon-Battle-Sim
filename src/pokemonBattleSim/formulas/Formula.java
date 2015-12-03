@@ -186,6 +186,9 @@ public class Formula
     	return executionTime / 3;
     }
     
+    /*
+     * Determines if a used move is super effective against the defending pokemon
+     */
     public static boolean isSuperEffective(IPokemon defender, Move moveUsed)
     {
        if(defender.getType3() != null && defender.getType2() != null)
@@ -213,6 +216,9 @@ public class Formula
        return false;
     }
     
+    /*
+     * Special damage calculator used when the move Sheer Force is used.
+     */
     public static int calcSheerForceDamage(IPokemon attacker, IPokemon defender, Move m, IField field)
 	   {
 	    	if(m.getCategory() == Attribute.STATUS)

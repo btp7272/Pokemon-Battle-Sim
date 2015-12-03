@@ -28,6 +28,9 @@ public class App {
 	public static void main (String[] args)
 	{
 		//System.setProperty("java.net.preferIPv4Stack" , "true");
+		/*
+		 * Main program starts here
+		 */
 		MainMenu.startup();
 	}
 }

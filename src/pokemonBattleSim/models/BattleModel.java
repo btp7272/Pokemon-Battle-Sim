@@ -33,21 +33,28 @@ public class BattleModel implements IBattleModel {
 	 */
 	static BattleModel model;
 	static Object owner;
-	static IField field = new IField() {
+	static IField field = new IField() 
+	{
 		
 		private Weather weatherCondition;
 
 		@Override
-		public Weather setWeather(Weather weather) {
+		public Weather setWeather(Weather weather) 
+		{
 			weatherCondition = weather;
 			return weatherCondition;
 		}
 
 		@Override
-		public Weather getWeather() {
+		public Weather getWeather() 
+		{
 			return weatherCondition;
-		}};
+		}
+	};
 	
+	/*
+	 * Create a new instance of the battle model to be used by the current game.
+	 */
 	public static void CreateInstance (Object owner, IPokemonTrainer playerOne, IPokemonTrainer playerTwo) throws Exception
 	{
 		if (BattleModel.owner == null) 

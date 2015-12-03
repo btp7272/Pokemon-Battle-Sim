@@ -6,6 +6,9 @@ import pokemonBattleSim.types.Type;
 
 public class SpeciesMap
 {
+	/*
+	 * HashMap of all pokemon species, with their health, atk, def, spatk, spdef, speed, types, and weight.
+	 */
 	public static Map < String, Species > speciesMap = new HashMap<>();
 	static
 	{

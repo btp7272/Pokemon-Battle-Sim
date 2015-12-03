@@ -15,7 +15,6 @@ public class BattleController {
 	private int playerID;
 	
 	public BattleController(BattleView view, BattleModel model, int playerID) {
-		// TODO Auto-generated constructor stub
 		this.view = view;
 		this.model = model;
 		this.playerID = playerID;
@@ -24,14 +23,10 @@ public class BattleController {
 		this.view.addPokemonButtonListener(new PokemonButtonListener());
 		this.model.notifyView();
 	}
-	
-	class QueueButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-		}	
-	}
-	
+
+	/*
+	 * Listen for moves being pressed by user
+	 */
 	class MoveButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) 
@@ -44,6 +39,9 @@ public class BattleController {
 		}	
 	}
 	
+	/*
+	 * Listens for swap requests
+	 */
 	class PokemonButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e)

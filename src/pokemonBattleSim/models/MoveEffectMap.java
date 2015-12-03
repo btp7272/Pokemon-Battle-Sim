@@ -25,6 +25,9 @@ public class MoveEffectMap
 	private static IBattleModel model = BattleModel.getInstance();
 	public static int sereneGraceMultiplier = 1;
 	
+	/*
+	 * Same as Ability map in functionality, but for moves
+	 */
 	
 	static
 	{

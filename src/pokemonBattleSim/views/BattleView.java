@@ -261,6 +261,10 @@ public class BattleView extends JFrame implements IView{
 		}.start();
 	}
 
+	/*
+	 * Refresh view when notified
+	 * @see pokemonBattleSim.views.IView#onViewNotify()
+	 */
 	@Override
 	public void onViewNotify()
 	{

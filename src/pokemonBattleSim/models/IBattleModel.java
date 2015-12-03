@@ -1,12 +1,17 @@
 package pokemonBattleSim.models;
 
 import java.util.ArrayList;
+
 import java.util.Stack;
 
 import pokemonBattleSim.types.IField;
 import pokemonBattleSim.types.IPokemon;
 import pokemonBattleSim.types.Move;
 import pokemonBattleSim.views.IView;
+
+/*
+ * Interface used for BattleModel and OnlineBattleModel
+ */
 
 public interface IBattleModel {
 	// Methods for Controller: Registering actions
